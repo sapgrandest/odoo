@@ -1,0 +1,128 @@
+{
+  "model": "website.checkout.step",
+  "name": "Website Checkout Step",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "website_id": {
+      "help": "Restrict to a specific website.",
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "website_url": {
+      "help": "The full relative URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website URL",
+      "type": "char"
+    },
+    "website_absolute_url": {
+      "help": "The full absolute URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website Absolute URL",
+      "type": "char"
+    },
+    "website_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Visible on current website",
+      "type": "boolean"
+    },
+    "is_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Published",
+      "type": "boolean"
+    },
+    "publish_on": {
+      "help": "Automatically publish the page on the chosen date and time.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto publish on",
+      "type": "datetime"
+    },
+    "published_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Published date",
+      "type": "datetime"
+    },
+    "can_publish": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Publish",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "step_href": {
+      "readonly": false,
+      "required": true,
+      "string": "Href",
+      "type": "char"
+    },
+    "main_button_label": {
+      "readonly": false,
+      "required": false,
+      "string": "Main Button Label",
+      "type": "char"
+    },
+    "back_button_label": {
+      "readonly": false,
+      "required": false,
+      "string": "Back Button Label",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

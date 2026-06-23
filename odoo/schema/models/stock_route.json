@@ -1,0 +1,161 @@
+{
+  "model": "stock.route",
+  "name": "Inventory Route",
+  "field_count": 23,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Route",
+      "type": "char"
+    },
+    "active": {
+      "help": "If the active field is set to False, it will allow you to hide the route without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "rule_ids": {
+      "readonly": false,
+      "relation": "stock.rule",
+      "required": false,
+      "string": "Rules",
+      "type": "one2many"
+    },
+    "product_selectable": {
+      "help": "When checked, the route will be selectable in the Inventory tab of the Product form.",
+      "readonly": false,
+      "required": false,
+      "string": "Applicable on Product",
+      "type": "boolean"
+    },
+    "product_categ_selectable": {
+      "help": "When checked, the route will be selectable on the Product Category.",
+      "readonly": false,
+      "required": false,
+      "string": "Applicable on Product Category",
+      "type": "boolean"
+    },
+    "warehouse_selectable": {
+      "help": "When a warehouse is selected for this route, this route should be seen as the default route when products pass through this warehouse.",
+      "readonly": false,
+      "required": false,
+      "string": "Applicable on Warehouse",
+      "type": "boolean"
+    },
+    "package_type_selectable": {
+      "help": "When checked, the route will be selectable on package types",
+      "readonly": false,
+      "required": false,
+      "string": "Applicable on Package Type",
+      "type": "boolean"
+    },
+    "supplied_wh_id": {
+      "readonly": false,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Supplied Warehouse",
+      "type": "many2one"
+    },
+    "supplier_wh_id": {
+      "readonly": false,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Supplying Warehouse",
+      "type": "many2one"
+    },
+    "company_id": {
+      "help": "Leave this field empty if this route is shared between all companies",
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "product_ids": {
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Products",
+      "type": "many2many"
+    },
+    "categ_ids": {
+      "readonly": false,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Categories",
+      "type": "many2many"
+    },
+    "warehouse_domain_ids": {
+      "readonly": true,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouse Domain",
+      "type": "one2many"
+    },
+    "warehouse_ids": {
+      "readonly": false,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouses",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "sale_selectable": {
+      "readonly": false,
+      "required": false,
+      "string": "Selectable on Sales Order Line",
+      "type": "boolean"
+    },
+    "shipping_selectable": {
+      "readonly": false,
+      "required": false,
+      "string": "Applicable on Delivery Methods",
+      "type": "boolean"
+    }
+  }
+}

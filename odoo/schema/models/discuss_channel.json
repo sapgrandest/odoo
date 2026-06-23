@@ -1,0 +1,739 @@
+{
+  "model": "discuss.channel",
+  "name": "Discussion Channel",
+  "field_count": 92,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "active": {
+      "help": "Set active to false to hide the channel without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "can_join": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Join",
+      "type": "boolean"
+    },
+    "can_leave": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Leave",
+      "type": "boolean"
+    },
+    "channel_type": {
+      "help": "Chat is private and unique between 2 persons. Group is private among invited persons. Channel can be freely joined (depending on its configuration).",
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "chat",
+          "Chat"
+        ],
+        [
+          "channel",
+          "Channel"
+        ],
+        [
+          "group",
+          "Group Chat"
+        ],
+        [
+          "ai_chat",
+          "AI chat"
+        ],
+        [
+          "livechat",
+          "Live Chat"
+        ]
+      ],
+      "string": "Conversation Type",
+      "type": "selection"
+    },
+    "is_editable": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Editable",
+      "type": "boolean"
+    },
+    "is_readonly": {
+      "help": "Only admins are allowed to post messages in a read-only channel.",
+      "readonly": false,
+      "required": false,
+      "string": "Read-only",
+      "type": "boolean"
+    },
+    "default_display_mode": {
+      "help": "Determines how the channel will be displayed by default when opening it from its invitation link. No value means display text (no voice/video).",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "video_full_screen",
+          "Full screen video"
+        ]
+      ],
+      "string": "Default Display Mode",
+      "type": "selection"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "image_128": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "avatar_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar",
+      "type": "binary"
+    },
+    "avatar_cache_key": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar Cache Key",
+      "type": "char"
+    },
+    "discuss_category_id": {
+      "readonly": false,
+      "relation": "discuss.category",
+      "required": false,
+      "string": "Category",
+      "type": "many2one"
+    },
+    "channel_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partners",
+      "type": "many2many"
+    },
+    "channel_member_ids": {
+      "readonly": false,
+      "relation": "discuss.channel.member",
+      "required": false,
+      "string": "Members",
+      "type": "one2many"
+    },
+    "parent_channel_id": {
+      "help": "Parent channel",
+      "readonly": true,
+      "relation": "discuss.channel",
+      "required": false,
+      "string": "Parent Channel",
+      "type": "many2one"
+    },
+    "sub_channel_ids": {
+      "readonly": true,
+      "relation": "discuss.channel",
+      "required": false,
+      "string": "Sub Channels",
+      "type": "one2many"
+    },
+    "from_message_id": {
+      "help": "The message the channel was created from.",
+      "readonly": true,
+      "relation": "mail.message",
+      "required": false,
+      "string": "From Message",
+      "type": "many2one"
+    },
+    "sfu_channel_uuid": {
+      "readonly": false,
+      "required": false,
+      "string": "Sfu Channel Uuid",
+      "type": "char"
+    },
+    "sfu_server_url": {
+      "readonly": false,
+      "required": false,
+      "string": "Sfu Server Url",
+      "type": "char"
+    },
+    "rtc_session_ids": {
+      "readonly": false,
+      "relation": "discuss.channel.rtc.session",
+      "required": false,
+      "string": "Rtc Session",
+      "type": "one2many"
+    },
+    "call_history_ids": {
+      "readonly": false,
+      "relation": "discuss.call.history",
+      "required": false,
+      "string": "Call History",
+      "type": "one2many"
+    },
+    "is_member": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Member",
+      "type": "boolean"
+    },
+    "self_member_id": {
+      "readonly": true,
+      "relation": "discuss.channel.member",
+      "required": false,
+      "string": "Self Member",
+      "type": "many2one"
+    },
+    "can_self_edit_readonly_channel": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Self Edit Readonly Channel",
+      "type": "boolean"
+    },
+    "invited_member_ids": {
+      "readonly": true,
+      "relation": "discuss.channel.member",
+      "required": false,
+      "string": "Invited Member",
+      "type": "one2many"
+    },
+    "member_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Member Count",
+      "type": "integer"
+    },
+    "message_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Messages",
+      "type": "integer"
+    },
+    "last_interest_dt": {
+      "help": "Contains the date and time of the last interesting event that happened in this channel. This updates itself when new message posted.",
+      "readonly": false,
+      "required": false,
+      "string": "Last Activity",
+      "type": "datetime"
+    },
+    "group_ids": {
+      "help": "Members of those groups will automatically added as followers. Note that they will be able to manage their subscription manually if necessary.",
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Auto Subscription",
+      "type": "many2many"
+    },
+    "uuid": {
+      "readonly": false,
+      "required": false,
+      "string": "UUID",
+      "type": "char"
+    },
+    "group_public_id": {
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Authorized Group",
+      "type": "many2one"
+    },
+    "invitation_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Invitation URL",
+      "type": "char"
+    },
+    "channel_name_member_ids": {
+      "help": "Members from which the channel name is computed when the name field is empty.",
+      "readonly": true,
+      "relation": "discuss.channel.member",
+      "required": false,
+      "string": "Channel Name Member",
+      "type": "one2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "ai_session_ids": {
+      "readonly": false,
+      "relation": "ai.session",
+      "required": false,
+      "string": "Ai Session",
+      "type": "one2many"
+    },
+    "calendar_event_ids": {
+      "readonly": false,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Calendar Event",
+      "type": "one2many"
+    },
+    "subscription_department_ids": {
+      "help": "Automatically subscribe members of those departments to the channel.",
+      "readonly": false,
+      "relation": "hr.department",
+      "required": false,
+      "string": "HR Departments",
+      "type": "many2many"
+    },
+    "duration": {
+      "help": "Duration of the session in hours",
+      "readonly": true,
+      "required": false,
+      "string": "Duration",
+      "type": "float"
+    },
+    "livechat_lang_id": {
+      "help": "Lang of the visitor of the channel.",
+      "readonly": false,
+      "relation": "res.lang",
+      "required": false,
+      "string": "Language",
+      "type": "many2one"
+    },
+    "livechat_end_dt": {
+      "help": "Session is closed when either the visitor or the last agent leaves the conversation.",
+      "readonly": false,
+      "required": false,
+      "string": "Session end date",
+      "type": "datetime"
+    },
+    "livechat_channel_id": {
+      "readonly": false,
+      "relation": "im_livechat.channel",
+      "required": false,
+      "string": "Channel",
+      "type": "many2one"
+    },
+    "livechat_channel_member_history_ids": {
+      "readonly": false,
+      "relation": "im_livechat.channel.member.history",
+      "required": false,
+      "string": "Livechat Channel Member History",
+      "type": "one2many"
+    },
+    "livechat_expertise_ids": {
+      "readonly": false,
+      "relation": "im_livechat.expertise",
+      "required": false,
+      "string": "Livechat Expertise",
+      "type": "many2many"
+    },
+    "livechat_agent_history_ids": {
+      "readonly": true,
+      "relation": "im_livechat.channel.member.history",
+      "required": false,
+      "string": "Agents (History)",
+      "type": "one2many"
+    },
+    "livechat_bot_history_ids": {
+      "readonly": true,
+      "relation": "im_livechat.channel.member.history",
+      "required": false,
+      "string": "Bots (History)",
+      "type": "one2many"
+    },
+    "livechat_customer_history_ids": {
+      "readonly": true,
+      "relation": "im_livechat.channel.member.history",
+      "required": false,
+      "string": "Customers (History)",
+      "type": "one2many"
+    },
+    "livechat_agent_partner_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Agents",
+      "type": "many2many"
+    },
+    "livechat_bot_partner_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Bots",
+      "type": "many2many"
+    },
+    "livechat_customer_partner_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customers (Partners)",
+      "type": "many2many"
+    },
+    "livechat_customer_guest_ids": {
+      "readonly": true,
+      "relation": "mail.guest",
+      "required": false,
+      "string": "Customers (Guests)",
+      "type": "many2many"
+    },
+    "livechat_agent_requesting_help_history": {
+      "readonly": true,
+      "relation": "im_livechat.channel.member.history",
+      "required": false,
+      "string": "Help Requested (Agent)",
+      "type": "many2one"
+    },
+    "livechat_agent_providing_help_history": {
+      "readonly": true,
+      "relation": "im_livechat.channel.member.history",
+      "required": false,
+      "string": "Help Provided (Agent)",
+      "type": "many2one"
+    },
+    "livechat_note": {
+      "help": "Note about the session, visible to all internal users having access to the session.",
+      "readonly": false,
+      "required": false,
+      "string": "Live Chat Note",
+      "type": "html"
+    },
+    "livechat_status": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "in_progress",
+          "In progress"
+        ],
+        [
+          "need_help",
+          "Looking for help"
+        ]
+      ],
+      "string": "Livechat Status",
+      "type": "selection"
+    },
+    "livechat_looking_for_help_since_dt": {
+      "help": "Datetime when the chat entered the 'Looking for help' status.",
+      "readonly": true,
+      "required": false,
+      "string": "Requested At",
+      "type": "datetime"
+    },
+    "livechat_outcome": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "no_answer",
+          "Never Answered"
+        ],
+        [
+          "no_agent",
+          "No one Available"
+        ],
+        [
+          "no_failure",
+          "Success"
+        ],
+        [
+          "escalated",
+          "Escalated"
+        ]
+      ],
+      "string": "Livechat Outcome",
+      "type": "selection"
+    },
+    "livechat_start_hour": {
+      "readonly": true,
+      "required": false,
+      "string": "Session Start Hour",
+      "type": "float"
+    },
+    "livechat_week_day": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Monday"
+        ],
+        [
+          "1",
+          "Tuesday"
+        ],
+        [
+          "2",
+          "Wednesday"
+        ],
+        [
+          "3",
+          "Thursday"
+        ],
+        [
+          "4",
+          "Friday"
+        ],
+        [
+          "5",
+          "Saturday"
+        ],
+        [
+          "6",
+          "Sunday"
+        ]
+      ],
+      "string": "Day of the Week",
+      "type": "selection"
+    },
+    "livechat_matches_self_lang": {
+      "readonly": true,
+      "required": false,
+      "string": "Livechat Matches Self Lang",
+      "type": "boolean"
+    },
+    "livechat_matches_self_expertise": {
+      "readonly": true,
+      "required": false,
+      "string": "Livechat Matches Self Expertise",
+      "type": "boolean"
+    },
+    "chatbot_current_step_id": {
+      "readonly": false,
+      "relation": "chatbot.script.step",
+      "required": false,
+      "string": "Chatbot Current Step",
+      "type": "many2one"
+    },
+    "chatbot_message_ids": {
+      "readonly": false,
+      "relation": "chatbot.message",
+      "required": false,
+      "string": "Chatbot Messages",
+      "type": "one2many"
+    },
+    "country_id": {
+      "help": "Country of the visitor of the channel",
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "livechat_failure": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "no_answer",
+          "Never Answered"
+        ],
+        [
+          "no_agent",
+          "No one Available"
+        ],
+        [
+          "no_failure",
+          "No Failure"
+        ]
+      ],
+      "string": "Live Chat Session Failure",
+      "type": "selection"
+    },
+    "livechat_is_escalated": {
+      "readonly": true,
+      "required": false,
+      "string": "Is session escalated",
+      "type": "boolean"
+    },
+    "livechat_rating": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "1",
+          "Unhappy"
+        ],
+        [
+          "3",
+          "Neutral"
+        ],
+        [
+          "5",
+          "Happy"
+        ]
+      ],
+      "string": "Livechat Rating Text",
+      "type": "selection"
+    },
+    "livechat_rating_percentage": {
+      "readonly": true,
+      "required": false,
+      "string": "Rating (%)",
+      "type": "float"
+    },
+    "lead_ids": {
+      "help": "The channel becomes accessible to sales users when leads are set.",
+      "readonly": false,
+      "relation": "crm.lead",
+      "required": false,
+      "string": "Leads",
+      "type": "one2many"
+    },
+    "has_crm_lead": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Crm Lead",
+      "type": "boolean"
+    },
+    "is_pending_chat_request": {
+      "readonly": false,
+      "required": false,
+      "string": "When created from an operator, whether the channel is yet to be opened on the visitor side.",
+      "type": "boolean"
+    },
+    "livechat_visitor_id": {
+      "readonly": false,
+      "relation": "website.visitor",
+      "required": false,
+      "string": "Visitor",
+      "type": "many2one"
+    },
+    "ticket_ids": {
+      "help": "The channel becomes accessible to helpdesk users when tickets are set.",
+      "readonly": false,
+      "relation": "helpdesk.ticket",
+      "required": false,
+      "string": "Tickets",
+      "type": "one2many"
+    },
+    "has_helpdesk_ticket": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Helpdesk Ticket",
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "model": "purchase.report",
+  "name": "Purchase Report",
+  "field_count": 32,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "date_order": {
+      "readonly": true,
+      "required": false,
+      "string": "Order Deadline",
+      "type": "datetime"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "Draft RFQ"
+        ],
+        [
+          "sent",
+          "RFQ Sent"
+        ],
+        [
+          "to approve",
+          "To Approve"
+        ],
+        [
+          "purchase",
+          "Purchase Order"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "product_id": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Vendor",
+      "type": "many2one"
+    },
+    "date_approve": {
+      "readonly": true,
+      "required": false,
+      "string": "Confirmation Date",
+      "type": "datetime"
+    },
+    "uom_id": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Reference Unit of Measure",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Buyer",
+      "type": "many2one"
+    },
+    "delay": {
+      "help": "Amount of time between purchase approval and order by date.",
+      "readonly": true,
+      "required": false,
+      "string": "Days to Confirm",
+      "type": "float"
+    },
+    "delay_pass": {
+      "help": "Amount of time between date planned and order by date for each purchase order line.",
+      "readonly": true,
+      "required": false,
+      "string": "Days to Receive",
+      "type": "float"
+    },
+    "price_total": {
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "monetary"
+    },
+    "price_average": {
+      "readonly": true,
+      "required": false,
+      "string": "Average Cost",
+      "type": "monetary"
+    },
+    "nbr_lines": {
+      "readonly": true,
+      "required": false,
+      "string": "# of Lines",
+      "type": "integer"
+    },
+    "category_id": {
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "product_tmpl_id": {
+      "readonly": true,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product Template",
+      "type": "many2one"
+    },
+    "country_id": {
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Partner Country",
+      "type": "many2one"
+    },
+    "fiscal_position_id": {
+      "readonly": true,
+      "relation": "account.fiscal.position",
+      "required": false,
+      "string": "Fiscal Position",
+      "type": "many2one"
+    },
+    "commercial_partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Commercial Entity",
+      "type": "many2one"
+    },
+    "weight": {
+      "readonly": true,
+      "required": false,
+      "string": "Gross Weight",
+      "type": "float"
+    },
+    "volume": {
+      "readonly": true,
+      "required": false,
+      "string": "Volume",
+      "type": "float"
+    },
+    "order_id": {
+      "readonly": true,
+      "relation": "purchase.order",
+      "required": false,
+      "string": "Order",
+      "type": "many2one"
+    },
+    "untaxed_total": {
+      "readonly": true,
+      "required": false,
+      "string": "Untaxed Total",
+      "type": "monetary"
+    },
+    "qty_ordered": {
+      "readonly": true,
+      "required": false,
+      "string": "Qty Ordered",
+      "type": "float"
+    },
+    "qty_received": {
+      "readonly": true,
+      "required": false,
+      "string": "Qty Received",
+      "type": "float"
+    },
+    "qty_billed": {
+      "readonly": true,
+      "required": false,
+      "string": "Qty Billed",
+      "type": "float"
+    },
+    "qty_to_be_billed": {
+      "readonly": true,
+      "required": false,
+      "string": "Qty to be Billed",
+      "type": "float"
+    },
+    "picking_type_id": {
+      "readonly": true,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    },
+    "effective_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Effective Date",
+      "type": "datetime"
+    },
+    "days_to_arrival": {
+      "readonly": true,
+      "required": false,
+      "string": "Effective Days To Arrival",
+      "type": "float"
+    }
+  }
+}

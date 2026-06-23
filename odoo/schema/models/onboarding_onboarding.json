@@ -1,0 +1,132 @@
+{
+  "model": "onboarding.onboarding",
+  "name": "Onboarding",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name of the onboarding",
+      "type": "char"
+    },
+    "route_name": {
+      "readonly": false,
+      "required": true,
+      "string": "One word name",
+      "type": "char"
+    },
+    "step_ids": {
+      "readonly": false,
+      "relation": "onboarding.onboarding.step",
+      "required": false,
+      "string": "Onboarding steps",
+      "type": "many2many"
+    },
+    "text_completed": {
+      "help": "Text shown on onboarding when completed",
+      "readonly": false,
+      "required": false,
+      "string": "Message at completion",
+      "type": "char"
+    },
+    "is_per_company": {
+      "readonly": true,
+      "required": false,
+      "string": "Should be done per company?",
+      "type": "boolean"
+    },
+    "panel_close_action_name": {
+      "help": "Name of the onboarding model action to execute when closing the panel.",
+      "readonly": false,
+      "required": false,
+      "string": "Closing action",
+      "type": "char"
+    },
+    "current_progress_id": {
+      "help": "Onboarding Progress for the current context (company).",
+      "readonly": true,
+      "relation": "onboarding.progress",
+      "required": false,
+      "string": "Onboarding Progress",
+      "type": "many2one"
+    },
+    "current_onboarding_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_done",
+          "Not done"
+        ],
+        [
+          "just_done",
+          "Just done"
+        ],
+        [
+          "done",
+          "Done"
+        ]
+      ],
+      "string": "Completion State",
+      "type": "selection"
+    },
+    "is_onboarding_closed": {
+      "readonly": true,
+      "required": false,
+      "string": "Was panel closed?",
+      "type": "boolean"
+    },
+    "progress_ids": {
+      "help": "All Onboarding Progress Records (across companies).",
+      "readonly": true,
+      "relation": "onboarding.progress",
+      "required": false,
+      "string": "Onboarding Progress Records",
+      "type": "one2many"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

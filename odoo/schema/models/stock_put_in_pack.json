@@ -1,0 +1,112 @@
+{
+  "model": "stock.put.in.pack",
+  "name": "Put In Pack Wizard",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "location_dest_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Destination",
+      "type": "many2one"
+    },
+    "move_line_ids": {
+      "readonly": false,
+      "relation": "stock.move.line",
+      "required": false,
+      "string": "Move lines",
+      "type": "many2many"
+    },
+    "package_ids": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Packages",
+      "type": "many2many"
+    },
+    "package_type_id": {
+      "readonly": false,
+      "relation": "stock.package.type",
+      "required": false,
+      "string": "Package Type",
+      "type": "many2one"
+    },
+    "package_type_sequence_id": {
+      "readonly": true,
+      "relation": "ir.sequence",
+      "required": false,
+      "string": "Reference Sequence",
+      "type": "many2one"
+    },
+    "result_package_id": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Package",
+      "type": "many2one"
+    },
+    "origin_package_ids": {
+      "readonly": true,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Origin Package",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "shipping_weight": {
+      "readonly": false,
+      "required": false,
+      "string": "Shipping Weight",
+      "type": "float"
+    },
+    "weight_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Weight unit of measure label",
+      "type": "char"
+    },
+    "package_carrier_type": {
+      "readonly": false,
+      "required": false,
+      "string": "Carrier Type",
+      "type": "char"
+    }
+  }
+}

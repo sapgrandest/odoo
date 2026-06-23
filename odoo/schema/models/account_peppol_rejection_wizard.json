@@ -1,0 +1,68 @@
+{
+  "model": "account.peppol.rejection.wizard",
+  "name": "Peppol Rejection wizard",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "move_ids": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": true,
+      "string": "Move",
+      "type": "many2many"
+    },
+    "reason_ids": {
+      "help": "The reasons to reject the received PEPPOL document. These will be sent to the document's sender.",
+      "readonly": false,
+      "relation": "account.peppol.clarification",
+      "required": true,
+      "string": "Rejection reasons",
+      "type": "many2many"
+    },
+    "action_ids": {
+      "help": "The actions to be suggested to the document's sender in order for the document to be accepted when sent again (eventually). These will be sent to the document's sender. Not mandatory.",
+      "readonly": false,
+      "relation": "account.peppol.clarification",
+      "required": false,
+      "string": "Rejection actions",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

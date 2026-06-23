@@ -1,0 +1,241 @@
+{
+  "model": "blog.blog",
+  "name": "Blog",
+  "field_count": 36,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "cover_properties": {
+      "readonly": false,
+      "required": false,
+      "string": "Cover Properties",
+      "type": "text"
+    },
+    "website_url": {
+      "help": "The full relative URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website URL",
+      "type": "char"
+    },
+    "website_absolute_url": {
+      "help": "The full absolute URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website Absolute URL",
+      "type": "char"
+    },
+    "website_id": {
+      "help": "Restrict to a specific website.",
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "is_seo_optimized": {
+      "readonly": true,
+      "required": false,
+      "string": "SEO optimized",
+      "type": "boolean"
+    },
+    "website_meta_title": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta title",
+      "type": "char"
+    },
+    "website_meta_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta description",
+      "type": "text"
+    },
+    "website_meta_keywords": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta keywords",
+      "type": "char"
+    },
+    "website_meta_og_img": {
+      "readonly": false,
+      "required": false,
+      "string": "Website opengraph image",
+      "type": "char"
+    },
+    "seo_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Seo name",
+      "type": "char"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Blog Name",
+      "type": "char"
+    },
+    "subtitle": {
+      "readonly": false,
+      "required": false,
+      "string": "Blog Subtitle",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "content": {
+      "readonly": false,
+      "required": false,
+      "string": "Content",
+      "type": "html"
+    },
+    "blog_post_ids": {
+      "readonly": false,
+      "relation": "blog.post",
+      "required": false,
+      "string": "Blog Posts",
+      "type": "one2many"
+    },
+    "blog_post_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Posts",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

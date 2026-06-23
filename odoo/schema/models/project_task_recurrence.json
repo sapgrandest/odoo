@@ -1,0 +1,104 @@
+{
+  "model": "project.task.recurrence",
+  "name": "Task Recurrence",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "task_ids": {
+      "readonly": false,
+      "relation": "project.task",
+      "required": false,
+      "string": "Task",
+      "type": "one2many"
+    },
+    "repeat_interval": {
+      "readonly": false,
+      "required": false,
+      "string": "Repeat Every",
+      "type": "integer"
+    },
+    "repeat_unit": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "day",
+          "Days"
+        ],
+        [
+          "week",
+          "Weeks"
+        ],
+        [
+          "month",
+          "Months"
+        ],
+        [
+          "year",
+          "Years"
+        ]
+      ],
+      "string": "Repeat Unit",
+      "type": "selection"
+    },
+    "repeat_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "forever",
+          "Forever"
+        ],
+        [
+          "until",
+          "Until"
+        ]
+      ],
+      "string": "Until",
+      "type": "selection"
+    },
+    "repeat_until": {
+      "readonly": false,
+      "required": false,
+      "string": "End Date",
+      "type": "date"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

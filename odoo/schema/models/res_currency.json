@@ -1,0 +1,173 @@
+{
+  "model": "res.currency",
+  "name": "Currency",
+  "field_count": 24,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "help": "Currency Code (ISO 4217)",
+      "readonly": false,
+      "required": true,
+      "string": "Currency",
+      "type": "char"
+    },
+    "iso_numeric": {
+      "help": "Currency Numeric Code (ISO 4217).",
+      "readonly": false,
+      "required": false,
+      "string": "Currency numeric code.",
+      "type": "integer"
+    },
+    "full_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "symbol": {
+      "help": "Currency sign, to be used when printing amounts.",
+      "readonly": false,
+      "required": true,
+      "string": "Symbol",
+      "type": "char"
+    },
+    "rate": {
+      "help": "The rate of the currency to the currency of rate 1.",
+      "readonly": true,
+      "required": false,
+      "string": "Current Rate",
+      "type": "float"
+    },
+    "inverse_rate": {
+      "help": "The currency of rate 1 to the rate of the currency.",
+      "readonly": true,
+      "required": false,
+      "string": "Inverse Rate",
+      "type": "float"
+    },
+    "rate_string": {
+      "readonly": true,
+      "required": false,
+      "string": "Rate String",
+      "type": "char"
+    },
+    "rate_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Rate Update",
+      "type": "date"
+    },
+    "rate_ids": {
+      "readonly": false,
+      "relation": "res.currency.rate",
+      "required": false,
+      "string": "Rates",
+      "type": "one2many"
+    },
+    "rounding": {
+      "help": "Amounts in this currency are rounded off to the nearest multiple of the rounding factor.",
+      "readonly": false,
+      "required": false,
+      "string": "Rounding Factor",
+      "type": "float"
+    },
+    "decimal_places": {
+      "help": "Decimal places taken into account for operations on amounts in this currency. It is determined by the rounding factor.",
+      "readonly": true,
+      "required": false,
+      "string": "Decimal Places",
+      "type": "integer"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "position": {
+      "help": "Determines where the currency symbol should be placed after or before the amount.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "after",
+          "After Amount"
+        ],
+        [
+          "before",
+          "Before Amount"
+        ]
+      ],
+      "string": "Symbol Position",
+      "type": "selection"
+    },
+    "currency_unit_label": {
+      "readonly": false,
+      "required": false,
+      "string": "Currency Unit",
+      "type": "char"
+    },
+    "currency_subunit_label": {
+      "readonly": false,
+      "required": false,
+      "string": "Currency Subunit",
+      "type": "char"
+    },
+    "is_current_company_currency": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Current Company Currency",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "display_rounding_warning": {
+      "help": "The warning informs a rounding factor change might be dangerous on res.currency's form view.",
+      "readonly": true,
+      "required": false,
+      "string": "Display Rounding Warning",
+      "type": "boolean"
+    },
+    "fiscal_country_codes": {
+      "readonly": false,
+      "required": false,
+      "string": "Fiscal Country Codes",
+      "type": "char"
+    }
+  }
+}

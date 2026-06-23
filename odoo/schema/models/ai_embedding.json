@@ -1,0 +1,98 @@
+{
+  "model": "ai.embedding",
+  "name": "Attachment Chunks Embedding",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": true,
+      "string": "Attachment",
+      "type": "many2one"
+    },
+    "checksum": {
+      "readonly": true,
+      "required": false,
+      "string": "Checksum/SHA1",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "content": {
+      "readonly": false,
+      "required": true,
+      "string": "Chunk Content",
+      "type": "text"
+    },
+    "embedding_model": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "text-embedding-3-small",
+          "OpenAI"
+        ],
+        [
+          "gemini-embedding-001",
+          "Google"
+        ]
+      ],
+      "string": "Embedding Model",
+      "type": "selection"
+    },
+    "has_embedding_generation_failed": {
+      "readonly": false,
+      "required": false,
+      "string": "Has Embedding Generation Failed",
+      "type": "boolean"
+    },
+    "embedding_vector": {
+      "readonly": false,
+      "required": false,
+      "string": "Embedding Vector",
+      "type": "vector"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

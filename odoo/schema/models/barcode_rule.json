@@ -1,0 +1,211 @@
+{
+  "model": "barcode.rule",
+  "name": "Barcode Rule",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "help": "An internal identification for this barcode nomenclature rule",
+      "readonly": false,
+      "required": true,
+      "string": "Rule Name",
+      "type": "char"
+    },
+    "barcode_nomenclature_id": {
+      "readonly": false,
+      "relation": "barcode.nomenclature",
+      "required": false,
+      "string": "Barcode Nomenclature",
+      "type": "many2one"
+    },
+    "sequence": {
+      "help": "Used to order rules such that rules with a smaller sequence match first",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "encoding": {
+      "help": "This rule will apply only if the barcode is encoded with the specified encoding",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "any",
+          "Any"
+        ],
+        [
+          "ean13",
+          "EAN-13"
+        ],
+        [
+          "ean8",
+          "EAN-8"
+        ],
+        [
+          "upca",
+          "UPC-A"
+        ],
+        [
+          "gs1-128",
+          "GS1-128"
+        ]
+      ],
+      "string": "Encoding",
+      "type": "selection"
+    },
+    "type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "alias",
+          "Alias"
+        ],
+        [
+          "product",
+          "Unit Product"
+        ],
+        [
+          "quantity",
+          "Quantity"
+        ],
+        [
+          "weight",
+          "Weighted Product"
+        ],
+        [
+          "location",
+          "Location"
+        ],
+        [
+          "location_dest",
+          "Destination location"
+        ],
+        [
+          "lot",
+          "Lot"
+        ],
+        [
+          "package",
+          "Package"
+        ],
+        [
+          "use_date",
+          "Best before Date"
+        ],
+        [
+          "expiration_date",
+          "Expiration Date"
+        ],
+        [
+          "package_type",
+          "Package Type"
+        ],
+        [
+          "pack_date",
+          "Pack Date"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "pattern": {
+      "help": "The barcode matching pattern",
+      "readonly": false,
+      "required": true,
+      "string": "Barcode Pattern",
+      "type": "char"
+    },
+    "alias": {
+      "help": "The matched pattern will alias to this barcode",
+      "readonly": false,
+      "required": true,
+      "string": "Alias",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "is_gs1_nomenclature": {
+      "help": "This Nomenclature use the GS1 specification, only GS1-128 encoding rules is accepted is this kind of nomenclature.",
+      "readonly": true,
+      "required": false,
+      "string": "Is GS1 Nomenclature",
+      "type": "boolean"
+    },
+    "gs1_content_type": {
+      "help": "The GS1 content type defines what kind of data the rule will process the barcode as:        * Date: the barcode will be converted into a Odoo datetime;        * Measure: the barcode's value is related to a specific unit;        * Numeric Identifier: fixed length barcode following a specific encoding;        * Alpha-Numeric Name: variable length barcode.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "date",
+          "Date"
+        ],
+        [
+          "measure",
+          "Measure"
+        ],
+        [
+          "identifier",
+          "Numeric Identifier"
+        ],
+        [
+          "alpha",
+          "Alpha-Numeric Name"
+        ]
+      ],
+      "string": "GS1 Content Type",
+      "type": "selection"
+    },
+    "gs1_decimal_usage": {
+      "help": "If True, use the last digit of AI to determine where the first decimal is",
+      "readonly": false,
+      "required": false,
+      "string": "Decimal",
+      "type": "boolean"
+    },
+    "associated_uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Associated Uom",
+      "type": "many2one"
+    }
+  }
+}

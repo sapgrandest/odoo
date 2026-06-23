@@ -1,0 +1,174 @@
+{
+  "model": "res.country",
+  "name": "Country",
+  "field_count": 24,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Country Name",
+      "type": "char"
+    },
+    "code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": false,
+      "required": true,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "address_format": {
+      "help": "Display format to use for addresses belonging to this country.\n\nYou can use python-style string pattern with all the fields of the address (for example, use '%(street)s' to display the field 'street') plus\n%(state_name)s: the name of the state\n%(state_code)s: the code of the state\n%(country_name)s: the name of the country\n%(country_code)s: the code of the country",
+      "readonly": false,
+      "required": false,
+      "string": "Layout in Reports",
+      "type": "text"
+    },
+    "address_view_id": {
+      "help": "Use this field if you want to replace the usual way to encode a complete address. Note that the address_format field is used to modify the way to display addresses (in reports for example), while this field is used to modify the input form for addresses.",
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Input View",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "image_url": {
+      "help": "Url of static flag image",
+      "readonly": true,
+      "required": false,
+      "string": "Flag",
+      "type": "char"
+    },
+    "phone_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Country Calling Code",
+      "type": "integer"
+    },
+    "country_group_ids": {
+      "readonly": false,
+      "relation": "res.country.group",
+      "required": false,
+      "string": "Country Groups",
+      "type": "many2many"
+    },
+    "country_group_codes": {
+      "readonly": true,
+      "required": false,
+      "string": "Country Group Codes",
+      "type": "json"
+    },
+    "state_ids": {
+      "readonly": false,
+      "relation": "res.country.state",
+      "required": false,
+      "string": "States",
+      "type": "one2many"
+    },
+    "name_position": {
+      "help": "Determines where the customer/company name should be placed, i.e. after or before the address.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "before",
+          "Before Address"
+        ],
+        [
+          "after",
+          "After Address"
+        ]
+      ],
+      "string": "Customer Name Position",
+      "type": "selection"
+    },
+    "vat_label": {
+      "help": "Use this field if you want to change vat label.",
+      "readonly": false,
+      "required": false,
+      "string": "Vat Label",
+      "type": "char"
+    },
+    "state_required": {
+      "readonly": false,
+      "required": false,
+      "string": "State Required",
+      "type": "boolean"
+    },
+    "zip_required": {
+      "readonly": false,
+      "required": false,
+      "string": "Zip Required",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "enforce_cities": {
+      "help": "Check this box to ensure every address created in that country has a 'City' chosen in the list of the country's cities.",
+      "readonly": false,
+      "required": false,
+      "string": "Enforce Cities",
+      "type": "boolean"
+    },
+    "is_mercado_pago_supported_country": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Mercado Pago Supported Country",
+      "type": "boolean"
+    },
+    "is_stripe_supported_country": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Stripe Supported Country",
+      "type": "boolean"
+    },
+    "has_foreign_fiscal_position": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Foreign Fiscal Position",
+      "type": "boolean"
+    }
+  }
+}

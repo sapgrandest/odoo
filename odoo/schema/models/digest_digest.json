@@ -1,0 +1,382 @@
+{
+  "model": "digest.digest",
+  "name": "Digest",
+  "field_count": 57,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Recipients",
+      "type": "many2many"
+    },
+    "periodicity": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "daily",
+          "Daily"
+        ],
+        [
+          "weekly",
+          "Weekly"
+        ],
+        [
+          "monthly",
+          "Monthly"
+        ],
+        [
+          "quarterly",
+          "Quarterly"
+        ]
+      ],
+      "string": "Periodicity",
+      "type": "selection"
+    },
+    "next_run_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Mailing Date",
+      "type": "date"
+    },
+    "currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "available_fields": {
+      "readonly": true,
+      "required": false,
+      "string": "Available Fields",
+      "type": "char"
+    },
+    "is_subscribed": {
+      "readonly": true,
+      "required": false,
+      "string": "Is user subscribed",
+      "type": "boolean"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "activated",
+          "Activated"
+        ],
+        [
+          "deactivated",
+          "Deactivated"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "kpi_res_users_connected": {
+      "readonly": false,
+      "required": false,
+      "string": "Connected Users",
+      "type": "boolean"
+    },
+    "kpi_res_users_connected_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Res Users Connected Value",
+      "type": "integer"
+    },
+    "kpi_mail_message_total": {
+      "readonly": false,
+      "required": false,
+      "string": "Messages Sent",
+      "type": "boolean"
+    },
+    "kpi_mail_message_total_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Mail Message Total Value",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "kpi_account_total_revenue": {
+      "readonly": false,
+      "required": false,
+      "string": "Revenue",
+      "type": "boolean"
+    },
+    "kpi_account_total_revenue_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Account Total Revenue Value",
+      "type": "monetary"
+    },
+    "kpi_nbr_of_online_appointment": {
+      "readonly": false,
+      "required": false,
+      "string": "Booked Appointments",
+      "type": "boolean"
+    },
+    "kpi_nbr_of_online_appointment_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Nbr Of Online Appointment Value",
+      "type": "integer"
+    },
+    "kpi_crm_lead_created": {
+      "readonly": false,
+      "required": false,
+      "string": "New Leads",
+      "type": "boolean"
+    },
+    "kpi_crm_lead_created_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Crm Lead Created Value",
+      "type": "integer"
+    },
+    "kpi_crm_opportunities_won": {
+      "readonly": false,
+      "required": false,
+      "string": "Opportunities Won",
+      "type": "boolean"
+    },
+    "kpi_crm_opportunities_won_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Crm Opportunities Won Value",
+      "type": "integer"
+    },
+    "kpi_helpdesk_tickets_closed": {
+      "readonly": false,
+      "required": false,
+      "string": "Tickets Closed",
+      "type": "boolean"
+    },
+    "kpi_helpdesk_tickets_closed_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Helpdesk Tickets Closed Value",
+      "type": "integer"
+    },
+    "kpi_livechat_rating": {
+      "readonly": false,
+      "required": false,
+      "string": "% of Happiness",
+      "type": "boolean"
+    },
+    "kpi_livechat_rating_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Livechat Rating Value",
+      "type": "float"
+    },
+    "kpi_livechat_conversations": {
+      "readonly": false,
+      "required": false,
+      "string": "Conversations handled",
+      "type": "boolean"
+    },
+    "kpi_livechat_conversations_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Livechat Conversations Value",
+      "type": "integer"
+    },
+    "kpi_livechat_response": {
+      "readonly": false,
+      "required": false,
+      "string": "Time to answer (sec)",
+      "type": "boolean"
+    },
+    "kpi_livechat_response_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Livechat Response Value",
+      "type": "float"
+    },
+    "kpi_project_task_opened": {
+      "readonly": false,
+      "required": false,
+      "string": "Open Tasks",
+      "type": "boolean"
+    },
+    "kpi_project_task_opened_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Project Task Opened Value",
+      "type": "integer"
+    },
+    "kpi_stock_delivery_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Deliveries",
+      "type": "boolean"
+    },
+    "kpi_stock_delivery_count_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Stock Delivery Count Value",
+      "type": "integer"
+    },
+    "kpi_stock_receipt_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Receipts",
+      "type": "boolean"
+    },
+    "kpi_stock_receipt_count_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Stock Receipt Count Value",
+      "type": "integer"
+    },
+    "kpi_nbr_of_answers": {
+      "readonly": false,
+      "required": false,
+      "string": "Participants",
+      "type": "boolean"
+    },
+    "kpi_nbr_of_answers_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Nbr Of Answers Value",
+      "type": "integer"
+    },
+    "kpi_nbr_of_certified_participants": {
+      "readonly": false,
+      "required": false,
+      "string": "Certified Participants",
+      "type": "boolean"
+    },
+    "kpi_nbr_of_certified_participants_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Nbr Of Certified Participants Value",
+      "type": "integer"
+    },
+    "kpi_website_visitor_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Visitors",
+      "type": "boolean"
+    },
+    "kpi_website_visitor_count_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Website Visitor Count Value",
+      "type": "integer"
+    },
+    "kpi_website_track_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Tracked Page Views",
+      "type": "boolean"
+    },
+    "kpi_website_track_count_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Website Track Count Value",
+      "type": "integer"
+    },
+    "kpi_account_bank_cash": {
+      "readonly": false,
+      "required": false,
+      "string": "Bank & Cash Moves",
+      "type": "boolean"
+    },
+    "kpi_account_bank_cash_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Account Bank Cash Value",
+      "type": "monetary"
+    },
+    "kpi_hr_recruitment_new_colleagues": {
+      "readonly": false,
+      "required": false,
+      "string": "New Employees",
+      "type": "boolean"
+    },
+    "kpi_hr_recruitment_new_colleagues_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Hr Recruitment New Colleagues Value",
+      "type": "integer"
+    },
+    "kpi_all_sale_total": {
+      "readonly": false,
+      "required": false,
+      "string": "All Sales",
+      "type": "boolean"
+    },
+    "kpi_all_sale_total_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi All Sale Total Value",
+      "type": "monetary"
+    },
+    "kpi_website_sale_total": {
+      "readonly": false,
+      "required": false,
+      "string": "eCommerce Sales",
+      "type": "boolean"
+    },
+    "kpi_website_sale_total_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Kpi Website Sale Total Value",
+      "type": "monetary"
+    }
+  }
+}

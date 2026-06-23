@@ -1,0 +1,82 @@
+{
+  "model": "stock.orderpoint.snooze",
+  "name": "Snooze Orderpoint",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "orderpoint_ids": {
+      "readonly": false,
+      "relation": "stock.warehouse.orderpoint",
+      "required": false,
+      "string": "Orderpoint",
+      "type": "many2many"
+    },
+    "predefined_date": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "day",
+          "1 Day"
+        ],
+        [
+          "week",
+          "1 Week"
+        ],
+        [
+          "month",
+          "1 Month"
+        ],
+        [
+          "custom",
+          "Custom"
+        ]
+      ],
+      "string": "Snooze for",
+      "type": "selection"
+    },
+    "snoozed_until": {
+      "readonly": false,
+      "required": false,
+      "string": "Snooze Date",
+      "type": "date"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

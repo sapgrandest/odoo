@@ -1,0 +1,158 @@
+{
+  "model": "chatbot.script.step",
+  "name": "Chatbot Script Step",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "message": {
+      "readonly": false,
+      "required": false,
+      "string": "Message",
+      "type": "html"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "chatbot_script_id": {
+      "readonly": false,
+      "relation": "chatbot.script",
+      "required": true,
+      "string": "Chatbot",
+      "type": "many2one"
+    },
+    "step_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "text",
+          "Text"
+        ],
+        [
+          "question_selection",
+          "Question"
+        ],
+        [
+          "question_email",
+          "Email"
+        ],
+        [
+          "question_phone",
+          "Phone"
+        ],
+        [
+          "forward_operator",
+          "Forward to Operator"
+        ],
+        [
+          "free_input_single",
+          "Free Input"
+        ],
+        [
+          "free_input_multi",
+          "Free Input (Multi-Line)"
+        ],
+        [
+          "create_lead",
+          "Create Lead"
+        ],
+        [
+          "create_ticket",
+          "Create Ticket"
+        ]
+      ],
+      "string": "Step Type",
+      "type": "selection"
+    },
+    "answer_ids": {
+      "readonly": false,
+      "relation": "chatbot.script.answer",
+      "required": false,
+      "string": "Answers",
+      "type": "one2many"
+    },
+    "triggering_answer_ids": {
+      "help": "Show this step only if all of these answers have been selected.",
+      "readonly": false,
+      "relation": "chatbot.script.answer",
+      "required": false,
+      "string": "Only If",
+      "type": "many2many"
+    },
+    "is_forward_operator_child": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Forward Operator Child",
+      "type": "boolean"
+    },
+    "operator_expertise_ids": {
+      "help": "When forwarding live chat conversations, the chatbot will prioritize users with matching expertise.",
+      "readonly": false,
+      "relation": "im_livechat.expertise",
+      "required": false,
+      "string": "Operator Expertise",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "crm_team_id": {
+      "help": "Used in combination with 'create_lead' step type in order to automatically assign the created lead/opportunity to the defined team",
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Team",
+      "type": "many2one"
+    },
+    "helpdesk_team_id": {
+      "readonly": false,
+      "relation": "helpdesk.team",
+      "required": false,
+      "string": "Helpdesk Team",
+      "type": "many2one"
+    }
+  }
+}

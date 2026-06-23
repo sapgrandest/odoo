@@ -1,0 +1,1030 @@
+{
+  "model": "account.move.line",
+  "name": "Journal Item",
+  "field_count": 123,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "analytic_distribution": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Distribution",
+      "type": "json"
+    },
+    "analytic_precision": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Precision",
+      "type": "integer"
+    },
+    "distribution_analytic_account_ids": {
+      "readonly": true,
+      "relation": "account.analytic.account",
+      "required": false,
+      "string": "Distribution Analytic Account",
+      "type": "many2many"
+    },
+    "move_id": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": true,
+      "string": "Journal Entry",
+      "type": "many2one"
+    },
+    "journal_id": {
+      "readonly": true,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "journal_group_id": {
+      "readonly": true,
+      "relation": "account.journal.group",
+      "required": false,
+      "string": "Ledger",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "move_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Number",
+      "type": "char"
+    },
+    "parent_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "posted",
+          "Posted"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "date": {
+      "readonly": true,
+      "required": false,
+      "string": "Date",
+      "type": "date"
+    },
+    "invoice_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoice/Bill Date",
+      "type": "date"
+    },
+    "ref": {
+      "readonly": true,
+      "required": false,
+      "string": "Reference",
+      "type": "char"
+    },
+    "is_storno": {
+      "help": "Utility field to express whether the journal item is subject to storno accounting",
+      "readonly": false,
+      "required": false,
+      "string": "Company Storno Accounting",
+      "type": "boolean"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "move_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "entry",
+          "Journal Entry"
+        ],
+        [
+          "out_invoice",
+          "Customer Invoice"
+        ],
+        [
+          "out_refund",
+          "Customer Credit Note"
+        ],
+        [
+          "in_invoice",
+          "Vendor Bill"
+        ],
+        [
+          "in_refund",
+          "Vendor Credit Note"
+        ],
+        [
+          "out_receipt",
+          "Sales Receipt"
+        ],
+        [
+          "in_receipt",
+          "Purchase Receipt"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Account",
+      "type": "many2one"
+    },
+    "account_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Account Name",
+      "type": "char"
+    },
+    "account_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "search_account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Search Account",
+      "type": "many2one"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Label",
+      "type": "char"
+    },
+    "translated_product_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Translated Product Name",
+      "type": "text"
+    },
+    "debit": {
+      "readonly": false,
+      "required": false,
+      "string": "Debit",
+      "type": "monetary"
+    },
+    "credit": {
+      "readonly": false,
+      "required": false,
+      "string": "Credit",
+      "type": "monetary"
+    },
+    "balance": {
+      "readonly": false,
+      "required": false,
+      "string": "Balance",
+      "type": "monetary"
+    },
+    "cumulated_balance": {
+      "help": "Cumulated balance for the account.",
+      "readonly": true,
+      "required": false,
+      "string": "Cumulated Balance",
+      "type": "monetary"
+    },
+    "currency_rate": {
+      "help": "Currency rate from company currency to document currency.",
+      "readonly": true,
+      "required": false,
+      "string": "Currency Rate",
+      "type": "float"
+    },
+    "amount_currency": {
+      "help": "The amount expressed in an optional other currency if it is a multi-currency entry.",
+      "readonly": false,
+      "required": false,
+      "string": "Amount in Currency",
+      "type": "monetary"
+    },
+    "currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": true,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "is_same_currency": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Same Currency",
+      "type": "boolean"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "is_imported": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Imported",
+      "type": "boolean"
+    },
+    "reconcile_model_id": {
+      "readonly": true,
+      "relation": "account.reconcile.model",
+      "required": false,
+      "string": "Reconciliation Model",
+      "type": "many2one"
+    },
+    "payment_id": {
+      "help": "The payment that created this entry",
+      "readonly": true,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Originator Payment",
+      "type": "many2one"
+    },
+    "statement_line_id": {
+      "help": "The statement line that created this entry",
+      "readonly": true,
+      "relation": "account.bank.statement.line",
+      "required": false,
+      "string": "Originator Statement Line",
+      "type": "many2one"
+    },
+    "statement_id": {
+      "help": "The bank statement used for bank reconciliation",
+      "readonly": true,
+      "relation": "account.bank.statement",
+      "required": false,
+      "string": "Statement",
+      "type": "many2one"
+    },
+    "commercial_partner_country": {
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Commercial Partner Country",
+      "type": "many2one"
+    },
+    "tax_ids": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Taxes",
+      "type": "many2many"
+    },
+    "group_tax_id": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Originator Group of Taxes",
+      "type": "many2one"
+    },
+    "tax_line_id": {
+      "help": "Indicates that this journal item is a tax line",
+      "readonly": true,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Originator Tax",
+      "type": "many2one"
+    },
+    "tax_group_id": {
+      "readonly": true,
+      "relation": "account.tax.group",
+      "required": false,
+      "string": "Originator tax group",
+      "type": "many2one"
+    },
+    "tax_base_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Base Amount",
+      "type": "monetary"
+    },
+    "tax_repartition_line_id": {
+      "help": "Tax distribution line that caused the creation of this move line, if any",
+      "readonly": true,
+      "relation": "account.tax.repartition.line",
+      "required": false,
+      "string": "Originator Tax Distribution Line",
+      "type": "many2one"
+    },
+    "tax_tag_ids": {
+      "help": "Tags assigned to this line by the tax creating it, if any. It determines its impact on financial reports.",
+      "readonly": false,
+      "relation": "account.account.tag",
+      "required": false,
+      "string": "Tags",
+      "type": "many2many"
+    },
+    "extra_tax_data": {
+      "readonly": false,
+      "required": false,
+      "string": "Extra Tax Data",
+      "type": "json"
+    },
+    "amount_residual": {
+      "help": "The residual amount on a journal item expressed in the company currency.",
+      "readonly": true,
+      "required": false,
+      "string": "Residual Amount",
+      "type": "monetary"
+    },
+    "amount_residual_currency": {
+      "help": "The residual amount on a journal item expressed in its currency (possibly not the company currency).",
+      "readonly": true,
+      "required": false,
+      "string": "Residual Amount in Currency",
+      "type": "monetary"
+    },
+    "reconciled": {
+      "readonly": true,
+      "required": false,
+      "string": "Reconciled",
+      "type": "boolean"
+    },
+    "full_reconcile_id": {
+      "readonly": true,
+      "relation": "account.full.reconcile",
+      "required": false,
+      "string": "Matching",
+      "type": "many2one"
+    },
+    "matched_debit_ids": {
+      "help": "Debit journal items that are matched with this journal item.",
+      "readonly": true,
+      "relation": "account.partial.reconcile",
+      "required": false,
+      "string": "Matched Debits",
+      "type": "one2many"
+    },
+    "matched_credit_ids": {
+      "help": "Credit journal items that are matched with this journal item.",
+      "readonly": true,
+      "relation": "account.partial.reconcile",
+      "required": false,
+      "string": "Matched Credits",
+      "type": "one2many"
+    },
+    "reconciled_lines_ids": {
+      "readonly": false,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Reconciled Lines",
+      "type": "many2many"
+    },
+    "reconciled_lines_excluding_exchange_diff_ids": {
+      "readonly": true,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Reconciled Lines Excluding Exchange Diff",
+      "type": "many2many"
+    },
+    "open_on": {
+      "help": "Limit the date for the Residual (at date) fields.",
+      "readonly": false,
+      "required": false,
+      "string": "Open On",
+      "type": "date"
+    },
+    "residual_at_date": {
+      "help": "The residual amount (at date) on a journal item expressed in the company currency.",
+      "readonly": true,
+      "required": false,
+      "string": "Residual (at date)",
+      "type": "monetary"
+    },
+    "residual_currency_at_date": {
+      "help": "The residual amount (at date) on a journal item expressed in its currency.",
+      "readonly": true,
+      "required": false,
+      "string": "Residual in currency (at date)",
+      "type": "monetary"
+    },
+    "matching_number": {
+      "help": "Matching number for this line, 'P' if it is only partially reconcile, or the name of the full reconcile if it exists.",
+      "readonly": false,
+      "required": false,
+      "string": "Matching #",
+      "type": "char"
+    },
+    "is_account_reconcile": {
+      "help": "This account is used in bank reconciliation. Currency rate difference entries will be automatically created if needed.",
+      "readonly": true,
+      "required": false,
+      "string": "Account Reconcile",
+      "type": "boolean"
+    },
+    "account_type": {
+      "help": "Account Type is used for information purpose, to generate country-specific legal reports, and set the rules to close a fiscal year and generate opening entries.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "asset_receivable",
+          "Receivable"
+        ],
+        [
+          "asset_cash",
+          "Bank and Cash"
+        ],
+        [
+          "asset_current",
+          "Current Assets"
+        ],
+        [
+          "asset_non_current",
+          "Non-current Assets"
+        ],
+        [
+          "asset_prepayments",
+          "Prepayments"
+        ],
+        [
+          "asset_fixed",
+          "Fixed Assets"
+        ],
+        [
+          "liability_payable",
+          "Payable"
+        ],
+        [
+          "liability_credit_card",
+          "Credit Card"
+        ],
+        [
+          "liability_current",
+          "Current Liabilities"
+        ],
+        [
+          "liability_non_current",
+          "Non-current Liabilities"
+        ],
+        [
+          "equity",
+          "Equity"
+        ],
+        [
+          "equity_unaffected",
+          "Current Year Earnings"
+        ],
+        [
+          "income",
+          "Income"
+        ],
+        [
+          "income_other",
+          "Other Income"
+        ],
+        [
+          "expense",
+          "Expenses"
+        ],
+        [
+          "expense_other",
+          "Other Expenses"
+        ],
+        [
+          "expense_depreciation",
+          "Depreciation"
+        ],
+        [
+          "expense_direct_cost",
+          "Cost of Revenue"
+        ],
+        [
+          "off_balance",
+          "Off-Balance Sheet"
+        ]
+      ],
+      "string": "Internal Type",
+      "type": "selection"
+    },
+    "account_internal_group": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "equity",
+          "Equity"
+        ],
+        [
+          "asset",
+          "Asset"
+        ],
+        [
+          "liability",
+          "Liability"
+        ],
+        [
+          "income",
+          "Income"
+        ],
+        [
+          "expense",
+          "Expense"
+        ],
+        [
+          "off",
+          "Off Balance"
+        ]
+      ],
+      "string": "Internal Group",
+      "type": "selection"
+    },
+    "account_root_id": {
+      "readonly": true,
+      "relation": "account.root",
+      "required": false,
+      "string": "Account Root",
+      "type": "many2one"
+    },
+    "product_category_id": {
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "display_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "product",
+          "Product"
+        ],
+        [
+          "cogs",
+          "Cost of Goods Sold"
+        ],
+        [
+          "tax",
+          "Tax"
+        ],
+        [
+          "discount",
+          "Discount"
+        ],
+        [
+          "rounding",
+          "Rounding"
+        ],
+        [
+          "payment_term",
+          "Payment Term"
+        ],
+        [
+          "line_section",
+          "Section"
+        ],
+        [
+          "line_subsection",
+          "Subsection"
+        ],
+        [
+          "line_note",
+          "Note"
+        ],
+        [
+          "epd",
+          "Early Payment Discount"
+        ],
+        [
+          "non_deductible_product_total",
+          "Non Deductible Products Total"
+        ],
+        [
+          "non_deductible_product",
+          "Non Deductible Products"
+        ],
+        [
+          "non_deductible_tax",
+          "Non Deductible Tax"
+        ]
+      ],
+      "string": "Display Type",
+      "type": "selection"
+    },
+    "collapse_composition": {
+      "help": "If checked, the lines below this section will not be displayed in reports and portal.",
+      "readonly": false,
+      "required": false,
+      "string": "Hide Composition",
+      "type": "boolean"
+    },
+    "collapse_prices": {
+      "help": "If checked, the prices of the lines below this section will not be displayed in reports and portal.",
+      "readonly": false,
+      "required": false,
+      "string": "Hide Prices",
+      "type": "boolean"
+    },
+    "parent_id": {
+      "readonly": true,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Parent Section Line",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "allowed_uom_ids": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Allowed Uom",
+      "type": "many2many"
+    },
+    "product_uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "quantity": {
+      "help": "The optional quantity expressed by this line, eg: number of product sold. The quantity is not a legal requirement but is very useful for some reports.",
+      "readonly": false,
+      "required": false,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "date_maturity": {
+      "help": "This field is used for payable and receivable journal entries. You can put the limit date for the payment of this line.",
+      "readonly": false,
+      "required": false,
+      "string": "Due Date",
+      "type": "date"
+    },
+    "price_unit": {
+      "readonly": false,
+      "required": false,
+      "string": "Unit Price",
+      "type": "float"
+    },
+    "price_subtotal": {
+      "readonly": true,
+      "required": false,
+      "string": "Subtotal",
+      "type": "monetary"
+    },
+    "price_total": {
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "monetary"
+    },
+    "discount": {
+      "readonly": false,
+      "required": false,
+      "string": "Discount (%)",
+      "type": "float"
+    },
+    "tax_calculation_rounding_method": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "round_globally",
+          "Round per Tax"
+        ],
+        [
+          "round_per_line",
+          "Round per Line"
+        ]
+      ],
+      "string": "Tax calculation rounding method",
+      "type": "selection"
+    },
+    "deductible_percentage": {
+      "readonly": false,
+      "required": false,
+      "string": "Deductibility Percentage",
+      "type": "float"
+    },
+    "term_key": {
+      "readonly": true,
+      "required": false,
+      "string": "Term Key",
+      "type": "json"
+    },
+    "epd_key": {
+      "readonly": true,
+      "required": false,
+      "string": "Epd Key",
+      "type": "json"
+    },
+    "epd_needed": {
+      "readonly": true,
+      "required": false,
+      "string": "Epd Needed",
+      "type": "json"
+    },
+    "epd_dirty": {
+      "readonly": true,
+      "required": false,
+      "string": "Epd Dirty",
+      "type": "boolean"
+    },
+    "discount_allocation_key": {
+      "readonly": true,
+      "required": false,
+      "string": "Discount Allocation Key",
+      "type": "json"
+    },
+    "discount_allocation_needed": {
+      "readonly": true,
+      "required": false,
+      "string": "Discount Allocation Needed",
+      "type": "json"
+    },
+    "discount_allocation_dirty": {
+      "readonly": true,
+      "required": false,
+      "string": "Discount Allocation Dirty",
+      "type": "boolean"
+    },
+    "analytic_line_ids": {
+      "readonly": false,
+      "relation": "account.analytic.line",
+      "required": false,
+      "string": "Analytic lines",
+      "type": "one2many"
+    },
+    "has_invalid_analytics": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Invalid Analytics",
+      "type": "boolean"
+    },
+    "discount_date": {
+      "help": "Last date at which the discounted amount must be paid in order for the Early Payment Discount to be granted",
+      "readonly": true,
+      "required": false,
+      "string": "Discount Date",
+      "type": "date"
+    },
+    "discount_amount_currency": {
+      "readonly": false,
+      "required": false,
+      "string": "Discount amount in Currency",
+      "type": "monetary"
+    },
+    "discount_balance": {
+      "readonly": false,
+      "required": false,
+      "string": "Discount Balance",
+      "type": "monetary"
+    },
+    "payment_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Payment Date",
+      "type": "date"
+    },
+    "is_refund": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Refund",
+      "type": "boolean"
+    },
+    "no_followup": {
+      "help": "Exclude this journal item from follow-up reports.",
+      "readonly": false,
+      "required": false,
+      "string": "No Follow-Up",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "move_attachment_ids": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Move Attachment",
+      "type": "one2many"
+    },
+    "deferred_start_date": {
+      "help": "Date at which the deferred expense/revenue starts",
+      "readonly": false,
+      "required": false,
+      "string": "Start Date",
+      "type": "date"
+    },
+    "deferred_end_date": {
+      "help": "Date at which the deferred expense/revenue ends",
+      "readonly": false,
+      "required": false,
+      "string": "End Date",
+      "type": "date"
+    },
+    "has_deferred_moves": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Deferred Moves",
+      "type": "boolean"
+    },
+    "has_abnormal_deferred_dates": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Abnormal Deferred Dates",
+      "type": "boolean"
+    },
+    "is_deferred_account": {
+      "help": "Check to automatically use this account for deferred expenses or deferred revenue when recording the invoice",
+      "readonly": true,
+      "required": false,
+      "string": "Deferred",
+      "type": "boolean"
+    },
+    "full_amount_switch_html": {
+      "readonly": true,
+      "required": false,
+      "string": "Full Amount Switch Html",
+      "type": "html"
+    },
+    "is_downpayment": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Downpayment",
+      "type": "boolean"
+    },
+    "purchase_line_id": {
+      "readonly": false,
+      "relation": "purchase.order.line",
+      "required": false,
+      "string": "Purchase Order Line",
+      "type": "many2one"
+    },
+    "purchase_order_id": {
+      "readonly": true,
+      "relation": "purchase.order",
+      "required": false,
+      "string": "Purchase Order",
+      "type": "many2one"
+    },
+    "purchase_line_warn_msg": {
+      "readonly": true,
+      "required": false,
+      "string": "Purchase Line Warn Msg",
+      "type": "text"
+    },
+    "cogs_origin_id": {
+      "readonly": false,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Cogs Origin",
+      "type": "many2one"
+    },
+    "payment_lines_ids": {
+      "readonly": false,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Payment Lines",
+      "type": "many2many"
+    },
+    "exclude_bank_lines": {
+      "readonly": true,
+      "required": false,
+      "string": "Exclude Bank Lines",
+      "type": "boolean"
+    },
+    "main_company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Main Company Currency",
+      "type": "many2one"
+    },
+    "rate_used": {
+      "readonly": true,
+      "required": false,
+      "string": "Rate",
+      "type": "float"
+    },
+    "debit_converted": {
+      "readonly": true,
+      "required": false,
+      "string": "Converted debit",
+      "type": "monetary"
+    },
+    "credit_converted": {
+      "readonly": true,
+      "required": false,
+      "string": "Converted credit",
+      "type": "monetary"
+    },
+    "balance_converted": {
+      "readonly": true,
+      "required": false,
+      "string": "Converted balance",
+      "type": "monetary"
+    },
+    "cta_value": {
+      "readonly": true,
+      "required": false,
+      "string": "CTA",
+      "type": "monetary"
+    },
+    "sale_line_ids": {
+      "readonly": true,
+      "relation": "sale.order.line",
+      "required": false,
+      "string": "Sales Order Lines",
+      "type": "many2many"
+    },
+    "sale_line_warn_msg": {
+      "readonly": true,
+      "required": false,
+      "string": "Sale Line Warn Msg",
+      "type": "text"
+    },
+    "followup_line_id": {
+      "readonly": false,
+      "relation": "account_followup.followup.line",
+      "required": false,
+      "string": "Follow-up Level",
+      "type": "many2one"
+    },
+    "followup_overdue": {
+      "readonly": true,
+      "required": false,
+      "string": "Followup Overdue",
+      "type": "boolean"
+    },
+    "invoice_origin": {
+      "help": "The document(s) that generated the invoice.",
+      "readonly": true,
+      "required": false,
+      "string": "Origin",
+      "type": "char"
+    }
+  }
+}

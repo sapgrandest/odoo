@@ -1,0 +1,305 @@
+{
+  "model": "report.project.task.user",
+  "name": "Tasks Analysis",
+  "field_count": 40,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Task Title",
+      "type": "char"
+    },
+    "user_ids": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Assignees",
+      "type": "many2many"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Create Date",
+      "type": "datetime"
+    },
+    "date_assign": {
+      "readonly": true,
+      "required": false,
+      "string": "Assignment Date",
+      "type": "datetime"
+    },
+    "date_end": {
+      "readonly": true,
+      "required": false,
+      "string": "Ending Date",
+      "type": "datetime"
+    },
+    "date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Deadline",
+      "type": "datetime"
+    },
+    "date_last_stage_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Stage Update",
+      "type": "datetime"
+    },
+    "display_in_project": {
+      "readonly": false,
+      "required": false,
+      "string": "Display In Project",
+      "type": "boolean"
+    },
+    "project_id": {
+      "readonly": true,
+      "relation": "project.project",
+      "required": false,
+      "string": "Project",
+      "type": "many2one"
+    },
+    "working_days_close": {
+      "readonly": true,
+      "required": false,
+      "string": "Working Days to Close",
+      "type": "float"
+    },
+    "working_days_open": {
+      "readonly": true,
+      "required": false,
+      "string": "Working Days to Assign",
+      "type": "float"
+    },
+    "delay_endings_days": {
+      "readonly": true,
+      "required": false,
+      "string": "Days to Deadline",
+      "type": "float"
+    },
+    "nbr": {
+      "readonly": true,
+      "required": false,
+      "string": "# of Tasks",
+      "type": "integer"
+    },
+    "working_hours_open": {
+      "readonly": true,
+      "required": false,
+      "string": "Working Hours to Assign",
+      "type": "float"
+    },
+    "working_hours_close": {
+      "readonly": true,
+      "required": false,
+      "string": "Working Hours to Close",
+      "type": "float"
+    },
+    "rating_last_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Rating (1-5)",
+      "type": "float"
+    },
+    "rating_avg": {
+      "readonly": true,
+      "required": false,
+      "string": "Average Rating (1-5)",
+      "type": "float"
+    },
+    "priority": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Low priority"
+        ],
+        [
+          "1",
+          "Medium priority"
+        ],
+        [
+          "2",
+          "High priority"
+        ],
+        [
+          "3",
+          "Urgent"
+        ]
+      ],
+      "string": "Priority",
+      "type": "selection"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "01_in_progress",
+          "In Progress"
+        ],
+        [
+          "1_done",
+          "Done"
+        ],
+        [
+          "04_waiting_normal",
+          "Waiting"
+        ],
+        [
+          "03_approved",
+          "Approved"
+        ],
+        [
+          "1_canceled",
+          "Cancelled"
+        ],
+        [
+          "02_changes_requested",
+          "Changes Requested"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "is_closed": {
+      "readonly": true,
+      "required": false,
+      "string": "Closed state",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "stage_id": {
+      "readonly": true,
+      "relation": "project.task.type",
+      "required": false,
+      "string": "Stage",
+      "type": "many2one"
+    },
+    "task_id": {
+      "readonly": true,
+      "relation": "project.task",
+      "required": false,
+      "string": "Task",
+      "type": "many2one"
+    },
+    "tag_ids": {
+      "readonly": true,
+      "relation": "project.tags",
+      "required": false,
+      "string": "Tags",
+      "type": "many2many"
+    },
+    "parent_id": {
+      "readonly": true,
+      "relation": "project.task",
+      "required": false,
+      "string": "Parent Task",
+      "type": "many2one"
+    },
+    "personal_stage_type_ids": {
+      "readonly": true,
+      "relation": "project.task.type",
+      "required": false,
+      "string": "Personal Stage",
+      "type": "many2many"
+    },
+    "milestone_id": {
+      "readonly": true,
+      "relation": "project.milestone",
+      "required": false,
+      "string": "Milestone",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "dependent_ids": {
+      "readonly": true,
+      "relation": "project.task",
+      "required": false,
+      "string": "Block",
+      "type": "many2many"
+    },
+    "description": {
+      "readonly": true,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "is_template": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Template",
+      "type": "boolean"
+    },
+    "has_template_ancestor": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Template Ancestor",
+      "type": "boolean"
+    },
+    "has_project_template": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Project Template",
+      "type": "boolean"
+    },
+    "planned_date_begin": {
+      "readonly": true,
+      "required": false,
+      "string": "Start date",
+      "type": "datetime"
+    },
+    "user_skill_ids": {
+      "readonly": true,
+      "relation": "hr.employee.skill",
+      "required": false,
+      "string": "Skills",
+      "type": "one2many"
+    },
+    "sale_line_id": {
+      "readonly": true,
+      "relation": "sale.order.line",
+      "required": false,
+      "string": "Sales Order Item",
+      "type": "many2one"
+    },
+    "sale_order_id": {
+      "readonly": true,
+      "relation": "sale.order",
+      "required": false,
+      "string": "Sales Order",
+      "type": "many2one"
+    }
+  }
+}

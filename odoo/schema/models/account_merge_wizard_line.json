@@ -1,0 +1,117 @@
+{
+  "model": "account.merge.wizard.line",
+  "name": "Account merge wizard line",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "wizard_id": {
+      "readonly": false,
+      "relation": "account.merge.wizard",
+      "required": true,
+      "string": "Wizard",
+      "type": "many2one"
+    },
+    "grouping_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Grouping Key",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "display_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "line_section",
+          "Section"
+        ],
+        [
+          "line_subsection",
+          "Subsection"
+        ],
+        [
+          "account",
+          "Account"
+        ]
+      ],
+      "string": "Display Type",
+      "type": "selection"
+    },
+    "is_selected": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Selected",
+      "type": "boolean"
+    },
+    "account_id": {
+      "readonly": true,
+      "relation": "account.account",
+      "required": false,
+      "string": "Account",
+      "type": "many2one"
+    },
+    "company_ids": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Companies",
+      "type": "many2many"
+    },
+    "info": {
+      "help": "Contains either the section name or error message, depending on the line type.",
+      "readonly": true,
+      "required": false,
+      "string": "Info",
+      "type": "char"
+    },
+    "account_has_hashed_entries": {
+      "readonly": true,
+      "required": false,
+      "string": "Account Has Hashed Entries",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

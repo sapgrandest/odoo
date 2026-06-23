@@ -1,0 +1,1080 @@
+{
+  "model": "account.report",
+  "name": "Accounting Report",
+  "field_count": 53,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "line_ids": {
+      "readonly": false,
+      "relation": "account.report.line",
+      "required": false,
+      "string": "Lines",
+      "type": "one2many"
+    },
+    "groupby": {
+      "help": "Comma-separated list of fields from account.move.line (Journal Item).             When set, this report will have report lines generating sublines grouped by those keys except when specified on the report line.",
+      "readonly": false,
+      "required": false,
+      "string": "Group By",
+      "type": "char"
+    },
+    "user_groupby": {
+      "help": "Comma-separated list of fields from account.move.line (Journal Item).             When set, the report lines will generate sublines grouped by those keys except when specified on the report line.",
+      "readonly": false,
+      "required": false,
+      "string": "User Group By",
+      "type": "char"
+    },
+    "column_ids": {
+      "readonly": false,
+      "relation": "account.report.column",
+      "required": false,
+      "string": "Columns",
+      "type": "one2many"
+    },
+    "root_report_id": {
+      "help": "The report this report is a variant of.",
+      "readonly": false,
+      "relation": "account.report",
+      "required": false,
+      "string": "Root Report",
+      "type": "many2one"
+    },
+    "variant_report_ids": {
+      "readonly": false,
+      "relation": "account.report",
+      "required": false,
+      "string": "Variants",
+      "type": "one2many"
+    },
+    "section_report_ids": {
+      "readonly": false,
+      "relation": "account.report",
+      "required": false,
+      "string": "Sections",
+      "type": "many2many"
+    },
+    "section_main_report_ids": {
+      "readonly": false,
+      "relation": "account.report",
+      "required": false,
+      "string": "Section Of",
+      "type": "many2many"
+    },
+    "use_sections": {
+      "help": "Create a structured report with multiple sections for convenient navigation and simultaneous printing.",
+      "readonly": false,
+      "required": false,
+      "string": "Composite Report",
+      "type": "boolean"
+    },
+    "chart_template": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "fr_comp",
+          "🇫🇷 France - Plan comptable des sociétés"
+        ],
+        [
+          "fr_asso",
+          "🇫🇷 France - Plan comptable des associations"
+        ],
+        [
+          "generic_coa",
+          "Plan comptable générique (minimal)"
+        ],
+        [
+          "ae",
+          "🇦🇪 United Arab Emirates"
+        ],
+        [
+          "ar_ri",
+          "🇦🇷 Argentina - Argentine Generic Chart of Accounts for Registered Accountants"
+        ],
+        [
+          "ar_base",
+          "🇦🇷 Argentina - Generic Chart of Accounts Argentina Single Taxpayer / Basis"
+        ],
+        [
+          "ar_ex",
+          "🇦🇷 Argentina - Argentine Generic Chart of Accounts for Exempt Individuals"
+        ],
+        [
+          "at",
+          "🇦🇹 Austria"
+        ],
+        [
+          "au",
+          "🇦🇺 Australia"
+        ],
+        [
+          "bd",
+          "🇧🇩 Bangladesh"
+        ],
+        [
+          "be_comp",
+          "🇧🇪 Belgium - Sociétés"
+        ],
+        [
+          "be_asso",
+          "🇧🇪 Belgium - Associations et fondations"
+        ],
+        [
+          "bf",
+          "🇧🇫 Burkina Faso - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "bf_syscebnl",
+          "🇧🇫 Burkina Faso - SYSCEBNL pour Associations"
+        ],
+        [
+          "bg",
+          "🇧🇬 Bulgaria"
+        ],
+        [
+          "bh",
+          "🇧🇭 Bahrain"
+        ],
+        [
+          "bj",
+          "🇧🇯 Benin - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "bj_syscebnl",
+          "🇧🇯 Benin - SYSCEBNL pour Associations"
+        ],
+        [
+          "bo",
+          "🇧🇴 Bolivia"
+        ],
+        [
+          "br",
+          "🇧🇷 Brazil"
+        ],
+        [
+          "ca_2023",
+          "🇨🇦 Canada"
+        ],
+        [
+          "cd",
+          "🇨🇩 Congo (DRC) - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "cd_syscebnl",
+          "🇨🇩 Congo (DRC) - SYSCEBNL pour Associations"
+        ],
+        [
+          "cf",
+          "🇨🇫 Central African Republic - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "cf_syscebnl",
+          "🇨🇫 Central African Republic - SYSCEBNL pour Associations"
+        ],
+        [
+          "cg",
+          "🇨🇬 Congo (Republic) - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "cg_syscebnl",
+          "🇨🇬 Congo (Republic) - SYSCEBNL pour Associations"
+        ],
+        [
+          "ch",
+          "🇨🇭 Switzerland"
+        ],
+        [
+          "ci",
+          "🇨🇮 Côte d'Ivoire - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "ci_syscebnl",
+          "🇨🇮 Côte d'Ivoire - SYSCEBNL pour Associations"
+        ],
+        [
+          "cl",
+          "🇨🇱 Chile"
+        ],
+        [
+          "cm",
+          "🇨🇲 Cameroon - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "cm_syscebnl",
+          "🇨🇲 Cameroon - SYSCEBNL pour Associations"
+        ],
+        [
+          "cn",
+          "🇨🇳 China - Accounting Standards for Small Business Enterprises"
+        ],
+        [
+          "cn_large_bis",
+          "🇨🇳 China - Accounting Standards for Business Enterprises"
+        ],
+        [
+          "co",
+          "🇨🇴 Colombia"
+        ],
+        [
+          "cr",
+          "🇨🇷 Costa Rica"
+        ],
+        [
+          "cy",
+          "🇨🇾 Cyprus"
+        ],
+        [
+          "cz",
+          "🇨🇿 Czech Republic"
+        ],
+        [
+          "de_skr03",
+          "🇩🇪 Germany - German Chart of Accounts SKR03"
+        ],
+        [
+          "de_skr04",
+          "🇩🇪 Germany - German chart of accounts SKR04"
+        ],
+        [
+          "dk",
+          "🇩🇰 Denmark"
+        ],
+        [
+          "do",
+          "🇩🇴 Dominican Republic"
+        ],
+        [
+          "dz",
+          "🇩🇿 Algeria"
+        ],
+        [
+          "ec",
+          "🇪🇨 Ecuador"
+        ],
+        [
+          "ee",
+          "🇪🇪 Estonia"
+        ],
+        [
+          "eg",
+          "🇪🇬 Egypt"
+        ],
+        [
+          "es_pymes",
+          "🇪🇸 Spain - SMEs (2008)"
+        ],
+        [
+          "es_assec",
+          "🇪🇸 Spain - Non-profit entities (2008)"
+        ],
+        [
+          "es_canary_assoc",
+          "🇪🇸 Spain - Canary Islands - PGCE non-profit entities (2008)"
+        ],
+        [
+          "es_canary_full",
+          "🇪🇸 Spain - Canary Islands - Complete (2008)"
+        ],
+        [
+          "es_canary_pymes",
+          "🇪🇸 Spain - Canary Islands - SMEs (2008)"
+        ],
+        [
+          "es_coop_full",
+          "🇪🇸 Spain - Cooperatives - Complete (2008)"
+        ],
+        [
+          "es_coop_pymes",
+          "🇪🇸 Spain - Cooperatives - SMEs (2008)"
+        ],
+        [
+          "es_full",
+          "🇪🇸 Spain - Complete (2008)"
+        ],
+        [
+          "et",
+          "🇪🇹 Ethiopia"
+        ],
+        [
+          "fi",
+          "🇫🇮 Finland"
+        ],
+        [
+          "mc",
+          "🇲🇨 Monaco"
+        ],
+        [
+          "ga",
+          "🇬🇦 Gabon - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "ga_syscebnl",
+          "🇬🇦 Gabon - SYSCEBNL pour Associations"
+        ],
+        [
+          "gn",
+          "🇬🇳 Guinea - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "gn_syscebnl",
+          "🇬🇳 Guinea - SYSCEBNL pour Associations"
+        ],
+        [
+          "gq",
+          "🇬🇶 Equatorial Guinea - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "gq_syscebnl",
+          "🇬🇶 Equatorial Guinea - SYSCEBNL pour Associations"
+        ],
+        [
+          "gr",
+          "🇬🇷 Greece"
+        ],
+        [
+          "gt",
+          "🇬🇹 Guatemala"
+        ],
+        [
+          "gw",
+          "🇬🇼 Guinea-Bissau - SYSCOHADA for Companies"
+        ],
+        [
+          "gw_syscebnl",
+          "🇬🇼 Guinea-Bissau - SYSCEBNL for Associations"
+        ],
+        [
+          "hk",
+          "🇭🇰 Hong Kong"
+        ],
+        [
+          "hn",
+          "🇭🇳 Honduras"
+        ],
+        [
+          "hr",
+          "🇭🇷 Croatia"
+        ],
+        [
+          "hr_kuna",
+          "🇭🇷 Croatia - RRIF-ov računski plan za poduzetnike"
+        ],
+        [
+          "hu",
+          "🇭🇺 Hungary"
+        ],
+        [
+          "id",
+          "🇮🇩 Indonesia"
+        ],
+        [
+          "ie",
+          "🇮🇪 Ireland"
+        ],
+        [
+          "il",
+          "🇮🇱 Israel"
+        ],
+        [
+          "in",
+          "🇮🇳 India"
+        ],
+        [
+          "iq",
+          "🇮🇶 Iraq"
+        ],
+        [
+          "it",
+          "🇮🇹 Italy"
+        ],
+        [
+          "jo_standard",
+          "🇯🇴 Jordan"
+        ],
+        [
+          "jp",
+          "🇯🇵 Japan"
+        ],
+        [
+          "ke",
+          "🇰🇪 Kenya"
+        ],
+        [
+          "kh",
+          "🇰🇭 Cambodia"
+        ],
+        [
+          "km",
+          "🇰🇲 Comoros - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "km_syscebnl",
+          "🇰🇲 Comoros - SYSCEBNL pour Associations"
+        ],
+        [
+          "kr",
+          "🇰🇷 South Korea"
+        ],
+        [
+          "kw",
+          "🇰🇼 Kuwait"
+        ],
+        [
+          "kz",
+          "🇰🇿 Kazakhstan"
+        ],
+        [
+          "lb",
+          "🇱🇧 Lebanon"
+        ],
+        [
+          "lk",
+          "🇱🇰 Sri Lanka"
+        ],
+        [
+          "lt",
+          "🇱🇹 Lithuania"
+        ],
+        [
+          "lu",
+          "🇱🇺 Luxembourg"
+        ],
+        [
+          "lv",
+          "🇱🇻 Latvia"
+        ],
+        [
+          "ma",
+          "🇲🇦 Morocco"
+        ],
+        [
+          "ml",
+          "🇲🇱 Mali - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "ml_syscebnl",
+          "🇲🇱 Mali - SYSCEBNL pour Associations"
+        ],
+        [
+          "mn",
+          "🇲🇳 Mongolia"
+        ],
+        [
+          "mr",
+          "🇲🇷 Mauritania"
+        ],
+        [
+          "mt",
+          "🇲🇹 Malta"
+        ],
+        [
+          "mu",
+          "🇲🇺 Mauritius"
+        ],
+        [
+          "mx",
+          "🇲🇽 Mexico"
+        ],
+        [
+          "my",
+          "🇲🇾 Malaysia"
+        ],
+        [
+          "mz",
+          "🇲🇿 Mozambique"
+        ],
+        [
+          "ne",
+          "🇳🇪 Niger - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "ne_syscebnl",
+          "🇳🇪 Niger - SYSCEBNL pour Associations"
+        ],
+        [
+          "ng",
+          "🇳🇬 Nigeria"
+        ],
+        [
+          "nl",
+          "🇳🇱 Netherlands"
+        ],
+        [
+          "no",
+          "🇳🇴 Norway"
+        ],
+        [
+          "nz",
+          "🇳🇿 New Zealand"
+        ],
+        [
+          "om",
+          "🇴🇲 Oman"
+        ],
+        [
+          "pa",
+          "🇵🇦 Panama"
+        ],
+        [
+          "pe",
+          "🇵🇪 Peru"
+        ],
+        [
+          "ph",
+          "🇵🇭 Philippines"
+        ],
+        [
+          "pk",
+          "🇵🇰 Pakistan"
+        ],
+        [
+          "pl",
+          "🇵🇱 Poland"
+        ],
+        [
+          "pt",
+          "🇵🇹 Portugal"
+        ],
+        [
+          "qa",
+          "🇶🇦 Qatar"
+        ],
+        [
+          "ro",
+          "🇷🇴 Romania"
+        ],
+        [
+          "rs",
+          "🇷🇸 Serbia"
+        ],
+        [
+          "rw",
+          "🇷🇼 Rwanda"
+        ],
+        [
+          "sa",
+          "🇸🇦 Saudi Arabia"
+        ],
+        [
+          "se",
+          "🇸🇪 Sweden"
+        ],
+        [
+          "se_K2",
+          "🇸🇪 Sweden - Swedish BAS Chart of Account complete K2"
+        ],
+        [
+          "se_K3",
+          "🇸🇪 Sweden - Swedish BAS Chart of Account complete K3"
+        ],
+        [
+          "sg",
+          "🇸🇬 Singapore"
+        ],
+        [
+          "si",
+          "🇸🇮 Slovenia"
+        ],
+        [
+          "sk",
+          "🇸🇰 Slovakia"
+        ],
+        [
+          "sn",
+          "🇸🇳 Senegal - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "sn_syscebnl",
+          "🇸🇳 Senegal - SYSCEBNL pour Associations"
+        ],
+        [
+          "syscebnl",
+          "SYSCEBNL"
+        ],
+        [
+          "syscohada",
+          "SYSCOHADA - Revised"
+        ],
+        [
+          "td",
+          "🇹🇩 Chad - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "td_syscebnl",
+          "🇹🇩 Chad - SYSCEBNL pour Associations"
+        ],
+        [
+          "tg",
+          "🇹🇬 Togo - SYSCOHADA pour Sociétés"
+        ],
+        [
+          "tg_syscebnl",
+          "🇹🇬 Togo - SYSCEBNL pour Associations"
+        ],
+        [
+          "th",
+          "🇹🇭 Thailand"
+        ],
+        [
+          "tn",
+          "🇹🇳 Tunisia"
+        ],
+        [
+          "tr",
+          "🇹🇷 Türkiye"
+        ],
+        [
+          "tw",
+          "🇹🇼 Taiwan"
+        ],
+        [
+          "tz",
+          "🇹🇿 Tanzania"
+        ],
+        [
+          "ua_psbo",
+          "🇺🇦 Ukraine - IFRS Chart of Accounts"
+        ],
+        [
+          "ug",
+          "🇺🇬 Uganda"
+        ],
+        [
+          "uk",
+          "🇬🇧 United Kingdom"
+        ],
+        [
+          "xi",
+          "🇽🇮 Northern Ireland"
+        ],
+        [
+          "us",
+          "🇺🇸 United States"
+        ],
+        [
+          "uy",
+          "🇺🇾 Uruguay"
+        ],
+        [
+          "uz",
+          "🇺🇿 Uzbekistan"
+        ],
+        [
+          "ve",
+          "🇻🇪 Venezuela"
+        ],
+        [
+          "vn",
+          "🇻🇳 Vietnam"
+        ],
+        [
+          "za",
+          "🇿🇦 South Africa"
+        ],
+        [
+          "zm",
+          "🇿🇲 Zambia"
+        ]
+      ],
+      "string": "Chart of Accounts",
+      "type": "selection"
+    },
+    "country_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "only_tax_exigible": {
+      "readonly": false,
+      "required": false,
+      "string": "Only Tax Exigible Lines",
+      "type": "boolean"
+    },
+    "availability_condition": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "country",
+          "Country Matches"
+        ],
+        [
+          "coa",
+          "Chart of Accounts Matches"
+        ],
+        [
+          "always",
+          "Always"
+        ]
+      ],
+      "string": "Availability",
+      "type": "selection"
+    },
+    "load_more_limit": {
+      "readonly": false,
+      "required": false,
+      "string": "Load More Limit",
+      "type": "integer"
+    },
+    "search_bar": {
+      "readonly": false,
+      "required": false,
+      "string": "Search Bar",
+      "type": "boolean"
+    },
+    "integer_rounding": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "HALF-UP",
+          "Nearest"
+        ],
+        [
+          "UP",
+          "Up"
+        ],
+        [
+          "DOWN",
+          "Down"
+        ]
+      ],
+      "string": "Integer Rounding",
+      "type": "selection"
+    },
+    "allow_foreign_vat": {
+      "readonly": false,
+      "required": false,
+      "string": "Allow Foreign VAT",
+      "type": "boolean"
+    },
+    "default_opening_date_filter": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "this_year",
+          "This Year"
+        ],
+        [
+          "this_quarter",
+          "This Quarter"
+        ],
+        [
+          "this_month",
+          "This Month"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "previous_month",
+          "Last Month"
+        ],
+        [
+          "previous_quarter",
+          "Last Quarter"
+        ],
+        [
+          "previous_year",
+          "Last Year"
+        ],
+        [
+          "this_return_period",
+          "This Return Period"
+        ],
+        [
+          "previous_return_period",
+          "Last Return Period"
+        ]
+      ],
+      "string": "Default Opening",
+      "type": "selection"
+    },
+    "use_fiscal_periods": {
+      "readonly": false,
+      "required": false,
+      "string": "Fiscal Periods",
+      "type": "boolean"
+    },
+    "currency_translation": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "current",
+          "Use the most recent rate at the date of the report"
+        ],
+        [
+          "cta",
+          "Use CTA"
+        ]
+      ],
+      "string": "Currency Translation",
+      "type": "selection"
+    },
+    "enable_snapshots": {
+      "readonly": false,
+      "required": false,
+      "string": "Enable Snapshots",
+      "type": "boolean"
+    },
+    "filter_multi_company": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "selector",
+          "Use Company Selector"
+        ],
+        [
+          "tax_units",
+          "Use Tax Units"
+        ]
+      ],
+      "string": "Multi-Company",
+      "type": "selection"
+    },
+    "filter_date_range": {
+      "readonly": false,
+      "required": false,
+      "string": "Date Range",
+      "type": "boolean"
+    },
+    "filter_show_draft": {
+      "readonly": false,
+      "required": false,
+      "string": "Draft Entries",
+      "type": "boolean"
+    },
+    "filter_unreconciled": {
+      "readonly": false,
+      "required": false,
+      "string": "Unreconciled Entries",
+      "type": "boolean"
+    },
+    "filter_unfold_all": {
+      "readonly": false,
+      "required": false,
+      "string": "Unfold All",
+      "type": "boolean"
+    },
+    "filter_hide_0_lines": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "by_default",
+          "Enabled by Default"
+        ],
+        [
+          "optional",
+          "Optional"
+        ],
+        [
+          "never",
+          "Never"
+        ]
+      ],
+      "string": "Hide lines at 0",
+      "type": "selection"
+    },
+    "filter_period_comparison": {
+      "readonly": false,
+      "required": false,
+      "string": "Period Comparison",
+      "type": "boolean"
+    },
+    "filter_growth_comparison": {
+      "readonly": false,
+      "required": false,
+      "string": "Growth Comparison",
+      "type": "boolean"
+    },
+    "filter_journals": {
+      "readonly": false,
+      "required": false,
+      "string": "Journals",
+      "type": "boolean"
+    },
+    "filter_hierarchy": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "by_default",
+          "Enabled by Default"
+        ],
+        [
+          "optional",
+          "Optional"
+        ],
+        [
+          "never",
+          "Never"
+        ]
+      ],
+      "string": "Account Parents",
+      "type": "selection"
+    },
+    "filter_account_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "both",
+          "Payable and receivable"
+        ],
+        [
+          "payable",
+          "Payable"
+        ],
+        [
+          "receivable",
+          "Receivable"
+        ],
+        [
+          "disabled",
+          "Disabled"
+        ]
+      ],
+      "string": "Account Types",
+      "type": "selection"
+    },
+    "filter_partner": {
+      "readonly": false,
+      "required": false,
+      "string": "Partners",
+      "type": "boolean"
+    },
+    "filter_aml_ir_filters": {
+      "help": "If activated, user-defined filters on journal items can be selected on this report",
+      "readonly": false,
+      "required": false,
+      "string": "Favorite Filters",
+      "type": "boolean"
+    },
+    "filter_budgets": {
+      "readonly": false,
+      "required": false,
+      "string": "Budgets",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "display_custom_groupby_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Custom Groupby Warning",
+      "type": "boolean"
+    },
+    "horizontal_group_ids": {
+      "readonly": false,
+      "relation": "account.report.horizontal.group",
+      "required": false,
+      "string": "Horizontal Groups",
+      "type": "many2many"
+    },
+    "return_type_ids": {
+      "readonly": false,
+      "relation": "account.return.type",
+      "required": false,
+      "string": "Return Types",
+      "type": "one2many"
+    },
+    "custom_handler_model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Custom Handler Model",
+      "type": "many2one"
+    },
+    "custom_handler_model_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Custom Handler Model Name",
+      "type": "char"
+    },
+    "is_account_coverage_report_available": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Account Coverage Report Available",
+      "type": "boolean"
+    },
+    "send_and_print_values": {
+      "readonly": false,
+      "required": false,
+      "string": "Send And Print Values",
+      "type": "json"
+    },
+    "allow_account_audit_status_on_lines": {
+      "readonly": false,
+      "required": false,
+      "string": "Allow Account Audit Status On Lines",
+      "type": "boolean"
+    },
+    "filter_analytic_groupby": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Group By",
+      "type": "boolean"
+    }
+  }
+}

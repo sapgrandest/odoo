@@ -1,0 +1,19 @@
+{
+  "model": "report.product.report_producttemplatelabel2x7",
+  "name": "Product Label Report 2x7",
+  "field_count": 2,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "model": "ir.model.data",
+  "name": "Model Data",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "help": "External Key/Identifier that can be used for data integration with third-party systems",
+      "readonly": false,
+      "required": true,
+      "string": "External Identifier",
+      "type": "char"
+    },
+    "complete_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Complete ID",
+      "type": "char"
+    },
+    "model": {
+      "readonly": false,
+      "required": true,
+      "string": "Model Name",
+      "type": "char"
+    },
+    "module": {
+      "readonly": false,
+      "required": true,
+      "string": "Module",
+      "type": "char"
+    },
+    "res_id": {
+      "help": "ID of the target record in the database",
+      "readonly": false,
+      "required": false,
+      "string": "Record ID",
+      "type": "many2one_reference"
+    },
+    "noupdate": {
+      "readonly": false,
+      "required": false,
+      "string": "Non Updatable",
+      "type": "boolean"
+    },
+    "reference": {
+      "readonly": true,
+      "required": false,
+      "string": "Reference",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

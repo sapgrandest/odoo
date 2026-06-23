@@ -1,0 +1,90 @@
+{
+  "model": "sign.document",
+  "name": "Signature Document",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": true,
+      "string": "Attachment",
+      "type": "many2one"
+    },
+    "raw": {
+      "readonly": false,
+      "required": false,
+      "string": "File Content (raw)",
+      "type": "binary"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "sign.template",
+      "required": true,
+      "string": "Template",
+      "type": "many2one"
+    },
+    "sign_item_ids": {
+      "readonly": false,
+      "relation": "sign.item",
+      "required": false,
+      "string": "Signature Items",
+      "type": "one2many"
+    },
+    "num_pages": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of pages",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

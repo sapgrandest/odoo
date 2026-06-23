@@ -1,0 +1,1461 @@
+{
+  "model": "product.template",
+  "name": "Product",
+  "field_count": 192,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "website_id": {
+      "help": "Restrict to a specific website.",
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "website_url": {
+      "help": "The full relative URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website URL",
+      "type": "char"
+    },
+    "website_absolute_url": {
+      "help": "The full absolute URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website Absolute URL",
+      "type": "char"
+    },
+    "website_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Visible on current website",
+      "type": "boolean"
+    },
+    "is_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Published",
+      "type": "boolean"
+    },
+    "publish_on": {
+      "help": "Automatically publish the page on the chosen date and time.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto publish on",
+      "type": "datetime"
+    },
+    "published_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Published date",
+      "type": "datetime"
+    },
+    "can_publish": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Publish",
+      "type": "boolean"
+    },
+    "is_seo_optimized": {
+      "readonly": true,
+      "required": false,
+      "string": "SEO optimized",
+      "type": "boolean"
+    },
+    "website_meta_title": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta title",
+      "type": "char"
+    },
+    "website_meta_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta description",
+      "type": "text"
+    },
+    "website_meta_keywords": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta keywords",
+      "type": "char"
+    },
+    "website_meta_og_img": {
+      "readonly": false,
+      "required": false,
+      "string": "Website opengraph image",
+      "type": "char"
+    },
+    "seo_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Seo name",
+      "type": "char"
+    },
+    "image_1920": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "image_1024": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 1024",
+      "type": "binary"
+    },
+    "image_512": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 512",
+      "type": "binary"
+    },
+    "image_256": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 256",
+      "type": "binary"
+    },
+    "image_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 128",
+      "type": "binary"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_plans_ids": {
+      "readonly": true,
+      "relation": "mail.activity.plan",
+      "required": false,
+      "string": "Activity Plans",
+      "type": "many2many"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "sequence": {
+      "help": "Gives the sequence order when displaying a product list",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "html"
+    },
+    "description_purchase": {
+      "readonly": false,
+      "required": false,
+      "string": "Purchase Description",
+      "type": "text"
+    },
+    "description_sale": {
+      "help": "A description of the Product that you want to communicate to your customers. This description will be copied to every Sales Order, Delivery Order and Customer Invoice/Credit Note",
+      "readonly": false,
+      "required": false,
+      "string": "Sales Description",
+      "type": "text"
+    },
+    "type": {
+      "help": "Goods are tangible materials and merchandise you provide.\nA service is a non-material product you provide.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "consu",
+          "Goods"
+        ],
+        [
+          "service",
+          "Service"
+        ],
+        [
+          "combo",
+          "Combo"
+        ]
+      ],
+      "string": "Product Type",
+      "type": "selection"
+    },
+    "combo_ids": {
+      "readonly": false,
+      "relation": "product.combo",
+      "required": false,
+      "string": "Combo Choices",
+      "type": "many2many"
+    },
+    "service_tracking": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "no",
+          "Nothing"
+        ],
+        [
+          "subcontract",
+          "Subcontracting RFQ"
+        ],
+        [
+          "task_global_project",
+          "Task"
+        ],
+        [
+          "task_in_project",
+          "Project & Task"
+        ],
+        [
+          "project_only",
+          "Project"
+        ]
+      ],
+      "string": "Create on Order",
+      "type": "selection"
+    },
+    "categ_id": {
+      "readonly": false,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "cost_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Cost Currency",
+      "type": "many2one"
+    },
+    "list_price": {
+      "help": "Price at which the product is sold to customers.",
+      "readonly": false,
+      "required": false,
+      "string": "Sales Price",
+      "type": "float"
+    },
+    "standard_price": {
+      "help": "Value of the product (automatically computed in AVCO).\n        Used to value the product when the purchase cost is not known (e.g. inventory adjustment).\n        Used to compute margins on sale orders.",
+      "readonly": false,
+      "required": false,
+      "string": "Cost",
+      "type": "float"
+    },
+    "is_storable": {
+      "help": "A storable product is a product for which you manage stock.",
+      "readonly": false,
+      "required": false,
+      "string": "Track Inventory",
+      "type": "boolean"
+    },
+    "qty_available": {
+      "readonly": false,
+      "required": false,
+      "string": "Quantity On Hand",
+      "type": "float"
+    },
+    "virtual_available": {
+      "readonly": true,
+      "required": false,
+      "string": "Forecasted Quantity",
+      "type": "float"
+    },
+    "incoming_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Incoming",
+      "type": "float"
+    },
+    "outgoing_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Outgoing",
+      "type": "float"
+    },
+    "free_qty": {
+      "help": "Quantity on hand minus outgoing quantity.",
+      "readonly": true,
+      "required": false,
+      "string": "Free To Use",
+      "type": "float"
+    },
+    "volume": {
+      "readonly": false,
+      "required": false,
+      "string": "Volume",
+      "type": "float"
+    },
+    "volume_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Volume unit of measure label",
+      "type": "char"
+    },
+    "weight": {
+      "readonly": false,
+      "required": false,
+      "string": "Weight",
+      "type": "float"
+    },
+    "weight_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Weight unit of measure label",
+      "type": "char"
+    },
+    "sale_ok": {
+      "readonly": false,
+      "required": false,
+      "string": "Sales",
+      "type": "boolean"
+    },
+    "purchase_ok": {
+      "readonly": false,
+      "required": false,
+      "string": "Purchase",
+      "type": "boolean"
+    },
+    "uom_id": {
+      "help": "Default unit of measure used for all stock operations.",
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": true,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "uom_ids": {
+      "help": "Additional packagings for this product which can be used for sales",
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Packagings",
+      "type": "many2many"
+    },
+    "uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Unit Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "seller_ids": {
+      "readonly": false,
+      "relation": "product.supplierinfo",
+      "required": false,
+      "string": "Vendors",
+      "type": "one2many"
+    },
+    "variant_seller_ids": {
+      "readonly": false,
+      "relation": "product.supplierinfo",
+      "required": false,
+      "string": "Variant Seller",
+      "type": "one2many"
+    },
+    "active": {
+      "help": "If unchecked, it will allow you to hide the product without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color Index",
+      "type": "integer"
+    },
+    "is_product_variant": {
+      "readonly": true,
+      "required": false,
+      "string": "Is a product variant",
+      "type": "boolean"
+    },
+    "attribute_line_ids": {
+      "readonly": false,
+      "relation": "product.template.attribute.line",
+      "required": false,
+      "string": "Product Attributes",
+      "type": "one2many"
+    },
+    "valid_product_template_attribute_line_ids": {
+      "readonly": true,
+      "relation": "product.template.attribute.line",
+      "required": false,
+      "string": "Valid Product Attribute Lines",
+      "type": "many2many"
+    },
+    "import_attribute_values": {
+      "readonly": false,
+      "required": false,
+      "string": "Product Values",
+      "type": "char"
+    },
+    "product_variant_ids": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": true,
+      "string": "Products",
+      "type": "one2many"
+    },
+    "product_variant_id": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "product_variant_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Product Variants",
+      "type": "integer"
+    },
+    "show_qty_update_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Qty Update Button",
+      "type": "boolean"
+    },
+    "barcode": {
+      "readonly": false,
+      "required": false,
+      "string": "Barcode",
+      "type": "char"
+    },
+    "default_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Internal Reference",
+      "type": "char"
+    },
+    "pricelist_rule_ids": {
+      "readonly": false,
+      "relation": "product.pricelist.item",
+      "required": false,
+      "string": "Pricelist Rules",
+      "type": "one2many"
+    },
+    "fixed_pricelist_rule_ids": {
+      "readonly": false,
+      "relation": "product.pricelist.item",
+      "required": false,
+      "string": "Fixed Pricelist Rule",
+      "type": "one2many"
+    },
+    "product_document_ids": {
+      "readonly": false,
+      "relation": "product.document",
+      "required": false,
+      "string": "Documents",
+      "type": "one2many"
+    },
+    "product_document_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Documents Count",
+      "type": "integer"
+    },
+    "can_image_1024_be_zoomed": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Image 1024 be zoomed",
+      "type": "boolean"
+    },
+    "has_configurable_attributes": {
+      "readonly": true,
+      "required": false,
+      "string": "Is a configurable product",
+      "type": "boolean"
+    },
+    "is_dynamically_created": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Dynamically Created",
+      "type": "boolean"
+    },
+    "product_tooltip": {
+      "readonly": true,
+      "required": false,
+      "string": "Product Tooltip",
+      "type": "char"
+    },
+    "is_favorite": {
+      "readonly": false,
+      "required": false,
+      "string": "Favorite",
+      "type": "boolean"
+    },
+    "product_tag_ids": {
+      "readonly": false,
+      "relation": "product.tag",
+      "required": false,
+      "string": "Tags",
+      "type": "many2many"
+    },
+    "product_properties": {
+      "readonly": false,
+      "required": false,
+      "string": "Properties",
+      "type": "properties"
+    },
+    "show_sales_price_page": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Sales Price Page",
+      "type": "boolean"
+    },
+    "base_unit_count": {
+      "help": "Display base unit price. Set to 0 to hide it for this product.",
+      "readonly": false,
+      "required": true,
+      "string": "Reference Unit",
+      "type": "float"
+    },
+    "base_unit_id": {
+      "help": "Define a custom unit to display in the price per unit of measure field.",
+      "readonly": false,
+      "relation": "product.base.unit",
+      "required": false,
+      "string": "Custom Unit of Measure",
+      "type": "many2one"
+    },
+    "base_unit_price": {
+      "readonly": true,
+      "required": false,
+      "string": "Price Per Unit",
+      "type": "monetary"
+    },
+    "base_unit_name": {
+      "help": "Displays the custom unit for the products if defined or the selected unit of measure otherwise.",
+      "readonly": true,
+      "required": false,
+      "string": "Base Unit Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "taxes_id": {
+      "help": "Default taxes used when selling the product",
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Sales Taxes",
+      "type": "many2many"
+    },
+    "tax_string": {
+      "readonly": true,
+      "required": false,
+      "string": "Tax String",
+      "type": "char"
+    },
+    "supplier_taxes_id": {
+      "help": "Default taxes used when buying the product",
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Purchase Taxes",
+      "type": "many2many"
+    },
+    "property_account_income_id": {
+      "help": "Keep this field empty to use the default value from the product category.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Income Account",
+      "type": "many2one"
+    },
+    "property_account_income_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Income Account Active",
+      "type": "boolean"
+    },
+    "property_account_expense_id": {
+      "help": "Keep this field empty to use the default value from the product category. If anglo-saxon accounting with automated valuation method is configured, the expense account on the product category will be used.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Expense Account",
+      "type": "many2one"
+    },
+    "property_account_expense_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Expense Account Active",
+      "type": "boolean"
+    },
+    "account_tag_ids": {
+      "help": "Tags to be set on the base and tax journal items created for this product.",
+      "readonly": false,
+      "relation": "account.account.tag",
+      "required": false,
+      "string": "Account Tags",
+      "type": "many2many"
+    },
+    "fiscal_country_codes": {
+      "readonly": true,
+      "required": false,
+      "string": "Fiscal Country Codes",
+      "type": "char"
+    },
+    "responsible_id": {
+      "help": "This user will be responsible of the next activities related to logistic operations for this product.",
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible",
+      "type": "many2one"
+    },
+    "property_stock_production": {
+      "help": "This location will be used as the source location for stock moves generated by a manufacturing order.",
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Production",
+      "type": "many2one"
+    },
+    "property_stock_inventory": {
+      "help": "This location will be used as the source location for stock moves generated by an inventory adjustment.",
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Inventory Adjustment",
+      "type": "many2one"
+    },
+    "tracking": {
+      "help": "Ensure the traceability of a storable product in your warehouse.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "none",
+          "By Quantity"
+        ],
+        [
+          "lot",
+          "By Lots"
+        ],
+        [
+          "serial",
+          "By Unique Serial Number"
+        ]
+      ],
+      "string": "Tracking",
+      "type": "selection"
+    },
+    "lot_sequence_id": {
+      "help": "Technical Field: The Ir.Sequence record that is used to generate serial/lot numbers for this product",
+      "readonly": false,
+      "relation": "ir.sequence",
+      "required": false,
+      "string": "Serial/Lot Numbers Sequence",
+      "type": "many2one"
+    },
+    "serial_prefix_format": {
+      "help": "\n    If multiple products share the same prefix, they will share the same sequence, otherwise the sequence will be dedicated to the product.\n\n    * Legend (for prefix):\n    - Current Year with Century: %(year)s\n    - Current Year without Century: %(y)s\n    - Month: %(month)s\n    - Day: %(day)s\n    - Day of the Year: %(doy)s\n    - Week of the Year: %(woy)s\n    - Day of the Week (0:Monday): %(weekday)s\n    - Hour 00->24: %(h24)s\n    - Hour 00->12: %(h12)s\n    - Minute: %(min)s\n    - Second: %(sec)s\n",
+      "readonly": false,
+      "required": false,
+      "string": "Custom Lot/Serial",
+      "type": "char"
+    },
+    "next_serial": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Serial",
+      "type": "char"
+    },
+    "description_picking": {
+      "readonly": false,
+      "required": false,
+      "string": "Description on Picking",
+      "type": "text"
+    },
+    "description_pickingout": {
+      "readonly": false,
+      "required": false,
+      "string": "Description on Delivery Orders",
+      "type": "text"
+    },
+    "description_pickingin": {
+      "readonly": false,
+      "required": false,
+      "string": "Description on Receptions",
+      "type": "text"
+    },
+    "location_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Location",
+      "type": "many2one"
+    },
+    "warehouse_id": {
+      "readonly": false,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    },
+    "has_available_route_ids": {
+      "readonly": true,
+      "required": false,
+      "string": "Routes can be selected on this product",
+      "type": "boolean"
+    },
+    "route_ids": {
+      "help": "Depending on the modules installed, this will allow you to define the route of the product: whether it will be bought, manufactured, replenished on order, etc.",
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Routes",
+      "type": "many2many"
+    },
+    "nbr_moves_in": {
+      "help": "Number of incoming stock moves in the past 12 months",
+      "readonly": true,
+      "required": false,
+      "string": "Nbr Moves In",
+      "type": "integer"
+    },
+    "nbr_moves_out": {
+      "help": "Number of outgoing stock moves in the past 12 months",
+      "readonly": true,
+      "required": false,
+      "string": "Nbr Moves Out",
+      "type": "integer"
+    },
+    "nbr_reordering_rules": {
+      "readonly": true,
+      "required": false,
+      "string": "Reordering Rules",
+      "type": "integer"
+    },
+    "reordering_min_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Reordering Min Qty",
+      "type": "float"
+    },
+    "reordering_max_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Reordering Max Qty",
+      "type": "float"
+    },
+    "route_from_categ_ids": {
+      "readonly": true,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Category Routes",
+      "type": "many2many"
+    },
+    "show_on_hand_qty_status_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Show On Hand Qty Status Button",
+      "type": "boolean"
+    },
+    "show_forecasted_qty_status_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Forecasted Qty Status Button",
+      "type": "boolean"
+    },
+    "purchased_product_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Purchased",
+      "type": "float"
+    },
+    "purchase_method": {
+      "help": "On ordered quantities: Control bills based on ordered quantities.\nOn received quantities: Control bills based on received quantities.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "purchase",
+          "On ordered quantities"
+        ],
+        [
+          "receive",
+          "On received quantities"
+        ]
+      ],
+      "string": "Control Policy",
+      "type": "selection"
+    },
+    "purchase_line_warn_msg": {
+      "readonly": false,
+      "required": false,
+      "string": "Message for Purchase Order Line",
+      "type": "text"
+    },
+    "cost_method": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "standard",
+          "Standard Price"
+        ],
+        [
+          "fifo",
+          "First In First Out (FIFO)"
+        ],
+        [
+          "average",
+          "Average Cost (AVCO)"
+        ]
+      ],
+      "string": "Cost Method",
+      "type": "selection"
+    },
+    "valuation": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "periodic",
+          "Periodic (at closing)"
+        ],
+        [
+          "real_time",
+          "Perpetual (at invoicing)"
+        ]
+      ],
+      "string": "Valuation",
+      "type": "selection"
+    },
+    "lot_valuated": {
+      "help": "If checked, the valuation will be specific by Lot/Serial number.",
+      "readonly": false,
+      "required": false,
+      "string": "Valuation by Lot/Serial",
+      "type": "boolean"
+    },
+    "property_price_difference_account_id": {
+      "help": "With perpetual valuation, this account will hold the price difference between the standard price and the bill price.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Price Difference Account",
+      "type": "many2one"
+    },
+    "service_type": {
+      "help": "Manually set quantities on order: Invoice based on the manually entered quantity, without creating an analytic account.\nTimesheets on contract: Invoice based on the tracked hours on the related timesheet.\nCreate a task and track hours: Create a task on the sales order validation and track the work hours.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "manual",
+          "Manually set quantities on order"
+        ],
+        [
+          "milestones",
+          "Project Milestones"
+        ]
+      ],
+      "string": "Track Service",
+      "type": "selection"
+    },
+    "sale_line_warn_msg": {
+      "readonly": false,
+      "required": false,
+      "string": "Sales Order Line Warning",
+      "type": "text"
+    },
+    "reinvoice_policy": {
+      "help": "Validated expenses, vendor bills, or stock pickings (set up to track costs) can be invoiced to the customer at either cost or sales price.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "no",
+          "No"
+        ],
+        [
+          "cost",
+          "At cost"
+        ],
+        [
+          "sales_price",
+          "At Sales price"
+        ]
+      ],
+      "string": "Re-Invoice Costs",
+      "type": "selection"
+    },
+    "visible_reinvoice_policy": {
+      "readonly": true,
+      "required": false,
+      "string": "Re-Invoice Policy visible",
+      "type": "boolean"
+    },
+    "sales_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Sold",
+      "type": "float"
+    },
+    "invoice_policy": {
+      "help": "Ordered Quantity: Invoice quantities ordered by the customer.\nDelivered Quantity: Invoice quantities delivered to the customer.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "order",
+          "Ordered quantities"
+        ],
+        [
+          "delivery",
+          "Delivered quantities"
+        ]
+      ],
+      "string": "Invoicing Policy",
+      "type": "selection"
+    },
+    "optional_product_ids": {
+      "help": "Optional Products are suggested whenever the customer hits *Add to Cart* (cross-sell strategy, e.g. for computers: warranty, software, etc.).",
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Optional Products",
+      "type": "many2many"
+    },
+    "sale_delay": {
+      "help": "Delivery lead time, in days. It's the number of days, promised to the customer, between the confirmation of the sales order and the delivery.",
+      "readonly": false,
+      "required": false,
+      "string": "Delivery Time",
+      "type": "integer"
+    },
+    "hs_code": {
+      "help": "Standardized code for international shipping and goods declaration.",
+      "readonly": false,
+      "required": false,
+      "string": "HS Code",
+      "type": "char"
+    },
+    "country_of_origin": {
+      "help": "Rules of origin determine where goods originate, i.e. not where they have been shipped from, but where they have been produced or manufactured.\nAs such, the ‘origin’ is the 'economic nationality' of goods traded in commerce.",
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Origin of Goods",
+      "type": "many2one"
+    },
+    "rating_last_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Rating Last Value",
+      "type": "float"
+    },
+    "rating_last_feedback": {
+      "readonly": true,
+      "required": false,
+      "string": "Rating Last Feedback",
+      "type": "text"
+    },
+    "rating_last_image": {
+      "readonly": true,
+      "required": false,
+      "string": "Rating Last Image",
+      "type": "binary"
+    },
+    "rating_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Rating count",
+      "type": "integer"
+    },
+    "rating_avg": {
+      "readonly": true,
+      "required": false,
+      "string": "Average Rating",
+      "type": "float"
+    },
+    "rating_avg_text": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "top",
+          "Happy"
+        ],
+        [
+          "ok",
+          "Neutral"
+        ],
+        [
+          "ko",
+          "Unhappy"
+        ],
+        [
+          "none",
+          "Not Rated yet"
+        ]
+      ],
+      "string": "Rating Avg Text",
+      "type": "selection"
+    },
+    "rating_percentage_satisfaction": {
+      "readonly": true,
+      "required": false,
+      "string": "Rating Satisfaction",
+      "type": "float"
+    },
+    "rating_last_text": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "top",
+          "Happy"
+        ],
+        [
+          "ok",
+          "Neutral"
+        ],
+        [
+          "ko",
+          "Unhappy"
+        ],
+        [
+          "none",
+          "Not Rated yet"
+        ]
+      ],
+      "string": "Rating Text",
+      "type": "selection"
+    },
+    "website_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description for the website",
+      "type": "html"
+    },
+    "description_ecommerce": {
+      "readonly": false,
+      "required": false,
+      "string": "eCommerce Description",
+      "type": "html"
+    },
+    "alternative_product_ids": {
+      "help": "Suggest alternatives to your customer (upsell strategy). Those products show up on the product page.",
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Alternative Products",
+      "type": "many2many"
+    },
+    "accessory_product_ids": {
+      "help": "Accessories show up when the customer reviews the cart before payment (cross-sell strategy).",
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Accessory Products",
+      "type": "many2many"
+    },
+    "suggest_optional_products": {
+      "readonly": false,
+      "required": false,
+      "string": "Suggest Optional Products",
+      "type": "boolean"
+    },
+    "suggest_accessory_products": {
+      "readonly": false,
+      "required": false,
+      "string": "Suggest Accessory Products",
+      "type": "boolean"
+    },
+    "suggest_alternative_products": {
+      "readonly": false,
+      "required": false,
+      "string": "Suggest Alternative Products",
+      "type": "boolean"
+    },
+    "suggested_products_last_update": {
+      "readonly": false,
+      "required": false,
+      "string": "Last update of suggested products",
+      "type": "datetime"
+    },
+    "website_size_x": {
+      "readonly": false,
+      "required": false,
+      "string": "Size X",
+      "type": "integer"
+    },
+    "website_size_y": {
+      "readonly": false,
+      "required": false,
+      "string": "Size Y",
+      "type": "integer"
+    },
+    "website_ribbon_id": {
+      "readonly": false,
+      "relation": "product.ribbon",
+      "required": false,
+      "string": "Ribbon",
+      "type": "many2one"
+    },
+    "website_sequence": {
+      "help": "Determine the display order in the Website E-commerce",
+      "readonly": false,
+      "required": false,
+      "string": "Website Sequence",
+      "type": "integer"
+    },
+    "public_categ_ids": {
+      "help": "The product will be available in each mentioned eCommerce category. Go to Shop > Edit Click on the page and enable 'Categories' to view all eCommerce categories.",
+      "readonly": false,
+      "relation": "product.public.category",
+      "required": false,
+      "string": "Website Product Category",
+      "type": "many2many"
+    },
+    "publish_date": {
+      "readonly": true,
+      "required": true,
+      "string": "Publish Date",
+      "type": "datetime"
+    },
+    "product_template_image_ids": {
+      "readonly": false,
+      "relation": "product.image",
+      "required": false,
+      "string": "Extra Product Media",
+      "type": "one2many"
+    },
+    "compare_list_price": {
+      "help": "Add a strikethrough price to your /shop and product pages for comparison purposes.It will not be displayed if pricelists apply.",
+      "readonly": false,
+      "required": false,
+      "string": "Compare to Price",
+      "type": "monetary"
+    },
+    "variants_default_code": {
+      "help": "Technical field to enhance performance when looking up default code of productvariants (LIKE/ILIKE)",
+      "readonly": true,
+      "required": false,
+      "string": "Variants Default Code",
+      "type": "char"
+    },
+    "allow_out_of_stock_order": {
+      "readonly": false,
+      "required": false,
+      "string": "Sell when Out-of-Stock",
+      "type": "boolean"
+    },
+    "available_threshold": {
+      "readonly": false,
+      "required": false,
+      "string": "Show Threshold",
+      "type": "float"
+    },
+    "show_availability": {
+      "readonly": false,
+      "required": false,
+      "string": "Show availability Qty",
+      "type": "boolean"
+    },
+    "out_of_stock_message": {
+      "readonly": false,
+      "required": false,
+      "string": "Out-of-Stock Message",
+      "type": "html"
+    },
+    "planning_enabled": {
+      "help": "If enabled, a shift will automatically be generated for the selected role when confirming the Sales Order.                 With the 'auto plan' feature, only employees with this role will be automatically assigned shifts for Sales Orders containing this service.                 The system will consider employee availability and the remaining time to be planned.                 You can also manually schedule open shifts for your Sales Order or assign them to any employee you prefer.",
+      "readonly": false,
+      "required": false,
+      "string": "Plan Services",
+      "type": "boolean"
+    },
+    "planning_role_id": {
+      "readonly": false,
+      "relation": "planning.role",
+      "required": false,
+      "string": "Planning Role",
+      "type": "many2one"
+    },
+    "project_id": {
+      "readonly": false,
+      "relation": "project.project",
+      "required": false,
+      "string": "Project",
+      "type": "many2one"
+    },
+    "project_template_id": {
+      "readonly": false,
+      "relation": "project.project",
+      "required": false,
+      "string": "Project Template",
+      "type": "many2one"
+    },
+    "task_template_id": {
+      "readonly": false,
+      "relation": "project.task",
+      "required": false,
+      "string": "Task Template",
+      "type": "many2one"
+    },
+    "service_policy": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "ordered_prepaid",
+          "Prepaid/Fixed Price"
+        ],
+        [
+          "delivered_manual",
+          "Based on Delivery (Manual)"
+        ]
+      ],
+      "string": "Service Invoicing Policy",
+      "type": "selection"
+    }
+  }
+}

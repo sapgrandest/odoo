@@ -1,0 +1,91 @@
+{
+  "model": "product.template.attribute.line",
+  "name": "Product Template Attribute Line",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "product_tmpl_id": {
+      "readonly": false,
+      "relation": "product.template",
+      "required": true,
+      "string": "Product Template",
+      "type": "many2one"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "attribute_id": {
+      "readonly": false,
+      "relation": "product.attribute",
+      "required": true,
+      "string": "Attribute",
+      "type": "many2one"
+    },
+    "value_ids": {
+      "readonly": false,
+      "relation": "product.attribute.value",
+      "required": false,
+      "string": "Values",
+      "type": "many2many"
+    },
+    "value_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Value Count",
+      "type": "integer"
+    },
+    "product_template_value_ids": {
+      "readonly": false,
+      "relation": "product.template.attribute.value",
+      "required": false,
+      "string": "Product Attribute Values",
+      "type": "one2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

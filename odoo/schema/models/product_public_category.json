@@ -1,0 +1,263 @@
+{
+  "model": "product.public.category",
+  "name": "Website Product Category",
+  "field_count": 40,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "image_1920": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "image_1024": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 1024",
+      "type": "binary"
+    },
+    "image_512": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 512",
+      "type": "binary"
+    },
+    "image_256": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 256",
+      "type": "binary"
+    },
+    "image_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 128",
+      "type": "binary"
+    },
+    "website_id": {
+      "help": "Restrict to a specific website.",
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "website_url": {
+      "help": "The full relative URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website URL",
+      "type": "char"
+    },
+    "website_absolute_url": {
+      "help": "The full absolute URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website Absolute URL",
+      "type": "char"
+    },
+    "website_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Visible on current website",
+      "type": "boolean"
+    },
+    "is_published": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Published",
+      "type": "boolean"
+    },
+    "publish_on": {
+      "help": "Automatically publish the page on the chosen date and time.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto publish on",
+      "type": "datetime"
+    },
+    "published_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Published date",
+      "type": "datetime"
+    },
+    "can_publish": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Publish",
+      "type": "boolean"
+    },
+    "is_seo_optimized": {
+      "readonly": true,
+      "required": false,
+      "string": "SEO optimized",
+      "type": "boolean"
+    },
+    "website_meta_title": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta title",
+      "type": "char"
+    },
+    "website_meta_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta description",
+      "type": "text"
+    },
+    "website_meta_keywords": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta keywords",
+      "type": "char"
+    },
+    "website_meta_og_img": {
+      "readonly": false,
+      "required": false,
+      "string": "Website opengraph image",
+      "type": "char"
+    },
+    "seo_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Seo name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "cover_image": {
+      "help": "Displayed only in the Category List Snippet.",
+      "readonly": false,
+      "required": false,
+      "string": "Cover Image",
+      "type": "binary"
+    },
+    "not_in_shop": {
+      "help": "If checked, the category will not be displayed in the main catalog page",
+      "readonly": false,
+      "required": false,
+      "string": "Not in Shop",
+      "type": "boolean"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "parent_id": {
+      "readonly": false,
+      "relation": "product.public.category",
+      "required": false,
+      "string": "Parent",
+      "type": "many2one"
+    },
+    "child_id": {
+      "readonly": false,
+      "relation": "product.public.category",
+      "required": false,
+      "string": "Children Categories",
+      "type": "one2many"
+    },
+    "parent_path": {
+      "readonly": false,
+      "required": false,
+      "string": "Parent Path",
+      "type": "char"
+    },
+    "parents_and_self": {
+      "readonly": true,
+      "relation": "product.public.category",
+      "required": false,
+      "string": "Parents And Self",
+      "type": "many2many"
+    },
+    "product_tmpl_ids": {
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product Tmpl",
+      "type": "many2many"
+    },
+    "has_published_products": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Published Products",
+      "type": "boolean"
+    },
+    "website_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "html"
+    },
+    "website_footer": {
+      "readonly": false,
+      "required": false,
+      "string": "Category Footer",
+      "type": "html"
+    },
+    "show_category_title": {
+      "help": "Display the category title on the shop page. Corresponds to the 'Show Title' editor option.",
+      "readonly": false,
+      "required": false,
+      "string": "Show Category Title",
+      "type": "boolean"
+    },
+    "show_category_description": {
+      "help": "Display the category description on the shop page. Corresponds to the 'Show Description' editor option.",
+      "readonly": false,
+      "required": false,
+      "string": "Show Category Description",
+      "type": "boolean"
+    },
+    "align_category_content": {
+      "help": "Align the category content on the shop page. Corresponds to the 'Center Content' editor option.",
+      "readonly": false,
+      "required": false,
+      "string": "Align Category Content",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

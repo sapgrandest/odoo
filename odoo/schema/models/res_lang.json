@@ -1,0 +1,231 @@
+{
+  "model": "res.lang",
+  "name": "Language",
+  "field_count": 20,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "code": {
+      "help": "This field is used to set/get locales for user",
+      "readonly": false,
+      "required": true,
+      "string": "Locale Code",
+      "type": "char"
+    },
+    "iso_code": {
+      "help": "This ISO code is the name of po files to use for translations",
+      "readonly": false,
+      "required": false,
+      "string": "ISO code",
+      "type": "char"
+    },
+    "url_code": {
+      "help": "The Lang Code displayed in the URL",
+      "readonly": false,
+      "required": true,
+      "string": "URL Code",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "direction": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "ltr",
+          "Left-to-Right"
+        ],
+        [
+          "rtl",
+          "Right-to-Left"
+        ]
+      ],
+      "string": "Direction",
+      "type": "selection"
+    },
+    "date_format": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "%d/%m/%Y",
+          "31/01/2026"
+        ],
+        [
+          "%m/%d/%Y",
+          "01/31/2026"
+        ],
+        [
+          "%Y/%m/%d",
+          "2026/01/31"
+        ],
+        [
+          "%d-%m-%Y",
+          "31-01-2026"
+        ],
+        [
+          "%m-%d-%Y",
+          "01-31-2026"
+        ],
+        [
+          "%Y-%m-%d",
+          "2026-01-31"
+        ],
+        [
+          "%d.%m.%Y",
+          "31.01.2026"
+        ],
+        [
+          "%m.%d.%Y",
+          "01.31.2026"
+        ],
+        [
+          "%Y.%m.%d",
+          "2026.01.31"
+        ]
+      ],
+      "string": "Date Format",
+      "type": "selection"
+    },
+    "time_format": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "%H:%M:%S",
+          "13:00:00"
+        ],
+        [
+          "%I:%M:%S %p",
+          " 1:00:00 PM"
+        ]
+      ],
+      "string": "Time Format",
+      "type": "selection"
+    },
+    "week_start": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "1",
+          "Monday"
+        ],
+        [
+          "2",
+          "Tuesday"
+        ],
+        [
+          "3",
+          "Wednesday"
+        ],
+        [
+          "4",
+          "Thursday"
+        ],
+        [
+          "5",
+          "Friday"
+        ],
+        [
+          "6",
+          "Saturday"
+        ],
+        [
+          "7",
+          "Sunday"
+        ]
+      ],
+      "string": "First Day of Week",
+      "type": "selection"
+    },
+    "grouping": {
+      "help": "The International Grouping will represent 123456789 to be 123,456,789.00; The Indian Grouping will represent 123456789 to be 12,34,56,789.00",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "[3,0]",
+          "International Grouping"
+        ],
+        [
+          "[3,2,0]",
+          "Indian Grouping"
+        ]
+      ],
+      "string": "Separator Format",
+      "type": "selection"
+    },
+    "decimal_point": {
+      "readonly": false,
+      "required": true,
+      "string": "Decimal Separator",
+      "type": "char"
+    },
+    "thousands_sep": {
+      "readonly": false,
+      "required": false,
+      "string": "Thousands Separator",
+      "type": "char"
+    },
+    "flag_image": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "flag_image_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Flag Image Url",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

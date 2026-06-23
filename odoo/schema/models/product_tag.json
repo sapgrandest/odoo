@@ -1,0 +1,105 @@
+{
+  "model": "product.tag",
+  "name": "Product Tag",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color",
+      "type": "char"
+    },
+    "product_template_ids": {
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product Templates",
+      "type": "many2many"
+    },
+    "product_product_ids": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product Variants",
+      "type": "many2many"
+    },
+    "product_ids": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "All Product Variants using this Tag",
+      "type": "many2many"
+    },
+    "visible_to_customers": {
+      "help": "Whether the tag is displayed to customers.",
+      "readonly": false,
+      "required": false,
+      "string": "Visible to customers",
+      "type": "boolean"
+    },
+    "image": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "website_id": {
+      "help": "Restrict to a specific website.",
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    }
+  }
+}

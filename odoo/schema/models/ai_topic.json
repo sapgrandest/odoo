@@ -1,0 +1,76 @@
+{
+  "model": "ai.topic",
+  "name": "Create a topic that leverages instructions and tools to direct Odoo AI in assisting the user with their tasks.",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Title",
+      "type": "char"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "instructions": {
+      "readonly": false,
+      "required": false,
+      "string": "Instructions",
+      "type": "text"
+    },
+    "tool_ids": {
+      "readonly": false,
+      "relation": "ir.actions.server",
+      "required": false,
+      "string": "AI Tools",
+      "type": "many2many"
+    },
+    "type": {
+      "readonly": true,
+      "required": false,
+      "string": "Type",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

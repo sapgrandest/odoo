@@ -1,0 +1,116 @@
+{
+  "model": "account.report.external.value",
+  "name": "Accounting Report External Value",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "value": {
+      "readonly": false,
+      "required": false,
+      "string": "Numeric Value",
+      "type": "float"
+    },
+    "text_value": {
+      "readonly": false,
+      "required": false,
+      "string": "Text Value",
+      "type": "char"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "target_report_expression_id": {
+      "readonly": false,
+      "relation": "account.report.expression",
+      "required": true,
+      "string": "Target Expression",
+      "type": "many2one"
+    },
+    "target_report_line_id": {
+      "readonly": true,
+      "relation": "account.report.line",
+      "required": false,
+      "string": "Target Line",
+      "type": "many2one"
+    },
+    "target_report_expression_label": {
+      "readonly": true,
+      "required": false,
+      "string": "Target Expression Label",
+      "type": "char"
+    },
+    "report_country_id": {
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "carryover_origin_expression_label": {
+      "readonly": false,
+      "required": false,
+      "string": "Origin Expression Label",
+      "type": "char"
+    },
+    "carryover_origin_report_line_id": {
+      "readonly": false,
+      "relation": "account.report.line",
+      "required": false,
+      "string": "Origin Line",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

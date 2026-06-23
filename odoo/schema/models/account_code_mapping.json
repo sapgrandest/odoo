@@ -1,0 +1,39 @@
+{
+  "model": "account.code.mapping",
+  "name": "Mapping of account codes per company",
+  "field_count": 5,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "account_id": {
+      "readonly": true,
+      "relation": "account.account",
+      "required": false,
+      "string": "Account",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "code": {
+      "readonly": false,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    }
+  }
+}

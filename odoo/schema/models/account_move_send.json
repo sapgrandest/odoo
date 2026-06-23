@@ -1,0 +1,19 @@
+{
+  "model": "account.move.send",
+  "name": "Shared Send Invoice Wizard Functions",
+  "field_count": 2,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    }
+  }
+}

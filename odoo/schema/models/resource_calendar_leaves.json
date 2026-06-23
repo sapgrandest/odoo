@@ -1,0 +1,102 @@
+{
+  "model": "resource.calendar.leaves",
+  "name": "Resource Time Off Detail",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Reason",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "calendar_id": {
+      "readonly": false,
+      "relation": "resource.calendar",
+      "required": false,
+      "string": "Working Hours",
+      "type": "many2one"
+    },
+    "date_from": {
+      "readonly": false,
+      "required": true,
+      "string": "Start Date",
+      "type": "datetime"
+    },
+    "date_to": {
+      "readonly": false,
+      "required": true,
+      "string": "End Date",
+      "type": "datetime"
+    },
+    "resource_id": {
+      "help": "If empty, this is a generic time off for the company. If a resource is set, the time off is only for this resource",
+      "readonly": false,
+      "relation": "resource.resource",
+      "required": false,
+      "string": "Resource",
+      "type": "many2one"
+    },
+    "count_as": {
+      "help": "Whether this should be computed as a time off or as work time (eg: formation)",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "absence",
+          "Absence"
+        ],
+        [
+          "working_time",
+          "Working Time"
+        ]
+      ],
+      "string": "Count As",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "model": "l10n_fr.fec.export.wizard",
+  "name": "Fichier Echange Informatise",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "date_from": {
+      "readonly": false,
+      "required": true,
+      "string": "Start Date",
+      "type": "date"
+    },
+    "date_to": {
+      "readonly": false,
+      "required": true,
+      "string": "End Date",
+      "type": "date"
+    },
+    "filename": {
+      "readonly": true,
+      "required": false,
+      "string": "Filename",
+      "type": "char"
+    },
+    "test_file": {
+      "readonly": false,
+      "required": false,
+      "string": "Test File",
+      "type": "boolean"
+    },
+    "export_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "official",
+          "Official FEC report (posted entries only)"
+        ],
+        [
+          "nonofficial",
+          "Non-official FEC report (posted and unposted entries)"
+        ]
+      ],
+      "string": "Export Type",
+      "type": "selection"
+    },
+    "excluded_journal_ids": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Excluded Journals",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

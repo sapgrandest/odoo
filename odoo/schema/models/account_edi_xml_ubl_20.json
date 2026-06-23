@@ -1,0 +1,19 @@
+{
+  "model": "account.edi.xml.ubl_20",
+  "name": "UBL 2.0",
+  "field_count": 2,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "model": "ir.model.inherit",
+  "name": "Model Inheritance Tree",
+  "field_count": 5,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": true,
+      "string": "Model",
+      "type": "many2one"
+    },
+    "parent_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": true,
+      "string": "Parent",
+      "type": "many2one"
+    },
+    "parent_field_id": {
+      "readonly": false,
+      "relation": "ir.model.fields",
+      "required": false,
+      "string": "Parent Field",
+      "type": "many2one"
+    }
+  }
+}

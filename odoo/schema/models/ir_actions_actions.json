@@ -1,0 +1,113 @@
+{
+  "model": "ir.actions.actions",
+  "name": "Action",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Action Name",
+      "type": "char"
+    },
+    "type": {
+      "readonly": false,
+      "required": true,
+      "string": "Action Type",
+      "type": "char"
+    },
+    "xml_id": {
+      "readonly": true,
+      "required": false,
+      "string": "External ID",
+      "type": "char"
+    },
+    "path": {
+      "readonly": false,
+      "required": false,
+      "string": "Path to show in the URL",
+      "type": "char"
+    },
+    "help": {
+      "help": "Optional help text for the users with a description of the target view, such as its usage and purpose.",
+      "readonly": false,
+      "required": false,
+      "string": "Action Description",
+      "type": "html"
+    },
+    "explanation": {
+      "help": "Verbose description of what this action actually does",
+      "readonly": false,
+      "required": false,
+      "string": "Explanation",
+      "type": "text"
+    },
+    "binding_model_id": {
+      "help": "Setting a value makes this action available in the sidebar for the given model.",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Binding Model",
+      "type": "many2one"
+    },
+    "binding_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "action",
+          "Action"
+        ],
+        [
+          "report",
+          "Report"
+        ]
+      ],
+      "string": "Binding Type",
+      "type": "selection"
+    },
+    "binding_view_types": {
+      "readonly": false,
+      "required": false,
+      "string": "Binding View Types",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,413 @@
+{
+  "model": "delivery.carrier",
+  "name": "Delivery Method",
+  "field_count": 56,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "website_id": {
+      "help": "Restrict to a specific website.",
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "website_url": {
+      "help": "The full relative URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website URL",
+      "type": "char"
+    },
+    "website_absolute_url": {
+      "help": "The full absolute URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website Absolute URL",
+      "type": "char"
+    },
+    "website_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Visible on current website",
+      "type": "boolean"
+    },
+    "is_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Published",
+      "type": "boolean"
+    },
+    "publish_on": {
+      "help": "Automatically publish the page on the chosen date and time.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto publish on",
+      "type": "datetime"
+    },
+    "published_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Published date",
+      "type": "datetime"
+    },
+    "can_publish": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Publish",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Delivery Method",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "sequence": {
+      "help": "Determine the display order",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "delivery_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "base_on_rule",
+          "Based on Rules"
+        ],
+        [
+          "fixed",
+          "Fixed Price"
+        ]
+      ],
+      "string": "Provider",
+      "type": "selection"
+    },
+    "supports_cash_on_delivery": {
+      "readonly": true,
+      "required": false,
+      "string": "Supports Cash On Delivery",
+      "type": "boolean"
+    },
+    "allow_cash_on_delivery": {
+      "help": "Allow customers to choose Cash on Delivery as their payment method.",
+      "readonly": false,
+      "required": false,
+      "string": "Cash on Delivery",
+      "type": "boolean"
+    },
+    "integration_level": {
+      "help": "Action while validating Delivery Orders.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "rate",
+          "Get Rate"
+        ],
+        [
+          "rate_and_ship",
+          "Get Rate and Create Shipment"
+        ]
+      ],
+      "string": "Integration Level",
+      "type": "selection"
+    },
+    "prod_environment": {
+      "help": "Set to True if your credentials are certified for production.",
+      "readonly": false,
+      "required": false,
+      "string": "Environment",
+      "type": "boolean"
+    },
+    "debug_logging": {
+      "help": "Log requests in order to ease debugging",
+      "readonly": false,
+      "required": false,
+      "string": "Debug logging",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": true,
+      "string": "Delivery Product",
+      "type": "many2one"
+    },
+    "tracking_url": {
+      "help": "This option adds a link for the customer in the portal to track their package easily. Use <shipmenttrackingnumber> as a placeholder in your URL.",
+      "readonly": false,
+      "required": false,
+      "string": "Tracking Link",
+      "type": "char"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "invoice_policy": {
+      "help": "Estimated Cost: the customer will be invoiced the estimated cost of the shipping.\nReal Cost: the customer will be invoiced the real cost of the shipping, the cost of theshipping will be updated on the SO after the delivery.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "estimated",
+          "Estimated cost"
+        ],
+        [
+          "real",
+          "Real cost"
+        ]
+      ],
+      "string": "Invoicing Policy",
+      "type": "selection"
+    },
+    "country_ids": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Countries",
+      "type": "many2many"
+    },
+    "state_ids": {
+      "readonly": false,
+      "relation": "res.country.state",
+      "required": false,
+      "string": "States",
+      "type": "many2many"
+    },
+    "zip_prefix_ids": {
+      "help": "Prefixes of zip codes that this delivery method applies to. Note that regular expressions can be used to support countries with varying zip code lengths, i.e. '$' can be added to end of prefix to match the exact zip (e.g. '100$' will only match '100' and not '1000')",
+      "readonly": false,
+      "relation": "delivery.zip.prefix",
+      "required": false,
+      "string": "Zip Prefixes",
+      "type": "many2many"
+    },
+    "max_weight": {
+      "help": "If the total weight of the order is over this weight, the method won't be available.",
+      "readonly": false,
+      "required": false,
+      "string": "Max Weight",
+      "type": "float"
+    },
+    "weight_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Weight unit of measure label",
+      "type": "char"
+    },
+    "max_volume": {
+      "help": "If the total volume of the order is over this volume, the method won't be available.",
+      "readonly": false,
+      "required": false,
+      "string": "Max Volume",
+      "type": "float"
+    },
+    "volume_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Volume unit of measure label",
+      "type": "char"
+    },
+    "must_have_tag_ids": {
+      "help": "The method is available only if at least one product of the order has one of these tags.",
+      "readonly": false,
+      "relation": "product.tag",
+      "required": false,
+      "string": "Must Have Tags",
+      "type": "many2many"
+    },
+    "excluded_tag_ids": {
+      "help": "The method is NOT available if at least one product of the order has one of these tags.",
+      "readonly": false,
+      "relation": "product.tag",
+      "required": false,
+      "string": "Excluded Tags",
+      "type": "many2many"
+    },
+    "carrier_description": {
+      "help": "A description of the delivery method that you want to communicate to your customers on the Sales Order and sales confirmation email. E.g. instructions for customers to follow.",
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "margin": {
+      "help": "This percentage will be added to the shipping price.",
+      "readonly": false,
+      "required": false,
+      "string": "Margin",
+      "type": "float"
+    },
+    "fixed_margin": {
+      "help": "This fixed amount will be added to the shipping price.",
+      "readonly": false,
+      "required": false,
+      "string": "Fixed Margin",
+      "type": "float"
+    },
+    "free_over": {
+      "help": "If the order total amount (shipping excluded) is above or equal to this value, the customer benefits from a free shipping.",
+      "readonly": false,
+      "required": false,
+      "string": "Free if order amount is above",
+      "type": "boolean"
+    },
+    "amount": {
+      "help": "Amount of the order to benefit from a free shipping, expressed in the company currency.",
+      "readonly": false,
+      "required": false,
+      "string": "Amount",
+      "type": "float"
+    },
+    "can_generate_return": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Generate Return",
+      "type": "boolean"
+    },
+    "return_label_on_delivery": {
+      "help": "The return label is automatically generated at the delivery.",
+      "readonly": false,
+      "required": false,
+      "string": "Generate Return Label",
+      "type": "boolean"
+    },
+    "get_return_label_from_portal": {
+      "help": "The return label can be downloaded by the customer from the customer portal.",
+      "readonly": false,
+      "required": false,
+      "string": "Return Label Accessible from Customer Portal",
+      "type": "boolean"
+    },
+    "supports_shipping_insurance": {
+      "readonly": true,
+      "required": false,
+      "string": "Supports Shipping Insurance",
+      "type": "boolean"
+    },
+    "shipping_insurance": {
+      "help": "Shipping insurance is a service which may reimburse senders whose parcels are lost, stolen, and/or damaged in transit.",
+      "readonly": false,
+      "required": false,
+      "string": "Insurance Percentage",
+      "type": "integer"
+    },
+    "price_rule_ids": {
+      "readonly": false,
+      "relation": "delivery.price.rule",
+      "required": false,
+      "string": "Pricing Rules",
+      "type": "one2many"
+    },
+    "fixed_price": {
+      "readonly": false,
+      "required": false,
+      "string": "Fixed Price",
+      "type": "float"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "route_ids": {
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Routes",
+      "type": "many2many"
+    },
+    "website_description": {
+      "help": "A description of the Product that you want to communicate to your customers. This description will be copied to every Sales Order, Delivery Order and Customer Invoice/Credit Note",
+      "readonly": false,
+      "required": false,
+      "string": "Description for Online Quotations",
+      "type": "text"
+    },
+    "enable_delivery_estimate": {
+      "help": "Display estimated date to your customer. Editable if range is defined.",
+      "readonly": false,
+      "required": false,
+      "string": "Estimated Delivery",
+      "type": "boolean"
+    },
+    "delivery_estimate_lead_days": {
+      "readonly": false,
+      "required": false,
+      "string": "Delivery Estimate Lead Days",
+      "type": "integer"
+    },
+    "delivery_estimate_range_days": {
+      "readonly": false,
+      "required": false,
+      "string": "Delivery Estimate Range Days",
+      "type": "integer"
+    },
+    "delivery_calendar_id": {
+      "readonly": false,
+      "relation": "resource.calendar",
+      "required": false,
+      "string": "Delivery Calendar",
+      "type": "many2one"
+    },
+    "support_pickup_locations": {
+      "readonly": true,
+      "required": false,
+      "string": "Support Pickup Locations",
+      "type": "boolean"
+    }
+  }
+}

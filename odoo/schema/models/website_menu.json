@@ -1,0 +1,149 @@
+{
+  "model": "website.menu",
+  "name": "Website Menu",
+  "field_count": 22,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Menu",
+      "type": "char"
+    },
+    "url": {
+      "readonly": false,
+      "required": true,
+      "string": "Url",
+      "type": "char"
+    },
+    "page_id": {
+      "readonly": false,
+      "relation": "website.page",
+      "required": false,
+      "string": "Related Page",
+      "type": "many2one"
+    },
+    "controller_page_id": {
+      "readonly": false,
+      "relation": "website.controller.page",
+      "required": false,
+      "string": "Related Model Page",
+      "type": "many2one"
+    },
+    "new_window": {
+      "readonly": false,
+      "required": false,
+      "string": "New Window",
+      "type": "boolean"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "website_id": {
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "parent_id": {
+      "readonly": false,
+      "relation": "website.menu",
+      "required": false,
+      "string": "Parent Menu",
+      "type": "many2one"
+    },
+    "child_id": {
+      "readonly": false,
+      "relation": "website.menu",
+      "required": false,
+      "string": "Child Menus",
+      "type": "one2many"
+    },
+    "parent_path": {
+      "readonly": false,
+      "required": false,
+      "string": "Parent Path",
+      "type": "char"
+    },
+    "is_visible": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Visible",
+      "type": "boolean"
+    },
+    "group_ids": {
+      "help": "User needs to be at least in one of these groups to see the menu",
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Visible Groups",
+      "type": "many2many"
+    },
+    "is_mega_menu": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Mega Menu",
+      "type": "boolean"
+    },
+    "mega_menu_content": {
+      "readonly": false,
+      "required": false,
+      "string": "Mega Menu Content",
+      "type": "html"
+    },
+    "mega_menu_classes": {
+      "readonly": false,
+      "required": false,
+      "string": "Mega Menu Classes",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "theme_template_id": {
+      "readonly": false,
+      "relation": "theme.website.menu",
+      "required": false,
+      "string": "Theme Template",
+      "type": "many2one"
+    }
+  }
+}

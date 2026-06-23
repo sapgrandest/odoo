@@ -1,0 +1,78 @@
+{
+  "model": "hr.skill.level",
+  "name": "Skill Level",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "skill_type_id": {
+      "readonly": false,
+      "relation": "hr.skill.type",
+      "required": false,
+      "string": "Skill Type",
+      "type": "many2one"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "level_progress": {
+      "help": "Progress from zero knowledge (0%) to fully mastered (100%).",
+      "readonly": false,
+      "required": false,
+      "string": "Progress",
+      "type": "integer"
+    },
+    "default_level": {
+      "help": "If checked, this level will be the default one selected when choosing this skill.",
+      "readonly": false,
+      "required": false,
+      "string": "Default Level",
+      "type": "boolean"
+    },
+    "technical_is_new_default": {
+      "readonly": false,
+      "required": false,
+      "string": "Technical Is New Default",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

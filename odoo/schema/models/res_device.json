@@ -1,0 +1,110 @@
+{
+  "model": "res.device",
+  "name": "Device",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "session_identifier": {
+      "readonly": true,
+      "required": false,
+      "string": "Session identifier",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "User",
+      "type": "many2one"
+    },
+    "ip_address": {
+      "readonly": true,
+      "required": false,
+      "string": "IP Address",
+      "type": "char"
+    },
+    "country": {
+      "readonly": true,
+      "required": false,
+      "string": "Country",
+      "type": "char"
+    },
+    "city": {
+      "readonly": true,
+      "required": false,
+      "string": "City",
+      "type": "char"
+    },
+    "user_agent": {
+      "readonly": true,
+      "required": false,
+      "string": "User Agent",
+      "type": "char"
+    },
+    "first_activity": {
+      "readonly": true,
+      "required": false,
+      "string": "First Activity",
+      "type": "datetime"
+    },
+    "last_activity": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Activity",
+      "type": "datetime"
+    },
+    "revoked": {
+      "readonly": true,
+      "required": false,
+      "string": "Revoked",
+      "type": "boolean"
+    },
+    "platform": {
+      "readonly": true,
+      "required": false,
+      "string": "Platform",
+      "type": "char"
+    },
+    "browser": {
+      "readonly": true,
+      "required": false,
+      "string": "Browser",
+      "type": "char"
+    },
+    "browser_version": {
+      "readonly": true,
+      "required": false,
+      "string": "Browser Version",
+      "type": "char"
+    },
+    "browser_language": {
+      "readonly": true,
+      "required": false,
+      "string": "Browser Language",
+      "type": "char"
+    },
+    "device_type": {
+      "readonly": true,
+      "required": false,
+      "string": "Type",
+      "type": "char"
+    },
+    "is_current": {
+      "readonly": true,
+      "required": false,
+      "string": "Current",
+      "type": "boolean"
+    }
+  }
+}

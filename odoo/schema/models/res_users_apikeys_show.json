@@ -1,0 +1,25 @@
+{
+  "model": "res.users.apikeys.show",
+  "name": "Show API Key",
+  "field_count": 3,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "key": {
+      "readonly": true,
+      "required": false,
+      "string": "Key",
+      "type": "char"
+    }
+  }
+}

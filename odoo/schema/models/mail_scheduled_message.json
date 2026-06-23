@@ -1,0 +1,137 @@
+{
+  "model": "mail.scheduled.message",
+  "name": "Scheduled Message",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "subject": {
+      "readonly": false,
+      "required": false,
+      "string": "Subject",
+      "type": "char"
+    },
+    "body": {
+      "readonly": false,
+      "required": false,
+      "string": "Contents",
+      "type": "html"
+    },
+    "scheduled_date": {
+      "readonly": false,
+      "required": true,
+      "string": "Scheduled Date",
+      "type": "datetime"
+    },
+    "attachment_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachments",
+      "type": "many2many"
+    },
+    "composition_comment_option": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "reply_all",
+          "Reply-All"
+        ],
+        [
+          "forward",
+          "Forward"
+        ]
+      ],
+      "string": "Comment Options",
+      "type": "selection"
+    },
+    "model": {
+      "readonly": false,
+      "required": true,
+      "string": "Related Document Model",
+      "type": "char"
+    },
+    "res_id": {
+      "readonly": false,
+      "required": true,
+      "string": "Related Document Id",
+      "type": "many2one_reference"
+    },
+    "author_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Author",
+      "type": "many2one"
+    },
+    "partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Recipients",
+      "type": "many2many"
+    },
+    "is_note": {
+      "help": "If the message will be posted as a Note.",
+      "readonly": false,
+      "required": false,
+      "string": "Is a note",
+      "type": "boolean"
+    },
+    "notification_parameters": {
+      "readonly": false,
+      "required": false,
+      "string": "Notification parameters",
+      "type": "text"
+    },
+    "send_context": {
+      "readonly": false,
+      "required": false,
+      "string": "Sending Context",
+      "type": "json"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "account_reports_annotation_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Annotated For",
+      "type": "date"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "model": "project.share.collaborator.wizard",
+  "name": "Project Sharing Collaborator Wizard",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "parent_wizard_id": {
+      "readonly": false,
+      "relation": "project.share.wizard",
+      "required": false,
+      "string": "Parent Wizard",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Collaborator",
+      "type": "many2one"
+    },
+    "access_mode": {
+      "help": "Read: collaborators can view tasks but cannot edit them.\nEdit with limited access: collaborators can view and edit tasks they follow in the Kanban view.\nEdit: collaborators can view and edit all tasks in the Kanban view. Additionally, they can choose which tasks they want to follow.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "read",
+          "Read"
+        ],
+        [
+          "edit_limited",
+          "Edit with limited access"
+        ],
+        [
+          "edit",
+          "Edit"
+        ]
+      ],
+      "string": "Access Mode",
+      "type": "selection"
+    },
+    "send_invitation": {
+      "readonly": false,
+      "required": false,
+      "string": "Send Invitation",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

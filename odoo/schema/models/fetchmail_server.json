@@ -1,0 +1,256 @@
+{
+  "model": "fetchmail.server",
+  "name": "Incoming Mail Server",
+  "field_count": 34,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "microsoft_outlook_refresh_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Refresh Token",
+      "type": "char"
+    },
+    "microsoft_outlook_access_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Access Token",
+      "type": "char"
+    },
+    "microsoft_outlook_access_token_expiration": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Access Token Expiration Timestamp",
+      "type": "integer"
+    },
+    "microsoft_outlook_uri": {
+      "help": "The URL to generate the authorization code from Outlook",
+      "readonly": true,
+      "required": false,
+      "string": "Authentication URI",
+      "type": "char"
+    },
+    "google_gmail_refresh_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Refresh Token",
+      "type": "char"
+    },
+    "google_gmail_access_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Access Token",
+      "type": "char"
+    },
+    "google_gmail_access_token_expiration": {
+      "readonly": false,
+      "required": false,
+      "string": "Access Token Expiration Timestamp",
+      "type": "integer"
+    },
+    "google_gmail_uri": {
+      "help": "The URL to generate the authorization code from Google",
+      "readonly": true,
+      "required": false,
+      "string": "URI",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "Not Confirmed"
+        ],
+        [
+          "done",
+          "Confirmed"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "server": {
+      "help": "Hostname or IP of the mail server",
+      "readonly": false,
+      "required": false,
+      "string": "Server Name",
+      "type": "char"
+    },
+    "port": {
+      "readonly": false,
+      "required": false,
+      "string": "Port",
+      "type": "integer"
+    },
+    "server_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "imap",
+          "IMAP Server"
+        ],
+        [
+          "pop",
+          "POP Server"
+        ],
+        [
+          "local",
+          "Local Server"
+        ],
+        [
+          "gmail",
+          "Gmail OAuth Authentication"
+        ],
+        [
+          "outlook",
+          "Outlook OAuth Authentication"
+        ]
+      ],
+      "string": "Server Type",
+      "type": "selection"
+    },
+    "server_type_info": {
+      "readonly": true,
+      "required": false,
+      "string": "Server Type Info",
+      "type": "text"
+    },
+    "is_ssl": {
+      "help": "Connections are encrypted with SSL/TLS through a dedicated port (default: IMAPS=993, POP3S=995)",
+      "readonly": false,
+      "required": false,
+      "string": "SSL/TLS",
+      "type": "boolean"
+    },
+    "attach": {
+      "help": "Whether attachments should be downloaded. If not enabled, incoming emails will be stripped of any attachments before being processed",
+      "readonly": false,
+      "required": false,
+      "string": "Keep Attachments",
+      "type": "boolean"
+    },
+    "original": {
+      "help": "Whether a full original copy of each email should be kept for reference and attached to each processed message. This will usually double the size of your message database.",
+      "readonly": false,
+      "required": false,
+      "string": "Keep Original",
+      "type": "boolean"
+    },
+    "date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Fetch Date",
+      "type": "datetime"
+    },
+    "error_date": {
+      "help": "Date of last failure, reset on success.",
+      "readonly": true,
+      "required": false,
+      "string": "Last Error Date",
+      "type": "datetime"
+    },
+    "error_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Error Message",
+      "type": "text"
+    },
+    "user": {
+      "readonly": false,
+      "required": false,
+      "string": "Username",
+      "type": "char"
+    },
+    "password": {
+      "readonly": false,
+      "required": false,
+      "string": "Password",
+      "type": "char"
+    },
+    "object_id": {
+      "help": "Process each incoming mail as part of a conversation corresponding to this document type. This will create new documents for new conversations, or attach follow-up emails to the existing conversations (documents).",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Create a New Record",
+      "type": "many2one"
+    },
+    "priority": {
+      "help": "Defines the order of processing, lower values mean higher priority",
+      "readonly": false,
+      "required": false,
+      "string": "Server Priority",
+      "type": "integer"
+    },
+    "message_ids": {
+      "readonly": true,
+      "relation": "mail.mail",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "configuration": {
+      "readonly": true,
+      "required": false,
+      "string": "Configuration",
+      "type": "text"
+    },
+    "script": {
+      "readonly": true,
+      "required": false,
+      "string": "Script",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

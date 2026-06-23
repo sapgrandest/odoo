@@ -1,0 +1,143 @@
+{
+  "model": "website_generator.request",
+  "name": "Website Generator Request",
+  "field_count": 22,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "target_url": {
+      "readonly": false,
+      "required": true,
+      "string": "URL to scrape",
+      "type": "char"
+    },
+    "additional_urls": {
+      "readonly": false,
+      "required": false,
+      "string": "Additional URLs",
+      "type": "char"
+    },
+    "page_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Number of pages",
+      "type": "integer"
+    },
+    "uuid": {
+      "readonly": false,
+      "required": false,
+      "string": "Output UUID generated from Website Scraper Server",
+      "type": "char"
+    },
+    "status": {
+      "readonly": false,
+      "required": false,
+      "string": "Status",
+      "type": "char"
+    },
+    "status_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Status Message",
+      "type": "char"
+    },
+    "version": {
+      "readonly": false,
+      "required": false,
+      "string": "Version",
+      "type": "char"
+    },
+    "website_id": {
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "notified": {
+      "readonly": false,
+      "required": false,
+      "string": "Notified",
+      "type": "boolean"
+    },
+    "import_website": {
+      "readonly": false,
+      "required": false,
+      "string": "Import website",
+      "type": "boolean"
+    },
+    "generation_progress": {
+      "readonly": false,
+      "required": false,
+      "string": "Generation Progress",
+      "type": "json"
+    },
+    "out_json_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Out Json Attachment",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "import_blogs": {
+      "readonly": false,
+      "required": false,
+      "string": "Import Blogs",
+      "type": "boolean"
+    },
+    "blog_platform": {
+      "readonly": false,
+      "required": false,
+      "string": "Blog Platform of the website",
+      "type": "char"
+    },
+    "import_products": {
+      "readonly": false,
+      "required": false,
+      "string": "Import Products",
+      "type": "boolean"
+    },
+    "ecommerce_platform": {
+      "readonly": false,
+      "required": false,
+      "string": "eCommerce Platform of the website to import",
+      "type": "char"
+    }
+  }
+}

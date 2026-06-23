@@ -1,0 +1,109 @@
+{
+  "model": "crm.lead2opportunity.partner.mass",
+  "name": "Convert Lead to Opportunity (in mass)",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "duplicated_lead_ids": {
+      "readonly": false,
+      "relation": "crm.lead",
+      "required": false,
+      "string": "Duplicated Lead",
+      "type": "many2many"
+    },
+    "duplicated_lead_ids_domain": {
+      "readonly": true,
+      "relation": "crm.lead",
+      "required": false,
+      "string": "Duplicated Lead Ids Domain",
+      "type": "many2many"
+    },
+    "force_assignment": {
+      "readonly": false,
+      "required": false,
+      "string": "Even if assigned",
+      "type": "boolean"
+    },
+    "lead_tomerge_ids": {
+      "readonly": false,
+      "relation": "crm.lead",
+      "required": false,
+      "string": "Active Leads",
+      "type": "many2many"
+    },
+    "link_to_matching_customer": {
+      "help": "Link these opportunities to customers by either finding a match or creating a new one.",
+      "readonly": false,
+      "required": false,
+      "string": "Link to matching customers",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "convert",
+          "Convert to Opportunities"
+        ],
+        [
+          "convert_and_merge",
+          "Convert & Merge with Opportunities"
+        ]
+      ],
+      "string": "Conversion Action",
+      "type": "selection"
+    },
+    "team_id": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Team",
+      "type": "many2one"
+    },
+    "user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salespersons",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

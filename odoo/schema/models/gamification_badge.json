@@ -1,0 +1,357 @@
+{
+  "model": "gamification.badge",
+  "name": "Gamification Badge",
+  "field_count": 47,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "image_1920": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "image_1024": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 1024",
+      "type": "binary"
+    },
+    "image_512": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 512",
+      "type": "binary"
+    },
+    "image_256": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 256",
+      "type": "binary"
+    },
+    "image_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 128",
+      "type": "binary"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Badge",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "html"
+    },
+    "level": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "bronze",
+          "Bronze"
+        ],
+        [
+          "silver",
+          "Silver"
+        ],
+        [
+          "gold",
+          "Gold"
+        ]
+      ],
+      "string": "Forum Badge Level",
+      "type": "selection"
+    },
+    "rule_auth": {
+      "help": "Who can grant this badge",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "everyone",
+          "Everyone"
+        ],
+        [
+          "users",
+          "A selected list of users"
+        ],
+        [
+          "having",
+          "People having some badges"
+        ],
+        [
+          "nobody",
+          "No one, assigned through challenges"
+        ]
+      ],
+      "string": "Allowance to Grant",
+      "type": "selection"
+    },
+    "rule_auth_user_ids": {
+      "help": "Only these people can give this badge",
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Authorized Users",
+      "type": "many2many"
+    },
+    "rule_auth_badge_ids": {
+      "help": "Only the people having these badges can give this badge",
+      "readonly": false,
+      "relation": "gamification.badge",
+      "required": false,
+      "string": "Required Badges",
+      "type": "many2many"
+    },
+    "rule_max": {
+      "help": "Check to set a monthly limit per person of sending this badge",
+      "readonly": false,
+      "required": false,
+      "string": "Monthly Limited Sending",
+      "type": "boolean"
+    },
+    "rule_max_number": {
+      "help": "The maximum number of time this badge can be sent per month per person.",
+      "readonly": false,
+      "required": false,
+      "string": "Limitation Number",
+      "type": "integer"
+    },
+    "challenge_ids": {
+      "readonly": false,
+      "relation": "gamification.challenge",
+      "required": false,
+      "string": "Reward of Challenges",
+      "type": "one2many"
+    },
+    "goal_definition_ids": {
+      "help": "The users that have succeeded these goals will receive automatically the badge.",
+      "readonly": false,
+      "relation": "gamification.goal.definition",
+      "required": false,
+      "string": "Rewarded by",
+      "type": "many2many"
+    },
+    "owner_ids": {
+      "help": "The list of instances of this badge granted to users",
+      "readonly": false,
+      "relation": "gamification.badge.user",
+      "required": false,
+      "string": "Owners",
+      "type": "one2many"
+    },
+    "granted_count": {
+      "help": "The number of time this badge has been received.",
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "integer"
+    },
+    "granted_users_count": {
+      "help": "The number of time this badge has been received by unique users.",
+      "readonly": true,
+      "required": false,
+      "string": "Number of users",
+      "type": "integer"
+    },
+    "unique_owner_ids": {
+      "help": "The list of unique users having received this badge.",
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Unique Owners",
+      "type": "many2many"
+    },
+    "stat_this_month": {
+      "help": "The number of time this badge has been received this month.",
+      "readonly": true,
+      "required": false,
+      "string": "Monthly total",
+      "type": "integer"
+    },
+    "stat_my": {
+      "help": "The number of time the current user has received this badge.",
+      "readonly": true,
+      "required": false,
+      "string": "My Total",
+      "type": "integer"
+    },
+    "stat_my_this_month": {
+      "help": "The number of time the current user has received this badge this month.",
+      "readonly": true,
+      "required": false,
+      "string": "My Monthly Total",
+      "type": "integer"
+    },
+    "stat_my_monthly_sending": {
+      "help": "The number of time the current user has sent this badge this month.",
+      "readonly": true,
+      "required": false,
+      "string": "My Monthly Sending Total",
+      "type": "integer"
+    },
+    "remaining_sending": {
+      "help": "If a maximum is set",
+      "readonly": true,
+      "required": false,
+      "string": "Remaining Sending Allowed",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "survey_ids": {
+      "readonly": false,
+      "relation": "survey.survey",
+      "required": false,
+      "string": "Survey Ids",
+      "type": "one2many"
+    },
+    "survey_id": {
+      "readonly": true,
+      "relation": "survey.survey",
+      "required": false,
+      "string": "Survey",
+      "type": "many2one"
+    },
+    "granted_employees_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Granted Employees Count",
+      "type": "integer"
+    }
+  }
+}

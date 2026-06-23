@@ -1,0 +1,266 @@
+{
+  "model": "crm.iap.lead.mining.request",
+  "name": "CRM Lead Mining Request",
+  "field_count": 32,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": true,
+      "string": "Request Number",
+      "type": "char"
+    },
+    "state": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "error",
+          "Error"
+        ],
+        [
+          "done",
+          "Done"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "lead_number": {
+      "readonly": false,
+      "required": true,
+      "string": "Number of Leads",
+      "type": "integer"
+    },
+    "search_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "companies",
+          "Companies"
+        ],
+        [
+          "people",
+          "Companies and their Contacts"
+        ]
+      ],
+      "string": "Target",
+      "type": "selection"
+    },
+    "error_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "credits",
+          "Insufficient Credits"
+        ],
+        [
+          "no_result",
+          "No Result"
+        ]
+      ],
+      "string": "Error Type",
+      "type": "selection"
+    },
+    "lead_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "lead",
+          "Leads"
+        ],
+        [
+          "opportunity",
+          "Opportunities"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "team_id": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Team",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesperson",
+      "type": "many2one"
+    },
+    "tag_ids": {
+      "readonly": false,
+      "relation": "crm.tag",
+      "required": false,
+      "string": "Tags",
+      "type": "many2many"
+    },
+    "lead_ids": {
+      "readonly": false,
+      "relation": "crm.lead",
+      "required": false,
+      "string": "Generated Lead / Opportunity",
+      "type": "one2many"
+    },
+    "lead_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of Generated Leads",
+      "type": "integer"
+    },
+    "filter_on_size": {
+      "readonly": false,
+      "required": false,
+      "string": "Filter on Size",
+      "type": "boolean"
+    },
+    "company_size_min": {
+      "readonly": false,
+      "required": false,
+      "string": "Size",
+      "type": "integer"
+    },
+    "company_size_max": {
+      "readonly": false,
+      "required": false,
+      "string": "Company Size Max",
+      "type": "integer"
+    },
+    "country_ids": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Countries",
+      "type": "many2many"
+    },
+    "state_ids": {
+      "readonly": false,
+      "relation": "res.country.state",
+      "required": false,
+      "string": "States",
+      "type": "many2many"
+    },
+    "available_state_ids": {
+      "readonly": true,
+      "relation": "res.country.state",
+      "required": false,
+      "string": "Available State",
+      "type": "one2many"
+    },
+    "industry_ids": {
+      "readonly": false,
+      "relation": "crm.iap.lead.industry",
+      "required": false,
+      "string": "Industries",
+      "type": "many2many"
+    },
+    "contact_number": {
+      "readonly": false,
+      "required": false,
+      "string": "Number of Contacts",
+      "type": "integer"
+    },
+    "contact_filter_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "role",
+          "Role"
+        ],
+        [
+          "seniority",
+          "Seniority"
+        ]
+      ],
+      "string": "Filter on",
+      "type": "selection"
+    },
+    "preferred_role_id": {
+      "readonly": false,
+      "relation": "crm.iap.lead.role",
+      "required": false,
+      "string": "Preferred Role",
+      "type": "many2one"
+    },
+    "role_ids": {
+      "readonly": false,
+      "relation": "crm.iap.lead.role",
+      "required": false,
+      "string": "Other Roles",
+      "type": "many2many"
+    },
+    "seniority_id": {
+      "readonly": false,
+      "relation": "crm.iap.lead.seniority",
+      "required": false,
+      "string": "Seniority",
+      "type": "many2one"
+    },
+    "lead_credits": {
+      "readonly": true,
+      "required": false,
+      "string": "Lead Credits",
+      "type": "char"
+    },
+    "lead_contacts_credits": {
+      "readonly": true,
+      "required": false,
+      "string": "Lead Contacts Credits",
+      "type": "char"
+    },
+    "lead_total_credits": {
+      "readonly": true,
+      "required": false,
+      "string": "Lead Total Credits",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

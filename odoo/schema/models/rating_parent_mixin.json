@@ -1,0 +1,51 @@
+{
+  "model": "rating.parent.mixin",
+  "name": "Rating Parent Mixin",
+  "field_count": 7,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "rating_percentage_satisfaction": {
+      "help": "Percentage of happy ratings",
+      "readonly": true,
+      "required": false,
+      "string": "Rating Satisfaction",
+      "type": "integer"
+    },
+    "rating_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Ratings",
+      "type": "integer"
+    },
+    "rating_avg": {
+      "readonly": true,
+      "required": false,
+      "string": "Average Rating",
+      "type": "float"
+    },
+    "rating_avg_percentage": {
+      "readonly": true,
+      "required": false,
+      "string": "Average Rating (%)",
+      "type": "float"
+    }
+  }
+}

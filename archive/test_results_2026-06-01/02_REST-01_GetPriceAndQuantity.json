@@ -1,0 +1,93 @@
+{
+  "timestamp": "2026-06-01T14:40:06.9405452+02:00",
+  "request": {
+    "body": {
+      "items": [
+        "ABS0215Q",
+        "FTROP570"
+      ]
+    },
+    "url": "https://api.profiauto.net/api/External/PriceAndQuantity/GetPriceAndQuantity",
+    "method": "POST",
+    "headers": {
+      "Authorization": "Bearer [MASQUÉ]",
+      "Content-Type": "application/json"
+    }
+  },
+  "response": {
+    "body": {
+      "AdditionalDataKeys": [],
+      "ErrorCode": 3,
+      "Error": "MissingDeliveryConfirmation",
+      "Currency": "EUR",
+      "Items": [
+        {
+          "NrMotonet": "ABS0215Q",
+          "DataSupplierNumber": "0206",
+          "ArticleNumber": "0215Q",
+          "RetailPrice": 2.7,
+          "Price": 1.54,
+          "VatRate": 0,
+          "Deposit": null,
+          "Replacement": null,
+          "Error": null,
+          "ErrorCode": 0,
+          "Availability": [
+            {
+              "Loc": "CHW",
+              "Stock": 0
+            }
+          ],
+          "Data": null
+        },
+        {
+          "NrMotonet": "FTROP570",
+          "DataSupplierNumber": "0256",
+          "ArticleNumber": "OP 570",
+          "RetailPrice": 3.62,
+          "Price": 2.06,
+          "VatRate": 0,
+          "Deposit": null,
+          "Replacement": null,
+          "Error": null,
+          "ErrorCode": 0,
+          "Availability": [
+            {
+              "Loc": "CHW",
+              "Stock": 26
+            }
+          ],
+          "Data": null
+        }
+      ]
+    },
+    "status": 200,
+    "headers": {
+      "Server": [
+        "nginx/1.28.3"
+      ],
+      "Date": [
+        "Mon, 01 Jun 2026 12:40:30 GMT"
+      ],
+      "Transfer-Encoding": [
+        "chunked"
+      ],
+      "Connection": [
+        "keep-alive"
+      ],
+      "Access-Control-Allow-Origin": [
+        "*"
+      ],
+      "Access-Control-Allow-Headers": [
+        "*"
+      ],
+      "Access-Control-Allow-Methods": [
+        "*"
+      ],
+      "Content-Type": [
+        "application/json; charset=utf-8"
+      ]
+    },
+    "elapsed_ms": 1067
+  }
+}

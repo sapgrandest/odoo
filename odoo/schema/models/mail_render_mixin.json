@@ -1,0 +1,32 @@
+{
+  "model": "mail.render.mixin",
+  "name": "Mail Render Mixin",
+  "field_count": 4,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "lang": {
+      "help": "Optional translation language (ISO code) to select when sending out an email. If not set, the main partner's language will be used. This should usually be a placeholder expression that provides the appropriate language, e.g. {{ object.partner_id.lang }}.",
+      "readonly": false,
+      "required": false,
+      "string": "Language",
+      "type": "char"
+    },
+    "render_model": {
+      "readonly": true,
+      "required": false,
+      "string": "Rendering Model",
+      "type": "char"
+    }
+  }
+}

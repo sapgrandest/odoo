@@ -1,0 +1,89 @@
+{
+  "model": "account.tax.unit",
+  "name": "Tax Unit",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "country_id": {
+      "help": "The country in which this tax unit is used to group your companies' tax reports declaration.",
+      "readonly": false,
+      "relation": "res.country",
+      "required": true,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "vat": {
+      "help": "The identifier to be used when submitting a report for this unit.",
+      "readonly": false,
+      "required": true,
+      "string": "Tax ID",
+      "type": "char"
+    },
+    "company_ids": {
+      "help": "Members of this unit",
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Companies",
+      "type": "many2many"
+    },
+    "main_company_id": {
+      "help": "Main company of this unit; the one actually reporting and paying the taxes.",
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Main Company",
+      "type": "many2one"
+    },
+    "fpos_synced": {
+      "help": "Technical field indicating whether Fiscal Positions exist for all companies in the unit",
+      "readonly": true,
+      "required": false,
+      "string": "Fiscal Positions Synchronised",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

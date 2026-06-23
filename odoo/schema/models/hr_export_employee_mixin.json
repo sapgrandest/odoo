@@ -1,0 +1,40 @@
+{
+  "model": "hr.export.employee.mixin",
+  "name": "HR Export Employee",
+  "field_count": 5,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "export_id": {
+      "readonly": false,
+      "relation": "hr.export.mixin",
+      "required": true,
+      "string": "Export",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "employee_id": {
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": true,
+      "string": "Employee",
+      "type": "many2one"
+    }
+  }
+}

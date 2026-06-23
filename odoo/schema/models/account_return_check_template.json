@@ -1,0 +1,163 @@
+{
+  "model": "account.return.check.template",
+  "name": "Account Return Check Template",
+  "field_count": 20,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Title",
+      "type": "char"
+    },
+    "code": {
+      "readonly": false,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "return_type": {
+      "readonly": false,
+      "relation": "account.return.type",
+      "required": true,
+      "string": "Tax Return/Audit",
+      "type": "many2one"
+    },
+    "country_ids": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Applicable Countries",
+      "type": "many2many"
+    },
+    "cycle_id": {
+      "readonly": false,
+      "relation": "account.return.audit.cycle",
+      "required": true,
+      "string": "Cycle",
+      "type": "many2one"
+    },
+    "type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "check",
+          "Check"
+        ],
+        [
+          "file",
+          "Upload Document"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "action_id": {
+      "help": "Overrides the default action based on the model and domain.",
+      "readonly": false,
+      "relation": "ir.actions.actions",
+      "required": false,
+      "string": "Action on Click",
+      "type": "many2one"
+    },
+    "additional_action_domain": {
+      "readonly": false,
+      "required": false,
+      "string": "Additional Action Domain",
+      "type": "char"
+    },
+    "additional_action_context": {
+      "readonly": false,
+      "required": false,
+      "string": "Additional Action Context",
+      "type": "char"
+    },
+    "additional_action_params": {
+      "readonly": false,
+      "required": false,
+      "string": "Additional Action Params",
+      "type": "char"
+    },
+    "activity_type": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Activities",
+      "type": "many2one"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "model": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "account.move.line",
+          "Journal Item"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "account.bank.statement.line",
+          "Bank Statement Line"
+        ],
+        [
+          "account.payment",
+          "Payments"
+        ]
+      ],
+      "string": "Model",
+      "type": "selection"
+    },
+    "domain": {
+      "readonly": false,
+      "required": false,
+      "string": "Domain",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

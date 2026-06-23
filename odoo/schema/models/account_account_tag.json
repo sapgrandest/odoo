@@ -1,0 +1,105 @@
+{
+  "model": "account.account.tag",
+  "name": "Account Tag",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Tag Name",
+      "type": "char"
+    },
+    "applicability": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "accounts",
+          "Accounts"
+        ],
+        [
+          "taxes",
+          "Taxes"
+        ],
+        [
+          "products",
+          "Products"
+        ]
+      ],
+      "string": "Applicability",
+      "type": "selection"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color Index",
+      "type": "integer"
+    },
+    "active": {
+      "help": "Set active to false to hide the Account Tag without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "country_id": {
+      "help": "Country for which this tag is available, when applied on taxes.",
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "report_expression_id": {
+      "readonly": true,
+      "relation": "account.report.expression",
+      "required": false,
+      "string": "Report Expression",
+      "type": "many2one"
+    },
+    "balance_negate": {
+      "readonly": true,
+      "required": false,
+      "string": "Balance Negate",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

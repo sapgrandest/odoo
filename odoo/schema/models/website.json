@@ -1,0 +1,829 @@
+{
+  "model": "website",
+  "name": "Website",
+  "field_count": 87,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Website Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "domain": {
+      "help": "E.g. https://www.mydomain.com",
+      "readonly": false,
+      "required": false,
+      "string": "Website Domain",
+      "type": "char"
+    },
+    "domain_punycode": {
+      "readonly": true,
+      "required": false,
+      "string": "Punycode Domain",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "language_ids": {
+      "readonly": false,
+      "relation": "res.lang",
+      "required": true,
+      "string": "Languages",
+      "type": "many2many"
+    },
+    "language_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of languages",
+      "type": "integer"
+    },
+    "default_lang_id": {
+      "readonly": false,
+      "relation": "res.lang",
+      "required": true,
+      "string": "Default Language",
+      "type": "many2one"
+    },
+    "auto_redirect_lang": {
+      "help": "Should users be redirected to their browser's language",
+      "readonly": false,
+      "required": false,
+      "string": "Autoredirect Language",
+      "type": "boolean"
+    },
+    "cookies_bar": {
+      "help": "Display a customizable cookies bar on your website.",
+      "readonly": false,
+      "required": false,
+      "string": "Cookies Bar",
+      "type": "boolean"
+    },
+    "configurator_done": {
+      "help": "True if configurator has been completed or ignored",
+      "readonly": false,
+      "required": false,
+      "string": "Configurator Done",
+      "type": "boolean"
+    },
+    "block_third_party_domains": {
+      "help": "Block 3rd-party domains that may track users (YouTube, Google Maps, etc.).",
+      "readonly": false,
+      "required": false,
+      "string": "Block 3rd-party domains",
+      "type": "boolean"
+    },
+    "custom_blocked_third_party_domains": {
+      "readonly": false,
+      "required": false,
+      "string": "User list of blocked 3rd-party domains",
+      "type": "text"
+    },
+    "blocked_third_party_domains": {
+      "readonly": true,
+      "required": false,
+      "string": "List of blocked 3rd-party domains",
+      "type": "text"
+    },
+    "logo": {
+      "help": "Display this logo on the website.",
+      "readonly": false,
+      "required": false,
+      "string": "Website Logo",
+      "type": "binary"
+    },
+    "social_default_image": {
+      "help": "If set, replaces the website logo as the default social share image.",
+      "readonly": false,
+      "required": false,
+      "string": "Default Social Share Image",
+      "type": "binary"
+    },
+    "has_social_default_image": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Social Default Image",
+      "type": "boolean"
+    },
+    "google_analytics_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Analytics Key",
+      "type": "char"
+    },
+    "google_search_console": {
+      "help": "Google key, or Enable to access first reply",
+      "readonly": false,
+      "required": false,
+      "string": "Google Search Console",
+      "type": "char"
+    },
+    "google_maps_api_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Maps API Key",
+      "type": "char"
+    },
+    "plausible_shared_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Plausible Shared Key",
+      "type": "char"
+    },
+    "plausible_site": {
+      "readonly": false,
+      "required": false,
+      "string": "Plausible Site",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "Public User",
+      "type": "many2one"
+    },
+    "cdn_activated": {
+      "readonly": false,
+      "required": false,
+      "string": "Content Delivery Network (CDN)",
+      "type": "boolean"
+    },
+    "cdn_url": {
+      "readonly": false,
+      "required": false,
+      "string": "CDN Base URL",
+      "type": "char"
+    },
+    "cdn_filters": {
+      "help": "URL matching those filters will be rewritten using the CDN Base URL",
+      "readonly": false,
+      "required": false,
+      "string": "CDN Filters",
+      "type": "text"
+    },
+    "partner_id": {
+      "help": "Partner-related data of the user",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Public Partner",
+      "type": "many2one"
+    },
+    "menu_id": {
+      "readonly": true,
+      "relation": "website.menu",
+      "required": false,
+      "string": "Main Menu",
+      "type": "many2one"
+    },
+    "homepage_url": {
+      "help": "E.g. /contactus or /shop",
+      "readonly": false,
+      "required": false,
+      "string": "Homepage Url",
+      "type": "char"
+    },
+    "custom_code_head": {
+      "readonly": false,
+      "required": false,
+      "string": "Custom <head> code",
+      "type": "html"
+    },
+    "custom_code_footer": {
+      "readonly": false,
+      "required": false,
+      "string": "Custom end of <body> code",
+      "type": "html"
+    },
+    "robots_txt": {
+      "readonly": false,
+      "required": false,
+      "string": "Robots.txt",
+      "type": "html"
+    },
+    "favicon": {
+      "help": "This field holds the image used to display a favicon on the website.",
+      "readonly": false,
+      "required": false,
+      "string": "Website Favicon",
+      "type": "binary"
+    },
+    "theme_id": {
+      "help": "Installed theme",
+      "readonly": false,
+      "relation": "ir.module.module",
+      "required": false,
+      "string": "Theme",
+      "type": "many2one"
+    },
+    "specific_user_account": {
+      "help": "If True, new accounts will be associated to the current website",
+      "readonly": false,
+      "required": false,
+      "string": "Specific User Account",
+      "type": "boolean"
+    },
+    "auth_signup_uninvited": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "b2b",
+          "On invitation"
+        ],
+        [
+          "b2c",
+          "Free sign up"
+        ]
+      ],
+      "string": "Customer Account",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "crm_default_team_id": {
+      "help": "Default Sales Team for new leads created through the Contact Us form.",
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Default Sales Teams",
+      "type": "many2one"
+    },
+    "crm_default_user_id": {
+      "help": "Default salesperson for new leads created through the Contact Us form.",
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Default Salesperson",
+      "type": "many2one"
+    },
+    "channel_id": {
+      "readonly": false,
+      "relation": "im_livechat.channel",
+      "required": false,
+      "string": "Website Live Chat Channel",
+      "type": "many2one"
+    },
+    "salesperson_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesperson",
+      "type": "many2one"
+    },
+    "salesteam_id": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Team",
+      "type": "many2one"
+    },
+    "show_line_subtotals_tax_selection": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "tax_excluded",
+          "Tax Excluded"
+        ],
+        [
+          "tax_included",
+          "Tax Included"
+        ]
+      ],
+      "string": "Line Subtotals Tax Display",
+      "type": "selection"
+    },
+    "add_to_cart_action": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "stay",
+          "Stay on Product Page"
+        ],
+        [
+          "go_to_cart",
+          "Go to cart"
+        ]
+      ],
+      "string": "Add To Cart Action",
+      "type": "selection"
+    },
+    "account_on_checkout": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "optional",
+          "Optional"
+        ],
+        [
+          "disabled",
+          "Disabled (buy as guest)"
+        ],
+        [
+          "mandatory",
+          "Mandatory (no guest checkout)"
+        ]
+      ],
+      "string": "Customer Accounts",
+      "type": "selection"
+    },
+    "cart_recovery_mail_template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Cart Recovery Email",
+      "type": "many2one"
+    },
+    "contact_us_link_url": {
+      "readonly": false,
+      "required": false,
+      "string": "Link URL",
+      "type": "char"
+    },
+    "cart_abandoned_delay": {
+      "readonly": false,
+      "required": false,
+      "string": "Abandoned Delay",
+      "type": "float"
+    },
+    "send_abandoned_cart_email": {
+      "readonly": false,
+      "required": false,
+      "string": "Send email to customers who abandoned their cart.",
+      "type": "boolean"
+    },
+    "send_abandoned_cart_email_activation_time": {
+      "readonly": true,
+      "required": false,
+      "string": "Time when the 'Send abandoned cart email' feature was activated.",
+      "type": "datetime"
+    },
+    "send_order_rating_emails": {
+      "readonly": false,
+      "required": false,
+      "string": "Request ratings",
+      "type": "boolean"
+    },
+    "rating_email_delay": {
+      "readonly": false,
+      "required": false,
+      "string": "Days After Order to Send Rating Email",
+      "type": "integer"
+    },
+    "rating_email_template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Rating Email Template",
+      "type": "many2one"
+    },
+    "shop_page_container": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "regular",
+          "Regular"
+        ],
+        [
+          "fluid",
+          "Full-width"
+        ]
+      ],
+      "string": "Shop Page Container",
+      "type": "selection"
+    },
+    "shop_ppg": {
+      "readonly": false,
+      "required": false,
+      "string": "Number of products in the grid on the shop",
+      "type": "integer"
+    },
+    "shop_ppr": {
+      "readonly": false,
+      "required": false,
+      "string": "Number of grid columns on the shop",
+      "type": "integer"
+    },
+    "shop_gap": {
+      "readonly": false,
+      "required": false,
+      "string": "Grid-gap on the shop",
+      "type": "char"
+    },
+    "shop_opt_products_design_classes": {
+      "help": "CSS class for shop products design",
+      "readonly": false,
+      "required": false,
+      "string": "Shop Design Class",
+      "type": "char"
+    },
+    "shop_default_sort": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "website_sequence asc",
+          "Featured"
+        ],
+        [
+          "publish_date desc",
+          "Newest Arrivals"
+        ],
+        [
+          "name asc",
+          "Name (A-Z)"
+        ],
+        [
+          "list_price asc",
+          "Price - Low to High"
+        ],
+        [
+          "list_price desc",
+          "Price - High to Low"
+        ]
+      ],
+      "string": "Shop Default Sort",
+      "type": "selection"
+    },
+    "shop_extra_field_ids": {
+      "readonly": false,
+      "relation": "website.sale.extra.field",
+      "required": false,
+      "string": "E-Commerce Extra Fields",
+      "type": "one2many"
+    },
+    "product_page_container": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "unset",
+          "Unset"
+        ],
+        [
+          "regular",
+          "Regular"
+        ],
+        [
+          "fluid",
+          "Full-width"
+        ]
+      ],
+      "string": "Product Page Container",
+      "type": "selection"
+    },
+    "product_page_cols_order": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "regular",
+          "Regular order"
+        ],
+        [
+          "inverse",
+          "Inverse order"
+        ]
+      ],
+      "string": "Product Page main columns order",
+      "type": "selection"
+    },
+    "product_page_image_layout": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "carousel",
+          "Carousel"
+        ],
+        [
+          "grid",
+          "Grid"
+        ]
+      ],
+      "string": "Product Page Image Layout",
+      "type": "selection"
+    },
+    "product_page_image_width": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "none",
+          "Hidden"
+        ],
+        [
+          "33_pc",
+          "33 %"
+        ],
+        [
+          "50_pc",
+          "50 %"
+        ],
+        [
+          "66_pc",
+          "66 %"
+        ],
+        [
+          "100_pc",
+          "100 %"
+        ]
+      ],
+      "string": "Product Page Image Width",
+      "type": "selection"
+    },
+    "product_page_image_spacing": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "none",
+          "None"
+        ],
+        [
+          "small",
+          "Small"
+        ],
+        [
+          "medium",
+          "Medium"
+        ],
+        [
+          "big",
+          "Big"
+        ]
+      ],
+      "string": "Product Page Image Spacing",
+      "type": "selection"
+    },
+    "product_page_image_roundness": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "none",
+          "None"
+        ],
+        [
+          "small",
+          "Small"
+        ],
+        [
+          "medium",
+          "Medium"
+        ],
+        [
+          "big",
+          "Big"
+        ]
+      ],
+      "string": "Product Page Image Roundness",
+      "type": "selection"
+    },
+    "product_page_image_ratio": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "auto",
+          "Auto"
+        ],
+        [
+          "21_9",
+          "Wider (21/9)"
+        ],
+        [
+          "16_9",
+          "Wide (16/9)"
+        ],
+        [
+          "4_3",
+          "Landscape (4/3)"
+        ],
+        [
+          "6_5",
+          "Horizontal (6/5)"
+        ],
+        [
+          "1_1",
+          "Default (1/1)"
+        ],
+        [
+          "4_5",
+          "Portrait (4/5)"
+        ],
+        [
+          "2_3",
+          "Vertical (2/3)"
+        ]
+      ],
+      "string": "Product Page Image Ratio",
+      "type": "selection"
+    },
+    "product_page_image_ratio_mobile": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "auto",
+          "Auto"
+        ],
+        [
+          "21_9",
+          "Wider (21/9)"
+        ],
+        [
+          "16_9",
+          "Wide (16/9)"
+        ],
+        [
+          "4_3",
+          "Landscape (4/3)"
+        ],
+        [
+          "6_5",
+          "Horizontal (6/5)"
+        ],
+        [
+          "1_1",
+          "Default (1/1)"
+        ],
+        [
+          "4_5",
+          "Portrait (4/5)"
+        ],
+        [
+          "2_3",
+          "Vertical (2/3)"
+        ]
+      ],
+      "string": "Product Page Image Ratio Mobile",
+      "type": "selection"
+    },
+    "ecommerce_access": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "everyone",
+          "All users"
+        ],
+        [
+          "logged_in",
+          "Logged in users"
+        ]
+      ],
+      "string": "Ecommerce Access",
+      "type": "selection"
+    },
+    "product_page_grid_columns": {
+      "readonly": false,
+      "required": false,
+      "string": "Product Page Grid Columns",
+      "type": "integer"
+    },
+    "wishlist_opt_products_design_classes": {
+      "help": "CSS class for wishlist page design",
+      "readonly": false,
+      "required": false,
+      "string": "Wishlist Page Design Class",
+      "type": "char"
+    },
+    "wishlist_grid_columns": {
+      "help": "Number of columns to display on the wishlist page",
+      "readonly": false,
+      "required": false,
+      "string": "Wishlist Grid Columns",
+      "type": "integer"
+    },
+    "wishlist_mobile_columns": {
+      "help": "Number of columns to display on mobile for the wishlist page (1 or 2)",
+      "readonly": false,
+      "required": false,
+      "string": "Wishlist Mobile Columns",
+      "type": "integer"
+    },
+    "wishlist_gap": {
+      "help": "Gap between products on the wishlist page",
+      "readonly": false,
+      "required": false,
+      "string": "Wishlist Grid Gap",
+      "type": "char"
+    },
+    "prevent_sale": {
+      "readonly": false,
+      "required": false,
+      "string": "Hide Add To Cart",
+      "type": "boolean"
+    },
+    "prevent_sale_for": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "zero_price",
+          "0 price products"
+        ],
+        [
+          "specific_categories",
+          "Specific categories"
+        ]
+      ],
+      "string": "Prevent Sale For",
+      "type": "selection"
+    },
+    "prevent_sale_for_categories": {
+      "readonly": false,
+      "relation": "product.public.category",
+      "required": false,
+      "string": "Categories",
+      "type": "many2many"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Default Currency",
+      "type": "many2one"
+    },
+    "pricelist_ids": {
+      "readonly": true,
+      "relation": "product.pricelist",
+      "required": false,
+      "string": "Price list available for this Ecommerce/Website",
+      "type": "one2many"
+    },
+    "confirmation_email_template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Confirmation Email Template",
+      "type": "many2one"
+    },
+    "restricted_uom_ids": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Restrict Packagings",
+      "type": "many2many"
+    },
+    "warehouse_id": {
+      "readonly": false,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    }
+  }
+}

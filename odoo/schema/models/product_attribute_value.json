@@ -1,0 +1,157 @@
+{
+  "model": "product.attribute.value",
+  "name": "Attribute Value",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Value",
+      "type": "char"
+    },
+    "sequence": {
+      "help": "Determine the display order",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "attribute_id": {
+      "help": "The attribute cannot be changed once the value is used on at least one product.",
+      "readonly": false,
+      "relation": "product.attribute",
+      "required": true,
+      "string": "Attribute",
+      "type": "many2one"
+    },
+    "pav_attribute_line_ids": {
+      "readonly": false,
+      "relation": "product.template.attribute.line",
+      "required": false,
+      "string": "Lines",
+      "type": "many2many"
+    },
+    "default_extra_price": {
+      "readonly": false,
+      "required": false,
+      "string": "Default Extra Price",
+      "type": "float"
+    },
+    "is_custom": {
+      "help": "Allow customers to set their own value",
+      "readonly": false,
+      "required": false,
+      "string": "Free text",
+      "type": "boolean"
+    },
+    "html_color": {
+      "help": "Here you can set a specific HTML color index (e.g. #ff0000) to display the color if the attribute type is 'Color'.",
+      "readonly": false,
+      "required": false,
+      "string": "Color",
+      "type": "char"
+    },
+    "display_type": {
+      "help": "The display type used in the Product Configurator.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "radio",
+          "Radio"
+        ],
+        [
+          "pills",
+          "Pills"
+        ],
+        [
+          "select",
+          "Select"
+        ],
+        [
+          "color",
+          "Color"
+        ],
+        [
+          "multi",
+          "Multi-checkbox"
+        ],
+        [
+          "image",
+          "Image"
+        ]
+      ],
+      "string": "Display Type",
+      "type": "selection"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color Index",
+      "type": "integer"
+    },
+    "image": {
+      "help": "You can upload an image that will be used as the color of the attribute value.",
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "is_used_on_products": {
+      "readonly": true,
+      "required": false,
+      "string": "Used on Products",
+      "type": "boolean"
+    },
+    "default_extra_price_changed": {
+      "readonly": true,
+      "required": false,
+      "string": "Default Extra Price Changed",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,235 @@
+{
+  "model": "ir.attachment",
+  "name": "Attachment",
+  "field_count": 35,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "res_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Resource Name",
+      "type": "char"
+    },
+    "res_model": {
+      "readonly": false,
+      "required": false,
+      "string": "Resource Model",
+      "type": "char"
+    },
+    "res_field": {
+      "readonly": false,
+      "required": false,
+      "string": "Resource Field",
+      "type": "char"
+    },
+    "res_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Resource ID",
+      "type": "many2one_reference"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "type": {
+      "help": "You can either upload a file from your computer or copy/paste an internet link to your file.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "url",
+          "URL"
+        ],
+        [
+          "binary",
+          "File"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "url": {
+      "readonly": false,
+      "required": false,
+      "string": "Url",
+      "type": "char"
+    },
+    "public": {
+      "readonly": false,
+      "required": false,
+      "string": "Is public document",
+      "type": "boolean"
+    },
+    "access_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Access Token",
+      "type": "char"
+    },
+    "raw": {
+      "readonly": false,
+      "required": false,
+      "string": "File Content (raw)",
+      "type": "binary"
+    },
+    "db_datas": {
+      "readonly": false,
+      "required": false,
+      "string": "Database Data",
+      "type": "binary"
+    },
+    "store_fname": {
+      "readonly": false,
+      "required": false,
+      "string": "Stored Filename",
+      "type": "char"
+    },
+    "file_size": {
+      "readonly": true,
+      "required": false,
+      "string": "File Size",
+      "type": "integer"
+    },
+    "checksum": {
+      "readonly": true,
+      "required": false,
+      "string": "Checksum/SHA1",
+      "type": "char"
+    },
+    "mimetype": {
+      "readonly": true,
+      "required": false,
+      "string": "Mime Type",
+      "type": "char"
+    },
+    "index_content": {
+      "readonly": true,
+      "required": false,
+      "string": "Indexed Content",
+      "type": "text"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "local_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment URL",
+      "type": "char"
+    },
+    "image_src": {
+      "readonly": true,
+      "required": false,
+      "string": "Image Src",
+      "type": "char"
+    },
+    "image_width": {
+      "readonly": true,
+      "required": false,
+      "string": "Image Width",
+      "type": "integer"
+    },
+    "image_height": {
+      "readonly": true,
+      "required": false,
+      "string": "Image Height",
+      "type": "integer"
+    },
+    "original_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Original (unoptimized, unresized) attachment",
+      "type": "many2one"
+    },
+    "thumbnail": {
+      "readonly": false,
+      "required": false,
+      "string": "Thumbnail",
+      "type": "binary"
+    },
+    "has_thumbnail": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Thumbnail",
+      "type": "boolean"
+    },
+    "voice_ids": {
+      "readonly": false,
+      "relation": "discuss.voice.metadata",
+      "required": false,
+      "string": "Voice",
+      "type": "one2many"
+    },
+    "key": {
+      "readonly": false,
+      "required": false,
+      "string": "Key",
+      "type": "char"
+    },
+    "website_id": {
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "theme_template_id": {
+      "readonly": false,
+      "relation": "theme.ir.attachment",
+      "required": false,
+      "string": "Theme Template",
+      "type": "many2one"
+    }
+  }
+}

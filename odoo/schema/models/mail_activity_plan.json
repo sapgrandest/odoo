@@ -1,0 +1,256 @@
+{
+  "model": "mail.activity.plan",
+  "name": "Activity Plan",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "template_ids": {
+      "readonly": false,
+      "relation": "mail.activity.plan.template",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "res_model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": true,
+      "string": "Applies to",
+      "type": "many2one"
+    },
+    "res_model": {
+      "help": "Specify a model if the activity should be specific to a model and not available when managing activities for other models.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "account.account",
+          "Account"
+        ],
+        [
+          "account.return",
+          "Accounting Return"
+        ],
+        [
+          "hr.applicant",
+          "Applicant"
+        ],
+        [
+          "appointment.type",
+          "Appointment Type"
+        ],
+        [
+          "res.partner.bank",
+          "Bank Account"
+        ],
+        [
+          "account.online.link",
+          "Bank Connection"
+        ],
+        [
+          "account.bank.statement.line",
+          "Bank Statement Line"
+        ],
+        [
+          "account.batch.payment",
+          "Batch Payment"
+        ],
+        [
+          "calendar.event",
+          "Calendar Event"
+        ],
+        [
+          "res.partner",
+          "Contact"
+        ],
+        [
+          "hr.department",
+          "Department"
+        ],
+        [
+          "hr.employee",
+          "Employee"
+        ],
+        [
+          "hr.version",
+          "Employee Record"
+        ],
+        [
+          "helpdesk.ticket",
+          "Helpdesk Ticket"
+        ],
+        [
+          "hr.job",
+          "Job Position"
+        ],
+        [
+          "account.journal",
+          "Journal"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "knowledge.article",
+          "Knowledge Article"
+        ],
+        [
+          "crm.lead",
+          "Lead"
+        ],
+        [
+          "stock.lot",
+          "Lot/Serial"
+        ],
+        [
+          "account.payment",
+          "Payment"
+        ],
+        [
+          "product.pricelist",
+          "Pricelist"
+        ],
+        [
+          "product.template",
+          "Product"
+        ],
+        [
+          "product.product",
+          "Product Variant"
+        ],
+        [
+          "project.project",
+          "Project"
+        ],
+        [
+          "project.update",
+          "Project Update"
+        ],
+        [
+          "purchase.order",
+          "Purchase Order"
+        ],
+        [
+          "sale.order",
+          "Sales Order"
+        ],
+        [
+          "ir.cron",
+          "Scheduled Action"
+        ],
+        [
+          "ir.actions.server",
+          "Server Action"
+        ],
+        [
+          "sign.request",
+          "Signature Request"
+        ],
+        [
+          "survey.survey",
+          "Survey"
+        ],
+        [
+          "survey.user_input",
+          "Survey User Input"
+        ],
+        [
+          "project.task",
+          "Task"
+        ],
+        [
+          "stock.picking",
+          "Transfer"
+        ],
+        [
+          "mail.activity.mixin",
+          "Activity Mixin"
+        ]
+      ],
+      "string": "Model",
+      "type": "selection"
+    },
+    "steps_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Steps Count",
+      "type": "integer"
+    },
+    "has_user_on_demand": {
+      "readonly": true,
+      "required": false,
+      "string": "Has on demand responsible",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "department_id": {
+      "readonly": false,
+      "relation": "hr.department",
+      "required": false,
+      "string": "Department",
+      "type": "many2one"
+    },
+    "department_assignable": {
+      "readonly": true,
+      "required": false,
+      "string": "Department Assignable",
+      "type": "boolean"
+    }
+  }
+}

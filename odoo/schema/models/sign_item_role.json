@@ -1,0 +1,143 @@
+{
+  "model": "sign.item.role",
+  "name": "Signature Item Role",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "default": {
+      "readonly": false,
+      "required": true,
+      "string": "Default",
+      "type": "boolean"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Default order",
+      "type": "integer"
+    },
+    "auth_method": {
+      "help": "Force the signatory to identify using a second authentication method",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "sms",
+          "Unique Code via SMS"
+        ]
+      ],
+      "string": "Extra Authentication Step",
+      "type": "selection"
+    },
+    "change_authorized": {
+      "help": "If checked, recipient of a document with this role can be changed after having sent the request. Useful to replace a signatory who is out of office, etc.",
+      "readonly": false,
+      "required": false,
+      "string": "Change Authorized",
+      "type": "boolean"
+    },
+    "assign_to": {
+      "help": "assign the current user or the customer as a signer by default",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Assign to",
+      "type": "many2one"
+    },
+    "signer_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "fixed",
+          "Fixed Signer"
+        ],
+        [
+          "linked_field",
+          "Linked Field"
+        ]
+      ],
+      "string": "Signer Type",
+      "type": "selection"
+    },
+    "sign_action_partner_id": {
+      "help": "Partner used when this role is configured in server actions.",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Automated Action Partner",
+      "type": "many2one"
+    },
+    "ir_actions_server_id": {
+      "help": "Automated action that configures this role when used in server actions.",
+      "readonly": false,
+      "relation": "ir.actions.server",
+      "required": false,
+      "string": "Automated Action",
+      "type": "many2one"
+    },
+    "linked_field_id": {
+      "readonly": false,
+      "relation": "ir.model.fields",
+      "required": false,
+      "string": "Linked Partner Field",
+      "type": "many2one"
+    },
+    "item_ids": {
+      "readonly": false,
+      "relation": "sign.item",
+      "required": false,
+      "string": "Signature Items",
+      "type": "one2many"
+    },
+    "auth_credits_remaining": {
+      "readonly": true,
+      "required": false,
+      "string": "Credits",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

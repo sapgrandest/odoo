@@ -1,0 +1,505 @@
+{
+  "model": "crm.team",
+  "name": "Sales Team",
+  "field_count": 69,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Sales Team",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "active": {
+      "help": "If the active field is set to false, it will allow you to hide the Sales Team without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Team Leader",
+      "type": "many2one"
+    },
+    "is_membership_multi": {
+      "help": "If True, users may belong to several sales teams. Otherwise membership is limited to a single sales team.",
+      "readonly": true,
+      "required": false,
+      "string": "Multiple Memberships Allowed",
+      "type": "boolean"
+    },
+    "member_ids": {
+      "help": "Users assigned to this team.",
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salespersons",
+      "type": "many2many"
+    },
+    "member_company_ids": {
+      "help": "UX: Limit to team company or all if no company",
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Member Company",
+      "type": "many2many"
+    },
+    "member_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Membership Issue Warning",
+      "type": "text"
+    },
+    "crm_team_member_ids": {
+      "help": "Add members to automatically assign their documents to this sales team.",
+      "readonly": false,
+      "relation": "crm.team.member",
+      "required": false,
+      "string": "Sales Team Members",
+      "type": "one2many"
+    },
+    "crm_team_member_all_ids": {
+      "readonly": false,
+      "relation": "crm.team.member",
+      "required": false,
+      "string": "Sales Team Members (incl. inactive)",
+      "type": "one2many"
+    },
+    "color": {
+      "help": "The color of the channel",
+      "readonly": false,
+      "required": false,
+      "string": "Color Index",
+      "type": "integer"
+    },
+    "favorite_user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Favorite Members",
+      "type": "many2many"
+    },
+    "is_favorite": {
+      "help": "Favorite teams to display them in the dashboard and access them easily.",
+      "readonly": false,
+      "required": false,
+      "string": "Show on dashboard",
+      "type": "boolean"
+    },
+    "dashboard_button_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Dashboard Button",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "alias_id": {
+      "help": "The email address associated with this channel. New emails received will automatically create new leads assigned to the channel.",
+      "readonly": false,
+      "relation": "mail.alias",
+      "required": true,
+      "string": "Alias",
+      "type": "many2one"
+    },
+    "alias_name": {
+      "help": "The name of the email alias, e.g. 'jobs' if you want to catch emails for <jobs@example.odoo.com>",
+      "readonly": false,
+      "required": false,
+      "string": "Alias Name",
+      "type": "char"
+    },
+    "alias_domain_id": {
+      "readonly": false,
+      "relation": "mail.alias.domain",
+      "required": false,
+      "string": "Alias Domain",
+      "type": "many2one"
+    },
+    "alias_domain": {
+      "help": "Email domain e.g. 'example.com' in 'odoo@example.com'",
+      "readonly": true,
+      "required": false,
+      "string": "Alias Domain Name",
+      "type": "char"
+    },
+    "alias_defaults": {
+      "help": "A Python dictionary that will be evaluated to provide default values when creating new records for this alias.",
+      "readonly": true,
+      "required": true,
+      "string": "Default Values",
+      "type": "text"
+    },
+    "alias_email": {
+      "readonly": true,
+      "required": false,
+      "string": "Email Alias",
+      "type": "char"
+    },
+    "use_leads": {
+      "help": "Check this box to filter and qualify incoming requests as leads before converting them into opportunities and assigning them to a salesperson.",
+      "readonly": false,
+      "required": false,
+      "string": "Leads",
+      "type": "boolean"
+    },
+    "use_opportunities": {
+      "help": "Check this box to manage a presales process with opportunities.",
+      "readonly": false,
+      "required": false,
+      "string": "Pipeline",
+      "type": "boolean"
+    },
+    "alias_full_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Alias Email",
+      "type": "char"
+    },
+    "assignment_enabled": {
+      "readonly": true,
+      "required": false,
+      "string": "Lead Assign",
+      "type": "boolean"
+    },
+    "assignment_auto_enabled": {
+      "readonly": true,
+      "required": false,
+      "string": "Auto Assignment",
+      "type": "boolean"
+    },
+    "assignment_optout": {
+      "readonly": false,
+      "required": false,
+      "string": "Pause auto assignment",
+      "type": "boolean"
+    },
+    "assignment_max": {
+      "help": "Monthly average leads capacity for all salesmen belonging to the team",
+      "readonly": true,
+      "required": false,
+      "string": "Lead Average Capacity",
+      "type": "integer"
+    },
+    "assignment_domain": {
+      "help": "Additional filter domain when fetching unassigned leads to allocate to the team.",
+      "readonly": false,
+      "required": false,
+      "string": "Assignment Domain",
+      "type": "char"
+    },
+    "show_assignment_max": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Assignment Max",
+      "type": "boolean"
+    },
+    "lead_unassigned_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Unassigned Leads",
+      "type": "integer"
+    },
+    "lead_all_assigned_month_count": {
+      "help": "Number of leads and opportunities assigned this last month.",
+      "readonly": true,
+      "required": false,
+      "string": "# Leads/Opps assigned this month",
+      "type": "integer"
+    },
+    "lead_all_assigned_month_exceeded": {
+      "help": "True if the monthly lead assignment count is greater than the maximum assignment limit, false otherwise.",
+      "readonly": true,
+      "required": false,
+      "string": "Maximum Leads To Assign",
+      "type": "boolean"
+    },
+    "opportunity_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of assigned opportunities",
+      "type": "integer"
+    },
+    "lead_properties_definition": {
+      "readonly": false,
+      "required": false,
+      "string": "Lead Properties",
+      "type": "properties_definition"
+    },
+    "invoiced": {
+      "help": "Invoice revenue for the current month. This is the amount the sales channel has invoiced this month. It is used to compute the progression ratio of the current and target revenue on the kanban view.",
+      "readonly": true,
+      "required": false,
+      "string": "Invoiced This Month",
+      "type": "float"
+    },
+    "invoiced_target": {
+      "help": "Revenue Target for the current month (untaxed total of paid invoices).",
+      "readonly": false,
+      "required": false,
+      "string": "Invoicing Target",
+      "type": "float"
+    },
+    "sale_order_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Sale Orders",
+      "type": "integer"
+    },
+    "website_ids": {
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Websites",
+      "type": "one2many"
+    },
+    "abandoned_carts_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount of Abandoned Carts",
+      "type": "integer"
+    },
+    "abandoned_carts_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of Abandoned Carts",
+      "type": "integer"
+    },
+    "alias_model_id": {
+      "help": "The model (Odoo Document Kind) to which this alias corresponds. Any incoming email that does not reply to an existing record will cause the creation of a new record of this model (e.g. a Project Task)",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": true,
+      "string": "Aliased Model",
+      "type": "many2one"
+    },
+    "alias_force_thread_id": {
+      "help": "Optional ID of a thread (record) to which all incoming messages will be attached, even if they did not reply to it. If set, this will disable the creation of new records completely.",
+      "readonly": false,
+      "required": false,
+      "string": "Record Thread ID",
+      "type": "integer"
+    },
+    "alias_parent_model_id": {
+      "help": "Parent model holding the alias. The model holding the alias reference is not necessarily the model given by alias_model_id (example: project (parent_model) and task (model))",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Parent Model",
+      "type": "many2one"
+    },
+    "alias_parent_thread_id": {
+      "help": "ID of the parent record holding the alias (example: project holding the task creation alias)",
+      "readonly": false,
+      "required": false,
+      "string": "Parent Record Thread ID",
+      "type": "integer"
+    },
+    "alias_contact": {
+      "help": "Policy to post a message on the document using the mailgateway.\n- everyone: everyone can post\n- partners: only authenticated partners\n- followers: only followers of the related document or members of following channels\n",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "everyone",
+          "Everyone"
+        ],
+        [
+          "partners",
+          "Authenticated Partners"
+        ],
+        [
+          "followers",
+          "Followers only"
+        ],
+        [
+          "employees",
+          "Authenticated Employees"
+        ]
+      ],
+      "string": "Alias Contact Security",
+      "type": "selection"
+    },
+    "alias_incoming_local": {
+      "readonly": false,
+      "required": false,
+      "string": "Local-part based incoming detection",
+      "type": "boolean"
+    },
+    "alias_bounced_content": {
+      "help": "If set, this content will automatically be sent out to unauthorized users instead of the default message.",
+      "readonly": false,
+      "required": false,
+      "string": "Custom Bounced Message",
+      "type": "html"
+    },
+    "alias_status": {
+      "help": "Alias status assessed on the last message received.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_tested",
+          "Not Tested"
+        ],
+        [
+          "valid",
+          "Valid"
+        ],
+        [
+          "invalid",
+          "Invalid"
+        ]
+      ],
+      "string": "Alias Status",
+      "type": "selection"
+    }
+  }
+}

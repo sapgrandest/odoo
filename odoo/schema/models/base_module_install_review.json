@@ -1,0 +1,65 @@
+{
+  "model": "base.module.install.review",
+  "name": "Module Activation Review",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "module_id": {
+      "readonly": true,
+      "relation": "ir.module.module",
+      "required": true,
+      "string": "Module",
+      "type": "many2one"
+    },
+    "module_ids": {
+      "readonly": true,
+      "relation": "ir.module.module",
+      "required": false,
+      "string": "Depending Apps",
+      "type": "many2many"
+    },
+    "modules_description": {
+      "readonly": true,
+      "required": false,
+      "string": "Modules Description",
+      "type": "html"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

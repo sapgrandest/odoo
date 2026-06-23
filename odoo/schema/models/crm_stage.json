@@ -1,0 +1,104 @@
+{
+  "model": "crm.stage",
+  "name": "CRM Stage",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Stage Name",
+      "type": "char"
+    },
+    "sequence": {
+      "help": "Used to order stages. Lower is better.",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "is_won": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Won Stage?",
+      "type": "boolean"
+    },
+    "rotting_threshold_days": {
+      "help": "Highlight opportunities that haven't been updated for this many days.         Set to 0 to disable. Changing this parameter will not affect the rotting status/date of resources last updated before this change.",
+      "readonly": false,
+      "required": false,
+      "string": "Days to rot",
+      "type": "integer"
+    },
+    "requirements": {
+      "help": "Enter here the internal requirements for this stage (ex: Offer sent to customer). It will appear as a tooltip over the stage's name.",
+      "readonly": false,
+      "required": false,
+      "string": "Requirements",
+      "type": "text"
+    },
+    "team_ids": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Teams",
+      "type": "many2many"
+    },
+    "fold": {
+      "help": "This stage is folded in the kanban view when there are no records in that stage to display.",
+      "readonly": false,
+      "required": false,
+      "string": "Folded in Pipeline",
+      "type": "boolean"
+    },
+    "team_count": {
+      "readonly": true,
+      "required": false,
+      "string": "team_count",
+      "type": "integer"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

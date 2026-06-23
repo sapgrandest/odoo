@@ -1,0 +1,186 @@
+{
+  "model": "account.financial.year.op",
+  "name": "Opening Balance of Financial Year",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "opening_move_posted": {
+      "readonly": true,
+      "required": false,
+      "string": "Opening Move Posted",
+      "type": "boolean"
+    },
+    "opening_date": {
+      "help": "Date from which the accounting is managed in Odoo. It is the date of the opening entry.",
+      "readonly": false,
+      "required": true,
+      "string": "Opening Date",
+      "type": "date"
+    },
+    "fiscalyear_last_day": {
+      "help": "The last day of the month will be used if the chosen day doesn't exist.",
+      "readonly": false,
+      "required": true,
+      "string": "Fiscalyear Last Day",
+      "type": "integer"
+    },
+    "fiscalyear_last_month": {
+      "help": "The last day of the month will be used if the chosen day doesn't exist.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "1",
+          "January"
+        ],
+        [
+          "2",
+          "February"
+        ],
+        [
+          "3",
+          "March"
+        ],
+        [
+          "4",
+          "April"
+        ],
+        [
+          "5",
+          "May"
+        ],
+        [
+          "6",
+          "June"
+        ],
+        [
+          "7",
+          "July"
+        ],
+        [
+          "8",
+          "August"
+        ],
+        [
+          "9",
+          "September"
+        ],
+        [
+          "10",
+          "October"
+        ],
+        [
+          "11",
+          "November"
+        ],
+        [
+          "12",
+          "December"
+        ]
+      ],
+      "string": "Fiscalyear Last Month",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "account_return_periodicity": {
+      "help": "Periodicity",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "monthly",
+          "Monthly"
+        ],
+        [
+          "2_months",
+          "Every 2 months"
+        ],
+        [
+          "trimester",
+          "Quarterly"
+        ],
+        [
+          "4_months",
+          "Every 4 months"
+        ],
+        [
+          "semester",
+          "Semi-annually"
+        ],
+        [
+          "year",
+          "Annually"
+        ],
+        [
+          "fiscalyear",
+          "Fiscal Year"
+        ]
+      ],
+      "string": "Periodicity in month",
+      "type": "selection"
+    },
+    "account_tax_return_journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "account_return_reminder_day": {
+      "readonly": false,
+      "required": true,
+      "string": "Reminder",
+      "type": "integer"
+    },
+    "vat_label": {
+      "help": "Use this field if you want to change vat label.",
+      "readonly": true,
+      "required": false,
+      "string": "Vat Label",
+      "type": "char"
+    }
+  }
+}

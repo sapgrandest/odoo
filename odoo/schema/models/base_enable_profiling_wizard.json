@@ -1,0 +1,75 @@
+{
+  "model": "base.enable.profiling.wizard",
+  "name": "Enable profiling for some time",
+  "field_count": 8,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "duration": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "minutes_5",
+          "5 Minutes"
+        ],
+        [
+          "hours_1",
+          "1 Hour"
+        ],
+        [
+          "days_1",
+          "1 Day"
+        ],
+        [
+          "months_1",
+          "1 Month"
+        ]
+      ],
+      "string": "Enable profiling for",
+      "type": "selection"
+    },
+    "expiration": {
+      "readonly": false,
+      "required": false,
+      "string": "Enable profiling until",
+      "type": "datetime"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

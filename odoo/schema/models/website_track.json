@@ -1,0 +1,52 @@
+{
+  "model": "website.track",
+  "name": "Visited Page",
+  "field_count": 7,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "visitor_id": {
+      "readonly": true,
+      "relation": "website.visitor",
+      "required": true,
+      "string": "Visitor",
+      "type": "many2one"
+    },
+    "page_id": {
+      "readonly": true,
+      "relation": "website.page",
+      "required": false,
+      "string": "Page",
+      "type": "many2one"
+    },
+    "url": {
+      "readonly": false,
+      "required": false,
+      "string": "Url",
+      "type": "text"
+    },
+    "visit_datetime": {
+      "readonly": true,
+      "required": true,
+      "string": "Visit Date",
+      "type": "datetime"
+    },
+    "product_id": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    }
+  }
+}

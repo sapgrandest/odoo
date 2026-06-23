@@ -1,0 +1,94 @@
+{
+  "model": "hr.employee.cv.wizard",
+  "name": "Print Resume",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "employee_ids": {
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Employee",
+      "type": "many2many"
+    },
+    "color_primary": {
+      "readonly": false,
+      "required": true,
+      "string": "Primary Color",
+      "type": "char"
+    },
+    "color_secondary": {
+      "readonly": false,
+      "required": true,
+      "string": "Secondary Color",
+      "type": "char"
+    },
+    "show_skills": {
+      "readonly": false,
+      "required": false,
+      "string": "Skills",
+      "type": "boolean"
+    },
+    "show_contact": {
+      "readonly": false,
+      "required": false,
+      "string": "Contact Information",
+      "type": "boolean"
+    },
+    "show_others": {
+      "readonly": false,
+      "required": false,
+      "string": "Others",
+      "type": "boolean"
+    },
+    "can_show_others": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Show Others",
+      "type": "boolean"
+    },
+    "can_show_skills": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Show Skills",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

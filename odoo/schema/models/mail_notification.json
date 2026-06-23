@@ -1,0 +1,290 @@
+{
+  "model": "mail.notification",
+  "name": "Message Notification",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "author_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Author",
+      "type": "many2one"
+    },
+    "mail_message_id": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": true,
+      "string": "Message",
+      "type": "many2one"
+    },
+    "mail_mail_id": {
+      "help": "Optional mail_mail ID. Used mainly to optimize searches.",
+      "readonly": false,
+      "relation": "mail.mail",
+      "required": false,
+      "string": "Mail",
+      "type": "many2one"
+    },
+    "res_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Recipient",
+      "type": "many2one"
+    },
+    "mail_email_address": {
+      "help": "Recipient email address",
+      "readonly": false,
+      "required": false,
+      "string": "Mail Email Address",
+      "type": "char"
+    },
+    "notification_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "inbox",
+          "Inbox"
+        ],
+        [
+          "email",
+          "Email"
+        ],
+        [
+          "sms",
+          "SMS"
+        ],
+        [
+          "snail",
+          "Snailmail"
+        ]
+      ],
+      "string": "Notification Type",
+      "type": "selection"
+    },
+    "notification_status": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "ready",
+          "Ready to Send"
+        ],
+        [
+          "process",
+          "Processing"
+        ],
+        [
+          "pending",
+          "Sent"
+        ],
+        [
+          "sent",
+          "Delivered"
+        ],
+        [
+          "bounce",
+          "Bounced"
+        ],
+        [
+          "exception",
+          "Exception"
+        ],
+        [
+          "canceled",
+          "Cancelled"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "is_read": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Read",
+      "type": "boolean"
+    },
+    "read_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Read Date",
+      "type": "datetime"
+    },
+    "failure_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "unknown",
+          "Unknown error"
+        ],
+        [
+          "mail_bounce",
+          "Bounce"
+        ],
+        [
+          "mail_spam",
+          "Detected As Spam"
+        ],
+        [
+          "mail_email_invalid",
+          "Invalid email address"
+        ],
+        [
+          "mail_email_missing",
+          "Missing email address"
+        ],
+        [
+          "mail_from_invalid",
+          "Invalid from address"
+        ],
+        [
+          "mail_from_missing",
+          "Missing from address"
+        ],
+        [
+          "mail_smtp",
+          "Connection failed (outgoing mail server problem)"
+        ],
+        [
+          "mail_bl",
+          "Blacklisted Address"
+        ],
+        [
+          "mail_optout",
+          "Opted Out"
+        ],
+        [
+          "mail_dup",
+          "Duplicated Email"
+        ],
+        [
+          "sms_number_missing",
+          "Missing Number"
+        ],
+        [
+          "sms_number_format",
+          "Wrong Number Format"
+        ],
+        [
+          "sms_credit",
+          "Insufficient Credit"
+        ],
+        [
+          "sms_country_not_supported",
+          "Country Not Supported"
+        ],
+        [
+          "sms_registration_needed",
+          "Country-specific Registration Required"
+        ],
+        [
+          "sms_server",
+          "Server Error"
+        ],
+        [
+          "sms_acc",
+          "Unregistered Account"
+        ],
+        [
+          "sms_expired",
+          "Expired"
+        ],
+        [
+          "sms_invalid_destination",
+          "Invalid Destination"
+        ],
+        [
+          "sms_not_allowed",
+          "Not Allowed"
+        ],
+        [
+          "sms_not_delivered",
+          "Not Delivered"
+        ],
+        [
+          "sms_rejected",
+          "Rejected"
+        ],
+        [
+          "sn_credit",
+          "Snailmail Credit Error"
+        ],
+        [
+          "sn_trial",
+          "Snailmail Trial Error"
+        ],
+        [
+          "sn_price",
+          "Snailmail No Price Available"
+        ],
+        [
+          "sn_fields",
+          "Snailmail Missing Required Fields"
+        ],
+        [
+          "sn_format",
+          "Snailmail Format Error"
+        ],
+        [
+          "sn_error",
+          "Snailmail Unknown Error"
+        ]
+      ],
+      "string": "Failure type",
+      "type": "selection"
+    },
+    "failure_reason": {
+      "readonly": false,
+      "required": false,
+      "string": "Failure reason",
+      "type": "text"
+    },
+    "sms_id_int": {
+      "readonly": false,
+      "required": false,
+      "string": "SMS ID",
+      "type": "integer"
+    },
+    "sms_id": {
+      "readonly": true,
+      "relation": "sms.sms",
+      "required": false,
+      "string": "SMS",
+      "type": "many2one"
+    },
+    "sms_tracker_ids": {
+      "readonly": false,
+      "relation": "sms.tracker",
+      "required": false,
+      "string": "SMS Trackers",
+      "type": "one2many"
+    },
+    "sms_number": {
+      "readonly": false,
+      "required": false,
+      "string": "SMS Number",
+      "type": "char"
+    },
+    "letter_id": {
+      "readonly": false,
+      "relation": "snailmail.letter",
+      "required": false,
+      "string": "Snailmail Letter",
+      "type": "many2one"
+    }
+  }
+}

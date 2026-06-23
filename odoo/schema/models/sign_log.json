@@ -1,0 +1,185 @@
+{
+  "model": "sign.log",
+  "name": "Sign requests access history",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "log_date": {
+      "readonly": false,
+      "required": true,
+      "string": "Log Date",
+      "type": "datetime"
+    },
+    "sign_request_id": {
+      "readonly": false,
+      "relation": "sign.request",
+      "required": true,
+      "string": "Sign Request",
+      "type": "many2one"
+    },
+    "sign_request_item_id": {
+      "readonly": false,
+      "relation": "sign.request.item",
+      "required": false,
+      "string": "Sign Request Item",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "User",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "latitude": {
+      "readonly": false,
+      "required": false,
+      "string": "Latitude",
+      "type": "float"
+    },
+    "longitude": {
+      "readonly": false,
+      "required": false,
+      "string": "Longitude",
+      "type": "float"
+    },
+    "ip": {
+      "readonly": false,
+      "required": true,
+      "string": "IP address of the visitor",
+      "type": "char"
+    },
+    "log_hash": {
+      "readonly": true,
+      "required": false,
+      "string": "Inalterability Hash",
+      "type": "char"
+    },
+    "token": {
+      "readonly": false,
+      "required": false,
+      "string": "User token",
+      "type": "char"
+    },
+    "action": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "create",
+          "Creation"
+        ],
+        [
+          "open",
+          "View/Download"
+        ],
+        [
+          "save",
+          "Save"
+        ],
+        [
+          "sign",
+          "Signature"
+        ],
+        [
+          "refuse",
+          "Refuse"
+        ],
+        [
+          "cancel",
+          "Cancel"
+        ],
+        [
+          "update_mail",
+          "Mail Update"
+        ],
+        [
+          "update",
+          "Update"
+        ]
+      ],
+      "string": "Action Performed",
+      "type": "selection"
+    },
+    "request_state": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "shared",
+          "Shared"
+        ],
+        [
+          "scheduled",
+          "Scheduled"
+        ],
+        [
+          "sent",
+          "Before Signature"
+        ],
+        [
+          "signed",
+          "After Signature"
+        ],
+        [
+          "refused",
+          "Refused Signature"
+        ],
+        [
+          "canceled",
+          "Cancelled"
+        ],
+        [
+          "expired",
+          "Expired"
+        ]
+      ],
+      "string": "State of the request on action log",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

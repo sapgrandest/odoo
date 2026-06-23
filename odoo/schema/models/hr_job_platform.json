@@ -1,0 +1,65 @@
+{
+  "model": "hr.job.platform",
+  "name": "Job Platform",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "email": {
+      "help": "Applications received from this Email won't be linked to a contact.There will be no email address set on the Applicant either.",
+      "readonly": false,
+      "required": true,
+      "string": "Email",
+      "type": "char"
+    },
+    "regex": {
+      "help": "The regex facilitates to extract information from the subject or body of the received email to autopopulate the Applicant's name field",
+      "readonly": false,
+      "required": false,
+      "string": "Regex",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

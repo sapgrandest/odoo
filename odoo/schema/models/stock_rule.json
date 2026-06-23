@@ -1,0 +1,237 @@
+{
+  "model": "stock.rule",
+  "name": "Stock Rule",
+  "field_count": 28,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "help": "This field will fill the packing origin and the name of its moves",
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "active": {
+      "help": "If unchecked, it will allow you to hide the rule without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "action": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "pull",
+          "Pull From"
+        ],
+        [
+          "push",
+          "Push To"
+        ],
+        [
+          "pull_push",
+          "Pull & Push"
+        ],
+        [
+          "buy",
+          "Buy"
+        ]
+      ],
+      "string": "Action",
+      "type": "selection"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "location_dest_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Destination Location",
+      "type": "many2one"
+    },
+    "location_src_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Source Location",
+      "type": "many2one"
+    },
+    "location_dest_from_rule": {
+      "help": "When set to True the destination location of the stock.move will be the rule.Otherwise, it takes it from the picking type.",
+      "readonly": false,
+      "required": false,
+      "string": "Destination location origin from rule",
+      "type": "boolean"
+    },
+    "route_id": {
+      "readonly": false,
+      "relation": "stock.route",
+      "required": true,
+      "string": "Route",
+      "type": "many2one"
+    },
+    "route_company_id": {
+      "help": "Leave this field empty if this route is shared between all companies",
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Route Company",
+      "type": "many2one"
+    },
+    "procure_method": {
+      "help": "Take From Stock: the products will be taken from the available stock of the source location.\nTrigger Another Rule: the system will try to find a stock rule to bring the products in the source location. The available stock will be ignored.\nTake From Stock, if Unavailable, Trigger Another Rule: the products will be taken from the available stock of the source location.If there is no stock available, the system will try to find a  rule to bring the products in the source location.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "make_to_stock",
+          "Take From Stock"
+        ],
+        [
+          "make_to_order",
+          "Trigger Another Rule"
+        ],
+        [
+          "mts_else_mto",
+          "Take From Stock, if unavailable, Trigger Another Rule"
+        ]
+      ],
+      "string": "Supply Method",
+      "type": "selection"
+    },
+    "route_sequence": {
+      "readonly": true,
+      "required": false,
+      "string": "Route Sequence",
+      "type": "integer"
+    },
+    "picking_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": true,
+      "string": "Operation Type",
+      "type": "many2one"
+    },
+    "picking_type_code_domain": {
+      "readonly": true,
+      "required": false,
+      "string": "Picking Type Code Domain",
+      "type": "json"
+    },
+    "delay": {
+      "help": "The expected date of the created transfer will be computed based on this lead time.",
+      "readonly": false,
+      "required": false,
+      "string": "Lead Time",
+      "type": "integer"
+    },
+    "partner_address_id": {
+      "help": "Address where goods should be delivered. Optional.",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner Address",
+      "type": "many2one"
+    },
+    "propagate_cancel": {
+      "help": "When ticked, if the move created by this rule is cancelled, the next move will be cancelled too.",
+      "readonly": false,
+      "required": false,
+      "string": "Cancel Next Move",
+      "type": "boolean"
+    },
+    "propagate_carrier": {
+      "help": "When ticked, carrier of shipment will be propagated.",
+      "readonly": false,
+      "required": false,
+      "string": "Propagation of carrier",
+      "type": "boolean"
+    },
+    "warehouse_id": {
+      "readonly": false,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    },
+    "auto": {
+      "help": "The 'Manual Operation' value will create a stock move after the current one. With 'Automatic No Step Added', the location is replaced in the original move.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "manual",
+          "Manual Operation"
+        ],
+        [
+          "transparent",
+          "Automatic No Step Added"
+        ]
+      ],
+      "string": "Automatic Move",
+      "type": "selection"
+    },
+    "rule_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Rule Message",
+      "type": "html"
+    },
+    "push_domain": {
+      "readonly": false,
+      "required": false,
+      "string": "Push Applicability",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

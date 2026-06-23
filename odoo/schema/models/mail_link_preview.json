@@ -1,0 +1,100 @@
+{
+  "model": "mail.link.preview",
+  "name": "Store link preview data",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "source_url": {
+      "readonly": false,
+      "required": true,
+      "string": "URL",
+      "type": "char"
+    },
+    "og_type": {
+      "readonly": false,
+      "required": false,
+      "string": "Type",
+      "type": "char"
+    },
+    "og_title": {
+      "readonly": false,
+      "required": false,
+      "string": "Title",
+      "type": "char"
+    },
+    "og_site_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Site name",
+      "type": "char"
+    },
+    "og_image": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "char"
+    },
+    "og_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "og_mimetype": {
+      "readonly": false,
+      "required": false,
+      "string": "MIME type",
+      "type": "char"
+    },
+    "image_mimetype": {
+      "readonly": false,
+      "required": false,
+      "string": "Image MIME type",
+      "type": "char"
+    },
+    "create_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Create Date",
+      "type": "datetime"
+    },
+    "message_link_preview_ids": {
+      "readonly": false,
+      "relation": "mail.message.link.preview",
+      "required": false,
+      "string": "Message Link Preview",
+      "type": "one2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "model": "account.partial.reconcile",
+  "name": "Partial Reconcile",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "debit_move_id": {
+      "readonly": false,
+      "relation": "account.move.line",
+      "required": true,
+      "string": "Debit Move",
+      "type": "many2one"
+    },
+    "credit_move_id": {
+      "readonly": false,
+      "relation": "account.move.line",
+      "required": true,
+      "string": "Credit Move",
+      "type": "many2one"
+    },
+    "full_reconcile_id": {
+      "readonly": false,
+      "relation": "account.full.reconcile",
+      "required": false,
+      "string": "Full Reconcile",
+      "type": "many2one"
+    },
+    "exchange_move_id": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Exchange Move",
+      "type": "many2one"
+    },
+    "draft_caba_move_vals": {
+      "readonly": false,
+      "required": false,
+      "string": "Values that created the draft cash-basis entry",
+      "type": "json"
+    },
+    "company_currency_id": {
+      "help": "Utility field to express amount currency",
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "debit_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency of the debit journal item.",
+      "type": "many2one"
+    },
+    "credit_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency of the credit journal item.",
+      "type": "many2one"
+    },
+    "amount": {
+      "help": "Always positive amount concerned by this matching expressed in the company currency.",
+      "readonly": false,
+      "required": false,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "debit_amount_currency": {
+      "help": "Always positive amount concerned by this matching expressed in the debit line foreign currency.",
+      "readonly": false,
+      "required": false,
+      "string": "Debit Amount Currency",
+      "type": "monetary"
+    },
+    "credit_amount_currency": {
+      "help": "Always positive amount concerned by this matching expressed in the credit line foreign currency.",
+      "readonly": false,
+      "required": false,
+      "string": "Credit Amount Currency",
+      "type": "monetary"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "max_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Max Date of Matched Lines",
+      "type": "date"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "model": "mail.presence",
+  "name": "User/Guest Presence",
+  "field_count": 7,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Users",
+      "type": "many2one"
+    },
+    "guest_id": {
+      "readonly": false,
+      "relation": "mail.guest",
+      "required": false,
+      "string": "Guest",
+      "type": "many2one"
+    },
+    "last_poll": {
+      "readonly": false,
+      "required": false,
+      "string": "Last Poll",
+      "type": "datetime"
+    },
+    "last_presence": {
+      "readonly": false,
+      "required": false,
+      "string": "Last Presence",
+      "type": "datetime"
+    },
+    "status": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "online",
+          "Online"
+        ],
+        [
+          "away",
+          "Away"
+        ],
+        [
+          "offline",
+          "Offline"
+        ]
+      ],
+      "string": "IM Status",
+      "type": "selection"
+    }
+  }
+}

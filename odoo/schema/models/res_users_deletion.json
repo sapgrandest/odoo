@@ -1,0 +1,78 @@
+{
+  "model": "res.users.deletion",
+  "name": "Users Deletion Request",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "User",
+      "type": "many2one"
+    },
+    "user_id_int": {
+      "readonly": true,
+      "required": false,
+      "string": "User Id",
+      "type": "integer"
+    },
+    "state": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "todo",
+          "To Do"
+        ],
+        [
+          "done",
+          "Done"
+        ],
+        [
+          "fail",
+          "Failed"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

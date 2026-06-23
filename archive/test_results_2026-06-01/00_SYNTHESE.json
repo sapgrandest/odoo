@@ -1,0 +1,58 @@
+{
+  "session": "2026-06-01T14-39-46",
+  "date_test": "2026-06-01",
+  "environnement": "Windows 11 / Sopra Steria — accès Internet direct (pas de VPN Moto-Profil)",
+  "resultats": {
+    "01_AUTH-01_GetToken": {
+      "statut": "SUCCÈS 200",
+      "elapsed_ms": 538,
+      "details": "Credentials valides. Token Bearer JWT obtenu (1624 chars). ATTENTION: expires_in=28800s (8h) — pas 604800s (7j) comme documenté.",
+      "serveur": "Kestrel (ASP.NET) — id.profiauto.pl"
+    },
+    "02_REST-01_GetPriceAndQuantity": {
+      "statut": "SUCCÈS 200",
+      "elapsed_ms": 1067,
+      "details": "API REST fonctionnelle. Données réelles retournées pour ABS0215Q et FTROP570.",
+      "warning": "ErrorCode:3 / Error:'MissingDeliveryConfirmation' — Compte bloqué blocage D (confirmations de livraisons en attente)",
+      "articles": {
+        "ABS0215Q": {
+          "prix_detail": 2.7,
+          "prix_partenaire": 1.54,
+          "devise": "EUR",
+          "stock_CHW": 0,
+          "DataSupplierNumber": "0206",
+          "ArticleNumber": "0215Q"
+        },
+        "FTROP570": {
+          "prix_detail": 3.62,
+          "prix_partenaire": 2.06,
+          "devise": "EUR",
+          "stock_CHW": 26,
+          "DataSupplierNumber": "0256",
+          "ArticleNumber": "OP 570"
+        }
+      },
+      "serveur": "nginx/1.28.3 — api.profiauto.net"
+    },
+    "03_KLIENT-01_InformacjaOKontrahencie": {
+      "statut": "TIMEOUT (SOAP inaccessible)",
+      "details": "TCP 443 ouvert, HTTP timeout. IP whitelist probable côté Moto-Profil."
+    },
+    "04_KLIENT-14_ZwrocStanCenyDostepnoscWiecej": {
+      "statut": "TIMEOUT (SOAP inaccessible)",
+      "details": "Même cause que KLIENT-01."
+    }
+  },
+  "actions_requises": [
+    "1. Contacter Moto-Profil pour whitelister l'IP publique du poste/serveur Odoo (SOAP)",
+    "2. Confirmer les livraisons en attente sur https://online.profiauto.com (résoudre MissingDeliveryConfirmation)",
+    "3. Obtenir les vrais FIKS et MOTONET auprès de Moto-Profil (actuellement placeholders 99999/9999)",
+    "4. Vérifier si expires_in=8h est intentionnel ou si la config OAuth a changé depuis la doc (7j)"
+  ],
+  "notes_importantes": [
+    "REST API (api.profiauto.net) : FONCTIONNELLE depuis ce réseau",
+    "SOAP WS (195.242.186.x) : nécessite whitelist IP ou VPN",
+    "Devise du compte : EUR (confirmé par REST)",
+    "Stock CHW (Chorzów) ABS0215Q=0, FTROP570=26 (>=26)"
+  ]
+}

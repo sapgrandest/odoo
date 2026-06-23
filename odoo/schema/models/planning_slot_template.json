@@ -1,0 +1,95 @@
+{
+  "model": "planning.slot.template",
+  "name": "Shift Template",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Hours",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "role_id": {
+      "readonly": false,
+      "relation": "planning.role",
+      "required": false,
+      "string": "Role",
+      "type": "many2one"
+    },
+    "start_time": {
+      "readonly": false,
+      "required": false,
+      "string": "Planned Hours",
+      "type": "float"
+    },
+    "end_time": {
+      "readonly": false,
+      "required": false,
+      "string": "End Hour",
+      "type": "float"
+    },
+    "duration_days": {
+      "readonly": false,
+      "required": false,
+      "string": "Duration Days",
+      "type": "integer"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

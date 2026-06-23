@@ -1,0 +1,125 @@
+{
+  "model": "account.return.creation.wizard",
+  "name": "Return creation wizard",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "category": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "account_return",
+          "Tax Return"
+        ],
+        [
+          "audit",
+          "Audit"
+        ]
+      ],
+      "string": "Category",
+      "type": "selection"
+    },
+    "available_return_type_ids": {
+      "readonly": true,
+      "relation": "account.return.type",
+      "required": false,
+      "string": "Available Return Type",
+      "type": "many2many"
+    },
+    "return_type_id": {
+      "readonly": false,
+      "relation": "account.return.type",
+      "required": true,
+      "string": "Return Type",
+      "type": "many2one"
+    },
+    "date_from": {
+      "readonly": false,
+      "required": true,
+      "string": "Date From",
+      "type": "date"
+    },
+    "date_to": {
+      "readonly": false,
+      "required": true,
+      "string": "Date To",
+      "type": "date"
+    },
+    "show_warning_wrong_dates": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Warning Wrong Dates",
+      "type": "boolean"
+    },
+    "show_warning_existing_return": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Warning Existing Return",
+      "type": "boolean"
+    },
+    "show_warning_overlap": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Warning Overlap",
+      "type": "boolean"
+    },
+    "is_create_disabled": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Create Disabled",
+      "type": "boolean"
+    },
+    "cycle_ids": {
+      "readonly": false,
+      "relation": "account.return.audit.cycle",
+      "required": false,
+      "string": "Cycles",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

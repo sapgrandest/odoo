@@ -1,0 +1,243 @@
+{
+  "model": "stock.package",
+  "name": "Package",
+  "field_count": 35,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Package Reference",
+      "type": "char"
+    },
+    "complete_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Full Package Name",
+      "type": "char"
+    },
+    "dest_complete_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Package Name At Destination",
+      "type": "char"
+    },
+    "quant_ids": {
+      "readonly": true,
+      "relation": "stock.quant",
+      "required": false,
+      "string": "Bulk Content",
+      "type": "one2many"
+    },
+    "contained_quant_ids": {
+      "readonly": true,
+      "relation": "stock.quant",
+      "required": false,
+      "string": "Contained Quant",
+      "type": "one2many"
+    },
+    "content_description": {
+      "readonly": true,
+      "required": false,
+      "string": "Contents",
+      "type": "char"
+    },
+    "package_type_id": {
+      "readonly": false,
+      "relation": "stock.package.type",
+      "required": false,
+      "string": "Package Type",
+      "type": "many2one"
+    },
+    "location_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Location",
+      "type": "many2one"
+    },
+    "location_dest_id": {
+      "readonly": true,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Destination location",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "owner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Owner",
+      "type": "many2one"
+    },
+    "parent_package_id": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Container",
+      "type": "many2one"
+    },
+    "child_package_ids": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Contained Packages",
+      "type": "one2many"
+    },
+    "all_children_package_ids": {
+      "readonly": true,
+      "relation": "stock.package",
+      "required": false,
+      "string": "All Children Package",
+      "type": "one2many"
+    },
+    "package_dest_id": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Destination Container",
+      "type": "many2one"
+    },
+    "outermost_package_id": {
+      "readonly": true,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Outermost Destination Container",
+      "type": "many2one"
+    },
+    "child_package_dest_ids": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Assigned Contained Packages",
+      "type": "one2many"
+    },
+    "move_line_ids": {
+      "readonly": true,
+      "relation": "stock.move.line",
+      "required": false,
+      "string": "Move Line",
+      "type": "one2many"
+    },
+    "picking_ids": {
+      "help": "Transfers in which the Package is set as Destination Package",
+      "readonly": true,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Transfers",
+      "type": "many2many"
+    },
+    "shipping_weight": {
+      "help": "Total weight of the package.",
+      "readonly": false,
+      "required": false,
+      "string": "Shipping Weight",
+      "type": "float"
+    },
+    "valid_sscc": {
+      "readonly": true,
+      "required": false,
+      "string": "Package name is valid SSCC",
+      "type": "boolean"
+    },
+    "pack_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Pack Date",
+      "type": "date"
+    },
+    "parent_path": {
+      "readonly": false,
+      "required": false,
+      "string": "Parent Path",
+      "type": "char"
+    },
+    "json_popover": {
+      "readonly": true,
+      "required": false,
+      "string": "JSON data for popover widget",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "weight": {
+      "help": "Total weight of all the products contained in the package.",
+      "readonly": true,
+      "required": false,
+      "string": "Weight",
+      "type": "float"
+    },
+    "weight_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Weight unit of measure label",
+      "type": "char"
+    },
+    "weight_is_kg": {
+      "readonly": true,
+      "required": false,
+      "string": "Technical field indicating whether weight uom is kg or not (i.e. lb)",
+      "type": "boolean"
+    },
+    "weight_uom_rounding": {
+      "readonly": true,
+      "required": false,
+      "string": "Technical field indicating weight's number of decimal places",
+      "type": "float"
+    },
+    "package_carrier_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "none",
+          "No carrier integration"
+        ]
+      ],
+      "string": "Carrier",
+      "type": "selection"
+    }
+  }
+}

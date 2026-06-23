@@ -1,0 +1,258 @@
+{
+  "model": "account.reconcile.wizard",
+  "name": "Account reconciliation wizard",
+  "field_count": 39,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "analytic_distribution": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Distribution",
+      "type": "json"
+    },
+    "analytic_precision": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Precision",
+      "type": "integer"
+    },
+    "distribution_analytic_account_ids": {
+      "readonly": true,
+      "relation": "account.analytic.account",
+      "required": false,
+      "string": "Distribution Analytic Account",
+      "type": "many2many"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "move_line_ids": {
+      "readonly": false,
+      "relation": "account.move.line",
+      "required": true,
+      "string": "Move lines to reconcile",
+      "type": "many2many"
+    },
+    "reco_account_id": {
+      "readonly": true,
+      "relation": "account.account",
+      "required": false,
+      "string": "Reconcile Account",
+      "type": "many2one"
+    },
+    "amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount in company currency",
+      "type": "monetary"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company currency",
+      "type": "many2one"
+    },
+    "amount_currency": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "reco_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency to use for reconciliation",
+      "type": "many2one"
+    },
+    "edit_mode_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Edit Mode Amount",
+      "type": "monetary"
+    },
+    "edit_mode_amount_currency": {
+      "readonly": false,
+      "required": false,
+      "string": "Edit mode amount",
+      "type": "monetary"
+    },
+    "edit_mode_reco_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Edit Mode Reco Currency",
+      "type": "many2one"
+    },
+    "edit_mode": {
+      "readonly": true,
+      "required": false,
+      "string": "Edit Mode",
+      "type": "boolean"
+    },
+    "single_currency_mode": {
+      "readonly": true,
+      "required": false,
+      "string": "Single Currency Mode",
+      "type": "boolean"
+    },
+    "allow_partials": {
+      "readonly": false,
+      "required": false,
+      "string": "Allow partials",
+      "type": "boolean"
+    },
+    "force_partials": {
+      "readonly": true,
+      "required": false,
+      "string": "Force Partials",
+      "type": "boolean"
+    },
+    "display_allow_partials": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Allow Partials",
+      "type": "boolean"
+    },
+    "date": {
+      "readonly": false,
+      "required": false,
+      "string": "Date",
+      "type": "date"
+    },
+    "journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": true,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Account",
+      "type": "many2one"
+    },
+    "is_rec_pay_account": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Rec Pay Account",
+      "type": "boolean"
+    },
+    "to_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "label": {
+      "readonly": false,
+      "required": false,
+      "string": "Label",
+      "type": "char"
+    },
+    "tax_id": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Tax",
+      "type": "many2one"
+    },
+    "to_check": {
+      "help": "Check if you are not certain of all the information of the counterpart.",
+      "readonly": false,
+      "required": false,
+      "string": "To Check",
+      "type": "boolean"
+    },
+    "is_write_off_required": {
+      "readonly": true,
+      "required": false,
+      "string": "Is a write-off move required to reconcile",
+      "type": "boolean"
+    },
+    "is_transfer_required": {
+      "readonly": true,
+      "required": false,
+      "string": "Is an account transfer required",
+      "type": "boolean"
+    },
+    "transfer_warning_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Is an account transfer required to reconcile",
+      "type": "char"
+    },
+    "transfer_from_account_id": {
+      "readonly": true,
+      "relation": "account.account",
+      "required": false,
+      "string": "Account Transfer From",
+      "type": "many2one"
+    },
+    "lock_date_violated_warning_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Is the date violating the lock date of moves",
+      "type": "char"
+    },
+    "reco_model_id": {
+      "readonly": false,
+      "relation": "account.reconcile.model",
+      "required": false,
+      "string": "Reconciliation model",
+      "type": "many2one"
+    },
+    "reco_model_autocomplete_ids": {
+      "readonly": true,
+      "relation": "account.reconcile.model",
+      "required": false,
+      "string": "All reconciliation models",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "model": "google.gmail.mixin",
+  "name": "Google Gmail Mixin",
+  "field_count": 7,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "google_gmail_refresh_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Refresh Token",
+      "type": "char"
+    },
+    "google_gmail_access_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Access Token",
+      "type": "char"
+    },
+    "google_gmail_access_token_expiration": {
+      "readonly": false,
+      "required": false,
+      "string": "Access Token Expiration Timestamp",
+      "type": "integer"
+    },
+    "google_gmail_uri": {
+      "help": "The URL to generate the authorization code from Google",
+      "readonly": true,
+      "required": false,
+      "string": "URI",
+      "type": "char"
+    }
+  }
+}

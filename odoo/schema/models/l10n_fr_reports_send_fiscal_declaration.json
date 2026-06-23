@@ -1,0 +1,178 @@
+{
+  "model": "l10n_fr_reports.send.fiscal.declaration",
+  "name": "Send Fiscal Declaration Wizard",
+  "field_count": 23,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "date_from": {
+      "readonly": false,
+      "required": true,
+      "string": "Date From",
+      "type": "date"
+    },
+    "date_to": {
+      "readonly": false,
+      "required": true,
+      "string": "Date To",
+      "type": "date"
+    },
+    "report_id": {
+      "readonly": false,
+      "relation": "account.report",
+      "required": true,
+      "string": "Report",
+      "type": "many2one"
+    },
+    "return_id": {
+      "readonly": false,
+      "relation": "account.return",
+      "required": false,
+      "string": "Return",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "tax_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "IS",
+          "Corporate tax (IS)"
+        ],
+        [
+          "IR",
+          "Income tax (IR)"
+        ]
+      ],
+      "string": "Type of tax",
+      "type": "selection"
+    },
+    "special_circ": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "NOR",
+          "Not applicable"
+        ],
+        [
+          "CSS",
+          "Transfer or termination"
+        ],
+        [
+          "DCD",
+          "Death"
+        ],
+        [
+          "DPR",
+          "Provisional declaration"
+        ]
+      ],
+      "string": "Transfer/cessation of business or special circumstances",
+      "type": "selection"
+    },
+    "send_2033A": {
+      "readonly": false,
+      "required": false,
+      "string": "2033 A - Simplified Balance Sheet",
+      "type": "boolean"
+    },
+    "send_2033B": {
+      "readonly": false,
+      "required": false,
+      "string": "2033 B - Simplified Profit and Loss",
+      "type": "boolean"
+    },
+    "send_2033C": {
+      "readonly": false,
+      "required": false,
+      "string": "2033 C - Fixed Assets – Depreciation",
+      "type": "boolean"
+    },
+    "send_2033D": {
+      "readonly": false,
+      "required": false,
+      "string": "2033 D - Statement of Provisions, Depreciation & Deficits",
+      "type": "boolean"
+    },
+    "send_2033E": {
+      "readonly": false,
+      "required": false,
+      "string": "2033 E - Added value",
+      "type": "boolean"
+    },
+    "send_2033F": {
+      "readonly": false,
+      "required": false,
+      "string": "2033 F - Share capital structure",
+      "type": "boolean"
+    },
+    "send_2033G": {
+      "readonly": false,
+      "required": false,
+      "string": "2033 G - Subsidiaries and Investments",
+      "type": "boolean"
+    },
+    "send_2031": {
+      "readonly": true,
+      "required": false,
+      "string": "2031-SD - Income tax",
+      "type": "boolean"
+    },
+    "send_2065": {
+      "readonly": true,
+      "required": false,
+      "string": "2065-SD - Corporate tax return",
+      "type": "boolean"
+    },
+    "send_2069": {
+      "readonly": false,
+      "required": false,
+      "string": "2069 - Tax credits",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

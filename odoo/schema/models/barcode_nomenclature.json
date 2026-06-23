@@ -1,0 +1,99 @@
+{
+  "model": "barcode.nomenclature",
+  "name": "Barcode Nomenclature",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "help": "An internal identification of the barcode nomenclature",
+      "readonly": false,
+      "required": true,
+      "string": "Barcode Nomenclature",
+      "type": "char"
+    },
+    "rule_ids": {
+      "help": "The list of barcode rules",
+      "readonly": false,
+      "relation": "barcode.rule",
+      "required": false,
+      "string": "Rules",
+      "type": "one2many"
+    },
+    "upc_ean_conv": {
+      "help": "UPC Codes can be converted to EAN by prefixing them with a zero. This setting determines if a UPC/EAN barcode should be automatically converted in one way or another when trying to match a rule with the other encoding.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "none",
+          "Never"
+        ],
+        [
+          "ean2upc",
+          "EAN-13 to UPC-A"
+        ],
+        [
+          "upc2ean",
+          "UPC-A to EAN-13"
+        ],
+        [
+          "always",
+          "Always"
+        ]
+      ],
+      "string": "UPC/EAN Conversion",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "is_gs1_nomenclature": {
+      "help": "This Nomenclature use the GS1 specification, only GS1-128 encoding rules is accepted is this kind of nomenclature.",
+      "readonly": false,
+      "required": false,
+      "string": "Is GS1 Nomenclature",
+      "type": "boolean"
+    },
+    "gs1_separator_fnc1": {
+      "help": "Alternative regex delimiter for the FNC1. The separator must not match the begin/end of any related rules pattern.",
+      "readonly": false,
+      "required": false,
+      "string": "FNC1 Separator",
+      "type": "char"
+    }
+  }
+}

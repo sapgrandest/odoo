@@ -1,0 +1,38 @@
+{
+  "model": "portal.mixin",
+  "name": "Portal Mixin",
+  "field_count": 5,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "access_url": {
+      "help": "Customer Portal URL",
+      "readonly": true,
+      "required": false,
+      "string": "Portal Access URL",
+      "type": "char"
+    },
+    "access_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Security Token",
+      "type": "char"
+    },
+    "access_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Access warning",
+      "type": "text"
+    }
+  }
+}

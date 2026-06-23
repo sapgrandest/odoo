@@ -1,0 +1,84 @@
+{
+  "model": "account.batch.error.wizard.line",
+  "name": "Batch payments error reporting wizard line",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "description": {
+      "readonly": false,
+      "required": true,
+      "string": "Description",
+      "type": "char"
+    },
+    "help_message": {
+      "readonly": false,
+      "required": false,
+      "string": "Help",
+      "type": "char"
+    },
+    "payment_ids": {
+      "readonly": false,
+      "relation": "account.payment",
+      "required": true,
+      "string": "Payments",
+      "type": "many2many"
+    },
+    "error_wizard_id": {
+      "readonly": false,
+      "relation": "account.batch.error.wizard",
+      "required": false,
+      "string": "Error Wizard",
+      "type": "many2one"
+    },
+    "warning_wizard_id": {
+      "readonly": false,
+      "relation": "account.batch.error.wizard",
+      "required": false,
+      "string": "Warning Wizard",
+      "type": "many2one"
+    },
+    "show_remove_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Remove Button",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

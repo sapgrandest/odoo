@@ -1,0 +1,157 @@
+{
+  "model": "onboarding.onboarding.step",
+  "name": "Onboarding Step",
+  "field_count": 21,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "onboarding_ids": {
+      "readonly": false,
+      "relation": "onboarding.onboarding",
+      "required": false,
+      "string": "Onboardings",
+      "type": "many2many"
+    },
+    "title": {
+      "readonly": false,
+      "required": false,
+      "string": "Title",
+      "type": "char"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "char"
+    },
+    "button_text": {
+      "help": "Text on the panel's button to start this step",
+      "readonly": false,
+      "required": true,
+      "string": "Button text",
+      "type": "char"
+    },
+    "done_icon": {
+      "readonly": false,
+      "required": false,
+      "string": "Font Awesome Icon when completed",
+      "type": "char"
+    },
+    "done_text": {
+      "readonly": false,
+      "required": false,
+      "string": "Text to show when step is completed",
+      "type": "char"
+    },
+    "step_image": {
+      "readonly": false,
+      "required": false,
+      "string": "Step Image",
+      "type": "binary"
+    },
+    "step_image_filename": {
+      "readonly": false,
+      "required": false,
+      "string": "Step Image Filename",
+      "type": "char"
+    },
+    "step_image_alt": {
+      "help": "Show when impossible to load the image",
+      "readonly": false,
+      "required": false,
+      "string": "Alt Text for the Step Image",
+      "type": "char"
+    },
+    "panel_step_open_action_name": {
+      "help": "Name of the onboarding step model action to execute when opening the step, e.g. action_open_onboarding_1_step_1",
+      "readonly": false,
+      "required": false,
+      "string": "Opening action",
+      "type": "char"
+    },
+    "current_progress_step_id": {
+      "help": "Onboarding Progress Step for the current context (company).",
+      "readonly": true,
+      "relation": "onboarding.progress.step",
+      "required": false,
+      "string": "Step Progress",
+      "type": "many2one"
+    },
+    "current_step_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_done",
+          "Not done"
+        ],
+        [
+          "just_done",
+          "Just done"
+        ],
+        [
+          "done",
+          "Done"
+        ]
+      ],
+      "string": "Completion State",
+      "type": "selection"
+    },
+    "progress_ids": {
+      "help": "All related Onboarding Progress Step Records (across companies)",
+      "readonly": true,
+      "relation": "onboarding.progress.step",
+      "required": false,
+      "string": "Onboarding Progress Step Records",
+      "type": "one2many"
+    },
+    "is_per_company": {
+      "readonly": false,
+      "required": false,
+      "string": "Is per company",
+      "type": "boolean"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

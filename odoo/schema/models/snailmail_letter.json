@@ -1,0 +1,247 @@
+{
+  "model": "snailmail.letter",
+  "name": "Snailmail Letter",
+  "field_count": 30,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Sent by",
+      "type": "many2one"
+    },
+    "model": {
+      "readonly": false,
+      "required": true,
+      "string": "Model",
+      "type": "char"
+    },
+    "res_id": {
+      "readonly": false,
+      "required": true,
+      "string": "Document ID",
+      "type": "integer"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Recipient",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "report_template": {
+      "readonly": false,
+      "relation": "ir.actions.report",
+      "required": false,
+      "string": "Optional report to print and attach",
+      "type": "many2one"
+    },
+    "attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachment",
+      "type": "many2one"
+    },
+    "attachment_raw": {
+      "readonly": true,
+      "required": false,
+      "string": "Document",
+      "type": "binary"
+    },
+    "attachment_fname": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Filename",
+      "type": "char"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color",
+      "type": "boolean"
+    },
+    "cover": {
+      "readonly": false,
+      "required": false,
+      "string": "Cover Page",
+      "type": "boolean"
+    },
+    "duplex": {
+      "readonly": false,
+      "required": false,
+      "string": "Both side",
+      "type": "boolean"
+    },
+    "state": {
+      "help": "When a letter is created, the status is 'Pending'.\nIf the letter is correctly sent, the status goes in 'Sent',\nIf not, it will got in state 'Error' and the error message will be displayed in the field 'Error Message'.",
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "pending",
+          "In Queue"
+        ],
+        [
+          "sent",
+          "Sent"
+        ],
+        [
+          "error",
+          "Error"
+        ],
+        [
+          "canceled",
+          "Cancelled"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "error_code": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "MISSING_REQUIRED_FIELDS",
+          "MISSING_REQUIRED_FIELDS"
+        ],
+        [
+          "CREDIT_ERROR",
+          "CREDIT_ERROR"
+        ],
+        [
+          "TRIAL_ERROR",
+          "TRIAL_ERROR"
+        ],
+        [
+          "NO_PRICE_AVAILABLE",
+          "NO_PRICE_AVAILABLE"
+        ],
+        [
+          "FORMAT_ERROR",
+          "FORMAT_ERROR"
+        ],
+        [
+          "UNKNOWN_ERROR",
+          "UNKNOWN_ERROR"
+        ],
+        [
+          "ATTACHMENT_ERROR",
+          "ATTACHMENT_ERROR"
+        ]
+      ],
+      "string": "Error",
+      "type": "selection"
+    },
+    "info_msg": {
+      "readonly": false,
+      "required": false,
+      "string": "Information",
+      "type": "html"
+    },
+    "reference": {
+      "readonly": true,
+      "required": false,
+      "string": "Related Record",
+      "type": "char"
+    },
+    "message_id": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Snailmail Status Message",
+      "type": "many2one"
+    },
+    "notification_ids": {
+      "readonly": false,
+      "relation": "mail.notification",
+      "required": false,
+      "string": "Notifications",
+      "type": "one2many"
+    },
+    "street": {
+      "readonly": false,
+      "required": false,
+      "string": "Street",
+      "type": "char"
+    },
+    "street2": {
+      "readonly": false,
+      "required": false,
+      "string": "Street2",
+      "type": "char"
+    },
+    "zip": {
+      "readonly": false,
+      "required": false,
+      "string": "Zip",
+      "type": "char"
+    },
+    "city": {
+      "readonly": false,
+      "required": false,
+      "string": "City",
+      "type": "char"
+    },
+    "state_id": {
+      "readonly": false,
+      "relation": "res.country.state",
+      "required": false,
+      "string": "State",
+      "type": "many2one"
+    },
+    "country_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

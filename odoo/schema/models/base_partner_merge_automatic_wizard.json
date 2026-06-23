@@ -1,0 +1,147 @@
+{
+  "model": "base.partner.merge.automatic.wizard",
+  "name": "Merge Partner Wizard",
+  "field_count": 20,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "group_by_email": {
+      "readonly": false,
+      "required": false,
+      "string": "Email",
+      "type": "boolean"
+    },
+    "group_by_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "boolean"
+    },
+    "group_by_is_company": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Company",
+      "type": "boolean"
+    },
+    "group_by_vat": {
+      "readonly": false,
+      "required": false,
+      "string": "VAT",
+      "type": "boolean"
+    },
+    "group_by_parent_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Parent Company",
+      "type": "boolean"
+    },
+    "state": {
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "option",
+          "Option"
+        ],
+        [
+          "selection",
+          "Selection"
+        ],
+        [
+          "finished",
+          "Finished"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "number_group": {
+      "readonly": true,
+      "required": false,
+      "string": "Group of Contacts",
+      "type": "integer"
+    },
+    "current_line_id": {
+      "readonly": false,
+      "relation": "base.partner.merge.line",
+      "required": false,
+      "string": "Current Line",
+      "type": "many2one"
+    },
+    "line_ids": {
+      "readonly": false,
+      "relation": "base.partner.merge.line",
+      "required": false,
+      "string": "Lines",
+      "type": "one2many"
+    },
+    "partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Contacts",
+      "type": "many2many"
+    },
+    "dst_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Destination Contact",
+      "type": "many2one"
+    },
+    "exclude_contact": {
+      "readonly": false,
+      "required": false,
+      "string": "A user associated to the contact",
+      "type": "boolean"
+    },
+    "exclude_journal_item": {
+      "readonly": false,
+      "required": false,
+      "string": "Journal Items associated to the contact",
+      "type": "boolean"
+    },
+    "maximum_group": {
+      "readonly": false,
+      "required": false,
+      "string": "Maximum of Group of Contacts",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

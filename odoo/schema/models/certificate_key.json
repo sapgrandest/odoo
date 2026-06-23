@@ -1,0 +1,95 @@
+{
+  "model": "certificate.key",
+  "name": "Cryptographic Key",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "content": {
+      "readonly": false,
+      "required": true,
+      "string": "Key file",
+      "type": "binary"
+    },
+    "password": {
+      "readonly": false,
+      "required": false,
+      "string": "Private key password",
+      "type": "char"
+    },
+    "pem_key": {
+      "readonly": true,
+      "required": false,
+      "string": "Key bytes in PEM format",
+      "type": "binary"
+    },
+    "public": {
+      "readonly": true,
+      "required": false,
+      "string": "Public/Private key",
+      "type": "boolean"
+    },
+    "loading_error": {
+      "readonly": true,
+      "required": false,
+      "string": "Loading error",
+      "type": "text"
+    },
+    "active": {
+      "help": "Set active to false to archive the key.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

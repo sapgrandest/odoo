@@ -1,0 +1,139 @@
+{
+  "model": "calendar.alarm",
+  "name": "Event Alarm",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "alarm_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "notification",
+          "Notification"
+        ],
+        [
+          "email",
+          "Email"
+        ],
+        [
+          "sms",
+          "SMS Text Message"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "duration": {
+      "readonly": false,
+      "required": true,
+      "string": "Remind Before",
+      "type": "integer"
+    },
+    "interval": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "minutes",
+          "Minutes"
+        ],
+        [
+          "hours",
+          "Hours"
+        ],
+        [
+          "days",
+          "Days"
+        ]
+      ],
+      "string": "Unit",
+      "type": "selection"
+    },
+    "duration_minutes": {
+      "readonly": true,
+      "required": false,
+      "string": "Duration in minutes",
+      "type": "integer"
+    },
+    "mail_template_id": {
+      "help": "Template used to render mail reminder content.",
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Email Template",
+      "type": "many2one"
+    },
+    "body": {
+      "help": "Additional message that would be sent with the notification for the reminder",
+      "readonly": false,
+      "required": false,
+      "string": "Additional Message",
+      "type": "text"
+    },
+    "notify_responsible": {
+      "readonly": false,
+      "required": false,
+      "string": "Notify Responsible",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "sms_template_id": {
+      "help": "Template used to render SMS reminder content.",
+      "readonly": false,
+      "relation": "sms.template",
+      "required": false,
+      "string": "SMS Template",
+      "type": "many2one"
+    },
+    "default_for_new_appointment_type": {
+      "help": "Use as default for new Appointment Types",
+      "readonly": false,
+      "required": false,
+      "string": "New Appointments Default",
+      "type": "boolean"
+    }
+  }
+}

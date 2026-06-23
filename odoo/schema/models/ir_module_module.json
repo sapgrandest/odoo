@@ -1,0 +1,358 @@
+{
+  "model": "ir.module.module",
+  "name": "Module",
+  "field_count": 44,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": true,
+      "string": "Technical Name",
+      "type": "char"
+    },
+    "category_id": {
+      "readonly": true,
+      "relation": "ir.module.category",
+      "required": false,
+      "string": "Category",
+      "type": "many2one"
+    },
+    "shortdesc": {
+      "readonly": true,
+      "required": false,
+      "string": "Module Name",
+      "type": "char"
+    },
+    "summary": {
+      "readonly": true,
+      "required": false,
+      "string": "Summary",
+      "type": "char"
+    },
+    "description": {
+      "readonly": true,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "description_html": {
+      "readonly": true,
+      "required": false,
+      "string": "Description HTML",
+      "type": "html"
+    },
+    "author": {
+      "readonly": true,
+      "required": false,
+      "string": "Author",
+      "type": "char"
+    },
+    "maintainer": {
+      "readonly": true,
+      "required": false,
+      "string": "Maintainer",
+      "type": "char"
+    },
+    "contributors": {
+      "readonly": true,
+      "required": false,
+      "string": "Contributors",
+      "type": "text"
+    },
+    "website": {
+      "readonly": true,
+      "required": false,
+      "string": "Website",
+      "type": "char"
+    },
+    "installed_version": {
+      "readonly": true,
+      "required": false,
+      "string": "Latest Version",
+      "type": "char"
+    },
+    "latest_version": {
+      "readonly": true,
+      "required": false,
+      "string": "Installed Version",
+      "type": "char"
+    },
+    "published_version": {
+      "readonly": true,
+      "required": false,
+      "string": "Published Version",
+      "type": "char"
+    },
+    "url": {
+      "readonly": true,
+      "required": false,
+      "string": "URL",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "dependencies_id": {
+      "readonly": true,
+      "relation": "ir.module.module.dependency",
+      "required": false,
+      "string": "Dependencies",
+      "type": "one2many"
+    },
+    "country_ids": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2many"
+    },
+    "exclusion_ids": {
+      "readonly": true,
+      "relation": "ir.module.module.exclusion",
+      "required": false,
+      "string": "Exclusions",
+      "type": "one2many"
+    },
+    "auto_install": {
+      "help": "An auto-installable module is automatically installed by the system when all its dependencies are satisfied. If the module has no dependency, it is always installed.",
+      "readonly": false,
+      "required": false,
+      "string": "Automatic Installation",
+      "type": "boolean"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "uninstallable",
+          "Uninstallable"
+        ],
+        [
+          "uninstalled",
+          "Not Installed"
+        ],
+        [
+          "installed",
+          "Installed"
+        ],
+        [
+          "to upgrade",
+          "To be upgraded"
+        ],
+        [
+          "to remove",
+          "To be removed"
+        ],
+        [
+          "to install",
+          "To be installed"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "demo": {
+      "readonly": true,
+      "required": false,
+      "string": "Demo Data",
+      "type": "boolean"
+    },
+    "license": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "GPL-2",
+          "GPL Version 2"
+        ],
+        [
+          "GPL-2 or any later version",
+          "GPL-2 or later version"
+        ],
+        [
+          "GPL-3",
+          "GPL Version 3"
+        ],
+        [
+          "GPL-3 or any later version",
+          "GPL-3 or later version"
+        ],
+        [
+          "AGPL-3",
+          "Affero GPL-3"
+        ],
+        [
+          "LGPL-3",
+          "LGPL Version 3"
+        ],
+        [
+          "Other OSI approved licence",
+          "Other OSI Approved License"
+        ],
+        [
+          "OEEL-1",
+          "Odoo Enterprise Edition License v1.0"
+        ],
+        [
+          "OPL-1",
+          "Odoo Proprietary License v1.0"
+        ],
+        [
+          "Other proprietary",
+          "Other Proprietary"
+        ]
+      ],
+      "string": "License",
+      "type": "selection"
+    },
+    "menus_by_module": {
+      "readonly": true,
+      "required": false,
+      "string": "Menus",
+      "type": "text"
+    },
+    "reports_by_module": {
+      "readonly": true,
+      "required": false,
+      "string": "Reports",
+      "type": "text"
+    },
+    "views_by_module": {
+      "readonly": true,
+      "required": false,
+      "string": "Views",
+      "type": "text"
+    },
+    "application": {
+      "readonly": true,
+      "required": false,
+      "string": "Application",
+      "type": "boolean"
+    },
+    "icon": {
+      "readonly": false,
+      "required": false,
+      "string": "Icon URL",
+      "type": "char"
+    },
+    "icon_image": {
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "binary"
+    },
+    "icon_flag": {
+      "readonly": true,
+      "required": false,
+      "string": "Flag",
+      "type": "char"
+    },
+    "to_buy": {
+      "readonly": false,
+      "required": false,
+      "string": "Odoo Enterprise Module",
+      "type": "boolean"
+    },
+    "iap_paid_service": {
+      "readonly": false,
+      "required": false,
+      "string": "Contains In-App Purchases",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "imported": {
+      "readonly": false,
+      "required": false,
+      "string": "Imported Module",
+      "type": "boolean"
+    },
+    "module_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "official",
+          "Official Apps"
+        ],
+        [
+          "industries",
+          "Industries"
+        ]
+      ],
+      "string": "Module Type",
+      "type": "selection"
+    },
+    "total_lines_of_code": {
+      "help": "Number of lines of code that may be billed under an Enterprise subscription. For exact pricing details, please contact your account manager or visit odoo.com/pricing.",
+      "readonly": false,
+      "required": false,
+      "string": "Extra lines of Code",
+      "type": "integer"
+    },
+    "is_module_official": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Module Official",
+      "type": "boolean"
+    },
+    "account_templates": {
+      "readonly": true,
+      "required": false,
+      "string": "Account Templates",
+      "type": "json"
+    },
+    "image_ids": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Screenshots",
+      "type": "one2many"
+    },
+    "is_installed_on_current_website": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Installed On Current Website",
+      "type": "boolean"
+    }
+  }
+}

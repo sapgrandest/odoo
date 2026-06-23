@@ -1,0 +1,133 @@
+{
+  "model": "account.report.async.export",
+  "name": "Account Report Async Export",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "date_from": {
+      "readonly": false,
+      "required": false,
+      "string": "Date From",
+      "type": "date"
+    },
+    "date_to": {
+      "readonly": false,
+      "required": false,
+      "string": "Date To",
+      "type": "date"
+    },
+    "report_id": {
+      "readonly": false,
+      "relation": "account.report",
+      "required": false,
+      "string": "Report",
+      "type": "many2one"
+    },
+    "recipient": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "DGI_EDI_TVA",
+          "DGFiP"
+        ],
+        [
+          "CEC_EDI_TVA",
+          "Expert Accountant"
+        ],
+        [
+          "OGA_EDI_TVA",
+          "OGA"
+        ],
+        [
+          "DGI_EDI_PART",
+          "EDI PART"
+        ],
+        [
+          "DGI_EDI_TDFC",
+          "DGFiP (TDFC)"
+        ]
+      ],
+      "string": "Recipient",
+      "type": "selection"
+    },
+    "document_ids": {
+      "readonly": false,
+      "relation": "account.report.async.document",
+      "required": false,
+      "string": "Document",
+      "type": "one2many"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "to_send",
+          "To send"
+        ],
+        [
+          "sent",
+          "Sent"
+        ],
+        [
+          "accepted",
+          "Accepted"
+        ],
+        [
+          "rejected",
+          "Rejected"
+        ],
+        [
+          "mixed",
+          "Mixed"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

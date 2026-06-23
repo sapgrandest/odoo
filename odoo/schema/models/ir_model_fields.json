@@ -1,0 +1,482 @@
+{
+  "model": "ir.model.fields",
+  "name": "Field",
+  "field_count": 54,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Field Name",
+      "type": "char"
+    },
+    "model": {
+      "help": "The technical name of the model this field belongs to",
+      "readonly": false,
+      "required": true,
+      "string": "Model Name",
+      "type": "char"
+    },
+    "relation": {
+      "help": "For relationship fields, the technical name of the target model",
+      "readonly": false,
+      "required": false,
+      "string": "Related Model",
+      "type": "char"
+    },
+    "relation_field": {
+      "help": "For one2many fields, the field on the target model that implements the opposite many2one relationship",
+      "readonly": false,
+      "required": false,
+      "string": "Relation Field",
+      "type": "char"
+    },
+    "relation_model_field": {
+      "help": "For many2one_reference fields, the field that stores the technical name of the target model",
+      "readonly": false,
+      "required": false,
+      "string": "Relation Model Field",
+      "type": "char"
+    },
+    "relation_field_id": {
+      "readonly": true,
+      "relation": "ir.model.fields",
+      "required": false,
+      "string": "Relation field",
+      "type": "many2one"
+    },
+    "model_id": {
+      "help": "The model this field belongs to",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": true,
+      "string": "Model",
+      "type": "many2one"
+    },
+    "field_description": {
+      "readonly": false,
+      "required": true,
+      "string": "Field Label",
+      "type": "char"
+    },
+    "help": {
+      "readonly": false,
+      "required": false,
+      "string": "Field Help",
+      "type": "text"
+    },
+    "ttype": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "binary",
+          "binary"
+        ],
+        [
+          "boolean",
+          "boolean"
+        ],
+        [
+          "char",
+          "char"
+        ],
+        [
+          "date",
+          "date"
+        ],
+        [
+          "datetime",
+          "datetime"
+        ],
+        [
+          "float",
+          "float"
+        ],
+        [
+          "html",
+          "html"
+        ],
+        [
+          "integer",
+          "integer"
+        ],
+        [
+          "json",
+          "json"
+        ],
+        [
+          "many2many",
+          "many2many"
+        ],
+        [
+          "many2one",
+          "many2one"
+        ],
+        [
+          "many2one_reference",
+          "many2one_reference"
+        ],
+        [
+          "monetary",
+          "monetary"
+        ],
+        [
+          "one2many",
+          "one2many"
+        ],
+        [
+          "properties",
+          "properties"
+        ],
+        [
+          "properties_definition",
+          "properties_definition"
+        ],
+        [
+          "reference",
+          "reference"
+        ],
+        [
+          "selection",
+          "selection"
+        ],
+        [
+          "text",
+          "text"
+        ],
+        [
+          "vector",
+          "vector"
+        ]
+      ],
+      "string": "Field Type",
+      "type": "selection"
+    },
+    "selection": {
+      "readonly": false,
+      "required": false,
+      "string": "Selection Options (Deprecated)",
+      "type": "char"
+    },
+    "selection_ids": {
+      "readonly": false,
+      "relation": "ir.model.fields.selection",
+      "required": false,
+      "string": "Selection Options",
+      "type": "one2many"
+    },
+    "copied": {
+      "help": "Whether the value is copied when duplicating a record.",
+      "readonly": false,
+      "required": false,
+      "string": "Copied",
+      "type": "boolean"
+    },
+    "related": {
+      "help": "The corresponding related field, if any. This must be a dot-separated list of field names.",
+      "readonly": false,
+      "required": false,
+      "string": "Related Field Definition",
+      "type": "char"
+    },
+    "related_field_id": {
+      "readonly": true,
+      "relation": "ir.model.fields",
+      "required": false,
+      "string": "Related Field",
+      "type": "many2one"
+    },
+    "required": {
+      "readonly": false,
+      "required": false,
+      "string": "Required",
+      "type": "boolean"
+    },
+    "readonly": {
+      "readonly": false,
+      "required": false,
+      "string": "Readonly",
+      "type": "boolean"
+    },
+    "index": {
+      "readonly": false,
+      "required": false,
+      "string": "Indexed",
+      "type": "boolean"
+    },
+    "translate": {
+      "help": "Whether values for this field can be translated (enables the translation mechanism for that field)",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "standard",
+          "Translate as a whole"
+        ],
+        [
+          "html_translate",
+          "Translate HTML terms"
+        ],
+        [
+          "xml_translate",
+          "Translate XML terms"
+        ]
+      ],
+      "string": "Translatable",
+      "type": "selection"
+    },
+    "company_dependent": {
+      "help": "Whether values for this field is company dependent",
+      "readonly": true,
+      "required": false,
+      "string": "Company Dependent",
+      "type": "boolean"
+    },
+    "size": {
+      "readonly": false,
+      "required": false,
+      "string": "Size",
+      "type": "integer"
+    },
+    "state": {
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "manual",
+          "Custom Field"
+        ],
+        [
+          "base",
+          "Base Field"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "on_delete": {
+      "help": "On delete property for many2one fields",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "cascade",
+          "Cascade"
+        ],
+        [
+          "set null",
+          "Set NULL"
+        ],
+        [
+          "restrict",
+          "Restrict"
+        ]
+      ],
+      "string": "On Delete",
+      "type": "selection"
+    },
+    "domain": {
+      "help": "The optional domain to restrict possible values for relationship fields, specified as a Python expression defining a list of triplets. For example: [('color','=','red')]",
+      "readonly": false,
+      "required": false,
+      "string": "Domain",
+      "type": "char"
+    },
+    "groups": {
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Groups",
+      "type": "many2many"
+    },
+    "group_expand": {
+      "help": "If checked, all the records of the target model will be included\nin a grouped result (e.g. 'Group By' filters, Kanban columns, etc.).\nNote that it can significantly reduce performance if the target model\nof the field contains a lot of records; usually used on models with\nfew records (e.g. Stages, Job Positions, Event Types, etc.).",
+      "readonly": false,
+      "required": false,
+      "string": "Expand Groups",
+      "type": "boolean"
+    },
+    "selectable": {
+      "readonly": false,
+      "required": false,
+      "string": "Selectable",
+      "type": "boolean"
+    },
+    "modules": {
+      "help": "List of modules in which the field is defined",
+      "readonly": true,
+      "required": false,
+      "string": "In Apps",
+      "type": "char"
+    },
+    "relation_table": {
+      "help": "Used for custom many2many fields to define a custom relation table name",
+      "readonly": false,
+      "required": false,
+      "string": "Relation Table",
+      "type": "char"
+    },
+    "column1": {
+      "help": "Column referring to the record in the model table",
+      "readonly": false,
+      "required": false,
+      "string": "Column 1",
+      "type": "char"
+    },
+    "column2": {
+      "help": "Column referring to the record in the comodel table",
+      "readonly": false,
+      "required": false,
+      "string": "Column 2",
+      "type": "char"
+    },
+    "compute": {
+      "help": "Code to compute the value of the field.\nIterate on the recordset 'self' and assign the field's value:\n\n    for record in self:\n        record['size'] = len(record.name)\n\nModules time, datetime, dateutil are available.",
+      "readonly": false,
+      "required": false,
+      "string": "Compute",
+      "type": "text"
+    },
+    "depends": {
+      "help": "Dependencies of compute method; a list of comma-separated field names, like\n\n    name, partner_id.name",
+      "readonly": false,
+      "required": false,
+      "string": "Dependencies",
+      "type": "char"
+    },
+    "store": {
+      "help": "Whether the value is stored in the database.",
+      "readonly": false,
+      "required": false,
+      "string": "Stored",
+      "type": "boolean"
+    },
+    "currency_field": {
+      "help": "Name of the Many2one field holding the res.currency",
+      "readonly": false,
+      "required": false,
+      "string": "Currency field",
+      "type": "char"
+    },
+    "sanitize": {
+      "readonly": false,
+      "required": false,
+      "string": "Sanitize HTML",
+      "type": "boolean"
+    },
+    "sanitize_overridable": {
+      "readonly": false,
+      "required": false,
+      "string": "Sanitize HTML overridable",
+      "type": "boolean"
+    },
+    "sanitize_tags": {
+      "readonly": false,
+      "required": false,
+      "string": "Sanitize HTML Tags",
+      "type": "boolean"
+    },
+    "sanitize_attributes": {
+      "readonly": false,
+      "required": false,
+      "string": "Sanitize HTML Attributes",
+      "type": "boolean"
+    },
+    "sanitize_style": {
+      "readonly": false,
+      "required": false,
+      "string": "Sanitize HTML Style",
+      "type": "boolean"
+    },
+    "sanitize_form": {
+      "readonly": false,
+      "required": false,
+      "string": "Sanitize HTML Form",
+      "type": "boolean"
+    },
+    "strip_style": {
+      "readonly": false,
+      "required": false,
+      "string": "Strip Style Attribute",
+      "type": "boolean"
+    },
+    "strip_classes": {
+      "readonly": false,
+      "required": false,
+      "string": "Strip Class Attribute",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "tracking": {
+      "help": "If set every modification done to this field is tracked. Value is used to order tracking values.",
+      "readonly": false,
+      "required": false,
+      "string": "Enable Ordered Tracking",
+      "type": "integer"
+    },
+    "ai": {
+      "help": "AI computed field",
+      "readonly": false,
+      "required": false,
+      "string": "AI field",
+      "type": "boolean"
+    },
+    "ai_domain": {
+      "readonly": true,
+      "required": false,
+      "string": "AI field domain",
+      "type": "char"
+    },
+    "system_prompt": {
+      "help": "Prompt given to the AI model to compute the field value",
+      "readonly": false,
+      "required": false,
+      "string": "AI Prompt",
+      "type": "html"
+    },
+    "website_form_blacklisted": {
+      "help": "Blacklist this field for web forms",
+      "readonly": false,
+      "required": false,
+      "string": "Blacklisted in web forms",
+      "type": "boolean"
+    }
+  }
+}

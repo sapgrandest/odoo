@@ -1,0 +1,65 @@
+{
+  "model": "mail.followers",
+  "name": "Document Follower",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "res_model": {
+      "readonly": false,
+      "required": true,
+      "string": "Related Document Model Name",
+      "type": "char"
+    },
+    "res_id": {
+      "help": "Id of the followed resource",
+      "readonly": false,
+      "required": false,
+      "string": "Related Document ID",
+      "type": "many2one_reference"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Related Partner",
+      "type": "many2one"
+    },
+    "subtype_ids": {
+      "help": "Message subtypes followed, meaning subtypes that will be pushed onto the user's Wall.",
+      "readonly": false,
+      "relation": "mail.message.subtype",
+      "required": false,
+      "string": "Subtype",
+      "type": "many2many"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "email": {
+      "readonly": true,
+      "required": false,
+      "string": "Email",
+      "type": "char"
+    },
+    "is_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Active",
+      "type": "boolean"
+    }
+  }
+}

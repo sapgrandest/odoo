@@ -1,0 +1,173 @@
+{
+  "model": "account.payment.term",
+  "name": "Payment Terms",
+  "field_count": 24,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Payment Terms",
+      "type": "char"
+    },
+    "active": {
+      "help": "If the active field is set to False, it will allow you to hide the payment terms without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "note": {
+      "readonly": false,
+      "required": false,
+      "string": "Description on the Invoice",
+      "type": "html"
+    },
+    "line_ids": {
+      "readonly": false,
+      "relation": "account.payment.term.line",
+      "required": false,
+      "string": "Terms",
+      "type": "one2many"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "fiscal_country_codes": {
+      "readonly": true,
+      "required": false,
+      "string": "Fiscal Country Codes",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": true,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "display_on_invoice": {
+      "readonly": false,
+      "required": false,
+      "string": "Show installment dates",
+      "type": "boolean"
+    },
+    "example_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Example Amount",
+      "type": "monetary"
+    },
+    "example_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Date example",
+      "type": "date"
+    },
+    "example_invalid": {
+      "readonly": true,
+      "required": false,
+      "string": "Example Invalid",
+      "type": "boolean"
+    },
+    "example_preview": {
+      "readonly": true,
+      "required": false,
+      "string": "Example Preview",
+      "type": "html"
+    },
+    "example_preview_discount": {
+      "readonly": true,
+      "required": false,
+      "string": "Example Preview Discount",
+      "type": "html"
+    },
+    "discount_percentage": {
+      "help": "Early Payment Discount granted for this payment term",
+      "readonly": false,
+      "required": false,
+      "string": "Discount %",
+      "type": "float"
+    },
+    "discount_days": {
+      "help": "Number of days before the early payment proposition expires",
+      "readonly": false,
+      "required": false,
+      "string": "Discount Days",
+      "type": "integer"
+    },
+    "early_pay_discount_computation": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "included",
+          "On early payment"
+        ],
+        [
+          "excluded",
+          "Never"
+        ],
+        [
+          "mixed",
+          "Always (upon invoice)"
+        ]
+      ],
+      "string": "Cash Discount Tax Reduction",
+      "type": "selection"
+    },
+    "early_discount": {
+      "readonly": false,
+      "required": false,
+      "string": "Early Discount",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

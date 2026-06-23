@@ -1,0 +1,129 @@
+{
+  "model": "planning.recurrency",
+  "name": "Planning Recurrence",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "slot_ids": {
+      "readonly": false,
+      "relation": "planning.slot",
+      "required": false,
+      "string": "Related Planning Entries",
+      "type": "one2many"
+    },
+    "repeat_interval": {
+      "readonly": false,
+      "required": true,
+      "string": "Repeat Every",
+      "type": "integer"
+    },
+    "repeat_unit": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "day",
+          "Days"
+        ],
+        [
+          "week",
+          "Weeks"
+        ],
+        [
+          "month",
+          "Months"
+        ],
+        [
+          "year",
+          "Years"
+        ]
+      ],
+      "string": "Repeat Unit",
+      "type": "selection"
+    },
+    "repeat_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "forever",
+          "Forever"
+        ],
+        [
+          "until",
+          "Until"
+        ],
+        [
+          "x_times",
+          "Number of Repetitions"
+        ]
+      ],
+      "string": "Weeks",
+      "type": "selection"
+    },
+    "repeat_until": {
+      "help": "Up to which date should the plannings be repeated",
+      "readonly": false,
+      "required": false,
+      "string": "Repeat Until",
+      "type": "datetime"
+    },
+    "repeat_number": {
+      "help": "No Of Repetitions of the plannings",
+      "readonly": false,
+      "required": false,
+      "string": "Repetitions",
+      "type": "integer"
+    },
+    "last_generated_end_datetime": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Generated End Datetime",
+      "type": "datetime"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

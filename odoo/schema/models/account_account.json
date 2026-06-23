@@ -1,0 +1,707 @@
+{
+  "model": "account.account",
+  "name": "Account",
+  "field_count": 84,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_plans_ids": {
+      "readonly": true,
+      "relation": "mail.activity.plan",
+      "required": false,
+      "string": "Activity Plans",
+      "type": "many2many"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Account Name",
+      "type": "char"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "currency_id": {
+      "help": "Forces all journal items in this account to have a specific currency (i.e. bank journals). If no currency is set, entries can use any currency.",
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Account Currency",
+      "type": "many2one"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "company_fiscal_country_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Company Fiscal Country Code",
+      "type": "char"
+    },
+    "code": {
+      "readonly": false,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "code_store": {
+      "readonly": false,
+      "required": false,
+      "string": "Code Store",
+      "type": "char"
+    },
+    "placeholder_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Display code",
+      "type": "char"
+    },
+    "code_path": {
+      "help": "similar to parent path but with codes instead of ids, used to order accounts",
+      "readonly": true,
+      "required": false,
+      "string": "Code Path",
+      "type": "char"
+    },
+    "name_path": {
+      "help": "similar to parent path but with names instead of ids, used to order and search accounts",
+      "readonly": true,
+      "required": false,
+      "string": "Name Path",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "used": {
+      "readonly": true,
+      "required": false,
+      "string": "Used",
+      "type": "boolean"
+    },
+    "account_type": {
+      "help": "Account Type is used for information purpose, to generate country-specific legal reports, and set the rules to close a fiscal year and generate opening entries.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "asset_receivable",
+          "Receivable"
+        ],
+        [
+          "asset_cash",
+          "Bank and Cash"
+        ],
+        [
+          "asset_current",
+          "Current Assets"
+        ],
+        [
+          "asset_non_current",
+          "Non-current Assets"
+        ],
+        [
+          "asset_prepayments",
+          "Prepayments"
+        ],
+        [
+          "asset_fixed",
+          "Fixed Assets"
+        ],
+        [
+          "liability_payable",
+          "Payable"
+        ],
+        [
+          "liability_credit_card",
+          "Credit Card"
+        ],
+        [
+          "liability_current",
+          "Current Liabilities"
+        ],
+        [
+          "liability_non_current",
+          "Non-current Liabilities"
+        ],
+        [
+          "equity",
+          "Equity"
+        ],
+        [
+          "equity_unaffected",
+          "Current Year Earnings"
+        ],
+        [
+          "income",
+          "Income"
+        ],
+        [
+          "income_other",
+          "Other Income"
+        ],
+        [
+          "expense",
+          "Expenses"
+        ],
+        [
+          "expense_other",
+          "Other Expenses"
+        ],
+        [
+          "expense_depreciation",
+          "Depreciation"
+        ],
+        [
+          "expense_direct_cost",
+          "Cost of Revenue"
+        ],
+        [
+          "off_balance",
+          "Off-Balance Sheet"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "include_initial_balance": {
+      "help": "Used in reports to know if we should consider journal items from the beginning of time instead of from the fiscal year only. Account types that should be reset to zero at each new fiscal year (like expenses, revenue..) should not have this option set.",
+      "readonly": true,
+      "required": false,
+      "string": "Bring Accounts Balance Forward",
+      "type": "boolean"
+    },
+    "internal_group": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "equity",
+          "Equity"
+        ],
+        [
+          "asset",
+          "Asset"
+        ],
+        [
+          "liability",
+          "Liability"
+        ],
+        [
+          "income",
+          "Income"
+        ],
+        [
+          "expense",
+          "Expense"
+        ],
+        [
+          "off",
+          "Off Balance"
+        ]
+      ],
+      "string": "Internal Group",
+      "type": "selection"
+    },
+    "reconcile": {
+      "help": "This account is used in bank reconciliation. Currency rate difference entries will be automatically created if needed.",
+      "readonly": false,
+      "required": false,
+      "string": "Payment Reconciliation",
+      "type": "boolean"
+    },
+    "tax_ids": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Default Taxes",
+      "type": "many2many"
+    },
+    "note": {
+      "readonly": false,
+      "required": false,
+      "string": "Internal Notes",
+      "type": "text"
+    },
+    "company_ids": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Companies",
+      "type": "many2many"
+    },
+    "code_mapping_ids": {
+      "readonly": false,
+      "relation": "account.code.mapping",
+      "required": false,
+      "string": "Code Mapping",
+      "type": "one2many"
+    },
+    "tag_ids": {
+      "help": "Optional tags you may want to assign for custom reporting",
+      "readonly": false,
+      "relation": "account.account.tag",
+      "required": false,
+      "string": "Tags",
+      "type": "many2many"
+    },
+    "root_id": {
+      "readonly": true,
+      "relation": "account.root",
+      "required": false,
+      "string": "Root",
+      "type": "many2one"
+    },
+    "parent_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Parent Account",
+      "type": "many2one"
+    },
+    "parent_path": {
+      "readonly": false,
+      "required": false,
+      "string": "Parent Path",
+      "type": "char"
+    },
+    "parent_ids": {
+      "readonly": true,
+      "relation": "account.account",
+      "required": false,
+      "string": "Parent",
+      "type": "many2many"
+    },
+    "opening_debit": {
+      "readonly": false,
+      "required": false,
+      "string": "Opening Debit",
+      "type": "monetary"
+    },
+    "opening_credit": {
+      "readonly": false,
+      "required": false,
+      "string": "Opening Credit",
+      "type": "monetary"
+    },
+    "opening_balance": {
+      "readonly": false,
+      "required": false,
+      "string": "Opening Balance",
+      "type": "monetary"
+    },
+    "current_balance": {
+      "readonly": true,
+      "required": false,
+      "string": "Current Balance",
+      "type": "float"
+    },
+    "related_taxes_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Related Taxes Amount",
+      "type": "integer"
+    },
+    "non_trade": {
+      "help": "If set, this account will belong to Non Trade Receivable/Payable in reports and filters.\nIf not, this account will belong to Trade Receivable/Payable in reports and filters.",
+      "readonly": false,
+      "required": false,
+      "string": "Non Trade",
+      "type": "boolean"
+    },
+    "display_mapping_tab": {
+      "readonly": false,
+      "required": false,
+      "string": "Display Mapping Tab",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "is_deferred": {
+      "help": "Check to automatically use this account for deferred expenses or deferred revenue when recording the invoice",
+      "readonly": false,
+      "required": false,
+      "string": "Deferred",
+      "type": "boolean"
+    },
+    "account_stock_variation_id": {
+      "help": "At closing, register the inventory variation of the period into a specific account",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Variation Account",
+      "type": "many2one"
+    },
+    "account_stock_variation_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Variation Account Active",
+      "type": "boolean"
+    },
+    "account_stock_expense_id": {
+      "help": "Counterpart used at closing for accounting adjustments to inventory valuation.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Expense Account",
+      "type": "many2one"
+    },
+    "account_stock_expense_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Expense Account Active",
+      "type": "boolean"
+    },
+    "exclude_provision_currency_ids": {
+      "help": "Whether or not we have to make provisions for the selected foreign currencies.",
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Exclude Provision Currency",
+      "type": "many2many"
+    },
+    "budget_item_ids": {
+      "readonly": false,
+      "relation": "account.report.budget.item",
+      "required": false,
+      "string": "Budget Item",
+      "type": "one2many"
+    },
+    "audit_debit": {
+      "readonly": true,
+      "required": false,
+      "string": "Debit",
+      "type": "monetary"
+    },
+    "audit_credit": {
+      "readonly": true,
+      "required": false,
+      "string": "Credit",
+      "type": "monetary"
+    },
+    "audit_balance": {
+      "readonly": true,
+      "required": false,
+      "string": "Balance",
+      "type": "monetary"
+    },
+    "audit_balance_show_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Audit Balance Show Warning",
+      "type": "boolean"
+    },
+    "audit_previous_balance": {
+      "readonly": true,
+      "required": false,
+      "string": "Balance N-1",
+      "type": "monetary"
+    },
+    "audit_previous_balance_show_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Audit Previous Balance Show Warning",
+      "type": "boolean"
+    },
+    "audit_var_n_1": {
+      "readonly": true,
+      "required": false,
+      "string": "Var N-1",
+      "type": "monetary"
+    },
+    "audit_var_percentage": {
+      "readonly": true,
+      "required": false,
+      "string": "Var %",
+      "type": "float"
+    },
+    "audit_status": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "todo",
+          "To Review"
+        ],
+        [
+          "reviewed",
+          "Reviewed"
+        ],
+        [
+          "supervised",
+          "Supervised"
+        ],
+        [
+          "anomaly",
+          "Anomaly"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "account_status": {
+      "readonly": false,
+      "relation": "account.audit.account.status",
+      "required": false,
+      "string": "Account Status",
+      "type": "one2many"
+    },
+    "last_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Message",
+      "type": "char"
+    },
+    "fiscal_category_id": {
+      "readonly": false,
+      "relation": "account.fiscal.category",
+      "required": false,
+      "string": "Fiscal Category",
+      "type": "many2one"
+    },
+    "rate_ids": {
+      "readonly": false,
+      "relation": "account.account.fiscal.rate",
+      "required": false,
+      "string": "Rate",
+      "type": "one2many"
+    },
+    "current_rate": {
+      "readonly": true,
+      "required": false,
+      "string": "Current Rate",
+      "type": "float"
+    }
+  }
+}

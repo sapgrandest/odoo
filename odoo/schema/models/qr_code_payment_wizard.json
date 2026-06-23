@@ -1,0 +1,128 @@
+{
+  "model": "qr.code.payment.wizard",
+  "name": "Generic Payment Wizard with QR Code",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "account_number": {
+      "readonly": true,
+      "required": false,
+      "string": "IBAN",
+      "type": "char"
+    },
+    "partner_bank_id": {
+      "readonly": false,
+      "relation": "res.partner.bank",
+      "required": false,
+      "string": "Partner Bank",
+      "type": "many2one"
+    },
+    "communication": {
+      "readonly": true,
+      "required": false,
+      "string": "Communication",
+      "type": "char"
+    },
+    "show_vat_balance": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Vat Balance",
+      "type": "boolean"
+    },
+    "amount_to_pay": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount To Pay",
+      "type": "monetary"
+    },
+    "vat_balance": {
+      "readonly": true,
+      "required": false,
+      "string": "Vat Balance",
+      "type": "monetary"
+    },
+    "is_recovered": {
+      "readonly": false,
+      "required": false,
+      "string": "Does this payment recover previous recoverable amounts",
+      "type": "boolean"
+    },
+    "is_recoverable": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Recoverable",
+      "type": "boolean"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Amount To Pay Currency",
+      "type": "many2one"
+    },
+    "return_id": {
+      "readonly": false,
+      "relation": "account.return",
+      "required": true,
+      "string": "Return",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "qr_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Qr Code",
+      "type": "html"
+    }
+  }
+}

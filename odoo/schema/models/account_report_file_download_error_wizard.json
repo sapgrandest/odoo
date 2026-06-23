@@ -1,0 +1,69 @@
+{
+  "model": "account.report.file.download.error.wizard",
+  "name": "Manage the file generation errors from report exports.",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "actionable_errors": {
+      "readonly": false,
+      "required": false,
+      "string": "Actionable Errors",
+      "type": "json"
+    },
+    "file_name": {
+      "readonly": false,
+      "required": false,
+      "string": "File Name",
+      "type": "char"
+    },
+    "file_content": {
+      "readonly": false,
+      "required": false,
+      "string": "File Content",
+      "type": "binary"
+    },
+    "has_danger_actionable_errors": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Danger Actionable Errors",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

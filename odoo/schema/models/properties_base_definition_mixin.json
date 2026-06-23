@@ -1,0 +1,32 @@
+{
+  "model": "properties.base.definition.mixin",
+  "name": "Properties Base Definition Mixin",
+  "field_count": 4,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "properties": {
+      "readonly": false,
+      "required": false,
+      "string": "Properties",
+      "type": "properties"
+    },
+    "properties_base_definition_id": {
+      "readonly": true,
+      "relation": "properties.base.definition",
+      "required": false,
+      "string": "Properties Base Definition",
+      "type": "many2one"
+    }
+  }
+}

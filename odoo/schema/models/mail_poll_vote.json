@@ -1,0 +1,72 @@
+{
+  "model": "mail.poll.vote",
+  "name": "Poll vote",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "guest_id": {
+      "readonly": false,
+      "relation": "mail.guest",
+      "required": false,
+      "string": "Guest",
+      "type": "many2one"
+    },
+    "is_self_vote": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Self Vote",
+      "type": "boolean"
+    },
+    "option_id": {
+      "readonly": false,
+      "relation": "mail.poll.option",
+      "required": true,
+      "string": "Option",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "User",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

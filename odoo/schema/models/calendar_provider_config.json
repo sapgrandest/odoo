@@ -1,0 +1,97 @@
+{
+  "model": "calendar.provider.config",
+  "name": "Calendar Provider Configuration Wizard",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "external_calendar_provider": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "google",
+          "Google"
+        ],
+        [
+          "microsoft",
+          "Outlook"
+        ]
+      ],
+      "string": "Choose an external calendar to configure",
+      "type": "selection"
+    },
+    "cal_client_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Client_id",
+      "type": "char"
+    },
+    "cal_client_secret": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Client_key",
+      "type": "char"
+    },
+    "cal_sync_paused": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Synchronization Paused",
+      "type": "boolean"
+    },
+    "microsoft_outlook_client_identifier": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Client Id",
+      "type": "char"
+    },
+    "microsoft_outlook_client_secret": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Client Secret",
+      "type": "char"
+    },
+    "microsoft_outlook_sync_paused": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Synchronization Paused",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

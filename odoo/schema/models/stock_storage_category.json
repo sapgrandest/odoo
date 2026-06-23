@@ -1,0 +1,118 @@
+{
+  "model": "stock.storage.category",
+  "name": "Storage Category",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Storage Category",
+      "type": "char"
+    },
+    "max_weight": {
+      "readonly": false,
+      "required": false,
+      "string": "Max Weight",
+      "type": "float"
+    },
+    "capacity_ids": {
+      "readonly": false,
+      "relation": "stock.storage.category.capacity",
+      "required": false,
+      "string": "Capacity",
+      "type": "one2many"
+    },
+    "product_capacity_ids": {
+      "readonly": false,
+      "relation": "stock.storage.category.capacity",
+      "required": false,
+      "string": "Product Capacity",
+      "type": "one2many"
+    },
+    "package_capacity_ids": {
+      "readonly": false,
+      "relation": "stock.storage.category.capacity",
+      "required": false,
+      "string": "Package Capacity",
+      "type": "one2many"
+    },
+    "allow_new_product": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "empty",
+          "If the location is empty"
+        ],
+        [
+          "same",
+          "If all products are same"
+        ],
+        [
+          "mixed",
+          "Allow mixed products"
+        ]
+      ],
+      "string": "Allow New Product",
+      "type": "selection"
+    },
+    "location_ids": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Location",
+      "type": "one2many"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "weight_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Weight unit",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

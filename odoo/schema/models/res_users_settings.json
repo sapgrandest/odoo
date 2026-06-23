@@ -1,0 +1,196 @@
+{
+  "model": "res.users.settings",
+  "name": "User Settings",
+  "field_count": 23,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "User",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "embedded_actions_config_ids": {
+      "readonly": false,
+      "relation": "res.users.settings.embedded.action",
+      "required": false,
+      "string": "Embedded Actions Config",
+      "type": "one2many"
+    },
+    "homemenu_config": {
+      "readonly": true,
+      "required": false,
+      "string": "Home Menu Configuration",
+      "type": "json"
+    },
+    "color_scheme": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "system",
+          "System"
+        ],
+        [
+          "light",
+          "Light"
+        ],
+        [
+          "dark",
+          "Dark"
+        ]
+      ],
+      "string": "Color Scheme",
+      "type": "selection"
+    },
+    "volume_settings_ids": {
+      "readonly": false,
+      "relation": "res.users.settings.volumes",
+      "required": false,
+      "string": "Volumes of other partners",
+      "type": "one2many"
+    },
+    "channel_notifications": {
+      "help": "This setting will only be applied to channels. Mentions only if not specified.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "all",
+          "All Messages"
+        ],
+        [
+          "no_notif",
+          "Nothing"
+        ]
+      ],
+      "string": "Channel Notifications",
+      "type": "selection"
+    },
+    "calendar_default_privacy": {
+      "help": "Default privacy setting for whom the calendar events will be visible.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "public",
+          "Public"
+        ],
+        [
+          "private",
+          "Private"
+        ],
+        [
+          "confidential",
+          "Only internal users"
+        ]
+      ],
+      "string": "Calendar Default Privacy",
+      "type": "selection"
+    },
+    "calendar_show_activities": {
+      "readonly": false,
+      "required": false,
+      "string": "Show Activities in Calendar",
+      "type": "boolean"
+    },
+    "google_calendar_rtoken": {
+      "readonly": false,
+      "required": false,
+      "string": "Refresh Token",
+      "type": "char"
+    },
+    "google_calendar_token": {
+      "readonly": false,
+      "required": false,
+      "string": "User token",
+      "type": "char"
+    },
+    "google_calendar_token_validity": {
+      "readonly": false,
+      "required": false,
+      "string": "Token Validity",
+      "type": "datetime"
+    },
+    "google_calendar_sync_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Sync Token",
+      "type": "char"
+    },
+    "google_calendar_cal_id": {
+      "help": "Last Calendar ID who has been synchronized. If it is changed, we remove all links between GoogleID and Odoo Google Internal ID",
+      "readonly": false,
+      "required": false,
+      "string": "Calendar ID",
+      "type": "char"
+    },
+    "google_synchronization_stopped": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Synchronization stopped",
+      "type": "boolean"
+    },
+    "livechat_username": {
+      "help": "This username will be used as your name in the livechat channels.",
+      "readonly": false,
+      "required": false,
+      "string": "Livechat Username",
+      "type": "char"
+    },
+    "livechat_lang_ids": {
+      "help": "These languages, in addition to your main language, will be used to assign you to Live Chat sessions.",
+      "readonly": false,
+      "relation": "res.lang",
+      "required": false,
+      "string": "Livechat languages",
+      "type": "many2many"
+    },
+    "livechat_expertise_ids": {
+      "help": "When forwarding live chat conversations, the chatbot will prioritize users with matching expertise.",
+      "readonly": false,
+      "relation": "im_livechat.expertise",
+      "required": false,
+      "string": "Live Chat Expertise",
+      "type": "many2many"
+    }
+  }
+}

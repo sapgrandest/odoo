@@ -1,0 +1,860 @@
+{
+  "model": "sale.order.line",
+  "name": "Sales Order Line",
+  "field_count": 112,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "analytic_distribution": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Distribution",
+      "type": "json"
+    },
+    "analytic_precision": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Precision",
+      "type": "integer"
+    },
+    "distribution_analytic_account_ids": {
+      "readonly": true,
+      "relation": "account.analytic.account",
+      "required": false,
+      "string": "Distribution Analytic Account",
+      "type": "many2many"
+    },
+    "order_id": {
+      "readonly": false,
+      "relation": "sale.order",
+      "required": true,
+      "string": "Order Reference",
+      "type": "many2one"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "order_partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "salesman_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesperson",
+      "type": "many2one"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "Quotation"
+        ],
+        [
+          "sent",
+          "Quotation Sent"
+        ],
+        [
+          "sale",
+          "Sales Order"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Order Status",
+      "type": "selection"
+    },
+    "tax_country_id": {
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Tax Country",
+      "type": "many2one"
+    },
+    "display_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "line_section",
+          "Section"
+        ],
+        [
+          "line_subsection",
+          "Subsection"
+        ],
+        [
+          "line_note",
+          "Note"
+        ]
+      ],
+      "string": "Display Type",
+      "type": "selection"
+    },
+    "is_configurable_product": {
+      "readonly": true,
+      "required": false,
+      "string": "Is the product configurable?",
+      "type": "boolean"
+    },
+    "is_downpayment": {
+      "help": "Down payments are made when creating invoices from a sales order. They are not copied when duplicating a sales order.",
+      "readonly": false,
+      "required": false,
+      "string": "Is a down payment",
+      "type": "boolean"
+    },
+    "is_expense": {
+      "help": "Is true if the sales order line comes from an expense or a vendor bills",
+      "readonly": false,
+      "required": false,
+      "string": "Is expense",
+      "type": "boolean"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "product_template_id": {
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product Template",
+      "type": "many2one"
+    },
+    "product_template_attribute_value_ids": {
+      "readonly": true,
+      "relation": "product.template.attribute.value",
+      "required": false,
+      "string": "Attribute Values",
+      "type": "many2many"
+    },
+    "product_custom_attribute_value_ids": {
+      "readonly": false,
+      "relation": "product.attribute.custom.value",
+      "required": false,
+      "string": "Custom Values",
+      "type": "one2many"
+    },
+    "product_no_variant_attribute_value_ids": {
+      "readonly": false,
+      "relation": "product.template.attribute.value",
+      "required": false,
+      "string": "Extra Values",
+      "type": "many2many"
+    },
+    "is_product_archived": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Product Archived",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Description",
+      "type": "text"
+    },
+    "translated_product_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Translated Product Name",
+      "type": "text"
+    },
+    "product_uom_qty": {
+      "readonly": false,
+      "required": true,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "product_uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "allowed_uom_ids": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Allowed Uom",
+      "type": "many2many"
+    },
+    "qty_available_today": {
+      "readonly": true,
+      "required": false,
+      "string": "Qty Available Today",
+      "type": "float"
+    },
+    "virtual_available_at_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Virtual Available At Date",
+      "type": "float"
+    },
+    "display_qty_widget": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Qty Widget",
+      "type": "boolean"
+    },
+    "is_storable": {
+      "help": "A storable product is a product for which you manage stock.",
+      "readonly": true,
+      "required": false,
+      "string": "Track Inventory",
+      "type": "boolean"
+    },
+    "scheduled_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Delivery Date",
+      "type": "datetime"
+    },
+    "linked_line_id": {
+      "readonly": false,
+      "relation": "sale.order.line",
+      "required": false,
+      "string": "Linked Order Line",
+      "type": "many2one"
+    },
+    "linked_line_ids": {
+      "readonly": false,
+      "relation": "sale.order.line",
+      "required": false,
+      "string": "Linked Order Lines",
+      "type": "one2many"
+    },
+    "categ_id": {
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "virtual_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Virtual",
+      "type": "char"
+    },
+    "linked_virtual_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Linked Virtual",
+      "type": "char"
+    },
+    "selected_combo_items": {
+      "readonly": false,
+      "required": false,
+      "string": "Selected Combo Items",
+      "type": "char"
+    },
+    "combo_item_id": {
+      "readonly": false,
+      "relation": "product.combo.item",
+      "required": false,
+      "string": "Combo Item",
+      "type": "many2one"
+    },
+    "tax_ids": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Taxes",
+      "type": "many2many"
+    },
+    "pricelist_item_id": {
+      "readonly": true,
+      "relation": "product.pricelist.item",
+      "required": false,
+      "string": "Pricelist Item",
+      "type": "many2one"
+    },
+    "price_unit": {
+      "readonly": false,
+      "required": true,
+      "string": "Unit Price",
+      "type": "float"
+    },
+    "technical_price_unit": {
+      "readonly": false,
+      "required": false,
+      "string": "Technical Price Unit",
+      "type": "float"
+    },
+    "discount": {
+      "readonly": false,
+      "required": false,
+      "string": "Discount (%)",
+      "type": "float"
+    },
+    "price_subtotal": {
+      "readonly": true,
+      "required": false,
+      "string": "Subtotal",
+      "type": "monetary"
+    },
+    "price_tax": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Tax",
+      "type": "float"
+    },
+    "price_total": {
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "monetary"
+    },
+    "price_reduce_taxexcl": {
+      "readonly": true,
+      "required": false,
+      "string": "Price Reduce Tax excl",
+      "type": "monetary"
+    },
+    "price_reduce_taxinc": {
+      "readonly": true,
+      "required": false,
+      "string": "Price Reduce Tax incl",
+      "type": "monetary"
+    },
+    "customer_lead": {
+      "help": "Number of days between the order confirmation and the shipping of the products",
+      "readonly": false,
+      "required": true,
+      "string": "Lead Time",
+      "type": "integer"
+    },
+    "qty_delivered_method": {
+      "help": "According to product configuration, the delivered quantity can be automatically computed by mechanism:\n  - Manual: the quantity is set manually on the line\n  - Analytic From expenses: the quantity is the quantity sum from posted expenses\n  - Timesheet: the quantity is the sum of hours recorded on tasks linked to this line\n  - Stock Moves: the quantity comes from confirmed pickings\n",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "manual",
+          "Manual"
+        ],
+        [
+          "analytic",
+          "Analytic From Expenses"
+        ],
+        [
+          "stock_move",
+          "Stock Moves"
+        ],
+        [
+          "milestones",
+          "Milestones"
+        ]
+      ],
+      "string": "Method to update delivered qty",
+      "type": "selection"
+    },
+    "qty_delivered": {
+      "readonly": false,
+      "required": false,
+      "string": "Delivery Quantity",
+      "type": "float"
+    },
+    "qty_delivered_percent": {
+      "readonly": false,
+      "required": false,
+      "string": "% Delivered",
+      "type": "float"
+    },
+    "qty_invoiced": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoiced Quantity",
+      "type": "float"
+    },
+    "qty_invoiced_posted": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoiced Quantity (posted)",
+      "type": "float"
+    },
+    "qty_to_invoice": {
+      "readonly": true,
+      "required": false,
+      "string": "Quantity To Invoice",
+      "type": "float"
+    },
+    "analytic_line_ids": {
+      "readonly": false,
+      "relation": "account.analytic.line",
+      "required": false,
+      "string": "Analytic lines",
+      "type": "one2many"
+    },
+    "invoice_lines": {
+      "readonly": false,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Invoice Lines",
+      "type": "many2many"
+    },
+    "invoice_status": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "upselling",
+          "Upselling Opportunity"
+        ],
+        [
+          "invoiced",
+          "Fully Invoiced"
+        ],
+        [
+          "to invoice",
+          "To Invoice"
+        ],
+        [
+          "no",
+          "Nothing to Invoice"
+        ]
+      ],
+      "string": "Invoice Status",
+      "type": "selection"
+    },
+    "untaxed_amount_invoiced": {
+      "readonly": true,
+      "required": false,
+      "string": "Untaxed Invoiced Amount",
+      "type": "monetary"
+    },
+    "amount_invoiced": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoiced Amount",
+      "type": "monetary"
+    },
+    "untaxed_amount_to_invoice": {
+      "readonly": true,
+      "required": false,
+      "string": "Untaxed Amount To Invoice",
+      "type": "monetary"
+    },
+    "amount_to_invoice": {
+      "readonly": true,
+      "required": false,
+      "string": "Un-invoiced Balance",
+      "type": "monetary"
+    },
+    "amount_to_invoice_at_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount",
+      "type": "float"
+    },
+    "qty_delivered_at_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Delivered",
+      "type": "float"
+    },
+    "qty_invoiced_at_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoiced",
+      "type": "float"
+    },
+    "extra_tax_data": {
+      "readonly": false,
+      "required": false,
+      "string": "Extra Tax Data",
+      "type": "json"
+    },
+    "product_type": {
+      "help": "Goods are tangible materials and merchandise you provide.\nA service is a non-material product you provide.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "consu",
+          "Goods"
+        ],
+        [
+          "service",
+          "Service"
+        ],
+        [
+          "combo",
+          "Combo"
+        ]
+      ],
+      "string": "Product Type",
+      "type": "selection"
+    },
+    "service_tracking": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "no",
+          "Nothing"
+        ],
+        [
+          "subcontract",
+          "Subcontracting RFQ"
+        ],
+        [
+          "task_global_project",
+          "Task"
+        ],
+        [
+          "task_in_project",
+          "Project & Task"
+        ],
+        [
+          "project_only",
+          "Project"
+        ]
+      ],
+      "string": "Create on Order",
+      "type": "selection"
+    },
+    "product_updatable": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Edit Product",
+      "type": "boolean"
+    },
+    "product_uom_readonly": {
+      "readonly": true,
+      "required": false,
+      "string": "Product Uom Readonly",
+      "type": "boolean"
+    },
+    "tax_calculation_rounding_method": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "round_globally",
+          "Round per Tax"
+        ],
+        [
+          "round_per_line",
+          "Round per Line"
+        ]
+      ],
+      "string": "Tax calculation rounding method",
+      "type": "selection"
+    },
+    "company_price_include": {
+      "help": "Default on whether the sales price used on the product and invoices with this Company includes its taxes.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "tax_included",
+          "Tax Included"
+        ],
+        [
+          "tax_excluded",
+          "Tax Excluded"
+        ]
+      ],
+      "string": "Default Sales Price Include",
+      "type": "selection"
+    },
+    "sale_line_warn_msg": {
+      "readonly": true,
+      "required": false,
+      "string": "Sale Line Warn Msg",
+      "type": "text"
+    },
+    "parent_id": {
+      "readonly": true,
+      "relation": "sale.order.line",
+      "required": false,
+      "string": "Parent Section Line",
+      "type": "many2one"
+    },
+    "collapse_prices": {
+      "readonly": false,
+      "required": false,
+      "string": "Collapse Prices",
+      "type": "boolean"
+    },
+    "collapse_composition": {
+      "readonly": false,
+      "required": false,
+      "string": "Collapse Composition",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "is_delivery": {
+      "readonly": false,
+      "required": false,
+      "string": "Is a Delivery",
+      "type": "boolean"
+    },
+    "product_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Product Qty",
+      "type": "float"
+    },
+    "recompute_delivery_price": {
+      "readonly": true,
+      "required": false,
+      "string": "Delivery cost should be recomputed",
+      "type": "boolean"
+    },
+    "product_invoice_policy": {
+      "help": "Ordered Quantity: Invoice quantities ordered by the customer.\nDelivered Quantity: Invoice quantities delivered to the customer.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "order",
+          "Ordered quantities"
+        ],
+        [
+          "delivery",
+          "Delivered quantities"
+        ]
+      ],
+      "string": "Invoicing Policy",
+      "type": "selection"
+    },
+    "deferred_revenue": {
+      "readonly": false,
+      "required": false,
+      "string": "Deferred Revenue",
+      "type": "boolean"
+    },
+    "invoice_to_be_issued": {
+      "readonly": false,
+      "required": false,
+      "string": "Invoice to be Issued",
+      "type": "boolean"
+    },
+    "edi_customer_product_ref": {
+      "readonly": false,
+      "required": false,
+      "string": "Edi Customer Product Ref",
+      "type": "char"
+    },
+    "is_optional": {
+      "readonly": false,
+      "required": false,
+      "string": "Optional Line",
+      "type": "boolean"
+    },
+    "purchase_line_ids": {
+      "help": "Purchase line generated by this Sales item on order confirmation, or when the quantity was increased.",
+      "readonly": true,
+      "relation": "purchase.order.line",
+      "required": false,
+      "string": "Generated Purchase Lines",
+      "type": "one2many"
+    },
+    "purchase_line_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of generated purchase items",
+      "type": "integer"
+    },
+    "route_ids": {
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Routes",
+      "type": "many2many"
+    },
+    "move_ids": {
+      "readonly": false,
+      "relation": "stock.move",
+      "required": false,
+      "string": "Stock Moves",
+      "type": "one2many"
+    },
+    "forecast_expected_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Forecast Expected Date",
+      "type": "datetime"
+    },
+    "free_qty_today": {
+      "readonly": true,
+      "required": false,
+      "string": "Free Qty Today",
+      "type": "float"
+    },
+    "warehouse_id": {
+      "readonly": true,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    },
+    "qty_to_deliver": {
+      "readonly": true,
+      "required": false,
+      "string": "Qty To Deliver",
+      "type": "float"
+    },
+    "is_mto": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Mto",
+      "type": "boolean"
+    },
+    "available_product_document_ids": {
+      "readonly": true,
+      "relation": "product.document",
+      "required": false,
+      "string": "Available Product Documents",
+      "type": "many2many"
+    },
+    "product_document_ids": {
+      "help": "The product documents for this order line that will be merged in the PDF quote.",
+      "readonly": false,
+      "relation": "product.document",
+      "required": false,
+      "string": "Product Documents",
+      "type": "many2many"
+    },
+    "is_service": {
+      "readonly": true,
+      "required": false,
+      "string": "Is a Service",
+      "type": "boolean"
+    },
+    "name_short": {
+      "readonly": true,
+      "required": false,
+      "string": "Name Short",
+      "type": "char"
+    },
+    "shop_warning": {
+      "readonly": false,
+      "required": false,
+      "string": "Warning",
+      "type": "char"
+    },
+    "planning_slot_ids": {
+      "readonly": false,
+      "relation": "planning.slot",
+      "required": false,
+      "string": "Planning Slot",
+      "type": "one2many"
+    },
+    "planning_hours_planned": {
+      "readonly": true,
+      "required": false,
+      "string": "Planning Hours Planned",
+      "type": "float"
+    },
+    "planning_hours_to_plan": {
+      "readonly": true,
+      "required": false,
+      "string": "Planning Hours To Plan",
+      "type": "float"
+    },
+    "project_id": {
+      "readonly": false,
+      "relation": "project.project",
+      "required": false,
+      "string": "Generated Project",
+      "type": "many2one"
+    },
+    "task_id": {
+      "readonly": false,
+      "relation": "project.task",
+      "required": false,
+      "string": "Generated Task",
+      "type": "many2one"
+    },
+    "reached_milestones_ids": {
+      "readonly": false,
+      "relation": "project.milestone",
+      "required": false,
+      "string": "Reached Milestones",
+      "type": "one2many"
+    },
+    "calendar_booking_ids": {
+      "readonly": false,
+      "relation": "calendar.booking",
+      "required": false,
+      "string": "Bookings",
+      "type": "one2many"
+    },
+    "calendar_event_id": {
+      "readonly": false,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Meeting",
+      "type": "many2one"
+    }
+  }
+}

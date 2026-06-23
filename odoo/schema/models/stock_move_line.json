@@ -1,0 +1,597 @@
+{
+  "model": "stock.move.line",
+  "name": "Product Moves (Stock Move Line)",
+  "field_count": 71,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "picking_id": {
+      "help": "The stock operation where the packing has been made",
+      "readonly": false,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Transfer",
+      "type": "many2one"
+    },
+    "move_id": {
+      "readonly": false,
+      "relation": "stock.move",
+      "required": false,
+      "string": "Stock Operation",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "allowed_uom_ids": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Allowed Uom",
+      "type": "many2many"
+    },
+    "uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": true,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "product_category_id": {
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "quantity": {
+      "readonly": false,
+      "required": false,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "quantity_product_uom": {
+      "readonly": true,
+      "required": false,
+      "string": "Quantity in Product UoM",
+      "type": "float"
+    },
+    "picked": {
+      "readonly": false,
+      "required": false,
+      "string": "Picked",
+      "type": "boolean"
+    },
+    "package_id": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Source Package",
+      "type": "many2one"
+    },
+    "lot_id": {
+      "readonly": false,
+      "relation": "stock.lot",
+      "required": false,
+      "string": "Lot/Serial Number",
+      "type": "many2one"
+    },
+    "lot_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Lot/Serial Number Name",
+      "type": "char"
+    },
+    "result_package_id": {
+      "help": "If set, the operations are packed into this package",
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Destination Package",
+      "type": "many2one"
+    },
+    "result_package_dest_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Destination Package Name",
+      "type": "char"
+    },
+    "package_history_id": {
+      "readonly": false,
+      "relation": "stock.package.history",
+      "required": false,
+      "string": "Package History",
+      "type": "many2one"
+    },
+    "is_entire_pack": {
+      "readonly": false,
+      "required": false,
+      "string": "Is added through entire package",
+      "type": "boolean"
+    },
+    "date": {
+      "help": "Creation date of this move line until updated due to: quantity being increased, 'picked' status has updated, or move line is done.",
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "datetime"
+    },
+    "scheduled_date": {
+      "help": "Scheduled date until move is done, then date of actual move processing",
+      "readonly": true,
+      "required": false,
+      "string": "Scheduled Date",
+      "type": "datetime"
+    },
+    "owner_id": {
+      "help": "When validating the transfer, the products will be taken from this owner.",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "From Owner",
+      "type": "many2one"
+    },
+    "location_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "From",
+      "type": "many2one"
+    },
+    "location_dest_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "To",
+      "type": "many2one"
+    },
+    "location_usage": {
+      "help": "* Vendor: Virtual location representing the source location for products coming from your vendors\n* Virtual: Virtual location used to create a hierarchical structure for your warehouse by aggregating its child locations. Can't directly contain products\n* Internal: Physical locations inside your warehouses,\n* Customer: Virtual location representing the destination location for products sent to your customers\n* Inventory Loss: Virtual location serving as the counterpart for inventory operations done to correct stock levels (Physical inventories)\n* Production: Virtual counterpart location for production operations. I.e. This location consumes components and produces finished products\n* Transit: Counterpart location that should be used for inter-company or inter-warehouses operations",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "supplier",
+          "Vendor"
+        ],
+        [
+          "view",
+          "Virtual"
+        ],
+        [
+          "internal",
+          "Internal"
+        ],
+        [
+          "customer",
+          "Customer"
+        ],
+        [
+          "inventory",
+          "Inventory Loss"
+        ],
+        [
+          "production",
+          "Production"
+        ],
+        [
+          "transit",
+          "Transit"
+        ]
+      ],
+      "string": "Source Location Type",
+      "type": "selection"
+    },
+    "location_dest_usage": {
+      "help": "* Vendor: Virtual location representing the source location for products coming from your vendors\n* Virtual: Virtual location used to create a hierarchical structure for your warehouse by aggregating its child locations. Can't directly contain products\n* Internal: Physical locations inside your warehouses,\n* Customer: Virtual location representing the destination location for products sent to your customers\n* Inventory Loss: Virtual location serving as the counterpart for inventory operations done to correct stock levels (Physical inventories)\n* Production: Virtual counterpart location for production operations. I.e. This location consumes components and produces finished products\n* Transit: Counterpart location that should be used for inter-company or inter-warehouses operations",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "supplier",
+          "Vendor"
+        ],
+        [
+          "view",
+          "Virtual"
+        ],
+        [
+          "internal",
+          "Internal"
+        ],
+        [
+          "customer",
+          "Customer"
+        ],
+        [
+          "inventory",
+          "Inventory Loss"
+        ],
+        [
+          "production",
+          "Production"
+        ],
+        [
+          "transit",
+          "Transit"
+        ]
+      ],
+      "string": "Destination Location Type",
+      "type": "selection"
+    },
+    "lots_visible": {
+      "readonly": true,
+      "required": false,
+      "string": "Lots Visible",
+      "type": "boolean"
+    },
+    "picking_partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Contact",
+      "type": "many2one"
+    },
+    "move_partner_id": {
+      "help": "Optional address where goods are to be delivered, specifically used for allotment",
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Destination Address ",
+      "type": "many2one"
+    },
+    "picking_code": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "incoming",
+          "Receipt"
+        ],
+        [
+          "outgoing",
+          "Delivery"
+        ],
+        [
+          "internal",
+          "Internal Transfer"
+        ]
+      ],
+      "string": "Operation Category",
+      "type": "selection"
+    },
+    "picking_type_id": {
+      "readonly": true,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "Operation type",
+      "type": "many2one"
+    },
+    "picking_type_use_create_lots": {
+      "help": "If this is checked only, it will suppose you want to create new Lots/Serial Numbers, so you can provide them in a text field. ",
+      "readonly": true,
+      "required": false,
+      "string": "Create New Lots/Serial Numbers",
+      "type": "boolean"
+    },
+    "picking_type_use_existing_lots": {
+      "help": "If this is checked, you will be able to choose the Lots/Serial Numbers. You can also decide to not put lots in this operation type.  This means it will create stock with no lot or not put a restriction on the lot taken. ",
+      "readonly": true,
+      "required": false,
+      "string": "Use Existing Lots/Serial Numbers",
+      "type": "boolean"
+    },
+    "state": {
+      "help": "* New: The stock move is created but not confirmed.\n* Waiting Another Move: A linked stock move should be done before this one.\n* Waiting: The stock move is confirmed but the product can't be reserved.\n* Available: The product of the stock move is reserved.\n* Done: The product has been transferred and the transfer has been confirmed.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "New"
+        ],
+        [
+          "waiting",
+          "Waiting Another Move"
+        ],
+        [
+          "confirmed",
+          "Waiting"
+        ],
+        [
+          "partially_available",
+          "Partially Available"
+        ],
+        [
+          "assigned",
+          "Available"
+        ],
+        [
+          "done",
+          "Done"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "is_inventory": {
+      "readonly": true,
+      "required": false,
+      "string": "Inventory",
+      "type": "boolean"
+    },
+    "is_locked": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Locked",
+      "type": "boolean"
+    },
+    "is_scrap": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Scrap",
+      "type": "boolean"
+    },
+    "consume_line_ids": {
+      "readonly": false,
+      "relation": "stock.move.line",
+      "required": false,
+      "string": "Consume Line",
+      "type": "many2many"
+    },
+    "produce_line_ids": {
+      "readonly": false,
+      "relation": "stock.move.line",
+      "required": false,
+      "string": "Produce Line",
+      "type": "many2many"
+    },
+    "reference": {
+      "readonly": true,
+      "required": false,
+      "string": "Reference",
+      "type": "char"
+    },
+    "tracking": {
+      "help": "Ensure the traceability of a storable product in your warehouse.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "none",
+          "By Quantity"
+        ],
+        [
+          "lot",
+          "By Lots"
+        ],
+        [
+          "serial",
+          "By Unique Serial Number"
+        ]
+      ],
+      "string": "Tracking",
+      "type": "selection"
+    },
+    "origin": {
+      "readonly": true,
+      "required": false,
+      "string": "Source",
+      "type": "char"
+    },
+    "description_picking": {
+      "readonly": true,
+      "required": false,
+      "string": "Description Of Picking",
+      "type": "text"
+    },
+    "quant_id": {
+      "readonly": false,
+      "relation": "stock.quant",
+      "required": false,
+      "string": "Pick From",
+      "type": "many2one"
+    },
+    "picking_location_id": {
+      "readonly": true,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Source Location",
+      "type": "many2one"
+    },
+    "picking_location_dest_id": {
+      "readonly": true,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Destination Location",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "product_barcode": {
+      "help": "International Article Number used for product identification.",
+      "readonly": true,
+      "required": false,
+      "string": "Barcode",
+      "type": "char"
+    },
+    "product_category_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Complete Name",
+      "type": "char"
+    },
+    "formatted_product_barcode": {
+      "readonly": true,
+      "required": false,
+      "string": "Formatted Product Barcode",
+      "type": "char"
+    },
+    "location_processed": {
+      "readonly": false,
+      "required": false,
+      "string": "Location Processed",
+      "type": "boolean"
+    },
+    "dummy_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Dummy",
+      "type": "char"
+    },
+    "parent_location_id": {
+      "readonly": true,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Parent Location",
+      "type": "many2one"
+    },
+    "parent_location_dest_id": {
+      "readonly": true,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Parent Location Dest",
+      "type": "many2one"
+    },
+    "product_stock_quant_ids": {
+      "readonly": true,
+      "relation": "stock.quant",
+      "required": false,
+      "string": "Product Stock Quant",
+      "type": "one2many"
+    },
+    "lot_properties": {
+      "readonly": true,
+      "required": false,
+      "string": "Properties",
+      "type": "properties"
+    },
+    "hide_lot_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Hide Lot Name",
+      "type": "boolean"
+    },
+    "hide_lot": {
+      "readonly": true,
+      "required": false,
+      "string": "Hide Lot",
+      "type": "boolean"
+    },
+    "image_1920": {
+      "readonly": true,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "product_reference_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Product Reference Code",
+      "type": "char"
+    },
+    "qty_done": {
+      "readonly": false,
+      "required": false,
+      "string": "Qty Done",
+      "type": "float"
+    },
+    "electronic_product_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Electronic Product Code",
+      "type": "char"
+    },
+    "packaging_uom_id": {
+      "help": "Packaging unit from sale or purchase orders",
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Packaging Unit of Measure",
+      "type": "many2one"
+    },
+    "packaging_uom_qty": {
+      "help": "Quantity in the packaging unit",
+      "readonly": true,
+      "required": false,
+      "string": "Packaging Quantity",
+      "type": "float"
+    },
+    "outermost_result_package_id": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Outermost Result Package",
+      "type": "many2one"
+    },
+    "sale_price": {
+      "readonly": true,
+      "required": false,
+      "string": "Sale Price",
+      "type": "float"
+    },
+    "destination_country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Destination Country",
+      "type": "char"
+    },
+    "carrier_id": {
+      "readonly": true,
+      "relation": "delivery.carrier",
+      "required": false,
+      "string": "Carrier",
+      "type": "many2one"
+    }
+  }
+}

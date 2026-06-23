@@ -1,0 +1,306 @@
+{
+  "model": "helpdesk.sla.report.analysis",
+  "name": "SLA Status Analysis",
+  "field_count": 40,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "ticket_id": {
+      "readonly": true,
+      "relation": "helpdesk.ticket",
+      "required": false,
+      "string": "Ticket",
+      "type": "many2one"
+    },
+    "description": {
+      "readonly": true,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "tag_ids": {
+      "readonly": true,
+      "relation": "helpdesk.tag",
+      "required": false,
+      "string": "Tags",
+      "type": "many2many"
+    },
+    "ticket_ref": {
+      "readonly": true,
+      "required": false,
+      "string": "Ticket IDs Sequence",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Subject",
+      "type": "char"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Ticket Creation Date",
+      "type": "datetime"
+    },
+    "priority": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Low priority"
+        ],
+        [
+          "1",
+          "Medium priority"
+        ],
+        [
+          "2",
+          "High priority"
+        ],
+        [
+          "3",
+          "Urgent"
+        ]
+      ],
+      "string": "Minimum Priority",
+      "type": "selection"
+    },
+    "user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Assigned To",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "partner_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Customer Name",
+      "type": "char"
+    },
+    "partner_email": {
+      "readonly": true,
+      "required": false,
+      "string": "Customer Email",
+      "type": "char"
+    },
+    "partner_phone": {
+      "readonly": true,
+      "required": false,
+      "string": "Customer Phone",
+      "type": "char"
+    },
+    "stage_id": {
+      "readonly": true,
+      "relation": "helpdesk.stage",
+      "required": false,
+      "string": "Stage",
+      "type": "many2one"
+    },
+    "ticket_open_hours": {
+      "readonly": true,
+      "required": false,
+      "string": "Hours Open",
+      "type": "float"
+    },
+    "ticket_closed": {
+      "readonly": true,
+      "required": false,
+      "string": "Ticket Closed",
+      "type": "boolean"
+    },
+    "ticket_close_hours": {
+      "readonly": true,
+      "required": false,
+      "string": "Working Hours to Close",
+      "type": "integer"
+    },
+    "ticket_assignation_hours": {
+      "readonly": true,
+      "required": false,
+      "string": "Working Hours to Assign",
+      "type": "integer"
+    },
+    "close_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Closing Date",
+      "type": "datetime"
+    },
+    "sla_id": {
+      "readonly": true,
+      "relation": "helpdesk.sla",
+      "required": false,
+      "string": "SLA",
+      "type": "many2one"
+    },
+    "sla_ids": {
+      "readonly": false,
+      "relation": "helpdesk.sla",
+      "required": false,
+      "string": "SLAs",
+      "type": "many2many"
+    },
+    "sla_status_ids": {
+      "readonly": false,
+      "relation": "helpdesk.sla.status",
+      "required": false,
+      "string": "SLA Status",
+      "type": "one2many"
+    },
+    "sla_stage_id": {
+      "readonly": true,
+      "relation": "helpdesk.stage",
+      "required": false,
+      "string": "SLA Stage",
+      "type": "many2one"
+    },
+    "sla_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "SLA Deadline",
+      "type": "datetime"
+    },
+    "sla_status": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "failed",
+          "SLA Failed"
+        ],
+        [
+          "reached",
+          "SLA Success"
+        ],
+        [
+          "ongoing",
+          "SLA in Progress"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "sla_fail": {
+      "readonly": true,
+      "required": false,
+      "string": "SLA Status Failed",
+      "type": "boolean"
+    },
+    "sla_success": {
+      "readonly": true,
+      "required": false,
+      "string": "SLA Status Success",
+      "type": "boolean"
+    },
+    "sla_exceeded_hours": {
+      "help": "Day to reach the stage of the SLA, without taking the working calendar into account",
+      "readonly": true,
+      "required": false,
+      "string": "Working Hours until SLA Deadline",
+      "type": "integer"
+    },
+    "sla_status_failed": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of SLAs Failed",
+      "type": "integer"
+    },
+    "active": {
+      "readonly": true,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "rating_last_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Rating (1-5)",
+      "type": "float"
+    },
+    "rating_avg": {
+      "readonly": true,
+      "required": false,
+      "string": "Average Rating",
+      "type": "float"
+    },
+    "team_id": {
+      "readonly": true,
+      "relation": "helpdesk.team",
+      "required": false,
+      "string": "Helpdesk Team",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "kanban_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "normal",
+          "Grey"
+        ],
+        [
+          "done",
+          "Green"
+        ],
+        [
+          "blocked",
+          "Red"
+        ]
+      ],
+      "string": "Kanban State",
+      "type": "selection"
+    },
+    "avg_response_hours": {
+      "readonly": true,
+      "required": false,
+      "string": "Average Hours to Respond",
+      "type": "float"
+    },
+    "first_response_hours": {
+      "readonly": true,
+      "required": false,
+      "string": "Hours to First Response",
+      "type": "float"
+    },
+    "sale_order_id": {
+      "readonly": true,
+      "relation": "sale.order",
+      "required": false,
+      "string": "Ref. Sales Order",
+      "type": "many2one"
+    }
+  }
+}

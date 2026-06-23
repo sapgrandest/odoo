@@ -1,0 +1,50 @@
+{
+  "model": "res.users.apikeys",
+  "name": "User API Key",
+  "field_count": 7,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": true,
+      "string": "Description",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": true,
+      "string": "User",
+      "type": "many2one"
+    },
+    "scope": {
+      "readonly": true,
+      "required": false,
+      "string": "Scope",
+      "type": "char"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Creation Date",
+      "type": "datetime"
+    },
+    "expiration_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Expiration Date",
+      "type": "datetime"
+    }
+  }
+}

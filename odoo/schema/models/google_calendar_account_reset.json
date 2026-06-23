@@ -1,0 +1,93 @@
+{
+  "model": "google.calendar.account.reset",
+  "name": "Google Calendar Account Reset",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "User",
+      "type": "many2one"
+    },
+    "delete_policy": {
+      "help": "This will only affect events for which the user is the owner",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "dont_delete",
+          "Leave them untouched"
+        ],
+        [
+          "delete_google",
+          "Delete from the current Google Calendar account"
+        ],
+        [
+          "delete_odoo",
+          "Delete from Odoo"
+        ],
+        [
+          "delete_both",
+          "Delete from both"
+        ]
+      ],
+      "string": "User's Existing Events",
+      "type": "selection"
+    },
+    "sync_policy": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "new",
+          "Synchronize only new events"
+        ],
+        [
+          "all",
+          "Synchronize all existing events"
+        ]
+      ],
+      "string": "Next Synchronization",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

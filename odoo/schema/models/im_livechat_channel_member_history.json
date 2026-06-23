@@ -1,0 +1,286 @@
+{
+  "model": "im_livechat.channel.member.history",
+  "name": "Keep the channel member history",
+  "field_count": 30,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "member_id": {
+      "readonly": false,
+      "relation": "discuss.channel.member",
+      "required": false,
+      "string": "Member",
+      "type": "many2one"
+    },
+    "livechat_member_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "agent",
+          "Agent"
+        ],
+        [
+          "visitor",
+          "Visitor"
+        ],
+        [
+          "bot",
+          "Chatbot"
+        ]
+      ],
+      "string": "Livechat Member Type",
+      "type": "selection"
+    },
+    "channel_id": {
+      "readonly": true,
+      "relation": "discuss.channel",
+      "required": false,
+      "string": "Channel",
+      "type": "many2one"
+    },
+    "guest_id": {
+      "readonly": true,
+      "relation": "mail.guest",
+      "required": false,
+      "string": "Guest",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "chatbot_script_id": {
+      "readonly": true,
+      "relation": "chatbot.script",
+      "required": false,
+      "string": "Chatbot Script",
+      "type": "many2one"
+    },
+    "agent_expertise_ids": {
+      "readonly": true,
+      "relation": "im_livechat.expertise",
+      "required": false,
+      "string": "Agent Expertise",
+      "type": "many2many"
+    },
+    "avatar_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar 128",
+      "type": "binary"
+    },
+    "session_country_id": {
+      "help": "Country of the visitor of the channel",
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "session_livechat_channel_id": {
+      "readonly": true,
+      "relation": "im_livechat.channel",
+      "required": false,
+      "string": "Live chat channel",
+      "type": "many2one"
+    },
+    "session_outcome": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "no_answer",
+          "Never Answered"
+        ],
+        [
+          "no_agent",
+          "No one Available"
+        ],
+        [
+          "no_failure",
+          "Success"
+        ],
+        [
+          "escalated",
+          "Escalated"
+        ]
+      ],
+      "string": "Livechat Outcome",
+      "type": "selection"
+    },
+    "session_start_hour": {
+      "readonly": true,
+      "required": false,
+      "string": "Session Start Hour",
+      "type": "float"
+    },
+    "session_week_day": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Monday"
+        ],
+        [
+          "1",
+          "Tuesday"
+        ],
+        [
+          "2",
+          "Wednesday"
+        ],
+        [
+          "3",
+          "Thursday"
+        ],
+        [
+          "4",
+          "Friday"
+        ],
+        [
+          "5",
+          "Saturday"
+        ],
+        [
+          "6",
+          "Sunday"
+        ]
+      ],
+      "string": "Day of the Week",
+      "type": "selection"
+    },
+    "session_duration_hour": {
+      "help": "Time spent by the persona in the session in hours",
+      "readonly": true,
+      "required": false,
+      "string": "Session Duration",
+      "type": "float"
+    },
+    "rating": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "1",
+          "Unhappy"
+        ],
+        [
+          "3",
+          "Neutral"
+        ],
+        [
+          "5",
+          "Happy"
+        ]
+      ],
+      "string": "Rating",
+      "type": "selection"
+    },
+    "rating_percentage": {
+      "readonly": true,
+      "required": false,
+      "string": "Rating (%)",
+      "type": "float"
+    },
+    "call_history_ids": {
+      "readonly": false,
+      "relation": "discuss.call.history",
+      "required": false,
+      "string": "Call History",
+      "type": "many2many"
+    },
+    "has_call": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Call",
+      "type": "float"
+    },
+    "call_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# of Sessions with Calls",
+      "type": "float"
+    },
+    "call_percentage": {
+      "readonly": true,
+      "required": false,
+      "string": "Session with Calls (%)",
+      "type": "float"
+    },
+    "call_duration_hour": {
+      "readonly": true,
+      "required": false,
+      "string": "Call Duration",
+      "type": "float"
+    },
+    "message_count": {
+      "readonly": false,
+      "required": false,
+      "string": "# of Messages per Session",
+      "type": "integer"
+    },
+    "help_status": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "requested",
+          "Help Requested"
+        ],
+        [
+          "provided",
+          "Help Provided"
+        ]
+      ],
+      "string": "Help Status",
+      "type": "selection"
+    },
+    "response_time_hour": {
+      "readonly": false,
+      "required": false,
+      "string": "Response Time",
+      "type": "float"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

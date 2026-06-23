@@ -1,0 +1,139 @@
+{
+  "model": "sale.advance.payment.inv",
+  "name": "Sales Advance Payment Invoice",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "advance_payment_method": {
+      "help": "A standard invoice is issued with all the order lines ready for invoicing,according to their invoicing policy (based on ordered or delivered quantity).",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "delivered",
+          "Regular invoice"
+        ],
+        [
+          "percentage",
+          "Down payment (percentage)"
+        ],
+        [
+          "fixed",
+          "Down payment (fixed amount)"
+        ]
+      ],
+      "string": "Create Invoice",
+      "type": "selection"
+    },
+    "count": {
+      "readonly": true,
+      "required": false,
+      "string": "Order Count",
+      "type": "integer"
+    },
+    "sale_order_ids": {
+      "readonly": false,
+      "relation": "sale.order",
+      "required": false,
+      "string": "Sale Order",
+      "type": "many2many"
+    },
+    "has_down_payments": {
+      "readonly": true,
+      "required": false,
+      "string": "Has down payments",
+      "type": "boolean"
+    },
+    "deduct_down_payments": {
+      "readonly": false,
+      "required": false,
+      "string": "Deduct down payments",
+      "type": "boolean"
+    },
+    "amount": {
+      "help": "The percentage of amount to be invoiced in advance.",
+      "readonly": false,
+      "required": false,
+      "string": "Down Payment",
+      "type": "float"
+    },
+    "fixed_amount": {
+      "help": "The fixed amount to be invoiced in advance.",
+      "readonly": false,
+      "required": false,
+      "string": "Down Payment Amount (Fixed)",
+      "type": "monetary"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "amount_invoiced": {
+      "help": "Only confirmed down payments are considered.",
+      "readonly": true,
+      "required": false,
+      "string": "Already invoiced",
+      "type": "monetary"
+    },
+    "display_draft_invoice_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Draft Invoice Warning",
+      "type": "boolean"
+    },
+    "consolidated_billing": {
+      "help": "Create one invoice for all orders related to same customer, same invoicing address and same delivery address.",
+      "readonly": false,
+      "required": false,
+      "string": "Consolidated Billing",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "model": "mail.message.translation",
+  "name": "Message Translation",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "message_id": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": true,
+      "string": "Message",
+      "type": "many2one"
+    },
+    "source_lang": {
+      "help": "Result of the language detection based on its content.",
+      "readonly": false,
+      "required": true,
+      "string": "Source Language",
+      "type": "char"
+    },
+    "target_lang": {
+      "help": "Shortened language code used as the target for the translation request.",
+      "readonly": false,
+      "required": true,
+      "string": "Target Language",
+      "type": "char"
+    },
+    "body": {
+      "help": "String received from the translation request.",
+      "readonly": false,
+      "required": true,
+      "string": "Translation Body",
+      "type": "html"
+    },
+    "create_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Create Date",
+      "type": "datetime"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

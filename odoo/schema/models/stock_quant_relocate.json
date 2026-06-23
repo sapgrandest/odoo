@@ -1,0 +1,104 @@
+{
+  "model": "stock.quant.relocate",
+  "name": "Stock Quantity Relocation",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "quant_ids": {
+      "readonly": false,
+      "relation": "stock.quant",
+      "required": false,
+      "string": "Quant",
+      "type": "many2many"
+    },
+    "company_id": {
+      "help": "Let this field empty if this location is shared between companies",
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "dest_location_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Dest Location",
+      "type": "many2one"
+    },
+    "dest_package_id_domain": {
+      "readonly": true,
+      "required": false,
+      "string": "Dest Package Id Domain",
+      "type": "char"
+    },
+    "dest_package_id": {
+      "readonly": true,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Dest Package",
+      "type": "many2one"
+    },
+    "message": {
+      "readonly": false,
+      "required": false,
+      "string": "Reason for relocation",
+      "type": "text"
+    },
+    "is_partial_package": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Partial Package",
+      "type": "boolean"
+    },
+    "partial_package_names": {
+      "readonly": true,
+      "required": false,
+      "string": "Partial Package Names",
+      "type": "char"
+    },
+    "is_multi_location": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Multi Location",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

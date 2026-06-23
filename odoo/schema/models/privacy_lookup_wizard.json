@@ -1,0 +1,89 @@
+{
+  "model": "privacy.lookup.wizard",
+  "name": "Privacy Lookup Wizard",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "email": {
+      "readonly": false,
+      "required": true,
+      "string": "Email",
+      "type": "char"
+    },
+    "line_ids": {
+      "readonly": false,
+      "relation": "privacy.lookup.wizard.line",
+      "required": false,
+      "string": "Line",
+      "type": "one2many"
+    },
+    "execution_details": {
+      "readonly": true,
+      "required": false,
+      "string": "Execution Details",
+      "type": "text"
+    },
+    "log_id": {
+      "readonly": false,
+      "relation": "privacy.log",
+      "required": false,
+      "string": "Log",
+      "type": "many2one"
+    },
+    "records_description": {
+      "readonly": true,
+      "required": false,
+      "string": "Records Description",
+      "type": "text"
+    },
+    "line_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Line Count",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

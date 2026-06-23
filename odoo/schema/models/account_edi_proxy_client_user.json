@@ -1,0 +1,130 @@
+{
+  "model": "account_edi_proxy_client.user",
+  "name": "Account EDI proxy user",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "id_client": {
+      "readonly": false,
+      "required": true,
+      "string": "Id Client",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "edi_identification": {
+      "help": "The unique id that identifies this user, typically the vat",
+      "readonly": false,
+      "required": true,
+      "string": "Edi Identification",
+      "type": "char"
+    },
+    "private_key_id": {
+      "help": "The key to encrypt all the user's data",
+      "readonly": false,
+      "relation": "certificate.key",
+      "required": true,
+      "string": "Private Key",
+      "type": "many2one"
+    },
+    "refresh_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Refresh Token",
+      "type": "char"
+    },
+    "is_token_out_of_sync": {
+      "help": "This field is used to indicate that the edi user token is out of sync with the proxy server. It is set to True when the token needs to be refreshed or updated.",
+      "readonly": false,
+      "required": false,
+      "string": "Token Out of Sync",
+      "type": "boolean"
+    },
+    "token_sync_version": {
+      "readonly": false,
+      "required": false,
+      "string": "Token Sync Version",
+      "type": "integer"
+    },
+    "proxy_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "peppol",
+          "Peppol"
+        ]
+      ],
+      "string": "Proxy Type",
+      "type": "selection"
+    },
+    "edi_mode": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "prod",
+          "Production mode"
+        ],
+        [
+          "test",
+          "Test mode"
+        ],
+        [
+          "demo",
+          "Demo mode"
+        ]
+      ],
+      "string": "EDI operating mode",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

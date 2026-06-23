@@ -1,0 +1,381 @@
+{
+  "model": "ir.ui.view",
+  "name": "View",
+  "field_count": 44,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "is_seo_optimized": {
+      "readonly": true,
+      "required": false,
+      "string": "SEO optimized",
+      "type": "boolean"
+    },
+    "website_meta_title": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta title",
+      "type": "char"
+    },
+    "website_meta_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta description",
+      "type": "text"
+    },
+    "website_meta_keywords": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta keywords",
+      "type": "char"
+    },
+    "website_meta_og_img": {
+      "readonly": false,
+      "required": false,
+      "string": "Website opengraph image",
+      "type": "char"
+    },
+    "seo_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Seo name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "View Name",
+      "type": "char"
+    },
+    "model": {
+      "readonly": false,
+      "required": false,
+      "string": "Model",
+      "type": "char"
+    },
+    "key": {
+      "readonly": false,
+      "required": false,
+      "string": "Key",
+      "type": "char"
+    },
+    "priority": {
+      "readonly": false,
+      "required": true,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "list",
+          "List"
+        ],
+        [
+          "form",
+          "Form"
+        ],
+        [
+          "graph",
+          "Graph"
+        ],
+        [
+          "pivot",
+          "Pivot"
+        ],
+        [
+          "calendar",
+          "Calendar"
+        ],
+        [
+          "kanban",
+          "Kanban"
+        ],
+        [
+          "search",
+          "Search"
+        ],
+        [
+          "qweb",
+          "QWeb"
+        ],
+        [
+          "cohort",
+          "Cohort"
+        ],
+        [
+          "gantt",
+          "Gantt"
+        ],
+        [
+          "grid",
+          "Grid"
+        ],
+        [
+          "hierarchy",
+          "Hierarchy"
+        ],
+        [
+          "map",
+          "Map"
+        ],
+        [
+          "activity",
+          "Activity"
+        ]
+      ],
+      "string": "View Type",
+      "type": "selection"
+    },
+    "arch": {
+      "help": "This field should be used when accessing view arch. It will use translation.\n                               Note that it will read `arch_db` or `arch_fs` if in dev-xml mode.",
+      "readonly": false,
+      "required": false,
+      "string": "View Architecture",
+      "type": "text"
+    },
+    "arch_base": {
+      "help": "This field is the same as `arch` field without translations",
+      "readonly": false,
+      "required": false,
+      "string": "Base View Architecture",
+      "type": "text"
+    },
+    "arch_db": {
+      "help": "This field stores the view arch.",
+      "readonly": false,
+      "required": false,
+      "string": "Arch Blob",
+      "type": "text"
+    },
+    "arch_fs": {
+      "help": "File from where the view originates.\n                                                          Useful to (hard) reset broken views or to read arch from file in dev-xml mode.",
+      "readonly": false,
+      "required": false,
+      "string": "Arch Filename",
+      "type": "char"
+    },
+    "arch_updated": {
+      "readonly": false,
+      "required": false,
+      "string": "Modified Architecture",
+      "type": "boolean"
+    },
+    "arch_prev": {
+      "help": "This field will save the current `arch_db` before writing on it.\n                                                                         Useful to (soft) reset a broken view.",
+      "readonly": false,
+      "required": false,
+      "string": "Previous View Architecture",
+      "type": "text"
+    },
+    "inherit_id": {
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Inherited View",
+      "type": "many2one"
+    },
+    "inherit_children_ids": {
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Views which inherit from this one",
+      "type": "one2many"
+    },
+    "model_data_id": {
+      "readonly": true,
+      "relation": "ir.model.data",
+      "required": false,
+      "string": "Model Data",
+      "type": "many2one"
+    },
+    "xml_id": {
+      "help": "ID of the view defined in xml file",
+      "readonly": true,
+      "required": false,
+      "string": "External ID",
+      "type": "char"
+    },
+    "group_ids": {
+      "help": "If this field is empty, the view applies to all users. Otherwise, the view applies to the users of those groups only.",
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Groups",
+      "type": "many2many"
+    },
+    "mode": {
+      "help": "Only applies if this view inherits from an other one (inherit_id is not False/Null).\n\n* if extension (default), if this view is requested the closest primary view\nis looked up (via inherit_id), then all views inheriting from it with this\nview's model are applied\n* if primary, the closest primary view is fully resolved (even if it uses a\ndifferent model than this one), then this view's inheritance specs\n(<xpath/>) are applied, and the result is used as if it were this view's\nactual arch.\n",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "primary",
+          "Base view"
+        ],
+        [
+          "extension",
+          "Extension View"
+        ]
+      ],
+      "string": "View inheritance mode",
+      "type": "selection"
+    },
+    "warning_info": {
+      "readonly": true,
+      "required": false,
+      "string": "Warning information",
+      "type": "html"
+    },
+    "active": {
+      "help": "If this view is inherited,\n* if True, the view always extends its parent\n* if False, the view currently does not extend its parent but can be enabled\n         ",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Model of the view",
+      "type": "many2one"
+    },
+    "invalid_locators": {
+      "readonly": true,
+      "required": false,
+      "string": "Invalid Locators",
+      "type": "json"
+    },
+    "technical_usage": {
+      "readonly": false,
+      "required": false,
+      "selection": [],
+      "string": "View's Technical Usage",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "customize_show": {
+      "readonly": false,
+      "required": false,
+      "string": "Show As Optional Inherit",
+      "type": "boolean"
+    },
+    "website_id": {
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "page_ids": {
+      "readonly": false,
+      "relation": "website.page",
+      "required": false,
+      "string": "Page",
+      "type": "one2many"
+    },
+    "controller_page_ids": {
+      "readonly": false,
+      "relation": "website.controller.page",
+      "required": false,
+      "string": "Controller Page",
+      "type": "one2many"
+    },
+    "first_page_id": {
+      "help": "First page linked to this view",
+      "readonly": true,
+      "relation": "website.page",
+      "required": false,
+      "string": "Website Page",
+      "type": "many2one"
+    },
+    "track": {
+      "help": "Allow to specify for one page of the website to be trackable or not",
+      "readonly": false,
+      "required": false,
+      "string": "Track",
+      "type": "boolean"
+    },
+    "visibility": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "public",
+          "Public"
+        ],
+        [
+          "connected",
+          "Signed In"
+        ],
+        [
+          "restricted_group",
+          "Restricted Group"
+        ],
+        [
+          "password",
+          "With Password"
+        ]
+      ],
+      "string": "Visibility",
+      "type": "selection"
+    },
+    "visibility_password": {
+      "readonly": false,
+      "required": false,
+      "string": "Visibility Password",
+      "type": "char"
+    },
+    "visibility_password_display": {
+      "readonly": false,
+      "required": false,
+      "string": "Visibility Password Display",
+      "type": "char"
+    },
+    "theme_template_id": {
+      "readonly": false,
+      "relation": "theme.ir.ui.view",
+      "required": false,
+      "string": "Theme Template",
+      "type": "many2one"
+    }
+  }
+}

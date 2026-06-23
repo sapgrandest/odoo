@@ -1,0 +1,79 @@
+{
+  "model": "mail.message.link.preview",
+  "name": "Link between link previews and messages",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "message_id": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": true,
+      "string": "Message",
+      "type": "many2one"
+    },
+    "link_preview_id": {
+      "readonly": false,
+      "relation": "mail.link.preview",
+      "required": true,
+      "string": "Link Preview",
+      "type": "many2one"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "is_hidden": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Hidden",
+      "type": "boolean"
+    },
+    "author_id": {
+      "help": "Author of the message. If not set, email_from may hold an email address that did not match any partner.",
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Author",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

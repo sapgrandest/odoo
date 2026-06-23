@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-06-01T14:43:05.3298023+02:00",
+  "diagnostic": {
+    "tcp_443_primaire": "OUVERT (195.242.186.3:443)",
+    "tcp_443_secours": "OUVERT (195.242.186.16:443)",
+    "http_wsdl": "TIMEOUT — TCP OK mais HTTP ne répond pas",
+    "conclusion": "Serveur SOAP requiert très probablement une liste blanche d'IP (IP whitelist). Le port TCP 443 accepte la connexion mais le serveur ne traite pas les requêtes HTTP en provenance d'adresses IP non autorisées. Demander à Moto-Profil d'ajouter l'IP publique du poste / serveur Odoo à la liste blanche.",
+    "action_requise": "Contacter Moto-Profil pour faire whitelister l'IP publique"
+  },
+  "request": {
+    "method": "POST",
+    "url": "https://195.242.186.3/MotoBiznesWS/WSMotoKlient.asmx",
+    "soap_action": "InformacjaOKontrahencie",
+    "fiks": "99999 (placeholder — vrais Fiks/Motonet inconnus)",
+    "motonet": "9999 (placeholder)"
+  },
+  "response": {
+    "status": "TIMEOUT",
+    "elapsed_ms": ">30000",
+    "message": "HttpClient.Timeout de 30s dépassé. TCP connect OK, TLS+HTTP bloqué."
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "model": "theme.website.page",
+  "name": "Website Theme Page",
+  "field_count": 21,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "header_visible": {
+      "readonly": false,
+      "required": false,
+      "string": "Header Visible",
+      "type": "boolean"
+    },
+    "footer_visible": {
+      "readonly": false,
+      "required": false,
+      "string": "Footer Visible",
+      "type": "boolean"
+    },
+    "breadcrumb_visible": {
+      "readonly": false,
+      "required": false,
+      "string": "Breadcrumb Visible",
+      "type": "boolean"
+    },
+    "header_overlay": {
+      "readonly": false,
+      "required": false,
+      "string": "Header Overlay",
+      "type": "boolean"
+    },
+    "header_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Header Color",
+      "type": "char"
+    },
+    "header_text_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Header Text Color",
+      "type": "char"
+    },
+    "breadcrumb_overlay": {
+      "readonly": false,
+      "required": false,
+      "string": "Breadcrumb Overlay",
+      "type": "boolean"
+    },
+    "breadcrumb_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Breadcrumb Color",
+      "type": "char"
+    },
+    "breadcrumb_text_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Breadcrumb Text Color",
+      "type": "char"
+    },
+    "url": {
+      "readonly": false,
+      "required": false,
+      "string": "Url",
+      "type": "char"
+    },
+    "view_id": {
+      "readonly": false,
+      "relation": "theme.ir.ui.view",
+      "required": true,
+      "string": "View",
+      "type": "many2one"
+    },
+    "website_indexed": {
+      "readonly": false,
+      "required": false,
+      "string": "Page Indexed",
+      "type": "boolean"
+    },
+    "is_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Published",
+      "type": "boolean"
+    },
+    "is_new_page_template": {
+      "readonly": false,
+      "required": false,
+      "string": "New Page Template",
+      "type": "boolean"
+    },
+    "copy_ids": {
+      "readonly": true,
+      "relation": "website.page",
+      "required": false,
+      "string": "Page using a copy of me",
+      "type": "one2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

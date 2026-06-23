@@ -1,0 +1,37 @@
+{
+  "model": "google.calendar.sync",
+  "name": "Synchronize a record with Google Calendar",
+  "field_count": 5,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "google_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Calendar Id",
+      "type": "char"
+    },
+    "need_sync": {
+      "readonly": false,
+      "required": false,
+      "string": "Need Sync",
+      "type": "boolean"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    }
+  }
+}

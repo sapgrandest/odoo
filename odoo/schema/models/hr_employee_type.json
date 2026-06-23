@@ -1,0 +1,83 @@
+{
+  "model": "hr.employee.type",
+  "name": "Employee Type",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "code": {
+      "readonly": false,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "country_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "employees_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Employees",
+      "type": "integer"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

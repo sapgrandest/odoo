@@ -1,0 +1,224 @@
+{
+  "model": "discuss.channel.member",
+  "name": "Channel Member",
+  "field_count": 27,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "guest_id": {
+      "readonly": false,
+      "relation": "mail.guest",
+      "required": false,
+      "string": "Guest",
+      "type": "many2one"
+    },
+    "is_self": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Self",
+      "type": "boolean"
+    },
+    "channel_id": {
+      "readonly": false,
+      "relation": "discuss.channel",
+      "required": true,
+      "string": "Channel",
+      "type": "many2one"
+    },
+    "channel_role": {
+      "help": "The role of the member in the channel. The owner can add and remove admins. The owner and admins can edit the channel and its members.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "owner",
+          "Owner"
+        ],
+        [
+          "admin",
+          "Admin"
+        ]
+      ],
+      "string": "Channel Role",
+      "type": "selection"
+    },
+    "is_favorite": {
+      "readonly": false,
+      "required": false,
+      "string": "Favorite",
+      "type": "boolean"
+    },
+    "seen_message_id": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Last Seen",
+      "type": "many2one"
+    },
+    "new_message_separator": {
+      "help": "Message id before which the separator should be displayed",
+      "readonly": false,
+      "required": true,
+      "string": "New Message Separator",
+      "type": "integer"
+    },
+    "message_unread_counter": {
+      "readonly": true,
+      "required": false,
+      "string": "Unread Messages Counter",
+      "type": "integer"
+    },
+    "custom_notifications": {
+      "help": "Use default from user settings if not specified. This setting will only be applied to channels.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "all",
+          "All Messages"
+        ],
+        [
+          "mentions",
+          "Mentions Only"
+        ],
+        [
+          "no_notif",
+          "Nothing"
+        ]
+      ],
+      "string": "Customized Notifications",
+      "type": "selection"
+    },
+    "mute_until_dt": {
+      "help": "If set, the member will not receive notifications from the channel until this date.",
+      "readonly": false,
+      "required": false,
+      "string": "Mute notifications until",
+      "type": "datetime"
+    },
+    "is_pinned": {
+      "readonly": true,
+      "required": false,
+      "string": "Is pinned on the interface",
+      "type": "boolean"
+    },
+    "unpin_dt": {
+      "help": "Contains the date and time when the channel was unpinned by the user.",
+      "readonly": false,
+      "required": false,
+      "string": "Unpin date",
+      "type": "datetime"
+    },
+    "last_interest_dt": {
+      "help": "Contains the date and time of the last interesting event that happened in this channel for this user. This includes: creating, joining, pinning",
+      "readonly": false,
+      "required": false,
+      "string": "Last Activity",
+      "type": "datetime"
+    },
+    "last_seen_dt": {
+      "readonly": false,
+      "required": false,
+      "string": "Last seen date",
+      "type": "datetime"
+    },
+    "rtc_session_ids": {
+      "readonly": false,
+      "relation": "discuss.channel.rtc.session",
+      "required": false,
+      "string": "RTC Sessions",
+      "type": "one2many"
+    },
+    "rtc_inviting_session_id": {
+      "readonly": false,
+      "relation": "discuss.channel.rtc.session",
+      "required": false,
+      "string": "Ringing session",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "livechat_member_history_ids": {
+      "readonly": false,
+      "relation": "im_livechat.channel.member.history",
+      "required": false,
+      "string": "Livechat Member History",
+      "type": "one2many"
+    },
+    "livechat_member_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "agent",
+          "Agent"
+        ],
+        [
+          "visitor",
+          "Visitor"
+        ],
+        [
+          "bot",
+          "Chatbot"
+        ]
+      ],
+      "string": "Livechat Member Type",
+      "type": "selection"
+    },
+    "chatbot_script_id": {
+      "readonly": false,
+      "relation": "chatbot.script",
+      "required": false,
+      "string": "Chatbot Script",
+      "type": "many2one"
+    },
+    "agent_expertise_ids": {
+      "readonly": false,
+      "relation": "im_livechat.expertise",
+      "required": false,
+      "string": "Agent Expertise",
+      "type": "many2many"
+    }
+  }
+}

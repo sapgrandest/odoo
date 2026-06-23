@@ -1,0 +1,37 @@
+{
+  "model": "website.page_visibility_options.mixin",
+  "name": "Website page/record specific visibility options",
+  "field_count": 5,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "header_visible": {
+      "readonly": false,
+      "required": false,
+      "string": "Header Visible",
+      "type": "boolean"
+    },
+    "footer_visible": {
+      "readonly": false,
+      "required": false,
+      "string": "Footer Visible",
+      "type": "boolean"
+    },
+    "breadcrumb_visible": {
+      "readonly": false,
+      "required": false,
+      "string": "Breadcrumb Visible",
+      "type": "boolean"
+    }
+  }
+}

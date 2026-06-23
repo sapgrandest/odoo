@@ -1,0 +1,162 @@
+{
+  "model": "resource.calendar.attendance",
+  "name": "Work Detail",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "dayofweek": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "0",
+          "Monday"
+        ],
+        [
+          "1",
+          "Tuesday"
+        ],
+        [
+          "2",
+          "Wednesday"
+        ],
+        [
+          "3",
+          "Thursday"
+        ],
+        [
+          "4",
+          "Friday"
+        ],
+        [
+          "5",
+          "Saturday"
+        ],
+        [
+          "6",
+          "Sunday"
+        ]
+      ],
+      "string": "Day of Week",
+      "type": "selection"
+    },
+    "hour_from": {
+      "help": "Start and End time of working.\nA specific value of 24:00 is interpreted as 23:59:59.999999.",
+      "readonly": false,
+      "required": true,
+      "string": "Work from",
+      "type": "float"
+    },
+    "hour_to": {
+      "readonly": false,
+      "required": true,
+      "string": "Work to",
+      "type": "float"
+    },
+    "duration_hours": {
+      "readonly": false,
+      "required": false,
+      "string": "Hours",
+      "type": "float"
+    },
+    "calendar_id": {
+      "readonly": false,
+      "relation": "resource.calendar",
+      "required": true,
+      "string": "Resource's Calendar",
+      "type": "many2one"
+    },
+    "duration_based": {
+      "readonly": true,
+      "required": false,
+      "string": "Duration Based",
+      "type": "boolean"
+    },
+    "day_period": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "morning",
+          "Morning"
+        ],
+        [
+          "afternoon",
+          "Afternoon"
+        ],
+        [
+          "full_day",
+          "Full Day"
+        ]
+      ],
+      "string": "Day Period",
+      "type": "selection"
+    },
+    "week_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "1",
+          "Second"
+        ],
+        [
+          "0",
+          "First"
+        ]
+      ],
+      "string": "Week Number",
+      "type": "selection"
+    },
+    "two_weeks_calendar": {
+      "readonly": true,
+      "required": false,
+      "string": "Calendar in 2 weeks mode",
+      "type": "boolean"
+    },
+    "sequence": {
+      "help": "Gives the sequence of this line when displaying the resource calendar.",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

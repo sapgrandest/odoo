@@ -1,0 +1,129 @@
+{
+  "model": "calendar.popover.delete.wizard",
+  "name": "Calendar Popover Delete Wizard",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "lang": {
+      "help": "Optional translation language (ISO code) to select when sending out an email. If not set, the main partner's language will be used. This should usually be a placeholder expression that provides the appropriate language, e.g. {{ object.partner_id.lang }}.",
+      "readonly": false,
+      "required": false,
+      "string": "Language",
+      "type": "char"
+    },
+    "render_model": {
+      "readonly": true,
+      "required": false,
+      "string": "Rendering Model",
+      "type": "char"
+    },
+    "subject": {
+      "readonly": false,
+      "required": false,
+      "string": "Subject",
+      "type": "char"
+    },
+    "body": {
+      "readonly": false,
+      "required": false,
+      "string": "Contents",
+      "type": "html"
+    },
+    "body_has_template_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Body content is the same as the template",
+      "type": "boolean"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Mail Template",
+      "type": "many2one"
+    },
+    "is_mail_template_editor": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Editor",
+      "type": "boolean"
+    },
+    "can_edit_body": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Edit Body",
+      "type": "boolean"
+    },
+    "calendar_event_id": {
+      "readonly": false,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Calendar Event",
+      "type": "many2one"
+    },
+    "delete": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "one",
+          "Delete this event"
+        ],
+        [
+          "next",
+          "Delete this and following events"
+        ],
+        [
+          "all",
+          "Delete all the events"
+        ]
+      ],
+      "string": "Delete",
+      "type": "selection"
+    },
+    "recipient_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Recipients",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

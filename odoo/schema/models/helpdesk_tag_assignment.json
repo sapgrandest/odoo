@@ -1,0 +1,66 @@
+{
+  "model": "helpdesk.tag.assignment",
+  "name": "Helpdesk Tag Assignment",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "team_id": {
+      "readonly": false,
+      "relation": "helpdesk.team",
+      "required": false,
+      "string": "Team",
+      "type": "many2one"
+    },
+    "tag_id": {
+      "readonly": false,
+      "relation": "helpdesk.tag",
+      "required": true,
+      "string": "Ticket Tag",
+      "type": "many2one"
+    },
+    "user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "Team Members",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

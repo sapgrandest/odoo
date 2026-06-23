@@ -1,0 +1,174 @@
+{
+  "model": "product.supplierinfo",
+  "name": "Supplier Pricelist",
+  "field_count": 25,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Vendor",
+      "type": "many2one"
+    },
+    "product_name": {
+      "help": "This vendor's product name will be used when printing a request for quotation. Keep empty to use the internal one.",
+      "readonly": false,
+      "required": false,
+      "string": "Vendor Product Name",
+      "type": "char"
+    },
+    "product_code": {
+      "help": "This vendor's product code will be used when printing a request for quotation. Keep empty to use the internal one.",
+      "readonly": false,
+      "required": false,
+      "string": "Vendor Product Code",
+      "type": "char"
+    },
+    "sequence": {
+      "help": "Assigns the priority to the list of product vendor.",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": true,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "min_qty": {
+      "help": "The quantity to purchase from this vendor to benefit from the unit price. If a vendor unit is set, quantity should be specified in this unit, otherwise it should be specified in the default unit of the product.",
+      "readonly": false,
+      "required": true,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "price": {
+      "help": "The price to purchase a product",
+      "readonly": false,
+      "required": false,
+      "string": "Unit Price",
+      "type": "float"
+    },
+    "price_discounted": {
+      "readonly": true,
+      "required": false,
+      "string": "Discounted Price",
+      "type": "float"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": true,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "date_start": {
+      "help": "Start date for this vendor price",
+      "readonly": false,
+      "required": false,
+      "string": "Start Date",
+      "type": "date"
+    },
+    "date_end": {
+      "help": "End date for this vendor price",
+      "readonly": false,
+      "required": false,
+      "string": "End Date",
+      "type": "date"
+    },
+    "product_id": {
+      "help": "If not set, the vendor price will apply to all variants of this product.",
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product Variant",
+      "type": "many2one"
+    },
+    "product_tmpl_id": {
+      "readonly": false,
+      "relation": "product.template",
+      "required": true,
+      "string": "Product Template",
+      "type": "many2one"
+    },
+    "product_variant_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Variant Count",
+      "type": "integer"
+    },
+    "delay": {
+      "help": "Lead time in days between the confirmation of the purchase order and the receipt of the products in your warehouse. Used by the scheduler for automatic computation of the purchase order planning.",
+      "readonly": false,
+      "required": true,
+      "string": "Lead Time",
+      "type": "integer"
+    },
+    "discount": {
+      "readonly": false,
+      "required": false,
+      "string": "Discount (%)",
+      "type": "float"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "last_purchase_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Purchase",
+      "type": "date"
+    },
+    "show_set_supplier_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Set Supplier Button",
+      "type": "boolean"
+    }
+  }
+}

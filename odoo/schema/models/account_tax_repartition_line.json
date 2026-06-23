@@ -1,0 +1,148 @@
+{
+  "model": "account.tax.repartition.line",
+  "name": "Tax Repartition Line",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "factor_percent": {
+      "help": "Factor to apply on the journal items generated from this distribution line, in percents",
+      "readonly": false,
+      "required": true,
+      "string": "%",
+      "type": "float"
+    },
+    "factor": {
+      "help": "Factor to apply on the journal items generated from this distribution line",
+      "readonly": true,
+      "required": false,
+      "string": "Factor Ratio",
+      "type": "float"
+    },
+    "repartition_type": {
+      "help": "Base on which the factor will be applied.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "base",
+          "Base"
+        ],
+        [
+          "tax",
+          "of tax"
+        ]
+      ],
+      "string": "Based On",
+      "type": "selection"
+    },
+    "document_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "invoice",
+          "Invoice"
+        ],
+        [
+          "refund",
+          "Refund"
+        ]
+      ],
+      "string": "Related to",
+      "type": "selection"
+    },
+    "account_id": {
+      "help": "Account on which to post the tax amount",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Account",
+      "type": "many2one"
+    },
+    "account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Account Active",
+      "type": "boolean"
+    },
+    "tag_ids": {
+      "readonly": false,
+      "relation": "account.account.tag",
+      "required": false,
+      "string": "Tax Grids",
+      "type": "many2many"
+    },
+    "tax_id": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Tax",
+      "type": "many2one"
+    },
+    "company_id": {
+      "help": "The company this distribution line belongs to.",
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "sequence": {
+      "help": "The order in which distribution lines are displayed and matched. For refunds to work properly, invoice distribution lines should be arranged in the same order as the credit note distribution lines they correspond to.",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "use_in_tax_closing": {
+      "readonly": false,
+      "required": false,
+      "string": "Tax Closing Entry",
+      "type": "boolean"
+    },
+    "tag_ids_domain": {
+      "help": "Dynamic domain used for the tag that can be set on tax",
+      "readonly": true,
+      "required": false,
+      "string": "tag domain",
+      "type": "json"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

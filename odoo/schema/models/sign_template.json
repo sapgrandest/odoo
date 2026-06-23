@@ -1,0 +1,206 @@
+{
+  "model": "sign.template",
+  "name": "Signature Template",
+  "field_count": 30,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "document_ids": {
+      "readonly": false,
+      "relation": "sign.document",
+      "required": false,
+      "string": "Documents",
+      "type": "one2many"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "sign_item_ids": {
+      "readonly": true,
+      "relation": "sign.item",
+      "required": false,
+      "string": "Signature Items",
+      "type": "one2many"
+    },
+    "sign_item_role_ids": {
+      "readonly": false,
+      "relation": "sign.item.role",
+      "required": false,
+      "string": "Roles",
+      "type": "one2many"
+    },
+    "responsible_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Responsible Count",
+      "type": "integer"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "favorited_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Favorited Users",
+      "type": "many2many"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Owner",
+      "type": "many2one"
+    },
+    "sign_request_ids": {
+      "readonly": false,
+      "relation": "sign.request",
+      "required": false,
+      "string": "Signature Requests",
+      "type": "one2many"
+    },
+    "tag_ids": {
+      "readonly": false,
+      "relation": "sign.template.tag",
+      "required": false,
+      "string": "Tags",
+      "type": "many2many"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color",
+      "type": "integer"
+    },
+    "redirect_url": {
+      "help": "Optional link for redirection after signature",
+      "readonly": false,
+      "required": false,
+      "string": "Redirect Link",
+      "type": "char"
+    },
+    "redirect_url_text": {
+      "help": "Optional text to display on the button link",
+      "readonly": false,
+      "required": false,
+      "string": "Link Label",
+      "type": "char"
+    },
+    "signed_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Signed Count",
+      "type": "integer"
+    },
+    "in_progress_count": {
+      "readonly": true,
+      "required": false,
+      "string": "In Progress Count",
+      "type": "integer"
+    },
+    "signature_request_validity": {
+      "help": "Specify the default validity period (in days) for signature requests.",
+      "readonly": false,
+      "required": false,
+      "string": "Default signature request validity",
+      "type": "integer"
+    },
+    "authorized_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Authorized Users",
+      "type": "many2many"
+    },
+    "cc_partner_ids": {
+      "help": "Contacts in copy will be notified by email once the document is either fully signed or refused.",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "CC",
+      "type": "many2many"
+    },
+    "group_ids": {
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Authorized Groups",
+      "type": "many2many"
+    },
+    "has_sign_requests": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Sign Requests",
+      "type": "boolean"
+    },
+    "is_sharing": {
+      "help": "Checked if this template has created a shared document for you",
+      "readonly": true,
+      "required": false,
+      "string": "Is Sharing",
+      "type": "boolean"
+    },
+    "model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Linked To",
+      "type": "many2one"
+    },
+    "model_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Model Name",
+      "type": "char"
+    },
+    "message": {
+      "help": "Message to be sent to signers of the specified document",
+      "readonly": false,
+      "required": false,
+      "string": "Message",
+      "type": "html"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

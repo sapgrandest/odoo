@@ -1,0 +1,177 @@
+{
+  "model": "stock.report",
+  "name": "Stock Report",
+  "field_count": 20,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "date_done": {
+      "readonly": true,
+      "required": false,
+      "string": "Transfer Date",
+      "type": "datetime"
+    },
+    "creation_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Creation Date",
+      "type": "datetime"
+    },
+    "scheduled_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Expected Date",
+      "type": "datetime"
+    },
+    "delay": {
+      "readonly": true,
+      "required": false,
+      "string": "Delay (Days)",
+      "type": "float"
+    },
+    "cycle_time": {
+      "readonly": true,
+      "required": false,
+      "string": "Cycle Time (Days)",
+      "type": "float"
+    },
+    "picking_type_code": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "incoming",
+          "Vendors"
+        ],
+        [
+          "outgoing",
+          "Customers"
+        ],
+        [
+          "internal",
+          "Internal"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "operation_type_id": {
+      "readonly": true,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "Operation Type",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "picking_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Picking Name",
+      "type": "char"
+    },
+    "reference": {
+      "readonly": true,
+      "required": false,
+      "string": "Reference",
+      "type": "char"
+    },
+    "picking_id": {
+      "readonly": true,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Transfer Reference",
+      "type": "many2one"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "New"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ],
+        [
+          "waiting",
+          "Waiting Another Move"
+        ],
+        [
+          "confirmed",
+          "Waiting Availability"
+        ],
+        [
+          "partially_available",
+          "Partially Available"
+        ],
+        [
+          "assigned",
+          "Available"
+        ],
+        [
+          "done",
+          "Done"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "is_backorder": {
+      "readonly": true,
+      "required": false,
+      "string": "Is a Backorder",
+      "type": "boolean"
+    },
+    "product_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Product Quantity",
+      "type": "float"
+    },
+    "is_late": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Late",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "categ_id": {
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    }
+  }
+}

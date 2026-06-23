@@ -1,0 +1,1000 @@
+# ==============================================================
+# Moto-Profil / ProfiAuto — Requêtes READ-ONLY avec logging automatique
+# Source : Auth_API_ProfiAuto_ENG.pdf + Dokumentacja WS MP.pdf v1.7.9
+# ==============================================================
+# INSTRUCTIONS :
+#   1. Lancer HTTPyac DEPUIS le dossier motoprofil/tests/ (les logs y seront créés)
+#      > cd motoprofil/tests
+#      > httpyac run moto-profil-api.http --name AUTH-01
+#   2. Chaque requête crée un fichier JSON dans motoprofil/tests/logs/
+#      Nom : AAAA-MM-JJTHH-MM-SS_{NOM_REQUETE}.json
+#
+# ⚠️  LECTURE SEULE — Les méthodes d'écriture (ZamowTowary*, SubmitOrder,
+#      InvoiceCommission) ont été SUPPRIMÉES de ce fichier.
+# ⚠️  SOAP utilise HTTP POST même pour les lectures — c'est le protocole SOAP.
+#      Toutes les requêtes ici sont non-mutantes (aucune modification de données).
+# ⚠️  Logging via require('fs') — fonctionne en mode CLI Node.js (httpyac CLI).
+#      En extension VS Code, le logging fichier peut être désactivé (sandboxing).
+# ==============================================================
+
+# --- Identifiants REST (login/mdp ProfiAutoID = portail eSerwis) ---
+# ⚠️  Centralisés dans ../../CREDENTIALS.md (fichier privé). Renseigner ici pour exécuter.
+@USERNAME         = "SAP GRAND EST"
+@PASSWORD         = REMPLIR_DEPUIS_CREDENTIALS_MD
+
+# --- Numéros partenaire SOAP (compte TEST fourni par l'IT, e-mail 10/06/2026) ---
+@FIKS             = 15060
+@MOTONET          = 0BHS
+
+# --- Articles échantillons ---
+@MOTONET_1        = ABS0215Q
+@MOTONET_2        = FTROP570
+@DELNR_1          = 0043
+@ELN_1            = CCH865
+@DELNR_2          = 0003
+@ELN_2            = 03.2419-8150.3
+
+# --- Valeurs de test ---
+@SAMPLE_DATE      = 2024-01-15
+@SAMPLE_INVOICE   = FA 2543/06/2018/K
+@SAMPLE_FKZ_ID    = 1730141
+@SAMPLE_LZ_ID     = 3020930
+@SAMPLE_GUID      = 452E4B5D-B5FF-44a2-B733-EDE0DC28C77E
+@SAMPLE_VERSION   = 1.0.0
+
+# --- Endpoints REST ---
+@OAUTH_URL        = https://id.profiauto.pl/connect/token
+@REST_API         = https://api.profiauto.net
+
+# --- Endpoints SOAP (domaines primaire / secours — màj email IT 02/06/2026) ---
+# Anciennes IP obsolètes : 195.242.186.3 (primaire) / 195.242.186.16 (secours)
+@SOAP_HOST        = https://ws1.moto-profil.pl
+@SOAP_BACKUP      = https://ws2.moto-profil.pl
+@WS_KLIENT        = {{SOAP_HOST}}/MotoBiznesWS/WSMotoKlient.asmx
+@WS_KLIENT_TD     = {{SOAP_HOST}}/MotoBiznesWS/WSMotoKlientTD.asmx
+@WS_OFERTA        = {{SOAP_HOST}}/MotoBiznesWS/WSMotoOferta.asmx
+
+# --- Token REST (auto-injecté par AUTH-01) ---
+@TOKEN            =
+
+
+# ==============================================================
+# SECTION 1 — AUTHENTIFICATION REST (OAuth 2.0 ROPC)
+# ==============================================================
+
+### AUTH-01 — Obtenir le token Bearer (7 jours)
+# @name AUTH-01
+POST {{OAUTH_URL}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password&scope=motoprofil-api&username={{USERNAME}}&password={{PASSWORD}}
+
+< {%
+  // Injection du token pour les requêtes REST suivantes
+  client.global.set("TOKEN", response.body.access_token);
+
+  // === LOGGING ===
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'AUTH-01_GetToken',
+      requete: {
+        methode: request.method,
+        url: request.url,
+        headers: request.headers,
+        corps: '[credentials masqués dans le log]'
+      },
+      reponse: {
+        statut: response.status,
+        statut_texte: response.statusText,
+        headers: response.headers,
+        corps: { token_type: response.body.token_type, expires_in: response.body.expires_in, access_token: '***masqué***' }
+      }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_AUTH-01_GetToken.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) { /* CLI Node.js uniquement */ }
+%}
+
+
+# ==============================================================
+# SECTION 2 — REST API ProfiAuto (api.profiauto.net) — READ ONLY
+# ==============================================================
+
+### REST-01 — GetPriceAndQuantity REST — Prix et disponibilité par NrMotonet
+# @name REST-01
+POST {{REST_API}}/api/External/PriceAndQuantity/GetPriceAndQuantity
+Authorization: Bearer {{TOKEN}}
+Content-Type: application/json
+
+{
+  "items": [
+    "{{MOTONET_1}}",
+    "{{MOTONET_2}}"
+  ]
+}
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'REST-01_GetPriceAndQuantity',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_REST-01_GetPriceAndQuantity.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+# ==============================================================
+# SECTION 3 — WSMotoKlient.asmx — READ ONLY (16 méthodes)
+# ⚠️  ZamowTowary*, InvoiceCommission supprimés (écriture)
+# ==============================================================
+
+### KLIENT-01 — InformacjaOKontrahencie — Devise du compte partenaire
+# @name KLIENT-01
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/InformacjaOKontrahencie"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <InformacjaOKontrahencie xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+    </InformacjaOKontrahencie>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-01_InformacjaOKontrahencie',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-01_InformacjaOKontrahencie.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-02 — ZwrocDostawyKontrahenta — Liste des livraisons
+# @name KLIENT-02
+# Réponse : delivery_name|heure_limite|jours(TTTTTN=Lun-Sam)|description|entrepot_local|stock_principal(T/N)
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocDostawyKontrahenta"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocDostawyKontrahenta xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+    </ZwrocDostawyKontrahenta>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-02_ZwrocDostawyKontrahenta',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-02_ZwrocDostawyKontrahenta.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-03 — PotwierdzZamowienie — Vérifier si une commande a été acceptée (lecture seule)
+# @name KLIENT-03
+# Usage : à appeler après un timeout sur ZamowTowary — ne passe PAS de nouvelle commande
+# Réponse : liste articles si commande acceptée, liste vide sinon
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/PotwierdzZamowienie"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <PotwierdzZamowienie xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <Zamowienie_guid>{{SAMPLE_GUID}}</Zamowienie_guid>
+    </PotwierdzZamowienie>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-03_PotwierdzZamowienie',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-03_PotwierdzZamowienie.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-04 — ZwrocSzczegolyZamowieniaLista — Détails d'une commande par entrepôt
+# @name KLIENT-04
+# ⚠️  1er champ réponse = Prefiks+Indeks concaténés SANS séparateur (ex: BLPADC446176)
+# Réponse : PrefixIndeks|retail|prix_partner|TVA|qty_stock_principal|qty_stock_local[|replacer]
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocSzczegolyZamowieniaLista"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocSzczegolyZamowieniaLista xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <Guid>{{SAMPLE_GUID}}</Guid>
+    </ZwrocSzczegolyZamowieniaLista>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-04_ZwrocSzczegolyZamowieniaLista',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-04_ZwrocSzczegolyZamowieniaLista.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-05 — ZwrocDepozyty — Commandes passées/réalisées à une date
+# @name KLIENT-05
+# Réponse : motonet_number|prix_partner|quantite
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocDepozyty"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocDepozyty xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <Data>{{SAMPLE_DATE}}T00:00:00</Data>
+    </ZwrocDepozyty>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-05_ZwrocDepozyty',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-05_ZwrocDepozyty.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-06 — ZwrocNumeryFaktur — Numéros de factures d'une journée
+# @name KLIENT-06
+# Réponse : Invoice_number|valeur_nette|valeur_TVA|remise|date_emission|date_paiement
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocNumeryFaktur"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocNumeryFaktur xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <Data>{{SAMPLE_DATE}}T00:00:00</Data>
+    </ZwrocNumeryFaktur>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-06_ZwrocNumeryFaktur',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-06_ZwrocNumeryFaktur.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-07 — ZwrocPozycjeFaktury — Articles d'une facture
+# @name KLIENT-07
+# Réponse : prefiks|indeks|nr_motonet|quantite|prix|nom
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocPozycjeFaktury"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocPozycjeFaktury xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <numer_ksiegowy>{{SAMPLE_INVOICE}}</numer_ksiegowy>
+    </ZwrocPozycjeFaktury>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-07_ZwrocPozycjeFaktury',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-07_ZwrocPozycjeFaktury.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-08 — ZwrocPozycjeFakturyZVat — Articles d'une facture avec TVA unitaire
+# @name KLIENT-08
+# Réponse : Prefiks|indeks|nr_motonet|quantite|prix|nom|montant_TVA (prix et TVA = UNITAIRES)
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocPozycjeFakturyZVat"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocPozycjeFakturyZVat xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <numer_ksiegowy>{{SAMPLE_INVOICE}}</numer_ksiegowy>
+    </ZwrocPozycjeFakturyZVat>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-08_ZwrocPozycjeFakturyZVat',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-08_ZwrocPozycjeFakturyZVat.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-09 — ZwrocNumeryFKZ — Numéros d'avoirs (FKZ) d'une journée
+# @name KLIENT-09
+# Réponse : Id|numero_document|date_emission|date_paiement|montant_NET|montant_6 (montants négatifs)
+# ⚠️  Paramètre "fiks" en minuscule dans le PDF — à vérifier via WSDL
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocNumeryFKZ"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocNumeryFKZ xmlns="http://tempuri.org/">
+      <fiks>{{FIKS}}</fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <Data>{{SAMPLE_DATE}}T00:00:00</Data>
+    </ZwrocNumeryFKZ>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-09_ZwrocNumeryFKZ',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-09_ZwrocNumeryFKZ.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-10 — ZwrocPozycjeFKZ — Articles d'un avoir FKZ
+# @name KLIENT-10
+# Identyfikator : champ "Id" (entier) obtenu via KLIENT-09
+# Réponse : Prefiks|indeks|quantite|prix_NET_retail
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocPozycjeFKZ"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocPozycjeFKZ xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <Identyfikator>{{SAMPLE_FKZ_ID}}</Identyfikator>
+    </ZwrocPozycjeFKZ>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-10_ZwrocPozycjeFKZ',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-10_ZwrocPozycjeFKZ.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-11 — ZwrocNumeryLZ — Numéros de listes de chargement
+# @name KLIENT-11
+# Réponse : Id|numero_document|date_cloture
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocNumeryLZ"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocNumeryLZ xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <Data>{{SAMPLE_DATE}}T00:00:00</Data>
+    </ZwrocNumeryLZ>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-11_ZwrocNumeryLZ',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-11_ZwrocNumeryLZ.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-12 — ZwrocPozycjeLZ — Articles d'une liste de chargement
+# @name KLIENT-12
+# Identyfikator : champ "Id" (entier) obtenu via KLIENT-11
+# Réponse : Prefiks|indeks|qty_scan|prix_NET(*=multi-boite)|num_boite|qty_doc(*=multi-boite)
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocPozycjeLZ"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocPozycjeLZ xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <Identyfikator>{{SAMPLE_LZ_ID}}</Identyfikator>
+    </ZwrocPozycjeLZ>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-12_ZwrocPozycjeLZ',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-12_ZwrocPozycjeLZ.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-13 — ZwrocStanCenyWiecej — Stock + prix, plage 0-26
+# @name KLIENT-13
+# 26 = "plus de 25 unités" | -1 = inactif | -2 = NrMotonet incorrect
+# Réponse : qty(0-26)|retail|prix_partner|TVA[|replacer_motonet|replacer_pfx|replacer_idx|replacer_nom]
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocStanCenyWiecej"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocStanCenyWiecej xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <lista_nr_motonet>
+        <string>{{MOTONET_1}}</string>
+        <string>{{MOTONET_2}}</string>
+      </lista_nr_motonet>
+    </ZwrocStanCenyWiecej>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-13_ZwrocStanCenyWiecej',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-13_ZwrocStanCenyWiecej.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### KLIENT-14 — ZwrocStanCenyDostepnoscWiecej — Stock local+principal + prix, plage 0-26 ✅ RECOMMANDÉE
+# @name KLIENT-14
+# Réponse : stock_principal(0-26)|stock_local(0-26)|retail|prix_partner|TVA[|replacer...]
+# Blocages : Z|main|local|retail|partner|TVA  et  D|main|local|retail|partner|TVA
+POST {{WS_KLIENT}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocStanCenyDostepnoscWiecej"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocStanCenyDostepnoscWiecej xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <lista_nr_motonet>
+        <string>{{MOTONET_1}}</string>
+        <string>{{MOTONET_2}}</string>
+      </lista_nr_motonet>
+    </ZwrocStanCenyDostepnoscWiecej>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'KLIENT-14_ZwrocStanCenyDostepnoscWiecej',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_KLIENT-14_ZwrocStanCenyDostepnoscWiecej.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+# ==============================================================
+# SECTION 4 — WSMotoKlientTD.asmx — TecDoc READ ONLY (2 méthodes)
+# ⚠️  SubmitOrder supprimé (écriture)
+# ==============================================================
+
+### TD-01 — GetPriceAndQuantityMore — Stock + prix TecDoc, plage 0-26 ✅ RECOMMANDÉE
+# @name TD-01
+# Réponse JSON : [{Error, Quantity(0-26), RetailPrice, Price, VAT, Discount, Replacement:{DLNr,Elnumerdd}, Deposit}]
+# ⚠️  Nom param SOAP "request" à vérifier via WSDL
+POST {{WS_KLIENT_TD}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/GetPriceAndQuantityMore"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <GetPriceAndQuantityMore xmlns="http://tempuri.org/">
+      <request>{"Auth":{"FIKS":"{{FIKS}}","Motonet":"{{MOTONET}}"},"Elems":[{"DLNr":"{{DELNR_1}}","Elnumerdd":"{{ELN_1}}"},{"DLNr":"{{DELNR_2}}","Elnumerdd":"{{ELN_2}}"}]}</request>
+    </GetPriceAndQuantityMore>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'TD-01_GetPriceAndQuantityMore',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_TD-01_GetPriceAndQuantityMore.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+# ==============================================================
+# SECTION 5 — WSMotoOferta.asmx — Catalogues offline (tous READ ONLY)
+# ⚠️  MAX 1 APPEL/HEURE/CLIENT/LOCALISATION pour les méthodes avec cette note
+# ==============================================================
+
+### OFERTA-01 — ZwrocArtykulyProgramuMotoProfit — Articles MotoProfit (XML objet)
+# @name OFERTA-01
+POST {{WS_OFERTA}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocArtykulyProgramuMotoProfit"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocArtykulyProgramuMotoProfit xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+    </ZwrocArtykulyProgramuMotoProfit>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'OFERTA-01_ZwrocArtykulyProgramuMotoProfit',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_OFERTA-01_ZwrocArtykulyProgramuMotoProfit.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### OFERTA-02 — ZwrocArtykulyProgramuMotoProfitCSV — Articles MotoProfit (CSV)
+# @name OFERTA-02
+# Réponse CSV : "prefiks";"indeks";bonusPartnerPH;bonusWarsztat
+POST {{WS_OFERTA}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocArtykulyProgramuMotoProfitCSV"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocArtykulyProgramuMotoProfitCSV xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+    </ZwrocArtykulyProgramuMotoProfitCSV>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'OFERTA-02_ZwrocArtykulyProgramuMotoProfitCSV',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_OFERTA-02_ZwrocArtykulyProgramuMotoProfitCSV.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### OFERTA-03 — ZwrocCennikDetalOfflineWiecej — Prix détail + stock (0-26) ✅ RECOMMANDÉE — 1/heure
+# @name OFERTA-03
+# Réponse pipe-sep : Prefiks|indeks|type(T/K)|stock(0-26)|NET_retail|GROSS_retail|TVA|NET_partner
+POST {{WS_OFERTA}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocCennikDetalOfflineWiecej"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocCennikDetalOfflineWiecej xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <Wersja>{{SAMPLE_VERSION}}</Wersja>
+    </ZwrocCennikDetalOfflineWiecej>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'OFERTA-03_ZwrocCennikDetalOfflineWiecej',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_OFERTA-03_ZwrocCennikDetalOfflineWiecej.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### OFERTA-04 — ZwrocCennikDetailOfflineSzczegolyCSVWiecej — Prix détaillé CSV (0-26) ✅ RECOMMANDÉE — 1/heure
+# @name OFERTA-04
+# ⚠️  "Detail" (anglais) pas "Detal" — vérifier le WSDL si erreur 404
+# Réponse CSV 15 champs : "Prefiks";"indeks";"type";"stock";"NET_retail";"GROSS_retail";"TVA";
+#   "NET_partner";"currency";"not_returnable";"deposit_core";"min_order_qty";"supplier_nr";"DLNr";"Elnumerdd"
+POST {{WS_OFERTA}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocCennikDetailOfflineSzczegolyCSVWiecej"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocCennikDetailOfflineSzczegolyCSVWiecej xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+      <Wersja>{{SAMPLE_VERSION}}</Wersja>
+    </ZwrocCennikDetailOfflineSzczegolyCSVWiecej>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'OFERTA-04_ZwrocCennikDetailOfflineSzczegolyCSVWiecej',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_OFERTA-04_ZwrocCennikDetailOfflineSzczegolyCSVWiecej.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### OFERTA-05 — ZwrocListeArtykulowMPTD — Correspondance articles Moto-Profil ↔ TecDoc
+# @name OFERTA-05
+# Réponse : Prefiks|indeks|DLNr|Elnumerdd (uniquement articles AVEC correspondance TecDoc)
+POST {{WS_OFERTA}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocListeArtykulowMPTD"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocListeArtykulowMPTD xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+    </ZwrocListeArtykulowMPTD>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'OFERTA-05_ZwrocListeArtykulowMPTD',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_OFERTA-05_ZwrocListeArtykulowMPTD.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### OFERTA-06 — ZwrocCennikDetalOfflinePelny — Prix + stocks 3 entrepôts (CHO/WAW/SWI) — 1/heure
+# @name OFERTA-06
+# Réponse CSV 17 champs : "prefiks";"indeks";"type";"stock_CHORZOW";"stock_WARSZAWA";"STOCK_SWIEBODZIN";...
+# ⚠️  Pas de paramètre Wersja pour cette méthode
+POST {{WS_OFERTA}}
+Content-Type: text/xml; charset=utf-8
+SOAPAction: "http://tempuri.org/ZwrocCennikDetalOfflinePelny"
+
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <ZwrocCennikDetalOfflinePelny xmlns="http://tempuri.org/">
+      <Fiks>{{FIKS}}</Fiks>
+      <nr_kontrahenta_motonet>{{MOTONET}}</nr_kontrahenta_motonet>
+    </ZwrocCennikDetalOfflinePelny>
+  </soap:Body>
+</soap:Envelope>
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'OFERTA-06_ZwrocCennikDetalOfflinePelny',
+      requete: { methode: request.method, url: request.url, headers: request.headers, corps: request.body },
+      reponse: { statut: response.status, statut_texte: response.statusText, headers: response.headers, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_OFERTA-06_ZwrocCennikDetalOfflinePelny.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+# ==============================================================
+# SECTION 6 — UTILITAIRES : WSDL (consulter pour valider noms exacts)
+# ==============================================================
+
+### WSDL-01 — WSMotoKlient
+# @name WSDL-01
+GET {{SOAP_HOST}}/MotoBiznesWS/WSMotoKlient.asmx?wsdl
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'WSDL-01_WSMotoKlient',
+      requete: { methode: request.method, url: request.url },
+      reponse: { statut: response.status, statut_texte: response.statusText, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_WSDL-01_WSMotoKlient.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### WSDL-02 — WSMotoKlientTD
+# @name WSDL-02
+GET {{SOAP_HOST}}/MotoBiznesWS/WSMotoKlientTD.asmx?wsdl
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'WSDL-02_WSMotoKlientTD',
+      requete: { methode: request.method, url: request.url },
+      reponse: { statut: response.status, statut_texte: response.statusText, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_WSDL-02_WSMotoKlientTD.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}
+
+
+### WSDL-03 — WSMotoOferta
+# @name WSDL-03
+GET {{SOAP_HOST}}/MotoBiznesWS/WSMotoOferta.asmx?wsdl
+
+< {%
+  const fs = require('fs'), path = require('path');
+  try {
+    const dir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const log = {
+      timestamp: new Date().toISOString(),
+      nom_requete: 'WSDL-03_WSMotoOferta',
+      requete: { methode: request.method, url: request.url },
+      reponse: { statut: response.status, statut_texte: response.statusText, corps: response.body }
+    };
+    fs.writeFileSync(path.join(dir, `${ts}_WSDL-03_WSMotoOferta.json`), JSON.stringify(log, null, 2), 'utf-8');
+  } catch(e) {}
+%}

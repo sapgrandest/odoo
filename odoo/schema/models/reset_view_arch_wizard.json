@@ -1,0 +1,103 @@
+{
+  "model": "reset.view.arch.wizard",
+  "name": "Reset View Architecture Wizard",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "view_id": {
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "View",
+      "type": "many2one"
+    },
+    "view_name": {
+      "readonly": true,
+      "required": false,
+      "string": "View Name",
+      "type": "char"
+    },
+    "has_diff": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Diff",
+      "type": "boolean"
+    },
+    "arch_diff": {
+      "readonly": true,
+      "required": false,
+      "string": "Architecture Diff",
+      "type": "html"
+    },
+    "reset_mode": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "soft",
+          "Restore previous version (soft reset)."
+        ],
+        [
+          "hard",
+          "Reset to file version (hard reset)."
+        ],
+        [
+          "other_view",
+          "Reset to another view."
+        ]
+      ],
+      "string": "Reset Mode",
+      "type": "selection"
+    },
+    "compare_view_id": {
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Compare To View",
+      "type": "many2one"
+    },
+    "arch_to_compare": {
+      "readonly": true,
+      "required": false,
+      "string": "Arch To Compare To",
+      "type": "text"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

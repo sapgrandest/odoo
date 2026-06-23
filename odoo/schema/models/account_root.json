@@ -1,0 +1,32 @@
+{
+  "model": "account.root",
+  "name": "Account codes first 2 digits",
+  "field_count": 4,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "parent_id": {
+      "readonly": true,
+      "relation": "account.root",
+      "required": false,
+      "string": "Parent",
+      "type": "many2one"
+    }
+  }
+}

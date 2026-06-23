@@ -1,0 +1,144 @@
+{
+  "model": "sale.order.template.line",
+  "name": "Quotation Template Line",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "sale_order_template_id": {
+      "readonly": false,
+      "relation": "sale.order.template",
+      "required": true,
+      "string": "Quotation Template Reference",
+      "type": "many2one"
+    },
+    "sequence": {
+      "help": "Gives the sequence order when displaying a list of sale quote lines.",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "allowed_uom_ids": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Allowed Uom",
+      "type": "many2many"
+    },
+    "product_uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "product_uom_qty": {
+      "readonly": false,
+      "required": true,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "display_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "line_section",
+          "Section"
+        ],
+        [
+          "line_subsection",
+          "Subsection"
+        ],
+        [
+          "line_note",
+          "Note"
+        ]
+      ],
+      "string": "Display Type",
+      "type": "selection"
+    },
+    "parent_id": {
+      "readonly": true,
+      "relation": "sale.order.template.line",
+      "required": false,
+      "string": "Parent Section Line",
+      "type": "many2one"
+    },
+    "is_optional": {
+      "readonly": false,
+      "required": false,
+      "string": "Optional Line",
+      "type": "boolean"
+    },
+    "collapse_composition": {
+      "readonly": false,
+      "required": false,
+      "string": "Collapse Composition",
+      "type": "boolean"
+    },
+    "collapse_prices": {
+      "readonly": false,
+      "required": false,
+      "string": "Collapse Prices",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

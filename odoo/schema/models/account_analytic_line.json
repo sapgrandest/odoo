@@ -1,0 +1,302 @@
+{
+  "model": "account.analytic.line",
+  "name": "Analytic Line",
+  "field_count": 35,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "account_id": {
+      "readonly": false,
+      "relation": "account.analytic.account",
+      "required": false,
+      "string": "Project Account",
+      "type": "many2one"
+    },
+    "auto_account_id": {
+      "readonly": false,
+      "relation": "account.analytic.account",
+      "required": false,
+      "string": "Analytic Account",
+      "type": "many2one"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "char"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "amount": {
+      "readonly": false,
+      "required": true,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "unit_amount": {
+      "readonly": false,
+      "required": false,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "product_uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "User",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "category": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "other",
+          "Other"
+        ],
+        [
+          "invoice",
+          "Customer Invoice"
+        ],
+        [
+          "vendor_bill",
+          "Vendor Bill"
+        ],
+        [
+          "picking_entry",
+          "Inventory Transfer"
+        ]
+      ],
+      "string": "Category",
+      "type": "selection"
+    },
+    "fiscal_year_search": {
+      "readonly": false,
+      "required": false,
+      "string": "Fiscal Year Search",
+      "type": "boolean"
+    },
+    "analytic_distribution": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Distribution",
+      "type": "json"
+    },
+    "analytic_precision": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Precision",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "general_account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Financial Account",
+      "type": "many2one"
+    },
+    "journal_id": {
+      "readonly": true,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Financial Journal",
+      "type": "many2one"
+    },
+    "move_line_id": {
+      "readonly": false,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Journal Item",
+      "type": "many2one"
+    },
+    "code": {
+      "readonly": false,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "ref": {
+      "readonly": false,
+      "required": false,
+      "string": "Ref.",
+      "type": "char"
+    },
+    "allowed_uom_ids": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Allowed Uom",
+      "type": "many2many"
+    },
+    "analytic_coverage": {
+      "readonly": true,
+      "required": false,
+      "string": "Analytic Coverage",
+      "type": "float"
+    },
+    "reinvoice_move_id": {
+      "help": "Invoice created from related SO line",
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Invoice",
+      "type": "many2one"
+    },
+    "so_line": {
+      "readonly": false,
+      "relation": "sale.order.line",
+      "required": false,
+      "string": "Sales Order Item",
+      "type": "many2one"
+    },
+    "order_id": {
+      "readonly": false,
+      "relation": "sale.order",
+      "required": false,
+      "string": "Customer Order",
+      "type": "many2one"
+    },
+    "billable_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "01_revenues_fixed",
+          "Revenues (Fixed Price)"
+        ],
+        [
+          "05_revenues_milestones",
+          "Revenues (Milestones)"
+        ],
+        [
+          "07_revenues_manual",
+          "Revenues (Manual)"
+        ],
+        [
+          "10_service_revenues",
+          "Service Revenues"
+        ],
+        [
+          "11_other_revenues",
+          "Other Revenues"
+        ],
+        [
+          "12_vendor_bill",
+          "Vendor Bills"
+        ],
+        [
+          "30_other_costs",
+          "Other Costs"
+        ],
+        [
+          "15_picking_entry_positive",
+          "Inventory Transfers (Revenues)"
+        ],
+        [
+          "16_picking_entry_negative",
+          "Inventory Transfers (Costs)"
+        ]
+      ],
+      "string": "Billable Type",
+      "type": "selection"
+    },
+    "category_report": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "costs",
+          "Costs"
+        ],
+        [
+          "revenues",
+          "Revenues"
+        ]
+      ],
+      "string": "Category Report",
+      "type": "selection"
+    },
+    "x_plan1_id": {
+      "readonly": false,
+      "relation": "account.analytic.account",
+      "required": false,
+      "string": "Project Plan",
+      "type": "many2one"
+    }
+  }
+}

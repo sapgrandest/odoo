@@ -1,0 +1,79 @@
+{
+  "model": "avatar.mixin",
+  "name": "Avatar Mixin",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "image_1920": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "image_1024": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 1024",
+      "type": "binary"
+    },
+    "image_512": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 512",
+      "type": "binary"
+    },
+    "image_256": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 256",
+      "type": "binary"
+    },
+    "image_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 128",
+      "type": "binary"
+    },
+    "avatar_1920": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar",
+      "type": "binary"
+    },
+    "avatar_1024": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar 1024",
+      "type": "binary"
+    },
+    "avatar_512": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar 512",
+      "type": "binary"
+    },
+    "avatar_256": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar 256",
+      "type": "binary"
+    },
+    "avatar_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar 128",
+      "type": "binary"
+    }
+  }
+}

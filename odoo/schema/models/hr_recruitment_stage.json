@@ -1,0 +1,106 @@
+{
+  "model": "hr.recruitment.stage",
+  "name": "Recruitment Stage",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Stage Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "job_ids": {
+      "help": "Specific jobs that use this stage. Other jobs will not use this stage.",
+      "readonly": false,
+      "relation": "hr.job",
+      "required": false,
+      "string": "Job Specific",
+      "type": "many2many"
+    },
+    "requirements": {
+      "readonly": false,
+      "required": false,
+      "string": "Requirements",
+      "type": "text"
+    },
+    "template_id": {
+      "help": "If set, a message is posted on the applicant using the template when the applicant is set to the stage.",
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Email Template",
+      "type": "many2one"
+    },
+    "fold": {
+      "help": "This stage is folded in the kanban view when there are no records in that stage to display.",
+      "readonly": false,
+      "required": false,
+      "string": "Folded in Kanban",
+      "type": "boolean"
+    },
+    "hired_stage": {
+      "help": "If checked, this stage is used to determine the hire date of an applicant",
+      "readonly": false,
+      "required": false,
+      "string": "Hired Stage",
+      "type": "boolean"
+    },
+    "rotting_threshold_days": {
+      "help": "Day count before applicants in this stage become stale.         Set to 0 to disable.  Changing this parameter will not affect the rotting status/date of resources last updated before this change.",
+      "readonly": false,
+      "required": false,
+      "string": "Days to rot",
+      "type": "integer"
+    },
+    "is_warning_visible": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Warning Visible",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

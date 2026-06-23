@@ -1,0 +1,105 @@
+{
+  "model": "account.accrued.orders.wizard",
+  "name": "Accrued Orders Wizard",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": true,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "reversal_date": {
+      "readonly": false,
+      "required": true,
+      "string": "Reversal Date",
+      "type": "date"
+    },
+    "amount": {
+      "help": "Specify an arbitrary value that will be accrued on a         default account for the entire order, regardless of the products on the different lines.",
+      "readonly": false,
+      "required": false,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "currency_id": {
+      "help": "Utility field to express amount currency",
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": true,
+      "string": "Accrual Account",
+      "type": "many2one"
+    },
+    "preview_data": {
+      "readonly": true,
+      "required": false,
+      "string": "Preview Data",
+      "type": "text"
+    },
+    "display_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Amount",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "model": "mail.activity.todo.create",
+  "name": "Create activity and todo at the same time",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Summary",
+      "type": "char"
+    },
+    "date_deadline": {
+      "readonly": false,
+      "required": true,
+      "string": "Due Date",
+      "type": "date"
+    },
+    "user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": true,
+      "string": "Assigned to",
+      "type": "many2one"
+    },
+    "note": {
+      "readonly": false,
+      "required": false,
+      "string": "Note",
+      "type": "html"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

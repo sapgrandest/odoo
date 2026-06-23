@@ -1,0 +1,52 @@
+{
+  "model": "hr.employee.skill.history.report",
+  "name": "Employee Skills Report",
+  "field_count": 7,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "employee_id": {
+      "readonly": true,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Employee",
+      "type": "many2one"
+    },
+    "date": {
+      "readonly": false,
+      "required": false,
+      "string": "Date",
+      "type": "date"
+    },
+    "skill_id": {
+      "readonly": true,
+      "relation": "hr.skill",
+      "required": false,
+      "string": "Skill",
+      "type": "many2one"
+    },
+    "skill_type_id": {
+      "readonly": true,
+      "relation": "hr.skill.type",
+      "required": false,
+      "string": "Skill Type",
+      "type": "many2one"
+    },
+    "level_progress": {
+      "readonly": true,
+      "required": false,
+      "string": "Level Progress",
+      "type": "float"
+    }
+  }
+}

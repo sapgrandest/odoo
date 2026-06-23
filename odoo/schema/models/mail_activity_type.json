@@ -1,0 +1,804 @@
+{
+  "model": "mail.activity.type",
+  "name": "Activity Type",
+  "field_count": 27,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Default Summary",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Create Uid",
+      "type": "many2one"
+    },
+    "delay_count": {
+      "help": "Number of days/week/month before executing the action. It allows to plan the action deadline.",
+      "readonly": false,
+      "required": false,
+      "string": "Schedule",
+      "type": "integer"
+    },
+    "delay_unit": {
+      "help": "Unit of delay",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "days",
+          "days"
+        ],
+        [
+          "weeks",
+          "weeks"
+        ],
+        [
+          "months",
+          "months"
+        ]
+      ],
+      "string": "Delay units",
+      "type": "selection"
+    },
+    "delay_label": {
+      "readonly": true,
+      "required": false,
+      "string": "Delay Label",
+      "type": "char"
+    },
+    "delay_from": {
+      "help": "Type of delay",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "current_date",
+          "after previous activity completion date"
+        ],
+        [
+          "previous_activity",
+          "after previous activity deadline"
+        ]
+      ],
+      "string": "Delay Type",
+      "type": "selection"
+    },
+    "icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": false,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "decoration_type": {
+      "help": "Change the background color of the related activities of this type.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Decoration Type",
+      "type": "selection"
+    },
+    "res_model": {
+      "help": "Specify a model if the activity should be specific to a model and not available when managing activities for other models.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "account.account",
+          "Account"
+        ],
+        [
+          "account.return",
+          "Accounting Return"
+        ],
+        [
+          "account.return.type",
+          "Accounting Return Type"
+        ],
+        [
+          "account.analytic.account",
+          "Analytic Account"
+        ],
+        [
+          "hr.applicant",
+          "Applicant"
+        ],
+        [
+          "appointment.type",
+          "Appointment Type"
+        ],
+        [
+          "knowledge.article.thread",
+          "Article Discussion Thread"
+        ],
+        [
+          "res.partner.bank",
+          "Bank Account"
+        ],
+        [
+          "account.online.link",
+          "Bank Connection"
+        ],
+        [
+          "account.bank.statement",
+          "Bank Statement"
+        ],
+        [
+          "account.bank.statement.line",
+          "Bank Statement Line"
+        ],
+        [
+          "extract.mixin",
+          "Base class to extract data from documents"
+        ],
+        [
+          "extract.mixin.with.words",
+          "Base class to extract data from documents with OCRed words saved"
+        ],
+        [
+          "account.batch.payment",
+          "Batch Payment"
+        ],
+        [
+          "blog.blog",
+          "Blog"
+        ],
+        [
+          "blog.post",
+          "Blog Post"
+        ],
+        [
+          "calendar.event",
+          "Calendar Event"
+        ],
+        [
+          "res.company",
+          "Company"
+        ],
+        [
+          "res.partner",
+          "Contact"
+        ],
+        [
+          "hr.department",
+          "Department"
+        ],
+        [
+          "discuss.channel",
+          "Discussion Channel"
+        ],
+        [
+          "mail.thread",
+          "Email Thread"
+        ],
+        [
+          "hr.employee",
+          "Employee"
+        ],
+        [
+          "hr.version",
+          "Employee Record"
+        ],
+        [
+          "gamification.badge",
+          "Gamification Badge"
+        ],
+        [
+          "gamification.challenge",
+          "Gamification Challenge"
+        ],
+        [
+          "gamification.badge.user",
+          "Gamification User Badge"
+        ],
+        [
+          "helpdesk.team",
+          "Helpdesk Team"
+        ],
+        [
+          "helpdesk.ticket",
+          "Helpdesk Ticket"
+        ],
+        [
+          "iap.account",
+          "IAP Account"
+        ],
+        [
+          "hr.job",
+          "Job Position"
+        ],
+        [
+          "account.journal",
+          "Journal"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "knowledge.article",
+          "Knowledge Article"
+        ],
+        [
+          "crm.lead",
+          "Lead"
+        ],
+        [
+          "stock.lot",
+          "Lot/Serial"
+        ],
+        [
+          "mail.blacklist",
+          "Mail Blacklist"
+        ],
+        [
+          "mail.thread.blacklist",
+          "Mail Blacklist mixin"
+        ],
+        [
+          "mail.thread.main.attachment",
+          "Mail Main Attachment management"
+        ],
+        [
+          "mail.tracking.duration.mixin",
+          "Mixin to compute the time a record has spent in each value a many2one field can take"
+        ],
+        [
+          "account.payment",
+          "Payment"
+        ],
+        [
+          "phone.blacklist",
+          "Phone Blacklist"
+        ],
+        [
+          "mail.thread.phone",
+          "Phone Blacklist Mixin"
+        ],
+        [
+          "account.reconcile.model",
+          "Preset to create journal entries during a invoices and payments matching"
+        ],
+        [
+          "product.pricelist",
+          "Pricelist"
+        ],
+        [
+          "product.template",
+          "Product"
+        ],
+        [
+          "product.category",
+          "Product Category"
+        ],
+        [
+          "product.feed",
+          "Product Feed"
+        ],
+        [
+          "product.product",
+          "Product Variant"
+        ],
+        [
+          "project.project",
+          "Project"
+        ],
+        [
+          "project.milestone",
+          "Project Milestone"
+        ],
+        [
+          "project.update",
+          "Project Update"
+        ],
+        [
+          "purchase.order",
+          "Purchase Order"
+        ],
+        [
+          "rating.mixin",
+          "Rating Mixin"
+        ],
+        [
+          "sale.order",
+          "Sales Order"
+        ],
+        [
+          "crm.team",
+          "Sales Team"
+        ],
+        [
+          "crm.team.member",
+          "Sales Team Member"
+        ],
+        [
+          "ir.cron",
+          "Scheduled Action"
+        ],
+        [
+          "ir.actions.server",
+          "Server Action"
+        ],
+        [
+          "sign.request",
+          "Signature Request"
+        ],
+        [
+          "spreadsheet.cell.thread",
+          "Spreadsheet discussion thread"
+        ],
+        [
+          "survey.survey",
+          "Survey"
+        ],
+        [
+          "survey.user_input",
+          "Survey User Input"
+        ],
+        [
+          "hr.talent.pool",
+          "Talent Pool"
+        ],
+        [
+          "project.task",
+          "Task"
+        ],
+        [
+          "account.tax",
+          "Tax"
+        ],
+        [
+          "mail.thread.subject.suggested",
+          "Thread with suggested subject"
+        ],
+        [
+          "stock.picking",
+          "Transfer"
+        ]
+      ],
+      "string": "Model",
+      "type": "selection"
+    },
+    "suggested_next_type_id": {
+      "help": "Suggest this activity once the current one is marked as done.",
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Suggest Next Activity",
+      "type": "many2one"
+    },
+    "previous_type_ids": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Preceding Activities",
+      "type": "many2many"
+    },
+    "category": {
+      "help": "Actions may trigger specific behavior like opening calendar view or automatically mark as done when a document is uploaded",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "default",
+          "None"
+        ],
+        [
+          "upload_file",
+          "Upload Document"
+        ],
+        [
+          "phonecall",
+          "Phonecall"
+        ],
+        [
+          "meeting",
+          "Meeting"
+        ],
+        [
+          "sign_request",
+          "Signature"
+        ]
+      ],
+      "string": "Action",
+      "type": "selection"
+    },
+    "mail_template_ids": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Email templates",
+      "type": "many2many"
+    },
+    "default_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Default User",
+      "type": "many2one"
+    },
+    "default_note": {
+      "readonly": false,
+      "required": false,
+      "string": "Default Note",
+      "type": "html"
+    },
+    "kpi_provider_visibility": {
+      "help": "Whether this type of activity should be displayed in the KPI Provider API.\nNone: never display this type of activity\nOwn Activities: the synchronization user will only count their own activities of this type\nAll Activities: the synchronization user will count all the activities of this type, whatever their owner",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "none",
+          "None"
+        ],
+        [
+          "own",
+          "Own Activities"
+        ],
+        [
+          "all",
+          "All Activities"
+        ]
+      ],
+      "string": "KPI Provider Visibility",
+      "type": "selection"
+    },
+    "initial_res_model": {
+      "help": "Technical field to keep track of the model at the start of editing to support UX related behaviour",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "account.account",
+          "Account"
+        ],
+        [
+          "account.return",
+          "Accounting Return"
+        ],
+        [
+          "account.return.type",
+          "Accounting Return Type"
+        ],
+        [
+          "account.analytic.account",
+          "Analytic Account"
+        ],
+        [
+          "hr.applicant",
+          "Applicant"
+        ],
+        [
+          "appointment.type",
+          "Appointment Type"
+        ],
+        [
+          "knowledge.article.thread",
+          "Article Discussion Thread"
+        ],
+        [
+          "res.partner.bank",
+          "Bank Account"
+        ],
+        [
+          "account.online.link",
+          "Bank Connection"
+        ],
+        [
+          "account.bank.statement",
+          "Bank Statement"
+        ],
+        [
+          "account.bank.statement.line",
+          "Bank Statement Line"
+        ],
+        [
+          "extract.mixin",
+          "Base class to extract data from documents"
+        ],
+        [
+          "extract.mixin.with.words",
+          "Base class to extract data from documents with OCRed words saved"
+        ],
+        [
+          "account.batch.payment",
+          "Batch Payment"
+        ],
+        [
+          "blog.blog",
+          "Blog"
+        ],
+        [
+          "blog.post",
+          "Blog Post"
+        ],
+        [
+          "calendar.event",
+          "Calendar Event"
+        ],
+        [
+          "res.company",
+          "Company"
+        ],
+        [
+          "res.partner",
+          "Contact"
+        ],
+        [
+          "hr.department",
+          "Department"
+        ],
+        [
+          "discuss.channel",
+          "Discussion Channel"
+        ],
+        [
+          "mail.thread",
+          "Email Thread"
+        ],
+        [
+          "hr.employee",
+          "Employee"
+        ],
+        [
+          "hr.version",
+          "Employee Record"
+        ],
+        [
+          "gamification.badge",
+          "Gamification Badge"
+        ],
+        [
+          "gamification.challenge",
+          "Gamification Challenge"
+        ],
+        [
+          "gamification.badge.user",
+          "Gamification User Badge"
+        ],
+        [
+          "helpdesk.team",
+          "Helpdesk Team"
+        ],
+        [
+          "helpdesk.ticket",
+          "Helpdesk Ticket"
+        ],
+        [
+          "iap.account",
+          "IAP Account"
+        ],
+        [
+          "hr.job",
+          "Job Position"
+        ],
+        [
+          "account.journal",
+          "Journal"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "knowledge.article",
+          "Knowledge Article"
+        ],
+        [
+          "crm.lead",
+          "Lead"
+        ],
+        [
+          "stock.lot",
+          "Lot/Serial"
+        ],
+        [
+          "mail.blacklist",
+          "Mail Blacklist"
+        ],
+        [
+          "mail.thread.blacklist",
+          "Mail Blacklist mixin"
+        ],
+        [
+          "mail.thread.main.attachment",
+          "Mail Main Attachment management"
+        ],
+        [
+          "mail.tracking.duration.mixin",
+          "Mixin to compute the time a record has spent in each value a many2one field can take"
+        ],
+        [
+          "account.payment",
+          "Payment"
+        ],
+        [
+          "phone.blacklist",
+          "Phone Blacklist"
+        ],
+        [
+          "mail.thread.phone",
+          "Phone Blacklist Mixin"
+        ],
+        [
+          "account.reconcile.model",
+          "Preset to create journal entries during a invoices and payments matching"
+        ],
+        [
+          "product.pricelist",
+          "Pricelist"
+        ],
+        [
+          "product.template",
+          "Product"
+        ],
+        [
+          "product.category",
+          "Product Category"
+        ],
+        [
+          "product.feed",
+          "Product Feed"
+        ],
+        [
+          "product.product",
+          "Product Variant"
+        ],
+        [
+          "project.project",
+          "Project"
+        ],
+        [
+          "project.milestone",
+          "Project Milestone"
+        ],
+        [
+          "project.update",
+          "Project Update"
+        ],
+        [
+          "purchase.order",
+          "Purchase Order"
+        ],
+        [
+          "rating.mixin",
+          "Rating Mixin"
+        ],
+        [
+          "sale.order",
+          "Sales Order"
+        ],
+        [
+          "crm.team",
+          "Sales Team"
+        ],
+        [
+          "crm.team.member",
+          "Sales Team Member"
+        ],
+        [
+          "ir.cron",
+          "Scheduled Action"
+        ],
+        [
+          "ir.actions.server",
+          "Server Action"
+        ],
+        [
+          "sign.request",
+          "Signature Request"
+        ],
+        [
+          "spreadsheet.cell.thread",
+          "Spreadsheet discussion thread"
+        ],
+        [
+          "survey.survey",
+          "Survey"
+        ],
+        [
+          "survey.user_input",
+          "Survey User Input"
+        ],
+        [
+          "hr.talent.pool",
+          "Talent Pool"
+        ],
+        [
+          "project.task",
+          "Task"
+        ],
+        [
+          "account.tax",
+          "Tax"
+        ],
+        [
+          "mail.thread.subject.suggested",
+          "Thread with suggested subject"
+        ],
+        [
+          "stock.picking",
+          "Transfer"
+        ]
+      ],
+      "string": "Initial model",
+      "type": "selection"
+    },
+    "res_model_change": {
+      "readonly": false,
+      "required": false,
+      "string": "Model has change",
+      "type": "boolean"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "default_sign_template_id": {
+      "readonly": false,
+      "relation": "sign.template",
+      "required": false,
+      "string": "Default Signature Template",
+      "type": "many2one"
+    }
+  }
+}

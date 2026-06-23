@@ -1,0 +1,95 @@
+{
+  "model": "web_tour.tour",
+  "name": "Tour",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "step_ids": {
+      "readonly": false,
+      "relation": "web_tour.tour.step",
+      "required": false,
+      "string": "Step",
+      "type": "one2many"
+    },
+    "url": {
+      "readonly": false,
+      "required": false,
+      "string": "Starting URL",
+      "type": "char"
+    },
+    "sharing_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Sharing URL",
+      "type": "char"
+    },
+    "rainbow_man_message": {
+      "readonly": false,
+      "required": false,
+      "string": "Rainbow Man Message",
+      "type": "html"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "custom": {
+      "readonly": false,
+      "required": false,
+      "string": "Custom",
+      "type": "boolean"
+    },
+    "user_consumed_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "User Consumed",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

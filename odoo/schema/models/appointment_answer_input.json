@@ -1,0 +1,125 @@
+{
+  "model": "appointment.answer.input",
+  "name": "Appointment Answer Inputs",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "question_id": {
+      "readonly": false,
+      "relation": "appointment.question",
+      "required": true,
+      "string": "Question",
+      "type": "many2one"
+    },
+    "value_answer_id": {
+      "readonly": false,
+      "relation": "appointment.answer",
+      "required": false,
+      "string": "Selected Answer",
+      "type": "many2one"
+    },
+    "value_text_box": {
+      "readonly": false,
+      "required": false,
+      "string": "Text Answer",
+      "type": "text"
+    },
+    "appointment_type_id": {
+      "readonly": false,
+      "relation": "appointment.type",
+      "required": true,
+      "string": "Appointment Type",
+      "type": "many2one"
+    },
+    "calendar_event_id": {
+      "readonly": false,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Calendar Event",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "question_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "char",
+          "Single line text"
+        ],
+        [
+          "text",
+          "Multi-line text"
+        ],
+        [
+          "phone",
+          "Phone Number"
+        ],
+        [
+          "select",
+          "Dropdown (one answer)"
+        ],
+        [
+          "radio",
+          "Radio (one answer)"
+        ],
+        [
+          "checkbox",
+          "Checkboxes (multiple answers)"
+        ]
+      ],
+      "string": "Answer Type",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "calendar_booking_id": {
+      "readonly": false,
+      "relation": "calendar.booking",
+      "required": false,
+      "string": "Meeting Booking",
+      "type": "many2one"
+    }
+  }
+}

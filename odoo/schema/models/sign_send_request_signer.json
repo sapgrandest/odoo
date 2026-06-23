@@ -1,0 +1,72 @@
+{
+  "model": "sign.send.request.signer",
+  "name": "Sign send request signer",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "role_id": {
+      "readonly": true,
+      "relation": "sign.item.role",
+      "required": false,
+      "string": "Role",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Contact",
+      "type": "many2one"
+    },
+    "mail_sent_order": {
+      "readonly": false,
+      "required": false,
+      "string": "Sign Order",
+      "type": "integer"
+    },
+    "sign_send_request_id": {
+      "readonly": false,
+      "relation": "sign.send.request",
+      "required": false,
+      "string": "Sign Send Request",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

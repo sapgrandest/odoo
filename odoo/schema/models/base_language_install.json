@@ -1,0 +1,74 @@
+{
+  "model": "base.language.install",
+  "name": "Install Language",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "lang_ids": {
+      "readonly": false,
+      "relation": "res.lang",
+      "required": true,
+      "string": "Languages",
+      "type": "many2many"
+    },
+    "overwrite": {
+      "help": "If you check this box, your customized translations will be overwritten and replaced by the official ones.",
+      "readonly": false,
+      "required": false,
+      "string": "Overwrite Existing Terms",
+      "type": "boolean"
+    },
+    "first_lang_id": {
+      "help": "Used when the user only selects one language and is given the option to switch to it",
+      "readonly": true,
+      "relation": "res.lang",
+      "required": false,
+      "string": "First Lang",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "website_ids": {
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Websites to translate",
+      "type": "many2many"
+    }
+  }
+}

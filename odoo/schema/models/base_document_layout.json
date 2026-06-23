@@ -1,0 +1,290 @@
+{
+  "model": "base.document.layout",
+  "name": "Company Document Layout",
+  "field_count": 35,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "logo": {
+      "readonly": false,
+      "required": false,
+      "string": "Company Logo",
+      "type": "binary"
+    },
+    "preview_logo": {
+      "readonly": true,
+      "required": false,
+      "string": "Preview logo",
+      "type": "binary"
+    },
+    "report_header": {
+      "help": "Company tagline, which is included in a printed document's header or footer (depending on the selected layout).",
+      "readonly": false,
+      "required": false,
+      "string": "Company Tagline",
+      "type": "html"
+    },
+    "report_footer": {
+      "help": "Footer text displayed at the bottom of all reports.",
+      "readonly": false,
+      "required": false,
+      "string": "Report Footer",
+      "type": "html"
+    },
+    "company_details": {
+      "help": "Header text displayed at the top of all reports.",
+      "readonly": false,
+      "required": false,
+      "string": "Company Details",
+      "type": "html"
+    },
+    "is_company_details_empty": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Company Details Empty",
+      "type": "boolean"
+    },
+    "paperformat_id": {
+      "readonly": false,
+      "relation": "report.paperformat",
+      "required": false,
+      "string": "Paper format",
+      "type": "many2one"
+    },
+    "external_report_layout_id": {
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Document Template",
+      "type": "many2one"
+    },
+    "font": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "Lato",
+          "Lato"
+        ],
+        [
+          "Roboto",
+          "Roboto"
+        ],
+        [
+          "Open_Sans",
+          "Open Sans"
+        ],
+        [
+          "Montserrat",
+          "Montserrat"
+        ],
+        [
+          "Oswald",
+          "Oswald"
+        ],
+        [
+          "Raleway",
+          "Raleway"
+        ],
+        [
+          "Tajawal",
+          "Tajawal"
+        ],
+        [
+          "Noto_Sans_Mono",
+          "Noto Sans Mono"
+        ]
+      ],
+      "string": "Font",
+      "type": "selection"
+    },
+    "primary_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Primary Color",
+      "type": "char"
+    },
+    "secondary_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Secondary Color",
+      "type": "char"
+    },
+    "custom_colors": {
+      "readonly": false,
+      "required": false,
+      "string": "Custom Colors",
+      "type": "boolean"
+    },
+    "logo_primary_color": {
+      "readonly": true,
+      "required": false,
+      "string": "Logo Primary Color",
+      "type": "char"
+    },
+    "logo_secondary_color": {
+      "readonly": true,
+      "required": false,
+      "string": "Logo Secondary Color",
+      "type": "char"
+    },
+    "report_layout_id": {
+      "readonly": false,
+      "relation": "report.layout",
+      "required": false,
+      "string": "Report Layout",
+      "type": "many2one"
+    },
+    "report_tables_id": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "light",
+          "Light"
+        ],
+        [
+          "boxed",
+          "Boxed"
+        ],
+        [
+          "bold",
+          "Bold"
+        ],
+        [
+          "striped",
+          "Striped"
+        ],
+        [
+          "bubble",
+          "Bubble"
+        ],
+        [
+          "column",
+          "Column"
+        ]
+      ],
+      "string": "Table Design",
+      "type": "selection"
+    },
+    "preview": {
+      "readonly": true,
+      "required": false,
+      "string": "Preview",
+      "type": "html"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "phone": {
+      "readonly": true,
+      "required": false,
+      "string": "Phone",
+      "type": "char"
+    },
+    "email": {
+      "readonly": true,
+      "required": false,
+      "string": "Email",
+      "type": "char"
+    },
+    "website": {
+      "readonly": true,
+      "required": false,
+      "string": "Website Link",
+      "type": "char"
+    },
+    "vat": {
+      "help": "The Tax Identification Number. Values here will be validated based on the country format. You can use '/' to indicate that the partner is not subject to tax.",
+      "readonly": false,
+      "required": false,
+      "string": "Tax ID",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Company Name",
+      "type": "char"
+    },
+    "country_id": {
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "from_invoice": {
+      "readonly": false,
+      "required": false,
+      "string": "From Invoice",
+      "type": "boolean"
+    },
+    "qr_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Display QR-code on invoices",
+      "type": "boolean"
+    },
+    "account_number": {
+      "readonly": false,
+      "required": false,
+      "string": "Account Number",
+      "type": "char"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    }
+  }
+}

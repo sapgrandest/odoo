@@ -1,0 +1,279 @@
+{
+  "model": "crm.team.member",
+  "name": "Sales Team Member",
+  "field_count": 39,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "crm_team_id": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": true,
+      "string": "Sales Team",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "Salesperson",
+      "type": "many2one"
+    },
+    "user_in_teams_ids": {
+      "help": "UX: Give users not to add in the currently chosen team to avoid duplicates",
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "User In Teams",
+      "type": "many2many"
+    },
+    "user_company_ids": {
+      "help": "UX: Limit to team company or all if no company",
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "User Company",
+      "type": "many2many"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "is_membership_multi": {
+      "help": "If True, users may belong to several sales teams. Otherwise membership is limited to a single sales team.",
+      "readonly": true,
+      "required": false,
+      "string": "Multiple Memberships Allowed",
+      "type": "boolean"
+    },
+    "member_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Member Warning",
+      "type": "text"
+    },
+    "image_1920": {
+      "readonly": true,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "image_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Image (128)",
+      "type": "binary"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "email": {
+      "readonly": true,
+      "required": false,
+      "string": "Email",
+      "type": "char"
+    },
+    "phone": {
+      "readonly": true,
+      "required": false,
+      "string": "Phone",
+      "type": "char"
+    },
+    "company_id": {
+      "help": "The default company for this user.",
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "assignment_enabled": {
+      "readonly": true,
+      "required": false,
+      "string": "Lead Assign",
+      "type": "boolean"
+    },
+    "assignment_domain": {
+      "readonly": false,
+      "required": false,
+      "string": "Assignment Domain",
+      "type": "char"
+    },
+    "assignment_domain_preferred": {
+      "readonly": false,
+      "required": false,
+      "string": "Preference assignment Domain",
+      "type": "char"
+    },
+    "assignment_max": {
+      "readonly": false,
+      "required": false,
+      "string": "Average Leads Capacity (on 30 days)",
+      "type": "integer"
+    },
+    "assignment_rules": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "unlimited",
+          "Always in rotation"
+        ],
+        [
+          "limited",
+          "In rotation, with a limit"
+        ],
+        [
+          "opt-out",
+          "Out of rotation"
+        ]
+      ],
+      "string": "Auto-Assignment Rules",
+      "type": "selection"
+    },
+    "lead_day_count": {
+      "help": "Number of leads assigned to this member in the last 24 hours (lost leads excluded)",
+      "readonly": true,
+      "required": false,
+      "string": "Leads (last 24h)",
+      "type": "integer"
+    },
+    "lead_month_count": {
+      "help": "Number of leads assigned to this member in the last 30 days",
+      "readonly": true,
+      "required": false,
+      "string": "Leads (30 days)",
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "model": "stock.replenishment.option",
+  "name": "Stock warehouse replenishment option",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "route_id": {
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Route",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "replenishment_info_id": {
+      "readonly": false,
+      "relation": "stock.replenishment.info",
+      "required": false,
+      "string": "Replenishment Info",
+      "type": "many2one"
+    },
+    "location_id": {
+      "readonly": true,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Location Stock",
+      "type": "many2one"
+    },
+    "warehouse_id": {
+      "readonly": true,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Supplying Warehouse",
+      "type": "many2one"
+    },
+    "uom": {
+      "readonly": true,
+      "required": false,
+      "string": "Unit Name",
+      "type": "char"
+    },
+    "qty_to_order": {
+      "readonly": true,
+      "required": false,
+      "string": "To Order",
+      "type": "float"
+    },
+    "free_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Free Qty",
+      "type": "float"
+    },
+    "lead_time": {
+      "readonly": true,
+      "required": false,
+      "string": "Lead Time",
+      "type": "char"
+    },
+    "warning_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Warning Message",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

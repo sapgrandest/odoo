@@ -1,0 +1,819 @@
+{
+  "model": "stock.move",
+  "name": "Stock Move",
+  "field_count": 101,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "priority": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Normal"
+        ],
+        [
+          "1",
+          "Urgent"
+        ]
+      ],
+      "string": "Priority",
+      "type": "selection"
+    },
+    "date": {
+      "help": "Scheduled date until move is done, then date of actual move processing",
+      "readonly": false,
+      "required": true,
+      "string": "Date Scheduled",
+      "type": "datetime"
+    },
+    "date_deadline": {
+      "help": "In case of outgoing flow, validate the transfer before this date to allow to deliver at promised date to the customer.\n        In case of incoming flow, validate the transfer before this date in order to have these products in stock at the date promised by the supplier",
+      "readonly": true,
+      "required": false,
+      "string": "Deadline",
+      "type": "datetime"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": true,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "product_category_id": {
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "never_product_template_attribute_value_ids": {
+      "readonly": false,
+      "relation": "product.template.attribute.value",
+      "required": false,
+      "string": "Never attribute Values",
+      "type": "many2many"
+    },
+    "description_picking": {
+      "readonly": false,
+      "required": false,
+      "string": "Description Of Picking",
+      "type": "text"
+    },
+    "description_picking_manual": {
+      "readonly": true,
+      "required": false,
+      "string": "Description Picking Manual",
+      "type": "text"
+    },
+    "product_qty": {
+      "help": "Quantity in the default UoM of the product",
+      "readonly": false,
+      "required": false,
+      "string": "Real Quantity",
+      "type": "float"
+    },
+    "product_uom_qty": {
+      "help": "This is the quantity of product that is planned to be moved.Lowering this quantity does not generate a backorder.Changing this quantity on assigned moves affects the product reservation, and should be done with care.",
+      "readonly": false,
+      "required": true,
+      "string": "Demand",
+      "type": "float"
+    },
+    "allowed_uom_ids": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Allowed Uom",
+      "type": "many2many"
+    },
+    "uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": true,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "product_tmpl_id": {
+      "readonly": true,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product Template",
+      "type": "many2one"
+    },
+    "location_id": {
+      "help": "The operation takes and suggests products from this location.",
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Source Location",
+      "type": "many2one"
+    },
+    "location_dest_id": {
+      "help": "The operations brings product to this location",
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Intermediate Location",
+      "type": "many2one"
+    },
+    "location_final_id": {
+      "help": "The operation brings the products to the intermediate location.But this operation is part of a chain of operations targeting the final location.",
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Final Location",
+      "type": "many2one"
+    },
+    "location_usage": {
+      "help": "* Vendor: Virtual location representing the source location for products coming from your vendors\n* Virtual: Virtual location used to create a hierarchical structure for your warehouse by aggregating its child locations. Can't directly contain products\n* Internal: Physical locations inside your warehouses,\n* Customer: Virtual location representing the destination location for products sent to your customers\n* Inventory Loss: Virtual location serving as the counterpart for inventory operations done to correct stock levels (Physical inventories)\n* Production: Virtual counterpart location for production operations. I.e. This location consumes components and produces finished products\n* Transit: Counterpart location that should be used for inter-company or inter-warehouses operations",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "supplier",
+          "Vendor"
+        ],
+        [
+          "view",
+          "Virtual"
+        ],
+        [
+          "internal",
+          "Internal"
+        ],
+        [
+          "customer",
+          "Customer"
+        ],
+        [
+          "inventory",
+          "Inventory Loss"
+        ],
+        [
+          "production",
+          "Production"
+        ],
+        [
+          "transit",
+          "Transit"
+        ]
+      ],
+      "string": "Source Location Type",
+      "type": "selection"
+    },
+    "location_dest_usage": {
+      "help": "* Vendor: Virtual location representing the source location for products coming from your vendors\n* Virtual: Virtual location used to create a hierarchical structure for your warehouse by aggregating its child locations. Can't directly contain products\n* Internal: Physical locations inside your warehouses,\n* Customer: Virtual location representing the destination location for products sent to your customers\n* Inventory Loss: Virtual location serving as the counterpart for inventory operations done to correct stock levels (Physical inventories)\n* Production: Virtual counterpart location for production operations. I.e. This location consumes components and produces finished products\n* Transit: Counterpart location that should be used for inter-company or inter-warehouses operations",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "supplier",
+          "Vendor"
+        ],
+        [
+          "view",
+          "Virtual"
+        ],
+        [
+          "internal",
+          "Internal"
+        ],
+        [
+          "customer",
+          "Customer"
+        ],
+        [
+          "inventory",
+          "Inventory Loss"
+        ],
+        [
+          "production",
+          "Production"
+        ],
+        [
+          "transit",
+          "Transit"
+        ]
+      ],
+      "string": "Destination Location Type",
+      "type": "selection"
+    },
+    "partner_id": {
+      "help": "Optional address where goods are to be delivered, specifically used for allotment",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Destination Address ",
+      "type": "many2one"
+    },
+    "move_dest_ids": {
+      "help": "Optional: next stock move when chaining them",
+      "readonly": false,
+      "relation": "stock.move",
+      "required": false,
+      "string": "Destination Moves",
+      "type": "many2many"
+    },
+    "move_orig_ids": {
+      "help": "Optional: previous stock move when chaining them",
+      "readonly": false,
+      "relation": "stock.move",
+      "required": false,
+      "string": "Original Move",
+      "type": "many2many"
+    },
+    "picking_id": {
+      "readonly": false,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Transfer",
+      "type": "many2one"
+    },
+    "state": {
+      "help": "* New: The stock move is created but not confirmed.\n* Waiting Another Move: A linked stock move should be done before this one.\n* Waiting: The stock move is confirmed but the product can't be reserved.\n* Available: The product of the stock move is reserved.\n* Done: The product has been transferred and the transfer has been confirmed.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "New"
+        ],
+        [
+          "waiting",
+          "Waiting Another Move"
+        ],
+        [
+          "confirmed",
+          "Waiting"
+        ],
+        [
+          "partially_available",
+          "Partially Available"
+        ],
+        [
+          "assigned",
+          "Available"
+        ],
+        [
+          "done",
+          "Done"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "picked": {
+      "help": "This checkbox is just indicative, it doesn't validate or generate any product moves.",
+      "readonly": false,
+      "required": false,
+      "string": "Picked",
+      "type": "boolean"
+    },
+    "price_unit": {
+      "readonly": false,
+      "required": false,
+      "string": "Price Unit",
+      "type": "float"
+    },
+    "origin": {
+      "readonly": false,
+      "required": false,
+      "string": "Source Document",
+      "type": "char"
+    },
+    "procure_method": {
+      "help": "By default, the system will take from the stock in the source location and passively wait for availability. The other possibility allows you to directly create a procurement on the source location (and thus ignore its current stock) to gather products. If we want to chain moves and have this one to wait for the previous, this second option should be chosen.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "make_to_stock",
+          "Default: Take From Stock"
+        ],
+        [
+          "make_to_order",
+          "Advanced: Apply Procurement Rules"
+        ]
+      ],
+      "string": "Supply Method",
+      "type": "selection"
+    },
+    "is_scrap": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Scrap",
+      "type": "boolean"
+    },
+    "procurement_values": {
+      "help": "Dummy field to store procurement values to propagate them to later steps",
+      "readonly": false,
+      "required": false,
+      "string": "Procurement Values",
+      "type": "json"
+    },
+    "reference_ids": {
+      "readonly": false,
+      "relation": "stock.reference",
+      "required": false,
+      "string": "References",
+      "type": "many2many"
+    },
+    "rule_id": {
+      "help": "The stock rule that created this stock move",
+      "readonly": false,
+      "relation": "stock.rule",
+      "required": false,
+      "string": "Stock Rule",
+      "type": "many2one"
+    },
+    "propagate_cancel": {
+      "help": "If checked, when this move is cancelled, cancel the linked move too",
+      "readonly": false,
+      "required": false,
+      "string": "Propagate cancel and split",
+      "type": "boolean"
+    },
+    "delay_alert_date": {
+      "help": "Process at this date to be on time",
+      "readonly": true,
+      "required": false,
+      "string": "Delay Alert Date",
+      "type": "datetime"
+    },
+    "picking_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "Operation Type",
+      "type": "many2one"
+    },
+    "is_inventory": {
+      "readonly": false,
+      "required": false,
+      "string": "Inventory",
+      "type": "boolean"
+    },
+    "inventory_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Inventory Name",
+      "type": "char"
+    },
+    "move_line_ids": {
+      "readonly": false,
+      "relation": "stock.move.line",
+      "required": false,
+      "string": "Move Line",
+      "type": "one2many"
+    },
+    "package_ids": {
+      "readonly": true,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Packages",
+      "type": "one2many"
+    },
+    "origin_returned_move_id": {
+      "help": "Move that created the return move",
+      "readonly": false,
+      "relation": "stock.move",
+      "required": false,
+      "string": "Origin return move",
+      "type": "many2one"
+    },
+    "returned_move_ids": {
+      "help": "Optional: all returned moves created from this move",
+      "readonly": false,
+      "relation": "stock.move",
+      "required": false,
+      "string": "All returned moves",
+      "type": "one2many"
+    },
+    "availability": {
+      "help": "Quantity in stock that can still be reserved for this move",
+      "readonly": true,
+      "required": false,
+      "string": "Forecasted Quantity",
+      "type": "float"
+    },
+    "restrict_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Owner ",
+      "type": "many2one"
+    },
+    "route_ids": {
+      "help": "Preferred route",
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Destination route",
+      "type": "many2many"
+    },
+    "warehouse_id": {
+      "help": "the warehouse to consider for the route selection on the next procurement (if any).",
+      "readonly": false,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    },
+    "has_tracking": {
+      "help": "Ensure the traceability of a storable product in your warehouse.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "none",
+          "By Quantity"
+        ],
+        [
+          "lot",
+          "By Lots"
+        ],
+        [
+          "serial",
+          "By Unique Serial Number"
+        ]
+      ],
+      "string": "Product with Tracking",
+      "type": "selection"
+    },
+    "has_lines_without_result_package": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Lines Without Result Package",
+      "type": "boolean"
+    },
+    "quantity": {
+      "readonly": false,
+      "required": false,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "show_operations": {
+      "help": "If this checkbox is ticked, the pickings lines will represent detailed stock operations. If not, the picking lines will represent an aggregate of detailed stock operations.",
+      "readonly": true,
+      "required": false,
+      "string": "Show Detailed Operations",
+      "type": "boolean"
+    },
+    "picking_code": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "incoming",
+          "Receipt"
+        ],
+        [
+          "outgoing",
+          "Delivery"
+        ],
+        [
+          "internal",
+          "Internal Transfer"
+        ]
+      ],
+      "string": "Operation Category",
+      "type": "selection"
+    },
+    "show_details_visible": {
+      "readonly": true,
+      "required": false,
+      "string": "Details Visible",
+      "type": "boolean"
+    },
+    "is_storable": {
+      "help": "A storable product is a product for which you manage stock.",
+      "readonly": true,
+      "required": false,
+      "string": "Track Inventory",
+      "type": "boolean"
+    },
+    "additional": {
+      "readonly": false,
+      "required": false,
+      "string": "Whether the move was added after the picking's confirmation",
+      "type": "boolean"
+    },
+    "is_locked": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Locked",
+      "type": "boolean"
+    },
+    "is_initial_demand_editable": {
+      "readonly": true,
+      "required": false,
+      "string": "Is initial demand editable",
+      "type": "boolean"
+    },
+    "is_date_editable": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Date Editable",
+      "type": "boolean"
+    },
+    "is_quantity_done_editable": {
+      "readonly": true,
+      "required": false,
+      "string": "Is quantity done editable",
+      "type": "boolean"
+    },
+    "reference": {
+      "readonly": false,
+      "required": false,
+      "string": "Reference",
+      "type": "char"
+    },
+    "move_lines_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Move Lines Count",
+      "type": "integer"
+    },
+    "display_assign_serial": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Assign Serial",
+      "type": "boolean"
+    },
+    "display_import_lot": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Import Lot",
+      "type": "boolean"
+    },
+    "next_serial": {
+      "readonly": false,
+      "required": false,
+      "string": "First SN/Lot",
+      "type": "char"
+    },
+    "next_serial_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Number of SN/Lots",
+      "type": "integer"
+    },
+    "orderpoint_id": {
+      "readonly": false,
+      "relation": "stock.warehouse.orderpoint",
+      "required": false,
+      "string": "Original Reordering Rule",
+      "type": "many2one"
+    },
+    "forecast_availability": {
+      "readonly": true,
+      "required": false,
+      "string": "Forecast Availability",
+      "type": "float"
+    },
+    "forecast_expected_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Forecasted Expected date",
+      "type": "datetime"
+    },
+    "lot_ids": {
+      "readonly": false,
+      "relation": "stock.lot",
+      "required": false,
+      "string": "Serial Numbers",
+      "type": "many2many"
+    },
+    "reservation_date": {
+      "help": "Computes when a move should be reserved",
+      "readonly": true,
+      "required": false,
+      "string": "Date to Reserve",
+      "type": "date"
+    },
+    "packaging_uom_id": {
+      "help": "Packaging unit from sale or purchase orders",
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Packaging",
+      "type": "many2one"
+    },
+    "packaging_uom_qty": {
+      "help": "Quantity in the packaging unit",
+      "readonly": true,
+      "required": false,
+      "string": "Packaging Quantity",
+      "type": "float"
+    },
+    "show_quant": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Quant",
+      "type": "boolean"
+    },
+    "show_lots_m2o": {
+      "readonly": true,
+      "required": false,
+      "string": "Show lot_id",
+      "type": "boolean"
+    },
+    "show_lots_text": {
+      "readonly": true,
+      "required": false,
+      "string": "Show lot_name",
+      "type": "boolean"
+    },
+    "scrap_reason_tag_ids": {
+      "readonly": false,
+      "relation": "stock.scrap.reason.tag",
+      "required": false,
+      "string": "Scrap Reason",
+      "type": "many2many"
+    },
+    "should_replenish_scrapped": {
+      "readonly": false,
+      "required": false,
+      "string": "Should Replenish",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "to_refund": {
+      "help": "Trigger a decrease of the delivered/received quantity in the associated Sale Order/Purchase Order",
+      "readonly": false,
+      "required": false,
+      "string": "Update quantities on SO/PO",
+      "type": "boolean"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "value": {
+      "help": "The current value of the move. It's zero if the move is not valued.",
+      "readonly": false,
+      "required": false,
+      "string": "Value",
+      "type": "monetary"
+    },
+    "value_justification": {
+      "readonly": true,
+      "required": false,
+      "string": "Value Description",
+      "type": "text"
+    },
+    "value_computed_justification": {
+      "readonly": true,
+      "required": false,
+      "string": "Computed Value Description",
+      "type": "text"
+    },
+    "value_manual": {
+      "readonly": false,
+      "required": false,
+      "string": "Manual Value",
+      "type": "monetary"
+    },
+    "standard_price": {
+      "readonly": true,
+      "required": false,
+      "string": "Standard Price",
+      "type": "float"
+    },
+    "is_in": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Incoming (valued)",
+      "type": "boolean"
+    },
+    "is_out": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Outgoing (valued)",
+      "type": "boolean"
+    },
+    "is_dropship": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Dropship",
+      "type": "boolean"
+    },
+    "is_valued": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Valued",
+      "type": "boolean"
+    },
+    "remaining_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Remaining Quantity",
+      "type": "float"
+    },
+    "remaining_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Remaining Value",
+      "type": "monetary"
+    },
+    "analytic_account_line_ids": {
+      "readonly": false,
+      "relation": "account.analytic.line",
+      "required": false,
+      "string": "Analytic Account Line",
+      "type": "many2many"
+    },
+    "account_move_id": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "stock_move_id",
+      "type": "many2one"
+    },
+    "purchase_line_id": {
+      "readonly": true,
+      "relation": "purchase.order.line",
+      "required": false,
+      "string": "Purchase Order Line",
+      "type": "many2one"
+    },
+    "created_purchase_line_ids": {
+      "readonly": false,
+      "relation": "purchase.order.line",
+      "required": false,
+      "string": "Created Purchase Order Lines",
+      "type": "many2many"
+    },
+    "sale_line_id": {
+      "readonly": false,
+      "relation": "sale.order.line",
+      "required": false,
+      "string": "Sale Line",
+      "type": "many2one"
+    },
+    "weight": {
+      "readonly": true,
+      "required": false,
+      "string": "Weight",
+      "type": "float"
+    }
+  }
+}

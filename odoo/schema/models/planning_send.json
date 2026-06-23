@@ -1,0 +1,91 @@
+{
+  "model": "planning.send",
+  "name": "Send Planning",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "start_datetime": {
+      "readonly": false,
+      "required": true,
+      "string": "Period",
+      "type": "datetime"
+    },
+    "end_datetime": {
+      "readonly": false,
+      "required": true,
+      "string": "Stop Date",
+      "type": "datetime"
+    },
+    "include_unassigned": {
+      "readonly": false,
+      "required": false,
+      "string": "Include Open Shifts",
+      "type": "boolean"
+    },
+    "note": {
+      "help": "Additional message displayed in the email sent to employees",
+      "readonly": false,
+      "required": false,
+      "string": "Extra Message",
+      "type": "text"
+    },
+    "employee_ids": {
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Employees",
+      "type": "many2many"
+    },
+    "slot_ids": {
+      "readonly": true,
+      "relation": "planning.slot",
+      "required": false,
+      "string": "Slot",
+      "type": "many2many"
+    },
+    "employees_no_email": {
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Employees without email",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,266 @@
+{
+  "model": "account.change.lock.date",
+  "name": "Change Lock Date",
+  "field_count": 35,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "fiscalyear_lock_date": {
+      "help": "Any entry up to and including that date will be postponed to a later time, in accordance with its journal's sequence.",
+      "readonly": false,
+      "required": false,
+      "string": "Lock Everything",
+      "type": "date"
+    },
+    "fiscalyear_lock_date_for_me": {
+      "readonly": true,
+      "required": false,
+      "string": "Lock Everything For Me",
+      "type": "date"
+    },
+    "fiscalyear_lock_date_for_everyone": {
+      "readonly": true,
+      "required": false,
+      "string": "Lock Everything For Everyone",
+      "type": "date"
+    },
+    "min_fiscalyear_lock_date_exception_for_me_id": {
+      "readonly": true,
+      "relation": "account.lock_exception",
+      "required": false,
+      "string": "Min Fiscalyear Lock Date Exception For Me",
+      "type": "many2one"
+    },
+    "min_fiscalyear_lock_date_exception_for_everyone_id": {
+      "readonly": true,
+      "relation": "account.lock_exception",
+      "required": false,
+      "string": "Min Fiscalyear Lock Date Exception For Everyone",
+      "type": "many2one"
+    },
+    "tax_lock_date": {
+      "help": "Any entry with taxes up to and including that date will be postponed to a later time, in accordance with its journal's sequence. The tax lock date is automatically set when the tax closing entry is posted.",
+      "readonly": false,
+      "required": false,
+      "string": "Lock Tax Return",
+      "type": "date"
+    },
+    "tax_lock_date_for_me": {
+      "readonly": true,
+      "required": false,
+      "string": "Lock Tax Return For Me",
+      "type": "date"
+    },
+    "tax_lock_date_for_everyone": {
+      "readonly": true,
+      "required": false,
+      "string": "Lock Tax Return For Everyone",
+      "type": "date"
+    },
+    "min_tax_lock_date_exception_for_me_id": {
+      "readonly": true,
+      "relation": "account.lock_exception",
+      "required": false,
+      "string": "Min Tax Lock Date Exception For Me",
+      "type": "many2one"
+    },
+    "min_tax_lock_date_exception_for_everyone_id": {
+      "readonly": true,
+      "relation": "account.lock_exception",
+      "required": false,
+      "string": "Min Tax Lock Date Exception For Everyone",
+      "type": "many2one"
+    },
+    "sale_lock_date": {
+      "help": "Any sales entry prior to and including this date will be postponed to a later date, in accordance with its journal's sequence.",
+      "readonly": false,
+      "required": false,
+      "string": "Lock Sales",
+      "type": "date"
+    },
+    "sale_lock_date_for_me": {
+      "readonly": true,
+      "required": false,
+      "string": "Lock Sales For Me",
+      "type": "date"
+    },
+    "sale_lock_date_for_everyone": {
+      "readonly": true,
+      "required": false,
+      "string": "Lock Sales For Everyone",
+      "type": "date"
+    },
+    "min_sale_lock_date_exception_for_me_id": {
+      "readonly": true,
+      "relation": "account.lock_exception",
+      "required": false,
+      "string": "Min Sale Lock Date Exception For Me",
+      "type": "many2one"
+    },
+    "min_sale_lock_date_exception_for_everyone_id": {
+      "readonly": true,
+      "relation": "account.lock_exception",
+      "required": false,
+      "string": "Min Sale Lock Date Exception For Everyone",
+      "type": "many2one"
+    },
+    "purchase_lock_date": {
+      "help": "Any purchase entry prior to and including this date will be postponed to a later date, in accordance with its journal's sequence.",
+      "readonly": false,
+      "required": false,
+      "string": "Lock Purchases",
+      "type": "date"
+    },
+    "purchase_lock_date_for_me": {
+      "readonly": true,
+      "required": false,
+      "string": "Lock Purchases For Me",
+      "type": "date"
+    },
+    "purchase_lock_date_for_everyone": {
+      "readonly": true,
+      "required": false,
+      "string": "Lock Purchases For Everyone",
+      "type": "date"
+    },
+    "min_purchase_lock_date_exception_for_me_id": {
+      "readonly": true,
+      "relation": "account.lock_exception",
+      "required": false,
+      "string": "Min Purchase Lock Date Exception For Me",
+      "type": "many2one"
+    },
+    "min_purchase_lock_date_exception_for_everyone_id": {
+      "readonly": true,
+      "relation": "account.lock_exception",
+      "required": false,
+      "string": "Min Purchase Lock Date Exception For Everyone",
+      "type": "many2one"
+    },
+    "hard_lock_date": {
+      "help": "Any entry up to and including that date will be postponed to a later time, in accordance with its journal sequence. This lock date is irreversible and does not allow any exception.",
+      "readonly": false,
+      "required": false,
+      "string": "Hard Lock",
+      "type": "date"
+    },
+    "current_hard_lock_date": {
+      "help": "Any entry up to and including that date will be postponed to a later time, in accordance with its journal sequence. This lock date is irreversible and does not allow any exception.",
+      "readonly": true,
+      "required": false,
+      "string": "Current Hard Lock",
+      "type": "date"
+    },
+    "exception_needed_fields": {
+      "readonly": true,
+      "required": false,
+      "string": "Exception Needed Fields",
+      "type": "char"
+    },
+    "exception_applies_to": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "me",
+          "for me"
+        ],
+        [
+          "everyone",
+          "for everyone"
+        ]
+      ],
+      "string": "Exception applies",
+      "type": "selection"
+    },
+    "exception_duration": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "5min",
+          "for 5 minutes"
+        ],
+        [
+          "15min",
+          "for 15 minutes"
+        ],
+        [
+          "1h",
+          "for 1 hour"
+        ],
+        [
+          "24h",
+          "for 24 hours"
+        ],
+        [
+          "forever",
+          "forever"
+        ]
+      ],
+      "string": "Exception Duration",
+      "type": "selection"
+    },
+    "exception_reason": {
+      "readonly": false,
+      "required": false,
+      "string": "Exception Reason",
+      "type": "char"
+    },
+    "show_draft_entries_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Draft Entries Warning",
+      "type": "boolean"
+    },
+    "show_posted_tax_closing_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Posted Tax Closing Warning",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

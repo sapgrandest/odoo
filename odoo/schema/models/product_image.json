@@ -1,0 +1,120 @@
+{
+  "model": "product.image",
+  "name": "Product Image",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "image_1920": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "image_1024": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 1024",
+      "type": "binary"
+    },
+    "image_512": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 512",
+      "type": "binary"
+    },
+    "image_256": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 256",
+      "type": "binary"
+    },
+    "image_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 128",
+      "type": "binary"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "product_tmpl_id": {
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product Template",
+      "type": "many2one"
+    },
+    "product_variant_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product Variant",
+      "type": "many2one"
+    },
+    "video_url": {
+      "help": "URL of a video for showcasing your product.",
+      "readonly": false,
+      "required": false,
+      "string": "Video URL",
+      "type": "char"
+    },
+    "embed_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Embed Code",
+      "type": "html"
+    },
+    "can_image_1024_be_zoomed": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Image 1024 be zoomed",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "model": "theme.ir.ui.view",
+  "name": "Theme UI View",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "key": {
+      "readonly": false,
+      "required": false,
+      "string": "Key",
+      "type": "char"
+    },
+    "type": {
+      "readonly": false,
+      "required": false,
+      "string": "Type",
+      "type": "char"
+    },
+    "priority": {
+      "readonly": false,
+      "required": true,
+      "string": "Priority",
+      "type": "integer"
+    },
+    "mode": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "primary",
+          "Base view"
+        ],
+        [
+          "extension",
+          "Extension View"
+        ]
+      ],
+      "string": "Mode",
+      "type": "selection"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "arch": {
+      "readonly": false,
+      "required": false,
+      "string": "Arch",
+      "type": "text"
+    },
+    "arch_fs": {
+      "readonly": false,
+      "required": false,
+      "string": "Arch Fs",
+      "type": "char"
+    },
+    "inherit_id": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "ir.ui.view",
+          "ir.ui.view"
+        ],
+        [
+          "theme.ir.ui.view",
+          "theme.ir.ui.view"
+        ]
+      ],
+      "string": "Inherit",
+      "type": "reference"
+    },
+    "copy_ids": {
+      "readonly": true,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Views using a copy of me",
+      "type": "one2many"
+    },
+    "customize_show": {
+      "readonly": false,
+      "required": false,
+      "string": "Customize Show",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

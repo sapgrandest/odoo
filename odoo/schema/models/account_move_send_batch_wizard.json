@@ -1,0 +1,70 @@
+{
+  "model": "account.move.send.batch.wizard",
+  "name": "Send Invoice Batch Wizard",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "move_ids": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": true,
+      "string": "Move",
+      "type": "many2many"
+    },
+    "summary_data": {
+      "readonly": true,
+      "required": false,
+      "string": "Summary Data",
+      "type": "json"
+    },
+    "alerts": {
+      "readonly": true,
+      "required": false,
+      "string": "Alerts",
+      "type": "json"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "send_by_post_stamps": {
+      "readonly": true,
+      "required": false,
+      "string": "Send By Post Stamps",
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "model": "hr.resume.line",
+  "name": "Resume line of an employee",
+  "field_count": 25,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "employee_id": {
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": true,
+      "string": "Employee",
+      "type": "many2one"
+    },
+    "avatar_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar 128",
+      "type": "binary"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "department_id": {
+      "readonly": true,
+      "relation": "hr.department",
+      "required": false,
+      "string": "Department",
+      "type": "many2one"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "date_start": {
+      "readonly": false,
+      "required": true,
+      "string": "Date Start",
+      "type": "date"
+    },
+    "date_end": {
+      "readonly": false,
+      "required": false,
+      "string": "Date End",
+      "type": "date"
+    },
+    "duration": {
+      "readonly": false,
+      "required": false,
+      "string": "Duration",
+      "type": "integer"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "html"
+    },
+    "line_type_id": {
+      "readonly": false,
+      "relation": "hr.resume.line.type",
+      "required": false,
+      "string": "Type",
+      "type": "many2one"
+    },
+    "is_course": {
+      "readonly": true,
+      "required": false,
+      "string": "Course",
+      "type": "boolean"
+    },
+    "course_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "external",
+          "External"
+        ]
+      ],
+      "string": "Course Type",
+      "type": "selection"
+    },
+    "color": {
+      "readonly": true,
+      "required": false,
+      "string": "Color",
+      "type": "char"
+    },
+    "external_url": {
+      "readonly": false,
+      "required": false,
+      "string": "External URL",
+      "type": "char"
+    },
+    "certificate_filename": {
+      "readonly": false,
+      "required": false,
+      "string": "Certificate Filename",
+      "type": "char"
+    },
+    "certificate_file": {
+      "readonly": false,
+      "required": false,
+      "string": "Certificate",
+      "type": "binary"
+    },
+    "resume_line_properties": {
+      "readonly": false,
+      "required": false,
+      "string": "Properties",
+      "type": "properties"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "survey_id": {
+      "readonly": true,
+      "relation": "survey.survey",
+      "required": false,
+      "string": "Certification",
+      "type": "many2one"
+    },
+    "expiration_status": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "expired",
+          "Expired"
+        ],
+        [
+          "expiring",
+          "Expiring"
+        ],
+        [
+          "valid",
+          "Valid"
+        ]
+      ],
+      "string": "Expiration Status",
+      "type": "selection"
+    }
+  }
+}

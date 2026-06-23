@@ -1,0 +1,5230 @@
+{
+  "model": "account.bank.statement.line",
+  "name": "Bank Statement Line",
+  "field_count": 264,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_plans_ids": {
+      "readonly": true,
+      "relation": "mail.activity.plan",
+      "required": false,
+      "string": "Activity Plans",
+      "type": "many2many"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "message_main_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Main Attachment",
+      "type": "many2one"
+    },
+    "move_id": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": true,
+      "string": "Journal Entry",
+      "type": "many2one"
+    },
+    "journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": true,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "statement_id": {
+      "readonly": false,
+      "relation": "account.bank.statement",
+      "required": false,
+      "string": "Statement",
+      "type": "many2one"
+    },
+    "payment_ids": {
+      "readonly": false,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Auto-generated Payments",
+      "type": "many2many"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "account_number": {
+      "readonly": false,
+      "required": false,
+      "string": "Bank Account Number",
+      "type": "char"
+    },
+    "partner_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Partner Name",
+      "type": "char"
+    },
+    "transaction_type": {
+      "readonly": false,
+      "required": false,
+      "string": "Transaction Type",
+      "type": "char"
+    },
+    "payment_ref": {
+      "readonly": false,
+      "required": false,
+      "string": "Label",
+      "type": "char"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Journal Currency",
+      "type": "many2one"
+    },
+    "amount": {
+      "readonly": false,
+      "required": false,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "running_balance": {
+      "readonly": true,
+      "required": false,
+      "string": "Running Balance",
+      "type": "monetary"
+    },
+    "foreign_currency_id": {
+      "help": "The optional other currency if it is a multi-currency entry.",
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Foreign Currency",
+      "type": "many2one"
+    },
+    "amount_currency": {
+      "help": "The amount expressed in an optional other currency if it is a multi-currency entry.",
+      "readonly": false,
+      "required": false,
+      "string": "Amount in Currency",
+      "type": "monetary"
+    },
+    "amount_residual": {
+      "readonly": true,
+      "required": false,
+      "string": "Residual Amount",
+      "type": "float"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "internal_index": {
+      "readonly": true,
+      "required": false,
+      "string": "Internal Reference",
+      "type": "char"
+    },
+    "is_reconciled": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Reconciled",
+      "type": "boolean"
+    },
+    "statement_complete": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Complete",
+      "type": "boolean"
+    },
+    "statement_valid": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Valid",
+      "type": "boolean"
+    },
+    "statement_balance_end_real": {
+      "readonly": true,
+      "required": false,
+      "string": "Ending Balance",
+      "type": "monetary"
+    },
+    "statement_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Statement Name",
+      "type": "char"
+    },
+    "transaction_details": {
+      "readonly": true,
+      "required": false,
+      "string": "Transaction Details",
+      "type": "json"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "cron_last_check": {
+      "readonly": false,
+      "required": false,
+      "string": "Cron Last Check",
+      "type": "datetime"
+    },
+    "bank_statement_attachment_ids": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Bank Statement Attachment",
+      "type": "one2many"
+    },
+    "attachment_ids": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachments",
+      "type": "one2many"
+    },
+    "transaction_uuid": {
+      "help": "Unique transaction identifier assigned by the initiating party",
+      "readonly": false,
+      "required": false,
+      "string": "Transaction ID",
+      "type": "char"
+    },
+    "unique_import_id": {
+      "readonly": true,
+      "required": false,
+      "string": "Import ID",
+      "type": "char"
+    },
+    "online_transaction_identifier": {
+      "readonly": true,
+      "required": false,
+      "string": "Online Transaction Identifier",
+      "type": "char"
+    },
+    "online_account_id": {
+      "readonly": true,
+      "relation": "account.online.account",
+      "required": false,
+      "string": "Online Account",
+      "type": "many2one"
+    },
+    "campaign_id": {
+      "help": "This is a name that helps you keep track of your different campaign efforts, e.g. Fall_Drive, Christmas_Special",
+      "readonly": false,
+      "relation": "utm.campaign",
+      "required": false,
+      "string": "Campaign",
+      "type": "many2one"
+    },
+    "source_id": {
+      "help": "This is the source of the link, e.g. Search Engine, another domain, or name of email list",
+      "readonly": false,
+      "relation": "utm.source",
+      "required": false,
+      "string": "Source",
+      "type": "many2one"
+    },
+    "medium_id": {
+      "help": "This is the method of delivery, e.g. Postcard, Email, or Banner Ad",
+      "readonly": false,
+      "relation": "utm.medium",
+      "required": false,
+      "string": "Medium",
+      "type": "many2one"
+    },
+    "utm_reference": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "account.account",
+          "Account"
+        ],
+        [
+          "account.return",
+          "Accounting Return"
+        ],
+        [
+          "account.return.type",
+          "Accounting Return Type"
+        ],
+        [
+          "account.analytic.account",
+          "Analytic Account"
+        ],
+        [
+          "hr.applicant",
+          "Applicant"
+        ],
+        [
+          "appointment.type",
+          "Appointment Type"
+        ],
+        [
+          "knowledge.article.thread",
+          "Article Discussion Thread"
+        ],
+        [
+          "res.partner.bank",
+          "Bank Account"
+        ],
+        [
+          "account.online.link",
+          "Bank Connection"
+        ],
+        [
+          "account.bank.statement",
+          "Bank Statement"
+        ],
+        [
+          "account.bank.statement.line",
+          "Bank Statement Line"
+        ],
+        [
+          "extract.mixin",
+          "Base class to extract data from documents"
+        ],
+        [
+          "extract.mixin.with.words",
+          "Base class to extract data from documents with OCRed words saved"
+        ],
+        [
+          "account.batch.payment",
+          "Batch Payment"
+        ],
+        [
+          "blog.blog",
+          "Blog"
+        ],
+        [
+          "blog.post",
+          "Blog Post"
+        ],
+        [
+          "calendar.event",
+          "Calendar Event"
+        ],
+        [
+          "res.company",
+          "Company"
+        ],
+        [
+          "res.partner",
+          "Contact"
+        ],
+        [
+          "hr.department",
+          "Department"
+        ],
+        [
+          "discuss.channel",
+          "Discussion Channel"
+        ],
+        [
+          "mail.thread",
+          "Email Thread"
+        ],
+        [
+          "hr.employee",
+          "Employee"
+        ],
+        [
+          "hr.version",
+          "Employee Record"
+        ],
+        [
+          "gamification.badge",
+          "Gamification Badge"
+        ],
+        [
+          "gamification.challenge",
+          "Gamification Challenge"
+        ],
+        [
+          "gamification.badge.user",
+          "Gamification User Badge"
+        ],
+        [
+          "helpdesk.team",
+          "Helpdesk Team"
+        ],
+        [
+          "helpdesk.ticket",
+          "Helpdesk Ticket"
+        ],
+        [
+          "iap.account",
+          "IAP Account"
+        ],
+        [
+          "hr.job",
+          "Job Position"
+        ],
+        [
+          "account.journal",
+          "Journal"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "knowledge.article",
+          "Knowledge Article"
+        ],
+        [
+          "crm.lead",
+          "Lead"
+        ],
+        [
+          "stock.lot",
+          "Lot/Serial"
+        ],
+        [
+          "mail.blacklist",
+          "Mail Blacklist"
+        ],
+        [
+          "mail.thread.blacklist",
+          "Mail Blacklist mixin"
+        ],
+        [
+          "mail.thread.main.attachment",
+          "Mail Main Attachment management"
+        ],
+        [
+          "mail.tracking.duration.mixin",
+          "Mixin to compute the time a record has spent in each value a many2one field can take"
+        ],
+        [
+          "account.payment",
+          "Payment"
+        ],
+        [
+          "phone.blacklist",
+          "Phone Blacklist"
+        ],
+        [
+          "mail.thread.phone",
+          "Phone Blacklist Mixin"
+        ],
+        [
+          "account.reconcile.model",
+          "Preset to create journal entries during a invoices and payments matching"
+        ],
+        [
+          "product.pricelist",
+          "Pricelist"
+        ],
+        [
+          "product.template",
+          "Product"
+        ],
+        [
+          "product.category",
+          "Product Category"
+        ],
+        [
+          "product.feed",
+          "Product Feed"
+        ],
+        [
+          "product.product",
+          "Product Variant"
+        ],
+        [
+          "project.project",
+          "Project"
+        ],
+        [
+          "project.milestone",
+          "Project Milestone"
+        ],
+        [
+          "project.update",
+          "Project Update"
+        ],
+        [
+          "purchase.order",
+          "Purchase Order"
+        ],
+        [
+          "rating.mixin",
+          "Rating Mixin"
+        ],
+        [
+          "sale.order",
+          "Sales Order"
+        ],
+        [
+          "crm.team",
+          "Sales Team"
+        ],
+        [
+          "crm.team.member",
+          "Sales Team Member"
+        ],
+        [
+          "ir.cron",
+          "Scheduled Action"
+        ],
+        [
+          "ir.actions.server",
+          "Server Action"
+        ],
+        [
+          "sign.request",
+          "Signature Request"
+        ],
+        [
+          "spreadsheet.cell.thread",
+          "Spreadsheet discussion thread"
+        ],
+        [
+          "survey.survey",
+          "Survey"
+        ],
+        [
+          "survey.user_input",
+          "Survey User Input"
+        ],
+        [
+          "hr.talent.pool",
+          "Talent Pool"
+        ],
+        [
+          "project.task",
+          "Task"
+        ],
+        [
+          "account.tax",
+          "Tax"
+        ],
+        [
+          "mail.thread.subject.suggested",
+          "Thread with suggested subject"
+        ],
+        [
+          "stock.picking",
+          "Transfer"
+        ],
+        [
+          "auth_totp.wizard",
+          "2-Factor Setup Wizard"
+        ],
+        [
+          "l10n_fr_reports.2031.annexes.report.handler",
+          "2031 Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2031.report.handler",
+          "2031 Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2033.a.report.handler",
+          "2033 A Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2033.b.report.handler",
+          "2033 B Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2033.e.report.handler",
+          "2033 E Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2033.f.report.handler",
+          "2033 F Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2033.c.report.handler",
+          "2033-C Fixed Assets – Depreciation – Capital Gains – Capital Losses"
+        ],
+        [
+          "l10n_fr_reports.2033.g.report.handler",
+          "2033G Subsidiaries and Investments Report Custom Handler"
+        ],
+        [
+          "l10n_fr_reports.2069.rci.report.handler",
+          "2069 Rci Report Handler"
+        ],
+        [
+          "account.edi.xml.ubl_a_nz",
+          "A-NZ BIS Billing 3.0"
+        ],
+        [
+          "ai.agent",
+          "AI Agent"
+        ],
+        [
+          "ai.agent.source",
+          "AI Agent Source"
+        ],
+        [
+          "ai.attachment.vacuum",
+          "AI Generated Attachments that aren't used and should be autovacuumed"
+        ],
+        [
+          "ai.session",
+          "AI Session"
+        ],
+        [
+          "ai.session.event",
+          "AI Session Event"
+        ],
+        [
+          "ai.composer",
+          "AI model configurations (system prompts) for text drafting."
+        ],
+        [
+          "res.users.apikeys.description",
+          "API Key Description"
+        ],
+        [
+          "res.groups",
+          "Access Groups"
+        ],
+        [
+          "account.audit.account.status",
+          "Account Audit Account Status"
+        ],
+        [
+          "account.cash.rounding",
+          "Account Cash Rounding"
+        ],
+        [
+          "account.chart.template",
+          "Account Chart Template"
+        ],
+        [
+          "account_edi_proxy_client.user",
+          "Account EDI proxy user"
+        ],
+        [
+          "account.fiscal.category",
+          "Account Fiscal Category"
+        ],
+        [
+          "account.journal.group",
+          "Account Journal Group"
+        ],
+        [
+          "account.lock_exception",
+          "Account Lock Exception"
+        ],
+        [
+          "account.report.annotation",
+          "Account Report Annotation"
+        ],
+        [
+          "account.report.async.document",
+          "Account Report Async Document"
+        ],
+        [
+          "account.report.async.export",
+          "Account Report Async Export"
+        ],
+        [
+          "account.report.custom.handler",
+          "Account Report Custom Handler"
+        ],
+        [
+          "account.tax.report.handler",
+          "Account Report Handler for Tax Reports"
+        ],
+        [
+          "account.report.send",
+          "Account Report Send"
+        ],
+        [
+          "account.return.audit.cycle",
+          "Account Return Audit Cycle"
+        ],
+        [
+          "account.return.check.template",
+          "Account Return Check Template"
+        ],
+        [
+          "account.account.tag",
+          "Account Tag"
+        ],
+        [
+          "account.auto.reconcile.wizard",
+          "Account automatic reconciliation wizard"
+        ],
+        [
+          "account.root",
+          "Account codes first 2 digits"
+        ],
+        [
+          "account.merge.wizard",
+          "Account merge wizard"
+        ],
+        [
+          "account.merge.wizard.line",
+          "Account merge wizard line"
+        ],
+        [
+          "account.reconcile.wizard",
+          "Account reconciliation wizard"
+        ],
+        [
+          "report.account.report_invoice_with_payments",
+          "Account report with payment lines"
+        ],
+        [
+          "report.account.report_invoice",
+          "Account report without payment lines"
+        ],
+        [
+          "account.report",
+          "Accounting Report"
+        ],
+        [
+          "account.report.budget",
+          "Accounting Report Budget"
+        ],
+        [
+          "account.report.budget.item",
+          "Accounting Report Budget Item"
+        ],
+        [
+          "account.report.column",
+          "Accounting Report Column"
+        ],
+        [
+          "account.report.expression",
+          "Accounting Report Expression"
+        ],
+        [
+          "account.report.external.value",
+          "Accounting Report External Value"
+        ],
+        [
+          "account.report.line",
+          "Accounting Report Line"
+        ],
+        [
+          "account.report.snapshot",
+          "Accounting Report Snapshot"
+        ],
+        [
+          "account.return.check",
+          "Accounting Return Check"
+        ],
+        [
+          "account.fiscal.position.account",
+          "Accounts Mapping of Fiscal Position"
+        ],
+        [
+          "account.accrued.orders.wizard",
+          "Accrued Orders Wizard"
+        ],
+        [
+          "ir.actions.actions",
+          "Action"
+        ],
+        [
+          "ir.actions.act_url",
+          "Action URL"
+        ],
+        [
+          "ir.actions.act_window",
+          "Action Window"
+        ],
+        [
+          "ir.actions.act_window_close",
+          "Action Window Close"
+        ],
+        [
+          "ir.actions.act_window.view",
+          "Action Window View"
+        ],
+        [
+          "mail.activity",
+          "Activity"
+        ],
+        [
+          "mail.activity.mixin",
+          "Activity Mixin"
+        ],
+        [
+          "mail.activity.plan",
+          "Activity Plan"
+        ],
+        [
+          "mail.activity.type",
+          "Activity Type"
+        ],
+        [
+          "mail.activity.plan.template",
+          "Activity plan template"
+        ],
+        [
+          "mail.activity.schedule",
+          "Activity schedule plan Wizard"
+        ],
+        [
+          "job.add.applicants",
+          "Add applicants to a job"
+        ],
+        [
+          "talent.pool.add.applicants",
+          "Add applicants to talent pool"
+        ],
+        [
+          "appointment.manage.leaves",
+          "Add or remove leaves from appointments"
+        ],
+        [
+          "format.address.mixin",
+          "Address Format"
+        ],
+        [
+          "account.aged.partner.balance.report.handler",
+          "Aged Partner Balance Custom Handler"
+        ],
+        [
+          "account.aged.payable.report.handler",
+          "Aged Payable Custom Handler"
+        ],
+        [
+          "account.aged.receivable.report.handler",
+          "Aged Receivable Custom Handler"
+        ],
+        [
+          "website.route",
+          "All Website Route"
+        ],
+        [
+          "ir.profile",
+          "Allow profiling only to Tech Support level"
+        ],
+        [
+          "account.analytic.distribution.model",
+          "Analytic Distribution Model"
+        ],
+        [
+          "account.analytic.line",
+          "Analytic Line"
+        ],
+        [
+          "analytic.mixin",
+          "Analytic Mixin"
+        ],
+        [
+          "account.analytic.plan",
+          "Analytic Plan"
+        ],
+        [
+          "analytic.plan.fields.mixin",
+          "Analytic Plan Fields"
+        ],
+        [
+          "account.analytic.applicability",
+          "Analytic Plan's Applicabilities"
+        ],
+        [
+          "hr.recruitment.degree",
+          "Applicant Degree"
+        ],
+        [
+          "ir.module.category",
+          "Application"
+        ],
+        [
+          "appointment.answer.input",
+          "Appointment Answer Inputs"
+        ],
+        [
+          "appointment.booking.line",
+          "Appointment Booking Line"
+        ],
+        [
+          "appointment.invite",
+          "Appointment Invite"
+        ],
+        [
+          "appointment.answer",
+          "Appointment Question Answers"
+        ],
+        [
+          "appointment.question",
+          "Appointment Questions"
+        ],
+        [
+          "appointment.resource",
+          "Appointment Resource"
+        ],
+        [
+          "appointment.slot",
+          "Appointment: Time Slot"
+        ],
+        [
+          "knowledge.article.member",
+          "Article Member"
+        ],
+        [
+          "knowledge.article.template.category",
+          "Article Template Category"
+        ],
+        [
+          "ir.asset",
+          "Asset"
+        ],
+        [
+          "website.assets",
+          "Assets Utils"
+        ],
+        [
+          "ir.attachment",
+          "Attachment"
+        ],
+        [
+          "ai.embedding",
+          "Attachment Chunks Embedding"
+        ],
+        [
+          "product.attribute.value",
+          "Attribute Value"
+        ],
+        [
+          "auth_totp.device",
+          "Authentication Device"
+        ],
+        [
+          "ir.autovacuum",
+          "Automatic Vacuum"
+        ],
+        [
+          "sequence.mixin",
+          "Automatic sequence"
+        ],
+        [
+          "account.autopost.bills.wizard",
+          "Autopost Bills Wizard"
+        ],
+        [
+          "avatar.mixin",
+          "Avatar Mixin"
+        ],
+        [
+          "account.edi.xml.ubl_de",
+          "BIS3 DE (XRechnung)"
+        ],
+        [
+          "stock.backorder.confirmation",
+          "Backorder Confirmation"
+        ],
+        [
+          "stock.backorder.confirmation.line",
+          "Backorder Confirmation Line"
+        ],
+        [
+          "account.balance.sheet.report.handler",
+          "Balance Sheet Custom Handler"
+        ],
+        [
+          "hr.bank.account.allocation.wizard.line",
+          "Bank Account Allocation Line (Wizard)"
+        ],
+        [
+          "hr.bank.account.allocation.wizard",
+          "Bank Account Allocation Wizard"
+        ],
+        [
+          "clearing.label",
+          "Bank Account Clearing Number Label"
+        ],
+        [
+          "l10n_fr_reports.send.vat.report.bank.account.line",
+          "Bank Account Line for French Vat Report"
+        ],
+        [
+          "account.bank.reconciliation.report.handler",
+          "Bank Reconciliation Report Custom Handler"
+        ],
+        [
+          "account.setup.bank.manual.config",
+          "Bank setup manual config"
+        ],
+        [
+          "barcode.nomenclature",
+          "Barcode Nomenclature"
+        ],
+        [
+          "barcode.rule",
+          "Barcode Rule"
+        ],
+        [
+          "base",
+          "Base"
+        ],
+        [
+          "base_import.import",
+          "Base Import"
+        ],
+        [
+          "base_import.mapping",
+          "Base Import Mapping"
+        ],
+        [
+          "account.edi.ubl",
+          "Base helpers for UBL"
+        ],
+        [
+          "report.account_batch_payment.print_batch_payment",
+          "Batch Deposit Report"
+        ],
+        [
+          "account.batch.error.wizard",
+          "Batch payments error reporting wizard"
+        ],
+        [
+          "account.batch.error.wizard.line",
+          "Batch payments error reporting wizard line"
+        ],
+        [
+          "bill.to.po.wizard",
+          "Bill to Purchase Order"
+        ],
+        [
+          "blog.tag",
+          "Blog Tag"
+        ],
+        [
+          "blog.tag.category",
+          "Blog Tag Category"
+        ],
+        [
+          "project.task.burndown.chart.report",
+          "Burndown Chart"
+        ],
+        [
+          "account.peppol.response",
+          "Business Level Responses for Peppol"
+        ],
+        [
+          "account.document.import.mixin",
+          "Business document import mixin"
+        ],
+        [
+          "crm.activity.report",
+          "CRM Activity Analysis"
+        ],
+        [
+          "crm.iap.lead.industry",
+          "CRM IAP Lead Industry"
+        ],
+        [
+          "crm.iap.lead.mining.request",
+          "CRM Lead Mining Request"
+        ],
+        [
+          "crm.recurring.plan",
+          "CRM Recurring Revenue Plan"
+        ],
+        [
+          "crm.stage",
+          "CRM Stage"
+        ],
+        [
+          "crm.tag",
+          "CRM Tag"
+        ],
+        [
+          "calendar.attendee",
+          "Calendar Attendee Information"
+        ],
+        [
+          "calendar.filters",
+          "Calendar Filter"
+        ],
+        [
+          "calendar.popover.delete.wizard",
+          "Calendar Popover Delete Wizard"
+        ],
+        [
+          "calendar.provider.config",
+          "Calendar Provider Configuration Wizard"
+        ],
+        [
+          "utm.stage",
+          "Campaign Stage"
+        ],
+        [
+          "bus.listener.mixin",
+          "Can send messages via bus.bus"
+        ],
+        [
+          "stock_barcode.cancel.operation",
+          "Cancel Operation"
+        ],
+        [
+          "sale.mass.cancel.orders",
+          "Cancel multiple quotations"
+        ],
+        [
+          "mail.canned.response",
+          "Canned Response"
+        ],
+        [
+          "account.cash.flow.report.handler",
+          "Cash Flow Report Custom Handler"
+        ],
+        [
+          "hr.applicant.category",
+          "Category of applicant"
+        ],
+        [
+          "certificate.certificate",
+          "Certificate"
+        ],
+        [
+          "certificate.wizard",
+          "Certificate Creation Wizard"
+        ],
+        [
+          "account.change.lock.date",
+          "Change Lock Date"
+        ],
+        [
+          "change.password.wizard",
+          "Change Password Wizard"
+        ],
+        [
+          "discuss.channel.member",
+          "Channel Member"
+        ],
+        [
+          "chatbot.message",
+          "Chatbot Message"
+        ],
+        [
+          "chatbot.script",
+          "Chatbot Script"
+        ],
+        [
+          "chatbot.script.answer",
+          "Chatbot Script Answer"
+        ],
+        [
+          "chatbot.script.step",
+          "Chatbot Script Step"
+        ],
+        [
+          "lot.label.layout",
+          "Choose the sheet layout to print lot labels"
+        ],
+        [
+          "product.label.layout",
+          "Choose the sheet layout to print the labels"
+        ],
+        [
+          "picking.label.type",
+          "Choose whether to print product or lot/sn labels"
+        ],
+        [
+          "res.city",
+          "City"
+        ],
+        [
+          "ir.actions.client",
+          "Client Action"
+        ],
+        [
+          "spreadsheet.revision",
+          "Collaborative spreadsheet revision"
+        ],
+        [
+          "project.collaborator",
+          "Collaborators in project shared"
+        ],
+        [
+          "account.ec.sales.report.handler.common",
+          "Common EC Sales Report Handler"
+        ],
+        [
+          "account.edi.common",
+          "Common functions for EDI documents: generate the data, the constraints, etc"
+        ],
+        [
+          "bus.bus",
+          "Communication Bus"
+        ],
+        [
+          "base.document.layout",
+          "Company Document Layout"
+        ],
+        [
+          "sign.completed.document",
+          "Completed Document"
+        ],
+        [
+          "res.config",
+          "Config"
+        ],
+        [
+          "res.config.settings",
+          "Config Settings"
+        ],
+        [
+          "ir.actions.todo",
+          "Configuration Wizard"
+        ],
+        [
+          "confirm.stock.sms",
+          "Confirm Stock SMS"
+        ],
+        [
+          "stock.inventory.conflict",
+          "Conflict in Inventory"
+        ],
+        [
+          "helpdesk.ticket.convert.wizard",
+          "Convert Helpdesk Tickets to Tasks"
+        ],
+        [
+          "crm.lead2opportunity.partner.mass",
+          "Convert Lead to Opportunity (in mass)"
+        ],
+        [
+          "project.task.convert.wizard",
+          "Convert Project Tasks to Tickets"
+        ],
+        [
+          "helpdesk.ticket.to.lead",
+          "Convert Ticket to Lead"
+        ],
+        [
+          "spreadsheet.dashboard.share",
+          "Copy of a shared dashboard"
+        ],
+        [
+          "res.country",
+          "Country"
+        ],
+        [
+          "res.country.group",
+          "Country Group"
+        ],
+        [
+          "format.vat.label.mixin",
+          "Country Specific VAT Label"
+        ],
+        [
+          "res.country.state",
+          "Country state"
+        ],
+        [
+          "website.cover_properties.mixin",
+          "Cover Properties Website Mixin"
+        ],
+        [
+          "account.automatic.entry.wizard",
+          "Create Automatic Entries"
+        ],
+        [
+          "account.create.batch.error.wizard",
+          "Create Batch Payment Error Wizard"
+        ],
+        [
+          "wizard.ir.model.menu.create",
+          "Create Menu Wizard"
+        ],
+        [
+          "calendar.event.sale.order.create",
+          "Create SO from Meeting"
+        ],
+        [
+          "auth.passkey.key.create",
+          "Create a Passkey"
+        ],
+        [
+          "ai.topic",
+          "Create a topic that leverages instructions and tools to direct Odoo AI in assisting the user with their tasks."
+        ],
+        [
+          "mail.activity.todo.create",
+          "Create activity and todo at the same time"
+        ],
+        [
+          "crm.quotation.partner",
+          "Create new or use existing Customer on new Quotation"
+        ],
+        [
+          "certificate.key",
+          "Cryptographic Key"
+        ],
+        [
+          "res.currency",
+          "Currency"
+        ],
+        [
+          "res.currency.rate",
+          "Currency Rate"
+        ],
+        [
+          "ir.ui.view.custom",
+          "Custom View"
+        ],
+        [
+          "customer.product.reference",
+          "Customer Product Reference"
+        ],
+        [
+          "account.customer.statement.report.handler",
+          "Customer Statement Custom Handler"
+        ],
+        [
+          "l10n_fr.das2.report.handler",
+          "DAS2 Report Custom Handler"
+        ],
+        [
+          "decimal.precision",
+          "Decimal Precision"
+        ],
+        [
+          "ir.default",
+          "Default Value"
+        ],
+        [
+          "account.deferred.expense.report.handler",
+          "Deferred Expense Custom Handler"
+        ],
+        [
+          "account.deferred.report.handler",
+          "Deferred Expense Report Custom Handler"
+        ],
+        [
+          "account.deferred.revenue.report.handler",
+          "Deferred Revenue Custom Handler"
+        ],
+        [
+          "delivery.carrier",
+          "Delivery Method"
+        ],
+        [
+          "choose.delivery.carrier",
+          "Delivery Method Selection Wizard"
+        ],
+        [
+          "delivery.price.rule",
+          "Delivery Price Rules"
+        ],
+        [
+          "delivery.zip.prefix",
+          "Delivery Zip Prefix"
+        ],
+        [
+          "ir.demo",
+          "Demo"
+        ],
+        [
+          "ir.demo_failure.wizard",
+          "Demo Failure wizard"
+        ],
+        [
+          "ir.demo_failure",
+          "Demo failure"
+        ],
+        [
+          "hr.departure.reason",
+          "Departure Reason"
+        ],
+        [
+          "res.device",
+          "Device"
+        ],
+        [
+          "res.device.log",
+          "Device Log"
+        ],
+        [
+          "digest.digest",
+          "Digest"
+        ],
+        [
+          "digest.tip",
+          "Digest Tip"
+        ],
+        [
+          "sale.order.discount",
+          "Discount Wizard"
+        ],
+        [
+          "discuss.category",
+          "Discussion Category"
+        ],
+        [
+          "mail.followers",
+          "Document Follower"
+        ],
+        [
+          "website.sale.extra.field",
+          "E-Commerce Extra Info Shown on product page"
+        ],
+        [
+          "account.edi.xml.ubl_efff",
+          "E-FFF (BE)"
+        ],
+        [
+          "account.ec.sales.with.tags.report.handler",
+          "EC Sales Report (with tags) Custom Handler"
+        ],
+        [
+          "account.ec.sales.with.taxes.report.handler",
+          "EC Sales Report (with taxes) Custom Handler"
+        ],
+        [
+          "mail.alias",
+          "Email Alias"
+        ],
+        [
+          "mail.alias.mixin",
+          "Email Aliases Mixin"
+        ],
+        [
+          "mail.alias.mixin.optional",
+          "Email Aliases Mixin (light)"
+        ],
+        [
+          "mail.alias.domain",
+          "Email Domain"
+        ],
+        [
+          "mail.template",
+          "Email Template"
+        ],
+        [
+          "mail.template.preview",
+          "Email Template Preview"
+        ],
+        [
+          "mail.compose.message",
+          "Email composition wizard"
+        ],
+        [
+          "ir.embedded.actions",
+          "Embedded Action"
+        ],
+        [
+          "hr.employee.category",
+          "Employee Category"
+        ],
+        [
+          "hr.employee.departure",
+          "Employee Departure"
+        ],
+        [
+          "hr.employee.location",
+          "Employee Location"
+        ],
+        [
+          "report.hr_skills.report_employee_cv",
+          "Employee Resume"
+        ],
+        [
+          "hr.employee.skill.report",
+          "Employee Skills Report"
+        ],
+        [
+          "hr.employee.skill.history.report",
+          "Employee Skills Report"
+        ],
+        [
+          "hr.employee.type",
+          "Employee Type"
+        ],
+        [
+          "base.enable.profiling.wizard",
+          "Enable profiling for some time"
+        ],
+        [
+          "calendar.alarm",
+          "Event Alarm"
+        ],
+        [
+          "calendar.alarm_manager",
+          "Event Alarm Manager"
+        ],
+        [
+          "calendar.event.type",
+          "Event Meeting Type"
+        ],
+        [
+          "calendar.recurrence",
+          "Event Recurrence Rule"
+        ],
+        [
+          "account.executive.summary.report.handler",
+          "Executive Summary Custom Handler"
+        ],
+        [
+          "account_reports.export.wizard.format",
+          "Export format for accounting's reports"
+        ],
+        [
+          "account_reports.export.wizard",
+          "Export wizard for accounting's reports"
+        ],
+        [
+          "ir.exports",
+          "Exports"
+        ],
+        [
+          "ir.exports.line",
+          "Exports Line"
+        ],
+        [
+          "account.general.ledger.report.handler",
+          "FEC Report Custom Handler"
+        ],
+        [
+          "account.edi.xml.cii",
+          "Factur-x/XRechnung CII 2.2.0"
+        ],
+        [
+          "knowledge.article.favorite",
+          "Favorite Article"
+        ],
+        [
+          "product.fetch.image.wizard",
+          "Fetch product images from Barcode Lookup based on the product's barcode."
+        ],
+        [
+          "l10n_fr.fec.export.wizard",
+          "Fichier Echange Informatise"
+        ],
+        [
+          "ir.model.fields",
+          "Field"
+        ],
+        [
+          "html.field.history.mixin",
+          "Field html History"
+        ],
+        [
+          "ir.fields.converter",
+          "Fields Converter"
+        ],
+        [
+          "ir.model.fields.selection",
+          "Fields Selection"
+        ],
+        [
+          "crm.lead.scoring.frequency.field",
+          "Fields that can be used for predictive lead scoring computation"
+        ],
+        [
+          "sign.item",
+          "Fields to be sign on Document"
+        ],
+        [
+          "ir.binary",
+          "File streaming helper model for controllers"
+        ],
+        [
+          "ir.filters",
+          "Filter"
+        ],
+        [
+          "l10n_fr_reports.fiscal_declaration_handler",
+          "Fiscal Declaration Report Handler"
+        ],
+        [
+          "account.fiscal.position",
+          "Fiscal Position"
+        ],
+        [
+          "account.account.fiscal.rate",
+          "Fiscal Rate"
+        ],
+        [
+          "account.fiscal.report.handler",
+          "Fiscal Report Custom Handler"
+        ],
+        [
+          "account.fiscal.year",
+          "Fiscal Year"
+        ],
+        [
+          "account.followup.report.handler",
+          "Follow-Up Report Custom Handler"
+        ],
+        [
+          "account_followup.followup.line",
+          "Follow-up Criteria"
+        ],
+        [
+          "account.followup.report",
+          "Follow-up Report"
+        ],
+        [
+          "mail.followers.edit",
+          "Followers edit wizard"
+        ],
+        [
+          "account_followup.missing.information.wizard",
+          "Followup missing information wizard"
+        ],
+        [
+          "sale.pdf.form.field",
+          "Form fields of inside quotation documents."
+        ],
+        [
+          "l10n_fr.report.handler",
+          "French Report Custom Handler"
+        ],
+        [
+          "account.full.reconcile",
+          "Full Reconcile"
+        ],
+        [
+          "gamification.goal",
+          "Gamification Goal"
+        ],
+        [
+          "gamification.goal.definition",
+          "Gamification Goal Definition"
+        ],
+        [
+          "gamification.goal.wizard",
+          "Gamification Goal Wizard"
+        ],
+        [
+          "gamification.badge.user.wizard",
+          "Gamification User Badge Wizard"
+        ],
+        [
+          "gamification.challenge.line",
+          "Gamification generic goal for challenge"
+        ],
+        [
+          "payment.link.wizard",
+          "Generate Sales Payment Link"
+        ],
+        [
+          "qr.code.payment.wizard",
+          "Generic Payment Wizard with QR Code"
+        ],
+        [
+          "account.generic.tax.report.handler",
+          "Generic Tax Report Custom Handler"
+        ],
+        [
+          "account.generic.tax.report.handler.account.tax",
+          "Generic Tax Report Custom Handler (Account -> Tax)"
+        ],
+        [
+          "account.generic.tax.report.handler.tax.account",
+          "Generic Tax Report Custom Handler (Tax -> Account)"
+        ],
+        [
+          "crm.lead.lost",
+          "Get Lost Reason"
+        ],
+        [
+          "applicant.get.refuse.reason",
+          "Get Refuse Reason"
+        ],
+        [
+          "report.account.report_hash_integrity",
+          "Get hash integrity result as PDF."
+        ],
+        [
+          "google.calendar.account.reset",
+          "Google Calendar Account Reset"
+        ],
+        [
+          "google.gmail.mixin",
+          "Google Gmail Mixin"
+        ],
+        [
+          "google.service",
+          "Google Service"
+        ],
+        [
+          "portal.wizard",
+          "Grant Portal Access"
+        ],
+        [
+          "report.sign.green_savings_report",
+          "Green Savings Report model"
+        ],
+        [
+          "res.group.functional",
+          "Group Functional"
+        ],
+        [
+          "spreadsheet.dashboard.group",
+          "Group of dashboards"
+        ],
+        [
+          "mail.guest",
+          "Guest"
+        ],
+        [
+          "hr.export.employee.mixin",
+          "HR Export Employee"
+        ],
+        [
+          "hr.export.mixin",
+          "HR Export Mixin"
+        ],
+        [
+          "website.html.text.processor",
+          "HTML Text Processor Abstract Model"
+        ],
+        [
+          "ir.http",
+          "HTTP Routing"
+        ],
+        [
+          "l10n_fr_reports.2033.d.report.handler",
+          "Handler of the 2033 D report"
+        ],
+        [
+          "l10n_fr_reports.2065_sd.report.handler",
+          "Handler of the 2065-SD report"
+        ],
+        [
+          "l10n_fr_reports.2065_sd.bis.report.handler",
+          "Handler of the 2065-bis-SD report"
+        ],
+        [
+          "helpdesk.sla",
+          "Helpdesk SLA Policy"
+        ],
+        [
+          "helpdesk.stage",
+          "Helpdesk Stage"
+        ],
+        [
+          "helpdesk.stage.delete.wizard",
+          "Helpdesk Stage Delete Wizard"
+        ],
+        [
+          "helpdesk.tag",
+          "Helpdesk Tag"
+        ],
+        [
+          "helpdesk.tag.assignment",
+          "Helpdesk Tag Assignment"
+        ],
+        [
+          "crm.iap.lead.helpers",
+          "Helper methods for crm_iap_mine modules"
+        ],
+        [
+          "account.report.horizontal.group",
+          "Horizontal group for reports"
+        ],
+        [
+          "account.report.horizontal.group.rule",
+          "Horizontal group rule for reports"
+        ],
+        [
+          "hr.manager.department.report",
+          "Hr Manager Department Report"
+        ],
+        [
+          "html_editor.converter.test.sub",
+          "Html Editor Converter Subtest"
+        ],
+        [
+          "html_editor.converter.test",
+          "Html Editor Converter Test"
+        ],
+        [
+          "iap.enrich.api",
+          "IAP Lead Enrichment API"
+        ],
+        [
+          "iap.autocomplete.api",
+          "IAP Partner Autocomplete API"
+        ],
+        [
+          "iap.service",
+          "IAP Service"
+        ],
+        [
+          "iap.service.pack",
+          "IAP Service Pack"
+        ],
+        [
+          "mail.ice.server",
+          "ICE Server"
+        ],
+        [
+          "image.mixin",
+          "Image Mixin"
+        ],
+        [
+          "base.import.module",
+          "Import Module"
+        ],
+        [
+          "fetchmail.server",
+          "Incoming Mail Server"
+        ],
+        [
+          "account.incoterms",
+          "Incoterms"
+        ],
+        [
+          "res.partner.industry",
+          "Industry"
+        ],
+        [
+          "account.payment.initiate.payment",
+          "Initiate Payment Wizard"
+        ],
+        [
+          "base.language.install",
+          "Install Language"
+        ],
+        [
+          "stock.inventory.adjustment.name",
+          "Inventory Adjustment Reference / Reason"
+        ],
+        [
+          "stock.inventory.warning",
+          "Inventory Adjustment Warning"
+        ],
+        [
+          "stock.location",
+          "Inventory Location"
+        ],
+        [
+          "stock.route",
+          "Inventory Route"
+        ],
+        [
+          "account.invoice.report",
+          "Invoices Statistics"
+        ],
+        [
+          "hr.job.platform",
+          "Job Platform"
+        ],
+        [
+          "account.move.reversal",
+          "Journal Entry Reversal"
+        ],
+        [
+          "account.move.line",
+          "Journal Item"
+        ],
+        [
+          "account.journal.report.handler",
+          "Journal Report Custom Handler"
+        ],
+        [
+          "kpi.provider",
+          "KPI Provider"
+        ],
+        [
+          "discuss.call.history",
+          "Keep the call history"
+        ],
+        [
+          "im_livechat.channel.member.history",
+          "Keep the channel member history"
+        ],
+        [
+          "knowledge.cover",
+          "Knowledge Cover"
+        ],
+        [
+          "knowledge.invite",
+          "Knowledge Invite Wizard"
+        ],
+        [
+          "knowledge.article.stage",
+          "Knowledge Stage"
+        ],
+        [
+          "res.lang",
+          "Language"
+        ],
+        [
+          "base.language.export",
+          "Language Export"
+        ],
+        [
+          "base.language.import",
+          "Language Import"
+        ],
+        [
+          "crm.lead.scoring.frequency",
+          "Lead Scoring Frequency"
+        ],
+        [
+          "crm.lead.convert2ticket",
+          "Lead convert to Ticket"
+        ],
+        [
+          "sms.tracker",
+          "Link SMS to mailing/sms tracking models"
+        ],
+        [
+          "account.bank.selection",
+          "Link a bank account to the selected journal"
+        ],
+        [
+          "mail.message.link.preview",
+          "Link between link previews and messages"
+        ],
+        [
+          "product.uom",
+          "Link between products and their UoMs"
+        ],
+        [
+          "im_livechat.expertise",
+          "Live Chat Expertise"
+        ],
+        [
+          "im_livechat.channel",
+          "Livechat Channel"
+        ],
+        [
+          "im_livechat.channel.rule",
+          "Livechat Channel Rule"
+        ],
+        [
+          "im_livechat.report.channel",
+          "Livechat Support Channel Report"
+        ],
+        [
+          "ir.logging",
+          "Logging"
+        ],
+        [
+          "report.stock.label_lot_template_view",
+          "Lot Label Report"
+        ],
+        [
+          "mail.activity.schedule.line",
+          "Mail Activity Schedule Line"
+        ],
+        [
+          "mail.bot",
+          "Mail Bot"
+        ],
+        [
+          "mail.composer.mixin",
+          "Mail Composer Mixin"
+        ],
+        [
+          "mail.gateway.allowed",
+          "Mail Gateway Allowed"
+        ],
+        [
+          "discuss.channel.rtc.session",
+          "Mail RTC session"
+        ],
+        [
+          "mail.render.mixin",
+          "Mail Render Mixin"
+        ],
+        [
+          "ir.mail_server",
+          "Mail Server"
+        ],
+        [
+          "mail.template.reset",
+          "Mail Template Reset"
+        ],
+        [
+          "mail.track.mixin",
+          "Mail Track Mixin"
+        ],
+        [
+          "account.report.file.download.error.wizard",
+          "Manage the file generation errors from report exports."
+        ],
+        [
+          "account.code.mapping",
+          "Mapping of account codes per company"
+        ],
+        [
+          "calendar.booking",
+          "Meeting Booking"
+        ],
+        [
+          "calendar.booking.line",
+          "Meeting User/Resource Booking"
+        ],
+        [
+          "ir.ui.menu",
+          "Menu"
+        ],
+        [
+          "crm.merge.opportunity",
+          "Merge Opportunities"
+        ],
+        [
+          "base.partner.merge.line",
+          "Merge Partner Line"
+        ],
+        [
+          "base.partner.merge.automatic.wizard",
+          "Merge Partner Wizard"
+        ],
+        [
+          "mail.message",
+          "Message"
+        ],
+        [
+          "mail.notification",
+          "Message Notification"
+        ],
+        [
+          "mail.message.reaction",
+          "Message Reaction"
+        ],
+        [
+          "mail.message.subtype",
+          "Message Subtype"
+        ],
+        [
+          "mail.message.translation",
+          "Message Translation"
+        ],
+        [
+          "discuss.voice.metadata",
+          "Metadata for voice attachments"
+        ],
+        [
+          "microsoft.outlook.mixin",
+          "Microsoft Outlook Mixin"
+        ],
+        [
+          "stock.warehouse.orderpoint",
+          "Minimum Inventory Rule"
+        ],
+        [
+          "bus.sync.mixin",
+          "Mixin for Bus Sync"
+        ],
+        [
+          "ir.model",
+          "Model"
+        ],
+        [
+          "ir.model.access",
+          "Model Access"
+        ],
+        [
+          "ir.model.constraint",
+          "Model Constraint"
+        ],
+        [
+          "ir.model.data",
+          "Model Data"
+        ],
+        [
+          "ir.model.inherit",
+          "Model Inheritance Tree"
+        ],
+        [
+          "website.controller.page",
+          "Model Page"
+        ],
+        [
+          "ir.module.module",
+          "Module"
+        ],
+        [
+          "base.module.install.request",
+          "Module Activation Request"
+        ],
+        [
+          "base.module.install.review",
+          "Module Activation Review"
+        ],
+        [
+          "report.base.report_irmodulereference",
+          "Module Reference Report (base)"
+        ],
+        [
+          "base.module.uninstall",
+          "Module Uninstall"
+        ],
+        [
+          "ir.module.module.dependency",
+          "Module dependency"
+        ],
+        [
+          "ir.module.module.exclusion",
+          "Module exclusion"
+        ],
+        [
+          "website.multi.mixin",
+          "Multi Website Mixin"
+        ],
+        [
+          "website.published.multi.mixin",
+          "Multi Website Published Mixin"
+        ],
+        [
+          "account.multicurrency.revaluation.report.handler",
+          "Multicurrency Revaluation Report Custom Handler"
+        ],
+        [
+          "account.multicurrency.revaluation.wizard",
+          "Multicurrency Revaluation Wizard"
+        ],
+        [
+          "onboarding.onboarding",
+          "Onboarding"
+        ],
+        [
+          "onboarding.progress.step",
+          "Onboarding Progress Step Tracker"
+        ],
+        [
+          "onboarding.progress",
+          "Onboarding Progress Tracker"
+        ],
+        [
+          "onboarding.onboarding.step",
+          "Onboarding Step"
+        ],
+        [
+          "account.financial.year.op",
+          "Opening Balance of Financial Year"
+        ],
+        [
+          "crm.lost.reason",
+          "Opp. Lost Reason"
+        ],
+        [
+          "sign.item.option",
+          "Option of a selection Field"
+        ],
+        [
+          "sale.order.template",
+          "Order Templates"
+        ],
+        [
+          "mail.mail",
+          "Outgoing Mail"
+        ],
+        [
+          "sms.sms",
+          "Outgoing SMS"
+        ],
+        [
+          "stock.package",
+          "Package"
+        ],
+        [
+          "website.page",
+          "Page"
+        ],
+        [
+          "website.page.properties.base",
+          "Page Properties Base"
+        ],
+        [
+          "website.page.properties",
+          "Page Property"
+        ],
+        [
+          "report.paperformat",
+          "Paper Format Config"
+        ],
+        [
+          "account.partial.reconcile",
+          "Partial Reconcile"
+        ],
+        [
+          "account.partner.ledger.report.handler",
+          "Partner Ledger Custom Handler"
+        ],
+        [
+          "res.partner.category",
+          "Partner Tag"
+        ],
+        [
+          "auth.passkey.key",
+          "Passkey"
+        ],
+        [
+          "res.users.identitycheck",
+          "Password Check Wizard"
+        ],
+        [
+          "account.payment.register",
+          "Pay"
+        ],
+        [
+          "payment.capture.wizard",
+          "Payment Capture Wizard"
+        ],
+        [
+          "account.payment.method",
+          "Payment Method"
+        ],
+        [
+          "payment.method",
+          "Payment Method"
+        ],
+        [
+          "account.payment.method.line",
+          "Payment Method Line"
+        ],
+        [
+          "payment.provider",
+          "Payment Provider"
+        ],
+        [
+          "payment.refund.wizard",
+          "Payment Refund Wizard"
+        ],
+        [
+          "account.payment.term",
+          "Payment Terms"
+        ],
+        [
+          "account.payment.term.line",
+          "Payment Terms Line"
+        ],
+        [
+          "payment.token",
+          "Payment Token"
+        ],
+        [
+          "payment.transaction",
+          "Payment Transaction"
+        ],
+        [
+          "crm.iap.lead.role",
+          "People Role"
+        ],
+        [
+          "crm.iap.lead.seniority",
+          "People Seniority"
+        ],
+        [
+          "peppol.registration",
+          "Peppol Registration"
+        ],
+        [
+          "account.peppol.rejection.wizard",
+          "Peppol Rejection wizard"
+        ],
+        [
+          "account.peppol.clarification",
+          "Peppol clarifications used for rejection"
+        ],
+        [
+          "project.task.stage.personal",
+          "Personal Task Stage"
+        ],
+        [
+          "stock.picking.type",
+          "Picking Type"
+        ],
+        [
+          "planning.analysis.report",
+          "Planning Analysis Report"
+        ],
+        [
+          "planning.preview",
+          "Planning Preview"
+        ],
+        [
+          "planning.recurrency",
+          "Planning Recurrence"
+        ],
+        [
+          "planning.role",
+          "Planning Role"
+        ],
+        [
+          "planning.slot",
+          "Planning Shift"
+        ],
+        [
+          "mail.poll",
+          "Poll"
+        ],
+        [
+          "mail.poll.option",
+          "Poll option"
+        ],
+        [
+          "mail.poll.vote",
+          "Poll vote"
+        ],
+        [
+          "portal.entry",
+          "Portal Entry"
+        ],
+        [
+          "portal.mixin",
+          "Portal Mixin"
+        ],
+        [
+          "portal.share",
+          "Portal Sharing"
+        ],
+        [
+          "portal.wizard.user",
+          "Portal User Config"
+        ],
+        [
+          "report.product.report_pricelist",
+          "Pricelist Report"
+        ],
+        [
+          "product.pricelist.item",
+          "Pricelist Rule"
+        ],
+        [
+          "hr.employee.cv.wizard",
+          "Print Resume"
+        ],
+        [
+          "privacy.log",
+          "Privacy Log"
+        ],
+        [
+          "privacy.lookup.wizard",
+          "Privacy Lookup Wizard"
+        ],
+        [
+          "privacy.lookup.wizard.line",
+          "Privacy Lookup Wizard Line"
+        ],
+        [
+          "res.groups.privilege",
+          "Privilege"
+        ],
+        [
+          "product.attribute",
+          "Product Attribute"
+        ],
+        [
+          "product.attribute.category",
+          "Product Attribute Category"
+        ],
+        [
+          "product.attribute.custom.value",
+          "Product Attribute Custom Value"
+        ],
+        [
+          "product.catalog.mixin",
+          "Product Catalog Mixin"
+        ],
+        [
+          "product.combo",
+          "Product Combo"
+        ],
+        [
+          "product.combo.item",
+          "Product Combo Item"
+        ],
+        [
+          "product.document",
+          "Product Document"
+        ],
+        [
+          "product.image",
+          "Product Image"
+        ],
+        [
+          "report.product.report_producttemplatelabel_dymo",
+          "Product Label Report"
+        ],
+        [
+          "report.product.report_producttemplatelabel2x7",
+          "Product Label Report 2x7"
+        ],
+        [
+          "report.product.report_producttemplatelabel4x12",
+          "Product Label Report 4x12"
+        ],
+        [
+          "report.product.report_producttemplatelabel4x7",
+          "Product Label Report 4x7"
+        ],
+        [
+          "report.product.report_producttemplatelabel_zpl",
+          "Product Label Report ZPL"
+        ],
+        [
+          "stock.move.line",
+          "Product Moves (Stock Move Line)"
+        ],
+        [
+          "product.replenish",
+          "Product Replenish"
+        ],
+        [
+          "stock.replenish.mixin",
+          "Product Replenish Mixin"
+        ],
+        [
+          "product.tag",
+          "Product Tag"
+        ],
+        [
+          "product.template.attribute.line",
+          "Product Template Attribute Line"
+        ],
+        [
+          "product.template.attribute.value",
+          "Product Template Attribute Value"
+        ],
+        [
+          "uom.uom",
+          "Product Unit of Measure"
+        ],
+        [
+          "product.value",
+          "Product Value"
+        ],
+        [
+          "product.wishlist",
+          "Product Wishlist"
+        ],
+        [
+          "product.ribbon",
+          "Product ribbon"
+        ],
+        [
+          "l10n_fr.res.partner.profession",
+          "Profession for French partners"
+        ],
+        [
+          "ir.cron.progress",
+          "Progress of Scheduled Action"
+        ],
+        [
+          "project.role",
+          "Project Role"
+        ],
+        [
+          "project.share.wizard",
+          "Project Sharing"
+        ],
+        [
+          "project.share.collaborator.wizard",
+          "Project Sharing Collaborator Wizard"
+        ],
+        [
+          "project.project.stage",
+          "Project Stage"
+        ],
+        [
+          "project.project.stage.delete.wizard",
+          "Project Stage Delete Wizard"
+        ],
+        [
+          "project.tags",
+          "Project Tag"
+        ],
+        [
+          "project.task.type.delete.wizard",
+          "Project Task Stage Delete Wizard"
+        ],
+        [
+          "project.template.create.wizard",
+          "Project Template create Wizard"
+        ],
+        [
+          "project.template.role.to.users.map",
+          "Project role to users mapping"
+        ],
+        [
+          "ai.prompt.button",
+          "Prompt that can be attached to AI UI rules for quick access by the user."
+        ],
+        [
+          "properties.base.definition",
+          "Properties Base Definition"
+        ],
+        [
+          "properties.base.definition.mixin",
+          "Properties Base Definition Mixin"
+        ],
+        [
+          "hr.employee.public",
+          "Public Employee"
+        ],
+        [
+          "publisher_warranty.contract",
+          "Publisher Warranty Contract"
+        ],
+        [
+          "purchase.bill.line.match",
+          "Purchase Line and Vendor Bill line matching view"
+        ],
+        [
+          "purchase.order.line",
+          "Purchase Order Line"
+        ],
+        [
+          "purchase.report",
+          "Purchase Report"
+        ],
+        [
+          "purchase.edi.xml.ubl_bis3",
+          "Purchase UBL BIS Ordering 3.5"
+        ],
+        [
+          "purchase.bill.union",
+          "Purchases & Bills Union"
+        ],
+        [
+          "mail.push",
+          "Push Notification"
+        ],
+        [
+          "mail.push.device",
+          "Push Notification Device"
+        ],
+        [
+          "stock.put.in.pack",
+          "Put In Pack Wizard"
+        ],
+        [
+          "stock.putaway.rule",
+          "Putaway Rule"
+        ],
+        [
+          "ir.qweb.field.time",
+          "QWeb Field Time"
+        ],
+        [
+          "stock.quant",
+          "Quant"
+        ],
+        [
+          "sale.order.spreadsheet",
+          "Quotation Spreadsheet"
+        ],
+        [
+          "sale.order.template.line",
+          "Quotation Template Line"
+        ],
+        [
+          "quotation.document",
+          "Quotation's Headers & Footers"
+        ],
+        [
+          "ir.qweb",
+          "Qweb"
+        ],
+        [
+          "ir.qweb.field",
+          "Qweb Field"
+        ],
+        [
+          "ir.qweb.field.barcode",
+          "Qweb Field Barcode"
+        ],
+        [
+          "ir.qweb.field.contact",
+          "Qweb Field Contact"
+        ],
+        [
+          "ir.qweb.field.date",
+          "Qweb Field Date"
+        ],
+        [
+          "ir.qweb.field.datetime",
+          "Qweb Field Datetime"
+        ],
+        [
+          "ir.qweb.field.duration",
+          "Qweb Field Duration"
+        ],
+        [
+          "ir.qweb.field.float",
+          "Qweb Field Float"
+        ],
+        [
+          "ir.qweb.field.float_time",
+          "Qweb Field Float Time"
+        ],
+        [
+          "ir.qweb.field.html",
+          "Qweb Field HTML"
+        ],
+        [
+          "ir.qweb.field.image",
+          "Qweb Field Image"
+        ],
+        [
+          "ir.qweb.field.image_url",
+          "Qweb Field Image"
+        ],
+        [
+          "ir.qweb.field.integer",
+          "Qweb Field Integer"
+        ],
+        [
+          "ir.qweb.field.many2one",
+          "Qweb Field Many to One"
+        ],
+        [
+          "ir.qweb.field.monetary",
+          "Qweb Field Monetary"
+        ],
+        [
+          "ir.qweb.field.relative",
+          "Qweb Field Relative"
+        ],
+        [
+          "ir.qweb.field.selection",
+          "Qweb Field Selection"
+        ],
+        [
+          "ir.qweb.field.text",
+          "Qweb Field Text"
+        ],
+        [
+          "ir.qweb.field.qweb",
+          "Qweb Field qweb"
+        ],
+        [
+          "ir.qweb.field.many2many",
+          "Qweb field many2many"
+        ],
+        [
+          "ir.qweb.field.one2many",
+          "Qweb field one2many"
+        ],
+        [
+          "sign.item.radio.set",
+          "Radio button set for keeping radio button items together"
+        ],
+        [
+          "gamification.karma.rank",
+          "Rank based on karma"
+        ],
+        [
+          "rating.rating",
+          "Rating"
+        ],
+        [
+          "rating.parent.mixin",
+          "Rating Parent Mixin"
+        ],
+        [
+          "ir.rule",
+          "Record Rule"
+        ],
+        [
+          "hr.recruitment.report",
+          "Recruitment Analysis Report"
+        ],
+        [
+          "hr.recruitment.stage",
+          "Recruitment Stage"
+        ],
+        [
+          "hr.recruitment.stage.report",
+          "Recruitment Stage Analysis"
+        ],
+        [
+          "stock.reference",
+          "Reference between stock documents"
+        ],
+        [
+          "hr.applicant.refuse.reason",
+          "Refuse Reason of Applicant"
+        ],
+        [
+          "ir.model.relation",
+          "Relation Model"
+        ],
+        [
+          "account.resequence.wizard",
+          "Remake the sequence of Journal Entries."
+        ],
+        [
+          "product.removal",
+          "Removal Strategy"
+        ],
+        [
+          "mail.blacklist.remove",
+          "Remove email from blacklist wizard"
+        ],
+        [
+          "phone.blacklist.remove",
+          "Remove phone from blacklist"
+        ],
+        [
+          "ir.actions.report",
+          "Report Action"
+        ],
+        [
+          "report.layout",
+          "Report Layout"
+        ],
+        [
+          "res.role",
+          "Represents a role in the system used to categorize users. Each role has a unique name and can be associated with multiple users. Roles can be mentioned in messages to notify all associated users."
+        ],
+        [
+          "reset.view.arch.wizard",
+          "Reset View Architecture Wizard"
+        ],
+        [
+          "resource.resource",
+          "Resource"
+        ],
+        [
+          "resource.mixin",
+          "Resource Mixin"
+        ],
+        [
+          "resource.calendar.leaves",
+          "Resource Time Off Detail"
+        ],
+        [
+          "resource.calendar",
+          "Resource Working Time"
+        ],
+        [
+          "hr.resume.line",
+          "Resume line of an employee"
+        ],
+        [
+          "account.return.creation.wizard",
+          "Return creation wizard"
+        ],
+        [
+          "account.return.submission.wizard",
+          "Return submission wizard"
+        ],
+        [
+          "account.return.payment.wizard",
+          "Returns Generic Payment Wizard"
+        ],
+        [
+          "website.robots",
+          "Robots.txt Editor"
+        ],
+        [
+          "account.reconcile.model.line",
+          "Rules for the reconciliation model"
+        ],
+        [
+          "website.seo.metadata",
+          "SEO metadata"
+        ],
+        [
+          "account.edi.xml.ubl_sg",
+          "SG BIS Billing 3.0"
+        ],
+        [
+          "account.edi.xml.ubl_nl",
+          "SI-UBL 2.0 (NLCIUS)"
+        ],
+        [
+          "helpdesk.sla.report.analysis",
+          "SLA Status Analysis"
+        ],
+        [
+          "sms.account.phone",
+          "SMS Account Registration Phone Number Wizard"
+        ],
+        [
+          "sms.account.sender",
+          "SMS Account Sender Name Wizard"
+        ],
+        [
+          "sms.account.code",
+          "SMS Account Verification Code Wizard"
+        ],
+        [
+          "sms.template.preview",
+          "SMS Template Preview"
+        ],
+        [
+          "sms.template.reset",
+          "SMS Template Reset"
+        ],
+        [
+          "sms.template",
+          "SMS Templates"
+        ],
+        [
+          "hr.payroll.structure.type",
+          "Salary Structure Type"
+        ],
+        [
+          "sale.edi.xml.ubl_bis3",
+          "Sale BIS Ordering 3.5"
+        ],
+        [
+          "sale.advance.payment.inv",
+          "Sales Advance Payment Invoice"
+        ],
+        [
+          "sale.report",
+          "Sales Analysis Report"
+        ],
+        [
+          "sale.order.line",
+          "Sales Order Line"
+        ],
+        [
+          "digest.test",
+          "Sample Digest Wizard"
+        ],
+        [
+          "discuss.gif.favorite",
+          "Save favorite GIF from Tenor API"
+        ],
+        [
+          "planning.planning",
+          "Schedule"
+        ],
+        [
+          "mail.message.schedule",
+          "Scheduled Message"
+        ],
+        [
+          "mail.scheduled.message",
+          "Scheduled Message"
+        ],
+        [
+          "stock.scrap.reason.tag",
+          "Scrap Reason Tag"
+        ],
+        [
+          "account.secure.entries.wizard",
+          "Secure Journal Entries"
+        ],
+        [
+          "l10n_fr.send.das2.report",
+          "Send DAS2 Report Wizard"
+        ],
+        [
+          "l10n_fr_reports.send.fiscal.declaration",
+          "Send Fiscal Declaration Wizard"
+        ],
+        [
+          "account.move.send.batch.wizard",
+          "Send Invoice Batch Wizard"
+        ],
+        [
+          "account.move.send.wizard",
+          "Send Invoice Wizard"
+        ],
+        [
+          "planning.send",
+          "Send Planning"
+        ],
+        [
+          "sms.composer",
+          "Send SMS Wizard"
+        ],
+        [
+          "l10n_fr_reports.send.vat.report",
+          "Send VAT Report Wizard"
+        ],
+        [
+          "applicant.send.mail",
+          "Send mails to applicants"
+        ],
+        [
+          "ir.sequence",
+          "Sequence"
+        ],
+        [
+          "ir.sequence.date_range",
+          "Sequence Date Range"
+        ],
+        [
+          "ir.actions.server.history",
+          "Server Action History"
+        ],
+        [
+          "server.action.history.wizard",
+          "Server Action History Wizard"
+        ],
+        [
+          "res.session",
+          "Session"
+        ],
+        [
+          "homework.location.wizard",
+          "Set Homework Location Wizard"
+        ],
+        [
+          "ir.min.cron.mixin",
+          "Set Min Next call on metabase"
+        ],
+        [
+          "account.move.send",
+          "Shared Send Invoice Wizard Functions"
+        ],
+        [
+          "planning.slot.template",
+          "Shift Template"
+        ],
+        [
+          "res.users.apikeys.show",
+          "Show API Key"
+        ],
+        [
+          "sign.template.preview",
+          "Sign Tempate Preview"
+        ],
+        [
+          "sign.template.tag",
+          "Sign Template Tag"
+        ],
+        [
+          "hr.contract.sign.document.wizard",
+          "Sign document in contract"
+        ],
+        [
+          "hr.recruitment.sign.document.wizard",
+          "Sign document in recruitment"
+        ],
+        [
+          "sign.request.share",
+          "Sign request share wizard"
+        ],
+        [
+          "sign.log",
+          "Sign requests access history"
+        ],
+        [
+          "sign.send.request",
+          "Sign send request"
+        ],
+        [
+          "sign.send.request.signer",
+          "Sign send request signer"
+        ],
+        [
+          "sign.document",
+          "Signature Document"
+        ],
+        [
+          "sign.item.role",
+          "Signature Item Role"
+        ],
+        [
+          "sign.item.type",
+          "Signature Item Type"
+        ],
+        [
+          "sign.request.item.value",
+          "Signature Item Value"
+        ],
+        [
+          "sign.request.item",
+          "Signature Request Item"
+        ],
+        [
+          "sign.template",
+          "Signature Template"
+        ],
+        [
+          "hr.skill",
+          "Skill"
+        ],
+        [
+          "hr.skill.level",
+          "Skill Level"
+        ],
+        [
+          "hr.skill.type",
+          "Skill Type"
+        ],
+        [
+          "hr.job.skill",
+          "Skill for job position"
+        ],
+        [
+          "hr.individual.skill.mixin",
+          "Skill level"
+        ],
+        [
+          "hr.applicant.skill",
+          "Skill level for an applicant"
+        ],
+        [
+          "hr.employee.skill",
+          "Skill level for employee"
+        ],
+        [
+          "snailmail.letter",
+          "Snailmail Letter"
+        ],
+        [
+          "stock.orderpoint.snooze",
+          "Snooze Orderpoint"
+        ],
+        [
+          "hr.recruitment.source",
+          "Source of Applicants"
+        ],
+        [
+          "spreadsheet.dashboard",
+          "Spreadsheet Dashboard"
+        ],
+        [
+          "spreadsheet.mixin",
+          "Spreadsheet mixin"
+        ],
+        [
+          "stock.avco.report",
+          "Stock AVCO Justifier"
+        ],
+        [
+          "stock.move",
+          "Stock Move"
+        ],
+        [
+          "stock.package.destination",
+          "Stock Package Destination"
+        ],
+        [
+          "stock.package.history",
+          "Stock Package History"
+        ],
+        [
+          "stock.quantity.history",
+          "Stock Quantity History"
+        ],
+        [
+          "stock.quant.relocate",
+          "Stock Quantity Relocation"
+        ],
+        [
+          "report.stock.quantity",
+          "Stock Quantity Report"
+        ],
+        [
+          "report.stock.report_reception",
+          "Stock Reception Report"
+        ],
+        [
+          "stock.forecasted_product_template",
+          "Stock Replenishment Report"
+        ],
+        [
+          "stock.forecasted_product_product",
+          "Stock Replenishment Report"
+        ],
+        [
+          "stock.report",
+          "Stock Report"
+        ],
+        [
+          "stock.request.count",
+          "Stock Request an Inventory Count"
+        ],
+        [
+          "stock.rule",
+          "Stock Rule"
+        ],
+        [
+          "stock.rules.report",
+          "Stock Rules report"
+        ],
+        [
+          "stock_account.stock.valuation.report",
+          "Stock Valuation"
+        ],
+        [
+          "stock.package.type",
+          "Stock package type"
+        ],
+        [
+          "report.stock.report_stock_rule",
+          "Stock rule report"
+        ],
+        [
+          "stock.replenishment.info",
+          "Stock supplier replenishment information"
+        ],
+        [
+          "stock.replenishment.option",
+          "Stock warehouse replenishment option"
+        ],
+        [
+          "stock.storage.category",
+          "Storage Category"
+        ],
+        [
+          "stock.storage.category.capacity",
+          "Storage Category Capacity"
+        ],
+        [
+          "mail.link.preview",
+          "Store link preview data"
+        ],
+        [
+          "product.supplierinfo",
+          "Supplier Pricelist"
+        ],
+        [
+          "survey.invite",
+          "Survey Invitation Wizard"
+        ],
+        [
+          "survey.question.answer",
+          "Survey Label"
+        ],
+        [
+          "survey.question",
+          "Survey Question"
+        ],
+        [
+          "survey.user_input.line",
+          "Survey User Input Line"
+        ],
+        [
+          "google.calendar.sync",
+          "Synchronize a record with Google Calendar"
+        ],
+        [
+          "ir.config_parameter",
+          "System Parameter"
+        ],
+        [
+          "auth.totp.rate.limit.log",
+          "TOTP rate limit logs"
+        ],
+        [
+          "hr.job.tag",
+          "Tag"
+        ],
+        [
+          "project.task.recurrence",
+          "Task Recurrence"
+        ],
+        [
+          "task.share.wizard",
+          "Task Sharing"
+        ],
+        [
+          "project.task.type",
+          "Task Stage"
+        ],
+        [
+          "report.project.task.user",
+          "Tasks Analysis"
+        ],
+        [
+          "account.tax.group",
+          "Tax Group"
+        ],
+        [
+          "account.tax.repartition.line",
+          "Tax Repartition Line"
+        ],
+        [
+          "account.tax.unit",
+          "Tax Unit"
+        ],
+        [
+          "ir_actions_account_report_download",
+          "Technical model for accounting report downloads"
+        ],
+        [
+          "template.reset.mixin",
+          "Template Reset Mixin"
+        ],
+        [
+          "theme.ir.asset",
+          "Theme Asset"
+        ],
+        [
+          "theme.ir.attachment",
+          "Theme Attachment"
+        ],
+        [
+          "theme.ir.ui.view",
+          "Theme UI View"
+        ],
+        [
+          "theme.utils",
+          "Theme Utils"
+        ],
+        [
+          "helpdesk.ticket.report.analysis",
+          "Ticket Analysis"
+        ],
+        [
+          "helpdesk.sla.status",
+          "Ticket SLA Status"
+        ],
+        [
+          "web_tour.tour",
+          "Tour"
+        ],
+        [
+          "web_tour.tour.step",
+          "Tour's step"
+        ],
+        [
+          "stock.traceability.report",
+          "Traceability Report"
+        ],
+        [
+          "gamification.karma.tracking",
+          "Track Karma Changes"
+        ],
+        [
+          "account.bank.statement.line.transient",
+          "Transient model for bank statement line"
+        ],
+        [
+          "account.trial.balance.report.handler",
+          "Trial Balance Custom Handler"
+        ],
+        [
+          "ir.cron.trigger",
+          "Triggered Action"
+        ],
+        [
+          "hr.resume.line.type",
+          "Type of a resume line"
+        ],
+        [
+          "account.edi.xml.ubl_20",
+          "UBL 2.0"
+        ],
+        [
+          "account.edi.xml.ubl_21",
+          "UBL 2.1"
+        ],
+        [
+          "account.edi.xml.ubl_bis3",
+          "UBL BIS Billing 3.0.12"
+        ],
+        [
+          "utm.campaign",
+          "UTM Campaign"
+        ],
+        [
+          "utm.medium",
+          "UTM Medium"
+        ],
+        [
+          "utm.mixin",
+          "UTM Mixin"
+        ],
+        [
+          "utm.source",
+          "UTM Source"
+        ],
+        [
+          "utm.tag",
+          "UTM Tag"
+        ],
+        [
+          "product.base.unit",
+          "Unit of Measure for price per unit on products."
+        ],
+        [
+          "_unknown",
+          "Unknown"
+        ],
+        [
+          "base.module.update",
+          "Update Module"
+        ],
+        [
+          "update.product.attribute.value",
+          "Update product attribute value"
+        ],
+        [
+          "crm.lead.pls.update",
+          "Update the probabilities"
+        ],
+        [
+          "base.module.upgrade",
+          "Upgrade Module"
+        ],
+        [
+          "res.users",
+          "User"
+        ],
+        [
+          "res.users.apikeys",
+          "User API Key"
+        ],
+        [
+          "res.users.settings",
+          "User Settings"
+        ],
+        [
+          "res.users.settings.volumes",
+          "User Settings Volumes"
+        ],
+        [
+          "res.users.settings.embedded.action",
+          "User Settings for Embedded Actions"
+        ],
+        [
+          "website.custom_blocked_third_party_domains",
+          "User list of blocked 3rd-party domains"
+        ],
+        [
+          "change.password.user",
+          "User, Change Password Wizard"
+        ],
+        [
+          "change.password.own",
+          "User, change own password wizard"
+        ],
+        [
+          "mail.presence",
+          "User/Guest Presence"
+        ],
+        [
+          "res.users.deletion",
+          "Users Deletion Request"
+        ],
+        [
+          "res.users.log",
+          "Users Log"
+        ],
+        [
+          "validate.account.move",
+          "Validate Journal Entry"
+        ],
+        [
+          "vendor.delay.report",
+          "Vendor Delay Report"
+        ],
+        [
+          "ir.ui.view",
+          "View"
+        ],
+        [
+          "website.track",
+          "Visited Page"
+        ],
+        [
+          "stock.warehouse",
+          "Warehouse"
+        ],
+        [
+          "stock.warn.insufficient.qty",
+          "Warn Insufficient Quantity"
+        ],
+        [
+          "stock.warn.insufficient.qty.scrap",
+          "Warn Insufficient Scrap Quantity"
+        ],
+        [
+          "website",
+          "Website"
+        ],
+        [
+          "website.checkout.step",
+          "Website Checkout Step"
+        ],
+        [
+          "website.configurator.feature",
+          "Website Configurator Feature"
+        ],
+        [
+          "website_generator.request",
+          "Website Generator Request"
+        ],
+        [
+          "website.located.mixin",
+          "Website Located Mixin"
+        ],
+        [
+          "website.menu",
+          "Website Menu"
+        ],
+        [
+          "product.public.category",
+          "Website Product Category"
+        ],
+        [
+          "website.published.mixin",
+          "Website Published Mixin"
+        ],
+        [
+          "website.searchable.mixin",
+          "Website Searchable Mixin"
+        ],
+        [
+          "website.snippet.filter",
+          "Website Snippet Filter"
+        ],
+        [
+          "website.technical.page",
+          "Website Technical Page"
+        ],
+        [
+          "theme.website.menu",
+          "Website Theme Menu"
+        ],
+        [
+          "theme.website.page",
+          "Website Theme Page"
+        ],
+        [
+          "website.visitor",
+          "Website Visitor"
+        ],
+        [
+          "website.page_options.mixin",
+          "Website page/record specific options"
+        ],
+        [
+          "website.page_visibility_options.mixin",
+          "Website page/record specific visibility options"
+        ],
+        [
+          "website.rewrite",
+          "Website rewrite"
+        ],
+        [
+          "account.duplicate.transaction.wizard",
+          "Wizard for duplicate transactions"
+        ],
+        [
+          "account.missing.transaction.wizard",
+          "Wizard for missing transactions"
+        ],
+        [
+          "account_followup.manual_reminder",
+          "Wizard for sending manual reminders to clients"
+        ],
+        [
+          "ai.add.knowledge.articles",
+          "Wizard to add knowledge articles to an AI agent"
+        ],
+        [
+          "resource.calendar.attendance",
+          "Work Detail"
+        ],
+        [
+          "hr.work.location",
+          "Work Location"
+        ],
+        [
+          "stock.zero.demand.confirmation",
+          "Zero Demand Confirmation"
+        ],
+        [
+          "hr.mixin",
+          "hr.mixin"
+        ],
+        [
+          "planning.calendar.resource",
+          "planning calendar resource"
+        ],
+        [
+          "account.online.account",
+          "representation of an online bank account"
+        ],
+        [
+          "ir.websocket",
+          "websocket message handling"
+        ]
+      ],
+      "string": "UTM Reference",
+      "type": "reference"
+    },
+    "sequence_prefix": {
+      "readonly": true,
+      "required": false,
+      "string": "Sequence Prefix",
+      "type": "char"
+    },
+    "sequence_number": {
+      "readonly": true,
+      "required": false,
+      "string": "Sequence Number",
+      "type": "integer"
+    },
+    "access_url": {
+      "help": "Customer Portal URL",
+      "readonly": true,
+      "required": false,
+      "string": "Portal Access URL",
+      "type": "char"
+    },
+    "access_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Security Token",
+      "type": "char"
+    },
+    "access_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Access warning",
+      "type": "text"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Number",
+      "type": "char"
+    },
+    "name_placeholder": {
+      "readonly": true,
+      "required": false,
+      "string": "Name Placeholder",
+      "type": "char"
+    },
+    "ref": {
+      "readonly": false,
+      "required": false,
+      "string": "Reference",
+      "type": "char"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "state": {
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "posted",
+          "Posted"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "move_type": {
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "entry",
+          "Journal Entry"
+        ],
+        [
+          "out_invoice",
+          "Customer Invoice"
+        ],
+        [
+          "out_refund",
+          "Customer Credit Note"
+        ],
+        [
+          "in_invoice",
+          "Vendor Bill"
+        ],
+        [
+          "in_refund",
+          "Vendor Credit Note"
+        ],
+        [
+          "out_receipt",
+          "Sales Receipt"
+        ],
+        [
+          "in_receipt",
+          "Purchase Receipt"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "is_storno": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Storno",
+      "type": "boolean"
+    },
+    "journal_group_id": {
+      "readonly": true,
+      "relation": "account.journal.group",
+      "required": false,
+      "string": "Ledger",
+      "type": "many2one"
+    },
+    "journal_company_id": {
+      "help": "Company related to this journal",
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company of the Journal",
+      "type": "many2one"
+    },
+    "line_ids": {
+      "readonly": false,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Journal Items",
+      "type": "one2many"
+    },
+    "exchange_diff_partial_ids": {
+      "readonly": false,
+      "relation": "account.partial.reconcile",
+      "required": false,
+      "string": "Related reconciliation",
+      "type": "one2many"
+    },
+    "origin_payment_id": {
+      "readonly": false,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Payment",
+      "type": "many2one"
+    },
+    "matched_payment_ids": {
+      "readonly": false,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Matched Payments",
+      "type": "many2many"
+    },
+    "reconciled_payment_ids": {
+      "help": "Payments that have been reconciled with this invoice.",
+      "readonly": true,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Reconciled Payments",
+      "type": "many2many"
+    },
+    "payment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Payment Count",
+      "type": "integer"
+    },
+    "statement_line_id": {
+      "readonly": false,
+      "relation": "account.bank.statement.line",
+      "required": false,
+      "string": "Statement Line",
+      "type": "many2one"
+    },
+    "adjusting_entry_origin_move_ids": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Adjusting Entry Origin Moves",
+      "type": "many2many"
+    },
+    "adjusting_entry_origin_label": {
+      "readonly": true,
+      "required": false,
+      "string": "Adjusting Entry Origin Label",
+      "type": "char"
+    },
+    "adjusting_entry_origin_moves_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Adjusting Entry Origin Moves Count",
+      "type": "integer"
+    },
+    "adjusting_entries_move_ids": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Created Adjusting Entries",
+      "type": "many2many"
+    },
+    "adjusting_entries_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Adjusting Entries Count",
+      "type": "integer"
+    },
+    "tax_cash_basis_rec_id": {
+      "readonly": false,
+      "relation": "account.partial.reconcile",
+      "required": false,
+      "string": "Tax Cash Basis Entry of",
+      "type": "many2one"
+    },
+    "tax_cash_basis_origin_move_id": {
+      "help": "The journal entry from which this tax cash basis journal entry has been created.",
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Cash Basis Origin",
+      "type": "many2one"
+    },
+    "tax_cash_basis_created_move_ids": {
+      "help": "The cash basis entries created from the taxes on this entry, when reconciling its lines.",
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Cash Basis Entries",
+      "type": "one2many"
+    },
+    "always_tax_exigible": {
+      "readonly": false,
+      "required": false,
+      "string": "Always Tax Exigible",
+      "type": "boolean"
+    },
+    "auto_post": {
+      "help": "Specify whether this entry is posted automatically on its accounting date, and any similar recurring invoices.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "no",
+          "No"
+        ],
+        [
+          "at_date",
+          "At Date"
+        ],
+        [
+          "monthly",
+          "Monthly"
+        ],
+        [
+          "quarterly",
+          "Quarterly"
+        ],
+        [
+          "yearly",
+          "Yearly"
+        ]
+      ],
+      "string": "Auto-post",
+      "type": "selection"
+    },
+    "auto_post_until": {
+      "help": "This recurring move will be posted up to and including this date.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto-post until",
+      "type": "date"
+    },
+    "auto_post_origin_id": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "First recurring entry",
+      "type": "many2one"
+    },
+    "hide_post_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Hide Post Button",
+      "type": "boolean"
+    },
+    "review_state": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "no_review",
+          "No Review"
+        ],
+        [
+          "todo",
+          "To Review"
+        ],
+        [
+          "reviewed",
+          "Reviewed"
+        ],
+        [
+          "supervised",
+          "Supervised"
+        ],
+        [
+          "anomaly",
+          "Anomaly"
+        ]
+      ],
+      "string": "Review",
+      "type": "selection"
+    },
+    "posted_before": {
+      "readonly": false,
+      "required": false,
+      "string": "Posted Before",
+      "type": "boolean"
+    },
+    "suitable_journal_ids": {
+      "readonly": true,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Suitable Journal",
+      "type": "many2many"
+    },
+    "highest_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Highest Name",
+      "type": "char"
+    },
+    "made_sequence_gap": {
+      "readonly": false,
+      "required": false,
+      "string": "Made Sequence Gap",
+      "type": "boolean"
+    },
+    "show_name_warning": {
+      "readonly": false,
+      "required": false,
+      "string": "Show Name Warning",
+      "type": "boolean"
+    },
+    "type_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Type Name",
+      "type": "char"
+    },
+    "account_fiscal_country_group_codes": {
+      "readonly": true,
+      "required": false,
+      "string": "Account Fiscal Country Group Codes",
+      "type": "json"
+    },
+    "company_price_include": {
+      "help": "Default on whether the sales price used on the product and invoices with this Company includes its taxes.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "tax_included",
+          "Tax Included"
+        ],
+        [
+          "tax_excluded",
+          "Tax Excluded"
+        ]
+      ],
+      "string": "Default Sales Price Include",
+      "type": "selection"
+    },
+    "audit_trail_message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Audit Trail Messages",
+      "type": "one2many"
+    },
+    "no_followup": {
+      "help": "Exclude this journal entry from follow-up reports.",
+      "readonly": false,
+      "required": false,
+      "string": "No Follow-Up",
+      "type": "boolean"
+    },
+    "restrict_mode_hash_table": {
+      "help": "If ticked, when an entry is posted, we retroactively hash all moves in the sequence from the entry back to the last hashed entry. The hash can also be performed on demand by the Secure Entries wizard.",
+      "readonly": true,
+      "required": false,
+      "string": "Secure Posted Entries with Hash",
+      "type": "boolean"
+    },
+    "secure_sequence_number": {
+      "readonly": true,
+      "required": false,
+      "string": "Inalterability No Gap Sequence #",
+      "type": "integer"
+    },
+    "inalterable_hash": {
+      "readonly": true,
+      "required": false,
+      "string": "Inalterability Hash",
+      "type": "char"
+    },
+    "secured": {
+      "help": "The entry is secured with an inalterable hash.",
+      "readonly": true,
+      "required": false,
+      "string": "Secured",
+      "type": "boolean"
+    },
+    "invoice_line_ids": {
+      "readonly": false,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Invoice lines",
+      "type": "one2many"
+    },
+    "invoice_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Invoice/Bill Date",
+      "type": "date"
+    },
+    "invoice_date_due": {
+      "readonly": false,
+      "required": false,
+      "string": "Due Date",
+      "type": "date"
+    },
+    "delivery_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Delivery Date",
+      "type": "date"
+    },
+    "show_delivery_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Delivery Date",
+      "type": "boolean"
+    },
+    "taxable_supply_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Taxable Supply Date",
+      "type": "date"
+    },
+    "show_taxable_supply_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Taxable Supply Date",
+      "type": "boolean"
+    },
+    "taxable_supply_date_placeholder": {
+      "readonly": true,
+      "required": false,
+      "string": "Taxable Supply Date Placeholder",
+      "type": "char"
+    },
+    "invoice_payment_term_id": {
+      "readonly": false,
+      "relation": "account.payment.term",
+      "required": false,
+      "string": "Payment Terms",
+      "type": "many2one"
+    },
+    "needed_terms": {
+      "readonly": true,
+      "required": false,
+      "string": "Needed Terms",
+      "type": "json"
+    },
+    "needed_terms_dirty": {
+      "readonly": true,
+      "required": false,
+      "string": "Needed Terms Dirty",
+      "type": "boolean"
+    },
+    "tax_calculation_rounding_method": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "round_globally",
+          "Round per Tax"
+        ],
+        [
+          "round_per_line",
+          "Round per Line"
+        ]
+      ],
+      "string": "Tax calculation rounding method",
+      "type": "selection"
+    },
+    "show_journal": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Journal",
+      "type": "boolean"
+    },
+    "commercial_partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Commercial Entity",
+      "type": "many2one"
+    },
+    "partner_shipping_id": {
+      "help": "The delivery address will be used in the computation of the fiscal position.",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Delivery Address",
+      "type": "many2one"
+    },
+    "partner_bank_id": {
+      "help": "Bank Account Number to which the invoice will be paid. A Company bank account if this is a Customer Invoice or Vendor Credit Note, otherwise a Partner bank account number.",
+      "readonly": false,
+      "relation": "res.partner.bank",
+      "required": false,
+      "string": "Recipient Bank",
+      "type": "many2one"
+    },
+    "fiscal_position_id": {
+      "help": "Fiscal positions are used to adapt taxes and accounts for particular customers or sales orders/invoices. The default value comes from the customer.",
+      "readonly": false,
+      "relation": "account.fiscal.position",
+      "required": false,
+      "string": "Fiscal Position",
+      "type": "many2one"
+    },
+    "payment_reference": {
+      "help": "The payment reference to set on journal items.",
+      "readonly": false,
+      "required": false,
+      "string": "Payment Reference",
+      "type": "char"
+    },
+    "display_qr_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Display QR-code",
+      "type": "boolean"
+    },
+    "display_link_qr_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Link QR-code",
+      "type": "boolean"
+    },
+    "qr_code_method": {
+      "help": "Type of QR-code to be generated for the payment of this invoice, when printing it. If left blank, the first available and usable method will be used.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "sct_qr",
+          "SEPA Credit Transfer QR"
+        ]
+      ],
+      "string": "Payment QR-code",
+      "type": "selection"
+    },
+    "invoice_outstanding_credits_debits_widget": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoice Outstanding Credits Debits Widget",
+      "type": "json"
+    },
+    "invoice_has_outstanding": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoice Has Outstanding",
+      "type": "boolean"
+    },
+    "invoice_payments_widget": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoice Payments Widget",
+      "type": "json"
+    },
+    "preferred_payment_method_line_id": {
+      "readonly": false,
+      "relation": "account.payment.method.line",
+      "required": false,
+      "string": "Preferred Payment Method Line",
+      "type": "many2one"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "expected_currency_rate": {
+      "readonly": true,
+      "required": false,
+      "string": "Expected Currency Rate",
+      "type": "float"
+    },
+    "invoice_currency_rate": {
+      "help": "Currency rate from company currency to document currency.",
+      "readonly": false,
+      "required": false,
+      "string": "Currency Rate",
+      "type": "float"
+    },
+    "direction_sign": {
+      "help": "Multiplicator depending on the document type, to convert a price into a balance",
+      "readonly": true,
+      "required": false,
+      "string": "Direction Sign",
+      "type": "integer"
+    },
+    "amount_untaxed": {
+      "readonly": true,
+      "required": false,
+      "string": "Untaxed Amount",
+      "type": "monetary"
+    },
+    "amount_tax": {
+      "readonly": true,
+      "required": false,
+      "string": "Tax",
+      "type": "monetary"
+    },
+    "amount_total": {
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "monetary"
+    },
+    "amount_untaxed_signed": {
+      "readonly": true,
+      "required": false,
+      "string": "Untaxed Amount Signed",
+      "type": "monetary"
+    },
+    "amount_untaxed_in_currency_signed": {
+      "readonly": true,
+      "required": false,
+      "string": "Untaxed Amount Signed Currency",
+      "type": "monetary"
+    },
+    "amount_tax_signed": {
+      "readonly": true,
+      "required": false,
+      "string": "Tax Signed",
+      "type": "monetary"
+    },
+    "amount_total_signed": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Signed",
+      "type": "monetary"
+    },
+    "amount_total_in_currency_signed": {
+      "readonly": true,
+      "required": false,
+      "string": "Total in Currency Signed",
+      "type": "monetary"
+    },
+    "amount_residual_signed": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount Due Signed",
+      "type": "monetary"
+    },
+    "tax_totals": {
+      "help": "Edit Tax amounts if you encounter rounding issues.",
+      "readonly": false,
+      "required": false,
+      "string": "Invoice Totals",
+      "type": "json"
+    },
+    "payment_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_paid",
+          "Not Paid"
+        ],
+        [
+          "in_payment",
+          "In Payment"
+        ],
+        [
+          "paid",
+          "Paid"
+        ],
+        [
+          "partial",
+          "Partially Paid"
+        ],
+        [
+          "reversed",
+          "Reversed"
+        ],
+        [
+          "blocked",
+          "Blocked"
+        ],
+        [
+          "invoicing_legacy",
+          "Invoicing App Legacy"
+        ]
+      ],
+      "string": "Payment Status",
+      "type": "selection"
+    },
+    "status_in_payment": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_paid",
+          "Not Paid"
+        ],
+        [
+          "in_payment",
+          "In Payment"
+        ],
+        [
+          "paid",
+          "Paid"
+        ],
+        [
+          "partial",
+          "Partially Paid"
+        ],
+        [
+          "reversed",
+          "Reversed"
+        ],
+        [
+          "blocked",
+          "Blocked"
+        ],
+        [
+          "invoicing_legacy",
+          "Invoicing App Legacy"
+        ],
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "posted",
+          "Posted"
+        ],
+        [
+          "sent",
+          "Sent"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Status In Payment",
+      "type": "selection"
+    },
+    "amount_total_words": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount total in words",
+      "type": "char"
+    },
+    "reversed_entry_id": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Reversal of",
+      "type": "many2one"
+    },
+    "reversal_move_ids": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Reversal Move",
+      "type": "one2many"
+    },
+    "invoice_vendor_bill_id": {
+      "help": "Auto-complete from a previous bill or refund.",
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Invoice Vendor Bill",
+      "type": "many2one"
+    },
+    "show_invoice_vendor_bill": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Invoice Vendor Bill",
+      "type": "boolean"
+    },
+    "invoice_source_email": {
+      "readonly": false,
+      "required": false,
+      "string": "Source Email",
+      "type": "char"
+    },
+    "invoice_partner_display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoice Partner Display Name",
+      "type": "char"
+    },
+    "is_manually_modified": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Manually Modified",
+      "type": "boolean"
+    },
+    "is_self_billing": {
+      "help": "This journal is for self-billing invoices. Invoices will be created using a different sequence per partner.",
+      "readonly": true,
+      "required": false,
+      "string": "Self Billing",
+      "type": "boolean"
+    },
+    "quick_edit_mode": {
+      "readonly": true,
+      "required": false,
+      "string": "Quick Edit Mode",
+      "type": "boolean"
+    },
+    "quick_edit_total_amount": {
+      "help": "Use this field to encode the total amount of the invoice.\nOdoo will automatically create one invoice line with default values to match it.",
+      "readonly": false,
+      "required": false,
+      "string": "Total (Tax inc.)",
+      "type": "monetary"
+    },
+    "quick_encoding_vals": {
+      "readonly": true,
+      "required": false,
+      "string": "Quick Encoding Vals",
+      "type": "json"
+    },
+    "document_sequence_editable": {
+      "readonly": true,
+      "required": false,
+      "string": "Document's sequence editable",
+      "type": "boolean"
+    },
+    "set_to_review_documents": {
+      "readonly": true,
+      "required": false,
+      "string": "Review data",
+      "type": "boolean"
+    },
+    "narration": {
+      "readonly": false,
+      "required": false,
+      "string": "Terms and Conditions",
+      "type": "html"
+    },
+    "is_move_sent": {
+      "help": "It indicates that the invoice/payment has been sent or the PDF has been generated.",
+      "readonly": true,
+      "required": false,
+      "string": "Is Move Sent",
+      "type": "boolean"
+    },
+    "is_being_sent": {
+      "help": "Is the move being sent asynchronously",
+      "readonly": true,
+      "required": false,
+      "string": "Is Being Sent",
+      "type": "boolean"
+    },
+    "move_sent_values": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "sent",
+          "Sent"
+        ],
+        [
+          "not_sent",
+          "Not Sent"
+        ]
+      ],
+      "string": "Sent",
+      "type": "selection"
+    },
+    "invoice_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesperson",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "User",
+      "type": "many2one"
+    },
+    "invoice_origin": {
+      "help": "The document(s) that generated the invoice.",
+      "readonly": true,
+      "required": false,
+      "string": "Origin",
+      "type": "char"
+    },
+    "invoice_incoterm_id": {
+      "help": "International Commercial Terms are a series of predefined commercial terms used in international transactions.",
+      "readonly": false,
+      "relation": "account.incoterms",
+      "required": false,
+      "string": "Incoterm",
+      "type": "many2one"
+    },
+    "incoterm_location": {
+      "readonly": false,
+      "required": false,
+      "string": "Incoterm Location",
+      "type": "char"
+    },
+    "invoice_cash_rounding_id": {
+      "help": "Defines the smallest coinage of the currency that can be used to pay by cash.",
+      "readonly": false,
+      "relation": "account.cash.rounding",
+      "required": false,
+      "string": "Cash Rounding Method",
+      "type": "many2one"
+    },
+    "sending_data": {
+      "readonly": false,
+      "required": false,
+      "string": "Sending Data",
+      "type": "json"
+    },
+    "invoice_pdf_report_id": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "PDF Attachment",
+      "type": "many2one"
+    },
+    "invoice_pdf_report_file": {
+      "readonly": false,
+      "required": false,
+      "string": "PDF File",
+      "type": "binary"
+    },
+    "invoice_incoterm_placeholder": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoice Incoterm Placeholder",
+      "type": "char"
+    },
+    "invoice_filter_type_domain": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoice Filter Type Domain",
+      "type": "char"
+    },
+    "bank_partner_id": {
+      "help": "Technical field to get the domain on the bank",
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Bank Partner",
+      "type": "many2one"
+    },
+    "tax_lock_date_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Tax Lock Date Message",
+      "type": "char"
+    },
+    "display_inactive_currency_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Inactive Currency Warning",
+      "type": "boolean"
+    },
+    "tax_country_id": {
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Tax Country",
+      "type": "many2one"
+    },
+    "tax_country_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Tax Country Code",
+      "type": "char"
+    },
+    "has_reconciled_entries": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Reconciled Entries",
+      "type": "boolean"
+    },
+    "show_reset_to_draft_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Reset To Draft Button",
+      "type": "boolean"
+    },
+    "partner_credit_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Partner Credit Warning",
+      "type": "text"
+    },
+    "duplicated_ref_ids": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Duplicated Ref",
+      "type": "many2many"
+    },
+    "has_draft_move_duplicate": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Draft Move Duplicate",
+      "type": "boolean"
+    },
+    "is_exact_move_duplicate": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Exact Move Duplicate",
+      "type": "boolean"
+    },
+    "need_cancel_request": {
+      "readonly": true,
+      "required": false,
+      "string": "Need Cancel Request",
+      "type": "boolean"
+    },
+    "show_update_fpos": {
+      "readonly": false,
+      "required": false,
+      "string": "Has Fiscal Position Changed",
+      "type": "boolean"
+    },
+    "payment_term_details": {
+      "readonly": true,
+      "required": false,
+      "string": "Payment Term Details",
+      "type": "json"
+    },
+    "show_payment_term_details": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Payment Term Details",
+      "type": "boolean"
+    },
+    "show_discount_details": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Discount Details",
+      "type": "boolean"
+    },
+    "abnormal_amount_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Abnormal Amount Warning",
+      "type": "text"
+    },
+    "abnormal_date_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Abnormal Date Warning",
+      "type": "text"
+    },
+    "alerts": {
+      "readonly": true,
+      "required": false,
+      "string": "Alerts",
+      "type": "json"
+    },
+    "taxes_legal_notes": {
+      "readonly": true,
+      "required": false,
+      "string": "Taxes Legal Notes",
+      "type": "html"
+    },
+    "next_payment_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Payment Date",
+      "type": "date"
+    },
+    "display_send_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Send Button",
+      "type": "boolean"
+    },
+    "highlight_send_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Highlight Send Button",
+      "type": "boolean"
+    },
+    "is_sale_installed": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Sale Installed",
+      "type": "boolean"
+    },
+    "statement_line_ids": {
+      "readonly": false,
+      "relation": "account.bank.statement.line",
+      "required": false,
+      "string": "Statements",
+      "type": "one2many"
+    },
+    "payment_state_before_switch": {
+      "readonly": false,
+      "required": false,
+      "string": "Payment State Before Switch",
+      "type": "char"
+    },
+    "deferred_move_ids": {
+      "help": "The deferred entries created by this invoice",
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Deferred Entries",
+      "type": "many2many"
+    },
+    "deferred_original_move_ids": {
+      "help": "The original invoices that created the deferred entries",
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Original Invoices",
+      "type": "many2many"
+    },
+    "deferred_entry_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "expense",
+          "Deferred Expense"
+        ],
+        [
+          "revenue",
+          "Deferred Revenue"
+        ],
+        [
+          "misc",
+          "Deferred Miscellaneous"
+        ]
+      ],
+      "string": "Deferred Entry Type",
+      "type": "selection"
+    },
+    "signing_user": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Signer",
+      "type": "many2one"
+    },
+    "show_signature_area": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Signature Area",
+      "type": "boolean"
+    },
+    "signature": {
+      "readonly": true,
+      "required": false,
+      "string": "Signature",
+      "type": "binary"
+    },
+    "ubl_cii_xml_id": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachment",
+      "type": "many2one"
+    },
+    "ubl_cii_xml_file": {
+      "readonly": false,
+      "required": false,
+      "string": "UBL/CII File",
+      "type": "binary"
+    },
+    "ubl_cii_xml_filename": {
+      "readonly": true,
+      "required": false,
+      "string": "UBL/CII Filename",
+      "type": "char"
+    },
+    "transaction_ids": {
+      "readonly": true,
+      "relation": "payment.transaction",
+      "required": false,
+      "string": "Transactions",
+      "type": "many2many"
+    },
+    "authorized_transaction_ids": {
+      "readonly": true,
+      "relation": "payment.transaction",
+      "required": false,
+      "string": "Authorized Transactions",
+      "type": "many2many"
+    },
+    "transaction_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Transaction Count",
+      "type": "integer"
+    },
+    "amount_paid": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount paid",
+      "type": "monetary"
+    },
+    "purchase_vendor_bill_id": {
+      "help": "Auto-complete from a previous bill, refund, or purchase order.",
+      "readonly": false,
+      "relation": "purchase.bill.union",
+      "required": false,
+      "string": "Purchase Vendor Bill",
+      "type": "many2one"
+    },
+    "purchase_id": {
+      "help": "Auto-complete from a past purchase order.",
+      "readonly": false,
+      "relation": "purchase.order",
+      "required": false,
+      "string": "Purchase Order",
+      "type": "many2one"
+    },
+    "purchase_order_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Purchase Order Count",
+      "type": "integer"
+    },
+    "display_auto_complete_field": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Auto Complete Field",
+      "type": "boolean"
+    },
+    "purchase_order_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Purchase Order Name",
+      "type": "char"
+    },
+    "is_purchase_matched": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Purchase Matched",
+      "type": "boolean"
+    },
+    "purchase_warning_text": {
+      "help": "Internal warning for the partner or the products as set by the user.",
+      "readonly": true,
+      "required": false,
+      "string": "Purchase Warning",
+      "type": "text"
+    },
+    "stock_move_ids": {
+      "readonly": false,
+      "relation": "stock.move",
+      "required": false,
+      "string": "Stock Move",
+      "type": "one2many"
+    },
+    "inventory_closing": {
+      "readonly": false,
+      "required": false,
+      "string": "Inventory Closing",
+      "type": "boolean"
+    },
+    "closing_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "Closing Date",
+      "type": "datetime"
+    },
+    "peppol_message_uuid": {
+      "readonly": false,
+      "required": false,
+      "string": "Peppol message ID",
+      "type": "char"
+    },
+    "peppol_move_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "ready",
+          "Ready to send"
+        ],
+        [
+          "to_send",
+          "Queued"
+        ],
+        [
+          "processing",
+          "Pending Reception"
+        ],
+        [
+          "done",
+          "Done"
+        ],
+        [
+          "error",
+          "Error"
+        ],
+        [
+          "AB",
+          "Received"
+        ],
+        [
+          "AP",
+          "Approved"
+        ],
+        [
+          "RE",
+          "Rejected"
+        ]
+      ],
+      "string": "Peppol status",
+      "type": "selection"
+    },
+    "peppol_is_sent": {
+      "readonly": true,
+      "required": false,
+      "string": "Peppol Is Sent",
+      "type": "boolean"
+    },
+    "closing_return_id": {
+      "readonly": false,
+      "relation": "account.return",
+      "required": false,
+      "string": "Closing Return",
+      "type": "many2one"
+    },
+    "calendar_booking_ids": {
+      "readonly": false,
+      "relation": "calendar.booking",
+      "required": false,
+      "string": "Meeting Booking",
+      "type": "one2many"
+    },
+    "l10n_fr_is_company_french": {
+      "readonly": true,
+      "required": false,
+      "string": "L10N Fr Is Company French",
+      "type": "boolean"
+    },
+    "team_id": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Team",
+      "type": "many2one"
+    },
+    "sale_order_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Sale Order Count",
+      "type": "integer"
+    },
+    "sale_warning_text": {
+      "help": "Internal warning for the partner or the products as set by the user.",
+      "readonly": true,
+      "required": false,
+      "string": "Sale Warning",
+      "type": "text"
+    },
+    "service_line_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Service Line Count",
+      "type": "integer"
+    },
+    "last_reminder": {
+      "help": "Date when reminder was last sent via email.",
+      "readonly": true,
+      "required": false,
+      "string": "Last Reminder",
+      "type": "date"
+    },
+    "peppol_response_ids": {
+      "readonly": false,
+      "relation": "account.peppol.response",
+      "required": false,
+      "string": "Peppol Response",
+      "type": "one2many"
+    },
+    "peppol_can_send_response": {
+      "readonly": true,
+      "required": false,
+      "string": "Peppol Can Send Response",
+      "type": "boolean"
+    },
+    "extract_state": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "no_extract_requested",
+          "No extract requested"
+        ],
+        [
+          "not_enough_credit",
+          "Not enough credits"
+        ],
+        [
+          "error_status",
+          "An error occurred"
+        ],
+        [
+          "waiting_extraction",
+          "Waiting extraction"
+        ],
+        [
+          "extract_not_ready",
+          "waiting extraction, but it is not ready"
+        ],
+        [
+          "waiting_validation",
+          "Waiting validation"
+        ],
+        [
+          "to_validate",
+          "To validate"
+        ],
+        [
+          "done",
+          "Completed flow"
+        ]
+      ],
+      "string": "Extract state",
+      "type": "selection"
+    },
+    "extract_status": {
+      "readonly": false,
+      "required": false,
+      "string": "Extract status",
+      "type": "char"
+    },
+    "extract_error_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Error message",
+      "type": "text"
+    },
+    "extract_document_uuid": {
+      "readonly": true,
+      "required": false,
+      "string": "ID of the request to IAP-OCR",
+      "type": "char"
+    },
+    "extract_can_show_send_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Can show the ocr send button",
+      "type": "boolean"
+    },
+    "is_in_extractable_state": {
+      "readonly": true,
+      "required": false,
+      "string": "Is In Extractable State",
+      "type": "boolean"
+    },
+    "extract_state_processed": {
+      "readonly": true,
+      "required": false,
+      "string": "Extract State Processed",
+      "type": "boolean"
+    },
+    "extract_attachment_id": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Extract Attachment",
+      "type": "many2one"
+    },
+    "extracted_words": {
+      "readonly": false,
+      "required": false,
+      "string": "Extracted Words",
+      "type": "json"
+    },
+    "extracted_numbers": {
+      "readonly": false,
+      "required": false,
+      "string": "Extracted Numbers",
+      "type": "json"
+    },
+    "extracted_dates": {
+      "readonly": false,
+      "required": false,
+      "string": "Extracted Dates",
+      "type": "json"
+    },
+    "extract_prefill_data": {
+      "readonly": false,
+      "required": false,
+      "string": "Extract Prefill Data",
+      "type": "json"
+    },
+    "extract_can_show_banners": {
+      "readonly": true,
+      "required": false,
+      "string": "Can show the ocr banners",
+      "type": "boolean"
+    },
+    "extract_detected_layout": {
+      "readonly": true,
+      "required": false,
+      "string": "Extract Detected Layout Id",
+      "type": "integer"
+    },
+    "website_id": {
+      "help": "Website through which this invoice was created for eCommerce orders.",
+      "readonly": true,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    }
+  }
+}

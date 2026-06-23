@@ -1,0 +1,323 @@
+{
+  "model": "stock.warehouse.orderpoint",
+  "name": "Minimum Inventory Rule",
+  "field_count": 46,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "trigger": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "auto",
+          "Auto"
+        ],
+        [
+          "manual",
+          "Manual"
+        ]
+      ],
+      "string": "Trigger",
+      "type": "selection"
+    },
+    "active": {
+      "help": "If the active field is set to False, it will allow you to hide the orderpoint without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "snoozed_until": {
+      "help": "Hidden until next scheduler.",
+      "readonly": false,
+      "required": false,
+      "string": "Snoozed",
+      "type": "date"
+    },
+    "warehouse_id": {
+      "readonly": false,
+      "relation": "stock.warehouse",
+      "required": true,
+      "string": "Warehouse",
+      "type": "many2one"
+    },
+    "location_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Location",
+      "type": "many2one"
+    },
+    "product_tmpl_id": {
+      "readonly": true,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product Template",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": true,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "product_category_id": {
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "uom_id": {
+      "help": "Default unit of measure used for all stock operations.",
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "product_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Product unit of measure label",
+      "type": "char"
+    },
+    "product_min_qty": {
+      "help": "The minimum Stock level that will trigger a replenishment.",
+      "readonly": false,
+      "required": true,
+      "string": "Min Quantity",
+      "type": "float"
+    },
+    "product_max_qty": {
+      "help": "Stock level to reach when replenishing.",
+      "readonly": false,
+      "required": true,
+      "string": "Max Quantity",
+      "type": "float"
+    },
+    "allowed_replenishment_uom_ids": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Allowed Replenishment Uom",
+      "type": "many2many"
+    },
+    "replenishment_uom_id": {
+      "help": "The procurement quantity will be rounded up to a multiple of this unit/packaging. If it is not set, it is not rounded.",
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Multiple",
+      "type": "many2one"
+    },
+    "replenishment_uom_id_placeholder": {
+      "readonly": true,
+      "required": false,
+      "string": "Replenishment Uom Id Placeholder",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "allowed_location_ids": {
+      "readonly": true,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Allowed Location",
+      "type": "one2many"
+    },
+    "rule_ids": {
+      "readonly": true,
+      "relation": "stock.rule",
+      "required": false,
+      "string": "Rules used",
+      "type": "many2many"
+    },
+    "lead_horizon_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Lead Horizon Date",
+      "type": "date"
+    },
+    "lead_days": {
+      "readonly": true,
+      "required": false,
+      "string": "Lead Days",
+      "type": "float"
+    },
+    "route_id": {
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Route",
+      "type": "many2one"
+    },
+    "route_id_placeholder": {
+      "readonly": true,
+      "required": false,
+      "string": "Route Id Placeholder",
+      "type": "char"
+    },
+    "effective_route_id": {
+      "help": "Either the route set directly or the one computed to be used by this replenishment",
+      "readonly": true,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Effective Route",
+      "type": "many2one"
+    },
+    "qty_on_hand": {
+      "readonly": true,
+      "required": false,
+      "string": "On Hand",
+      "type": "float"
+    },
+    "qty_forecast": {
+      "readonly": true,
+      "required": false,
+      "string": "Forecast",
+      "type": "float"
+    },
+    "qty_to_order": {
+      "readonly": false,
+      "required": false,
+      "string": "To Order",
+      "type": "float"
+    },
+    "qty_to_order_computed": {
+      "readonly": true,
+      "required": false,
+      "string": "To Order Computed",
+      "type": "float"
+    },
+    "qty_to_order_manual": {
+      "readonly": false,
+      "required": false,
+      "string": "To Order Manual",
+      "type": "float"
+    },
+    "qty_to_order_to_max": {
+      "readonly": true,
+      "required": false,
+      "string": "To Order to Reach Max",
+      "type": "float"
+    },
+    "days_to_order": {
+      "help": "Numbers of days  in advance that replenishments demands are created.",
+      "readonly": true,
+      "required": false,
+      "string": "Days To Order",
+      "type": "float"
+    },
+    "unwanted_replenish": {
+      "readonly": true,
+      "required": false,
+      "string": "Unwanted Replenish",
+      "type": "boolean"
+    },
+    "show_supply_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Supply Warning",
+      "type": "boolean"
+    },
+    "deadline_date": {
+      "help": "Date before which you should order to avoid falling below the minimum. If you have nothing to order while a deadline is found, it may be because a future arrival is expected after the minimum quantity is reached (potential stockout). Check the Forecast Report.",
+      "readonly": true,
+      "required": false,
+      "string": "Deadline",
+      "type": "date"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "show_supplier": {
+      "readonly": true,
+      "required": false,
+      "string": "Show supplier column",
+      "type": "boolean"
+    },
+    "supplier_id": {
+      "readonly": false,
+      "relation": "product.supplierinfo",
+      "required": false,
+      "string": "Vendor Pricelist",
+      "type": "many2one"
+    },
+    "supplier_id_placeholder": {
+      "readonly": true,
+      "required": false,
+      "string": "Supplier Id Placeholder",
+      "type": "char"
+    },
+    "vendor_ids": {
+      "readonly": true,
+      "relation": "product.supplierinfo",
+      "required": false,
+      "string": "Vendors",
+      "type": "one2many"
+    },
+    "effective_vendor_id": {
+      "help": "Either the vendor set directly or the one computed to be used by this replenishment",
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Effective Vendor",
+      "type": "many2one"
+    },
+    "available_vendor": {
+      "help": "Any vendor on the product's pricelist",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Available Vendor",
+      "type": "many2one"
+    }
+  }
+}

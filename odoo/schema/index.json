@@ -1,0 +1,3202 @@
+[
+  {
+    "model": "_unknown",
+    "name": "Unknown"
+  },
+  {
+    "model": "account.account",
+    "name": "Account"
+  },
+  {
+    "model": "account.account.fiscal.rate",
+    "name": "Fiscal Rate"
+  },
+  {
+    "model": "account.account.tag",
+    "name": "Account Tag"
+  },
+  {
+    "model": "account.accrued.orders.wizard",
+    "name": "Accrued Orders Wizard"
+  },
+  {
+    "model": "account.aged.partner.balance.report.handler",
+    "name": "Aged Partner Balance Custom Handler"
+  },
+  {
+    "model": "account.aged.payable.report.handler",
+    "name": "Aged Payable Custom Handler"
+  },
+  {
+    "model": "account.aged.receivable.report.handler",
+    "name": "Aged Receivable Custom Handler"
+  },
+  {
+    "model": "account.analytic.account",
+    "name": "Analytic Account"
+  },
+  {
+    "model": "account.analytic.applicability",
+    "name": "Analytic Plan's Applicabilities"
+  },
+  {
+    "model": "account.analytic.distribution.model",
+    "name": "Analytic Distribution Model"
+  },
+  {
+    "model": "account.analytic.line",
+    "name": "Analytic Line"
+  },
+  {
+    "model": "account.analytic.plan",
+    "name": "Analytic Plan"
+  },
+  {
+    "model": "account.audit.account.status",
+    "name": "Account Audit Account Status"
+  },
+  {
+    "model": "account.auto.reconcile.wizard",
+    "name": "Account automatic reconciliation wizard"
+  },
+  {
+    "model": "account.automatic.entry.wizard",
+    "name": "Create Automatic Entries"
+  },
+  {
+    "model": "account.autopost.bills.wizard",
+    "name": "Autopost Bills Wizard"
+  },
+  {
+    "model": "account.balance.sheet.report.handler",
+    "name": "Balance Sheet Custom Handler"
+  },
+  {
+    "model": "account.bank.reconciliation.report.handler",
+    "name": "Bank Reconciliation Report Custom Handler"
+  },
+  {
+    "model": "account.bank.selection",
+    "name": "Link a bank account to the selected journal"
+  },
+  {
+    "model": "account.bank.statement",
+    "name": "Bank Statement"
+  },
+  {
+    "model": "account.bank.statement.line",
+    "name": "Bank Statement Line"
+  },
+  {
+    "model": "account.bank.statement.line.transient",
+    "name": "Transient model for bank statement line"
+  },
+  {
+    "model": "account.batch.error.wizard",
+    "name": "Batch payments error reporting wizard"
+  },
+  {
+    "model": "account.batch.error.wizard.line",
+    "name": "Batch payments error reporting wizard line"
+  },
+  {
+    "model": "account.batch.payment",
+    "name": "Batch Payment"
+  },
+  {
+    "model": "account.cash.flow.report.handler",
+    "name": "Cash Flow Report Custom Handler"
+  },
+  {
+    "model": "account.cash.rounding",
+    "name": "Account Cash Rounding"
+  },
+  {
+    "model": "account.change.lock.date",
+    "name": "Change Lock Date"
+  },
+  {
+    "model": "account.chart.template",
+    "name": "Account Chart Template"
+  },
+  {
+    "model": "account.code.mapping",
+    "name": "Mapping of account codes per company"
+  },
+  {
+    "model": "account.create.batch.error.wizard",
+    "name": "Create Batch Payment Error Wizard"
+  },
+  {
+    "model": "account.customer.statement.report.handler",
+    "name": "Customer Statement Custom Handler"
+  },
+  {
+    "model": "account.deferred.expense.report.handler",
+    "name": "Deferred Expense Custom Handler"
+  },
+  {
+    "model": "account.deferred.report.handler",
+    "name": "Deferred Expense Report Custom Handler"
+  },
+  {
+    "model": "account.deferred.revenue.report.handler",
+    "name": "Deferred Revenue Custom Handler"
+  },
+  {
+    "model": "account.document.import.mixin",
+    "name": "Business document import mixin"
+  },
+  {
+    "model": "account.duplicate.transaction.wizard",
+    "name": "Wizard for duplicate transactions"
+  },
+  {
+    "model": "account.ec.sales.report.handler.common",
+    "name": "Common EC Sales Report Handler"
+  },
+  {
+    "model": "account.ec.sales.with.tags.report.handler",
+    "name": "EC Sales Report (with tags) Custom Handler"
+  },
+  {
+    "model": "account.ec.sales.with.taxes.report.handler",
+    "name": "EC Sales Report (with taxes) Custom Handler"
+  },
+  {
+    "model": "account.edi.common",
+    "name": "Common functions for EDI documents: generate the data, the constraints, etc"
+  },
+  {
+    "model": "account.edi.ubl",
+    "name": "Base helpers for UBL"
+  },
+  {
+    "model": "account.edi.xml.cii",
+    "name": "Factur-x/XRechnung CII 2.2.0"
+  },
+  {
+    "model": "account.edi.xml.ubl_20",
+    "name": "UBL 2.0"
+  },
+  {
+    "model": "account.edi.xml.ubl_21",
+    "name": "UBL 2.1"
+  },
+  {
+    "model": "account.edi.xml.ubl_a_nz",
+    "name": "A-NZ BIS Billing 3.0"
+  },
+  {
+    "model": "account.edi.xml.ubl_bis3",
+    "name": "UBL BIS Billing 3.0.12"
+  },
+  {
+    "model": "account.edi.xml.ubl_de",
+    "name": "BIS3 DE (XRechnung)"
+  },
+  {
+    "model": "account.edi.xml.ubl_efff",
+    "name": "E-FFF (BE)"
+  },
+  {
+    "model": "account.edi.xml.ubl_nl",
+    "name": "SI-UBL 2.0 (NLCIUS)"
+  },
+  {
+    "model": "account.edi.xml.ubl_sg",
+    "name": "SG BIS Billing 3.0"
+  },
+  {
+    "model": "account.executive.summary.report.handler",
+    "name": "Executive Summary Custom Handler"
+  },
+  {
+    "model": "account.financial.year.op",
+    "name": "Opening Balance of Financial Year"
+  },
+  {
+    "model": "account.fiscal.category",
+    "name": "Account Fiscal Category"
+  },
+  {
+    "model": "account.fiscal.position",
+    "name": "Fiscal Position"
+  },
+  {
+    "model": "account.fiscal.position.account",
+    "name": "Accounts Mapping of Fiscal Position"
+  },
+  {
+    "model": "account.fiscal.report.handler",
+    "name": "Fiscal Report Custom Handler"
+  },
+  {
+    "model": "account.fiscal.year",
+    "name": "Fiscal Year"
+  },
+  {
+    "model": "account.followup.report",
+    "name": "Follow-up Report"
+  },
+  {
+    "model": "account.followup.report.handler",
+    "name": "Follow-Up Report Custom Handler"
+  },
+  {
+    "model": "account.full.reconcile",
+    "name": "Full Reconcile"
+  },
+  {
+    "model": "account.general.ledger.report.handler",
+    "name": "FEC Report Custom Handler"
+  },
+  {
+    "model": "account.generic.tax.report.handler",
+    "name": "Generic Tax Report Custom Handler"
+  },
+  {
+    "model": "account.generic.tax.report.handler.account.tax",
+    "name": "Generic Tax Report Custom Handler (Account -> Tax)"
+  },
+  {
+    "model": "account.generic.tax.report.handler.tax.account",
+    "name": "Generic Tax Report Custom Handler (Tax -> Account)"
+  },
+  {
+    "model": "account.incoterms",
+    "name": "Incoterms"
+  },
+  {
+    "model": "account.invoice.report",
+    "name": "Invoices Statistics"
+  },
+  {
+    "model": "account.journal",
+    "name": "Journal"
+  },
+  {
+    "model": "account.journal.group",
+    "name": "Account Journal Group"
+  },
+  {
+    "model": "account.journal.report.handler",
+    "name": "Journal Report Custom Handler"
+  },
+  {
+    "model": "account.lock_exception",
+    "name": "Account Lock Exception"
+  },
+  {
+    "model": "account.merge.wizard",
+    "name": "Account merge wizard"
+  },
+  {
+    "model": "account.merge.wizard.line",
+    "name": "Account merge wizard line"
+  },
+  {
+    "model": "account.missing.transaction.wizard",
+    "name": "Wizard for missing transactions"
+  },
+  {
+    "model": "account.move",
+    "name": "Journal Entry"
+  },
+  {
+    "model": "account.move.line",
+    "name": "Journal Item"
+  },
+  {
+    "model": "account.move.reversal",
+    "name": "Journal Entry Reversal"
+  },
+  {
+    "model": "account.move.send",
+    "name": "Shared Send Invoice Wizard Functions"
+  },
+  {
+    "model": "account.move.send.batch.wizard",
+    "name": "Send Invoice Batch Wizard"
+  },
+  {
+    "model": "account.move.send.wizard",
+    "name": "Send Invoice Wizard"
+  },
+  {
+    "model": "account.multicurrency.revaluation.report.handler",
+    "name": "Multicurrency Revaluation Report Custom Handler"
+  },
+  {
+    "model": "account.multicurrency.revaluation.wizard",
+    "name": "Multicurrency Revaluation Wizard"
+  },
+  {
+    "model": "account.online.account",
+    "name": "representation of an online bank account"
+  },
+  {
+    "model": "account.online.link",
+    "name": "Bank Connection"
+  },
+  {
+    "model": "account.partial.reconcile",
+    "name": "Partial Reconcile"
+  },
+  {
+    "model": "account.partner.ledger.report.handler",
+    "name": "Partner Ledger Custom Handler"
+  },
+  {
+    "model": "account.payment",
+    "name": "Payment"
+  },
+  {
+    "model": "account.payment.initiate.payment",
+    "name": "Initiate Payment Wizard"
+  },
+  {
+    "model": "account.payment.method",
+    "name": "Payment Method"
+  },
+  {
+    "model": "account.payment.method.line",
+    "name": "Payment Method Line"
+  },
+  {
+    "model": "account.payment.register",
+    "name": "Pay"
+  },
+  {
+    "model": "account.payment.term",
+    "name": "Payment Terms"
+  },
+  {
+    "model": "account.payment.term.line",
+    "name": "Payment Terms Line"
+  },
+  {
+    "model": "account.peppol.clarification",
+    "name": "Peppol clarifications used for rejection"
+  },
+  {
+    "model": "account.peppol.rejection.wizard",
+    "name": "Peppol Rejection wizard"
+  },
+  {
+    "model": "account.peppol.response",
+    "name": "Business Level Responses for Peppol"
+  },
+  {
+    "model": "account.reconcile.model",
+    "name": "Preset to create journal entries during a invoices and payments matching"
+  },
+  {
+    "model": "account.reconcile.model.line",
+    "name": "Rules for the reconciliation model"
+  },
+  {
+    "model": "account.reconcile.wizard",
+    "name": "Account reconciliation wizard"
+  },
+  {
+    "model": "account.report",
+    "name": "Accounting Report"
+  },
+  {
+    "model": "account.report.annotation",
+    "name": "Account Report Annotation"
+  },
+  {
+    "model": "account.report.async.document",
+    "name": "Account Report Async Document"
+  },
+  {
+    "model": "account.report.async.export",
+    "name": "Account Report Async Export"
+  },
+  {
+    "model": "account.report.budget",
+    "name": "Accounting Report Budget"
+  },
+  {
+    "model": "account.report.budget.item",
+    "name": "Accounting Report Budget Item"
+  },
+  {
+    "model": "account.report.column",
+    "name": "Accounting Report Column"
+  },
+  {
+    "model": "account.report.custom.handler",
+    "name": "Account Report Custom Handler"
+  },
+  {
+    "model": "account.report.expression",
+    "name": "Accounting Report Expression"
+  },
+  {
+    "model": "account.report.external.value",
+    "name": "Accounting Report External Value"
+  },
+  {
+    "model": "account.report.file.download.error.wizard",
+    "name": "Manage the file generation errors from report exports."
+  },
+  {
+    "model": "account.report.horizontal.group",
+    "name": "Horizontal group for reports"
+  },
+  {
+    "model": "account.report.horizontal.group.rule",
+    "name": "Horizontal group rule for reports"
+  },
+  {
+    "model": "account.report.line",
+    "name": "Accounting Report Line"
+  },
+  {
+    "model": "account.report.send",
+    "name": "Account Report Send"
+  },
+  {
+    "model": "account.report.snapshot",
+    "name": "Accounting Report Snapshot"
+  },
+  {
+    "model": "account.resequence.wizard",
+    "name": "Remake the sequence of Journal Entries."
+  },
+  {
+    "model": "account.return",
+    "name": "Accounting Return"
+  },
+  {
+    "model": "account.return.audit.cycle",
+    "name": "Account Return Audit Cycle"
+  },
+  {
+    "model": "account.return.check",
+    "name": "Accounting Return Check"
+  },
+  {
+    "model": "account.return.check.template",
+    "name": "Account Return Check Template"
+  },
+  {
+    "model": "account.return.creation.wizard",
+    "name": "Return creation wizard"
+  },
+  {
+    "model": "account.return.payment.wizard",
+    "name": "Returns Generic Payment Wizard"
+  },
+  {
+    "model": "account.return.submission.wizard",
+    "name": "Return submission wizard"
+  },
+  {
+    "model": "account.return.type",
+    "name": "Accounting Return Type"
+  },
+  {
+    "model": "account.root",
+    "name": "Account codes first 2 digits"
+  },
+  {
+    "model": "account.secure.entries.wizard",
+    "name": "Secure Journal Entries"
+  },
+  {
+    "model": "account.setup.bank.manual.config",
+    "name": "Bank setup manual config"
+  },
+  {
+    "model": "account.tax",
+    "name": "Tax"
+  },
+  {
+    "model": "account.tax.group",
+    "name": "Tax Group"
+  },
+  {
+    "model": "account.tax.repartition.line",
+    "name": "Tax Repartition Line"
+  },
+  {
+    "model": "account.tax.report.handler",
+    "name": "Account Report Handler for Tax Reports"
+  },
+  {
+    "model": "account.tax.unit",
+    "name": "Tax Unit"
+  },
+  {
+    "model": "account.trial.balance.report.handler",
+    "name": "Trial Balance Custom Handler"
+  },
+  {
+    "model": "account_edi_proxy_client.user",
+    "name": "Account EDI proxy user"
+  },
+  {
+    "model": "account_followup.followup.line",
+    "name": "Follow-up Criteria"
+  },
+  {
+    "model": "account_followup.manual_reminder",
+    "name": "Wizard for sending manual reminders to clients"
+  },
+  {
+    "model": "account_followup.missing.information.wizard",
+    "name": "Followup missing information wizard"
+  },
+  {
+    "model": "account_reports.export.wizard",
+    "name": "Export wizard for accounting's reports"
+  },
+  {
+    "model": "account_reports.export.wizard.format",
+    "name": "Export format for accounting's reports"
+  },
+  {
+    "model": "ai.add.knowledge.articles",
+    "name": "Wizard to add knowledge articles to an AI agent"
+  },
+  {
+    "model": "ai.agent",
+    "name": "AI Agent"
+  },
+  {
+    "model": "ai.agent.source",
+    "name": "AI Agent Source"
+  },
+  {
+    "model": "ai.attachment.vacuum",
+    "name": "AI Generated Attachments that aren't used and should be autovacuumed"
+  },
+  {
+    "model": "ai.composer",
+    "name": "AI model configurations (system prompts) for text drafting."
+  },
+  {
+    "model": "ai.embedding",
+    "name": "Attachment Chunks Embedding"
+  },
+  {
+    "model": "ai.prompt.button",
+    "name": "Prompt that can be attached to AI UI rules for quick access by the user."
+  },
+  {
+    "model": "ai.session",
+    "name": "AI Session"
+  },
+  {
+    "model": "ai.session.event",
+    "name": "AI Session Event"
+  },
+  {
+    "model": "ai.topic",
+    "name": "Create a topic that leverages instructions and tools to direct Odoo AI in assisting the user with their tasks."
+  },
+  {
+    "model": "analytic.mixin",
+    "name": "Analytic Mixin"
+  },
+  {
+    "model": "analytic.plan.fields.mixin",
+    "name": "Analytic Plan Fields"
+  },
+  {
+    "model": "applicant.get.refuse.reason",
+    "name": "Get Refuse Reason"
+  },
+  {
+    "model": "applicant.send.mail",
+    "name": "Send mails to applicants"
+  },
+  {
+    "model": "appointment.answer",
+    "name": "Appointment Question Answers"
+  },
+  {
+    "model": "appointment.answer.input",
+    "name": "Appointment Answer Inputs"
+  },
+  {
+    "model": "appointment.booking.line",
+    "name": "Appointment Booking Line"
+  },
+  {
+    "model": "appointment.invite",
+    "name": "Appointment Invite"
+  },
+  {
+    "model": "appointment.manage.leaves",
+    "name": "Add or remove leaves from appointments"
+  },
+  {
+    "model": "appointment.question",
+    "name": "Appointment Questions"
+  },
+  {
+    "model": "appointment.resource",
+    "name": "Appointment Resource"
+  },
+  {
+    "model": "appointment.slot",
+    "name": "Appointment: Time Slot"
+  },
+  {
+    "model": "appointment.type",
+    "name": "Appointment Type"
+  },
+  {
+    "model": "auth.passkey.key",
+    "name": "Passkey"
+  },
+  {
+    "model": "auth.passkey.key.create",
+    "name": "Create a Passkey"
+  },
+  {
+    "model": "auth.totp.rate.limit.log",
+    "name": "TOTP rate limit logs"
+  },
+  {
+    "model": "auth_totp.device",
+    "name": "Authentication Device"
+  },
+  {
+    "model": "auth_totp.wizard",
+    "name": "2-Factor Setup Wizard"
+  },
+  {
+    "model": "avatar.mixin",
+    "name": "Avatar Mixin"
+  },
+  {
+    "model": "barcode.nomenclature",
+    "name": "Barcode Nomenclature"
+  },
+  {
+    "model": "barcode.rule",
+    "name": "Barcode Rule"
+  },
+  {
+    "model": "base",
+    "name": "Base"
+  },
+  {
+    "model": "base.document.layout",
+    "name": "Company Document Layout"
+  },
+  {
+    "model": "base.enable.profiling.wizard",
+    "name": "Enable profiling for some time"
+  },
+  {
+    "model": "base.import.module",
+    "name": "Import Module"
+  },
+  {
+    "model": "base.language.export",
+    "name": "Language Export"
+  },
+  {
+    "model": "base.language.import",
+    "name": "Language Import"
+  },
+  {
+    "model": "base.language.install",
+    "name": "Install Language"
+  },
+  {
+    "model": "base.module.install.request",
+    "name": "Module Activation Request"
+  },
+  {
+    "model": "base.module.install.review",
+    "name": "Module Activation Review"
+  },
+  {
+    "model": "base.module.uninstall",
+    "name": "Module Uninstall"
+  },
+  {
+    "model": "base.module.update",
+    "name": "Update Module"
+  },
+  {
+    "model": "base.module.upgrade",
+    "name": "Upgrade Module"
+  },
+  {
+    "model": "base.partner.merge.automatic.wizard",
+    "name": "Merge Partner Wizard"
+  },
+  {
+    "model": "base.partner.merge.line",
+    "name": "Merge Partner Line"
+  },
+  {
+    "model": "base_import.import",
+    "name": "Base Import"
+  },
+  {
+    "model": "base_import.mapping",
+    "name": "Base Import Mapping"
+  },
+  {
+    "model": "bill.to.po.wizard",
+    "name": "Bill to Purchase Order"
+  },
+  {
+    "model": "blog.blog",
+    "name": "Blog"
+  },
+  {
+    "model": "blog.post",
+    "name": "Blog Post"
+  },
+  {
+    "model": "blog.tag",
+    "name": "Blog Tag"
+  },
+  {
+    "model": "blog.tag.category",
+    "name": "Blog Tag Category"
+  },
+  {
+    "model": "bus.bus",
+    "name": "Communication Bus"
+  },
+  {
+    "model": "bus.listener.mixin",
+    "name": "Can send messages via bus.bus"
+  },
+  {
+    "model": "bus.sync.mixin",
+    "name": "Mixin for Bus Sync"
+  },
+  {
+    "model": "calendar.alarm",
+    "name": "Event Alarm"
+  },
+  {
+    "model": "calendar.alarm_manager",
+    "name": "Event Alarm Manager"
+  },
+  {
+    "model": "calendar.attendee",
+    "name": "Calendar Attendee Information"
+  },
+  {
+    "model": "calendar.booking",
+    "name": "Meeting Booking"
+  },
+  {
+    "model": "calendar.booking.line",
+    "name": "Meeting User/Resource Booking"
+  },
+  {
+    "model": "calendar.event",
+    "name": "Calendar Event"
+  },
+  {
+    "model": "calendar.event.sale.order.create",
+    "name": "Create SO from Meeting"
+  },
+  {
+    "model": "calendar.event.type",
+    "name": "Event Meeting Type"
+  },
+  {
+    "model": "calendar.filters",
+    "name": "Calendar Filter"
+  },
+  {
+    "model": "calendar.popover.delete.wizard",
+    "name": "Calendar Popover Delete Wizard"
+  },
+  {
+    "model": "calendar.provider.config",
+    "name": "Calendar Provider Configuration Wizard"
+  },
+  {
+    "model": "calendar.recurrence",
+    "name": "Event Recurrence Rule"
+  },
+  {
+    "model": "certificate.certificate",
+    "name": "Certificate"
+  },
+  {
+    "model": "certificate.key",
+    "name": "Cryptographic Key"
+  },
+  {
+    "model": "certificate.wizard",
+    "name": "Certificate Creation Wizard"
+  },
+  {
+    "model": "change.password.own",
+    "name": "User, change own password wizard"
+  },
+  {
+    "model": "change.password.user",
+    "name": "User, Change Password Wizard"
+  },
+  {
+    "model": "change.password.wizard",
+    "name": "Change Password Wizard"
+  },
+  {
+    "model": "chatbot.message",
+    "name": "Chatbot Message"
+  },
+  {
+    "model": "chatbot.script",
+    "name": "Chatbot Script"
+  },
+  {
+    "model": "chatbot.script.answer",
+    "name": "Chatbot Script Answer"
+  },
+  {
+    "model": "chatbot.script.step",
+    "name": "Chatbot Script Step"
+  },
+  {
+    "model": "choose.delivery.carrier",
+    "name": "Delivery Method Selection Wizard"
+  },
+  {
+    "model": "clearing.label",
+    "name": "Bank Account Clearing Number Label"
+  },
+  {
+    "model": "confirm.stock.sms",
+    "name": "Confirm Stock SMS"
+  },
+  {
+    "model": "crm.activity.report",
+    "name": "CRM Activity Analysis"
+  },
+  {
+    "model": "crm.iap.lead.helpers",
+    "name": "Helper methods for crm_iap_mine modules"
+  },
+  {
+    "model": "crm.iap.lead.industry",
+    "name": "CRM IAP Lead Industry"
+  },
+  {
+    "model": "crm.iap.lead.mining.request",
+    "name": "CRM Lead Mining Request"
+  },
+  {
+    "model": "crm.iap.lead.role",
+    "name": "People Role"
+  },
+  {
+    "model": "crm.iap.lead.seniority",
+    "name": "People Seniority"
+  },
+  {
+    "model": "crm.lead",
+    "name": "Lead"
+  },
+  {
+    "model": "crm.lead.convert2ticket",
+    "name": "Lead convert to Ticket"
+  },
+  {
+    "model": "crm.lead.lost",
+    "name": "Get Lost Reason"
+  },
+  {
+    "model": "crm.lead.pls.update",
+    "name": "Update the probabilities"
+  },
+  {
+    "model": "crm.lead.scoring.frequency",
+    "name": "Lead Scoring Frequency"
+  },
+  {
+    "model": "crm.lead.scoring.frequency.field",
+    "name": "Fields that can be used for predictive lead scoring computation"
+  },
+  {
+    "model": "crm.lead2opportunity.partner.mass",
+    "name": "Convert Lead to Opportunity (in mass)"
+  },
+  {
+    "model": "crm.lost.reason",
+    "name": "Opp. Lost Reason"
+  },
+  {
+    "model": "crm.merge.opportunity",
+    "name": "Merge Opportunities"
+  },
+  {
+    "model": "crm.quotation.partner",
+    "name": "Create new or use existing Customer on new Quotation"
+  },
+  {
+    "model": "crm.recurring.plan",
+    "name": "CRM Recurring Revenue Plan"
+  },
+  {
+    "model": "crm.stage",
+    "name": "CRM Stage"
+  },
+  {
+    "model": "crm.tag",
+    "name": "CRM Tag"
+  },
+  {
+    "model": "crm.team",
+    "name": "Sales Team"
+  },
+  {
+    "model": "crm.team.member",
+    "name": "Sales Team Member"
+  },
+  {
+    "model": "customer.product.reference",
+    "name": "Customer Product Reference"
+  },
+  {
+    "model": "decimal.precision",
+    "name": "Decimal Precision"
+  },
+  {
+    "model": "delivery.carrier",
+    "name": "Delivery Method"
+  },
+  {
+    "model": "delivery.price.rule",
+    "name": "Delivery Price Rules"
+  },
+  {
+    "model": "delivery.zip.prefix",
+    "name": "Delivery Zip Prefix"
+  },
+  {
+    "model": "digest.digest",
+    "name": "Digest"
+  },
+  {
+    "model": "digest.test",
+    "name": "Sample Digest Wizard"
+  },
+  {
+    "model": "digest.tip",
+    "name": "Digest Tip"
+  },
+  {
+    "model": "discuss.call.history",
+    "name": "Keep the call history"
+  },
+  {
+    "model": "discuss.category",
+    "name": "Discussion Category"
+  },
+  {
+    "model": "discuss.channel",
+    "name": "Discussion Channel"
+  },
+  {
+    "model": "discuss.channel.member",
+    "name": "Channel Member"
+  },
+  {
+    "model": "discuss.channel.rtc.session",
+    "name": "Mail RTC session"
+  },
+  {
+    "model": "discuss.gif.favorite",
+    "name": "Save favorite GIF from Tenor API"
+  },
+  {
+    "model": "discuss.voice.metadata",
+    "name": "Metadata for voice attachments"
+  },
+  {
+    "model": "extract.mixin",
+    "name": "Base class to extract data from documents"
+  },
+  {
+    "model": "extract.mixin.with.words",
+    "name": "Base class to extract data from documents with OCRed words saved"
+  },
+  {
+    "model": "fetchmail.server",
+    "name": "Incoming Mail Server"
+  },
+  {
+    "model": "format.address.mixin",
+    "name": "Address Format"
+  },
+  {
+    "model": "format.vat.label.mixin",
+    "name": "Country Specific VAT Label"
+  },
+  {
+    "model": "gamification.badge",
+    "name": "Gamification Badge"
+  },
+  {
+    "model": "gamification.badge.user",
+    "name": "Gamification User Badge"
+  },
+  {
+    "model": "gamification.badge.user.wizard",
+    "name": "Gamification User Badge Wizard"
+  },
+  {
+    "model": "gamification.challenge",
+    "name": "Gamification Challenge"
+  },
+  {
+    "model": "gamification.challenge.line",
+    "name": "Gamification generic goal for challenge"
+  },
+  {
+    "model": "gamification.goal",
+    "name": "Gamification Goal"
+  },
+  {
+    "model": "gamification.goal.definition",
+    "name": "Gamification Goal Definition"
+  },
+  {
+    "model": "gamification.goal.wizard",
+    "name": "Gamification Goal Wizard"
+  },
+  {
+    "model": "gamification.karma.rank",
+    "name": "Rank based on karma"
+  },
+  {
+    "model": "gamification.karma.tracking",
+    "name": "Track Karma Changes"
+  },
+  {
+    "model": "google.calendar.account.reset",
+    "name": "Google Calendar Account Reset"
+  },
+  {
+    "model": "google.calendar.sync",
+    "name": "Synchronize a record with Google Calendar"
+  },
+  {
+    "model": "google.gmail.mixin",
+    "name": "Google Gmail Mixin"
+  },
+  {
+    "model": "google.service",
+    "name": "Google Service"
+  },
+  {
+    "model": "helpdesk.sla",
+    "name": "Helpdesk SLA Policy"
+  },
+  {
+    "model": "helpdesk.sla.report.analysis",
+    "name": "SLA Status Analysis"
+  },
+  {
+    "model": "helpdesk.sla.status",
+    "name": "Ticket SLA Status"
+  },
+  {
+    "model": "helpdesk.stage",
+    "name": "Helpdesk Stage"
+  },
+  {
+    "model": "helpdesk.stage.delete.wizard",
+    "name": "Helpdesk Stage Delete Wizard"
+  },
+  {
+    "model": "helpdesk.tag",
+    "name": "Helpdesk Tag"
+  },
+  {
+    "model": "helpdesk.tag.assignment",
+    "name": "Helpdesk Tag Assignment"
+  },
+  {
+    "model": "helpdesk.team",
+    "name": "Helpdesk Team"
+  },
+  {
+    "model": "helpdesk.ticket",
+    "name": "Helpdesk Ticket"
+  },
+  {
+    "model": "helpdesk.ticket.convert.wizard",
+    "name": "Convert Helpdesk Tickets to Tasks"
+  },
+  {
+    "model": "helpdesk.ticket.report.analysis",
+    "name": "Ticket Analysis"
+  },
+  {
+    "model": "helpdesk.ticket.to.lead",
+    "name": "Convert Ticket to Lead"
+  },
+  {
+    "model": "homework.location.wizard",
+    "name": "Set Homework Location Wizard"
+  },
+  {
+    "model": "hr.applicant",
+    "name": "Applicant"
+  },
+  {
+    "model": "hr.applicant.category",
+    "name": "Category of applicant"
+  },
+  {
+    "model": "hr.applicant.refuse.reason",
+    "name": "Refuse Reason of Applicant"
+  },
+  {
+    "model": "hr.applicant.skill",
+    "name": "Skill level for an applicant"
+  },
+  {
+    "model": "hr.bank.account.allocation.wizard",
+    "name": "Bank Account Allocation Wizard"
+  },
+  {
+    "model": "hr.bank.account.allocation.wizard.line",
+    "name": "Bank Account Allocation Line (Wizard)"
+  },
+  {
+    "model": "hr.contract.sign.document.wizard",
+    "name": "Sign document in contract"
+  },
+  {
+    "model": "hr.department",
+    "name": "Department"
+  },
+  {
+    "model": "hr.departure.reason",
+    "name": "Departure Reason"
+  },
+  {
+    "model": "hr.employee",
+    "name": "Employee"
+  },
+  {
+    "model": "hr.employee.category",
+    "name": "Employee Category"
+  },
+  {
+    "model": "hr.employee.cv.wizard",
+    "name": "Print Resume"
+  },
+  {
+    "model": "hr.employee.departure",
+    "name": "Employee Departure"
+  },
+  {
+    "model": "hr.employee.location",
+    "name": "Employee Location"
+  },
+  {
+    "model": "hr.employee.public",
+    "name": "Public Employee"
+  },
+  {
+    "model": "hr.employee.skill",
+    "name": "Skill level for employee"
+  },
+  {
+    "model": "hr.employee.skill.history.report",
+    "name": "Employee Skills Report"
+  },
+  {
+    "model": "hr.employee.skill.report",
+    "name": "Employee Skills Report"
+  },
+  {
+    "model": "hr.employee.type",
+    "name": "Employee Type"
+  },
+  {
+    "model": "hr.export.employee.mixin",
+    "name": "HR Export Employee"
+  },
+  {
+    "model": "hr.export.mixin",
+    "name": "HR Export Mixin"
+  },
+  {
+    "model": "hr.individual.skill.mixin",
+    "name": "Skill level"
+  },
+  {
+    "model": "hr.job",
+    "name": "Job Position"
+  },
+  {
+    "model": "hr.job.platform",
+    "name": "Job Platform"
+  },
+  {
+    "model": "hr.job.skill",
+    "name": "Skill for job position"
+  },
+  {
+    "model": "hr.job.tag",
+    "name": "Tag"
+  },
+  {
+    "model": "hr.manager.department.report",
+    "name": "Hr Manager Department Report"
+  },
+  {
+    "model": "hr.mixin",
+    "name": "hr.mixin"
+  },
+  {
+    "model": "hr.payroll.structure.type",
+    "name": "Salary Structure Type"
+  },
+  {
+    "model": "hr.recruitment.degree",
+    "name": "Applicant Degree"
+  },
+  {
+    "model": "hr.recruitment.report",
+    "name": "Recruitment Analysis Report"
+  },
+  {
+    "model": "hr.recruitment.sign.document.wizard",
+    "name": "Sign document in recruitment"
+  },
+  {
+    "model": "hr.recruitment.source",
+    "name": "Source of Applicants"
+  },
+  {
+    "model": "hr.recruitment.stage",
+    "name": "Recruitment Stage"
+  },
+  {
+    "model": "hr.recruitment.stage.report",
+    "name": "Recruitment Stage Analysis"
+  },
+  {
+    "model": "hr.resume.line",
+    "name": "Resume line of an employee"
+  },
+  {
+    "model": "hr.resume.line.type",
+    "name": "Type of a resume line"
+  },
+  {
+    "model": "hr.skill",
+    "name": "Skill"
+  },
+  {
+    "model": "hr.skill.level",
+    "name": "Skill Level"
+  },
+  {
+    "model": "hr.skill.type",
+    "name": "Skill Type"
+  },
+  {
+    "model": "hr.talent.pool",
+    "name": "Talent Pool"
+  },
+  {
+    "model": "hr.version",
+    "name": "Employee Record"
+  },
+  {
+    "model": "hr.work.location",
+    "name": "Work Location"
+  },
+  {
+    "model": "html.field.history.mixin",
+    "name": "Field html History"
+  },
+  {
+    "model": "html_editor.converter.test",
+    "name": "Html Editor Converter Test"
+  },
+  {
+    "model": "html_editor.converter.test.sub",
+    "name": "Html Editor Converter Subtest"
+  },
+  {
+    "model": "iap.account",
+    "name": "IAP Account"
+  },
+  {
+    "model": "iap.autocomplete.api",
+    "name": "IAP Partner Autocomplete API"
+  },
+  {
+    "model": "iap.enrich.api",
+    "name": "IAP Lead Enrichment API"
+  },
+  {
+    "model": "iap.service",
+    "name": "IAP Service"
+  },
+  {
+    "model": "iap.service.pack",
+    "name": "IAP Service Pack"
+  },
+  {
+    "model": "im_livechat.channel",
+    "name": "Livechat Channel"
+  },
+  {
+    "model": "im_livechat.channel.member.history",
+    "name": "Keep the channel member history"
+  },
+  {
+    "model": "im_livechat.channel.rule",
+    "name": "Livechat Channel Rule"
+  },
+  {
+    "model": "im_livechat.expertise",
+    "name": "Live Chat Expertise"
+  },
+  {
+    "model": "im_livechat.report.channel",
+    "name": "Livechat Support Channel Report"
+  },
+  {
+    "model": "image.mixin",
+    "name": "Image Mixin"
+  },
+  {
+    "model": "ir.actions.act_url",
+    "name": "Action URL"
+  },
+  {
+    "model": "ir.actions.act_window",
+    "name": "Action Window"
+  },
+  {
+    "model": "ir.actions.act_window.view",
+    "name": "Action Window View"
+  },
+  {
+    "model": "ir.actions.act_window_close",
+    "name": "Action Window Close"
+  },
+  {
+    "model": "ir.actions.actions",
+    "name": "Action"
+  },
+  {
+    "model": "ir.actions.client",
+    "name": "Client Action"
+  },
+  {
+    "model": "ir.actions.report",
+    "name": "Report Action"
+  },
+  {
+    "model": "ir.actions.server",
+    "name": "Server Action"
+  },
+  {
+    "model": "ir.actions.server.history",
+    "name": "Server Action History"
+  },
+  {
+    "model": "ir.actions.todo",
+    "name": "Configuration Wizard"
+  },
+  {
+    "model": "ir.asset",
+    "name": "Asset"
+  },
+  {
+    "model": "ir.attachment",
+    "name": "Attachment"
+  },
+  {
+    "model": "ir.autovacuum",
+    "name": "Automatic Vacuum"
+  },
+  {
+    "model": "ir.binary",
+    "name": "File streaming helper model for controllers"
+  },
+  {
+    "model": "ir.config_parameter",
+    "name": "System Parameter"
+  },
+  {
+    "model": "ir.cron",
+    "name": "Scheduled Action"
+  },
+  {
+    "model": "ir.cron.progress",
+    "name": "Progress of Scheduled Action"
+  },
+  {
+    "model": "ir.cron.trigger",
+    "name": "Triggered Action"
+  },
+  {
+    "model": "ir.default",
+    "name": "Default Value"
+  },
+  {
+    "model": "ir.demo",
+    "name": "Demo"
+  },
+  {
+    "model": "ir.demo_failure",
+    "name": "Demo failure"
+  },
+  {
+    "model": "ir.demo_failure.wizard",
+    "name": "Demo Failure wizard"
+  },
+  {
+    "model": "ir.embedded.actions",
+    "name": "Embedded Action"
+  },
+  {
+    "model": "ir.exports",
+    "name": "Exports"
+  },
+  {
+    "model": "ir.exports.line",
+    "name": "Exports Line"
+  },
+  {
+    "model": "ir.fields.converter",
+    "name": "Fields Converter"
+  },
+  {
+    "model": "ir.filters",
+    "name": "Filter"
+  },
+  {
+    "model": "ir.http",
+    "name": "HTTP Routing"
+  },
+  {
+    "model": "ir.logging",
+    "name": "Logging"
+  },
+  {
+    "model": "ir.mail_server",
+    "name": "Mail Server"
+  },
+  {
+    "model": "ir.min.cron.mixin",
+    "name": "Set Min Next call on metabase"
+  },
+  {
+    "model": "ir.model",
+    "name": "Model"
+  },
+  {
+    "model": "ir.model.access",
+    "name": "Model Access"
+  },
+  {
+    "model": "ir.model.constraint",
+    "name": "Model Constraint"
+  },
+  {
+    "model": "ir.model.data",
+    "name": "Model Data"
+  },
+  {
+    "model": "ir.model.fields",
+    "name": "Field"
+  },
+  {
+    "model": "ir.model.fields.selection",
+    "name": "Fields Selection"
+  },
+  {
+    "model": "ir.model.inherit",
+    "name": "Model Inheritance Tree"
+  },
+  {
+    "model": "ir.model.relation",
+    "name": "Relation Model"
+  },
+  {
+    "model": "ir.module.category",
+    "name": "Application"
+  },
+  {
+    "model": "ir.module.module",
+    "name": "Module"
+  },
+  {
+    "model": "ir.module.module.dependency",
+    "name": "Module dependency"
+  },
+  {
+    "model": "ir.module.module.exclusion",
+    "name": "Module exclusion"
+  },
+  {
+    "model": "ir.profile",
+    "name": "Allow profiling only to Tech Support level"
+  },
+  {
+    "model": "ir.qweb",
+    "name": "Qweb"
+  },
+  {
+    "model": "ir.qweb.field",
+    "name": "Qweb Field"
+  },
+  {
+    "model": "ir.qweb.field.barcode",
+    "name": "Qweb Field Barcode"
+  },
+  {
+    "model": "ir.qweb.field.contact",
+    "name": "Qweb Field Contact"
+  },
+  {
+    "model": "ir.qweb.field.date",
+    "name": "Qweb Field Date"
+  },
+  {
+    "model": "ir.qweb.field.datetime",
+    "name": "Qweb Field Datetime"
+  },
+  {
+    "model": "ir.qweb.field.duration",
+    "name": "Qweb Field Duration"
+  },
+  {
+    "model": "ir.qweb.field.float",
+    "name": "Qweb Field Float"
+  },
+  {
+    "model": "ir.qweb.field.float_time",
+    "name": "Qweb Field Float Time"
+  },
+  {
+    "model": "ir.qweb.field.html",
+    "name": "Qweb Field HTML"
+  },
+  {
+    "model": "ir.qweb.field.image",
+    "name": "Qweb Field Image"
+  },
+  {
+    "model": "ir.qweb.field.image_url",
+    "name": "Qweb Field Image"
+  },
+  {
+    "model": "ir.qweb.field.integer",
+    "name": "Qweb Field Integer"
+  },
+  {
+    "model": "ir.qweb.field.many2many",
+    "name": "Qweb field many2many"
+  },
+  {
+    "model": "ir.qweb.field.many2one",
+    "name": "Qweb Field Many to One"
+  },
+  {
+    "model": "ir.qweb.field.monetary",
+    "name": "Qweb Field Monetary"
+  },
+  {
+    "model": "ir.qweb.field.one2many",
+    "name": "Qweb field one2many"
+  },
+  {
+    "model": "ir.qweb.field.qweb",
+    "name": "Qweb Field qweb"
+  },
+  {
+    "model": "ir.qweb.field.relative",
+    "name": "Qweb Field Relative"
+  },
+  {
+    "model": "ir.qweb.field.selection",
+    "name": "Qweb Field Selection"
+  },
+  {
+    "model": "ir.qweb.field.text",
+    "name": "Qweb Field Text"
+  },
+  {
+    "model": "ir.qweb.field.time",
+    "name": "QWeb Field Time"
+  },
+  {
+    "model": "ir.rule",
+    "name": "Record Rule"
+  },
+  {
+    "model": "ir.sequence",
+    "name": "Sequence"
+  },
+  {
+    "model": "ir.sequence.date_range",
+    "name": "Sequence Date Range"
+  },
+  {
+    "model": "ir.ui.menu",
+    "name": "Menu"
+  },
+  {
+    "model": "ir.ui.view",
+    "name": "View"
+  },
+  {
+    "model": "ir.ui.view.custom",
+    "name": "Custom View"
+  },
+  {
+    "model": "ir.websocket",
+    "name": "websocket message handling"
+  },
+  {
+    "model": "ir_actions_account_report_download",
+    "name": "Technical model for accounting report downloads"
+  },
+  {
+    "model": "job.add.applicants",
+    "name": "Add applicants to a job"
+  },
+  {
+    "model": "knowledge.article",
+    "name": "Knowledge Article"
+  },
+  {
+    "model": "knowledge.article.favorite",
+    "name": "Favorite Article"
+  },
+  {
+    "model": "knowledge.article.member",
+    "name": "Article Member"
+  },
+  {
+    "model": "knowledge.article.stage",
+    "name": "Knowledge Stage"
+  },
+  {
+    "model": "knowledge.article.template.category",
+    "name": "Article Template Category"
+  },
+  {
+    "model": "knowledge.article.thread",
+    "name": "Article Discussion Thread"
+  },
+  {
+    "model": "knowledge.cover",
+    "name": "Knowledge Cover"
+  },
+  {
+    "model": "knowledge.invite",
+    "name": "Knowledge Invite Wizard"
+  },
+  {
+    "model": "kpi.provider",
+    "name": "KPI Provider"
+  },
+  {
+    "model": "l10n_fr.das2.report.handler",
+    "name": "DAS2 Report Custom Handler"
+  },
+  {
+    "model": "l10n_fr.fec.export.wizard",
+    "name": "Fichier Echange Informatise"
+  },
+  {
+    "model": "l10n_fr.report.handler",
+    "name": "French Report Custom Handler"
+  },
+  {
+    "model": "l10n_fr.res.partner.profession",
+    "name": "Profession for French partners"
+  },
+  {
+    "model": "l10n_fr.send.das2.report",
+    "name": "Send DAS2 Report Wizard"
+  },
+  {
+    "model": "l10n_fr_reports.2031.annexes.report.handler",
+    "name": "2031 Report Handler"
+  },
+  {
+    "model": "l10n_fr_reports.2031.report.handler",
+    "name": "2031 Report Handler"
+  },
+  {
+    "model": "l10n_fr_reports.2033.a.report.handler",
+    "name": "2033 A Report Handler"
+  },
+  {
+    "model": "l10n_fr_reports.2033.b.report.handler",
+    "name": "2033 B Report Handler"
+  },
+  {
+    "model": "l10n_fr_reports.2033.c.report.handler",
+    "name": "2033-C Fixed Assets – Depreciation – Capital Gains – Capital Losses"
+  },
+  {
+    "model": "l10n_fr_reports.2033.d.report.handler",
+    "name": "Handler of the 2033 D report"
+  },
+  {
+    "model": "l10n_fr_reports.2033.e.report.handler",
+    "name": "2033 E Report Handler"
+  },
+  {
+    "model": "l10n_fr_reports.2033.f.report.handler",
+    "name": "2033 F Report Handler"
+  },
+  {
+    "model": "l10n_fr_reports.2033.g.report.handler",
+    "name": "2033G Subsidiaries and Investments Report Custom Handler"
+  },
+  {
+    "model": "l10n_fr_reports.2065_sd.bis.report.handler",
+    "name": "Handler of the 2065-bis-SD report"
+  },
+  {
+    "model": "l10n_fr_reports.2065_sd.report.handler",
+    "name": "Handler of the 2065-SD report"
+  },
+  {
+    "model": "l10n_fr_reports.2069.rci.report.handler",
+    "name": "2069 Rci Report Handler"
+  },
+  {
+    "model": "l10n_fr_reports.fiscal_declaration_handler",
+    "name": "Fiscal Declaration Report Handler"
+  },
+  {
+    "model": "l10n_fr_reports.send.fiscal.declaration",
+    "name": "Send Fiscal Declaration Wizard"
+  },
+  {
+    "model": "l10n_fr_reports.send.vat.report",
+    "name": "Send VAT Report Wizard"
+  },
+  {
+    "model": "l10n_fr_reports.send.vat.report.bank.account.line",
+    "name": "Bank Account Line for French Vat Report"
+  },
+  {
+    "model": "lot.label.layout",
+    "name": "Choose the sheet layout to print lot labels"
+  },
+  {
+    "model": "mail.activity",
+    "name": "Activity"
+  },
+  {
+    "model": "mail.activity.mixin",
+    "name": "Activity Mixin"
+  },
+  {
+    "model": "mail.activity.plan",
+    "name": "Activity Plan"
+  },
+  {
+    "model": "mail.activity.plan.template",
+    "name": "Activity plan template"
+  },
+  {
+    "model": "mail.activity.schedule",
+    "name": "Activity schedule plan Wizard"
+  },
+  {
+    "model": "mail.activity.schedule.line",
+    "name": "Mail Activity Schedule Line"
+  },
+  {
+    "model": "mail.activity.todo.create",
+    "name": "Create activity and todo at the same time"
+  },
+  {
+    "model": "mail.activity.type",
+    "name": "Activity Type"
+  },
+  {
+    "model": "mail.alias",
+    "name": "Email Alias"
+  },
+  {
+    "model": "mail.alias.domain",
+    "name": "Email Domain"
+  },
+  {
+    "model": "mail.alias.mixin",
+    "name": "Email Aliases Mixin"
+  },
+  {
+    "model": "mail.alias.mixin.optional",
+    "name": "Email Aliases Mixin (light)"
+  },
+  {
+    "model": "mail.blacklist",
+    "name": "Mail Blacklist"
+  },
+  {
+    "model": "mail.blacklist.remove",
+    "name": "Remove email from blacklist wizard"
+  },
+  {
+    "model": "mail.bot",
+    "name": "Mail Bot"
+  },
+  {
+    "model": "mail.canned.response",
+    "name": "Canned Response"
+  },
+  {
+    "model": "mail.compose.message",
+    "name": "Email composition wizard"
+  },
+  {
+    "model": "mail.composer.mixin",
+    "name": "Mail Composer Mixin"
+  },
+  {
+    "model": "mail.followers",
+    "name": "Document Follower"
+  },
+  {
+    "model": "mail.followers.edit",
+    "name": "Followers edit wizard"
+  },
+  {
+    "model": "mail.gateway.allowed",
+    "name": "Mail Gateway Allowed"
+  },
+  {
+    "model": "mail.guest",
+    "name": "Guest"
+  },
+  {
+    "model": "mail.ice.server",
+    "name": "ICE Server"
+  },
+  {
+    "model": "mail.link.preview",
+    "name": "Store link preview data"
+  },
+  {
+    "model": "mail.mail",
+    "name": "Outgoing Mail"
+  },
+  {
+    "model": "mail.message",
+    "name": "Message"
+  },
+  {
+    "model": "mail.message.link.preview",
+    "name": "Link between link previews and messages"
+  },
+  {
+    "model": "mail.message.reaction",
+    "name": "Message Reaction"
+  },
+  {
+    "model": "mail.message.schedule",
+    "name": "Scheduled Message"
+  },
+  {
+    "model": "mail.message.subtype",
+    "name": "Message Subtype"
+  },
+  {
+    "model": "mail.message.translation",
+    "name": "Message Translation"
+  },
+  {
+    "model": "mail.notification",
+    "name": "Message Notification"
+  },
+  {
+    "model": "mail.poll",
+    "name": "Poll"
+  },
+  {
+    "model": "mail.poll.option",
+    "name": "Poll option"
+  },
+  {
+    "model": "mail.poll.vote",
+    "name": "Poll vote"
+  },
+  {
+    "model": "mail.presence",
+    "name": "User/Guest Presence"
+  },
+  {
+    "model": "mail.push",
+    "name": "Push Notification"
+  },
+  {
+    "model": "mail.push.device",
+    "name": "Push Notification Device"
+  },
+  {
+    "model": "mail.render.mixin",
+    "name": "Mail Render Mixin"
+  },
+  {
+    "model": "mail.scheduled.message",
+    "name": "Scheduled Message"
+  },
+  {
+    "model": "mail.template",
+    "name": "Email Template"
+  },
+  {
+    "model": "mail.template.preview",
+    "name": "Email Template Preview"
+  },
+  {
+    "model": "mail.template.reset",
+    "name": "Mail Template Reset"
+  },
+  {
+    "model": "mail.thread",
+    "name": "Email Thread"
+  },
+  {
+    "model": "mail.thread.blacklist",
+    "name": "Mail Blacklist mixin"
+  },
+  {
+    "model": "mail.thread.main.attachment",
+    "name": "Mail Main Attachment management"
+  },
+  {
+    "model": "mail.thread.phone",
+    "name": "Phone Blacklist Mixin"
+  },
+  {
+    "model": "mail.thread.subject.suggested",
+    "name": "Thread with suggested subject"
+  },
+  {
+    "model": "mail.track.mixin",
+    "name": "Mail Track Mixin"
+  },
+  {
+    "model": "mail.tracking.duration.mixin",
+    "name": "Mixin to compute the time a record has spent in each value a many2one field can take"
+  },
+  {
+    "model": "microsoft.outlook.mixin",
+    "name": "Microsoft Outlook Mixin"
+  },
+  {
+    "model": "onboarding.onboarding",
+    "name": "Onboarding"
+  },
+  {
+    "model": "onboarding.onboarding.step",
+    "name": "Onboarding Step"
+  },
+  {
+    "model": "onboarding.progress",
+    "name": "Onboarding Progress Tracker"
+  },
+  {
+    "model": "onboarding.progress.step",
+    "name": "Onboarding Progress Step Tracker"
+  },
+  {
+    "model": "payment.capture.wizard",
+    "name": "Payment Capture Wizard"
+  },
+  {
+    "model": "payment.link.wizard",
+    "name": "Generate Sales Payment Link"
+  },
+  {
+    "model": "payment.method",
+    "name": "Payment Method"
+  },
+  {
+    "model": "payment.provider",
+    "name": "Payment Provider"
+  },
+  {
+    "model": "payment.refund.wizard",
+    "name": "Payment Refund Wizard"
+  },
+  {
+    "model": "payment.token",
+    "name": "Payment Token"
+  },
+  {
+    "model": "payment.transaction",
+    "name": "Payment Transaction"
+  },
+  {
+    "model": "peppol.registration",
+    "name": "Peppol Registration"
+  },
+  {
+    "model": "phone.blacklist",
+    "name": "Phone Blacklist"
+  },
+  {
+    "model": "phone.blacklist.remove",
+    "name": "Remove phone from blacklist"
+  },
+  {
+    "model": "picking.label.type",
+    "name": "Choose whether to print product or lot/sn labels"
+  },
+  {
+    "model": "planning.analysis.report",
+    "name": "Planning Analysis Report"
+  },
+  {
+    "model": "planning.calendar.resource",
+    "name": "planning calendar resource"
+  },
+  {
+    "model": "planning.planning",
+    "name": "Schedule"
+  },
+  {
+    "model": "planning.preview",
+    "name": "Planning Preview"
+  },
+  {
+    "model": "planning.recurrency",
+    "name": "Planning Recurrence"
+  },
+  {
+    "model": "planning.role",
+    "name": "Planning Role"
+  },
+  {
+    "model": "planning.send",
+    "name": "Send Planning"
+  },
+  {
+    "model": "planning.slot",
+    "name": "Planning Shift"
+  },
+  {
+    "model": "planning.slot.template",
+    "name": "Shift Template"
+  },
+  {
+    "model": "portal.entry",
+    "name": "Portal Entry"
+  },
+  {
+    "model": "portal.mixin",
+    "name": "Portal Mixin"
+  },
+  {
+    "model": "portal.share",
+    "name": "Portal Sharing"
+  },
+  {
+    "model": "portal.wizard",
+    "name": "Grant Portal Access"
+  },
+  {
+    "model": "portal.wizard.user",
+    "name": "Portal User Config"
+  },
+  {
+    "model": "privacy.log",
+    "name": "Privacy Log"
+  },
+  {
+    "model": "privacy.lookup.wizard",
+    "name": "Privacy Lookup Wizard"
+  },
+  {
+    "model": "privacy.lookup.wizard.line",
+    "name": "Privacy Lookup Wizard Line"
+  },
+  {
+    "model": "product.attribute",
+    "name": "Product Attribute"
+  },
+  {
+    "model": "product.attribute.category",
+    "name": "Product Attribute Category"
+  },
+  {
+    "model": "product.attribute.custom.value",
+    "name": "Product Attribute Custom Value"
+  },
+  {
+    "model": "product.attribute.value",
+    "name": "Attribute Value"
+  },
+  {
+    "model": "product.base.unit",
+    "name": "Unit of Measure for price per unit on products."
+  },
+  {
+    "model": "product.catalog.mixin",
+    "name": "Product Catalog Mixin"
+  },
+  {
+    "model": "product.category",
+    "name": "Product Category"
+  },
+  {
+    "model": "product.combo",
+    "name": "Product Combo"
+  },
+  {
+    "model": "product.combo.item",
+    "name": "Product Combo Item"
+  },
+  {
+    "model": "product.document",
+    "name": "Product Document"
+  },
+  {
+    "model": "product.feed",
+    "name": "Product Feed"
+  },
+  {
+    "model": "product.fetch.image.wizard",
+    "name": "Fetch product images from Barcode Lookup based on the product's barcode."
+  },
+  {
+    "model": "product.image",
+    "name": "Product Image"
+  },
+  {
+    "model": "product.label.layout",
+    "name": "Choose the sheet layout to print the labels"
+  },
+  {
+    "model": "product.pricelist",
+    "name": "Pricelist"
+  },
+  {
+    "model": "product.pricelist.item",
+    "name": "Pricelist Rule"
+  },
+  {
+    "model": "product.product",
+    "name": "Product Variant"
+  },
+  {
+    "model": "product.public.category",
+    "name": "Website Product Category"
+  },
+  {
+    "model": "product.removal",
+    "name": "Removal Strategy"
+  },
+  {
+    "model": "product.replenish",
+    "name": "Product Replenish"
+  },
+  {
+    "model": "product.ribbon",
+    "name": "Product ribbon"
+  },
+  {
+    "model": "product.supplierinfo",
+    "name": "Supplier Pricelist"
+  },
+  {
+    "model": "product.tag",
+    "name": "Product Tag"
+  },
+  {
+    "model": "product.template",
+    "name": "Product"
+  },
+  {
+    "model": "product.template.attribute.line",
+    "name": "Product Template Attribute Line"
+  },
+  {
+    "model": "product.template.attribute.value",
+    "name": "Product Template Attribute Value"
+  },
+  {
+    "model": "product.uom",
+    "name": "Link between products and their UoMs"
+  },
+  {
+    "model": "product.value",
+    "name": "Product Value"
+  },
+  {
+    "model": "product.wishlist",
+    "name": "Product Wishlist"
+  },
+  {
+    "model": "project.collaborator",
+    "name": "Collaborators in project shared"
+  },
+  {
+    "model": "project.milestone",
+    "name": "Project Milestone"
+  },
+  {
+    "model": "project.project",
+    "name": "Project"
+  },
+  {
+    "model": "project.project.stage",
+    "name": "Project Stage"
+  },
+  {
+    "model": "project.project.stage.delete.wizard",
+    "name": "Project Stage Delete Wizard"
+  },
+  {
+    "model": "project.role",
+    "name": "Project Role"
+  },
+  {
+    "model": "project.share.collaborator.wizard",
+    "name": "Project Sharing Collaborator Wizard"
+  },
+  {
+    "model": "project.share.wizard",
+    "name": "Project Sharing"
+  },
+  {
+    "model": "project.tags",
+    "name": "Project Tag"
+  },
+  {
+    "model": "project.task",
+    "name": "Task"
+  },
+  {
+    "model": "project.task.burndown.chart.report",
+    "name": "Burndown Chart"
+  },
+  {
+    "model": "project.task.convert.wizard",
+    "name": "Convert Project Tasks to Tickets"
+  },
+  {
+    "model": "project.task.recurrence",
+    "name": "Task Recurrence"
+  },
+  {
+    "model": "project.task.stage.personal",
+    "name": "Personal Task Stage"
+  },
+  {
+    "model": "project.task.type",
+    "name": "Task Stage"
+  },
+  {
+    "model": "project.task.type.delete.wizard",
+    "name": "Project Task Stage Delete Wizard"
+  },
+  {
+    "model": "project.template.create.wizard",
+    "name": "Project Template create Wizard"
+  },
+  {
+    "model": "project.template.role.to.users.map",
+    "name": "Project role to users mapping"
+  },
+  {
+    "model": "project.update",
+    "name": "Project Update"
+  },
+  {
+    "model": "properties.base.definition",
+    "name": "Properties Base Definition"
+  },
+  {
+    "model": "properties.base.definition.mixin",
+    "name": "Properties Base Definition Mixin"
+  },
+  {
+    "model": "publisher_warranty.contract",
+    "name": "Publisher Warranty Contract"
+  },
+  {
+    "model": "purchase.bill.line.match",
+    "name": "Purchase Line and Vendor Bill line matching view"
+  },
+  {
+    "model": "purchase.bill.union",
+    "name": "Purchases & Bills Union"
+  },
+  {
+    "model": "purchase.edi.xml.ubl_bis3",
+    "name": "Purchase UBL BIS Ordering 3.5"
+  },
+  {
+    "model": "purchase.order",
+    "name": "Purchase Order"
+  },
+  {
+    "model": "purchase.order.line",
+    "name": "Purchase Order Line"
+  },
+  {
+    "model": "purchase.report",
+    "name": "Purchase Report"
+  },
+  {
+    "model": "qr.code.payment.wizard",
+    "name": "Generic Payment Wizard with QR Code"
+  },
+  {
+    "model": "quotation.document",
+    "name": "Quotation's Headers & Footers"
+  },
+  {
+    "model": "rating.mixin",
+    "name": "Rating Mixin"
+  },
+  {
+    "model": "rating.parent.mixin",
+    "name": "Rating Parent Mixin"
+  },
+  {
+    "model": "rating.rating",
+    "name": "Rating"
+  },
+  {
+    "model": "report.account.report_hash_integrity",
+    "name": "Get hash integrity result as PDF."
+  },
+  {
+    "model": "report.account.report_invoice",
+    "name": "Account report without payment lines"
+  },
+  {
+    "model": "report.account.report_invoice_with_payments",
+    "name": "Account report with payment lines"
+  },
+  {
+    "model": "report.account_batch_payment.print_batch_payment",
+    "name": "Batch Deposit Report"
+  },
+  {
+    "model": "report.base.report_irmodulereference",
+    "name": "Module Reference Report (base)"
+  },
+  {
+    "model": "report.hr_skills.report_employee_cv",
+    "name": "Employee Resume"
+  },
+  {
+    "model": "report.layout",
+    "name": "Report Layout"
+  },
+  {
+    "model": "report.paperformat",
+    "name": "Paper Format Config"
+  },
+  {
+    "model": "report.product.report_pricelist",
+    "name": "Pricelist Report"
+  },
+  {
+    "model": "report.product.report_producttemplatelabel2x7",
+    "name": "Product Label Report 2x7"
+  },
+  {
+    "model": "report.product.report_producttemplatelabel4x12",
+    "name": "Product Label Report 4x12"
+  },
+  {
+    "model": "report.product.report_producttemplatelabel4x7",
+    "name": "Product Label Report 4x7"
+  },
+  {
+    "model": "report.product.report_producttemplatelabel_dymo",
+    "name": "Product Label Report"
+  },
+  {
+    "model": "report.product.report_producttemplatelabel_zpl",
+    "name": "Product Label Report ZPL"
+  },
+  {
+    "model": "report.project.task.user",
+    "name": "Tasks Analysis"
+  },
+  {
+    "model": "report.sign.green_savings_report",
+    "name": "Green Savings Report model"
+  },
+  {
+    "model": "report.stock.label_lot_template_view",
+    "name": "Lot Label Report"
+  },
+  {
+    "model": "report.stock.quantity",
+    "name": "Stock Quantity Report"
+  },
+  {
+    "model": "report.stock.report_reception",
+    "name": "Stock Reception Report"
+  },
+  {
+    "model": "report.stock.report_stock_rule",
+    "name": "Stock rule report"
+  },
+  {
+    "model": "res.city",
+    "name": "City"
+  },
+  {
+    "model": "res.company",
+    "name": "Company"
+  },
+  {
+    "model": "res.config",
+    "name": "Config"
+  },
+  {
+    "model": "res.config.settings",
+    "name": "Config Settings"
+  },
+  {
+    "model": "res.country",
+    "name": "Country"
+  },
+  {
+    "model": "res.country.group",
+    "name": "Country Group"
+  },
+  {
+    "model": "res.country.state",
+    "name": "Country state"
+  },
+  {
+    "model": "res.currency",
+    "name": "Currency"
+  },
+  {
+    "model": "res.currency.rate",
+    "name": "Currency Rate"
+  },
+  {
+    "model": "res.device",
+    "name": "Device"
+  },
+  {
+    "model": "res.device.log",
+    "name": "Device Log"
+  },
+  {
+    "model": "res.group.functional",
+    "name": "Group Functional"
+  },
+  {
+    "model": "res.groups",
+    "name": "Access Groups"
+  },
+  {
+    "model": "res.groups.privilege",
+    "name": "Privilege"
+  },
+  {
+    "model": "res.lang",
+    "name": "Language"
+  },
+  {
+    "model": "res.partner",
+    "name": "Contact"
+  },
+  {
+    "model": "res.partner.bank",
+    "name": "Bank Account"
+  },
+  {
+    "model": "res.partner.category",
+    "name": "Partner Tag"
+  },
+  {
+    "model": "res.partner.industry",
+    "name": "Industry"
+  },
+  {
+    "model": "res.role",
+    "name": "Represents a role in the system used to categorize users. Each role has a unique name and can be associated with multiple users. Roles can be mentioned in messages to notify all associated users."
+  },
+  {
+    "model": "res.session",
+    "name": "Session"
+  },
+  {
+    "model": "res.users",
+    "name": "User"
+  },
+  {
+    "model": "res.users.apikeys",
+    "name": "User API Key"
+  },
+  {
+    "model": "res.users.apikeys.description",
+    "name": "API Key Description"
+  },
+  {
+    "model": "res.users.apikeys.show",
+    "name": "Show API Key"
+  },
+  {
+    "model": "res.users.deletion",
+    "name": "Users Deletion Request"
+  },
+  {
+    "model": "res.users.identitycheck",
+    "name": "Password Check Wizard"
+  },
+  {
+    "model": "res.users.log",
+    "name": "Users Log"
+  },
+  {
+    "model": "res.users.settings",
+    "name": "User Settings"
+  },
+  {
+    "model": "res.users.settings.embedded.action",
+    "name": "User Settings for Embedded Actions"
+  },
+  {
+    "model": "res.users.settings.volumes",
+    "name": "User Settings Volumes"
+  },
+  {
+    "model": "reset.view.arch.wizard",
+    "name": "Reset View Architecture Wizard"
+  },
+  {
+    "model": "resource.calendar",
+    "name": "Resource Working Time"
+  },
+  {
+    "model": "resource.calendar.attendance",
+    "name": "Work Detail"
+  },
+  {
+    "model": "resource.calendar.leaves",
+    "name": "Resource Time Off Detail"
+  },
+  {
+    "model": "resource.mixin",
+    "name": "Resource Mixin"
+  },
+  {
+    "model": "resource.resource",
+    "name": "Resource"
+  },
+  {
+    "model": "sale.advance.payment.inv",
+    "name": "Sales Advance Payment Invoice"
+  },
+  {
+    "model": "sale.edi.xml.ubl_bis3",
+    "name": "Sale BIS Ordering 3.5"
+  },
+  {
+    "model": "sale.mass.cancel.orders",
+    "name": "Cancel multiple quotations"
+  },
+  {
+    "model": "sale.order",
+    "name": "Sales Order"
+  },
+  {
+    "model": "sale.order.discount",
+    "name": "Discount Wizard"
+  },
+  {
+    "model": "sale.order.line",
+    "name": "Sales Order Line"
+  },
+  {
+    "model": "sale.order.spreadsheet",
+    "name": "Quotation Spreadsheet"
+  },
+  {
+    "model": "sale.order.template",
+    "name": "Order Templates"
+  },
+  {
+    "model": "sale.order.template.line",
+    "name": "Quotation Template Line"
+  },
+  {
+    "model": "sale.pdf.form.field",
+    "name": "Form fields of inside quotation documents."
+  },
+  {
+    "model": "sale.report",
+    "name": "Sales Analysis Report"
+  },
+  {
+    "model": "sequence.mixin",
+    "name": "Automatic sequence"
+  },
+  {
+    "model": "server.action.history.wizard",
+    "name": "Server Action History Wizard"
+  },
+  {
+    "model": "sign.completed.document",
+    "name": "Completed Document"
+  },
+  {
+    "model": "sign.document",
+    "name": "Signature Document"
+  },
+  {
+    "model": "sign.item",
+    "name": "Fields to be sign on Document"
+  },
+  {
+    "model": "sign.item.option",
+    "name": "Option of a selection Field"
+  },
+  {
+    "model": "sign.item.radio.set",
+    "name": "Radio button set for keeping radio button items together"
+  },
+  {
+    "model": "sign.item.role",
+    "name": "Signature Item Role"
+  },
+  {
+    "model": "sign.item.type",
+    "name": "Signature Item Type"
+  },
+  {
+    "model": "sign.log",
+    "name": "Sign requests access history"
+  },
+  {
+    "model": "sign.request",
+    "name": "Signature Request"
+  },
+  {
+    "model": "sign.request.item",
+    "name": "Signature Request Item"
+  },
+  {
+    "model": "sign.request.item.value",
+    "name": "Signature Item Value"
+  },
+  {
+    "model": "sign.request.share",
+    "name": "Sign request share wizard"
+  },
+  {
+    "model": "sign.send.request",
+    "name": "Sign send request"
+  },
+  {
+    "model": "sign.send.request.signer",
+    "name": "Sign send request signer"
+  },
+  {
+    "model": "sign.template",
+    "name": "Signature Template"
+  },
+  {
+    "model": "sign.template.preview",
+    "name": "Sign Tempate Preview"
+  },
+  {
+    "model": "sign.template.tag",
+    "name": "Sign Template Tag"
+  },
+  {
+    "model": "sms.account.code",
+    "name": "SMS Account Verification Code Wizard"
+  },
+  {
+    "model": "sms.account.phone",
+    "name": "SMS Account Registration Phone Number Wizard"
+  },
+  {
+    "model": "sms.account.sender",
+    "name": "SMS Account Sender Name Wizard"
+  },
+  {
+    "model": "sms.composer",
+    "name": "Send SMS Wizard"
+  },
+  {
+    "model": "sms.sms",
+    "name": "Outgoing SMS"
+  },
+  {
+    "model": "sms.template",
+    "name": "SMS Templates"
+  },
+  {
+    "model": "sms.template.preview",
+    "name": "SMS Template Preview"
+  },
+  {
+    "model": "sms.template.reset",
+    "name": "SMS Template Reset"
+  },
+  {
+    "model": "sms.tracker",
+    "name": "Link SMS to mailing/sms tracking models"
+  },
+  {
+    "model": "snailmail.letter",
+    "name": "Snailmail Letter"
+  },
+  {
+    "model": "spreadsheet.cell.thread",
+    "name": "Spreadsheet discussion thread"
+  },
+  {
+    "model": "spreadsheet.dashboard",
+    "name": "Spreadsheet Dashboard"
+  },
+  {
+    "model": "spreadsheet.dashboard.group",
+    "name": "Group of dashboards"
+  },
+  {
+    "model": "spreadsheet.dashboard.share",
+    "name": "Copy of a shared dashboard"
+  },
+  {
+    "model": "spreadsheet.mixin",
+    "name": "Spreadsheet mixin"
+  },
+  {
+    "model": "spreadsheet.revision",
+    "name": "Collaborative spreadsheet revision"
+  },
+  {
+    "model": "stock.avco.report",
+    "name": "Stock AVCO Justifier"
+  },
+  {
+    "model": "stock.backorder.confirmation",
+    "name": "Backorder Confirmation"
+  },
+  {
+    "model": "stock.backorder.confirmation.line",
+    "name": "Backorder Confirmation Line"
+  },
+  {
+    "model": "stock.forecasted_product_product",
+    "name": "Stock Replenishment Report"
+  },
+  {
+    "model": "stock.forecasted_product_template",
+    "name": "Stock Replenishment Report"
+  },
+  {
+    "model": "stock.inventory.adjustment.name",
+    "name": "Inventory Adjustment Reference / Reason"
+  },
+  {
+    "model": "stock.inventory.conflict",
+    "name": "Conflict in Inventory"
+  },
+  {
+    "model": "stock.inventory.warning",
+    "name": "Inventory Adjustment Warning"
+  },
+  {
+    "model": "stock.location",
+    "name": "Inventory Location"
+  },
+  {
+    "model": "stock.lot",
+    "name": "Lot/Serial"
+  },
+  {
+    "model": "stock.move",
+    "name": "Stock Move"
+  },
+  {
+    "model": "stock.move.line",
+    "name": "Product Moves (Stock Move Line)"
+  },
+  {
+    "model": "stock.orderpoint.snooze",
+    "name": "Snooze Orderpoint"
+  },
+  {
+    "model": "stock.package",
+    "name": "Package"
+  },
+  {
+    "model": "stock.package.destination",
+    "name": "Stock Package Destination"
+  },
+  {
+    "model": "stock.package.history",
+    "name": "Stock Package History"
+  },
+  {
+    "model": "stock.package.type",
+    "name": "Stock package type"
+  },
+  {
+    "model": "stock.picking",
+    "name": "Transfer"
+  },
+  {
+    "model": "stock.picking.type",
+    "name": "Picking Type"
+  },
+  {
+    "model": "stock.put.in.pack",
+    "name": "Put In Pack Wizard"
+  },
+  {
+    "model": "stock.putaway.rule",
+    "name": "Putaway Rule"
+  },
+  {
+    "model": "stock.quant",
+    "name": "Quant"
+  },
+  {
+    "model": "stock.quant.relocate",
+    "name": "Stock Quantity Relocation"
+  },
+  {
+    "model": "stock.quantity.history",
+    "name": "Stock Quantity History"
+  },
+  {
+    "model": "stock.reference",
+    "name": "Reference between stock documents"
+  },
+  {
+    "model": "stock.replenish.mixin",
+    "name": "Product Replenish Mixin"
+  },
+  {
+    "model": "stock.replenishment.info",
+    "name": "Stock supplier replenishment information"
+  },
+  {
+    "model": "stock.replenishment.option",
+    "name": "Stock warehouse replenishment option"
+  },
+  {
+    "model": "stock.report",
+    "name": "Stock Report"
+  },
+  {
+    "model": "stock.request.count",
+    "name": "Stock Request an Inventory Count"
+  },
+  {
+    "model": "stock.route",
+    "name": "Inventory Route"
+  },
+  {
+    "model": "stock.rule",
+    "name": "Stock Rule"
+  },
+  {
+    "model": "stock.rules.report",
+    "name": "Stock Rules report"
+  },
+  {
+    "model": "stock.scrap.reason.tag",
+    "name": "Scrap Reason Tag"
+  },
+  {
+    "model": "stock.storage.category",
+    "name": "Storage Category"
+  },
+  {
+    "model": "stock.storage.category.capacity",
+    "name": "Storage Category Capacity"
+  },
+  {
+    "model": "stock.traceability.report",
+    "name": "Traceability Report"
+  },
+  {
+    "model": "stock.warehouse",
+    "name": "Warehouse"
+  },
+  {
+    "model": "stock.warehouse.orderpoint",
+    "name": "Minimum Inventory Rule"
+  },
+  {
+    "model": "stock.warn.insufficient.qty",
+    "name": "Warn Insufficient Quantity"
+  },
+  {
+    "model": "stock.warn.insufficient.qty.scrap",
+    "name": "Warn Insufficient Scrap Quantity"
+  },
+  {
+    "model": "stock.zero.demand.confirmation",
+    "name": "Zero Demand Confirmation"
+  },
+  {
+    "model": "stock_account.stock.valuation.report",
+    "name": "Stock Valuation"
+  },
+  {
+    "model": "stock_barcode.cancel.operation",
+    "name": "Cancel Operation"
+  },
+  {
+    "model": "survey.invite",
+    "name": "Survey Invitation Wizard"
+  },
+  {
+    "model": "survey.question",
+    "name": "Survey Question"
+  },
+  {
+    "model": "survey.question.answer",
+    "name": "Survey Label"
+  },
+  {
+    "model": "survey.survey",
+    "name": "Survey"
+  },
+  {
+    "model": "survey.user_input",
+    "name": "Survey User Input"
+  },
+  {
+    "model": "survey.user_input.line",
+    "name": "Survey User Input Line"
+  },
+  {
+    "model": "talent.pool.add.applicants",
+    "name": "Add applicants to talent pool"
+  },
+  {
+    "model": "task.share.wizard",
+    "name": "Task Sharing"
+  },
+  {
+    "model": "template.reset.mixin",
+    "name": "Template Reset Mixin"
+  },
+  {
+    "model": "theme.ir.asset",
+    "name": "Theme Asset"
+  },
+  {
+    "model": "theme.ir.attachment",
+    "name": "Theme Attachment"
+  },
+  {
+    "model": "theme.ir.ui.view",
+    "name": "Theme UI View"
+  },
+  {
+    "model": "theme.utils",
+    "name": "Theme Utils"
+  },
+  {
+    "model": "theme.website.menu",
+    "name": "Website Theme Menu"
+  },
+  {
+    "model": "theme.website.page",
+    "name": "Website Theme Page"
+  },
+  {
+    "model": "uom.uom",
+    "name": "Product Unit of Measure"
+  },
+  {
+    "model": "update.product.attribute.value",
+    "name": "Update product attribute value"
+  },
+  {
+    "model": "utm.campaign",
+    "name": "UTM Campaign"
+  },
+  {
+    "model": "utm.medium",
+    "name": "UTM Medium"
+  },
+  {
+    "model": "utm.mixin",
+    "name": "UTM Mixin"
+  },
+  {
+    "model": "utm.source",
+    "name": "UTM Source"
+  },
+  {
+    "model": "utm.stage",
+    "name": "Campaign Stage"
+  },
+  {
+    "model": "utm.tag",
+    "name": "UTM Tag"
+  },
+  {
+    "model": "validate.account.move",
+    "name": "Validate Journal Entry"
+  },
+  {
+    "model": "vendor.delay.report",
+    "name": "Vendor Delay Report"
+  },
+  {
+    "model": "web_tour.tour",
+    "name": "Tour"
+  },
+  {
+    "model": "web_tour.tour.step",
+    "name": "Tour's step"
+  },
+  {
+    "model": "website",
+    "name": "Website"
+  },
+  {
+    "model": "website.assets",
+    "name": "Assets Utils"
+  },
+  {
+    "model": "website.checkout.step",
+    "name": "Website Checkout Step"
+  },
+  {
+    "model": "website.configurator.feature",
+    "name": "Website Configurator Feature"
+  },
+  {
+    "model": "website.controller.page",
+    "name": "Model Page"
+  },
+  {
+    "model": "website.cover_properties.mixin",
+    "name": "Cover Properties Website Mixin"
+  },
+  {
+    "model": "website.custom_blocked_third_party_domains",
+    "name": "User list of blocked 3rd-party domains"
+  },
+  {
+    "model": "website.html.text.processor",
+    "name": "HTML Text Processor Abstract Model"
+  },
+  {
+    "model": "website.located.mixin",
+    "name": "Website Located Mixin"
+  },
+  {
+    "model": "website.menu",
+    "name": "Website Menu"
+  },
+  {
+    "model": "website.multi.mixin",
+    "name": "Multi Website Mixin"
+  },
+  {
+    "model": "website.page",
+    "name": "Page"
+  },
+  {
+    "model": "website.page.properties",
+    "name": "Page Property"
+  },
+  {
+    "model": "website.page.properties.base",
+    "name": "Page Properties Base"
+  },
+  {
+    "model": "website.page_options.mixin",
+    "name": "Website page/record specific options"
+  },
+  {
+    "model": "website.page_visibility_options.mixin",
+    "name": "Website page/record specific visibility options"
+  },
+  {
+    "model": "website.published.mixin",
+    "name": "Website Published Mixin"
+  },
+  {
+    "model": "website.published.multi.mixin",
+    "name": "Multi Website Published Mixin"
+  },
+  {
+    "model": "website.rewrite",
+    "name": "Website rewrite"
+  },
+  {
+    "model": "website.robots",
+    "name": "Robots.txt Editor"
+  },
+  {
+    "model": "website.route",
+    "name": "All Website Route"
+  },
+  {
+    "model": "website.sale.extra.field",
+    "name": "E-Commerce Extra Info Shown on product page"
+  },
+  {
+    "model": "website.searchable.mixin",
+    "name": "Website Searchable Mixin"
+  },
+  {
+    "model": "website.seo.metadata",
+    "name": "SEO metadata"
+  },
+  {
+    "model": "website.snippet.filter",
+    "name": "Website Snippet Filter"
+  },
+  {
+    "model": "website.technical.page",
+    "name": "Website Technical Page"
+  },
+  {
+    "model": "website.track",
+    "name": "Visited Page"
+  },
+  {
+    "model": "website.visitor",
+    "name": "Website Visitor"
+  },
+  {
+    "model": "website_generator.request",
+    "name": "Website Generator Request"
+  },
+  {
+    "model": "wizard.ir.model.menu.create",
+    "name": "Create Menu Wizard"
+  }
+]

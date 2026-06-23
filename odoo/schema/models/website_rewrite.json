@@ -1,0 +1,120 @@
+{
+  "model": "website.rewrite",
+  "name": "Website rewrite",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "website_id": {
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "url_from": {
+      "readonly": false,
+      "required": true,
+      "string": "URL from",
+      "type": "char"
+    },
+    "route_id": {
+      "readonly": false,
+      "relation": "website.route",
+      "required": false,
+      "string": "Route",
+      "type": "many2one"
+    },
+    "url_to": {
+      "readonly": false,
+      "required": false,
+      "string": "URL to",
+      "type": "char"
+    },
+    "redirect_type": {
+      "help": "Type of redirect/Rewrite:\n\n        301 Moved permanently: The browser will keep in cache the new url.\n        302 Moved temporarily: The browser will not keep in cache the new url and ask again the next time the new url.\n        404 Not Found: If you want remove a specific page/controller (e.g. Ecommerce is installed, but you don't want /shop on a specific website)\n        308 Redirect / Rewrite: If you want rename a controller with a new url. (Eg: /shop -> /garden - Both url will be accessible but /shop will automatically be redirected to /garden)\n    ",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "404",
+          "404 Not Found"
+        ],
+        [
+          "301",
+          "301 Moved permanently"
+        ],
+        [
+          "302",
+          "302 Moved temporarily"
+        ],
+        [
+          "308",
+          "308 Redirect / Rewrite"
+        ]
+      ],
+      "string": "Action",
+      "type": "selection"
+    },
+    "is_url_from_exist": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Url From Exist",
+      "type": "boolean"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

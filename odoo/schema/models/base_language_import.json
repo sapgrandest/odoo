@@ -1,0 +1,77 @@
+{
+  "model": "base.language.import",
+  "name": "Language Import",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Language Name",
+      "type": "char"
+    },
+    "code": {
+      "help": "ISO Language and Country code, e.g. en_US",
+      "readonly": false,
+      "required": true,
+      "string": "ISO Code",
+      "type": "char"
+    },
+    "data": {
+      "readonly": false,
+      "required": true,
+      "string": "File",
+      "type": "binary"
+    },
+    "filename": {
+      "readonly": false,
+      "required": true,
+      "string": "File Name",
+      "type": "char"
+    },
+    "overwrite": {
+      "help": "If you enable this option, existing translations (including custom ones) will be overwritten and replaced by those in this file",
+      "readonly": false,
+      "required": false,
+      "string": "Overwrite Existing Terms",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

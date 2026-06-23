@@ -1,0 +1,176 @@
+{
+  "model": "appointment.slot",
+  "name": "Appointment: Time Slot",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "appointment_type_id": {
+      "readonly": false,
+      "relation": "appointment.type",
+      "required": false,
+      "string": "Appointment Type",
+      "type": "many2one"
+    },
+    "schedule_based_on": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "users",
+          "Users"
+        ],
+        [
+          "resources",
+          "Resources"
+        ]
+      ],
+      "string": "Book",
+      "type": "selection"
+    },
+    "slot_type": {
+      "help": "Defines the type of slot. The regular slot is the default type which is used for\n        appointment type that are used recurringly in type like medical appointment.\n        The one shot type is only used when an user create a custom appointment type for a client by\n        defining non-recurring time slot (e.g. 10th of April 2021 from 10 to 11 am) from its calendar.",
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "recurring",
+          "Regular"
+        ],
+        [
+          "unique",
+          "One Shot"
+        ]
+      ],
+      "string": "Slot type",
+      "type": "selection"
+    },
+    "allday": {
+      "help": "Determine if the slot englobe the whole day, mainly used for unique slot type",
+      "readonly": false,
+      "required": false,
+      "string": "All day",
+      "type": "boolean"
+    },
+    "restrict_to_user_ids": {
+      "help": "If empty, all users are considered to be available.\nIf set, only the selected users will be taken into account for this slot.",
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Restrict to Users",
+      "type": "many2many"
+    },
+    "restrict_to_resource_ids": {
+      "help": "If empty, all resources are considered to be available.\nIf set, only the selected resources will be taken into account for this slot.",
+      "readonly": false,
+      "relation": "appointment.resource",
+      "required": false,
+      "string": "Restrict to Resources",
+      "type": "many2many"
+    },
+    "weekday": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "1",
+          "Monday"
+        ],
+        [
+          "2",
+          "Tuesday"
+        ],
+        [
+          "3",
+          "Wednesday"
+        ],
+        [
+          "4",
+          "Thursday"
+        ],
+        [
+          "5",
+          "Friday"
+        ],
+        [
+          "6",
+          "Saturday"
+        ],
+        [
+          "7",
+          "Sunday"
+        ]
+      ],
+      "string": "Week Day",
+      "type": "selection"
+    },
+    "start_hour": {
+      "readonly": false,
+      "required": true,
+      "string": "Starting Hour",
+      "type": "float"
+    },
+    "end_hour": {
+      "readonly": false,
+      "required": true,
+      "string": "Ending Hour",
+      "type": "float"
+    },
+    "start_datetime": {
+      "help": "Start datetime for unique slot type management",
+      "readonly": false,
+      "required": false,
+      "string": "From",
+      "type": "datetime"
+    },
+    "end_datetime": {
+      "help": "End datetime for unique slot type management",
+      "readonly": false,
+      "required": false,
+      "string": "To",
+      "type": "datetime"
+    },
+    "duration": {
+      "readonly": true,
+      "required": false,
+      "string": "Duration",
+      "type": "float"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "model": "mail.ice.server",
+  "name": "ICE Server",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "server_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "stun",
+          "stun:"
+        ],
+        [
+          "turn",
+          "turn:"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "uri": {
+      "readonly": false,
+      "required": true,
+      "string": "URI",
+      "type": "char"
+    },
+    "username": {
+      "readonly": false,
+      "required": false,
+      "string": "Username",
+      "type": "char"
+    },
+    "credential": {
+      "readonly": false,
+      "required": false,
+      "string": "Credential",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "model": "sign.item",
+  "name": "Fields to be sign on Document",
+  "field_count": 23,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "document_id": {
+      "readonly": false,
+      "relation": "sign.document",
+      "required": true,
+      "string": "Document Template",
+      "type": "many2one"
+    },
+    "template_id": {
+      "readonly": true,
+      "relation": "sign.template",
+      "required": false,
+      "string": "Template",
+      "type": "many2one"
+    },
+    "type_id": {
+      "readonly": false,
+      "relation": "sign.item.type",
+      "required": true,
+      "string": "Type",
+      "type": "many2one"
+    },
+    "required": {
+      "readonly": false,
+      "required": false,
+      "string": "Required",
+      "type": "boolean"
+    },
+    "responsible_id": {
+      "readonly": false,
+      "relation": "sign.item.role",
+      "required": false,
+      "string": "Responsible",
+      "type": "many2one"
+    },
+    "option_ids": {
+      "readonly": false,
+      "relation": "sign.item.option",
+      "required": false,
+      "string": "Selection options",
+      "type": "many2many"
+    },
+    "radio_set_id": {
+      "readonly": false,
+      "relation": "sign.item.radio.set",
+      "required": false,
+      "string": "Radio button options",
+      "type": "many2one"
+    },
+    "num_options": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of Radio Button options",
+      "type": "integer"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Field Name",
+      "type": "char"
+    },
+    "page": {
+      "readonly": false,
+      "required": true,
+      "string": "Document Page",
+      "type": "integer"
+    },
+    "posX": {
+      "readonly": false,
+      "required": true,
+      "string": "Position X",
+      "type": "float"
+    },
+    "posY": {
+      "readonly": false,
+      "required": true,
+      "string": "Position Y",
+      "type": "float"
+    },
+    "width": {
+      "readonly": false,
+      "required": true,
+      "string": "Width",
+      "type": "float"
+    },
+    "height": {
+      "readonly": false,
+      "required": true,
+      "string": "Height",
+      "type": "float"
+    },
+    "alignment": {
+      "readonly": false,
+      "required": true,
+      "string": "Alignment",
+      "type": "char"
+    },
+    "constant": {
+      "readonly": false,
+      "required": false,
+      "string": "Read-only",
+      "type": "boolean"
+    },
+    "transaction_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Transaction",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

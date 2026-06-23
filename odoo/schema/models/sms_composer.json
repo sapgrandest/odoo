@@ -1,0 +1,206 @@
+{
+  "model": "sms.composer",
+  "name": "Send SMS Wizard",
+  "field_count": 28,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "composition_mode": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "numbers",
+          "Send to numbers"
+        ],
+        [
+          "comment",
+          "Post on a document"
+        ],
+        [
+          "mass",
+          "Send SMS in batch"
+        ]
+      ],
+      "string": "Composition Mode",
+      "type": "selection"
+    },
+    "res_model": {
+      "readonly": false,
+      "required": false,
+      "string": "Document Model Name",
+      "type": "char"
+    },
+    "res_model_description": {
+      "readonly": true,
+      "required": false,
+      "string": "Document Model Description",
+      "type": "char"
+    },
+    "res_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Document ID",
+      "type": "integer"
+    },
+    "res_ids": {
+      "readonly": false,
+      "required": false,
+      "string": "Document IDs",
+      "type": "char"
+    },
+    "res_ids_count": {
+      "help": "Number of recipients that will receive the SMS if sent in mass mode, without applying the Active Domain value",
+      "readonly": true,
+      "required": false,
+      "string": "Visible records count",
+      "type": "integer"
+    },
+    "comment_single_recipient": {
+      "help": "Indicates if the SMS composer targets a single specific recipient",
+      "readonly": true,
+      "required": false,
+      "string": "Single Mode",
+      "type": "boolean"
+    },
+    "mass_keep_log": {
+      "readonly": false,
+      "required": false,
+      "string": "Keep a note on document",
+      "type": "boolean"
+    },
+    "mass_force_send": {
+      "readonly": false,
+      "required": false,
+      "string": "Send directly",
+      "type": "boolean"
+    },
+    "use_exclusion_list": {
+      "help": "Prevent sending messages to blacklisted contacts. Disable only when absolutely necessary.",
+      "readonly": false,
+      "required": false,
+      "string": "Use Exclusion List",
+      "type": "boolean"
+    },
+    "sms_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "marketing",
+          "Marketing"
+        ],
+        [
+          "alert",
+          "Alert"
+        ]
+      ],
+      "string": "Sms Type",
+      "type": "selection"
+    },
+    "recipient_valid_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Valid recipients",
+      "type": "integer"
+    },
+    "recipient_invalid_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Invalid recipients",
+      "type": "integer"
+    },
+    "recipient_single_description": {
+      "readonly": true,
+      "required": false,
+      "string": "Recipients (Partners)",
+      "type": "text"
+    },
+    "recipient_single_number": {
+      "readonly": true,
+      "required": false,
+      "string": "Stored Recipient Number",
+      "type": "char"
+    },
+    "recipient_single_number_itf": {
+      "help": "Phone number of the recipient. If changed, it will be recorded on recipient's profile.",
+      "readonly": false,
+      "required": false,
+      "string": "Recipient Number",
+      "type": "char"
+    },
+    "recipient_single_valid": {
+      "readonly": true,
+      "required": false,
+      "string": "Is valid",
+      "type": "boolean"
+    },
+    "number_field_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Number Field",
+      "type": "char"
+    },
+    "numbers": {
+      "readonly": false,
+      "required": false,
+      "string": "Recipients (Numbers)",
+      "type": "char"
+    },
+    "sanitized_numbers": {
+      "readonly": true,
+      "required": false,
+      "string": "Sanitized Number",
+      "type": "char"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "sms.template",
+      "required": false,
+      "string": "Use Template",
+      "type": "many2one"
+    },
+    "body": {
+      "readonly": false,
+      "required": true,
+      "string": "Message",
+      "type": "text"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

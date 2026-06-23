@@ -1,0 +1,394 @@
+{
+  "model": "mail.compose.message",
+  "name": "Email composition wizard",
+  "field_count": 53,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "lang": {
+      "help": "Optional translation language (ISO code) to select when sending out an email. If not set, the main partner's language will be used. This should usually be a placeholder expression that provides the appropriate language, e.g. {{ object.partner_id.lang }}.",
+      "readonly": false,
+      "required": false,
+      "string": "Language",
+      "type": "char"
+    },
+    "render_model": {
+      "readonly": true,
+      "required": false,
+      "string": "Rendering Model",
+      "type": "char"
+    },
+    "subject": {
+      "readonly": false,
+      "required": false,
+      "string": "Subject",
+      "type": "char"
+    },
+    "body": {
+      "readonly": false,
+      "required": false,
+      "string": "Contents",
+      "type": "html"
+    },
+    "body_has_template_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Body content is the same as the template",
+      "type": "boolean"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Use template",
+      "type": "many2one"
+    },
+    "is_mail_template_editor": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Editor",
+      "type": "boolean"
+    },
+    "can_edit_body": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Edit Body",
+      "type": "boolean"
+    },
+    "parent_id": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Parent Message",
+      "type": "many2one"
+    },
+    "attachment_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachments",
+      "type": "many2many"
+    },
+    "attachment_links": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment links",
+      "type": "html"
+    },
+    "attachment_links_info": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Links Info",
+      "type": "char"
+    },
+    "email_layout_xmlid": {
+      "readonly": false,
+      "required": false,
+      "string": "Email Notification Layout",
+      "type": "char"
+    },
+    "email_add_signature": {
+      "readonly": false,
+      "required": false,
+      "string": "Add signature",
+      "type": "boolean"
+    },
+    "email_from": {
+      "help": "Email address of the sender. This field is set when no matching partner is found and replaces the author_id field in the chatter.",
+      "readonly": false,
+      "required": false,
+      "string": "From",
+      "type": "char"
+    },
+    "author_id": {
+      "help": "Author of the message. If not set, email_from may hold an email address that did not match any partner.",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Author",
+      "type": "many2one"
+    },
+    "composition_mode": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "comment",
+          "Post on a document"
+        ],
+        [
+          "mass_mail",
+          "Email Mass Mailing"
+        ]
+      ],
+      "string": "Composition mode",
+      "type": "selection"
+    },
+    "composition_batch": {
+      "readonly": true,
+      "required": false,
+      "string": "Batch composition",
+      "type": "boolean"
+    },
+    "composition_comment_option": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "reply_all",
+          "Reply-All"
+        ],
+        [
+          "forward",
+          "Forward"
+        ]
+      ],
+      "string": "Comment Options",
+      "type": "selection"
+    },
+    "model": {
+      "readonly": false,
+      "required": false,
+      "string": "Related Document Model",
+      "type": "char"
+    },
+    "model_is_thread": {
+      "readonly": true,
+      "required": false,
+      "string": "Thread-Enabled",
+      "type": "boolean"
+    },
+    "res_ids": {
+      "readonly": false,
+      "required": false,
+      "string": "Related Document IDs",
+      "type": "text"
+    },
+    "res_domain": {
+      "readonly": false,
+      "required": false,
+      "string": "Active domain",
+      "type": "text"
+    },
+    "res_domain_user_id": {
+      "help": "Used as context used to evaluate composer domain",
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible",
+      "type": "many2one"
+    },
+    "record_alias_domain_id": {
+      "readonly": false,
+      "relation": "mail.alias.domain",
+      "required": false,
+      "string": "Alias Domain",
+      "type": "many2one"
+    },
+    "record_company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "message_type": {
+      "help": "Message type: email for email message, notification for system message, comment for other messages such as user replies",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "auto_comment",
+          "Automated Targeted Notification"
+        ],
+        [
+          "comment",
+          "Comment"
+        ],
+        [
+          "notification",
+          "System notification"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "subtype_id": {
+      "readonly": false,
+      "relation": "mail.message.subtype",
+      "required": false,
+      "string": "Subtype",
+      "type": "many2one"
+    },
+    "subtype_is_log": {
+      "readonly": true,
+      "required": false,
+      "string": "Is a log",
+      "type": "boolean"
+    },
+    "mail_activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Mail Activity Type",
+      "type": "many2one"
+    },
+    "reply_to": {
+      "help": "Reply email address. Setting the reply_to bypasses the automatic thread creation.",
+      "readonly": false,
+      "required": false,
+      "string": "Reply To",
+      "type": "char"
+    },
+    "reply_to_force_new": {
+      "help": "Manage answers as new incoming emails instead of replies going to the same thread.",
+      "readonly": false,
+      "required": false,
+      "string": "Considers answers as new thread",
+      "type": "boolean"
+    },
+    "reply_to_mode": {
+      "help": "Original Discussion: Answers go in the original document discussion thread. \n Another Email Address: Answers go to the email address mentioned in the tracking message-id instead of original document discussion thread. \n This has an impact on the generated message-id.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "update",
+          "Store email and replies in the chatter of each record"
+        ],
+        [
+          "new",
+          "Collect replies on a specific email address"
+        ]
+      ],
+      "string": "Replies",
+      "type": "selection"
+    },
+    "partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Additional Contacts",
+      "type": "many2many"
+    },
+    "partner_ids_all_have_email": {
+      "readonly": true,
+      "required": false,
+      "string": "Partner Ids All Have Email",
+      "type": "boolean"
+    },
+    "notified_bcc_contains_share": {
+      "readonly": true,
+      "required": false,
+      "string": "Is an external partner follower of the document?",
+      "type": "boolean"
+    },
+    "auto_delete": {
+      "help": "This option permanently removes any track of email after it's been sent, including from the Technical menu in the Settings, in order to preserve storage space of your Odoo database.",
+      "readonly": false,
+      "required": false,
+      "string": "Delete Emails",
+      "type": "boolean"
+    },
+    "auto_delete_keep_log": {
+      "help": "Keep a copy of the email content if emails are removed (mass mailing only)",
+      "readonly": false,
+      "required": false,
+      "string": "Keep Message Copy",
+      "type": "boolean"
+    },
+    "force_send": {
+      "readonly": false,
+      "required": false,
+      "string": "Send mailing or notifications directly",
+      "type": "boolean"
+    },
+    "mail_server_id": {
+      "readonly": false,
+      "relation": "ir.mail_server",
+      "required": false,
+      "string": "Outgoing mail server",
+      "type": "many2one"
+    },
+    "notify_author": {
+      "readonly": false,
+      "required": false,
+      "string": "Notify Author",
+      "type": "boolean"
+    },
+    "notify_author_mention": {
+      "readonly": false,
+      "required": false,
+      "string": "Notify Author Mention",
+      "type": "boolean"
+    },
+    "notify_skip_followers": {
+      "readonly": false,
+      "required": false,
+      "string": "Notify Skip Followers",
+      "type": "boolean"
+    },
+    "scheduled_date": {
+      "help": "In comment mode: if set, postpone notifications sending. In mass mail mode: if sent, send emails after that date. This date is considered as being in UTC timezone.",
+      "readonly": false,
+      "required": false,
+      "string": "Scheduled Date",
+      "type": "char"
+    },
+    "use_exclusion_list": {
+      "help": "Prevent sending messages to blacklisted contacts. Disable only when absolutely necessary.",
+      "readonly": false,
+      "required": false,
+      "string": "Use Exclusion List",
+      "type": "boolean"
+    },
+    "template_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Template Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "account_reports_annotation_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Annotated For",
+      "type": "date"
+    }
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "model": "appointment.invite",
+  "name": "Appointment Invite",
+  "field_count": 40,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "website_id": {
+      "help": "Restrict to a specific website.",
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "website_url": {
+      "help": "The full relative URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website URL",
+      "type": "char"
+    },
+    "website_absolute_url": {
+      "help": "The full absolute URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website Absolute URL",
+      "type": "char"
+    },
+    "website_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Visible on current website",
+      "type": "boolean"
+    },
+    "is_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Published",
+      "type": "boolean"
+    },
+    "publish_on": {
+      "help": "Automatically publish the page on the chosen date and time.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto publish on",
+      "type": "datetime"
+    },
+    "published_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Published date",
+      "type": "datetime"
+    },
+    "can_publish": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Publish",
+      "type": "boolean"
+    },
+    "access_token": {
+      "readonly": true,
+      "required": true,
+      "string": "Token",
+      "type": "char"
+    },
+    "short_code": {
+      "readonly": false,
+      "required": true,
+      "string": "Short Code",
+      "type": "char"
+    },
+    "short_code_format_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Short Code Format Warning",
+      "type": "boolean"
+    },
+    "short_code_unique_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Short Code Unique Warning",
+      "type": "boolean"
+    },
+    "disable_save_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Computes if alert is present",
+      "type": "boolean"
+    },
+    "identical_config_id": {
+      "help": "Interface field to try to prevent creating identical links",
+      "readonly": false,
+      "relation": "appointment.invite",
+      "required": false,
+      "string": "Identical Config",
+      "type": "many2one"
+    },
+    "base_book_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Base Link URL",
+      "type": "char"
+    },
+    "book_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Link URL",
+      "type": "char"
+    },
+    "book_url_params": {
+      "readonly": true,
+      "required": false,
+      "string": "Link URL params",
+      "type": "char"
+    },
+    "redirect_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Redirect URL",
+      "type": "char"
+    },
+    "appointment_type_ids": {
+      "readonly": false,
+      "relation": "appointment.type",
+      "required": false,
+      "string": "Appointment Types",
+      "type": "many2many"
+    },
+    "appointment_type_info_msg": {
+      "readonly": true,
+      "required": false,
+      "string": "No User Assigned Message",
+      "type": "html"
+    },
+    "appointment_type_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Selected Appointments Count",
+      "type": "integer"
+    },
+    "schedule_based_on": {
+      "readonly": true,
+      "required": false,
+      "string": "Schedule Based On",
+      "type": "char"
+    },
+    "suggested_resource_ids": {
+      "readonly": true,
+      "relation": "appointment.resource",
+      "required": false,
+      "string": "Possible resources",
+      "type": "many2many"
+    },
+    "suggested_resource_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Resources",
+      "type": "integer"
+    },
+    "suggested_staff_user_ids": {
+      "help": "Get the users linked to the appointment type selected to apply a domain on the users that can be selected",
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Possible users",
+      "type": "many2many"
+    },
+    "suggested_staff_user_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Staff Users",
+      "type": "integer"
+    },
+    "resources_choice": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "current_user",
+          "Me"
+        ],
+        [
+          "all_assigned_resources",
+          "Any User"
+        ],
+        [
+          "specific_resources",
+          "Specific Users"
+        ]
+      ],
+      "string": "Assign to",
+      "type": "selection"
+    },
+    "resources_resource_choice": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "all_assigned_resources",
+          "Any Resource"
+        ],
+        [
+          "specific_resources",
+          "Specific Resources"
+        ]
+      ],
+      "string": "Resources Resource Choice",
+      "type": "selection"
+    },
+    "resource_ids": {
+      "readonly": false,
+      "relation": "appointment.resource",
+      "required": false,
+      "string": "Resources",
+      "type": "many2many"
+    },
+    "staff_user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Users",
+      "type": "many2many"
+    },
+    "calendar_event_ids": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Booked Appointments",
+      "type": "one2many"
+    },
+    "calendar_event_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Bookings",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "opportunity_id": {
+      "help": "Link an opportunity/lead to the appointment invite created.\nUsed when creating an invitation from the Meeting action in the crm form view.",
+      "readonly": false,
+      "relation": "crm.lead",
+      "required": false,
+      "string": "Opportunity/Lead",
+      "type": "many2one"
+    },
+    "appointment_type_warning_msg": {
+      "readonly": true,
+      "required": false,
+      "string": "Different Website Message",
+      "type": "char"
+    }
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "model": "account.return.check",
+  "name": "Accounting Return Check",
+  "field_count": 29,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "code": {
+      "readonly": false,
+      "required": true,
+      "string": "Check ID",
+      "type": "char"
+    },
+    "type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "check",
+          "Check"
+        ],
+        [
+          "file",
+          "Upload Document"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "account.return.check.template",
+      "required": false,
+      "string": "Template",
+      "type": "many2one"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "message": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "html"
+    },
+    "state": {
+      "readonly": false,
+      "required": false,
+      "string": "Return State To Check For",
+      "type": "char"
+    },
+    "records_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Records Count",
+      "type": "integer"
+    },
+    "records_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Records Name",
+      "type": "char"
+    },
+    "records_model": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Model",
+      "type": "many2one"
+    },
+    "action": {
+      "readonly": false,
+      "required": false,
+      "string": "Action",
+      "type": "json"
+    },
+    "result": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "todo",
+          "To Review"
+        ],
+        [
+          "reviewed",
+          "Reviewed"
+        ],
+        [
+          "supervised",
+          "Supervised"
+        ],
+        [
+          "anomaly",
+          "Anomaly"
+        ]
+      ],
+      "string": "Result",
+      "type": "selection"
+    },
+    "attachment_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachment",
+      "type": "many2many"
+    },
+    "return_id": {
+      "readonly": false,
+      "relation": "account.return",
+      "required": true,
+      "string": "Account Return",
+      "type": "many2one"
+    },
+    "is_return_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "return_state": {
+      "readonly": true,
+      "required": false,
+      "string": "Return State",
+      "type": "char"
+    },
+    "return_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Return Name",
+      "type": "char"
+    },
+    "date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Deadline",
+      "type": "date"
+    },
+    "refresh_result": {
+      "readonly": false,
+      "required": false,
+      "string": "Refresh Result",
+      "type": "boolean"
+    },
+    "approver_ids": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Approved By",
+      "type": "many2many"
+    },
+    "supervisor_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Supervised By",
+      "type": "many2one"
+    },
+    "approver_supervisor_ids": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Approvers and Supervisor",
+      "type": "many2many"
+    },
+    "notes": {
+      "readonly": false,
+      "required": false,
+      "string": "Notes",
+      "type": "text"
+    },
+    "cycle_id": {
+      "readonly": true,
+      "relation": "account.return.audit.cycle",
+      "required": false,
+      "string": "Cycle",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "model": "appointment.question",
+  "name": "Appointment Questions",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "appointment_type_ids": {
+      "readonly": false,
+      "relation": "appointment.type",
+      "required": false,
+      "string": "Appointment Types",
+      "type": "many2many"
+    },
+    "appointment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Appointments",
+      "type": "integer"
+    },
+    "is_default": {
+      "help": "Include by default in new appointment types.",
+      "readonly": false,
+      "required": false,
+      "string": "Default question",
+      "type": "boolean"
+    },
+    "is_reusable": {
+      "help": "Will appear in the list of available questions when adding one in any appointment. Always true for default questions.",
+      "readonly": false,
+      "required": false,
+      "string": "Is Reusable",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Question",
+      "type": "char"
+    },
+    "placeholder": {
+      "readonly": false,
+      "required": false,
+      "string": "Placeholder",
+      "type": "char"
+    },
+    "question_required": {
+      "readonly": false,
+      "required": false,
+      "string": "Mandatory Answer",
+      "type": "boolean"
+    },
+    "question_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "char",
+          "Single line text"
+        ],
+        [
+          "text",
+          "Multi-line text"
+        ],
+        [
+          "phone",
+          "Phone Number"
+        ],
+        [
+          "select",
+          "Dropdown (one answer)"
+        ],
+        [
+          "radio",
+          "Radio (one answer)"
+        ],
+        [
+          "checkbox",
+          "Checkboxes (multiple answers)"
+        ]
+      ],
+      "string": "Answer Type",
+      "type": "selection"
+    },
+    "answer_ids": {
+      "readonly": false,
+      "relation": "appointment.answer",
+      "required": false,
+      "string": "Available Answers",
+      "type": "one2many"
+    },
+    "answer_input_ids": {
+      "readonly": false,
+      "relation": "appointment.answer.input",
+      "required": false,
+      "string": "Submitted Answers",
+      "type": "one2many"
+    },
+    "extra_comment": {
+      "help": "This will appear below the question in the appointment form.",
+      "readonly": false,
+      "required": false,
+      "string": "Extra Comment",
+      "type": "html"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "model": "im_livechat.channel.rule",
+  "name": "Livechat Channel Rule",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "regex_url": {
+      "help": "Regular expression specifying the web pages this rule will be applied on.",
+      "readonly": false,
+      "required": false,
+      "string": "URL Regex",
+      "type": "char"
+    },
+    "action": {
+      "help": "* 'Show' displays the chat button on the pages.\n* 'Show with notification' is 'Show' in addition to a floating text just next to the button.\n* 'Open automatically' displays the button and automatically opens the conversation pane.\n* 'Hide' hides the chat button on the pages.\n",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "display_button",
+          "Show"
+        ],
+        [
+          "display_button_and_text",
+          "Show with notification"
+        ],
+        [
+          "auto_popup",
+          "Open automatically"
+        ],
+        [
+          "hide_button",
+          "Hide"
+        ]
+      ],
+      "string": "Live Chat Button",
+      "type": "selection"
+    },
+    "auto_popup_timer": {
+      "help": "Delay (in seconds) to automatically open the conversation window. Note: the selected action must be 'Open automatically' otherwise this parameter will not be taken into account.",
+      "readonly": false,
+      "required": false,
+      "string": "Time to Open",
+      "type": "integer"
+    },
+    "chatbot_script_id": {
+      "readonly": false,
+      "relation": "chatbot.script",
+      "required": false,
+      "string": "Chatbot",
+      "type": "many2one"
+    },
+    "chatbot_enabled_condition": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "always",
+          "Always"
+        ],
+        [
+          "only_if_no_operator",
+          "Only when no operator is available"
+        ],
+        [
+          "only_if_operator",
+          "Only when an operator is available"
+        ]
+      ],
+      "string": "Enable ChatBot",
+      "type": "selection"
+    },
+    "channel_id": {
+      "help": "The channel of the rule",
+      "readonly": false,
+      "relation": "im_livechat.channel",
+      "required": false,
+      "string": "Channel",
+      "type": "many2one"
+    },
+    "country_ids": {
+      "help": "The rule will only be applied for these countries. Example: if you select 'Belgium' and 'United States' and that you set the action to 'Hide', the chat button will be hidden on the specified URL from the visitors located in these 2 countries. This feature requires GeoIP installed on your server.",
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Countries",
+      "type": "many2many"
+    },
+    "sequence": {
+      "help": "Given the order to find a matching rule. If 2 rules are matching for the given url/country, the one with the lowest sequence will be chosen.",
+      "readonly": false,
+      "required": false,
+      "string": "Matching order",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

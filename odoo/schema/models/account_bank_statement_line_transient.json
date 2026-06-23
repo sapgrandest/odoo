@@ -1,0 +1,156 @@
+{
+  "model": "account.bank.statement.line.transient",
+  "name": "Transient model for bank statement line",
+  "field_count": 22,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "date": {
+      "readonly": false,
+      "required": false,
+      "string": "Date",
+      "type": "date"
+    },
+    "amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "online_transaction_identifier": {
+      "readonly": true,
+      "required": false,
+      "string": "Online Transaction Identifier",
+      "type": "char"
+    },
+    "payment_ref": {
+      "readonly": true,
+      "required": false,
+      "string": "Payment Ref",
+      "type": "char"
+    },
+    "account_number": {
+      "readonly": true,
+      "required": false,
+      "string": "Account Number",
+      "type": "char"
+    },
+    "partner_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Partner Name",
+      "type": "char"
+    },
+    "transaction_details": {
+      "readonly": true,
+      "required": false,
+      "string": "Transaction Details",
+      "type": "json"
+    },
+    "transaction_uuid": {
+      "readonly": true,
+      "required": false,
+      "string": "Transaction Uuid",
+      "type": "char"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "pending",
+          "Pending"
+        ],
+        [
+          "posted",
+          "Posted"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "journal_id": {
+      "readonly": true,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "online_account_id": {
+      "readonly": true,
+      "relation": "account.online.account",
+      "required": false,
+      "string": "Account Online Account",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "foreign_currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Foreign Currency",
+      "type": "many2one"
+    },
+    "amount_currency": {
+      "readonly": false,
+      "required": false,
+      "string": "Amount in Currency",
+      "type": "monetary"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

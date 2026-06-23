@@ -1,0 +1,101 @@
+{
+  "model": "spreadsheet.revision",
+  "name": "Collaborative spreadsheet revision",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Revision name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "res_model": {
+      "readonly": false,
+      "required": true,
+      "string": "Model",
+      "type": "char"
+    },
+    "res_id": {
+      "readonly": false,
+      "required": true,
+      "string": "Record id",
+      "type": "many2one_reference"
+    },
+    "commands": {
+      "readonly": false,
+      "required": true,
+      "string": "Commands",
+      "type": "char"
+    },
+    "revision_uuid": {
+      "readonly": false,
+      "required": true,
+      "string": "Revision Uuid",
+      "type": "char"
+    },
+    "parent_revision_id": {
+      "readonly": false,
+      "relation": "spreadsheet.revision",
+      "required": false,
+      "string": "Parent Revision",
+      "type": "many2one"
+    },
+    "author_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "Author",
+      "type": "many2one"
+    },
+    "revision_date": {
+      "readonly": false,
+      "required": true,
+      "string": "Revision Date",
+      "type": "datetime"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

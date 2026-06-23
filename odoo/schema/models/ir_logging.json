@@ -1,0 +1,101 @@
+{
+  "model": "ir.logging",
+  "name": "Logging",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "required": false,
+      "string": "Created by",
+      "type": "integer"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated by",
+      "type": "integer"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "client",
+          "Client"
+        ],
+        [
+          "server",
+          "Server"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "dbname": {
+      "readonly": false,
+      "required": false,
+      "string": "Database Name",
+      "type": "char"
+    },
+    "level": {
+      "readonly": false,
+      "required": false,
+      "string": "Level",
+      "type": "char"
+    },
+    "message": {
+      "readonly": false,
+      "required": true,
+      "string": "Message",
+      "type": "text"
+    },
+    "path": {
+      "readonly": false,
+      "required": true,
+      "string": "Path",
+      "type": "char"
+    },
+    "func": {
+      "readonly": false,
+      "required": true,
+      "string": "Function",
+      "type": "char"
+    },
+    "line": {
+      "readonly": false,
+      "required": true,
+      "string": "Line",
+      "type": "char"
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "model": "product.wishlist",
+  "name": "Product Wishlist",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Owner",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": true,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Default Currency",
+      "type": "many2one"
+    },
+    "pricelist_id": {
+      "help": "Pricelist when added",
+      "readonly": false,
+      "relation": "product.pricelist",
+      "required": false,
+      "string": "Pricelist",
+      "type": "many2one"
+    },
+    "price": {
+      "help": "Price of the product when it has been added in the wishlist",
+      "readonly": false,
+      "required": false,
+      "string": "Price",
+      "type": "monetary"
+    },
+    "website_id": {
+      "readonly": false,
+      "relation": "website",
+      "required": true,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "active": {
+      "readonly": false,
+      "required": true,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "stock_notification": {
+      "readonly": true,
+      "required": true,
+      "string": "Stock Notification",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

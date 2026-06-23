@@ -1,0 +1,250 @@
+{
+  "model": "account.analytic.account",
+  "name": "Analytic Account",
+  "field_count": 37,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Analytic Account",
+      "type": "char"
+    },
+    "code": {
+      "readonly": false,
+      "required": false,
+      "string": "Reference",
+      "type": "char"
+    },
+    "active": {
+      "help": "Deactivate the account.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "plan_id": {
+      "readonly": false,
+      "relation": "account.analytic.plan",
+      "required": true,
+      "string": "Plan",
+      "type": "many2one"
+    },
+    "root_plan_id": {
+      "readonly": true,
+      "relation": "account.analytic.plan",
+      "required": false,
+      "string": "Root Plan",
+      "type": "many2one"
+    },
+    "color": {
+      "readonly": true,
+      "required": false,
+      "string": "Color Index",
+      "type": "integer"
+    },
+    "line_ids": {
+      "readonly": false,
+      "relation": "account.analytic.line",
+      "required": false,
+      "string": "Analytic Lines",
+      "type": "one2many"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "balance": {
+      "readonly": true,
+      "required": false,
+      "string": "Balance",
+      "type": "monetary"
+    },
+    "debit": {
+      "readonly": true,
+      "required": false,
+      "string": "Debit",
+      "type": "monetary"
+    },
+    "credit": {
+      "readonly": true,
+      "required": false,
+      "string": "Credit",
+      "type": "monetary"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "invoice_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoice Count",
+      "type": "integer"
+    },
+    "vendor_bill_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Vendor Bill Count",
+      "type": "integer"
+    },
+    "project_ids": {
+      "readonly": false,
+      "relation": "project.project",
+      "required": false,
+      "string": "Projects",
+      "type": "one2many"
+    },
+    "project_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Project Count",
+      "type": "integer"
+    },
+    "purchase_order_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Purchase Order Count",
+      "type": "integer"
+    }
+  }
+}

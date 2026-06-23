@@ -1,0 +1,150 @@
+{
+  "model": "account.payment.method.line",
+  "name": "Payment Method Line",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "payment_method_id": {
+      "readonly": false,
+      "relation": "account.payment.method",
+      "required": true,
+      "string": "Payment Method",
+      "type": "many2one"
+    },
+    "payment_account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Payment Account",
+      "type": "many2one"
+    },
+    "journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "default_account_id": {
+      "readonly": true,
+      "relation": "account.account",
+      "required": false,
+      "string": "Default Account",
+      "type": "many2one"
+    },
+    "code": {
+      "readonly": true,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "payment_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "inbound",
+          "Inbound"
+        ],
+        [
+          "outbound",
+          "Outbound"
+        ]
+      ],
+      "string": "Payment Type",
+      "type": "selection"
+    },
+    "company_id": {
+      "help": "Company related to this journal",
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "available_payment_method_ids": {
+      "readonly": true,
+      "relation": "account.payment.method",
+      "required": false,
+      "string": "Available Payment Method",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "payment_provider_id": {
+      "readonly": false,
+      "relation": "payment.provider",
+      "required": false,
+      "string": "Payment Provider",
+      "type": "many2one"
+    },
+    "payment_provider_state": {
+      "help": "In test mode, a fake payment is processed through a test payment interface.\nThis mode is advised when setting up the provider.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "disabled",
+          "Disabled"
+        ],
+        [
+          "enabled",
+          "Enabled"
+        ],
+        [
+          "test",
+          "Test Mode"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    }
+  }
+}

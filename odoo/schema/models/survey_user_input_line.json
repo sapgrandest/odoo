@@ -1,0 +1,190 @@
+{
+  "model": "survey.user_input.line",
+  "name": "Survey User Input Line",
+  "field_count": 24,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "user_input_id": {
+      "readonly": false,
+      "relation": "survey.user_input",
+      "required": true,
+      "string": "User Input",
+      "type": "many2one"
+    },
+    "survey_id": {
+      "readonly": false,
+      "relation": "survey.survey",
+      "required": false,
+      "string": "Survey",
+      "type": "many2one"
+    },
+    "question_id": {
+      "readonly": false,
+      "relation": "survey.question",
+      "required": true,
+      "string": "Question",
+      "type": "many2one"
+    },
+    "page_id": {
+      "readonly": false,
+      "relation": "survey.question",
+      "required": false,
+      "string": "Section",
+      "type": "many2one"
+    },
+    "question_sequence": {
+      "readonly": true,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "lang_id": {
+      "readonly": true,
+      "relation": "res.lang",
+      "required": false,
+      "string": "Language",
+      "type": "many2one"
+    },
+    "skipped": {
+      "readonly": false,
+      "required": false,
+      "string": "Skipped",
+      "type": "boolean"
+    },
+    "answer_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "text_box",
+          "Free Text"
+        ],
+        [
+          "char_box",
+          "Text"
+        ],
+        [
+          "numerical_box",
+          "Number"
+        ],
+        [
+          "scale",
+          "Number"
+        ],
+        [
+          "date",
+          "Date"
+        ],
+        [
+          "datetime",
+          "Datetime"
+        ],
+        [
+          "suggestion",
+          "Suggestion"
+        ]
+      ],
+      "string": "Answer Type",
+      "type": "selection"
+    },
+    "value_char_box": {
+      "readonly": false,
+      "required": false,
+      "string": "Text answer",
+      "type": "char"
+    },
+    "value_numerical_box": {
+      "readonly": false,
+      "required": false,
+      "string": "Numerical answer",
+      "type": "float"
+    },
+    "value_scale": {
+      "readonly": false,
+      "required": false,
+      "string": "Scale value",
+      "type": "integer"
+    },
+    "value_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Date answer",
+      "type": "date"
+    },
+    "value_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "Datetime answer",
+      "type": "datetime"
+    },
+    "value_text_box": {
+      "readonly": false,
+      "required": false,
+      "string": "Free Text answer",
+      "type": "text"
+    },
+    "suggested_answer_id": {
+      "readonly": false,
+      "relation": "survey.question.answer",
+      "required": false,
+      "string": "Suggested answer",
+      "type": "many2one"
+    },
+    "matrix_row_id": {
+      "readonly": false,
+      "relation": "survey.question.answer",
+      "required": false,
+      "string": "Row answer",
+      "type": "many2one"
+    },
+    "answer_score": {
+      "readonly": true,
+      "required": false,
+      "string": "Score",
+      "type": "float"
+    },
+    "answer_is_correct": {
+      "readonly": true,
+      "required": false,
+      "string": "Correct",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

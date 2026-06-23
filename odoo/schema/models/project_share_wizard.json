@@ -1,0 +1,109 @@
+{
+  "model": "project.share.wizard",
+  "name": "Project Sharing",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "res_model": {
+      "readonly": false,
+      "required": true,
+      "string": "Related Document Model",
+      "type": "char"
+    },
+    "res_id": {
+      "readonly": false,
+      "required": true,
+      "string": "Related Document ID",
+      "type": "integer"
+    },
+    "resource_ref": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "project.project",
+          "Project"
+        ]
+      ],
+      "string": "Related Document",
+      "type": "reference"
+    },
+    "partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Recipients",
+      "type": "many2many"
+    },
+    "note": {
+      "help": "Add extra content to display in the email",
+      "readonly": false,
+      "required": false,
+      "string": "Note",
+      "type": "text"
+    },
+    "share_link": {
+      "readonly": true,
+      "required": false,
+      "string": "Share Link",
+      "type": "char"
+    },
+    "access_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Access warning",
+      "type": "text"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "collaborator_ids": {
+      "readonly": false,
+      "relation": "project.share.collaborator.wizard",
+      "required": false,
+      "string": "Collaborators",
+      "type": "one2many"
+    },
+    "existing_partner_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Existing Partner",
+      "type": "many2many"
+    }
+  }
+}

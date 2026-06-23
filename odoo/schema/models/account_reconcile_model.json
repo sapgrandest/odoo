@@ -1,0 +1,297 @@
+{
+  "model": "account.reconcile.model",
+  "name": "Preset to create journal entries during a invoices and payments matching",
+  "field_count": 38,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": true,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "trigger": {
+      "help": "Validate the statement line automatically (reconciliation based on your rule).",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "manual",
+          "Manual"
+        ],
+        [
+          "auto_reconcile",
+          "Automated"
+        ]
+      ],
+      "string": "Trigger",
+      "type": "selection"
+    },
+    "next_activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity",
+      "type": "many2one"
+    },
+    "can_be_proposed": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Be Proposed",
+      "type": "boolean"
+    },
+    "mapped_partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Mapped Partner",
+      "type": "many2one"
+    },
+    "match_journal_ids": {
+      "help": "The reconciliation model will only be available from the selected journals.",
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Journals",
+      "type": "many2many"
+    },
+    "match_amount": {
+      "help": "The reconciliation model will only be applied when the amount being lower than, greater than or between specified amount(s).",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "lower",
+          "Is lower than or equal to"
+        ],
+        [
+          "greater",
+          "Is greater than or equal to"
+        ],
+        [
+          "between",
+          "Is between"
+        ]
+      ],
+      "string": "Amount",
+      "type": "selection"
+    },
+    "match_amount_min": {
+      "readonly": false,
+      "required": false,
+      "string": "Amount Min Parameter",
+      "type": "float"
+    },
+    "match_amount_max": {
+      "readonly": false,
+      "required": false,
+      "string": "Amount Max Parameter",
+      "type": "float"
+    },
+    "match_label": {
+      "help": "The reconciliation model will only be applied when either the statement line label, the transaction details or the note matches the following:\n        * Contains: The statement line must contains this string (case insensitive).\n        * Not Contains: Negation of \"Contains\".\n        * Match Regex: Define your own regular expression.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "contains",
+          "Contains"
+        ],
+        [
+          "not_contains",
+          "Not Contains"
+        ],
+        [
+          "match_regex",
+          "Match Regex"
+        ]
+      ],
+      "string": "Label",
+      "type": "selection"
+    },
+    "match_label_param": {
+      "readonly": false,
+      "required": false,
+      "string": "Label Parameter",
+      "type": "char"
+    },
+    "match_partner_ids": {
+      "help": "The reconciliation model will only be applied to the selected customers/vendors.",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partners",
+      "type": "many2many"
+    },
+    "line_ids": {
+      "readonly": false,
+      "relation": "account.reconcile.model.line",
+      "required": false,
+      "string": "Line",
+      "type": "one2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "created_automatically": {
+      "readonly": false,
+      "required": false,
+      "string": "Created Automatically",
+      "type": "boolean"
+    },
+    "is_asking_for_autopost": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Asking For Autopost",
+      "type": "boolean"
+    },
+    "use_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Use Count",
+      "type": "integer"
+    }
+  }
+}

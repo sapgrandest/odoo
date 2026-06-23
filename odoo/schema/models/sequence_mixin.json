@@ -1,0 +1,31 @@
+{
+  "model": "sequence.mixin",
+  "name": "Automatic sequence",
+  "field_count": 4,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "sequence_prefix": {
+      "readonly": true,
+      "required": false,
+      "string": "Sequence Prefix",
+      "type": "char"
+    },
+    "sequence_number": {
+      "readonly": true,
+      "required": false,
+      "string": "Sequence Number",
+      "type": "integer"
+    }
+  }
+}

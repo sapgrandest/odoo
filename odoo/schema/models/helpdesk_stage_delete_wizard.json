@@ -1,0 +1,71 @@
+{
+  "model": "helpdesk.stage.delete.wizard",
+  "name": "Helpdesk Stage Delete Wizard",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "team_ids": {
+      "readonly": false,
+      "relation": "helpdesk.team",
+      "required": false,
+      "string": "Helpdesk Teams",
+      "type": "many2many"
+    },
+    "stage_ids": {
+      "readonly": false,
+      "relation": "helpdesk.stage",
+      "required": false,
+      "string": "Stages To Delete",
+      "type": "many2many"
+    },
+    "ticket_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of Tickets",
+      "type": "integer"
+    },
+    "stages_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Stages Active",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

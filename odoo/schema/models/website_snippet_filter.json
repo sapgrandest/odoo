@@ -1,0 +1,152 @@
+{
+  "model": "website.snippet.filter",
+  "name": "Website Snippet Filter",
+  "field_count": 22,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "website_id": {
+      "help": "Restrict to a specific website.",
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "website_url": {
+      "help": "The full relative URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website URL",
+      "type": "char"
+    },
+    "website_absolute_url": {
+      "help": "The full absolute URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website Absolute URL",
+      "type": "char"
+    },
+    "website_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Visible on current website",
+      "type": "boolean"
+    },
+    "is_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Published",
+      "type": "boolean"
+    },
+    "publish_on": {
+      "help": "Automatically publish the page on the chosen date and time.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto publish on",
+      "type": "datetime"
+    },
+    "published_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Published date",
+      "type": "datetime"
+    },
+    "can_publish": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Publish",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "action_server_id": {
+      "readonly": false,
+      "relation": "ir.actions.server",
+      "required": false,
+      "string": "Server Action",
+      "type": "many2one"
+    },
+    "field_names": {
+      "help": "A list of comma-separated field names",
+      "readonly": false,
+      "required": true,
+      "string": "Field Names",
+      "type": "char"
+    },
+    "filter_id": {
+      "readonly": false,
+      "relation": "ir.filters",
+      "required": false,
+      "string": "Filter",
+      "type": "many2one"
+    },
+    "limit": {
+      "help": "The limit is the maximum number of records retrieved",
+      "readonly": false,
+      "required": true,
+      "string": "Limit",
+      "type": "integer"
+    },
+    "model_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Model name",
+      "type": "char"
+    },
+    "help": {
+      "help": "Optional help text describing the filter usage and/or purpose.",
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "product_cross_selling": {
+      "help": "True only for product filters that require a product_id because they relate to cross selling",
+      "readonly": false,
+      "required": false,
+      "string": "About cross selling products",
+      "type": "boolean"
+    }
+  }
+}

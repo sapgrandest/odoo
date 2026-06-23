@@ -1,0 +1,126 @@
+{
+  "model": "res.group.functional",
+  "name": "Group Functional",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "image_1920": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "image_1024": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 1024",
+      "type": "binary"
+    },
+    "image_512": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 512",
+      "type": "binary"
+    },
+    "image_256": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 256",
+      "type": "binary"
+    },
+    "image_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 128",
+      "type": "binary"
+    },
+    "avatar_1920": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar",
+      "type": "binary"
+    },
+    "avatar_1024": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar 1024",
+      "type": "binary"
+    },
+    "avatar_512": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar 512",
+      "type": "binary"
+    },
+    "avatar_256": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar 256",
+      "type": "binary"
+    },
+    "avatar_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar 128",
+      "type": "binary"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Users",
+      "type": "many2many"
+    },
+    "responsible_ids": {
+      "help": "Responsibles can update and delete the group.",
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "Group Responsibles",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

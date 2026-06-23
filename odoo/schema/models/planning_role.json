@@ -1,0 +1,89 @@
+{
+  "model": "planning.role",
+  "name": "Planning Role",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color",
+      "type": "integer"
+    },
+    "resource_ids": {
+      "readonly": false,
+      "relation": "resource.resource",
+      "required": false,
+      "string": "Resources",
+      "type": "many2many"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "slot_properties_definition": {
+      "readonly": false,
+      "required": false,
+      "string": "Planning Slot Properties",
+      "type": "properties_definition"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "product_ids": {
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Services",
+      "type": "one2many"
+    }
+  }
+}

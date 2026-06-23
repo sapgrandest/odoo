@@ -1,0 +1,157 @@
+{
+  "model": "hr.contract.sign.document.wizard",
+  "name": "Sign document in contract",
+  "field_count": 21,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "version_id": {
+      "readonly": false,
+      "relation": "hr.version",
+      "required": false,
+      "string": "Contract",
+      "type": "many2one"
+    },
+    "employee_ids": {
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Employees",
+      "type": "many2many"
+    },
+    "responsible_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible",
+      "type": "many2one"
+    },
+    "employee_role_id": {
+      "help": "Employee's role on the templates to sign. The same role must be present in all the templates",
+      "readonly": false,
+      "relation": "sign.item.role",
+      "required": true,
+      "string": "Employee Role",
+      "type": "many2one"
+    },
+    "sign_template_responsible_ids": {
+      "readonly": true,
+      "relation": "sign.item.role",
+      "required": false,
+      "string": "Sign Template Responsible",
+      "type": "many2many"
+    },
+    "possible_template_ids": {
+      "readonly": true,
+      "relation": "sign.template",
+      "required": false,
+      "string": "Possible Template",
+      "type": "many2many"
+    },
+    "sign_template_ids": {
+      "help": "Select only documents with either 1 or 2 different signatories.\n        Documents with 1 signatory require only the employee's signature, while those with 2 signatories require signatures from both the employee and the HR responsible.\n        ",
+      "readonly": false,
+      "relation": "sign.template",
+      "required": true,
+      "string": "Documents to sign",
+      "type": "many2many"
+    },
+    "has_both_template": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Both Template",
+      "type": "boolean"
+    },
+    "template_warning": {
+      "readonly": false,
+      "required": false,
+      "string": "Template Warning",
+      "type": "char"
+    },
+    "subject": {
+      "readonly": false,
+      "required": true,
+      "string": "Subject",
+      "type": "char"
+    },
+    "message": {
+      "readonly": false,
+      "required": false,
+      "string": "Message",
+      "type": "html"
+    },
+    "cc_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Copy to",
+      "type": "many2many"
+    },
+    "attachment_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachment",
+      "type": "many2many"
+    },
+    "mail_to": {
+      "help": "Email used to send the signature request.\n                - Work takes the email defined in \"work email\"\n                - Private takes the email defined in Private Information\n                - If the selected email is not defined, the available one will be used.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "work",
+          "Work"
+        ],
+        [
+          "private",
+          "Private"
+        ]
+      ],
+      "string": "Email",
+      "type": "selection"
+    },
+    "mail_displayed": {
+      "readonly": true,
+      "required": false,
+      "string": "Mail Displayed",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

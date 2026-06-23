@@ -1,0 +1,33 @@
+{
+  "model": "analytic.plan.fields.mixin",
+  "name": "Analytic Plan Fields",
+  "field_count": 4,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "account_id": {
+      "readonly": false,
+      "relation": "account.analytic.account",
+      "required": false,
+      "string": "Project Account",
+      "type": "many2one"
+    },
+    "auto_account_id": {
+      "readonly": false,
+      "relation": "account.analytic.account",
+      "required": false,
+      "string": "Analytic Account",
+      "type": "many2one"
+    }
+  }
+}

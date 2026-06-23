@@ -1,0 +1,112 @@
+{
+  "model": "gamification.karma.tracking",
+  "name": "Track Karma Changes",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "User",
+      "type": "many2one"
+    },
+    "old_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Old Karma Value",
+      "type": "integer"
+    },
+    "new_value": {
+      "readonly": false,
+      "required": true,
+      "string": "New Karma Value",
+      "type": "integer"
+    },
+    "gain": {
+      "readonly": false,
+      "required": false,
+      "string": "Gain",
+      "type": "integer"
+    },
+    "consolidated": {
+      "readonly": false,
+      "required": false,
+      "string": "Consolidated",
+      "type": "boolean"
+    },
+    "tracking_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Tracking Date",
+      "type": "datetime"
+    },
+    "reason": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "origin_ref": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "res.users",
+          "User"
+        ]
+      ],
+      "string": "Source",
+      "type": "reference"
+    },
+    "origin_ref_model_name": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "res.users",
+          "User"
+        ]
+      ],
+      "string": "Source Type",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

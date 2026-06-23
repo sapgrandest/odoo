@@ -1,0 +1,19 @@
+{
+  "model": "bus.listener.mixin",
+  "name": "Can send messages via bus.bus",
+  "field_count": 2,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    }
+  }
+}

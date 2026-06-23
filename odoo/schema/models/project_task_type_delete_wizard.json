@@ -1,0 +1,71 @@
+{
+  "model": "project.task.type.delete.wizard",
+  "name": "Project Task Stage Delete Wizard",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "project_ids": {
+      "readonly": false,
+      "relation": "project.project",
+      "required": false,
+      "string": "Projects",
+      "type": "many2many"
+    },
+    "stage_ids": {
+      "readonly": false,
+      "relation": "project.task.type",
+      "required": false,
+      "string": "Stages To Delete",
+      "type": "many2many"
+    },
+    "tasks_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of Tasks",
+      "type": "integer"
+    },
+    "stages_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Stages Active",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

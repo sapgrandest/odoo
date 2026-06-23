@@ -1,0 +1,225 @@
+{
+  "model": "im_livechat.channel",
+  "name": "Livechat Channel",
+  "field_count": 32,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Channel Name",
+      "type": "char"
+    },
+    "button_text": {
+      "readonly": false,
+      "required": false,
+      "string": "Text of the Button",
+      "type": "char"
+    },
+    "default_message": {
+      "help": "This is an automated 'welcome' message that your visitor will see when they initiate a new conversation.",
+      "readonly": false,
+      "required": false,
+      "string": "Welcome Message",
+      "type": "char"
+    },
+    "header_background_color": {
+      "help": "Default background color of the channel header once open",
+      "readonly": false,
+      "required": false,
+      "string": "Header Background Color",
+      "type": "char"
+    },
+    "title_color": {
+      "help": "Default title color of the channel once open",
+      "readonly": false,
+      "required": false,
+      "string": "Title Color",
+      "type": "char"
+    },
+    "button_background_color": {
+      "help": "Default background color of the Livechat button",
+      "readonly": false,
+      "required": false,
+      "string": "Button Background Color",
+      "type": "char"
+    },
+    "button_text_color": {
+      "help": "Default text color of the Livechat button",
+      "readonly": false,
+      "required": false,
+      "string": "Button Text Color",
+      "type": "char"
+    },
+    "max_sessions_mode": {
+      "help": "If limited, operators will only handle the selected number of sessions at a time.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "unlimited",
+          "Unlimited"
+        ],
+        [
+          "limited",
+          "Limited"
+        ]
+      ],
+      "string": "Sessions per Operator",
+      "type": "selection"
+    },
+    "max_sessions": {
+      "help": "Maximum number of concurrent sessions per operator.",
+      "readonly": false,
+      "required": false,
+      "string": "Maximum Sessions",
+      "type": "integer"
+    },
+    "block_assignment_during_call": {
+      "help": "While on a call, agents will not receive new conversations.",
+      "readonly": false,
+      "required": false,
+      "string": "No Chats During Call",
+      "type": "boolean"
+    },
+    "review_link": {
+      "help": "Visitors who leave a positive review will be redirected to this optional link.",
+      "readonly": false,
+      "required": false,
+      "string": "Review Link",
+      "type": "char"
+    },
+    "web_page": {
+      "help": "URL to a static page where you client can discuss with the operator of the channel.",
+      "readonly": true,
+      "required": false,
+      "string": "Web Page",
+      "type": "char"
+    },
+    "are_you_inside": {
+      "readonly": true,
+      "required": false,
+      "string": "Are you inside the matrix?",
+      "type": "boolean"
+    },
+    "available_operator_ids": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Available Operator",
+      "type": "many2many"
+    },
+    "available_operator_ids_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Agents Connected",
+      "type": "integer"
+    },
+    "script_external": {
+      "readonly": true,
+      "required": false,
+      "string": "Script (external)",
+      "type": "html"
+    },
+    "script_external_text": {
+      "readonly": true,
+      "required": false,
+      "string": "Script (external) Text",
+      "type": "char"
+    },
+    "nbr_channel": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of conversations in the past 30 days",
+      "type": "integer"
+    },
+    "rating_percentage_satisfaction": {
+      "readonly": true,
+      "required": false,
+      "string": "Rating Satisfaction",
+      "type": "float"
+    },
+    "rating_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Ratings",
+      "type": "integer"
+    },
+    "user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Agents",
+      "type": "many2many"
+    },
+    "channel_ids": {
+      "readonly": false,
+      "relation": "discuss.channel",
+      "required": false,
+      "string": "Sessions",
+      "type": "one2many"
+    },
+    "chatbot_script_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of Chatbot",
+      "type": "integer"
+    },
+    "rule_ids": {
+      "readonly": false,
+      "relation": "im_livechat.channel.rule",
+      "required": false,
+      "string": "Rules",
+      "type": "one2many"
+    },
+    "ongoing_session_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of Ongoing Sessions",
+      "type": "integer"
+    },
+    "remaining_session_capacity": {
+      "readonly": true,
+      "required": false,
+      "string": "Remaining Session Capacity",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

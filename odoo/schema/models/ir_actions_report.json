@@ -1,0 +1,215 @@
+{
+  "model": "ir.actions.report",
+  "name": "Report Action",
+  "field_count": 28,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Action Name",
+      "type": "char"
+    },
+    "type": {
+      "readonly": false,
+      "required": true,
+      "string": "Action Type",
+      "type": "char"
+    },
+    "xml_id": {
+      "readonly": true,
+      "required": false,
+      "string": "External ID",
+      "type": "char"
+    },
+    "path": {
+      "readonly": false,
+      "required": false,
+      "string": "Path to show in the URL",
+      "type": "char"
+    },
+    "help": {
+      "help": "Optional help text for the users with a description of the target view, such as its usage and purpose.",
+      "readonly": false,
+      "required": false,
+      "string": "Action Description",
+      "type": "html"
+    },
+    "explanation": {
+      "help": "Verbose description of what this action actually does",
+      "readonly": false,
+      "required": false,
+      "string": "Explanation",
+      "type": "text"
+    },
+    "binding_model_id": {
+      "help": "Setting a value makes this action available in the sidebar for the given model.",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Binding Model",
+      "type": "many2one"
+    },
+    "binding_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "action",
+          "Action"
+        ],
+        [
+          "report",
+          "Report"
+        ]
+      ],
+      "string": "Binding Type",
+      "type": "selection"
+    },
+    "binding_view_types": {
+      "readonly": false,
+      "required": false,
+      "string": "Binding View Types",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "model": {
+      "readonly": false,
+      "required": true,
+      "string": "Model Name",
+      "type": "char"
+    },
+    "model_id": {
+      "readonly": true,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Model",
+      "type": "many2one"
+    },
+    "report_type": {
+      "help": "The type of the report that will be rendered, each one having its own rendering method. HTML means the report will be opened directly in your browser PDF means the report will be rendered using Wkhtmltopdf and downloaded by the user.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "qweb-html",
+          "HTML"
+        ],
+        [
+          "qweb-pdf",
+          "PDF"
+        ],
+        [
+          "qweb-text",
+          "Text"
+        ]
+      ],
+      "string": "Report Type",
+      "type": "selection"
+    },
+    "report_name": {
+      "readonly": false,
+      "required": true,
+      "string": "Template Name",
+      "type": "char"
+    },
+    "report_file": {
+      "help": "The path to the main report file (depending on Report Type) or empty if the content is in another field",
+      "readonly": false,
+      "required": false,
+      "string": "Report File",
+      "type": "char"
+    },
+    "group_ids": {
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Groups",
+      "type": "many2many"
+    },
+    "multi": {
+      "help": "If set to true, the action will not be displayed on the right toolbar of a form view.",
+      "readonly": false,
+      "required": false,
+      "string": "On Multiple Doc.",
+      "type": "boolean"
+    },
+    "paperformat_id": {
+      "readonly": false,
+      "relation": "report.paperformat",
+      "required": false,
+      "string": "Paper Format",
+      "type": "many2one"
+    },
+    "print_report_name": {
+      "help": "This is the filename of the report going to download. Keep empty to not change the report filename. You can use a python expression with the 'object' and 'time' variables.",
+      "readonly": false,
+      "required": false,
+      "string": "Printed Report Name",
+      "type": "char"
+    },
+    "attachment_use": {
+      "help": "If enabled, then the second time the user prints with same attachment name, it returns the previous report.",
+      "readonly": false,
+      "required": false,
+      "string": "Reload from Attachment",
+      "type": "boolean"
+    },
+    "attachment": {
+      "help": "This is the filename of the attachment used to store the printing result. Keep empty to not save the printed reports. You can use a python expression with the object and time variables.",
+      "readonly": false,
+      "required": false,
+      "string": "Save as Attachment Prefix",
+      "type": "char"
+    },
+    "domain": {
+      "help": "If set, the action will only appear on records that matches the domain.",
+      "readonly": false,
+      "required": false,
+      "string": "Filter domain",
+      "type": "char"
+    },
+    "is_invoice_report": {
+      "readonly": false,
+      "required": false,
+      "string": "Invoice report",
+      "type": "boolean"
+    }
+  }
+}

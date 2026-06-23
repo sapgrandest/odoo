@@ -1,0 +1,188 @@
+{
+  "model": "product.template.attribute.value",
+  "name": "Product Template Attribute Value",
+  "field_count": 23,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "ptav_active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Value",
+      "type": "char"
+    },
+    "sequence": {
+      "help": "Determine the display order",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "product_attribute_value_id": {
+      "readonly": false,
+      "relation": "product.attribute.value",
+      "required": true,
+      "string": "Attribute Value",
+      "type": "many2one"
+    },
+    "attribute_line_id": {
+      "readonly": false,
+      "relation": "product.template.attribute.line",
+      "required": true,
+      "string": "Attribute Line",
+      "type": "many2one"
+    },
+    "price_extra": {
+      "help": "Extra price for the variant with this attribute value on sale price. eg. 200 price extra, 1000 + 200 = 1200.",
+      "readonly": false,
+      "required": false,
+      "string": "Extra Price",
+      "type": "float"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "show_price_extra": {
+      "help": "Show separately the extra price for this attribute value.",
+      "readonly": false,
+      "required": false,
+      "string": "Show Extra Price",
+      "type": "boolean"
+    },
+    "excluded_value_ids": {
+      "help": "Make this attribute value not compatible with other values of the product.",
+      "readonly": false,
+      "relation": "product.template.attribute.value",
+      "required": false,
+      "string": "Exclude For",
+      "type": "many2many"
+    },
+    "product_tmpl_id": {
+      "readonly": true,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product Template",
+      "type": "many2one"
+    },
+    "attribute_id": {
+      "readonly": true,
+      "relation": "product.attribute",
+      "required": false,
+      "string": "Attribute",
+      "type": "many2one"
+    },
+    "ptav_product_variant_ids": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "Related Variants",
+      "type": "many2many"
+    },
+    "html_color": {
+      "help": "Here you can set a specific HTML color index (e.g. #ff0000) to display the color if the attribute type is 'Color'.",
+      "readonly": true,
+      "required": false,
+      "string": "HTML Color Index",
+      "type": "char"
+    },
+    "is_custom": {
+      "help": "Allow customers to set their own value",
+      "readonly": true,
+      "required": false,
+      "string": "Free text",
+      "type": "boolean"
+    },
+    "display_type": {
+      "help": "The display type used in the Product Configurator.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "radio",
+          "Radio"
+        ],
+        [
+          "pills",
+          "Pills"
+        ],
+        [
+          "select",
+          "Select"
+        ],
+        [
+          "color",
+          "Color"
+        ],
+        [
+          "multi",
+          "Multi-checkbox"
+        ],
+        [
+          "image",
+          "Image"
+        ]
+      ],
+      "string": "Display Type",
+      "type": "selection"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color",
+      "type": "integer"
+    },
+    "image": {
+      "help": "You can upload an image that will be used as the color of the attribute value.",
+      "readonly": true,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

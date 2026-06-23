@@ -1,0 +1,127 @@
+{
+  "model": "stock.putaway.rule",
+  "name": "Putaway Rule",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "category_id": {
+      "readonly": false,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "location_in_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "When product arrives in",
+      "type": "many2one"
+    },
+    "location_out_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Store to sublocation",
+      "type": "many2one"
+    },
+    "sequence": {
+      "help": "Give to the more specialized category, a higher priority to have them in top of the list.",
+      "readonly": false,
+      "required": false,
+      "string": "Priority",
+      "type": "integer"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "package_type_ids": {
+      "readonly": false,
+      "relation": "stock.package.type",
+      "required": false,
+      "string": "Package Type",
+      "type": "many2many"
+    },
+    "storage_category_id": {
+      "readonly": false,
+      "relation": "stock.storage.category",
+      "required": false,
+      "string": "Storage Category",
+      "type": "many2one"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "sublocation": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "no",
+          "No"
+        ],
+        [
+          "last_used",
+          "Last Used"
+        ],
+        [
+          "closest_location",
+          "Closest Location"
+        ]
+      ],
+      "string": "Sublocation",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,880 @@
+{
+  "model": "stock.picking",
+  "name": "Transfer",
+  "field_count": 109,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_plans_ids": {
+      "readonly": true,
+      "relation": "mail.activity.plan",
+      "required": false,
+      "string": "Activity Plans",
+      "type": "many2many"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Reference",
+      "type": "char"
+    },
+    "origin": {
+      "readonly": false,
+      "required": false,
+      "string": "Source Document",
+      "type": "char"
+    },
+    "note": {
+      "readonly": false,
+      "required": false,
+      "string": "Notes",
+      "type": "html"
+    },
+    "backorder_id": {
+      "help": "If this shipment was split, then this field links to the shipment which contains the already processed part.",
+      "readonly": true,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Back Order of",
+      "type": "many2one"
+    },
+    "backorder_ids": {
+      "readonly": false,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Back Orders",
+      "type": "one2many"
+    },
+    "return_id": {
+      "help": "If this picking was created as a return of another picking, this field links to the original picking.",
+      "readonly": true,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Return of",
+      "type": "many2one"
+    },
+    "return_ids": {
+      "readonly": false,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Returns",
+      "type": "one2many"
+    },
+    "return_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Returns",
+      "type": "integer"
+    },
+    "move_type": {
+      "help": "It specifies goods to be deliver partially or all at once",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "direct",
+          "As soon as possible, with back orders"
+        ],
+        [
+          "one",
+          "When all products are ready"
+        ]
+      ],
+      "string": "Shipping Policy",
+      "type": "selection"
+    },
+    "state": {
+      "help": " * Draft: The transfer is not confirmed yet. Reservation doesn't apply.\n * Waiting another operation: This transfer is waiting for another operation before being ready.\n * Waiting: The transfer is waiting for the availability of some products.\n(a) The shipping policy is \"As soon as possible\": no product could be reserved.\n(b) The shipping policy is \"When all products are ready\": not all the products could be reserved.\n * Ready: The transfer is ready to be processed.\n(a) The shipping policy is \"As soon as possible\": at least one product has been reserved.\n(b) The shipping policy is \"When all products are ready\": all product have been reserved.\n * Done: The transfer has been processed.\n * Cancelled: The transfer has been cancelled.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "waiting",
+          "Waiting Another Operation"
+        ],
+        [
+          "confirmed",
+          "Waiting"
+        ],
+        [
+          "assigned",
+          "Ready"
+        ],
+        [
+          "done",
+          "Done"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "reference_ids": {
+      "readonly": true,
+      "relation": "stock.reference",
+      "required": false,
+      "string": "References",
+      "type": "many2many"
+    },
+    "priority": {
+      "help": "Products will be reserved first for the transfers with the highest priorities.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Normal"
+        ],
+        [
+          "1",
+          "Urgent"
+        ]
+      ],
+      "string": "Priority",
+      "type": "selection"
+    },
+    "scheduled_date": {
+      "help": "Scheduled time for the first part of the shipment to be processed. Setting manually a value here would set it as expected date for all the stock moves.",
+      "readonly": false,
+      "required": false,
+      "string": "Scheduled Date",
+      "type": "datetime"
+    },
+    "date_deadline": {
+      "help": "In case of outgoing flow, validate the transfer before this date to allow to deliver at promised date to the customer.\n        In case of incoming flow, validate the transfer before this date in order to have these products in stock at the date promised by the supplier",
+      "readonly": true,
+      "required": false,
+      "string": "Deadline",
+      "type": "datetime"
+    },
+    "has_deadline_issue": {
+      "help": "Is late or will be late depending on the deadline and scheduled date",
+      "readonly": true,
+      "required": false,
+      "string": "Is late",
+      "type": "boolean"
+    },
+    "date_done": {
+      "help": "Date at which the transfer has been processed or cancelled.",
+      "readonly": false,
+      "required": false,
+      "string": "Date of Transfer",
+      "type": "datetime"
+    },
+    "delay_alert_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Delay Alert Date",
+      "type": "datetime"
+    },
+    "json_popover": {
+      "readonly": true,
+      "required": false,
+      "string": "JSON data for the popover widget",
+      "type": "char"
+    },
+    "location_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Source Location",
+      "type": "many2one"
+    },
+    "location_dest_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Destination Location",
+      "type": "many2one"
+    },
+    "move_ids": {
+      "readonly": false,
+      "relation": "stock.move",
+      "required": false,
+      "string": "Stock Moves",
+      "type": "one2many"
+    },
+    "has_scrap_move": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Scrap Moves",
+      "type": "boolean"
+    },
+    "picking_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": true,
+      "string": "Operation Type",
+      "type": "many2one"
+    },
+    "warehouse_address_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Address",
+      "type": "many2one"
+    },
+    "picking_type_code": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "incoming",
+          "Receipt"
+        ],
+        [
+          "outgoing",
+          "Delivery"
+        ],
+        [
+          "internal",
+          "Internal Transfer"
+        ]
+      ],
+      "string": "Operation Category",
+      "type": "selection"
+    },
+    "picking_type_entire_packs": {
+      "help": "If ticked, packages to move will be directly displayed in Barcode instead of the products they contain",
+      "readonly": true,
+      "required": false,
+      "string": "Move Entire Packages",
+      "type": "boolean"
+    },
+    "use_create_lots": {
+      "help": "If this is checked only, it will suppose you want to create new Lots/Serial Numbers, so you can provide them in a text field. ",
+      "readonly": true,
+      "required": false,
+      "string": "Create New Lots/Serial Numbers",
+      "type": "boolean"
+    },
+    "use_existing_lots": {
+      "help": "If this is checked, you will be able to choose the Lots/Serial Numbers. You can also decide to not put lots in this operation type.  This means it will create stock with no lot or not put a restriction on the lot taken. ",
+      "readonly": true,
+      "required": false,
+      "string": "Use Existing Lots/Serial Numbers",
+      "type": "boolean"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Contact",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible",
+      "type": "many2one"
+    },
+    "move_line_ids": {
+      "readonly": false,
+      "relation": "stock.move.line",
+      "required": false,
+      "string": "Operations",
+      "type": "one2many"
+    },
+    "packages_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Packages Count",
+      "type": "integer"
+    },
+    "package_history_ids": {
+      "readonly": false,
+      "relation": "stock.package.history",
+      "required": false,
+      "string": "Transfered Packages",
+      "type": "many2many"
+    },
+    "show_check_availability": {
+      "help": "Technical field used to compute whether the button \"Check Availability\" should be displayed.",
+      "readonly": true,
+      "required": false,
+      "string": "Show Check Availability",
+      "type": "boolean"
+    },
+    "show_allocation": {
+      "help": "Technical Field used to decide whether the button \"Allocation\" should be displayed.",
+      "readonly": true,
+      "required": false,
+      "string": "Show Allocation",
+      "type": "boolean"
+    },
+    "owner_id": {
+      "help": "When validating the transfer, the products will be assigned to this owner.",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Assign Owner",
+      "type": "many2one"
+    },
+    "printed": {
+      "readonly": false,
+      "required": false,
+      "string": "Printed",
+      "type": "boolean"
+    },
+    "signature": {
+      "help": "Signature",
+      "readonly": false,
+      "required": false,
+      "string": "Signature",
+      "type": "binary"
+    },
+    "is_signed": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Signed",
+      "type": "boolean"
+    },
+    "is_locked": {
+      "help": "When the picking is not done this allows changing the initial demand. When the picking is done this allows changing the done quantities.",
+      "readonly": false,
+      "required": false,
+      "string": "Is Locked",
+      "type": "boolean"
+    },
+    "is_date_editable": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Scheduled Date Editable",
+      "type": "boolean"
+    },
+    "weight_bulk": {
+      "help": "Total weight of products which are not in a package.",
+      "readonly": true,
+      "required": false,
+      "string": "Bulk Weight",
+      "type": "float"
+    },
+    "shipping_weight": {
+      "help": "Total weight of packages and products not in a package. Packages with no shipping weight specified will default to their products' total weight. This is the weight used to compute the cost of the shipping.",
+      "readonly": false,
+      "required": false,
+      "string": "Weight for Shipping",
+      "type": "float"
+    },
+    "shipping_volume": {
+      "readonly": true,
+      "required": false,
+      "string": "Volume for Shipping",
+      "type": "float"
+    },
+    "product_id": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "lot_id": {
+      "readonly": true,
+      "relation": "stock.lot",
+      "required": false,
+      "string": "Lot/Serial Number",
+      "type": "many2one"
+    },
+    "show_operations": {
+      "help": "If this checkbox is ticked, the pickings lines will represent detailed stock operations. If not, the picking lines will represent an aggregate of detailed stock operations.",
+      "readonly": true,
+      "required": false,
+      "string": "Show Detailed Operations",
+      "type": "boolean"
+    },
+    "show_lots_text": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Lots Text",
+      "type": "boolean"
+    },
+    "has_tracking": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Tracking",
+      "type": "boolean"
+    },
+    "products_availability": {
+      "help": "Latest product availability status of the picking",
+      "readonly": true,
+      "required": false,
+      "string": "Product Availability",
+      "type": "char"
+    },
+    "products_availability_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "available",
+          "Available"
+        ],
+        [
+          "expected",
+          "Expected"
+        ],
+        [
+          "late",
+          "Late"
+        ]
+      ],
+      "string": "Products Availability State",
+      "type": "selection"
+    },
+    "picking_properties": {
+      "readonly": false,
+      "required": false,
+      "string": "Properties",
+      "type": "properties"
+    },
+    "show_next_pickings": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Next Pickings",
+      "type": "boolean"
+    },
+    "search_date_category": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "before",
+          "Before"
+        ],
+        [
+          "yesterday",
+          "Yesterday"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "day_1",
+          "Tomorrow"
+        ],
+        [
+          "day_2",
+          "The day after tomorrow"
+        ],
+        [
+          "after",
+          "After"
+        ]
+      ],
+      "string": "Date Category",
+      "type": "selection"
+    },
+    "partner_country_id": {
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "picking_warning_text": {
+      "help": "Internal instructions for the partner or its parent company as set by the user.",
+      "readonly": true,
+      "required": false,
+      "string": "Picking Instructions",
+      "type": "text"
+    },
+    "show_return": {
+      "readonly": false,
+      "required": false,
+      "string": "Show return button",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "project_id": {
+      "readonly": false,
+      "relation": "project.project",
+      "required": false,
+      "string": "Project",
+      "type": "many2one"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "purchase_id": {
+      "readonly": true,
+      "relation": "purchase.order",
+      "required": false,
+      "string": "Purchase Orders",
+      "type": "many2one"
+    },
+    "days_to_arrive": {
+      "readonly": true,
+      "required": false,
+      "string": "Days To Arrive",
+      "type": "datetime"
+    },
+    "delay_pass": {
+      "readonly": true,
+      "required": false,
+      "string": "Delay Pass",
+      "type": "datetime"
+    },
+    "sale_id": {
+      "readonly": false,
+      "relation": "sale.order",
+      "required": false,
+      "string": "Sales Order",
+      "type": "many2one"
+    },
+    "carrier_price": {
+      "readonly": false,
+      "required": false,
+      "string": "Shipping Cost",
+      "type": "float"
+    },
+    "delivery_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "base_on_rule",
+          "Based on Rules"
+        ],
+        [
+          "fixed",
+          "Fixed Price"
+        ]
+      ],
+      "string": "Provider",
+      "type": "selection"
+    },
+    "allowed_carrier_ids": {
+      "readonly": true,
+      "relation": "delivery.carrier",
+      "required": false,
+      "string": "Allowed Carrier",
+      "type": "many2many"
+    },
+    "carrier_id": {
+      "readonly": false,
+      "relation": "delivery.carrier",
+      "required": false,
+      "string": "Carrier",
+      "type": "many2one"
+    },
+    "weight": {
+      "help": "Total weight of the products in the picking.",
+      "readonly": true,
+      "required": false,
+      "string": "Weight",
+      "type": "float"
+    },
+    "carrier_tracking_ref": {
+      "readonly": false,
+      "required": false,
+      "string": "Tracking Reference",
+      "type": "char"
+    },
+    "carrier_tracking_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Tracking URL",
+      "type": "char"
+    },
+    "weight_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Weight unit of measure label",
+      "type": "char"
+    },
+    "is_return_picking": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Return Picking",
+      "type": "boolean"
+    },
+    "return_label_ids": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Return Label",
+      "type": "one2many"
+    },
+    "destination_country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Destination Country",
+      "type": "char"
+    },
+    "integration_level": {
+      "help": "Action while validating Delivery Orders.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "rate",
+          "Get Rate"
+        ],
+        [
+          "rate_and_ship",
+          "Get Rate and Create Shipment"
+        ]
+      ],
+      "string": "Integration Level",
+      "type": "selection"
+    },
+    "website_id": {
+      "help": "Website where this order has been placed, for eCommerce orders.",
+      "readonly": true,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "is_pickup_required": {
+      "readonly": true,
+      "required": false,
+      "string": "Support Pickup Locations",
+      "type": "boolean"
+    }
+  }
+}

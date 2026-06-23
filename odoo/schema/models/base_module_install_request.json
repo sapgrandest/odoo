@@ -1,0 +1,78 @@
+{
+  "model": "base.module.install.request",
+  "name": "Module Activation Request",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "module_id": {
+      "readonly": true,
+      "relation": "ir.module.module",
+      "required": true,
+      "string": "Module",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "User",
+      "type": "many2one"
+    },
+    "user_ids": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Send to:",
+      "type": "many2many"
+    },
+    "body_html": {
+      "readonly": false,
+      "required": false,
+      "string": "Body",
+      "type": "html"
+    },
+    "qweb_template_xmlid": {
+      "readonly": false,
+      "required": true,
+      "string": "Template Id",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

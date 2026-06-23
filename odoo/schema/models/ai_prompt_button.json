@@ -1,0 +1,85 @@
+{
+  "model": "ai.prompt.button",
+  "name": "Prompt that can be attached to AI UI rules for quick access by the user.",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "lang": {
+      "help": "Optional translation language (ISO code) to select when sending out an email. If not set, the main partner's language will be used. This should usually be a placeholder expression that provides the appropriate language, e.g. {{ object.partner_id.lang }}.",
+      "readonly": false,
+      "required": false,
+      "string": "Language",
+      "type": "char"
+    },
+    "render_model": {
+      "readonly": true,
+      "required": false,
+      "string": "Rendering Model",
+      "type": "char"
+    },
+    "name": {
+      "help": "The text shown on the button",
+      "readonly": false,
+      "required": true,
+      "string": "Title",
+      "type": "char"
+    },
+    "prompt": {
+      "help": "The prompt that will be sent to the AI when the button is clicked",
+      "readonly": false,
+      "required": false,
+      "string": "Prompt",
+      "type": "html"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "composer_id": {
+      "readonly": false,
+      "relation": "ai.composer",
+      "required": false,
+      "string": "Composer",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

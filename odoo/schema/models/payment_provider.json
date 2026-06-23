@@ -1,0 +1,417 @@
+{
+  "model": "payment.provider",
+  "name": "Payment Provider",
+  "field_count": 45,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "sequence": {
+      "help": "Define the display order",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "code": {
+      "help": "The technical code of this payment provider.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "none",
+          "No Provider Set"
+        ],
+        [
+          "custom",
+          "Custom"
+        ],
+        [
+          "demo",
+          "Demo"
+        ]
+      ],
+      "string": "Code",
+      "type": "selection"
+    },
+    "state": {
+      "help": "In test mode, a fake payment is processed through a test payment interface.\nThis mode is advised when setting up the provider.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "disabled",
+          "Disabled"
+        ],
+        [
+          "enabled",
+          "Enabled"
+        ],
+        [
+          "test",
+          "Test Mode"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "is_published": {
+      "help": "Whether the provider is visible on the website or not. Tokens remain functional but are only visible on manage forms.",
+      "readonly": false,
+      "required": false,
+      "string": "Published",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "main_currency_id": {
+      "help": "The main currency of the company, used to display monetary fields.",
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "payment_method_ids": {
+      "readonly": false,
+      "relation": "payment.method",
+      "required": false,
+      "string": "Supported Payment Methods",
+      "type": "many2many"
+    },
+    "allow_tokenization": {
+      "help": "This controls whether customers can save their payment methods as payment tokens. A payment token is an anonymous link to the payment method details saved in the provider's database, allowing the customer to reuse it for a next purchase.",
+      "readonly": false,
+      "required": false,
+      "string": "Allow Saving Payment Methods",
+      "type": "boolean"
+    },
+    "capture_manually": {
+      "help": "Capture the amount from Odoo, when the delivery is completed. Use this if you want to charge your customers cards only when you are sure you can ship the goods to them.",
+      "readonly": false,
+      "required": false,
+      "string": "Capture Amount Manually",
+      "type": "boolean"
+    },
+    "allow_express_checkout": {
+      "help": "This controls whether customers can use express payment methods. Express checkout enables customers to pay with Google Pay and Apple Pay from which address information is collected at payment.",
+      "readonly": false,
+      "required": false,
+      "string": "Allow Express Checkout",
+      "type": "boolean"
+    },
+    "redirect_form_view_id": {
+      "help": "The template rendering a form submitted to redirect the user when making a payment",
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Redirect Form Template",
+      "type": "many2one"
+    },
+    "inline_form_view_id": {
+      "help": "The template rendering the inline payment form when making a direct payment",
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Inline Form Template",
+      "type": "many2one"
+    },
+    "token_inline_form_view_id": {
+      "help": "The template rendering the inline payment form when making a payment by token.",
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Token Inline Form Template",
+      "type": "many2one"
+    },
+    "express_checkout_form_view_id": {
+      "help": "The template rendering the express payment methods' form.",
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Express Checkout Form Template",
+      "type": "many2one"
+    },
+    "available_country_ids": {
+      "help": "The countries in which this payment provider is available. Leave blank to make it available in all countries.",
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Countries",
+      "type": "many2many"
+    },
+    "available_currency_ids": {
+      "help": "The currencies available with this payment provider. Leave empty not to restrict any.",
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currencies",
+      "type": "many2many"
+    },
+    "minimum_amount": {
+      "help": "The minimum payment amount that this payment provider is available for. Leave blank to make it available for any payment amount.",
+      "readonly": false,
+      "required": false,
+      "string": "Minimum Amount",
+      "type": "monetary"
+    },
+    "maximum_amount": {
+      "help": "The maximum payment amount that this payment provider is available for. Leave blank to make it available for any payment amount.",
+      "readonly": false,
+      "required": false,
+      "string": "Maximum Amount",
+      "type": "monetary"
+    },
+    "pre_msg": {
+      "help": "The message displayed to explain and help the payment process",
+      "readonly": false,
+      "required": false,
+      "string": "Help Message",
+      "type": "html"
+    },
+    "pending_msg": {
+      "help": "The message displayed if the order pending after the payment process",
+      "readonly": false,
+      "required": false,
+      "string": "Pending Message",
+      "type": "html"
+    },
+    "auth_msg": {
+      "help": "The message displayed if payment is authorized",
+      "readonly": false,
+      "required": false,
+      "string": "Authorize Message",
+      "type": "html"
+    },
+    "done_msg": {
+      "help": "The message displayed if the order is successfully done after the payment process",
+      "readonly": false,
+      "required": false,
+      "string": "Done Message",
+      "type": "html"
+    },
+    "cancel_msg": {
+      "help": "The message displayed if the order is cancelled during the payment process",
+      "readonly": false,
+      "required": false,
+      "string": "Cancelled Message",
+      "type": "html"
+    },
+    "support_tokenization": {
+      "readonly": true,
+      "required": false,
+      "string": "Tokenization",
+      "type": "boolean"
+    },
+    "support_manual_capture": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "full_only",
+          "Full Only"
+        ],
+        [
+          "partial",
+          "Partial"
+        ]
+      ],
+      "string": "Manual Capture Supported",
+      "type": "selection"
+    },
+    "support_express_checkout": {
+      "readonly": true,
+      "required": false,
+      "string": "Express Checkout",
+      "type": "boolean"
+    },
+    "support_refund": {
+      "help": "Refund is a feature allowing to refund customers directly from the payment in Odoo.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "none",
+          "Unsupported"
+        ],
+        [
+          "full_only",
+          "Full Only"
+        ],
+        [
+          "partial",
+          "Full & Partial"
+        ]
+      ],
+      "string": "Refund",
+      "type": "selection"
+    },
+    "image_128": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "color": {
+      "help": "The color of the card in kanban view",
+      "readonly": true,
+      "required": false,
+      "string": "Color",
+      "type": "integer"
+    },
+    "module_id": {
+      "readonly": false,
+      "relation": "ir.module.module",
+      "required": false,
+      "string": "Corresponding Module",
+      "type": "many2one"
+    },
+    "module_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "uninstallable",
+          "Uninstallable"
+        ],
+        [
+          "uninstalled",
+          "Not Installed"
+        ],
+        [
+          "installed",
+          "Installed"
+        ],
+        [
+          "to upgrade",
+          "To be upgraded"
+        ],
+        [
+          "to remove",
+          "To be removed"
+        ],
+        [
+          "to install",
+          "To be installed"
+        ]
+      ],
+      "string": "Installation State",
+      "type": "selection"
+    },
+    "module_to_buy": {
+      "readonly": true,
+      "required": false,
+      "string": "Odoo Enterprise Module",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "custom_mode": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "wire_transfer",
+          "Wire Transfer"
+        ],
+        [
+          "cash_on_delivery",
+          "Cash On Delivery"
+        ]
+      ],
+      "string": "Custom Mode",
+      "type": "selection"
+    },
+    "qr_code": {
+      "help": "Enable the use of QR-codes when paying by wire transfer.",
+      "readonly": false,
+      "required": false,
+      "string": "Enable QR Codes",
+      "type": "boolean"
+    },
+    "journal_id": {
+      "help": "The journal in which the successful transactions are posted.",
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Payment Journal",
+      "type": "many2one"
+    },
+    "available_pricelist_ids": {
+      "help": "Only allow this payment provider when the partner's pricelist matches one of these.",
+      "readonly": false,
+      "relation": "product.pricelist",
+      "required": false,
+      "string": "Pricelists",
+      "type": "many2many"
+    },
+    "so_reference_type": {
+      "help": "You can set here the communication type that will appear on sales orders.The communication will be given to the customer when they choose the payment method.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "so_name",
+          "Based on Document Reference"
+        ],
+        [
+          "partner",
+          "Based on Customer ID"
+        ]
+      ],
+      "string": "Communication",
+      "type": "selection"
+    },
+    "website_id": {
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    }
+  }
+}

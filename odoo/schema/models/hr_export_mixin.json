@@ -1,0 +1,76 @@
+{
+  "model": "hr.export.mixin",
+  "name": "HR Export Mixin",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "period_start": {
+      "readonly": false,
+      "required": false,
+      "string": "Period Start",
+      "type": "date"
+    },
+    "period_stop": {
+      "readonly": false,
+      "required": false,
+      "string": "Period Stop",
+      "type": "date"
+    },
+    "export_file": {
+      "readonly": true,
+      "required": false,
+      "string": "Export File",
+      "type": "binary"
+    },
+    "export_filename": {
+      "readonly": true,
+      "required": false,
+      "string": "Export Filename",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "eligible_employee_line_ids": {
+      "readonly": false,
+      "relation": "hr.export.employee.mixin",
+      "required": false,
+      "string": "Eligible Employees",
+      "type": "one2many"
+    },
+    "eligible_employee_count": {
+      "readonly": true,
+      "required": false,
+      "string": "#Employees",
+      "type": "integer"
+    },
+    "creation_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Creation Date",
+      "type": "date"
+    },
+    "create_uid": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Create Uid",
+      "type": "many2one"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "model": "sign.item.radio.set",
+  "name": "Radio button set for keeping radio button items together",
+  "field_count": 8,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "radio_items": {
+      "readonly": false,
+      "relation": "sign.item",
+      "required": false,
+      "string": "Radio Items",
+      "type": "one2many"
+    },
+    "num_options": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of Radio Button options",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

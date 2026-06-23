@@ -1,0 +1,383 @@
+{
+  "model": "payment.transaction",
+  "name": "Payment Transaction",
+  "field_count": 46,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "provider_id": {
+      "readonly": true,
+      "relation": "payment.provider",
+      "required": true,
+      "string": "Provider",
+      "type": "many2one"
+    },
+    "provider_code": {
+      "help": "The technical code of this payment provider.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "none",
+          "No Provider Set"
+        ],
+        [
+          "custom",
+          "Custom"
+        ],
+        [
+          "demo",
+          "Demo"
+        ]
+      ],
+      "string": "Provider Code",
+      "type": "selection"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "payment_method_id": {
+      "readonly": true,
+      "relation": "payment.method",
+      "required": true,
+      "string": "Payment Method",
+      "type": "many2one"
+    },
+    "payment_method_code": {
+      "help": "The technical code of this payment method.",
+      "readonly": true,
+      "required": false,
+      "string": "Payment Method Code",
+      "type": "char"
+    },
+    "primary_payment_method_id": {
+      "readonly": true,
+      "relation": "payment.method",
+      "required": false,
+      "string": "Primary Payment Method",
+      "type": "many2one"
+    },
+    "reference": {
+      "help": "The internal reference of the transaction",
+      "readonly": true,
+      "required": true,
+      "string": "Reference",
+      "type": "char"
+    },
+    "provider_reference": {
+      "help": "The provider reference of the transaction",
+      "readonly": true,
+      "required": false,
+      "string": "Provider Reference",
+      "type": "char"
+    },
+    "amount": {
+      "readonly": true,
+      "required": true,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": true,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "token_id": {
+      "readonly": true,
+      "relation": "payment.token",
+      "required": false,
+      "string": "Payment Token",
+      "type": "many2one"
+    },
+    "state": {
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "pending",
+          "Pending"
+        ],
+        [
+          "authorized",
+          "Authorized"
+        ],
+        [
+          "done",
+          "Confirmed"
+        ],
+        [
+          "cancel",
+          "Canceled"
+        ],
+        [
+          "error",
+          "Error"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "state_message": {
+      "help": "The complementary information message about the state",
+      "readonly": true,
+      "required": false,
+      "string": "Message",
+      "type": "text"
+    },
+    "last_state_change": {
+      "readonly": true,
+      "required": false,
+      "string": "Last State Change Date",
+      "type": "datetime"
+    },
+    "operation": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "online_redirect",
+          "Online payment with redirection"
+        ],
+        [
+          "online_direct",
+          "Online direct payment"
+        ],
+        [
+          "online_token",
+          "Online payment by token"
+        ],
+        [
+          "validation",
+          "Validation of the payment method"
+        ],
+        [
+          "offline",
+          "Offline payment by token"
+        ],
+        [
+          "refund",
+          "Refund"
+        ]
+      ],
+      "string": "Operation",
+      "type": "selection"
+    },
+    "is_live": {
+      "help": "Whether the transaction happened in a production environment. False for transactions created before this tracking was implemented.",
+      "readonly": false,
+      "required": false,
+      "string": "Production Environment",
+      "type": "boolean"
+    },
+    "source_transaction_id": {
+      "help": "The source transaction of the related child transactions",
+      "readonly": true,
+      "relation": "payment.transaction",
+      "required": false,
+      "string": "Source Transaction",
+      "type": "many2one"
+    },
+    "child_transaction_ids": {
+      "help": "The child transactions of the transaction.",
+      "readonly": true,
+      "relation": "payment.transaction",
+      "required": false,
+      "string": "Child Transactions",
+      "type": "one2many"
+    },
+    "refunds_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Refunds Count",
+      "type": "integer"
+    },
+    "is_post_processed": {
+      "help": "Has the payment been post-processed",
+      "readonly": false,
+      "required": false,
+      "string": "Is Post-processed",
+      "type": "boolean"
+    },
+    "tokenize": {
+      "help": "Whether a payment token should be created when post-processing the transaction",
+      "readonly": false,
+      "required": false,
+      "string": "Create Token",
+      "type": "boolean"
+    },
+    "landing_route": {
+      "help": "The route the user is redirected to after the transaction",
+      "readonly": false,
+      "required": false,
+      "string": "Landing Route",
+      "type": "char"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "partner_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Partner Name",
+      "type": "char"
+    },
+    "partner_lang": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "en_US",
+          "English (US)"
+        ]
+      ],
+      "string": "Language",
+      "type": "selection"
+    },
+    "partner_email": {
+      "readonly": false,
+      "required": false,
+      "string": "Email",
+      "type": "char"
+    },
+    "partner_address": {
+      "readonly": false,
+      "required": false,
+      "string": "Address",
+      "type": "char"
+    },
+    "partner_zip": {
+      "readonly": false,
+      "required": false,
+      "string": "Zip",
+      "type": "char"
+    },
+    "partner_city": {
+      "readonly": false,
+      "required": false,
+      "string": "City",
+      "type": "char"
+    },
+    "partner_state_id": {
+      "readonly": false,
+      "relation": "res.country.state",
+      "required": false,
+      "string": "State",
+      "type": "many2one"
+    },
+    "partner_country_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "partner_phone": {
+      "readonly": false,
+      "required": false,
+      "string": "Phone",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "capture_manually": {
+      "help": "Capture the amount from Odoo, when the delivery is completed. Use this if you want to charge your customers cards only when you are sure you can ship the goods to them.",
+      "readonly": true,
+      "required": false,
+      "string": "Capture Amount Manually",
+      "type": "boolean"
+    },
+    "payment_id": {
+      "readonly": true,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Payment",
+      "type": "many2one"
+    },
+    "invoice_ids": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Invoices",
+      "type": "many2many"
+    },
+    "invoices_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoices Count",
+      "type": "integer"
+    },
+    "sale_order_ids": {
+      "readonly": true,
+      "relation": "sale.order",
+      "required": false,
+      "string": "Sales Orders",
+      "type": "many2many"
+    },
+    "sale_order_ids_nbr": {
+      "readonly": true,
+      "required": false,
+      "string": "# of Sales Orders",
+      "type": "integer"
+    },
+    "is_donation": {
+      "readonly": false,
+      "required": false,
+      "string": "Is donation",
+      "type": "boolean"
+    },
+    "donation_log_message": {
+      "readonly": false,
+      "required": false,
+      "string": "Donation Log Message",
+      "type": "html"
+    }
+  }
+}

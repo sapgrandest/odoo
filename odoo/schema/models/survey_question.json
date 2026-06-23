@@ -1,0 +1,527 @@
+{
+  "model": "survey.question",
+  "name": "Survey Question",
+  "field_count": 66,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "title": {
+      "readonly": false,
+      "required": true,
+      "string": "Title",
+      "type": "char"
+    },
+    "description": {
+      "help": "Use this field to add additional explanations about your question or to illustrate it with pictures or a video",
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "html"
+    },
+    "question_placeholder": {
+      "readonly": false,
+      "required": false,
+      "string": "Placeholder",
+      "type": "char"
+    },
+    "background_image": {
+      "readonly": false,
+      "required": false,
+      "string": "Background Image",
+      "type": "binary"
+    },
+    "background_image_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Background Url",
+      "type": "char"
+    },
+    "survey_id": {
+      "readonly": false,
+      "relation": "survey.survey",
+      "required": false,
+      "string": "Survey",
+      "type": "many2one"
+    },
+    "scoring_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "no_scoring",
+          "No scoring"
+        ],
+        [
+          "scoring_with_answers_after_page",
+          "Scoring with answers after each page"
+        ],
+        [
+          "scoring_with_answers",
+          "Scoring with answers at the end"
+        ],
+        [
+          "scoring_without_answers",
+          "Scoring without answers"
+        ]
+      ],
+      "string": "Scoring Type",
+      "type": "selection"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "session_available": {
+      "readonly": true,
+      "required": false,
+      "string": "Live Session available",
+      "type": "boolean"
+    },
+    "survey_session_speed_rating": {
+      "help": "Attendees get more points if they answer quickly",
+      "readonly": true,
+      "required": false,
+      "string": "Reward quick answers",
+      "type": "boolean"
+    },
+    "survey_session_speed_rating_time_limit": {
+      "help": "Default time given to receive additional points for right answers",
+      "readonly": true,
+      "required": false,
+      "string": "General Time limit (seconds)",
+      "type": "integer"
+    },
+    "is_page": {
+      "readonly": false,
+      "required": false,
+      "string": "Is a page?",
+      "type": "boolean"
+    },
+    "question_ids": {
+      "readonly": true,
+      "relation": "survey.question",
+      "required": false,
+      "string": "Questions",
+      "type": "one2many"
+    },
+    "questions_selection": {
+      "help": "If randomized is selected, add the number of random questions next to the section.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "all",
+          "All questions"
+        ],
+        [
+          "random",
+          "Randomized per Section"
+        ]
+      ],
+      "string": "Question Selection",
+      "type": "selection"
+    },
+    "random_questions_count": {
+      "help": "Used on randomized sections to take X random questions from all the questions of that section.",
+      "readonly": false,
+      "required": false,
+      "string": "# Questions Randomly Picked",
+      "type": "integer"
+    },
+    "page_id": {
+      "readonly": true,
+      "relation": "survey.question",
+      "required": false,
+      "string": "Page",
+      "type": "many2one"
+    },
+    "question_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "simple_choice",
+          "Single-Select"
+        ],
+        [
+          "multiple_choice",
+          "Multi-Select"
+        ],
+        [
+          "text_box",
+          "Long Text"
+        ],
+        [
+          "char_box",
+          "Short Text"
+        ],
+        [
+          "numerical_box",
+          "Number"
+        ],
+        [
+          "scale",
+          "Scale"
+        ],
+        [
+          "date",
+          "Date"
+        ],
+        [
+          "datetime",
+          "Datetime"
+        ],
+        [
+          "matrix",
+          "Matrix"
+        ]
+      ],
+      "string": "Question Type",
+      "type": "selection"
+    },
+    "is_scored_question": {
+      "help": "Include this question as part of quiz scoring. Requires an answer and answer score to be taken into account.",
+      "readonly": false,
+      "required": false,
+      "string": "Scored",
+      "type": "boolean"
+    },
+    "has_image_only_suggested_answer": {
+      "readonly": true,
+      "required": false,
+      "string": "Has image only suggested answer",
+      "type": "boolean"
+    },
+    "answer_numerical_box": {
+      "help": "Correct number answer for this question.",
+      "readonly": false,
+      "required": false,
+      "string": "Correct numerical answer",
+      "type": "float"
+    },
+    "answer_date": {
+      "help": "Correct date answer for this question.",
+      "readonly": false,
+      "required": false,
+      "string": "Correct date answer",
+      "type": "date"
+    },
+    "answer_datetime": {
+      "help": "Correct date and time answer for this question.",
+      "readonly": false,
+      "required": false,
+      "string": "Correct datetime answer",
+      "type": "datetime"
+    },
+    "answer_score": {
+      "help": "Score value for a correct answer to this question.",
+      "readonly": false,
+      "required": false,
+      "string": "Score",
+      "type": "float"
+    },
+    "save_as_email": {
+      "help": "If checked, this option will save the user's answer as its email address.",
+      "readonly": false,
+      "required": false,
+      "string": "Save as user email",
+      "type": "boolean"
+    },
+    "save_as_nickname": {
+      "help": "If checked, this option will save the user's answer as its nickname.",
+      "readonly": false,
+      "required": false,
+      "string": "Save as nickname",
+      "type": "boolean"
+    },
+    "suggested_answer_ids": {
+      "help": "Labels used for proposed choices: simple choice, multiple choice and columns of matrix",
+      "readonly": false,
+      "relation": "survey.question.answer",
+      "required": false,
+      "string": "Types of answers",
+      "type": "one2many"
+    },
+    "matrix_subtype": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "simple",
+          "One choice per row"
+        ],
+        [
+          "multiple",
+          "Multiple choices per row"
+        ]
+      ],
+      "string": "Matrix Type",
+      "type": "selection"
+    },
+    "matrix_row_ids": {
+      "help": "Labels used for proposed choices: rows of matrix",
+      "readonly": false,
+      "relation": "survey.question.answer",
+      "required": false,
+      "string": "Matrix Rows",
+      "type": "one2many"
+    },
+    "scale_min": {
+      "readonly": false,
+      "required": false,
+      "string": "Scale Minimum Value",
+      "type": "integer"
+    },
+    "scale_max": {
+      "readonly": false,
+      "required": false,
+      "string": "Scale Maximum Value",
+      "type": "integer"
+    },
+    "scale_min_label": {
+      "readonly": false,
+      "required": false,
+      "string": "Scale Minimum Label",
+      "type": "char"
+    },
+    "scale_max_label": {
+      "readonly": false,
+      "required": false,
+      "string": "Scale Maximum Label",
+      "type": "char"
+    },
+    "scale_min_label_placeholder": {
+      "readonly": true,
+      "required": false,
+      "string": "Min Label Placeholder",
+      "type": "char"
+    },
+    "scale_max_label_placeholder": {
+      "readonly": true,
+      "required": false,
+      "string": "Max Label Placeholder",
+      "type": "char"
+    },
+    "is_time_limited": {
+      "help": "Currently only supported for live sessions.",
+      "readonly": false,
+      "required": false,
+      "string": "The question is limited in time",
+      "type": "boolean"
+    },
+    "is_time_customized": {
+      "readonly": false,
+      "required": false,
+      "string": "Customized speed rewards",
+      "type": "boolean"
+    },
+    "time_limit": {
+      "readonly": false,
+      "required": false,
+      "string": "Time limit (seconds)",
+      "type": "integer"
+    },
+    "comments_allowed": {
+      "readonly": false,
+      "required": false,
+      "string": "Show Comments Field",
+      "type": "boolean"
+    },
+    "comments_message": {
+      "readonly": false,
+      "required": false,
+      "string": "Comment Message",
+      "type": "char"
+    },
+    "comment_count_as_answer": {
+      "readonly": false,
+      "required": false,
+      "string": "Comment is an answer",
+      "type": "boolean"
+    },
+    "validation_required": {
+      "readonly": false,
+      "required": false,
+      "string": "Validate entry",
+      "type": "boolean"
+    },
+    "validation_email": {
+      "readonly": false,
+      "required": false,
+      "string": "Input must be an email",
+      "type": "boolean"
+    },
+    "validation_length_min": {
+      "readonly": false,
+      "required": false,
+      "string": "Minimum Text Length",
+      "type": "integer"
+    },
+    "validation_length_max": {
+      "readonly": false,
+      "required": false,
+      "string": "Maximum Text Length",
+      "type": "integer"
+    },
+    "validation_min_float_value": {
+      "readonly": false,
+      "required": false,
+      "string": "Minimum value",
+      "type": "float"
+    },
+    "validation_max_float_value": {
+      "readonly": false,
+      "required": false,
+      "string": "Maximum value",
+      "type": "float"
+    },
+    "validation_min_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Minimum Date",
+      "type": "date"
+    },
+    "validation_max_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Maximum Date",
+      "type": "date"
+    },
+    "validation_min_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "Minimum Datetime",
+      "type": "datetime"
+    },
+    "validation_max_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "Maximum Datetime",
+      "type": "datetime"
+    },
+    "validation_error_msg": {
+      "readonly": false,
+      "required": false,
+      "string": "Validation Error",
+      "type": "char"
+    },
+    "constr_mandatory": {
+      "readonly": false,
+      "required": false,
+      "string": "Mandatory Answer",
+      "type": "boolean"
+    },
+    "constr_error_msg": {
+      "readonly": false,
+      "required": false,
+      "string": "Error message",
+      "type": "char"
+    },
+    "user_input_line_ids": {
+      "readonly": false,
+      "relation": "survey.user_input.line",
+      "required": false,
+      "string": "Answers",
+      "type": "one2many"
+    },
+    "triggering_question_ids": {
+      "help": "Questions containing the triggering answer(s) to display the current question.",
+      "readonly": true,
+      "relation": "survey.question",
+      "required": false,
+      "string": "Triggering Questions",
+      "type": "many2many"
+    },
+    "allowed_triggering_question_ids": {
+      "readonly": true,
+      "relation": "survey.question",
+      "required": false,
+      "string": "Allowed Triggering Questions",
+      "type": "many2many"
+    },
+    "is_placed_before_trigger": {
+      "help": "Is this question placed before any of its trigger questions?",
+      "readonly": true,
+      "required": false,
+      "string": "Is misplaced?",
+      "type": "boolean"
+    },
+    "triggering_answer_ids": {
+      "help": "Picking any of these answers will trigger this question.\nLeave the field empty if the question should always be displayed.",
+      "readonly": false,
+      "relation": "survey.question.answer",
+      "required": false,
+      "string": "Triggering Answers",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "survey_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "survey",
+          "Survey"
+        ],
+        [
+          "live_session",
+          "Live session"
+        ],
+        [
+          "assessment",
+          "Assessment"
+        ],
+        [
+          "custom",
+          "Custom"
+        ]
+      ],
+      "string": "Survey Type",
+      "type": "selection"
+    },
+    "generate_lead": {
+      "help": "At least one of the question answers can generate leads.",
+      "readonly": true,
+      "required": false,
+      "string": "Lead Generating",
+      "type": "boolean"
+    }
+  }
+}

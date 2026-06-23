@@ -1,0 +1,265 @@
+{
+  "model": "ir.mail_server",
+  "name": "Mail Server",
+  "field_count": 33,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "microsoft_outlook_refresh_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Refresh Token",
+      "type": "char"
+    },
+    "microsoft_outlook_access_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Access Token",
+      "type": "char"
+    },
+    "microsoft_outlook_access_token_expiration": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Access Token Expiration Timestamp",
+      "type": "integer"
+    },
+    "microsoft_outlook_uri": {
+      "help": "The URL to generate the authorization code from Outlook",
+      "readonly": true,
+      "required": false,
+      "string": "Authentication URI",
+      "type": "char"
+    },
+    "google_gmail_refresh_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Refresh Token",
+      "type": "char"
+    },
+    "google_gmail_access_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Access Token",
+      "type": "char"
+    },
+    "google_gmail_access_token_expiration": {
+      "readonly": false,
+      "required": false,
+      "string": "Access Token Expiration Timestamp",
+      "type": "integer"
+    },
+    "google_gmail_uri": {
+      "help": "The URL to generate the authorization code from Google",
+      "readonly": true,
+      "required": false,
+      "string": "URI",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "from_filter": {
+      "help": "Comma-separated list of addresses or domains for which this server can be used.\ne.g.: \"notification@odoo.com\" or \"odoo.com\"",
+      "readonly": false,
+      "required": false,
+      "string": "FROM Filtering",
+      "type": "char"
+    },
+    "smtp_host": {
+      "help": "Hostname or IP of SMTP server",
+      "readonly": false,
+      "required": false,
+      "string": "SMTP Server",
+      "type": "char"
+    },
+    "smtp_port": {
+      "help": "SMTP Port. Usually 465 for SSL, and 25 or 587 for other cases.",
+      "readonly": false,
+      "required": false,
+      "string": "SMTP Port",
+      "type": "integer"
+    },
+    "smtp_authentication": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "login",
+          "Username"
+        ],
+        [
+          "certificate",
+          "SSL Certificate"
+        ],
+        [
+          "cli",
+          "Command Line Interface"
+        ],
+        [
+          "gmail",
+          "Gmail OAuth Authentication"
+        ],
+        [
+          "outlook",
+          "Outlook OAuth Authentication"
+        ]
+      ],
+      "string": "Authenticate with",
+      "type": "selection"
+    },
+    "smtp_authentication_info": {
+      "readonly": true,
+      "required": false,
+      "string": "Authentication Info",
+      "type": "text"
+    },
+    "smtp_user": {
+      "help": "Optional username for SMTP authentication",
+      "readonly": false,
+      "required": false,
+      "string": "Username",
+      "type": "char"
+    },
+    "smtp_pass": {
+      "help": "Optional password for SMTP authentication",
+      "readonly": false,
+      "required": false,
+      "string": "Password",
+      "type": "char"
+    },
+    "smtp_encryption": {
+      "help": "Choose the connection encryption scheme:\n- None: SMTP sessions are done in cleartext.\n- TLS (STARTTLS): TLS encryption is requested at start of SMTP session (Recommended)\n- SSL/TLS: SMTP sessions are encrypted with SSL/TLS through a dedicated port (default: 465)\n\nChoose an additionnal variant for SSL or TLS:\n- encryption and validation: encrypt the data and authentify the server using its SSL certificate (Recommended)\n- encryption only: encrypt the data but skip server authentication",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "none",
+          "None"
+        ],
+        [
+          "starttls_strict",
+          "TLS (STARTTLS), encryption and validation"
+        ],
+        [
+          "starttls",
+          "TLS (STARTTLS), encryption only"
+        ],
+        [
+          "ssl_strict",
+          "SSL/TLS, encryption and validation"
+        ],
+        [
+          "ssl",
+          "SSL/TLS, encryption only"
+        ]
+      ],
+      "string": "Connection Encryption",
+      "type": "selection"
+    },
+    "smtp_ssl_certificate": {
+      "help": "SSL certificate used for authentication",
+      "readonly": false,
+      "required": false,
+      "string": "SSL Certificate",
+      "type": "binary"
+    },
+    "smtp_ssl_private_key": {
+      "help": "SSL private key used for authentication",
+      "readonly": false,
+      "required": false,
+      "string": "SSL Private Key",
+      "type": "binary"
+    },
+    "smtp_debug": {
+      "help": "If enabled, the full output of SMTP sessions will be written to the server log at DEBUG level (this is very verbose and may include confidential info!)",
+      "readonly": false,
+      "required": false,
+      "string": "Debugging",
+      "type": "boolean"
+    },
+    "max_email_size": {
+      "readonly": false,
+      "required": false,
+      "string": "Max Email Size",
+      "type": "float"
+    },
+    "sequence": {
+      "help": "When no specific mail server is requested for a mail, the highest priority one is used. Default priority is 10 (smaller number = higher priority)",
+      "readonly": false,
+      "required": false,
+      "string": "Priority",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "mail_template_ids": {
+      "readonly": true,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Mail template using this mail server",
+      "type": "one2many"
+    },
+    "owner_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Owner",
+      "type": "many2one"
+    },
+    "owner_limit_time": {
+      "readonly": false,
+      "required": false,
+      "string": "Owner Limit Time",
+      "type": "datetime"
+    },
+    "owner_limit_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Owner Limit Count",
+      "type": "integer"
+    }
+  }
+}

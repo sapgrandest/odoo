@@ -1,0 +1,112 @@
+{
+  "model": "helpdesk.ticket.to.lead",
+  "name": "Convert Ticket to Lead",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "convert_to": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "convert",
+          "Convert to opportunity"
+        ]
+      ],
+      "string": "Conversion Action",
+      "type": "selection"
+    },
+    "force_assignment": {
+      "help": "If checked, forces salesman to be updated on updated opportunities even if already set.",
+      "readonly": false,
+      "required": false,
+      "string": "Force assignment",
+      "type": "boolean"
+    },
+    "ticket_id": {
+      "readonly": false,
+      "relation": "helpdesk.ticket",
+      "required": true,
+      "string": "Ticket",
+      "type": "many2one"
+    },
+    "action": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "create",
+          "Create a new customer"
+        ],
+        [
+          "exist",
+          "Link to an existing customer"
+        ],
+        [
+          "nothing",
+          "Do not link to a customer"
+        ]
+      ],
+      "string": "Related Customer",
+      "type": "selection"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "team_id": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Team",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesperson",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "model": "l10n_fr_reports.send.vat.report.bank.account.line",
+  "name": "Bank Account Line for French Vat Report",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Company Partner",
+      "type": "many2one"
+    },
+    "bank_partner_id": {
+      "readonly": false,
+      "relation": "res.partner.bank",
+      "required": false,
+      "string": "Bank Partner",
+      "type": "many2one"
+    },
+    "account_number": {
+      "readonly": true,
+      "required": false,
+      "string": "IBAN",
+      "type": "char"
+    },
+    "bank_bic": {
+      "help": "Bank Identifier Code for international wires in the format Bank Code (4 letters) + Country Code (2 letters) + Location Code (2 letters/numbers) + Optional Branch Code (3 letters/numbers).",
+      "readonly": false,
+      "required": false,
+      "string": "BIC Code",
+      "type": "char"
+    },
+    "l10n_fr_send_vat_report_id": {
+      "readonly": false,
+      "relation": "l10n_fr_reports.send.vat.report",
+      "required": false,
+      "string": "L10N Fr Send Vat Report",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "vat_amount": {
+      "readonly": false,
+      "required": false,
+      "string": "Vat Amount",
+      "type": "monetary"
+    },
+    "is_wrongly_configured": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Wrongly Configured",
+      "type": "boolean"
+    },
+    "reimbursement_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "first_asking",
+          "First asking"
+        ],
+        [
+          "assignment_cessation",
+          "Assignment, cessation, death, entry into a VAT group"
+        ],
+        [
+          "others",
+          "Others"
+        ]
+      ],
+      "string": "Reimbursement type",
+      "type": "selection"
+    },
+    "reimbursement_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Date",
+      "type": "date"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "model": "mail.message.reaction",
+  "name": "Message Reaction",
+  "field_count": 6,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "message_id": {
+      "readonly": true,
+      "relation": "mail.message",
+      "required": true,
+      "string": "Message",
+      "type": "many2one"
+    },
+    "content": {
+      "readonly": true,
+      "required": true,
+      "string": "Content",
+      "type": "char"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Reacting Partner",
+      "type": "many2one"
+    },
+    "guest_id": {
+      "readonly": true,
+      "relation": "mail.guest",
+      "required": false,
+      "string": "Reacting Guest",
+      "type": "many2one"
+    }
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "model": "mail.template",
+  "name": "Email Template",
+  "field_count": 37,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "template_fs": {
+      "help": "File from where the template originates. Used to reset broken template.",
+      "readonly": false,
+      "required": false,
+      "string": "Template Filename",
+      "type": "char"
+    },
+    "lang": {
+      "help": "Optional translation language (ISO code) to select when sending out an email. If not set, the main partner's language will be used. This should usually be a placeholder expression that provides the appropriate language, e.g. {{ object.partner_id.lang }}.",
+      "readonly": false,
+      "required": false,
+      "string": "Language",
+      "type": "char"
+    },
+    "render_model": {
+      "readonly": true,
+      "required": false,
+      "string": "Rendering Model",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "description": {
+      "help": "This field is used for internal description of the template's usage.",
+      "readonly": false,
+      "required": false,
+      "string": "Template Description",
+      "type": "text"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "template_category": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "base_template",
+          "Base Template"
+        ],
+        [
+          "hidden_template",
+          "Hidden Template"
+        ],
+        [
+          "custom_template",
+          "Custom Template"
+        ]
+      ],
+      "string": "Template Category",
+      "type": "selection"
+    },
+    "model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Applies to",
+      "type": "many2one"
+    },
+    "model": {
+      "readonly": true,
+      "required": false,
+      "string": "Related Document Model",
+      "type": "char"
+    },
+    "subject": {
+      "help": "Subject (placeholders may be used here)",
+      "readonly": false,
+      "required": false,
+      "string": "Subject",
+      "type": "char"
+    },
+    "email_from": {
+      "help": "Sender address (placeholders may be used here). If not set, the default value will be the author's email alias if configured, or email address.",
+      "readonly": false,
+      "required": false,
+      "string": "Send From",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Owner",
+      "type": "many2one"
+    },
+    "use_default_to": {
+      "help": "Default recipients of the record:\n- partner (using id on a partner or the partner_id field) OR\n- email (using email_from or email field)",
+      "readonly": false,
+      "required": false,
+      "string": "Default Recipients",
+      "type": "boolean"
+    },
+    "email_to": {
+      "help": "Comma-separated recipient addresses (placeholders may be used here)",
+      "readonly": false,
+      "required": false,
+      "string": "To (Emails)",
+      "type": "char"
+    },
+    "partner_to": {
+      "help": "Comma-separated ids of recipient partners (placeholders may be used here)",
+      "readonly": false,
+      "required": false,
+      "string": "To (Partners)",
+      "type": "char"
+    },
+    "email_cc": {
+      "help": "Carbon copy recipients (placeholders may be used here)",
+      "readonly": false,
+      "required": false,
+      "string": "Cc",
+      "type": "char"
+    },
+    "reply_to": {
+      "readonly": false,
+      "required": false,
+      "string": "Reply To Address",
+      "type": "char"
+    },
+    "body_html": {
+      "readonly": false,
+      "required": false,
+      "string": "Body",
+      "type": "html"
+    },
+    "attachment_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachments",
+      "type": "many2many"
+    },
+    "report_template_ids": {
+      "readonly": false,
+      "relation": "ir.actions.report",
+      "required": false,
+      "string": "Dynamic Reports",
+      "type": "many2many"
+    },
+    "email_layout_xmlid": {
+      "readonly": false,
+      "required": false,
+      "string": "Email Notification Layout",
+      "type": "char"
+    },
+    "email_layout_force_header": {
+      "help": "If checked, the header will be always shown in the email body when this template is used withnotification layout.",
+      "readonly": false,
+      "required": false,
+      "string": "Force Header",
+      "type": "boolean"
+    },
+    "email_layout_force_footer": {
+      "help": "If checked, the footer will be always shown in the email body when this template is used withnotification layout.",
+      "readonly": false,
+      "required": false,
+      "string": "Force Footer",
+      "type": "boolean"
+    },
+    "mail_server_id": {
+      "help": "Optional preferred server for outgoing mails. If not set, the highest priority one will be used.",
+      "readonly": false,
+      "relation": "ir.mail_server",
+      "required": false,
+      "string": "Outgoing Mail Server",
+      "type": "many2one"
+    },
+    "scheduled_date": {
+      "help": "If set, the queue manager will send the email after the date. If not set, the email will be send as soon as possible. You can use dynamic expression.",
+      "readonly": false,
+      "required": false,
+      "string": "Scheduled Date",
+      "type": "char"
+    },
+    "auto_delete": {
+      "help": "This option permanently removes any track of email after it's been sent, including from the Technical menu in the Settings, in order to preserve storage space of your Odoo database.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto Delete",
+      "type": "boolean"
+    },
+    "ref_ir_act_window": {
+      "help": "Sidebar action to make this template available on records of the related document model",
+      "readonly": true,
+      "relation": "ir.actions.act_window",
+      "required": false,
+      "string": "Sidebar action",
+      "type": "many2one"
+    },
+    "can_write": {
+      "help": "The current user can edit the template.",
+      "readonly": true,
+      "required": false,
+      "string": "Can Write",
+      "type": "boolean"
+    },
+    "is_template_editor": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Template Editor",
+      "type": "boolean"
+    },
+    "has_dynamic_reports": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Dynamic Reports",
+      "type": "boolean"
+    },
+    "has_mail_server": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Mail Server",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

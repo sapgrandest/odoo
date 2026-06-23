@@ -1,0 +1,69 @@
+{
+  "model": "mail.composer.mixin",
+  "name": "Mail Composer Mixin",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "lang": {
+      "help": "Optional translation language (ISO code) to select when sending out an email. If not set, the main partner's language will be used. This should usually be a placeholder expression that provides the appropriate language, e.g. {{ object.partner_id.lang }}.",
+      "readonly": false,
+      "required": false,
+      "string": "Language",
+      "type": "char"
+    },
+    "render_model": {
+      "readonly": true,
+      "required": false,
+      "string": "Rendering Model",
+      "type": "char"
+    },
+    "subject": {
+      "readonly": false,
+      "required": false,
+      "string": "Subject",
+      "type": "char"
+    },
+    "body": {
+      "readonly": false,
+      "required": false,
+      "string": "Contents",
+      "type": "html"
+    },
+    "body_has_template_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Body content is the same as the template",
+      "type": "boolean"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Mail Template",
+      "type": "many2one"
+    },
+    "is_mail_template_editor": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Editor",
+      "type": "boolean"
+    },
+    "can_edit_body": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Edit Body",
+      "type": "boolean"
+    }
+  }
+}

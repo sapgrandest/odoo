@@ -1,0 +1,137 @@
+{
+  "model": "ir.asset",
+  "name": "Asset",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "bundle": {
+      "readonly": false,
+      "required": true,
+      "string": "Bundle name",
+      "type": "char"
+    },
+    "directive": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "append",
+          "Append"
+        ],
+        [
+          "prepend",
+          "Prepend"
+        ],
+        [
+          "after",
+          "After"
+        ],
+        [
+          "before",
+          "Before"
+        ],
+        [
+          "remove",
+          "Remove"
+        ],
+        [
+          "replace",
+          "Replace"
+        ],
+        [
+          "include",
+          "Include"
+        ]
+      ],
+      "string": "Directive",
+      "type": "selection"
+    },
+    "path": {
+      "readonly": false,
+      "required": true,
+      "string": "Path (or glob pattern)",
+      "type": "char"
+    },
+    "target": {
+      "readonly": false,
+      "required": false,
+      "string": "Target",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "active",
+      "type": "boolean"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": true,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "key": {
+      "readonly": false,
+      "required": false,
+      "string": "Key",
+      "type": "char"
+    },
+    "website_id": {
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "theme_template_id": {
+      "readonly": false,
+      "relation": "theme.ir.asset",
+      "required": false,
+      "string": "Theme Template",
+      "type": "many2one"
+    }
+  }
+}

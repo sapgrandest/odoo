@@ -1,0 +1,355 @@
+{
+  "model": "mail.activity.plan.template",
+  "name": "Activity plan template",
+  "field_count": 24,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "plan_id": {
+      "readonly": false,
+      "relation": "mail.activity.plan",
+      "required": true,
+      "string": "Plan",
+      "type": "many2one"
+    },
+    "res_model": {
+      "help": "Specify a model if the activity should be specific to a model and not available when managing activities for other models.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "account.account",
+          "Account"
+        ],
+        [
+          "account.return",
+          "Accounting Return"
+        ],
+        [
+          "hr.applicant",
+          "Applicant"
+        ],
+        [
+          "appointment.type",
+          "Appointment Type"
+        ],
+        [
+          "res.partner.bank",
+          "Bank Account"
+        ],
+        [
+          "account.online.link",
+          "Bank Connection"
+        ],
+        [
+          "account.bank.statement.line",
+          "Bank Statement Line"
+        ],
+        [
+          "account.batch.payment",
+          "Batch Payment"
+        ],
+        [
+          "calendar.event",
+          "Calendar Event"
+        ],
+        [
+          "res.partner",
+          "Contact"
+        ],
+        [
+          "hr.department",
+          "Department"
+        ],
+        [
+          "hr.employee",
+          "Employee"
+        ],
+        [
+          "hr.version",
+          "Employee Record"
+        ],
+        [
+          "helpdesk.ticket",
+          "Helpdesk Ticket"
+        ],
+        [
+          "hr.job",
+          "Job Position"
+        ],
+        [
+          "account.journal",
+          "Journal"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "knowledge.article",
+          "Knowledge Article"
+        ],
+        [
+          "crm.lead",
+          "Lead"
+        ],
+        [
+          "stock.lot",
+          "Lot/Serial"
+        ],
+        [
+          "account.payment",
+          "Payment"
+        ],
+        [
+          "product.pricelist",
+          "Pricelist"
+        ],
+        [
+          "product.template",
+          "Product"
+        ],
+        [
+          "product.product",
+          "Product Variant"
+        ],
+        [
+          "project.project",
+          "Project"
+        ],
+        [
+          "project.update",
+          "Project Update"
+        ],
+        [
+          "purchase.order",
+          "Purchase Order"
+        ],
+        [
+          "sale.order",
+          "Sales Order"
+        ],
+        [
+          "ir.cron",
+          "Scheduled Action"
+        ],
+        [
+          "ir.actions.server",
+          "Server Action"
+        ],
+        [
+          "sign.request",
+          "Signature Request"
+        ],
+        [
+          "survey.survey",
+          "Survey"
+        ],
+        [
+          "survey.user_input",
+          "Survey User Input"
+        ],
+        [
+          "project.task",
+          "Task"
+        ],
+        [
+          "stock.picking",
+          "Transfer"
+        ],
+        [
+          "mail.activity.mixin",
+          "Activity Mixin"
+        ]
+      ],
+      "string": "Model",
+      "type": "selection"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": true,
+      "string": "Activity Type",
+      "type": "many2one"
+    },
+    "delay_count": {
+      "help": "Number of days/week/month before executing the action after or before the scheduled plan date.",
+      "readonly": false,
+      "required": false,
+      "string": "Interval",
+      "type": "integer"
+    },
+    "delay_unit": {
+      "help": "Unit of delay",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "days",
+          "days"
+        ],
+        [
+          "weeks",
+          "weeks"
+        ],
+        [
+          "months",
+          "months"
+        ]
+      ],
+      "string": "Delay units",
+      "type": "selection"
+    },
+    "delay_from": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "before_plan_date",
+          "Before Plan Date"
+        ],
+        [
+          "after_plan_date",
+          "After Plan Date"
+        ]
+      ],
+      "string": "Trigger",
+      "type": "selection"
+    },
+    "icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Summary",
+      "type": "char"
+    },
+    "responsible_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "on_demand",
+          "Ask at launch"
+        ],
+        [
+          "other",
+          "Default user"
+        ],
+        [
+          "manager",
+          "Manager"
+        ],
+        [
+          "employee",
+          "Employee"
+        ]
+      ],
+      "string": "Assignment",
+      "type": "selection"
+    },
+    "responsible_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Assigned to",
+      "type": "many2one"
+    },
+    "note": {
+      "readonly": false,
+      "required": false,
+      "string": "Note",
+      "type": "html"
+    },
+    "suggested_next_type_id": {
+      "help": "Suggest this activity once the current one is marked as done.",
+      "readonly": true,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Suggested Next Activity",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "sign_template_id": {
+      "readonly": false,
+      "relation": "sign.template",
+      "required": false,
+      "string": "Document to sign",
+      "type": "many2one"
+    },
+    "employee_role_id": {
+      "help": "Employee's role on the templates to sign. The same role must be present in all the templates",
+      "readonly": false,
+      "relation": "sign.item.role",
+      "required": false,
+      "string": "Employee Role",
+      "type": "many2one"
+    },
+    "sign_template_responsible_ids": {
+      "readonly": true,
+      "relation": "sign.item.role",
+      "required": false,
+      "string": "Sign Template Responsible",
+      "type": "many2many"
+    },
+    "responsible_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Responsible Count",
+      "type": "integer"
+    }
+  }
+}

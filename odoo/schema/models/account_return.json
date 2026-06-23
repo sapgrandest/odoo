@@ -1,0 +1,615 @@
+{
+  "model": "account.return",
+  "name": "Accounting Return",
+  "field_count": 81,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_plans_ids": {
+      "readonly": true,
+      "relation": "mail.activity.plan",
+      "required": false,
+      "string": "Activity Plans",
+      "type": "many2many"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "message_main_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Main Attachment",
+      "type": "many2one"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "date_from": {
+      "readonly": false,
+      "required": true,
+      "string": "Date From",
+      "type": "date"
+    },
+    "date_to": {
+      "readonly": false,
+      "required": true,
+      "string": "Date To",
+      "type": "date"
+    },
+    "period_match_periodicity": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Period Matching Periodicity",
+      "type": "boolean"
+    },
+    "type_id": {
+      "readonly": false,
+      "relation": "account.return.type",
+      "required": true,
+      "string": "Return Type",
+      "type": "many2one"
+    },
+    "state": {
+      "readonly": false,
+      "required": false,
+      "string": "State",
+      "type": "char"
+    },
+    "next_state": {
+      "readonly": true,
+      "required": false,
+      "string": "Next State",
+      "type": "char"
+    },
+    "generic_state_tax_report": {
+      "help": "The state of the return for generic tax report flows",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "reviewed",
+          "Review"
+        ],
+        [
+          "submitted",
+          "Submit"
+        ],
+        [
+          "paid",
+          "Pay"
+        ]
+      ],
+      "string": "Generic State",
+      "type": "selection"
+    },
+    "generic_state_only_pay": {
+      "help": "The state of the return for report flows when only payment is needed",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "paid",
+          "Pay"
+        ]
+      ],
+      "string": "Generic State Only Pay",
+      "type": "selection"
+    },
+    "generic_state_review_submit": {
+      "help": "The state of the return for report flows when review and submission are needed",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "reviewed",
+          "Review"
+        ],
+        [
+          "submitted",
+          "Submit"
+        ]
+      ],
+      "string": "Generic State Review Submit",
+      "type": "selection"
+    },
+    "generic_state_review": {
+      "help": "The default state for audit and custom generated return types",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "reviewed",
+          "Review"
+        ]
+      ],
+      "string": "Generic State Review",
+      "type": "selection"
+    },
+    "is_completed": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Completed",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "tax_unit_id": {
+      "readonly": false,
+      "relation": "account.tax.unit",
+      "required": false,
+      "string": "Tax Unit",
+      "type": "many2one"
+    },
+    "company_ids": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Companies",
+      "type": "many2many"
+    },
+    "closing_move_ids": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Closing Move",
+      "type": "one2many"
+    },
+    "attachment_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachment",
+      "type": "many2many"
+    },
+    "type_external_id": {
+      "readonly": true,
+      "required": false,
+      "string": "Type External",
+      "type": "char"
+    },
+    "date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Deadline",
+      "type": "date"
+    },
+    "date_lock": {
+      "readonly": false,
+      "required": false,
+      "string": "Lock Date",
+      "type": "date"
+    },
+    "date_submission": {
+      "readonly": false,
+      "required": false,
+      "string": "Submission Date",
+      "type": "date"
+    },
+    "check_ids": {
+      "readonly": false,
+      "relation": "account.return.check",
+      "required": false,
+      "string": "Checks",
+      "type": "one2many"
+    },
+    "check_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Checks Count",
+      "type": "integer"
+    },
+    "unresolved_check_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Issues",
+      "type": "integer"
+    },
+    "resolved_check_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Passed",
+      "type": "integer"
+    },
+    "manually_created": {
+      "readonly": false,
+      "required": false,
+      "string": "Manually Created",
+      "type": "boolean"
+    },
+    "total_amount_to_pay": {
+      "readonly": false,
+      "required": false,
+      "string": "Total Amount To Pay",
+      "type": "monetary"
+    },
+    "period_amount_to_pay": {
+      "readonly": false,
+      "required": false,
+      "string": "Period Amount To Pay",
+      "type": "monetary"
+    },
+    "amount_to_pay_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Amount To Pay Currency",
+      "type": "many2one"
+    },
+    "show_amount_to_pay": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Amount To Pay",
+      "type": "boolean"
+    },
+    "days_to_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Days To Deadline",
+      "type": "integer"
+    },
+    "is_report_set": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Report Set",
+      "type": "boolean"
+    },
+    "has_move_entries": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Move Entries",
+      "type": "boolean"
+    },
+    "report_opened_once": {
+      "help": "Has the report been opened once",
+      "readonly": false,
+      "required": false,
+      "string": "Report Opened Once",
+      "type": "boolean"
+    },
+    "report_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Report Name",
+      "type": "char"
+    },
+    "show_companies": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Companies",
+      "type": "boolean"
+    },
+    "show_companies_mismatch_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Companies Mismatch Warning",
+      "type": "boolean"
+    },
+    "is_main_company_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Main Company Active",
+      "type": "boolean"
+    },
+    "return_type_category": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "account_return",
+          "Tax Return"
+        ],
+        [
+          "audit",
+          "Audit"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "visible_states": {
+      "readonly": true,
+      "required": false,
+      "string": "Visible States",
+      "type": "json"
+    },
+    "show_submit_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Submit Button",
+      "type": "boolean"
+    },
+    "is_tax_return": {
+      "readonly": true,
+      "required": false,
+      "string": "Is a Tax Return Return Type",
+      "type": "boolean"
+    },
+    "is_ec_sales_list_return": {
+      "readonly": true,
+      "required": false,
+      "string": "Is an EC Sales List Return Type",
+      "type": "boolean"
+    },
+    "audit_status": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "ongoing",
+          "Ongoing"
+        ],
+        [
+          "done",
+          "Done"
+        ],
+        [
+          "paused",
+          "Paused"
+        ]
+      ],
+      "string": "Audit Status",
+      "type": "selection"
+    },
+    "audit_account_status_ids": {
+      "readonly": false,
+      "relation": "account.audit.account.status",
+      "required": false,
+      "string": "Account Status",
+      "type": "one2many"
+    },
+    "audit_balances_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Balances Count",
+      "type": "integer"
+    },
+    "audit_balances_completed_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Completed Balances Count",
+      "type": "integer"
+    },
+    "cycle_ids": {
+      "readonly": false,
+      "relation": "account.return.audit.cycle",
+      "required": false,
+      "string": "Cycles",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

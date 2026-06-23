@@ -1,0 +1,87 @@
+{
+  "model": "stock.storage.category.capacity",
+  "name": "Storage Category Capacity",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "storage_category_id": {
+      "readonly": false,
+      "relation": "stock.storage.category",
+      "required": true,
+      "string": "Storage Category",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "package_type_id": {
+      "readonly": false,
+      "relation": "stock.package.type",
+      "required": false,
+      "string": "Package Type",
+      "type": "many2one"
+    },
+    "quantity": {
+      "readonly": false,
+      "required": true,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "uom_id": {
+      "help": "Default unit of measure used for all stock operations.",
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

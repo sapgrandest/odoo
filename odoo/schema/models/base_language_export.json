@@ -1,0 +1,151 @@
+{
+  "model": "base.language.export",
+  "name": "Language Export",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "File Name",
+      "type": "char"
+    },
+    "lang": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "__new__",
+          "New Language (Empty translation template)"
+        ],
+        [
+          "en_US",
+          "English (US)"
+        ]
+      ],
+      "string": "Language",
+      "type": "selection"
+    },
+    "format": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "csv",
+          "CSV File"
+        ],
+        [
+          "po",
+          "PO File"
+        ],
+        [
+          "tgz",
+          "TGZ Archive"
+        ]
+      ],
+      "string": "File Format",
+      "type": "selection"
+    },
+    "export_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "module",
+          "Module"
+        ],
+        [
+          "model",
+          "Model"
+        ]
+      ],
+      "string": "Export Type",
+      "type": "selection"
+    },
+    "modules": {
+      "readonly": false,
+      "relation": "ir.module.module",
+      "required": false,
+      "string": "Apps To Export",
+      "type": "many2many"
+    },
+    "model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Model to Export",
+      "type": "many2one"
+    },
+    "model_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Model Name",
+      "type": "char"
+    },
+    "domain": {
+      "readonly": false,
+      "required": false,
+      "string": "Model Domain",
+      "type": "char"
+    },
+    "data": {
+      "readonly": true,
+      "required": false,
+      "string": "File",
+      "type": "binary"
+    },
+    "state": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "choose",
+          "choose"
+        ],
+        [
+          "get",
+          "get"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

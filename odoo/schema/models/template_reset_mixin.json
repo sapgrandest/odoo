@@ -1,0 +1,26 @@
+{
+  "model": "template.reset.mixin",
+  "name": "Template Reset Mixin",
+  "field_count": 3,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "template_fs": {
+      "help": "File from where the template originates. Used to reset broken template.",
+      "readonly": false,
+      "required": false,
+      "string": "Template Filename",
+      "type": "char"
+    }
+  }
+}

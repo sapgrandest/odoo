@@ -1,0 +1,185 @@
+{
+  "model": "res.groups",
+  "name": "Access Groups",
+  "field_count": 26,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "user_ids": {
+      "help": "Users explicitly in this group",
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "User",
+      "type": "many2many"
+    },
+    "all_user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Users and implied users",
+      "type": "many2many"
+    },
+    "all_users_count": {
+      "help": "Number of users having this group (implicitly or explicitly)",
+      "readonly": true,
+      "required": false,
+      "string": "# Users",
+      "type": "integer"
+    },
+    "model_access": {
+      "readonly": false,
+      "relation": "ir.model.access",
+      "required": false,
+      "string": "Access Controls",
+      "type": "one2many"
+    },
+    "rule_groups": {
+      "readonly": false,
+      "relation": "ir.rule",
+      "required": false,
+      "string": "Rules",
+      "type": "many2many"
+    },
+    "menu_access": {
+      "readonly": false,
+      "relation": "ir.ui.menu",
+      "required": false,
+      "string": "Access Menu",
+      "type": "many2many"
+    },
+    "view_access": {
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Views",
+      "type": "many2many"
+    },
+    "comment": {
+      "readonly": false,
+      "required": false,
+      "string": "Comment",
+      "type": "text"
+    },
+    "full_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Group Name",
+      "type": "char"
+    },
+    "share": {
+      "help": "Group created to set access rights for sharing data with some users.",
+      "readonly": false,
+      "required": false,
+      "string": "Share Group",
+      "type": "boolean"
+    },
+    "api_key_duration": {
+      "help": "Determines the maximum duration of an api key created by a user belonging to this group.",
+      "readonly": false,
+      "required": false,
+      "string": "API Keys maximum duration days",
+      "type": "float"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "privilege_id": {
+      "readonly": false,
+      "relation": "res.groups.privilege",
+      "required": false,
+      "string": "Privilege",
+      "type": "many2one"
+    },
+    "view_group_hierarchy": {
+      "readonly": true,
+      "required": false,
+      "string": "Technical field for default group setting",
+      "type": "json"
+    },
+    "implied_ids": {
+      "help": "Users of this group are also implicitly part of those groups",
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Implied Groups",
+      "type": "many2many"
+    },
+    "all_implied_ids": {
+      "help": "The group itself with all its implied groups.",
+      "readonly": true,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Transitively Implied Groups",
+      "type": "many2many"
+    },
+    "implied_by_ids": {
+      "help": "Users in those groups are implicitly part of this group.",
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Implying Groups",
+      "type": "many2many"
+    },
+    "all_implied_by_ids": {
+      "readonly": true,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Transitively Implying Groups",
+      "type": "many2many"
+    },
+    "disjoint_ids": {
+      "help": "A user may not belong to this group and one of those.  For instance, users may not be portal users and internal users.",
+      "readonly": true,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Disjoint Groups",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,318 @@
+{
+  "model": "stock.quant",
+  "name": "Quant",
+  "field_count": 42,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": true,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "product_tmpl_id": {
+      "readonly": true,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product Template",
+      "type": "many2one"
+    },
+    "uom_id": {
+      "help": "Default unit of measure used for all stock operations.",
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "is_favorite": {
+      "readonly": true,
+      "required": false,
+      "string": "Favorite",
+      "type": "boolean"
+    },
+    "company_id": {
+      "help": "Let this field empty if this location is shared between companies",
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "location_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Location",
+      "type": "many2one"
+    },
+    "warehouse_id": {
+      "readonly": true,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    },
+    "storage_category_id": {
+      "readonly": true,
+      "relation": "stock.storage.category",
+      "required": false,
+      "string": "Storage Category",
+      "type": "many2one"
+    },
+    "cyclic_inventory_frequency": {
+      "help": " When different than 0, inventory count date for products stored at this location will be automatically set at the defined frequency.",
+      "readonly": true,
+      "required": false,
+      "string": "Inventory Frequency",
+      "type": "integer"
+    },
+    "lot_id": {
+      "readonly": false,
+      "relation": "stock.lot",
+      "required": false,
+      "string": "Lot/Serial Number",
+      "type": "many2one"
+    },
+    "lot_properties": {
+      "readonly": true,
+      "required": false,
+      "string": "Properties",
+      "type": "properties"
+    },
+    "sn_duplicated": {
+      "help": "If the same SN is in another Quant",
+      "readonly": true,
+      "required": false,
+      "string": "Duplicated Serial Number",
+      "type": "boolean"
+    },
+    "package_id": {
+      "help": "The package containing this quant",
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Package",
+      "type": "many2one"
+    },
+    "owner_id": {
+      "help": "This is the owner of the quant",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Owner",
+      "type": "many2one"
+    },
+    "quantity": {
+      "help": "Quantity of products in this quant, in the default unit of measure of the product",
+      "readonly": true,
+      "required": false,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "reserved_quantity": {
+      "help": "Quantity of reserved products in this quant, in the default unit of measure of the product",
+      "readonly": true,
+      "required": true,
+      "string": "Reserved Quantity",
+      "type": "float"
+    },
+    "available_quantity": {
+      "help": "On hand quantity which hasn't been reserved on a transfer, in the default unit of measure of the product",
+      "readonly": true,
+      "required": false,
+      "string": "Available Quantity",
+      "type": "float"
+    },
+    "in_date": {
+      "readonly": true,
+      "required": true,
+      "string": "Incoming Date",
+      "type": "datetime"
+    },
+    "tracking": {
+      "help": "Ensure the traceability of a storable product in your warehouse.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "none",
+          "By Quantity"
+        ],
+        [
+          "lot",
+          "By Lots"
+        ],
+        [
+          "serial",
+          "By Unique Serial Number"
+        ]
+      ],
+      "string": "Tracking",
+      "type": "selection"
+    },
+    "on_hand": {
+      "readonly": false,
+      "required": false,
+      "string": "On Hand",
+      "type": "boolean"
+    },
+    "product_categ_id": {
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "inventory_quantity": {
+      "help": "The product's counted quantity.",
+      "readonly": false,
+      "required": false,
+      "string": "Counted",
+      "type": "float"
+    },
+    "inventory_quantity_auto_apply": {
+      "readonly": false,
+      "required": false,
+      "string": "Inventoried Quantity",
+      "type": "float"
+    },
+    "inventory_diff_quantity": {
+      "help": "Indicates the gap between the product's theoretical quantity and its counted quantity.",
+      "readonly": true,
+      "required": false,
+      "string": "Difference",
+      "type": "float"
+    },
+    "inventory_date": {
+      "help": "Next date the On Hand Quantity should be counted.",
+      "readonly": false,
+      "required": false,
+      "string": "Scheduled",
+      "type": "date"
+    },
+    "last_count_date": {
+      "help": "Last time the Quantity was Updated",
+      "readonly": true,
+      "required": false,
+      "string": "Last Count Date",
+      "type": "date"
+    },
+    "inventory_quantity_set": {
+      "readonly": false,
+      "required": false,
+      "string": "Inventory Quantity Set",
+      "type": "boolean"
+    },
+    "is_outdated": {
+      "readonly": true,
+      "required": false,
+      "string": "Quantity has been moved since last count",
+      "type": "boolean"
+    },
+    "user_id": {
+      "help": "User assigned to do product count.",
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Assigned To",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "value": {
+      "readonly": true,
+      "required": false,
+      "string": "Value",
+      "type": "monetary"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "accounting_date": {
+      "help": "Date at which the accounting entries will be created in case of automated inventory valuation. If empty, the inventory date will be used.",
+      "readonly": false,
+      "required": false,
+      "string": "Accounting Date",
+      "type": "date"
+    },
+    "cost_method": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "standard",
+          "Standard Price"
+        ],
+        [
+          "fifo",
+          "First In First Out (FIFO)"
+        ],
+        [
+          "average",
+          "Average Cost (AVCO)"
+        ]
+      ],
+      "string": "Cost Method",
+      "type": "selection"
+    },
+    "dummy_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Dummy",
+      "type": "char"
+    },
+    "image_1920": {
+      "readonly": true,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "product_reference_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Product Reference Code",
+      "type": "char"
+    }
+  }
+}

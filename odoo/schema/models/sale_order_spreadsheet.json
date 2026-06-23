@@ -1,0 +1,121 @@
+{
+  "model": "sale.order.spreadsheet",
+  "name": "Quotation Spreadsheet",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "spreadsheet_binary_data": {
+      "readonly": false,
+      "required": false,
+      "string": "Spreadsheet file",
+      "type": "binary"
+    },
+    "spreadsheet_data": {
+      "readonly": false,
+      "required": false,
+      "string": "Spreadsheet Data",
+      "type": "text"
+    },
+    "spreadsheet_file_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Spreadsheet File Name",
+      "type": "char"
+    },
+    "thumbnail": {
+      "readonly": false,
+      "required": false,
+      "string": "Thumbnail",
+      "type": "binary"
+    },
+    "spreadsheet_snapshot": {
+      "readonly": false,
+      "required": false,
+      "string": "Spreadsheet Snapshot",
+      "type": "binary"
+    },
+    "display_thumbnail": {
+      "readonly": false,
+      "required": false,
+      "string": "Display Thumbnail",
+      "type": "binary"
+    },
+    "spreadsheet_revision_ids": {
+      "readonly": false,
+      "relation": "spreadsheet.revision",
+      "required": false,
+      "string": "Spreadsheet Revision",
+      "type": "one2many"
+    },
+    "spreadsheet_image_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Spreadsheet Image",
+      "type": "many2many"
+    },
+    "current_revision_uuid": {
+      "readonly": true,
+      "required": false,
+      "string": "Current Revision Uuid",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "order_id": {
+      "readonly": false,
+      "relation": "sale.order",
+      "required": false,
+      "string": "Order",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

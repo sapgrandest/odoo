@@ -1,0 +1,69 @@
+{
+  "model": "auth.passkey.key",
+  "name": "Passkey",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "credential_identifier": {
+      "readonly": false,
+      "required": true,
+      "string": "Credential Identifier",
+      "type": "char"
+    },
+    "public_key": {
+      "readonly": false,
+      "required": true,
+      "string": "Public Key",
+      "type": "char"
+    },
+    "sign_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Sign Count",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Create Uid",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

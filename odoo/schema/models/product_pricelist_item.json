@@ -1,0 +1,309 @@
+{
+  "model": "product.pricelist.item",
+  "name": "Pricelist Rule",
+  "field_count": 36,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "pricelist_id": {
+      "readonly": false,
+      "relation": "product.pricelist",
+      "required": false,
+      "string": "Pricelist",
+      "type": "many2one"
+    },
+    "is_pricelist_required": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Pricelist Required",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "date_start": {
+      "help": "Starting datetime for the pricelist item validation\nThe displayed value depends on the timezone set in your preferences.",
+      "readonly": false,
+      "required": false,
+      "string": "Start Date",
+      "type": "datetime"
+    },
+    "date_end": {
+      "help": "Ending datetime for the pricelist item validation\nThe displayed value depends on the timezone set in your preferences.",
+      "readonly": false,
+      "required": false,
+      "string": "End Date",
+      "type": "datetime"
+    },
+    "min_quantity": {
+      "help": "For the rule to apply, bought/sold quantity must be greater than or equal to the minimum quantity specified in this field.\nExpressed in the default unit of measure of the product.",
+      "readonly": false,
+      "required": false,
+      "string": "Min. Quantity",
+      "type": "float"
+    },
+    "applied_on": {
+      "help": "Pricelist Item applicable on selected option",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "3_global",
+          "All Products"
+        ],
+        [
+          "2_product_category",
+          "Product Category"
+        ],
+        [
+          "1_product",
+          "Product"
+        ],
+        [
+          "0_product_variant",
+          "Product Variant"
+        ]
+      ],
+      "string": "Apply On",
+      "type": "selection"
+    },
+    "display_applied_on": {
+      "help": "Pricelist Item applicable on selected option",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "1_product",
+          "Product"
+        ],
+        [
+          "2_product_category",
+          "Category"
+        ]
+      ],
+      "string": "Display Applied On",
+      "type": "selection"
+    },
+    "categ_id": {
+      "help": "Specify a product category if this rule only applies to products belonging to this category or its children categories. Keep empty otherwise.",
+      "readonly": false,
+      "relation": "product.category",
+      "required": false,
+      "string": "Category",
+      "type": "many2one"
+    },
+    "product_tmpl_id": {
+      "help": "Specify a template if this rule only applies to one product template. Keep empty otherwise.",
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "product_id": {
+      "help": "Specify a product if this rule only applies to one product. Keep empty otherwise.",
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Variant",
+      "type": "many2one"
+    },
+    "product_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Unit Name",
+      "type": "char"
+    },
+    "product_variant_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Product Variants",
+      "type": "integer"
+    },
+    "uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Packaging",
+      "type": "many2one"
+    },
+    "allowed_uom_ids": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Allowed Uom",
+      "type": "many2many"
+    },
+    "base": {
+      "help": "Base price for computation.\nSales Price: The base price will be the Sales Price.\nCost Price: The base price will be the cost price.\nOther Pricelist: Computation of the base price based on another Pricelist.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "list_price",
+          "Sales Price"
+        ],
+        [
+          "standard_price",
+          "Cost"
+        ],
+        [
+          "pricelist",
+          "Other Pricelist"
+        ]
+      ],
+      "string": "Based on",
+      "type": "selection"
+    },
+    "base_pricelist_id": {
+      "readonly": false,
+      "relation": "product.pricelist",
+      "required": false,
+      "string": "Other Pricelist",
+      "type": "many2one"
+    },
+    "compute_price": {
+      "help": "Use the discount rules and activate the discount settings in order to show discount to customer.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "percentage",
+          "Discount"
+        ],
+        [
+          "formula",
+          "Formula"
+        ],
+        [
+          "fixed",
+          "Fixed Price"
+        ]
+      ],
+      "string": "Compute Price",
+      "type": "selection"
+    },
+    "fixed_price": {
+      "readonly": false,
+      "required": false,
+      "string": "Fixed Price",
+      "type": "float"
+    },
+    "percent_price": {
+      "help": "You can apply a mark-up by setting a negative discount.",
+      "readonly": false,
+      "required": false,
+      "string": "Percentage Price",
+      "type": "float"
+    },
+    "price_discount": {
+      "help": "You can apply a mark-up by setting a negative discount.",
+      "readonly": false,
+      "required": false,
+      "string": "Price Discount",
+      "type": "float"
+    },
+    "price_round": {
+      "help": "Sets the price so that it is a multiple of this value.\nRounding is applied after the discount and before the surcharge.\nTo have prices that end in 9.99, round off to 10.00 and set an extra at -0.01",
+      "readonly": false,
+      "required": false,
+      "string": "Price Rounding",
+      "type": "float"
+    },
+    "price_surcharge": {
+      "help": "Specify the fixed amount to add or subtract (if negative) to the amount calculated with the discount.",
+      "readonly": false,
+      "required": false,
+      "string": "Extra Fee",
+      "type": "float"
+    },
+    "price_markup": {
+      "help": "You can apply a mark-up on the cost",
+      "readonly": false,
+      "required": false,
+      "string": "Markup",
+      "type": "float"
+    },
+    "price_min_margin": {
+      "help": "Specify the minimum amount of margin over the base price.",
+      "readonly": false,
+      "required": false,
+      "string": "Min. Price Margin",
+      "type": "float"
+    },
+    "price_max_margin": {
+      "help": "Specify the maximum amount of margin over the base price.",
+      "readonly": false,
+      "required": false,
+      "string": "Max. Price Margin",
+      "type": "float"
+    },
+    "name": {
+      "help": "Explicit rule name for this pricelist line.",
+      "readonly": true,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "price": {
+      "help": "Explicit rule name for this pricelist line.",
+      "readonly": true,
+      "required": false,
+      "string": "Unit Price",
+      "type": "char"
+    },
+    "rule_tip": {
+      "readonly": true,
+      "required": false,
+      "string": "Rule Tip",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

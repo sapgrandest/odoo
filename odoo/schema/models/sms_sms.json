@@ -1,0 +1,192 @@
+{
+  "model": "sms.sms",
+  "name": "Outgoing SMS",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "uuid": {
+      "help": "Alternate way to identify a SMS record, used for delivery reports",
+      "readonly": true,
+      "required": false,
+      "string": "UUID",
+      "type": "char"
+    },
+    "number": {
+      "readonly": false,
+      "required": false,
+      "string": "Number",
+      "type": "char"
+    },
+    "body": {
+      "readonly": false,
+      "required": false,
+      "string": "Body",
+      "type": "text"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "mail_message_id": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Mail Message",
+      "type": "many2one"
+    },
+    "state": {
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "outgoing",
+          "In Queue"
+        ],
+        [
+          "process",
+          "Processing"
+        ],
+        [
+          "pending",
+          "Sent"
+        ],
+        [
+          "sent",
+          "Delivered"
+        ],
+        [
+          "error",
+          "Error"
+        ],
+        [
+          "canceled",
+          "Cancelled"
+        ]
+      ],
+      "string": "SMS Status",
+      "type": "selection"
+    },
+    "failure_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "unknown",
+          "Unknown error"
+        ],
+        [
+          "sms_number_missing",
+          "Missing Number"
+        ],
+        [
+          "sms_number_format",
+          "Wrong Number Format"
+        ],
+        [
+          "sms_country_not_supported",
+          "Country Not Supported"
+        ],
+        [
+          "sms_registration_needed",
+          "Country-specific Registration Required"
+        ],
+        [
+          "sms_credit",
+          "Insufficient Credit"
+        ],
+        [
+          "sms_server",
+          "Server Error"
+        ],
+        [
+          "sms_acc",
+          "Unregistered Account"
+        ],
+        [
+          "sms_blacklist",
+          "Blacklisted"
+        ],
+        [
+          "sms_duplicate",
+          "Duplicate"
+        ],
+        [
+          "sms_optout",
+          "Opted Out"
+        ]
+      ],
+      "string": "Failure Type",
+      "type": "selection"
+    },
+    "sms_tracker_id": {
+      "readonly": true,
+      "relation": "sms.tracker",
+      "required": false,
+      "string": "SMS trackers",
+      "type": "many2one"
+    },
+    "to_delete": {
+      "help": "Will automatically be deleted, while notifications will not be deleted in any case.",
+      "readonly": false,
+      "required": false,
+      "string": "Marked for deletion",
+      "type": "boolean"
+    },
+    "sms_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "marketing",
+          "Marketing"
+        ],
+        [
+          "alert",
+          "Alert"
+        ]
+      ],
+      "string": "Sms Type",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

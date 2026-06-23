@@ -1,0 +1,236 @@
+{
+  "model": "sign.item.type",
+  "name": "Signature Item Type",
+  "field_count": 25,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Field Name",
+      "type": "char"
+    },
+    "icon": {
+      "readonly": false,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "item_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "signature",
+          "Signature"
+        ],
+        [
+          "initial",
+          "Initial"
+        ],
+        [
+          "text",
+          "Text"
+        ],
+        [
+          "textarea",
+          "Multiline Text"
+        ],
+        [
+          "checkbox",
+          "Checkbox"
+        ],
+        [
+          "radio",
+          "Radio"
+        ],
+        [
+          "selection",
+          "Selection"
+        ],
+        [
+          "strikethrough",
+          "Strikethrough"
+        ],
+        [
+          "stamp",
+          "Stamp"
+        ],
+        [
+          "date",
+          "Date"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "tip": {
+      "help": "Hint displayed in the signing hint",
+      "readonly": false,
+      "required": true,
+      "string": "Tip",
+      "type": "char"
+    },
+    "placeholder": {
+      "readonly": false,
+      "required": false,
+      "string": "Placeholder",
+      "type": "char"
+    },
+    "field_size": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "short_text",
+          "Short Text"
+        ],
+        [
+          "regular_text",
+          "Regular Text"
+        ],
+        [
+          "long_text",
+          "Long Text"
+        ]
+      ],
+      "string": "Field Size",
+      "type": "selection"
+    },
+    "default_width": {
+      "readonly": true,
+      "required": true,
+      "string": "Default Width",
+      "type": "float"
+    },
+    "default_height": {
+      "readonly": true,
+      "required": true,
+      "string": "Default Height",
+      "type": "float"
+    },
+    "model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Linked to",
+      "type": "many2one"
+    },
+    "model_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Model",
+      "type": "char"
+    },
+    "auto_field": {
+      "help": "Technical name of the field on the partner model to auto-complete this signature field at the time of signature.",
+      "readonly": false,
+      "required": false,
+      "string": "Linked field",
+      "type": "char"
+    },
+    "auto_write": {
+      "help": "If checked, the value filled during signing will be written back to the corresponding field using sender permissions.",
+      "readonly": false,
+      "required": false,
+      "string": "Update Field",
+      "type": "boolean"
+    },
+    "required": {
+      "readonly": false,
+      "required": false,
+      "string": "Mandatory",
+      "type": "boolean"
+    },
+    "alignment": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "left",
+          "Left"
+        ],
+        [
+          "center",
+          "Center"
+        ],
+        [
+          "right",
+          "Right"
+        ]
+      ],
+      "string": "Alignment",
+      "type": "selection"
+    },
+    "constant": {
+      "readonly": false,
+      "required": false,
+      "string": "Read-only",
+      "type": "boolean"
+    },
+    "custom": {
+      "readonly": true,
+      "required": false,
+      "string": "Custom Item Type",
+      "type": "boolean"
+    },
+    "shared": {
+      "help": "Make this field available for everyone.",
+      "readonly": false,
+      "required": false,
+      "string": "Shared",
+      "type": "boolean"
+    },
+    "authorized_users": {
+      "help": "Additional users that can use this custom field while editing templates.",
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Authorized Users",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

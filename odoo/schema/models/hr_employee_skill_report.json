@@ -1,0 +1,86 @@
+{
+  "model": "hr.employee.skill.report",
+  "name": "Employee Skills Report",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "employee_id": {
+      "readonly": true,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Employee",
+      "type": "many2one"
+    },
+    "has_department_manager_access": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Department Manager Access",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "department_id": {
+      "readonly": true,
+      "relation": "hr.department",
+      "required": false,
+      "string": "Department",
+      "type": "many2one"
+    },
+    "job_id": {
+      "readonly": true,
+      "relation": "hr.job",
+      "required": false,
+      "string": "Job",
+      "type": "many2one"
+    },
+    "skill_id": {
+      "readonly": true,
+      "relation": "hr.skill",
+      "required": false,
+      "string": "Skill",
+      "type": "many2one"
+    },
+    "skill_type_id": {
+      "readonly": true,
+      "relation": "hr.skill.type",
+      "required": false,
+      "string": "Skill Type",
+      "type": "many2one"
+    },
+    "skill_level": {
+      "readonly": true,
+      "required": false,
+      "string": "Skill Level",
+      "type": "char"
+    },
+    "level_progress": {
+      "readonly": true,
+      "required": false,
+      "string": "Level Progress",
+      "type": "float"
+    },
+    "active": {
+      "help": "If the active field is set to False, it will allow you to hide the resource record without removing it.",
+      "readonly": true,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    }
+  }
+}

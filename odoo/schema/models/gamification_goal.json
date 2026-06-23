@@ -1,0 +1,243 @@
+{
+  "model": "gamification.goal",
+  "name": "Gamification Goal",
+  "field_count": 27,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "definition_id": {
+      "readonly": false,
+      "relation": "gamification.goal.definition",
+      "required": true,
+      "string": "Goal Definition",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "User",
+      "type": "many2one"
+    },
+    "user_partner_id": {
+      "help": "Partner-related data of the user",
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Related Partner",
+      "type": "many2one"
+    },
+    "line_id": {
+      "readonly": false,
+      "relation": "gamification.challenge.line",
+      "required": false,
+      "string": "Challenge Line",
+      "type": "many2one"
+    },
+    "challenge_id": {
+      "help": "Challenge that generated the goal, assign challenge to users to generate goals with a value in this field.",
+      "readonly": true,
+      "relation": "gamification.challenge",
+      "required": false,
+      "string": "Challenge",
+      "type": "many2one"
+    },
+    "start_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Start Date",
+      "type": "date"
+    },
+    "end_date": {
+      "readonly": false,
+      "required": false,
+      "string": "End Date",
+      "type": "date"
+    },
+    "target_goal": {
+      "readonly": false,
+      "required": true,
+      "string": "To Reach",
+      "type": "float"
+    },
+    "current": {
+      "readonly": false,
+      "required": true,
+      "string": "Current Value",
+      "type": "float"
+    },
+    "completeness": {
+      "readonly": true,
+      "required": false,
+      "string": "Completeness",
+      "type": "float"
+    },
+    "state": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "inprogress",
+          "In progress"
+        ],
+        [
+          "reached",
+          "Reached"
+        ],
+        [
+          "failed",
+          "Failed"
+        ],
+        [
+          "canceled",
+          "Cancelled"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "to_update": {
+      "readonly": false,
+      "required": false,
+      "string": "To update",
+      "type": "boolean"
+    },
+    "closed": {
+      "readonly": false,
+      "required": false,
+      "string": "Closed goal",
+      "type": "boolean"
+    },
+    "computation_mode": {
+      "help": "Define how the goals will be computed. The result of the operation will be stored in the field 'Current'.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "manually",
+          "Recorded manually"
+        ],
+        [
+          "count",
+          "Automatic: number of records"
+        ],
+        [
+          "sum",
+          "Automatic: sum on a field"
+        ],
+        [
+          "python",
+          "Automatic: execute a specific Python code"
+        ]
+      ],
+      "string": "Computation Mode",
+      "type": "selection"
+    },
+    "color": {
+      "readonly": true,
+      "required": false,
+      "string": "Color Index",
+      "type": "integer"
+    },
+    "remind_update_delay": {
+      "help": "The number of days after which the user assigned to a manual goal will be reminded. Never reminded if no value is specified.",
+      "readonly": false,
+      "required": false,
+      "string": "Remind delay",
+      "type": "integer"
+    },
+    "last_update": {
+      "help": "In case of manual goal, reminders are sent if the goal as not been updated for a while (defined in challenge). Ignored in case of non-manual goal or goal not linked to a challenge.",
+      "readonly": false,
+      "required": false,
+      "string": "Last Update",
+      "type": "date"
+    },
+    "definition_description": {
+      "readonly": true,
+      "required": false,
+      "string": "Definition Description",
+      "type": "text"
+    },
+    "definition_condition": {
+      "help": "A goal is considered as completed when the current value is compared to the value to reach",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "higher",
+          "The higher the better"
+        ],
+        [
+          "lower",
+          "The lower the better"
+        ]
+      ],
+      "string": "Definition Condition",
+      "type": "selection"
+    },
+    "definition_suffix": {
+      "help": "The currency and suffix field",
+      "readonly": true,
+      "required": false,
+      "string": "Suffix",
+      "type": "char"
+    },
+    "definition_display": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "progress",
+          "Progressive (using numerical values)"
+        ],
+        [
+          "boolean",
+          "Exclusive (done or not-done)"
+        ]
+      ],
+      "string": "Display Mode",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "model": "res.country.state",
+  "name": "Country state",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "country_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": true,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "name": {
+      "help": "Administrative divisions of a country. E.g. Fed. State, Department, Canton",
+      "readonly": false,
+      "required": true,
+      "string": "State Name",
+      "type": "char"
+    },
+    "code": {
+      "help": "The state code.",
+      "readonly": false,
+      "required": true,
+      "string": "State Code",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,486 @@
+{
+  "model": "account.batch.payment",
+  "name": "Batch Payment",
+  "field_count": 61,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_plans_ids": {
+      "readonly": true,
+      "relation": "mail.activity.plan",
+      "required": false,
+      "string": "Activity Plans",
+      "type": "many2many"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Reference",
+      "type": "char"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "New"
+        ],
+        [
+          "sent",
+          "Sent"
+        ],
+        [
+          "reconciled",
+          "Reconciled"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Bank",
+      "type": "many2one"
+    },
+    "company_id": {
+      "help": "Company related to this journal",
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "payment_ids": {
+      "readonly": false,
+      "relation": "account.payment",
+      "required": true,
+      "string": "Payments",
+      "type": "one2many"
+    },
+    "payment_ids_domain": {
+      "readonly": true,
+      "required": false,
+      "string": "Payment Ids Domain",
+      "type": "char"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "amount_residual": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount Residual",
+      "type": "monetary"
+    },
+    "amount_residual_currency": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount Residual Currency",
+      "type": "monetary"
+    },
+    "amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "amount_unsigned": {
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "monetary"
+    },
+    "batch_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "inbound",
+          "Inbound"
+        ],
+        [
+          "outbound",
+          "Outbound"
+        ]
+      ],
+      "string": "Batch Type",
+      "type": "selection"
+    },
+    "payment_method_id": {
+      "help": "The payment method used by the payments in this batch.",
+      "readonly": false,
+      "relation": "account.payment.method",
+      "required": false,
+      "string": "Payment Method",
+      "type": "many2one"
+    },
+    "available_payment_method_ids": {
+      "readonly": true,
+      "relation": "account.payment.method",
+      "required": false,
+      "string": "Available Payment Method",
+      "type": "many2many"
+    },
+    "payment_method_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "export_file_create_date": {
+      "help": "Creation date of the related export file.",
+      "readonly": true,
+      "required": false,
+      "string": "Generation Date",
+      "type": "date"
+    },
+    "export_file": {
+      "help": "Export file related to this batch",
+      "readonly": true,
+      "required": false,
+      "string": "File",
+      "type": "binary"
+    },
+    "export_file_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Export File Attachment",
+      "type": "many2one"
+    },
+    "export_filename": {
+      "help": "Name of the export file generated for this batch",
+      "readonly": false,
+      "required": false,
+      "string": "File Name",
+      "type": "char"
+    },
+    "file_generation_enabled": {
+      "help": "Whether or not this batch payment should display the 'Generate File' button instead of 'Print' in form view.",
+      "readonly": true,
+      "required": false,
+      "string": "File Generation Enabled",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "iso20022_batch_booking": {
+      "help": "Ask the bank to group the bank transactions corresponding to these payments into a single transaction.",
+      "readonly": false,
+      "required": false,
+      "string": "SCT Batch Booking",
+      "type": "boolean"
+    },
+    "payment_method_is_iso20022": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Iso20022",
+      "type": "boolean"
+    },
+    "invalid_sct_partners_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Invalid Sct Partners",
+      "type": "many2many"
+    },
+    "payment_identifier": {
+      "readonly": true,
+      "required": false,
+      "string": "Batch ID",
+      "type": "char"
+    },
+    "payment_online_status": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "uninitiated",
+          "Uninitiated"
+        ],
+        [
+          "unsigned",
+          "Unsigned"
+        ],
+        [
+          "pending",
+          "Pending"
+        ],
+        [
+          "accepted",
+          "Accepted"
+        ],
+        [
+          "canceled",
+          "Canceled"
+        ],
+        [
+          "rejected",
+          "Rejected"
+        ]
+      ],
+      "string": "PIS Status",
+      "type": "selection"
+    },
+    "account_online_link_payments_enabled": {
+      "readonly": true,
+      "required": false,
+      "string": "Account Online Link Payments Enabled",
+      "type": "boolean"
+    },
+    "account_online_link_payments_requested": {
+      "help": "Technical field indicating whether the customer has started the payment activation process with the provider.",
+      "readonly": true,
+      "required": false,
+      "string": "Is Payment Activation Requested",
+      "type": "boolean"
+    },
+    "account_online_link_payments_activated": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Payment Activated",
+      "type": "boolean"
+    }
+  }
+}

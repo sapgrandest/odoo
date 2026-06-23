@@ -1,0 +1,91 @@
+{
+  "model": "product.combo",
+  "name": "Product Combo",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "combo_item_ids": {
+      "readonly": false,
+      "relation": "product.combo.item",
+      "required": false,
+      "string": "Combo Item",
+      "type": "one2many"
+    },
+    "combo_item_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Product Count",
+      "type": "integer"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "base_price": {
+      "help": "The minimum price among the products in this combo. This value will be used to prorate the price of this combo with respect to the other combos in a combo product. This heuristic ensures that whatever product the user chooses in a combo, it will always be the same price.",
+      "readonly": true,
+      "required": false,
+      "string": "Combo Price",
+      "type": "float"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "model": "account.multicurrency.revaluation.report.handler",
+  "name": "Multicurrency Revaluation Report Custom Handler",
+  "field_count": 2,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    }
+  }
+}

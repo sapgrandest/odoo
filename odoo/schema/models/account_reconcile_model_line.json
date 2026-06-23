@@ -1,0 +1,148 @@
+{
+  "model": "account.reconcile.model.line",
+  "name": "Rules for the reconciliation model",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "analytic_distribution": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Distribution",
+      "type": "json"
+    },
+    "analytic_precision": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Precision",
+      "type": "integer"
+    },
+    "distribution_analytic_account_ids": {
+      "readonly": true,
+      "relation": "account.analytic.account",
+      "required": false,
+      "string": "Distribution Analytic Account",
+      "type": "many2many"
+    },
+    "model_id": {
+      "readonly": true,
+      "relation": "account.reconcile.model",
+      "required": false,
+      "string": "Model",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": true,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Account",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "label": {
+      "readonly": false,
+      "required": false,
+      "string": "Label",
+      "type": "char"
+    },
+    "amount_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "fixed",
+          "Fixed"
+        ],
+        [
+          "percentage",
+          "Percentage of balance"
+        ],
+        [
+          "percentage_st_line",
+          "Percentage of statement line"
+        ],
+        [
+          "regex",
+          "From label"
+        ]
+      ],
+      "string": "Amount Type",
+      "type": "selection"
+    },
+    "amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Float Amount",
+      "type": "float"
+    },
+    "amount_string": {
+      "help": "Value for the amount of the writeoff line\n    * Percentage: Percentage of the balance, between 0 and 100.\n    * Fixed: The fixed value of the writeoff. The amount will count as a debit if it is negative, as a credit if it is positive.\n    * From Label: There is no need for regex delimiter, only the regex is needed. For instance if you want to extract the amount from\nR:9672938 10/07 AX 9415126318 T:5L:NA BRT: 3358,07 C:\nYou could enter\nBRT: ([\\d,]+)\n    If the label is \"01870912 0009065 00115\" and you need the amount in decimal\n    format (e.g. 90.65), you can use a regex with capturing groups, for example:\n        \\s+0*(\\d+?)(\\d{2})(?=\\s)\n    In this case:\n    • the first group captures the integer part\n    • the second group captures the decimal part (last two digits)\n    ",
+      "readonly": false,
+      "required": true,
+      "string": "Amount",
+      "type": "char"
+    },
+    "tax_ids": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Taxes",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

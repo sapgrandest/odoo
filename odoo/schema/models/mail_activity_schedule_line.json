@@ -1,0 +1,71 @@
+{
+  "model": "mail.activity.schedule.line",
+  "name": "Mail Activity Schedule Line",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "activity_schedule_id": {
+      "readonly": false,
+      "relation": "mail.activity.schedule",
+      "required": true,
+      "string": "Activity Schedule",
+      "type": "many2one"
+    },
+    "line_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Line Description",
+      "type": "char"
+    },
+    "line_date_deadline": {
+      "readonly": false,
+      "required": false,
+      "string": "Date Deadline",
+      "type": "date"
+    },
+    "responsible_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

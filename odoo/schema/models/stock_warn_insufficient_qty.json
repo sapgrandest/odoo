@@ -1,0 +1,52 @@
+{
+  "model": "stock.warn.insufficient.qty",
+  "name": "Warn Insufficient Quantity",
+  "field_count": 7,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": true,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "location_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Location",
+      "type": "many2one"
+    },
+    "quant_ids": {
+      "readonly": true,
+      "relation": "stock.quant",
+      "required": false,
+      "string": "Quant",
+      "type": "many2many"
+    },
+    "quantity": {
+      "readonly": false,
+      "required": true,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "product_uom_name": {
+      "readonly": false,
+      "required": true,
+      "string": "Unit",
+      "type": "char"
+    }
+  }
+}

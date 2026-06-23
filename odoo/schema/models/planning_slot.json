@@ -1,0 +1,477 @@
+{
+  "model": "planning.slot",
+  "name": "Planning Shift",
+  "field_count": 60,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Note",
+      "type": "text"
+    },
+    "resource_ids": {
+      "readonly": false,
+      "relation": "resource.resource",
+      "required": false,
+      "string": "Resources",
+      "type": "many2many"
+    },
+    "resource_roles": {
+      "readonly": true,
+      "relation": "planning.role",
+      "required": false,
+      "string": "Resource Roles",
+      "type": "many2many"
+    },
+    "employee_ids": {
+      "readonly": true,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Employee",
+      "type": "many2many"
+    },
+    "department_id": {
+      "readonly": true,
+      "relation": "hr.department",
+      "required": false,
+      "string": "Departments",
+      "type": "many2one"
+    },
+    "user_ids": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Users",
+      "type": "many2many"
+    },
+    "manager_id": {
+      "readonly": true,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Manager",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "role_id": {
+      "help": "Define the roles your resources will perform (e.g. Chef, Bartender, Waiter). Create open shifts based on the roles needed for a mission, then assign those shifts to available resources.",
+      "readonly": false,
+      "relation": "planning.role",
+      "required": false,
+      "string": "Role",
+      "type": "many2one"
+    },
+    "color": {
+      "readonly": true,
+      "required": false,
+      "string": "Color",
+      "type": "integer"
+    },
+    "was_copied": {
+      "readonly": true,
+      "required": false,
+      "string": "This Shift Was Copied From Previous Week",
+      "type": "boolean"
+    },
+    "access_token": {
+      "readonly": true,
+      "required": true,
+      "string": "Access Token",
+      "type": "char"
+    },
+    "start_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "Start Date",
+      "type": "datetime"
+    },
+    "end_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "End Date",
+      "type": "datetime"
+    },
+    "allow_self_unassign": {
+      "readonly": true,
+      "required": false,
+      "string": "Let Employee Unassign Themselves",
+      "type": "boolean"
+    },
+    "self_unassign_days_before": {
+      "help": "Deadline in days for shift unassignment",
+      "readonly": true,
+      "required": false,
+      "string": "Days before shift for unassignment",
+      "type": "integer"
+    },
+    "unassign_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Deadline for unassignment",
+      "type": "datetime"
+    },
+    "is_unassign_deadline_passed": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Unassign Deadline Passed",
+      "type": "boolean"
+    },
+    "conflicting_slot_ids": {
+      "readonly": true,
+      "relation": "planning.slot",
+      "required": false,
+      "string": "Conflicting Slot",
+      "type": "many2many"
+    },
+    "overlap_slot_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Overlap Slot Count",
+      "type": "integer"
+    },
+    "is_past": {
+      "readonly": true,
+      "required": false,
+      "string": "Is This Shift In The Past?",
+      "type": "boolean"
+    },
+    "is_users_role": {
+      "readonly": true,
+      "required": false,
+      "string": "Is the shifts role one of the current user roles",
+      "type": "boolean"
+    },
+    "request_to_switch": {
+      "readonly": true,
+      "required": false,
+      "string": "Has there been a request to switch on this shift slot?",
+      "type": "boolean"
+    },
+    "resources_without_correct_role": {
+      "readonly": true,
+      "required": false,
+      "string": "What resource has not the right role",
+      "type": "char"
+    },
+    "allocation_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "planning",
+          "Planning"
+        ],
+        [
+          "forecast",
+          "Forecast"
+        ]
+      ],
+      "string": "Allocation Type",
+      "type": "selection"
+    },
+    "allocated_hours": {
+      "readonly": false,
+      "required": false,
+      "string": "Allocated Time",
+      "type": "float"
+    },
+    "allocated_percentage": {
+      "readonly": false,
+      "required": false,
+      "string": "Allocated Time %",
+      "type": "float"
+    },
+    "duration": {
+      "readonly": true,
+      "required": false,
+      "string": "Duration",
+      "type": "float"
+    },
+    "publication_warning": {
+      "help": "If checked, it means that the shift contains has changed since its last publish.",
+      "readonly": true,
+      "required": false,
+      "string": "Modified Since Last Publication",
+      "type": "boolean"
+    },
+    "state": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "published",
+          "Scheduled"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "template_creation": {
+      "readonly": false,
+      "required": false,
+      "string": "Save as Template",
+      "type": "boolean"
+    },
+    "template_autocomplete_ids": {
+      "readonly": true,
+      "relation": "planning.slot.template",
+      "required": false,
+      "string": "Template Autocomplete",
+      "type": "many2many"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "planning.slot.template",
+      "required": false,
+      "string": "Shift Templates",
+      "type": "many2one"
+    },
+    "template_reset": {
+      "readonly": false,
+      "required": false,
+      "string": "Template Reset",
+      "type": "boolean"
+    },
+    "previous_template_id": {
+      "readonly": false,
+      "relation": "planning.slot.template",
+      "required": false,
+      "string": "Previous Template",
+      "type": "many2one"
+    },
+    "allow_template_creation": {
+      "readonly": true,
+      "required": false,
+      "string": "Allow Template Creation",
+      "type": "boolean"
+    },
+    "recurrency_id": {
+      "readonly": true,
+      "relation": "planning.recurrency",
+      "required": false,
+      "string": "Recurrency",
+      "type": "many2one"
+    },
+    "repeat": {
+      "help": "To avoid polluting your database and performance issues, shifts are only created for the next 6 months. They are then gradually created as time passes by in order to always get shifts 6 months ahead. This value can be modified from the settings of Planning, in debug mode.",
+      "readonly": false,
+      "required": false,
+      "string": "Repeat",
+      "type": "boolean"
+    },
+    "repeat_interval": {
+      "readonly": false,
+      "required": false,
+      "string": "Repeat every",
+      "type": "integer"
+    },
+    "repeat_unit": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "day",
+          "Days"
+        ],
+        [
+          "week",
+          "Weeks"
+        ],
+        [
+          "month",
+          "Months"
+        ],
+        [
+          "year",
+          "Years"
+        ]
+      ],
+      "string": "Repeat Unit",
+      "type": "selection"
+    },
+    "repeat_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "forever",
+          "Forever"
+        ],
+        [
+          "until",
+          "Until"
+        ],
+        [
+          "x_times",
+          "Number of Occurrences"
+        ]
+      ],
+      "string": "Repeat Type",
+      "type": "selection"
+    },
+    "repeat_until": {
+      "readonly": false,
+      "required": false,
+      "string": "Repeat Until",
+      "type": "date"
+    },
+    "repeat_number": {
+      "readonly": false,
+      "required": false,
+      "string": "Repetitions",
+      "type": "integer"
+    },
+    "recurrence_update": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "this",
+          "This shift"
+        ],
+        [
+          "subsequent",
+          "This and following shifts"
+        ],
+        [
+          "all",
+          "All shifts"
+        ]
+      ],
+      "string": "Recurrence Update",
+      "type": "selection"
+    },
+    "confirm_delete": {
+      "readonly": true,
+      "required": false,
+      "string": "Confirm Delete",
+      "type": "boolean"
+    },
+    "is_hatched": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Hatched",
+      "type": "boolean"
+    },
+    "slot_properties": {
+      "readonly": false,
+      "required": false,
+      "string": "Properties",
+      "type": "properties"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "employee_skill_ids": {
+      "readonly": true,
+      "relation": "hr.employee.skill",
+      "required": false,
+      "string": "Skills",
+      "type": "one2many"
+    },
+    "sale_line_id": {
+      "help": "Sales order item for which this shift will be performed. When sales orders are automatically planned, the remaining hours of the sales order item, as well as the role defined on the service, are taken into account.",
+      "readonly": false,
+      "relation": "sale.order.line",
+      "required": false,
+      "string": "Sales Order Item",
+      "type": "many2one"
+    },
+    "sale_order_id": {
+      "readonly": true,
+      "relation": "sale.order",
+      "required": false,
+      "string": "Sales Order",
+      "type": "many2one"
+    },
+    "sale_order_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "Quotation"
+        ],
+        [
+          "sent",
+          "Quotation Sent"
+        ],
+        [
+          "sale",
+          "Sales Order"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Sales Order State",
+      "type": "selection"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "role_product_ids": {
+      "readonly": true,
+      "relation": "product.template",
+      "required": false,
+      "string": "Services",
+      "type": "one2many"
+    },
+    "sale_line_plannable": {
+      "help": "If enabled, a shift will automatically be generated for the selected role when confirming the Sales Order.                 With the 'auto plan' feature, only employees with this role will be automatically assigned shifts for Sales Orders containing this service.                 The system will consider employee availability and the remaining time to be planned.                 You can also manually schedule open shifts for your Sales Order or assign them to any employee you prefer.",
+      "readonly": true,
+      "required": false,
+      "string": "Plan Services",
+      "type": "boolean"
+    }
+  }
+}

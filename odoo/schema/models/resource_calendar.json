@@ -1,0 +1,165 @@
+{
+  "model": "resource.calendar",
+  "name": "Resource Working Time",
+  "field_count": 24,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "active": {
+      "help": "If the active field is set to false, it will allow you to hide the Working Time without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "attendance_ids": {
+      "readonly": false,
+      "relation": "resource.calendar.attendance",
+      "required": false,
+      "string": "Working Time",
+      "type": "one2many"
+    },
+    "attendance_ids_1st_week": {
+      "readonly": false,
+      "relation": "resource.calendar.attendance",
+      "required": false,
+      "string": "Working Time 1st Week",
+      "type": "one2many"
+    },
+    "attendance_ids_2nd_week": {
+      "readonly": false,
+      "relation": "resource.calendar.attendance",
+      "required": false,
+      "string": "Working Time 2nd Week",
+      "type": "one2many"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "country_id": {
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "leave_ids": {
+      "readonly": false,
+      "relation": "resource.calendar.leaves",
+      "required": false,
+      "string": "Time Off",
+      "type": "one2many"
+    },
+    "full_time_required_hours": {
+      "help": "Number of hours to work on the company schedule to be considered as fulltime.",
+      "readonly": false,
+      "required": false,
+      "string": "Full Time Equivalent",
+      "type": "float"
+    },
+    "global_leave_ids": {
+      "readonly": false,
+      "relation": "resource.calendar.leaves",
+      "required": false,
+      "string": "Global Time Off",
+      "type": "one2many"
+    },
+    "hours_per_day": {
+      "help": "Average hours per day a resource is supposed to work with this calendar.",
+      "readonly": false,
+      "required": false,
+      "string": "Average Hour per Day",
+      "type": "float"
+    },
+    "hours_per_week": {
+      "readonly": false,
+      "required": false,
+      "string": "Hours per Week",
+      "type": "float"
+    },
+    "is_fulltime": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Full Time",
+      "type": "boolean"
+    },
+    "two_weeks_calendar": {
+      "readonly": false,
+      "required": false,
+      "string": "Calendar in 2 weeks mode",
+      "type": "boolean"
+    },
+    "two_weeks_explanation": {
+      "readonly": true,
+      "required": false,
+      "string": "Explanation",
+      "type": "char"
+    },
+    "work_resources_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Work Resources count",
+      "type": "integer"
+    },
+    "work_time_rate": {
+      "help": "Work time rate versus full time working schedule, should be between 0 and 100 %.",
+      "readonly": true,
+      "required": false,
+      "string": "Work Time Rate",
+      "type": "float"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

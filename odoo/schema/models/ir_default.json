@@ -1,0 +1,81 @@
+{
+  "model": "ir.default",
+  "name": "Default Value",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "field_id": {
+      "readonly": false,
+      "relation": "ir.model.fields",
+      "required": true,
+      "string": "Field",
+      "type": "many2one"
+    },
+    "user_id": {
+      "help": "If set, action binding only applies for this user.",
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "User",
+      "type": "many2one"
+    },
+    "company_id": {
+      "help": "If set, action binding only applies for this company",
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "condition": {
+      "help": "If set, applies the default upon condition.",
+      "readonly": false,
+      "required": false,
+      "string": "Condition",
+      "type": "char"
+    },
+    "json_value": {
+      "readonly": false,
+      "required": true,
+      "string": "Default Value (JSON format)",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

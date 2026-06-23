@@ -1,0 +1,177 @@
+{
+  "model": "product.label.layout",
+  "name": "Choose the sheet layout to print the labels",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "print_format": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "dymo",
+          "Dymo"
+        ],
+        [
+          "2x7",
+          "2 x 7"
+        ],
+        [
+          "4x7",
+          "4 x 7"
+        ],
+        [
+          "4x12",
+          "4 x 12"
+        ],
+        [
+          "zpl",
+          "ZPL Labels"
+        ]
+      ],
+      "string": "Format",
+      "type": "selection"
+    },
+    "zpl_template": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "normal",
+          "Normal (2.25\" x 1.25\")"
+        ],
+        [
+          "small",
+          "Small (1.25\" x 1.00\")"
+        ],
+        [
+          "alternative",
+          "Alternative (2.00\" x 1.00\")"
+        ],
+        [
+          "jewelry",
+          "Jewelry (2.20\" x 0.50\")"
+        ]
+      ],
+      "string": "ZPL Template",
+      "type": "selection"
+    },
+    "zpl_preview": {
+      "readonly": true,
+      "required": false,
+      "string": "ZPL Preview",
+      "type": "binary"
+    },
+    "with_price": {
+      "readonly": false,
+      "required": false,
+      "string": "Print With Price",
+      "type": "boolean"
+    },
+    "custom_quantity": {
+      "readonly": false,
+      "required": true,
+      "string": "Copies",
+      "type": "integer"
+    },
+    "product_ids": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2many"
+    },
+    "product_tmpl_ids": {
+      "readonly": false,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product Tmpl",
+      "type": "many2many"
+    },
+    "extra_html": {
+      "readonly": false,
+      "required": false,
+      "string": "Extra Content",
+      "type": "html"
+    },
+    "rows": {
+      "readonly": true,
+      "required": false,
+      "string": "Rows",
+      "type": "integer"
+    },
+    "columns": {
+      "readonly": true,
+      "required": false,
+      "string": "Columns",
+      "type": "integer"
+    },
+    "pricelist_id": {
+      "readonly": false,
+      "relation": "product.pricelist",
+      "required": false,
+      "string": "Pricelist",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "move_ids": {
+      "readonly": false,
+      "relation": "stock.move",
+      "required": false,
+      "string": "Move",
+      "type": "many2many"
+    },
+    "move_quantity": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "move",
+          "Operation Quantities"
+        ],
+        [
+          "custom",
+          "Custom"
+        ]
+      ],
+      "string": "Quantity to print",
+      "type": "selection"
+    }
+  }
+}

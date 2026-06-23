@@ -1,0 +1,79 @@
+{
+  "model": "stock.reference",
+  "name": "Reference between stock documents",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": true,
+      "string": "Reference",
+      "type": "char"
+    },
+    "move_ids": {
+      "readonly": false,
+      "relation": "stock.move",
+      "required": false,
+      "string": "Stock Moves",
+      "type": "many2many"
+    },
+    "picking_ids": {
+      "readonly": true,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Transfers",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "purchase_ids": {
+      "readonly": false,
+      "relation": "purchase.order",
+      "required": false,
+      "string": "Purchases",
+      "type": "many2many"
+    },
+    "sale_ids": {
+      "readonly": false,
+      "relation": "sale.order",
+      "required": false,
+      "string": "Sales",
+      "type": "many2many"
+    }
+  }
+}

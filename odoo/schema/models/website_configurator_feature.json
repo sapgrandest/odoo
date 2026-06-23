@@ -1,0 +1,117 @@
+{
+  "model": "website.configurator.feature",
+  "name": "Website Configurator Feature",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "char"
+    },
+    "icon": {
+      "readonly": false,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "iap_page_code": {
+      "help": "Page code used to tell IAP website_service for which page a snippet list should be generated",
+      "readonly": false,
+      "required": false,
+      "string": "Iap Page Code",
+      "type": "char"
+    },
+    "website_config_preselection": {
+      "help": "Comma-separated list of website type/purpose for which this feature should be pre-selected",
+      "readonly": false,
+      "required": false,
+      "string": "Website Config Preselection",
+      "type": "char"
+    },
+    "page_view_id": {
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Page View",
+      "type": "many2one"
+    },
+    "module_id": {
+      "readonly": false,
+      "relation": "ir.module.module",
+      "required": false,
+      "string": "Module",
+      "type": "many2one"
+    },
+    "feature_url": {
+      "readonly": false,
+      "required": false,
+      "string": "Feature Url",
+      "type": "char"
+    },
+    "menu_sequence": {
+      "help": "If set, a website menu will be created for the feature.",
+      "readonly": false,
+      "required": false,
+      "string": "Menu Sequence",
+      "type": "integer"
+    },
+    "menu_company": {
+      "help": "If set, add the menu as a second level menu, as a child of \"Company\" menu.",
+      "readonly": false,
+      "required": false,
+      "string": "Menu Company",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "model": "hr.employee.location",
+  "name": "Employee Location",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "work_location_id": {
+      "readonly": false,
+      "relation": "hr.work.location",
+      "required": true,
+      "string": "Location",
+      "type": "many2one"
+    },
+    "work_location_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Location name",
+      "type": "char"
+    },
+    "work_location_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "home",
+          "Home"
+        ],
+        [
+          "office",
+          "Office"
+        ],
+        [
+          "other",
+          "Other"
+        ]
+      ],
+      "string": "Location Type",
+      "type": "selection"
+    },
+    "employee_id": {
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": true,
+      "string": "Employee",
+      "type": "many2one"
+    },
+    "employee_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Employee Name",
+      "type": "char"
+    },
+    "date": {
+      "readonly": false,
+      "required": false,
+      "string": "Date",
+      "type": "date"
+    },
+    "day_week_string": {
+      "readonly": true,
+      "required": false,
+      "string": "Day Week String",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

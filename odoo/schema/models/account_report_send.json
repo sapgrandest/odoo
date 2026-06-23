@@ -1,0 +1,161 @@
+{
+  "model": "account.report.send",
+  "name": "Account Report Send",
+  "field_count": 23,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "partner_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2many"
+    },
+    "mode": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "single",
+          "Single Recipient"
+        ],
+        [
+          "multi",
+          "Multiple Recipients"
+        ]
+      ],
+      "string": "Mode",
+      "type": "selection"
+    },
+    "enable_download": {
+      "readonly": false,
+      "required": false,
+      "string": "Enable Download",
+      "type": "boolean"
+    },
+    "checkbox_download": {
+      "readonly": false,
+      "required": false,
+      "string": "Download",
+      "type": "boolean"
+    },
+    "enable_send_mail": {
+      "readonly": false,
+      "required": false,
+      "string": "Enable Send Mail",
+      "type": "boolean"
+    },
+    "checkbox_send_mail": {
+      "readonly": false,
+      "required": false,
+      "string": "Email",
+      "type": "boolean"
+    },
+    "display_mail_composer": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Mail Composer",
+      "type": "boolean"
+    },
+    "warnings": {
+      "readonly": true,
+      "required": false,
+      "string": "Warnings",
+      "type": "json"
+    },
+    "send_mail_readonly": {
+      "readonly": true,
+      "required": false,
+      "string": "Send Mail Readonly",
+      "type": "boolean"
+    },
+    "mail_template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Email template",
+      "type": "many2one"
+    },
+    "account_report_id": {
+      "readonly": false,
+      "relation": "account.report",
+      "required": false,
+      "string": "Report",
+      "type": "many2one"
+    },
+    "report_options": {
+      "readonly": false,
+      "required": false,
+      "string": "Report Options",
+      "type": "json"
+    },
+    "mail_lang": {
+      "readonly": true,
+      "required": false,
+      "string": "Lang",
+      "type": "char"
+    },
+    "mail_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Recipients",
+      "type": "many2many"
+    },
+    "mail_subject": {
+      "readonly": false,
+      "required": false,
+      "string": "Subject",
+      "type": "char"
+    },
+    "mail_body": {
+      "readonly": false,
+      "required": false,
+      "string": "Contents",
+      "type": "html"
+    },
+    "mail_attachments_widget": {
+      "readonly": false,
+      "required": false,
+      "string": "Mail Attachments Widget",
+      "type": "json"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

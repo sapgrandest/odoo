@@ -1,0 +1,141 @@
+{
+  "model": "project.task.burndown.chart.report",
+  "name": "Burndown Chart",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "allocated_hours": {
+      "readonly": true,
+      "required": false,
+      "string": "Allocated Time",
+      "type": "float"
+    },
+    "date": {
+      "readonly": true,
+      "required": false,
+      "string": "Date",
+      "type": "datetime"
+    },
+    "date_assign": {
+      "readonly": true,
+      "required": false,
+      "string": "Assignment Date",
+      "type": "datetime"
+    },
+    "date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Deadline",
+      "type": "date"
+    },
+    "date_last_stage_update": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Stage Update",
+      "type": "date"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "01_in_progress",
+          "In Progress"
+        ],
+        [
+          "1_done",
+          "Done"
+        ],
+        [
+          "04_waiting_normal",
+          "Waiting"
+        ],
+        [
+          "03_approved",
+          "Approved"
+        ],
+        [
+          "1_canceled",
+          "Cancelled"
+        ],
+        [
+          "02_changes_requested",
+          "Changes Requested"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "is_open": {
+      "readonly": true,
+      "required": false,
+      "string": "Open",
+      "type": "boolean"
+    },
+    "is_done": {
+      "readonly": true,
+      "required": false,
+      "string": "Done",
+      "type": "boolean"
+    },
+    "is_canceled": {
+      "readonly": true,
+      "required": false,
+      "string": "Cancelled",
+      "type": "boolean"
+    },
+    "milestone_id": {
+      "readonly": true,
+      "relation": "project.milestone",
+      "required": false,
+      "string": "Milestone",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "project_id": {
+      "readonly": true,
+      "relation": "project.project",
+      "required": false,
+      "string": "Project",
+      "type": "many2one"
+    },
+    "stage_id": {
+      "readonly": true,
+      "relation": "project.task.type",
+      "required": false,
+      "string": "Stage",
+      "type": "many2one"
+    },
+    "tag_ids": {
+      "readonly": true,
+      "relation": "project.tags",
+      "required": false,
+      "string": "Tags",
+      "type": "many2many"
+    },
+    "user_ids": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Assignees",
+      "type": "many2many"
+    }
+  }
+}

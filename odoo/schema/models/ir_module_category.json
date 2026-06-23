@@ -1,0 +1,109 @@
+{
+  "model": "ir.module.category",
+  "name": "Application",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "parent_id": {
+      "readonly": false,
+      "relation": "ir.module.category",
+      "required": false,
+      "string": "Parent Application",
+      "type": "many2one"
+    },
+    "child_ids": {
+      "readonly": false,
+      "relation": "ir.module.category",
+      "required": false,
+      "string": "Child Applications",
+      "type": "one2many"
+    },
+    "module_ids": {
+      "readonly": false,
+      "relation": "ir.module.module",
+      "required": false,
+      "string": "Modules",
+      "type": "one2many"
+    },
+    "privilege_ids": {
+      "readonly": false,
+      "relation": "res.groups.privilege",
+      "required": false,
+      "string": "Privileges",
+      "type": "one2many"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "visible": {
+      "readonly": false,
+      "required": false,
+      "string": "Visible",
+      "type": "boolean"
+    },
+    "exclusive": {
+      "readonly": false,
+      "required": false,
+      "string": "Exclusive",
+      "type": "boolean"
+    },
+    "xml_id": {
+      "readonly": true,
+      "required": false,
+      "string": "External ID",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

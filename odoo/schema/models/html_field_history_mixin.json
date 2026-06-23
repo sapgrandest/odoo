@@ -1,0 +1,31 @@
+{
+  "model": "html.field.history.mixin",
+  "name": "Field html History",
+  "field_count": 4,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "html_field_history": {
+      "readonly": true,
+      "required": false,
+      "string": "History data",
+      "type": "json"
+    },
+    "html_field_history_metadata": {
+      "readonly": true,
+      "required": false,
+      "string": "History metadata",
+      "type": "json"
+    }
+  }
+}

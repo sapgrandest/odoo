@@ -1,0 +1,59 @@
+{
+  "model": "stock.inventory.conflict",
+  "name": "Conflict in Inventory",
+  "field_count": 8,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "quant_ids": {
+      "readonly": false,
+      "relation": "stock.quant",
+      "required": false,
+      "string": "Quants",
+      "type": "many2many"
+    },
+    "quant_to_fix_ids": {
+      "readonly": false,
+      "relation": "stock.quant",
+      "required": false,
+      "string": "Conflicts",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

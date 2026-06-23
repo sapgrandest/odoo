@@ -1,0 +1,216 @@
+{
+  "model": "ir.model",
+  "name": "Model",
+  "field_count": 30,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Model Description",
+      "type": "char"
+    },
+    "model": {
+      "readonly": false,
+      "required": true,
+      "string": "Model",
+      "type": "char"
+    },
+    "order": {
+      "help": "SQL expression for ordering records in the model; e.g. \"x_sequence asc, id desc\"",
+      "readonly": false,
+      "required": true,
+      "string": "Order",
+      "type": "char"
+    },
+    "info": {
+      "readonly": false,
+      "required": false,
+      "string": "Information",
+      "type": "text"
+    },
+    "explanation": {
+      "help": "Verbose description of what is this model for",
+      "readonly": false,
+      "required": false,
+      "string": "Explanation",
+      "type": "text"
+    },
+    "field_id": {
+      "readonly": false,
+      "relation": "ir.model.fields",
+      "required": true,
+      "string": "Fields",
+      "type": "one2many"
+    },
+    "inherited_model_ids": {
+      "help": "The list of models that extends the current model.",
+      "readonly": true,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Inherited models",
+      "type": "many2many"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "manual",
+          "Custom"
+        ],
+        [
+          "base",
+          "Base"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "access_ids": {
+      "readonly": false,
+      "relation": "ir.model.access",
+      "required": false,
+      "string": "Access",
+      "type": "one2many"
+    },
+    "rule_ids": {
+      "readonly": false,
+      "relation": "ir.rule",
+      "required": false,
+      "string": "Record Rules",
+      "type": "one2many"
+    },
+    "abstract": {
+      "readonly": false,
+      "required": false,
+      "string": "Abstract Model",
+      "type": "boolean"
+    },
+    "transient": {
+      "readonly": false,
+      "required": false,
+      "string": "Transient Model",
+      "type": "boolean"
+    },
+    "modules": {
+      "help": "List of modules in which the object is defined or inherited",
+      "readonly": true,
+      "required": false,
+      "string": "In Apps",
+      "type": "char"
+    },
+    "view_ids": {
+      "readonly": true,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Views",
+      "type": "one2many"
+    },
+    "count": {
+      "help": "Total number of records in this model",
+      "readonly": true,
+      "required": false,
+      "string": "Count (Incl. Archived)",
+      "type": "integer"
+    },
+    "fold_name": {
+      "help": "In a Kanban view where columns are records of this model, the value of this (boolean) field determines which column should be folded by default.",
+      "readonly": false,
+      "required": false,
+      "string": "Fold Field",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "is_mail_thread": {
+      "readonly": false,
+      "required": false,
+      "string": "Has Mail Thread",
+      "type": "boolean"
+    },
+    "is_mail_activity": {
+      "readonly": false,
+      "required": false,
+      "string": "Has Mail Activity",
+      "type": "boolean"
+    },
+    "is_mail_blacklist": {
+      "readonly": false,
+      "required": false,
+      "string": "Has Mail Blacklist",
+      "type": "boolean"
+    },
+    "is_mail_thread_sms": {
+      "help": "Whether this model supports messages and notifications through SMS",
+      "readonly": true,
+      "required": false,
+      "string": "Mail Thread SMS",
+      "type": "boolean"
+    },
+    "website_form_access": {
+      "help": "Enable the form builder feature for this model.",
+      "readonly": false,
+      "required": false,
+      "string": "Allowed to use in forms",
+      "type": "boolean"
+    },
+    "website_form_default_field_id": {
+      "help": "Specify the field which will contain meta and custom form fields datas.",
+      "readonly": false,
+      "relation": "ir.model.fields",
+      "required": false,
+      "string": "Field for custom form data",
+      "type": "many2one"
+    },
+    "website_form_label": {
+      "help": "Form action label. Ex: crm.lead could be 'Send an e-mail' and project.issue could be 'Create an Issue'.",
+      "readonly": false,
+      "required": false,
+      "string": "Label for form action",
+      "type": "char"
+    },
+    "website_form_key": {
+      "help": "Used in FormBuilder Registry",
+      "readonly": false,
+      "required": false,
+      "string": "Website Form Key",
+      "type": "char"
+    }
+  }
+}

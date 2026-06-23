@@ -1,0 +1,98 @@
+{
+  "model": "hr.recruitment.source",
+  "name": "Source of Applicants",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "email": {
+      "readonly": true,
+      "required": false,
+      "string": "Email",
+      "type": "char"
+    },
+    "has_domain": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Domain",
+      "type": "char"
+    },
+    "job_id": {
+      "readonly": false,
+      "relation": "hr.job",
+      "required": false,
+      "string": "Job",
+      "type": "many2one"
+    },
+    "alias_id": {
+      "readonly": false,
+      "relation": "mail.alias",
+      "required": false,
+      "string": "Alias ID",
+      "type": "many2one"
+    },
+    "medium_id": {
+      "readonly": false,
+      "relation": "utm.medium",
+      "required": false,
+      "string": "Medium",
+      "type": "many2one"
+    },
+    "campaign_id": {
+      "readonly": false,
+      "relation": "utm.campaign",
+      "required": false,
+      "string": "Campaign",
+      "type": "many2one"
+    },
+    "source_id": {
+      "readonly": false,
+      "relation": "utm.source",
+      "required": true,
+      "string": "Source",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "url": {
+      "readonly": true,
+      "required": false,
+      "string": "Tracker URL",
+      "type": "char"
+    }
+  }
+}

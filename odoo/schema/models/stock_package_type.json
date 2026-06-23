@@ -1,0 +1,186 @@
+{
+  "model": "stock.package.type",
+  "name": "Stock package type",
+  "field_count": 25,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Package Type",
+      "type": "char"
+    },
+    "sequence": {
+      "help": "The first in the sequence is the default one.",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "sequence_id": {
+      "readonly": false,
+      "relation": "ir.sequence",
+      "required": false,
+      "string": "Reference Sequence",
+      "type": "many2one"
+    },
+    "sequence_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence Prefix",
+      "type": "char"
+    },
+    "height": {
+      "help": "Packaging Height",
+      "readonly": false,
+      "required": false,
+      "string": "Height",
+      "type": "float"
+    },
+    "width": {
+      "help": "Packaging Width",
+      "readonly": false,
+      "required": false,
+      "string": "Width",
+      "type": "float"
+    },
+    "packaging_length": {
+      "help": "Packaging Length",
+      "readonly": false,
+      "required": false,
+      "string": "Length",
+      "type": "float"
+    },
+    "base_weight": {
+      "help": "Weight of the package type",
+      "readonly": false,
+      "required": false,
+      "string": "Weight",
+      "type": "float"
+    },
+    "max_weight": {
+      "help": "Maximum weight shippable in this packaging",
+      "readonly": false,
+      "required": false,
+      "string": "Max Weight",
+      "type": "float"
+    },
+    "barcode": {
+      "readonly": false,
+      "required": false,
+      "string": "Barcode",
+      "type": "char"
+    },
+    "weight_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Weight unit of measure label",
+      "type": "char"
+    },
+    "length_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Length unit of measure label",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "package_use": {
+      "help": "Reusable boxes are used for batch picking and emptied afterwards to be reused. In the barcode application, scanning a reusable box will add the products in this box.\n        Disposable boxes aren't reused, when scanning a disposable box in the barcode application, the contained products are added to the transfer.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "disposable",
+          "Disposable Box"
+        ],
+        [
+          "reusable",
+          "Reusable Box (totes)"
+        ]
+      ],
+      "string": "Package Use",
+      "type": "selection"
+    },
+    "has_quants": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Contents",
+      "type": "boolean"
+    },
+    "storage_category_capacity_ids": {
+      "readonly": false,
+      "relation": "stock.storage.category.capacity",
+      "required": false,
+      "string": "Storage Category Capacity",
+      "type": "one2many"
+    },
+    "route_ids": {
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Routes",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "shipper_package_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Carrier Code",
+      "type": "char"
+    },
+    "package_carrier_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "none",
+          "No carrier integration"
+        ]
+      ],
+      "string": "Carrier",
+      "type": "selection"
+    }
+  }
+}

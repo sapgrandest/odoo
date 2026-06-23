@@ -1,0 +1,77 @@
+{
+  "model": "ai.add.knowledge.articles",
+  "name": "Wizard to add knowledge articles to an AI agent",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "agent_id": {
+      "readonly": false,
+      "relation": "ai.agent",
+      "required": true,
+      "string": "Agent",
+      "type": "many2one"
+    },
+    "article_ids": {
+      "readonly": false,
+      "relation": "knowledge.article",
+      "required": true,
+      "string": "Articles",
+      "type": "many2many"
+    },
+    "total_articles": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Articles",
+      "type": "integer"
+    },
+    "include_children": {
+      "readonly": false,
+      "required": false,
+      "string": "Include Children",
+      "type": "boolean"
+    },
+    "has_child_articles": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Child Articles",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

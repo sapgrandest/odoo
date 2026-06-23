@@ -1,0 +1,127 @@
+{
+  "model": "hr.recruitment.sign.document.wizard",
+  "name": "Sign document in recruitment",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "applicant_ids": {
+      "readonly": false,
+      "relation": "hr.applicant",
+      "required": false,
+      "string": "Applicants",
+      "type": "many2many"
+    },
+    "applicant_role_id": {
+      "help": "Applicant's role on the templates to sign. The same role must be present in all the templates",
+      "readonly": false,
+      "relation": "sign.item.role",
+      "required": true,
+      "string": "Applicant Role",
+      "type": "many2one"
+    },
+    "responsible_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible",
+      "type": "many2one"
+    },
+    "sign_template_responsible_ids": {
+      "readonly": true,
+      "relation": "sign.item.role",
+      "required": false,
+      "string": "Sign Template Responsible",
+      "type": "many2many"
+    },
+    "possible_template_ids": {
+      "readonly": true,
+      "relation": "sign.template",
+      "required": false,
+      "string": "Possible Template",
+      "type": "many2many"
+    },
+    "sign_template_ids": {
+      "help": "Documents to sign. Only documents with 1 or 2 different responsible are selectable.\n        Documents with 1 responsible will only have to be signed by the applicant while documents with 2 different responsible will have to be signed by both the applicant and the responsible.\n        ",
+      "readonly": false,
+      "relation": "sign.template",
+      "required": true,
+      "string": "Documents to sign",
+      "type": "many2many"
+    },
+    "has_both_template": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Both Template",
+      "type": "boolean"
+    },
+    "template_warning": {
+      "readonly": false,
+      "required": false,
+      "string": "Template Warning",
+      "type": "char"
+    },
+    "subject": {
+      "readonly": false,
+      "required": true,
+      "string": "Subject",
+      "type": "char"
+    },
+    "message": {
+      "readonly": false,
+      "required": false,
+      "string": "Message",
+      "type": "html"
+    },
+    "cc_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Copy to",
+      "type": "many2many"
+    },
+    "attachment_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachment",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

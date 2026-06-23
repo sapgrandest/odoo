@@ -1,0 +1,130 @@
+{
+  "model": "html_editor.converter.test",
+  "name": "Html Editor Converter Test",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "char": {
+      "readonly": false,
+      "required": false,
+      "string": "Char",
+      "type": "char"
+    },
+    "integer": {
+      "readonly": false,
+      "required": false,
+      "string": "Integer",
+      "type": "integer"
+    },
+    "float": {
+      "readonly": false,
+      "required": false,
+      "string": "Float",
+      "type": "float"
+    },
+    "numeric": {
+      "readonly": false,
+      "required": false,
+      "string": "Numeric",
+      "type": "float"
+    },
+    "many2one": {
+      "readonly": false,
+      "relation": "html_editor.converter.test.sub",
+      "required": false,
+      "string": "Many2One",
+      "type": "many2one"
+    },
+    "binary": {
+      "readonly": false,
+      "required": false,
+      "string": "Binary",
+      "type": "binary"
+    },
+    "date": {
+      "readonly": false,
+      "required": false,
+      "string": "Date",
+      "type": "date"
+    },
+    "datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "Datetime",
+      "type": "datetime"
+    },
+    "selection_str": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "A",
+          "Qu'il n'est pas arrivé à Toronto"
+        ],
+        [
+          "B",
+          "Qu'il était supposé arriver à Toronto"
+        ],
+        [
+          "C",
+          "Qu'est-ce qu'il fout ce maudit pancake, tabernacle ?"
+        ],
+        [
+          "D",
+          "La réponse D"
+        ]
+      ],
+      "string": "Lorsqu'un pancake prend l'avion à destination de Toronto et qu'il fait une escale technique à St Claude, on dit:",
+      "type": "selection"
+    },
+    "html": {
+      "readonly": false,
+      "required": false,
+      "string": "Html",
+      "type": "html"
+    },
+    "text": {
+      "readonly": false,
+      "required": false,
+      "string": "Text",
+      "type": "text"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

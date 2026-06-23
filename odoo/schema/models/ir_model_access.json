@@ -1,0 +1,96 @@
+{
+  "model": "ir.model.access",
+  "name": "Model Access",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "active": {
+      "help": "If you uncheck the active field, it will disable the ACL without deleting it (if you delete a native ACL, it will be re-created when you reload the module).",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": true,
+      "string": "Model",
+      "type": "many2one"
+    },
+    "group_id": {
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Group",
+      "type": "many2one"
+    },
+    "perm_read": {
+      "readonly": false,
+      "required": false,
+      "string": "Read Access",
+      "type": "boolean"
+    },
+    "perm_write": {
+      "readonly": false,
+      "required": false,
+      "string": "Write Access",
+      "type": "boolean"
+    },
+    "perm_create": {
+      "readonly": false,
+      "required": false,
+      "string": "Create Access",
+      "type": "boolean"
+    },
+    "perm_unlink": {
+      "readonly": false,
+      "required": false,
+      "string": "Delete Access",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

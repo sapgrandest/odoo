@@ -1,0 +1,78 @@
+{
+  "model": "ir.sequence.date_range",
+  "name": "Sequence Date Range",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "date_from": {
+      "readonly": false,
+      "required": true,
+      "string": "From",
+      "type": "date"
+    },
+    "date_to": {
+      "readonly": false,
+      "required": true,
+      "string": "To",
+      "type": "date"
+    },
+    "sequence_id": {
+      "readonly": false,
+      "relation": "ir.sequence",
+      "required": true,
+      "string": "Main Sequence",
+      "type": "many2one"
+    },
+    "number_next": {
+      "help": "Next number of this sequence",
+      "readonly": false,
+      "required": true,
+      "string": "Next Number",
+      "type": "integer"
+    },
+    "number_next_actual": {
+      "help": "Next number that will be used. This number can be incremented frequently so the displayed value might already be obsolete",
+      "readonly": false,
+      "required": false,
+      "string": "Actual Next Number",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

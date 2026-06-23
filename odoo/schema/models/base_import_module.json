@@ -1,0 +1,92 @@
+{
+  "model": "base.import.module",
+  "name": "Import Module",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "module_file": {
+      "readonly": false,
+      "required": true,
+      "string": "Module .ZIP file",
+      "type": "binary"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "init",
+          "init"
+        ],
+        [
+          "done",
+          "done"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "import_message": {
+      "readonly": false,
+      "required": false,
+      "string": "Import Message",
+      "type": "text"
+    },
+    "force": {
+      "help": "Force init mode even if installed. (will update `noupdate='1'` records)",
+      "readonly": false,
+      "required": false,
+      "string": "Force init",
+      "type": "boolean"
+    },
+    "with_demo": {
+      "readonly": false,
+      "required": false,
+      "string": "Import demo data of module",
+      "type": "boolean"
+    },
+    "modules_dependencies": {
+      "readonly": false,
+      "required": false,
+      "string": "Modules Dependencies",
+      "type": "text"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

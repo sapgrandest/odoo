@@ -1,0 +1,133 @@
+{
+  "model": "product.ribbon",
+  "name": "Product ribbon",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Ribbon Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "bg_color": {
+      "readonly": false,
+      "required": true,
+      "string": "Background Color",
+      "type": "char"
+    },
+    "text_color": {
+      "readonly": false,
+      "required": true,
+      "string": "Text Color",
+      "type": "char"
+    },
+    "position": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "left",
+          "Left"
+        ],
+        [
+          "right",
+          "Right"
+        ]
+      ],
+      "string": "Position",
+      "type": "selection"
+    },
+    "style": {
+      "help": "Defines the display style:\n- Ribbon: Shows a ribbon banner on the product image.\n- Badge: Shows a small badge label on the product image.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "ribbon",
+          "Ribbon"
+        ],
+        [
+          "tag",
+          "Badge"
+        ]
+      ],
+      "string": "Style",
+      "type": "selection"
+    },
+    "assign": {
+      "help": "Defines how this ribbon is assigned to products:\n- Manually: You assign the ribbon manually to products.\n- Sale: Applied when the product is visibly on sale.\n- New: Applied based on the New period you will define.\n- Out Of Stock: Applied when the product is out of stock.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "manual",
+          "Manually"
+        ],
+        [
+          "sale",
+          "On Sale"
+        ],
+        [
+          "new",
+          "When New"
+        ],
+        [
+          "out_of_stock",
+          "When out of stock"
+        ]
+      ],
+      "string": "Assign",
+      "type": "selection"
+    },
+    "new_period": {
+      "readonly": false,
+      "required": false,
+      "string": "New Period",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

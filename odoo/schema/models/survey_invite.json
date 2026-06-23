@@ -1,0 +1,225 @@
+{
+  "model": "survey.invite",
+  "name": "Survey Invitation Wizard",
+  "field_count": 31,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "lang": {
+      "help": "Optional translation language (ISO code) to select when sending out an email. If not set, the main partner's language will be used. This should usually be a placeholder expression that provides the appropriate language, e.g. {{ object.partner_id.lang }}.",
+      "readonly": false,
+      "required": false,
+      "string": "Language",
+      "type": "char"
+    },
+    "render_model": {
+      "readonly": true,
+      "required": false,
+      "string": "Rendering Model",
+      "type": "char"
+    },
+    "subject": {
+      "readonly": false,
+      "required": false,
+      "string": "Subject",
+      "type": "char"
+    },
+    "body": {
+      "readonly": false,
+      "required": false,
+      "string": "Contents",
+      "type": "html"
+    },
+    "body_has_template_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Body content is the same as the template",
+      "type": "boolean"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Mail Template",
+      "type": "many2one"
+    },
+    "is_mail_template_editor": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Editor",
+      "type": "boolean"
+    },
+    "can_edit_body": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Edit Body",
+      "type": "boolean"
+    },
+    "attachment_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachments",
+      "type": "many2many"
+    },
+    "author_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Author",
+      "type": "many2one"
+    },
+    "partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Recipients",
+      "type": "many2many"
+    },
+    "existing_partner_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Existing Partner",
+      "type": "many2many"
+    },
+    "emails": {
+      "readonly": false,
+      "required": false,
+      "string": "Additional emails",
+      "type": "text"
+    },
+    "existing_emails": {
+      "readonly": true,
+      "required": false,
+      "string": "Existing emails",
+      "type": "text"
+    },
+    "existing_mode": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "new",
+          "New invite"
+        ],
+        [
+          "resend",
+          "Resend invite"
+        ]
+      ],
+      "string": "Handle existing",
+      "type": "selection"
+    },
+    "existing_text": {
+      "readonly": true,
+      "required": false,
+      "string": "Resend Comment",
+      "type": "text"
+    },
+    "mail_server_id": {
+      "readonly": false,
+      "relation": "ir.mail_server",
+      "required": false,
+      "string": "Outgoing mail server",
+      "type": "many2one"
+    },
+    "survey_id": {
+      "readonly": false,
+      "relation": "survey.survey",
+      "required": true,
+      "string": "Survey",
+      "type": "many2one"
+    },
+    "survey_start_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Survey URL",
+      "type": "char"
+    },
+    "survey_access_mode": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "public",
+          "Anyone with the link"
+        ],
+        [
+          "token",
+          "Invited people only"
+        ]
+      ],
+      "string": "Access Mode",
+      "type": "selection"
+    },
+    "survey_users_login_required": {
+      "help": "If checked, users have to login before answering even with a valid token.",
+      "readonly": true,
+      "required": false,
+      "string": "Require Login",
+      "type": "boolean"
+    },
+    "survey_users_can_signup": {
+      "readonly": true,
+      "required": false,
+      "string": "Users can signup",
+      "type": "boolean"
+    },
+    "deadline": {
+      "readonly": false,
+      "required": false,
+      "string": "Answer deadline",
+      "type": "datetime"
+    },
+    "send_email": {
+      "readonly": false,
+      "required": false,
+      "string": "Send Email",
+      "type": "boolean"
+    },
+    "scheduled_date": {
+      "help": "send emails after that date. This date is considered as being in UTC timezone.",
+      "readonly": false,
+      "required": false,
+      "string": "Scheduled Date",
+      "type": "datetime"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

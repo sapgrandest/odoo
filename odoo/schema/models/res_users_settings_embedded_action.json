@@ -1,0 +1,89 @@
+{
+  "model": "res.users.settings.embedded.action",
+  "name": "User Settings for Embedded Actions",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "user_setting_id": {
+      "readonly": false,
+      "relation": "res.users.settings",
+      "required": true,
+      "string": "User Setting",
+      "type": "many2one"
+    },
+    "action_id": {
+      "readonly": false,
+      "relation": "ir.actions.act_window",
+      "required": true,
+      "string": "Action",
+      "type": "many2one"
+    },
+    "res_model": {
+      "readonly": false,
+      "required": true,
+      "string": "Res Model",
+      "type": "char"
+    },
+    "res_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Res",
+      "type": "integer"
+    },
+    "embedded_actions_order": {
+      "readonly": false,
+      "required": false,
+      "string": "List order of embedded action ids",
+      "type": "char"
+    },
+    "embedded_actions_visibility": {
+      "readonly": false,
+      "required": false,
+      "string": "List visibility of embedded actions ids",
+      "type": "char"
+    },
+    "embedded_visibility": {
+      "readonly": false,
+      "required": false,
+      "string": "Is top bar visible",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

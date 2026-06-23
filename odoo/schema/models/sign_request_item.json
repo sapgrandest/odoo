@@ -1,0 +1,212 @@
+{
+  "model": "sign.request.item",
+  "name": "Signature Request Item",
+  "field_count": 30,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "access_url": {
+      "help": "Customer Portal URL",
+      "readonly": true,
+      "required": false,
+      "string": "Portal Access URL",
+      "type": "char"
+    },
+    "access_token": {
+      "readonly": true,
+      "required": true,
+      "string": "Security Token",
+      "type": "char"
+    },
+    "access_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Access warning",
+      "type": "text"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Signer",
+      "type": "many2one"
+    },
+    "sign_request_id": {
+      "readonly": false,
+      "relation": "sign.request",
+      "required": true,
+      "string": "Signature Request",
+      "type": "many2one"
+    },
+    "sign_item_value_ids": {
+      "readonly": false,
+      "relation": "sign.request.item.value",
+      "required": false,
+      "string": "Value",
+      "type": "one2many"
+    },
+    "reference": {
+      "help": "This is how the document will be named in the mail",
+      "readonly": true,
+      "required": false,
+      "string": "Document Name",
+      "type": "char"
+    },
+    "mail_sent_order": {
+      "readonly": false,
+      "required": false,
+      "string": "Mail Sent Order",
+      "type": "integer"
+    },
+    "communication_company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company used for communication",
+      "type": "many2one"
+    },
+    "access_via_link": {
+      "readonly": false,
+      "required": false,
+      "string": "Accessed Through Token",
+      "type": "boolean"
+    },
+    "role_id": {
+      "readonly": true,
+      "relation": "sign.item.role",
+      "required": true,
+      "string": "Role",
+      "type": "many2one"
+    },
+    "sms_number": {
+      "readonly": false,
+      "required": false,
+      "string": "Phone",
+      "type": "char"
+    },
+    "sms_token": {
+      "readonly": true,
+      "required": false,
+      "string": "SMS Token",
+      "type": "char"
+    },
+    "signed_without_extra_auth": {
+      "readonly": true,
+      "required": false,
+      "string": "Signed Without Extra Authentication",
+      "type": "boolean"
+    },
+    "signature": {
+      "readonly": false,
+      "required": false,
+      "string": "Signature",
+      "type": "binary"
+    },
+    "frame_hash": {
+      "readonly": true,
+      "required": false,
+      "string": "Frame Hash",
+      "type": "char"
+    },
+    "signing_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Signed on",
+      "type": "date"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "sent",
+          "To Sign"
+        ],
+        [
+          "completed",
+          "Signed"
+        ],
+        [
+          "canceled",
+          "Cancelled"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "color": {
+      "readonly": true,
+      "required": false,
+      "string": "Color",
+      "type": "integer"
+    },
+    "signer_email": {
+      "readonly": false,
+      "required": false,
+      "string": "Email",
+      "type": "char"
+    },
+    "is_mail_sent": {
+      "help": "The signature mail has been sent.",
+      "readonly": true,
+      "required": false,
+      "string": "Is Mail Sent",
+      "type": "boolean"
+    },
+    "change_authorized": {
+      "help": "If checked, recipient of a document with this role can be changed after having sent the request. Useful to replace a signatory who is out of office, etc.",
+      "readonly": true,
+      "required": false,
+      "string": "Change Authorized",
+      "type": "boolean"
+    },
+    "latitude": {
+      "readonly": false,
+      "required": false,
+      "string": "Latitude",
+      "type": "float"
+    },
+    "longitude": {
+      "readonly": false,
+      "required": false,
+      "string": "Longitude",
+      "type": "float"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

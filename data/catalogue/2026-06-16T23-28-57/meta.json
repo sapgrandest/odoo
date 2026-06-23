@@ -1,0 +1,25 @@
+{
+  "stamp": "2026-06-16T23-28-57",
+  "fiks": "15060",
+  "motonet": "0BHS",
+  "host": "https://ws1.moto-profil.pl",
+  "appels": [
+    {
+      "fichier": "catalogue_pelny.csv",
+      "endpoint": "ZwrocCennikDetalOfflinePelny",
+      "lignes": 6
+    },
+    {
+      "fichier": "tecdoc_mapping.txt",
+      "endpoint": "zwrocListeArtykulowMPTD",
+      "lignes": 1
+    },
+    {
+      "fichier": "livraisons.txt",
+      "endpoint": "ZwrocDostawyKontrahenta",
+      "lignes": 1
+    }
+  ],
+  "auth": "EUR",
+  "fin": "2026-06-16T23:30:38.8076800+02:00"
+}

@@ -1,0 +1,513 @@
+{
+  "model": "purchase.order.line",
+  "name": "Purchase Order Line",
+  "field_count": 67,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "analytic_distribution": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Distribution",
+      "type": "json"
+    },
+    "analytic_precision": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Precision",
+      "type": "integer"
+    },
+    "distribution_analytic_account_ids": {
+      "readonly": true,
+      "relation": "account.analytic.account",
+      "required": false,
+      "string": "Distribution Analytic Account",
+      "type": "many2many"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Description",
+      "type": "text"
+    },
+    "translated_product_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Translated Product Name",
+      "type": "text"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "product_qty": {
+      "readonly": false,
+      "required": true,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "product_uom_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Quantity",
+      "type": "float"
+    },
+    "date_planned": {
+      "help": "Delivery date expected from vendor. This date respectively defaults to vendor pricelist lead time then today's date.",
+      "readonly": false,
+      "required": false,
+      "string": "Expected Arrival",
+      "type": "datetime"
+    },
+    "discount": {
+      "readonly": false,
+      "required": false,
+      "string": "Discount (%)",
+      "type": "float"
+    },
+    "tax_ids": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Taxes",
+      "type": "many2many"
+    },
+    "allowed_uom_ids": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Allowed Uom",
+      "type": "many2many"
+    },
+    "uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "product_type": {
+      "help": "Goods are tangible materials and merchandise you provide.\nA service is a non-material product you provide.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "consu",
+          "Goods"
+        ],
+        [
+          "service",
+          "Service"
+        ],
+        [
+          "combo",
+          "Combo"
+        ]
+      ],
+      "string": "Product Type",
+      "type": "selection"
+    },
+    "price_unit": {
+      "readonly": false,
+      "required": true,
+      "string": "Unit Price",
+      "type": "float"
+    },
+    "price_unit_product_uom": {
+      "help": "The Price of one unit of the product's Unit of Measure",
+      "readonly": true,
+      "required": false,
+      "string": "Unit Price Product UoM",
+      "type": "float"
+    },
+    "price_unit_discounted": {
+      "readonly": true,
+      "required": false,
+      "string": "Unit Price (Discounted)",
+      "type": "float"
+    },
+    "price_subtotal": {
+      "readonly": true,
+      "required": false,
+      "string": "Subtotal",
+      "type": "monetary"
+    },
+    "price_total": {
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "monetary"
+    },
+    "price_tax": {
+      "readonly": true,
+      "required": false,
+      "string": "Tax",
+      "type": "float"
+    },
+    "non_deductible_tax": {
+      "readonly": true,
+      "required": false,
+      "string": "Non Deductible Tax",
+      "type": "float"
+    },
+    "order_id": {
+      "readonly": false,
+      "relation": "purchase.order",
+      "required": true,
+      "string": "Order Reference",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "RFQ"
+        ],
+        [
+          "sent",
+          "RFQ Sent"
+        ],
+        [
+          "to approve",
+          "To Approve"
+        ],
+        [
+          "purchase",
+          "Purchase Order"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "invoice_lines": {
+      "readonly": true,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Bill Lines",
+      "type": "one2many"
+    },
+    "qty_invoiced": {
+      "readonly": true,
+      "required": false,
+      "string": "Billed Qty",
+      "type": "float"
+    },
+    "qty_received_method": {
+      "help": "According to product configuration, the received quantity can be automatically computed by mechanism:\n  - Manual: the quantity is set manually on the line\n  - Stock Moves: the quantity comes from confirmed pickings\n",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "manual",
+          "Manual"
+        ],
+        [
+          "stock_moves",
+          "Stock Moves"
+        ]
+      ],
+      "string": "Received Qty Method",
+      "type": "selection"
+    },
+    "qty_received": {
+      "readonly": false,
+      "required": false,
+      "string": "Received Qty",
+      "type": "float"
+    },
+    "qty_received_manual": {
+      "readonly": false,
+      "required": false,
+      "string": "Manual Received Qty",
+      "type": "float"
+    },
+    "qty_to_invoice": {
+      "readonly": true,
+      "required": false,
+      "string": "To Invoice Quantity",
+      "type": "float"
+    },
+    "qty_received_at_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Received",
+      "type": "float"
+    },
+    "qty_invoiced_at_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Billed",
+      "type": "float"
+    },
+    "amount_to_invoice_at_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount",
+      "type": "float"
+    },
+    "partner_id": {
+      "help": "You can find a vendor by its Name, TIN, Email or Internal Reference.",
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "date_order": {
+      "help": "Depicts the date within which the Quotation should be confirmed and converted into a purchase order.",
+      "readonly": true,
+      "required": false,
+      "string": "Order Deadline",
+      "type": "datetime"
+    },
+    "date_approve": {
+      "readonly": true,
+      "required": false,
+      "string": "Confirmation Date",
+      "type": "datetime"
+    },
+    "tax_calculation_rounding_method": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "round_globally",
+          "Round per Tax"
+        ],
+        [
+          "round_per_line",
+          "Round per Line"
+        ]
+      ],
+      "string": "Tax calculation rounding method",
+      "type": "selection"
+    },
+    "display_type": {
+      "help": "Technical field for UX purpose.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "line_section",
+          "Section"
+        ],
+        [
+          "line_subsection",
+          "Subsection"
+        ],
+        [
+          "line_note",
+          "Note"
+        ]
+      ],
+      "string": "Display Type",
+      "type": "selection"
+    },
+    "is_downpayment": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Downpayment",
+      "type": "boolean"
+    },
+    "selected_seller_id": {
+      "help": "Technical field to get the vendor pricelist used to generate this line",
+      "readonly": true,
+      "relation": "product.supplierinfo",
+      "required": false,
+      "string": "Selected Seller",
+      "type": "many2one"
+    },
+    "product_template_attribute_value_ids": {
+      "readonly": true,
+      "relation": "product.template.attribute.value",
+      "required": false,
+      "string": "Attribute Values",
+      "type": "many2many"
+    },
+    "product_no_variant_attribute_value_ids": {
+      "readonly": false,
+      "relation": "product.template.attribute.value",
+      "required": false,
+      "string": "Product attribute values that do not create variants",
+      "type": "many2many"
+    },
+    "purchase_line_warn_msg": {
+      "readonly": true,
+      "required": false,
+      "string": "Purchase Line Warn Msg",
+      "type": "text"
+    },
+    "parent_id": {
+      "readonly": true,
+      "relation": "purchase.order.line",
+      "required": false,
+      "string": "Parent Section Line",
+      "type": "many2one"
+    },
+    "technical_price_unit": {
+      "help": "Technical field for price computation",
+      "readonly": false,
+      "required": false,
+      "string": "Technical Price Unit",
+      "type": "float"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "product_categ_id": {
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "prepaid_expense": {
+      "readonly": false,
+      "required": false,
+      "string": "Prepaid Expense",
+      "type": "boolean"
+    },
+    "bill_to_receive": {
+      "readonly": false,
+      "required": false,
+      "string": "Bill to Receive",
+      "type": "boolean"
+    },
+    "move_ids": {
+      "readonly": true,
+      "relation": "stock.move",
+      "required": false,
+      "string": "Reservation",
+      "type": "one2many"
+    },
+    "orderpoint_id": {
+      "readonly": false,
+      "relation": "stock.warehouse.orderpoint",
+      "required": false,
+      "string": "Orderpoint",
+      "type": "many2one"
+    },
+    "move_dest_ids": {
+      "readonly": false,
+      "relation": "stock.move",
+      "required": false,
+      "string": "Downstream moves alt",
+      "type": "many2many"
+    },
+    "product_description_variants": {
+      "readonly": false,
+      "required": false,
+      "string": "Custom Description",
+      "type": "char"
+    },
+    "propagate_cancel": {
+      "readonly": false,
+      "required": false,
+      "string": "Propagate cancellation",
+      "type": "boolean"
+    },
+    "forecasted_issue": {
+      "readonly": true,
+      "required": false,
+      "string": "Forecasted Issue",
+      "type": "boolean"
+    },
+    "is_storable": {
+      "help": "A storable product is a product for which you manage stock.",
+      "readonly": true,
+      "required": false,
+      "string": "Track Inventory",
+      "type": "boolean"
+    },
+    "location_final_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Location from procurement",
+      "type": "many2one"
+    },
+    "date_promised": {
+      "help": "Delivery Date promised by the vendor. If the vendor delivers products after this date, their On-Time rate will be negatively impacted.",
+      "readonly": false,
+      "required": false,
+      "string": "Promised Date",
+      "type": "datetime"
+    },
+    "sale_order_id": {
+      "readonly": true,
+      "relation": "sale.order",
+      "required": false,
+      "string": "Sale Order",
+      "type": "many2one"
+    },
+    "sale_line_id": {
+      "readonly": false,
+      "relation": "sale.order.line",
+      "required": false,
+      "string": "Origin Sale Item",
+      "type": "many2one"
+    }
+  }
+}

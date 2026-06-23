@@ -1,0 +1,125 @@
+{
+  "model": "uom.uom",
+  "name": "Product Unit of Measure",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Unit Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "relative_factor": {
+      "help": "How much bigger or smaller this unit is compared to the reference UoM for this unit",
+      "readonly": false,
+      "required": true,
+      "string": "Contains",
+      "type": "float"
+    },
+    "active": {
+      "help": "Uncheck the active field to disable a unit of measure without deleting it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "relative_uom_id": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Reference Unit",
+      "type": "many2one"
+    },
+    "related_uom_ids": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Related UoMs",
+      "type": "one2many"
+    },
+    "factor": {
+      "readonly": true,
+      "required": false,
+      "string": "Absolute Quantity",
+      "type": "float"
+    },
+    "parent_path": {
+      "readonly": false,
+      "required": false,
+      "string": "Parent Path",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "product_uom_ids": {
+      "readonly": false,
+      "relation": "product.uom",
+      "required": false,
+      "string": "Barcodes",
+      "type": "one2many"
+    },
+    "fiscal_country_codes": {
+      "readonly": true,
+      "required": false,
+      "string": "Fiscal Country Codes",
+      "type": "char"
+    },
+    "package_type_id": {
+      "readonly": false,
+      "relation": "stock.package.type",
+      "required": false,
+      "string": "Package Type",
+      "type": "many2one"
+    },
+    "route_ids": {
+      "help": "Routes propagated from the package type",
+      "readonly": true,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Routes",
+      "type": "many2many"
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "model": "appointment.booking.line",
+  "name": "Appointment Booking Line",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "help": "If the active field is set to false, it will allow you to hide the event alarm information without removing it.",
+      "readonly": true,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "appointment_resource_id": {
+      "readonly": false,
+      "relation": "appointment.resource",
+      "required": false,
+      "string": "Appointment Resource",
+      "type": "many2one"
+    },
+    "appointment_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Appointment User",
+      "type": "many2one"
+    },
+    "appointment_type_id": {
+      "readonly": true,
+      "relation": "appointment.type",
+      "required": false,
+      "string": "Appointment",
+      "type": "many2one"
+    },
+    "capacity_reserved": {
+      "help": "Capacity reserved by the user",
+      "readonly": false,
+      "required": true,
+      "string": "Capacity Reserved",
+      "type": "integer"
+    },
+    "capacity_used": {
+      "help": "Capacity that will be used based on the capacity and user/resource selected",
+      "readonly": true,
+      "required": false,
+      "string": "Capacity Used",
+      "type": "integer"
+    },
+    "calendar_event_id": {
+      "readonly": false,
+      "relation": "calendar.event",
+      "required": true,
+      "string": "Booking",
+      "type": "many2one"
+    },
+    "event_start": {
+      "help": "Start date of an event, without time for full days events",
+      "readonly": true,
+      "required": false,
+      "string": "Booking Start",
+      "type": "datetime"
+    },
+    "event_stop": {
+      "help": "Stop date of an event, without time for full days events",
+      "readonly": true,
+      "required": false,
+      "string": "Booking End",
+      "type": "datetime"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

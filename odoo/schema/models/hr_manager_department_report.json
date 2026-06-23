@@ -1,0 +1,32 @@
+{
+  "model": "hr.manager.department.report",
+  "name": "Hr Manager Department Report",
+  "field_count": 4,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "employee_id": {
+      "readonly": true,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Employee",
+      "type": "many2one"
+    },
+    "has_department_manager_access": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Department Manager Access",
+      "type": "boolean"
+    }
+  }
+}

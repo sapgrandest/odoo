@@ -1,0 +1,93 @@
+{
+  "model": "res.currency.rate",
+  "name": "Currency Rate",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "rate": {
+      "help": "The rate of the currency to the currency of rate 1",
+      "readonly": false,
+      "required": false,
+      "string": "Technical Rate",
+      "type": "float"
+    },
+    "company_rate": {
+      "help": "The currency of rate 1 to the rate of the currency.",
+      "readonly": false,
+      "required": false,
+      "string": "Company Rate",
+      "type": "float"
+    },
+    "inverse_company_rate": {
+      "help": "The rate of the currency to the currency of rate 1 ",
+      "readonly": false,
+      "required": false,
+      "string": "Inverse Company Rate",
+      "type": "float"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": true,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-06-01T14:39:47.0938515+02:00",
+  "request": {
+    "method": "POST",
+    "url": "https://id.profiauto.pl/connect/token",
+    "body": "grant_type=password&scope=motoprofil-api&username=SAP GRAND EST&password=[MASQUÉ]",
+    "headers": {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
+  },
+  "response": {
+    "body": {
+      "token_type": "Bearer",
+      "expires_in": 28800,
+      "access_token": "[MASQUÉ — 1624 caractères]"
+    },
+    "status": 200,
+    "elapsed_ms": 538,
+    "headers": {
+      "Cache-Control": [
+        "no-cache"
+      ],
+      "Pragma": [
+        "no-cache"
+      ],
+      "Server": [
+        "Kestrel"
+      ],
+      "X-Powered-By": [
+        "ASP.NET"
+      ],
+      "Date": [
+        "Mon, 01 Jun 2026 12:40:10 GMT"
+      ],
+      "Content-Length": [
+        "1684"
+      ],
+      "Content-Type": [
+        "application/json; charset=UTF-8"
+      ],
+      "Expires": [
+        "Thu, 01 Jan 1970 00:00:00 GMT"
+      ]
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "model": "ir.profile",
+  "name": "Allow profiling only to Tech Support level",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Creation Date",
+      "type": "datetime"
+    },
+    "session": {
+      "readonly": false,
+      "required": false,
+      "string": "Session",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "char"
+    },
+    "duration": {
+      "help": "Real elapsed time",
+      "readonly": false,
+      "required": false,
+      "string": "Duration",
+      "type": "float"
+    },
+    "cpu_duration": {
+      "help": "CPU clock (not including other processes or SQL)",
+      "readonly": false,
+      "required": false,
+      "string": "CPU Duration",
+      "type": "float"
+    },
+    "init_stack_trace": {
+      "readonly": false,
+      "required": false,
+      "string": "Initial stack trace",
+      "type": "text"
+    },
+    "sql": {
+      "readonly": false,
+      "required": false,
+      "string": "Sql",
+      "type": "text"
+    },
+    "sql_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Queries Count",
+      "type": "integer"
+    },
+    "traces_async": {
+      "readonly": false,
+      "required": false,
+      "string": "Traces Async",
+      "type": "text"
+    },
+    "others": {
+      "readonly": false,
+      "required": false,
+      "string": "others",
+      "type": "text"
+    },
+    "qweb": {
+      "readonly": false,
+      "required": false,
+      "string": "Qweb",
+      "type": "text"
+    },
+    "entry_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Entry count",
+      "type": "integer"
+    },
+    "speedscope": {
+      "readonly": true,
+      "required": false,
+      "string": "Speedscope",
+      "type": "binary"
+    },
+    "speedscope_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Open",
+      "type": "text"
+    },
+    "config_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Open profiles config",
+      "type": "text"
+    }
+  }
+}

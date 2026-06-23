@@ -1,0 +1,106 @@
+{
+  "model": "account.resequence.wizard",
+  "name": "Remake the sequence of Journal Entries.",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "sequence_number_reset": {
+      "readonly": true,
+      "required": false,
+      "string": "Sequence Number Reset",
+      "type": "char"
+    },
+    "first_date": {
+      "help": "Date (inclusive) from which the numbers are resequenced.",
+      "readonly": false,
+      "required": false,
+      "string": "First Date",
+      "type": "date"
+    },
+    "end_date": {
+      "help": "Date (inclusive) to which the numbers are resequenced. If not set, all Journal Entries up to the end of the period are resequenced.",
+      "readonly": false,
+      "required": false,
+      "string": "End Date",
+      "type": "date"
+    },
+    "first_name": {
+      "readonly": false,
+      "required": true,
+      "string": "First New Sequence",
+      "type": "char"
+    },
+    "ordering": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "keep",
+          "Keep current order"
+        ],
+        [
+          "date",
+          "Reorder by accounting date"
+        ]
+      ],
+      "string": "Ordering",
+      "type": "selection"
+    },
+    "move_ids": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Move",
+      "type": "many2many"
+    },
+    "new_values": {
+      "readonly": true,
+      "required": false,
+      "string": "New Values",
+      "type": "text"
+    },
+    "preview_moves": {
+      "readonly": true,
+      "required": false,
+      "string": "Preview Moves",
+      "type": "text"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

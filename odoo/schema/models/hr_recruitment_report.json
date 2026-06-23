@@ -1,0 +1,155 @@
+{
+  "model": "hr.recruitment.report",
+  "name": "Recruitment Analysis Report",
+  "field_count": 21,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "count": {
+      "readonly": true,
+      "required": false,
+      "string": "Applications",
+      "type": "integer"
+    },
+    "refused": {
+      "readonly": true,
+      "required": false,
+      "string": "Refused",
+      "type": "integer"
+    },
+    "hired": {
+      "readonly": true,
+      "required": false,
+      "string": "Hired",
+      "type": "integer"
+    },
+    "hiring_ratio": {
+      "readonly": true,
+      "required": false,
+      "string": "Hired Ratio",
+      "type": "integer"
+    },
+    "meetings_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Meetings",
+      "type": "integer"
+    },
+    "in_progress": {
+      "readonly": true,
+      "required": false,
+      "string": "In Progress",
+      "type": "integer"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "in_progress",
+          "In Progress"
+        ],
+        [
+          "is_hired",
+          "Hired"
+        ],
+        [
+          "refused",
+          "Refused"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "recruiter_id": {
+      "readonly": true,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Recruiter",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Application Date",
+      "type": "date"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Creator",
+      "type": "many2one"
+    },
+    "date_closed": {
+      "readonly": true,
+      "required": false,
+      "string": "End Date",
+      "type": "date"
+    },
+    "stage_id": {
+      "readonly": true,
+      "relation": "hr.recruitment.stage",
+      "required": false,
+      "string": "Stage",
+      "type": "many2one"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Applicant Name",
+      "type": "char"
+    },
+    "job_id": {
+      "readonly": true,
+      "relation": "hr.job",
+      "required": false,
+      "string": "Job",
+      "type": "many2one"
+    },
+    "medium_id": {
+      "readonly": true,
+      "relation": "utm.medium",
+      "required": false,
+      "string": "Medium",
+      "type": "many2one"
+    },
+    "source_id": {
+      "readonly": true,
+      "relation": "utm.source",
+      "required": false,
+      "string": "Source",
+      "type": "many2one"
+    },
+    "process_duration": {
+      "readonly": true,
+      "required": false,
+      "string": "Process Duration",
+      "type": "integer"
+    },
+    "refuse_reason_id": {
+      "readonly": true,
+      "relation": "hr.applicant.refuse.reason",
+      "required": false,
+      "string": "Refuse Reason",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    }
+  }
+}

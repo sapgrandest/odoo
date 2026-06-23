@@ -1,0 +1,285 @@
+{
+  "model": "stock.warehouse",
+  "name": "Warehouse",
+  "field_count": 36,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Warehouse",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "company_id": {
+      "help": "The company is automatically set from your user preferences.",
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Address",
+      "type": "many2one"
+    },
+    "view_location_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "View Location",
+      "type": "many2one"
+    },
+    "lot_stock_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Location Stock",
+      "type": "many2one"
+    },
+    "code": {
+      "help": "Short name used to identify your warehouse",
+      "readonly": false,
+      "required": true,
+      "string": "Short Name",
+      "type": "char"
+    },
+    "route_ids": {
+      "help": "Defaults routes through the warehouse",
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Routes",
+      "type": "many2many"
+    },
+    "reception_steps": {
+      "help": "Default incoming route to follow",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "one_step",
+          "Receive and Store (1 step)"
+        ],
+        [
+          "two_steps",
+          "Receive then Store (2 steps)"
+        ],
+        [
+          "three_steps",
+          "Receive, Quality Control, then Store (3 steps)"
+        ]
+      ],
+      "string": "Incoming Shipments",
+      "type": "selection"
+    },
+    "delivery_steps": {
+      "help": "Default outgoing route to follow",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "ship_only",
+          "Deliver (1 step)"
+        ],
+        [
+          "pick_ship",
+          "Pick then Deliver (2 steps)"
+        ],
+        [
+          "pick_pack_ship",
+          "Pick, Pack, then Deliver (3 steps)"
+        ]
+      ],
+      "string": "Outgoing Shipments",
+      "type": "selection"
+    },
+    "wh_input_stock_loc_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Input Location",
+      "type": "many2one"
+    },
+    "wh_qc_stock_loc_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Quality Control Location",
+      "type": "many2one"
+    },
+    "wh_output_stock_loc_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Output Location",
+      "type": "many2one"
+    },
+    "wh_pack_stock_loc_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Packing Location",
+      "type": "many2one"
+    },
+    "mto_pull_id": {
+      "readonly": false,
+      "relation": "stock.rule",
+      "required": false,
+      "string": "MTO rule",
+      "type": "many2one"
+    },
+    "pick_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "Pick Type",
+      "type": "many2one"
+    },
+    "pack_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "Pack Type",
+      "type": "many2one"
+    },
+    "out_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "Out Type",
+      "type": "many2one"
+    },
+    "in_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "In Type",
+      "type": "many2one"
+    },
+    "int_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "Internal Type",
+      "type": "many2one"
+    },
+    "qc_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "Quality Control Type",
+      "type": "many2one"
+    },
+    "store_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "Storage Type",
+      "type": "many2one"
+    },
+    "xdock_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "Cross Dock Type",
+      "type": "many2one"
+    },
+    "reception_route_id": {
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Receipt Route",
+      "type": "many2one"
+    },
+    "delivery_route_id": {
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Delivery Route",
+      "type": "many2one"
+    },
+    "resupply_wh_ids": {
+      "help": "Routes will be created automatically to resupply this warehouse from the warehouses ticked",
+      "readonly": false,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Resupply From",
+      "type": "many2many"
+    },
+    "resupply_route_ids": {
+      "help": "Routes will be created for these resupply warehouses and you can select them on products and product categories",
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Resupply Routes",
+      "type": "one2many"
+    },
+    "sequence": {
+      "help": "Gives the sequence of this line when displaying the warehouses.",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "buy_to_resupply": {
+      "help": "When products are bought, they can be delivered to this warehouse",
+      "readonly": false,
+      "required": false,
+      "string": "Buy to Resupply",
+      "type": "boolean"
+    },
+    "buy_pull_id": {
+      "readonly": false,
+      "relation": "stock.rule",
+      "required": false,
+      "string": "Buy rule",
+      "type": "many2one"
+    }
+  }
+}

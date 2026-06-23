@@ -1,0 +1,19 @@
+{
+  "model": "l10n_fr_reports.fiscal_declaration_handler",
+  "name": "Fiscal Declaration Report Handler",
+  "field_count": 2,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    }
+  }
+}

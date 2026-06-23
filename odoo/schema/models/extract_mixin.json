@@ -1,0 +1,191 @@
+{
+  "model": "extract.mixin",
+  "name": "Base class to extract data from documents",
+  "field_count": 23,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "message_main_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Main Attachment",
+      "type": "many2one"
+    },
+    "extract_state": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "no_extract_requested",
+          "No extract requested"
+        ],
+        [
+          "not_enough_credit",
+          "Not enough credits"
+        ],
+        [
+          "error_status",
+          "An error occurred"
+        ],
+        [
+          "waiting_extraction",
+          "Waiting extraction"
+        ],
+        [
+          "extract_not_ready",
+          "waiting extraction, but it is not ready"
+        ],
+        [
+          "waiting_validation",
+          "Waiting validation"
+        ],
+        [
+          "to_validate",
+          "To validate"
+        ],
+        [
+          "done",
+          "Completed flow"
+        ]
+      ],
+      "string": "Extract state",
+      "type": "selection"
+    },
+    "extract_status": {
+      "readonly": false,
+      "required": false,
+      "string": "Extract status",
+      "type": "char"
+    },
+    "extract_error_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Error message",
+      "type": "text"
+    },
+    "extract_document_uuid": {
+      "readonly": true,
+      "required": false,
+      "string": "ID of the request to IAP-OCR",
+      "type": "char"
+    },
+    "extract_can_show_send_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Can show the ocr send button",
+      "type": "boolean"
+    },
+    "is_in_extractable_state": {
+      "readonly": true,
+      "required": false,
+      "string": "Is In Extractable State",
+      "type": "boolean"
+    },
+    "extract_state_processed": {
+      "readonly": true,
+      "required": false,
+      "string": "Extract State Processed",
+      "type": "boolean"
+    }
+  }
+}

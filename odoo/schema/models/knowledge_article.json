@@ -1,0 +1,718 @@
+{
+  "model": "knowledge.article",
+  "name": "Knowledge Article",
+  "field_count": 97,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "website_url": {
+      "help": "The full relative URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website URL",
+      "type": "char"
+    },
+    "website_absolute_url": {
+      "help": "The full absolute URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website Absolute URL",
+      "type": "char"
+    },
+    "website_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Visible on current website",
+      "type": "boolean"
+    },
+    "is_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Published",
+      "type": "boolean"
+    },
+    "publish_on": {
+      "help": "Automatically publish the page on the chosen date and time.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto publish on",
+      "type": "datetime"
+    },
+    "published_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Published date",
+      "type": "datetime"
+    },
+    "can_publish": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Publish",
+      "type": "boolean"
+    },
+    "html_field_history": {
+      "readonly": true,
+      "required": false,
+      "string": "History data",
+      "type": "json"
+    },
+    "html_field_history_metadata": {
+      "readonly": true,
+      "required": false,
+      "string": "History metadata",
+      "type": "json"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_plans_ids": {
+      "readonly": true,
+      "relation": "mail.activity.plan",
+      "required": false,
+      "string": "Activity Plans",
+      "type": "many2many"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Title",
+      "type": "char"
+    },
+    "body": {
+      "readonly": false,
+      "required": false,
+      "string": "Body",
+      "type": "html"
+    },
+    "icon": {
+      "readonly": false,
+      "required": false,
+      "string": "Emoji",
+      "type": "char"
+    },
+    "cover_image_id": {
+      "readonly": false,
+      "relation": "knowledge.cover",
+      "required": false,
+      "string": "Article cover",
+      "type": "many2one"
+    },
+    "cover_image_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Cover url",
+      "type": "char"
+    },
+    "cover_image_position": {
+      "readonly": false,
+      "required": false,
+      "string": "Cover vertical offset",
+      "type": "float"
+    },
+    "is_locked": {
+      "help": "When locked, users cannot write on the body or change the title, even if they have write access on the article.",
+      "readonly": false,
+      "required": false,
+      "string": "Locked",
+      "type": "boolean"
+    },
+    "full_width": {
+      "help": "When set, the article body will take the full width available on the article page. Otherwise, the body will have large horizontal margins.",
+      "readonly": false,
+      "required": false,
+      "string": "Full width",
+      "type": "boolean"
+    },
+    "article_url": {
+      "readonly": true,
+      "required": false,
+      "string": "Article URL",
+      "type": "char"
+    },
+    "internal_permission": {
+      "help": "Default permission for all internal users. (External users can still have access to this article if they are added to its members)",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "write",
+          "Can edit"
+        ],
+        [
+          "read",
+          "Can read"
+        ],
+        [
+          "none",
+          "Members only"
+        ]
+      ],
+      "string": "Internal Permission",
+      "type": "selection"
+    },
+    "inherited_permission": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "write",
+          "Can edit"
+        ],
+        [
+          "read",
+          "Can read"
+        ],
+        [
+          "none",
+          "Members only"
+        ]
+      ],
+      "string": "Inherited Permission",
+      "type": "selection"
+    },
+    "inherited_permission_parent_id": {
+      "readonly": true,
+      "relation": "knowledge.article",
+      "required": false,
+      "string": "Inherited Permission Parent Article",
+      "type": "many2one"
+    },
+    "article_member_ids": {
+      "readonly": false,
+      "relation": "knowledge.article.member",
+      "required": false,
+      "string": "Members Information",
+      "type": "one2many"
+    },
+    "user_has_access": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Access",
+      "type": "boolean"
+    },
+    "user_has_access_parent_path": {
+      "help": "Has the user access to each parent from current article until its root?",
+      "readonly": true,
+      "required": false,
+      "string": "Can the user join?",
+      "type": "boolean"
+    },
+    "user_has_write_access": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Write Access",
+      "type": "boolean"
+    },
+    "user_can_read": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Read",
+      "type": "boolean"
+    },
+    "user_can_write": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Edit",
+      "type": "boolean"
+    },
+    "user_permission": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "write",
+          "write"
+        ],
+        [
+          "read",
+          "read"
+        ],
+        [
+          "none",
+          "none"
+        ]
+      ],
+      "string": "User permission",
+      "type": "selection"
+    },
+    "parent_id": {
+      "readonly": false,
+      "relation": "knowledge.article",
+      "required": false,
+      "string": "Parent Article",
+      "type": "many2one"
+    },
+    "parent_path": {
+      "readonly": false,
+      "required": false,
+      "string": "Parent Path",
+      "type": "char"
+    },
+    "child_ids": {
+      "readonly": false,
+      "relation": "knowledge.article",
+      "required": false,
+      "string": "Child Articles and Items",
+      "type": "one2many"
+    },
+    "has_item_parent": {
+      "readonly": true,
+      "required": false,
+      "string": "Is the parent an Item?",
+      "type": "boolean"
+    },
+    "has_item_children": {
+      "readonly": true,
+      "required": false,
+      "string": "Has article item children?",
+      "type": "boolean"
+    },
+    "has_article_children": {
+      "readonly": true,
+      "required": false,
+      "string": "Has normal article children?",
+      "type": "boolean"
+    },
+    "is_desynchronized": {
+      "help": "If set, this article won't inherit access rules from its parents anymore.",
+      "readonly": false,
+      "required": false,
+      "string": "Desyncronized with parents",
+      "type": "boolean"
+    },
+    "sequence": {
+      "help": "The sequence is computed only among the articles that have the same parent.",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "root_article_id": {
+      "help": "The subject is the title of the highest parent in the article hierarchy.",
+      "readonly": true,
+      "relation": "knowledge.article",
+      "required": false,
+      "string": "Menu Article",
+      "type": "many2one"
+    },
+    "is_article_item": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Item?",
+      "type": "boolean"
+    },
+    "stage_id": {
+      "readonly": false,
+      "relation": "knowledge.article.stage",
+      "required": false,
+      "string": "Item Stage",
+      "type": "many2one"
+    },
+    "category": {
+      "help": "Used to categorize articles in UI, depending on their main permission definitions.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "workspace",
+          "Workspace"
+        ],
+        [
+          "private",
+          "Private"
+        ],
+        [
+          "shared",
+          "Shared"
+        ]
+      ],
+      "string": "Section",
+      "type": "selection"
+    },
+    "last_edition_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Edited by",
+      "type": "many2one"
+    },
+    "last_edition_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Edited on",
+      "type": "datetime"
+    },
+    "last_edition_user_avatar": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Editor's Avatar",
+      "type": "binary"
+    },
+    "summary": {
+      "readonly": true,
+      "required": false,
+      "string": "Summary",
+      "type": "text"
+    },
+    "is_user_favorite": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Favorited",
+      "type": "boolean"
+    },
+    "user_favorite_sequence": {
+      "readonly": true,
+      "required": false,
+      "string": "User Favorite Sequence",
+      "type": "integer"
+    },
+    "favorite_ids": {
+      "readonly": false,
+      "relation": "knowledge.article.favorite",
+      "required": false,
+      "string": "Favorite Articles",
+      "type": "one2many"
+    },
+    "favorite_count": {
+      "readonly": true,
+      "required": false,
+      "string": "#Is Favorite",
+      "type": "integer"
+    },
+    "is_article_visible_by_everyone": {
+      "readonly": false,
+      "required": false,
+      "string": "Can everyone see the Article?",
+      "type": "boolean"
+    },
+    "is_article_visible": {
+      "readonly": true,
+      "required": false,
+      "string": "Can the user see the article?",
+      "type": "boolean"
+    },
+    "to_delete": {
+      "help": "When moved to trash, articles are flagged to be deleted\n                days after last edit. knowledge_article_trash_limit_days config\n                parameter can be used to modify the number of days. \n                (default is 30)",
+      "readonly": false,
+      "required": false,
+      "string": "Trashed",
+      "type": "boolean"
+    },
+    "deletion_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Deletion Date",
+      "type": "date"
+    },
+    "article_properties_definition": {
+      "readonly": false,
+      "required": false,
+      "string": "Article Item Properties",
+      "type": "properties_definition"
+    },
+    "article_properties": {
+      "readonly": false,
+      "required": false,
+      "string": "Properties",
+      "type": "properties"
+    },
+    "is_listed_in_templates_gallery": {
+      "help": "If checked, the article will appear in the templates gallery under the 'Shared Templates' section",
+      "readonly": false,
+      "required": false,
+      "string": "Is listed in Templates Gallery?",
+      "type": "boolean"
+    },
+    "is_template": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Template",
+      "type": "boolean"
+    },
+    "template_body": {
+      "readonly": false,
+      "required": false,
+      "string": "Template Body",
+      "type": "html"
+    },
+    "template_category_id": {
+      "readonly": false,
+      "relation": "knowledge.article.template.category",
+      "required": false,
+      "string": "Template Category",
+      "type": "many2one"
+    },
+    "template_category_sequence": {
+      "help": "It determines the display order of the category",
+      "readonly": true,
+      "required": false,
+      "string": "Template Category Sequence",
+      "type": "integer"
+    },
+    "template_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Template Description",
+      "type": "char"
+    },
+    "template_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Template Title",
+      "type": "char"
+    },
+    "template_preview": {
+      "readonly": true,
+      "required": false,
+      "string": "Template Preview",
+      "type": "html"
+    },
+    "template_sequence": {
+      "help": "It determines the display order of the template within its category",
+      "readonly": false,
+      "required": false,
+      "string": "Template Sequence",
+      "type": "integer"
+    },
+    "template_child_default_create": {
+      "help": "If set, this will automatically create this child article when its parent template is used",
+      "readonly": false,
+      "required": false,
+      "string": "Auto-Create Child Article",
+      "type": "boolean"
+    },
+    "origin_template_id": {
+      "readonly": false,
+      "relation": "knowledge.article",
+      "required": false,
+      "string": "Template used to generate the article",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

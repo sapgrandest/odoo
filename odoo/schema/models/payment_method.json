@@ -1,0 +1,186 @@
+{
+  "model": "payment.method",
+  "name": "Payment Method",
+  "field_count": 22,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "code": {
+      "help": "The technical code of this payment method.",
+      "readonly": false,
+      "required": true,
+      "string": "Code",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "primary_payment_method_id": {
+      "help": "The primary payment method of the current payment method, if the latter is a brand.\nFor example, \"Card\" is the primary payment method of the card brand \"VISA\".",
+      "readonly": false,
+      "relation": "payment.method",
+      "required": false,
+      "string": "Primary Payment Method",
+      "type": "many2one"
+    },
+    "brand_ids": {
+      "help": "The brands of the payment methods that will be displayed on the payment form.",
+      "readonly": false,
+      "relation": "payment.method",
+      "required": false,
+      "string": "Brands",
+      "type": "one2many"
+    },
+    "is_primary": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Primary Payment Method",
+      "type": "boolean"
+    },
+    "provider_ids": {
+      "help": "The list of providers supporting this payment method.",
+      "readonly": false,
+      "relation": "payment.provider",
+      "required": false,
+      "string": "Providers",
+      "type": "many2many"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "image": {
+      "help": "The base image used for this payment method; in a 64x64 px format.",
+      "readonly": false,
+      "required": true,
+      "string": "Image",
+      "type": "binary"
+    },
+    "image_payment_form": {
+      "help": "The base image used for this payment method; in a 64x64 px format.",
+      "readonly": true,
+      "required": false,
+      "string": "The resized image displayed on the payment form.",
+      "type": "binary"
+    },
+    "support_tokenization": {
+      "help": "Tokenization is the process of saving the payment details as a token that can later be reused without having to enter the payment details again.",
+      "readonly": false,
+      "required": false,
+      "string": "Tokenization",
+      "type": "boolean"
+    },
+    "support_express_checkout": {
+      "help": "Express checkout allows customers to pay faster by using a payment method that provides all required billing and shipping information, thus allowing to skip the checkout process.",
+      "readonly": false,
+      "required": false,
+      "string": "Express Checkout",
+      "type": "boolean"
+    },
+    "support_manual_capture": {
+      "help": "The payment is authorized and captured in two steps instead of one.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "none",
+          "Unsupported"
+        ],
+        [
+          "full_only",
+          "Full Only"
+        ],
+        [
+          "partial",
+          "Full & Partial"
+        ]
+      ],
+      "string": "Manual Capture",
+      "type": "selection"
+    },
+    "support_refund": {
+      "help": "Refund is a feature allowing to refund customers directly from the payment in Odoo.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "none",
+          "Unsupported"
+        ],
+        [
+          "full_only",
+          "Full Only"
+        ],
+        [
+          "partial",
+          "Full & Partial"
+        ]
+      ],
+      "string": "Refund",
+      "type": "selection"
+    },
+    "supported_country_ids": {
+      "help": "The list of countries in which this payment method can be used (if the provider allows it). In other countries, this payment method is not available to customers.",
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Countries",
+      "type": "many2many"
+    },
+    "supported_currency_ids": {
+      "help": "The list of currencies for that are supported by this payment method (if the provider allows it). When paying with another currency, this payment method is not available to customers.",
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currencies",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

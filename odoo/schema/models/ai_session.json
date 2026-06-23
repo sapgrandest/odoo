@@ -1,0 +1,176 @@
+{
+  "model": "ai.session",
+  "name": "AI Session",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "agent_id": {
+      "readonly": false,
+      "relation": "ai.agent",
+      "required": true,
+      "string": "Agent",
+      "type": "many2one"
+    },
+    "ai_composer_id": {
+      "readonly": false,
+      "relation": "ai.composer",
+      "required": false,
+      "string": "Ai Composer",
+      "type": "many2one"
+    },
+    "llm_model": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "gpt-3.5-turbo",
+          "GPT-3.5 Turbo"
+        ],
+        [
+          "gpt-4",
+          "GPT-4"
+        ],
+        [
+          "gpt-4o",
+          "GPT-4o"
+        ],
+        [
+          "gpt-4.1",
+          "GPT-4.1"
+        ],
+        [
+          "gpt-4.1-mini",
+          "GPT-4.1 Mini"
+        ],
+        [
+          "gpt-5",
+          "GPT-5"
+        ],
+        [
+          "gpt-5-nano",
+          "GPT-5 Nano"
+        ],
+        [
+          "gpt-5-mini",
+          "GPT-5 Mini"
+        ],
+        [
+          "gpt-5.1",
+          "GPT-5.1"
+        ],
+        [
+          "gpt-5.2",
+          "GPT-5.2"
+        ],
+        [
+          "gemini-2.5-pro",
+          "Gemini 2.5 Pro"
+        ],
+        [
+          "gemini-2.5-flash",
+          "Gemini 2.5 Flash"
+        ],
+        [
+          "gemini-2.5-flash-lite",
+          "Gemini 2.5 Flash Lite"
+        ],
+        [
+          "gemini-2.5-flash-image",
+          "Gemini 2.5 Nano Banana"
+        ],
+        [
+          "gemini-3-flash",
+          "Gemini 3 Flash"
+        ],
+        [
+          "gemini-3.1-pro",
+          "Gemini 3.1 Pro"
+        ]
+      ],
+      "string": "LLM Model",
+      "type": "selection"
+    },
+    "channel_id": {
+      "readonly": false,
+      "relation": "discuss.channel",
+      "required": false,
+      "string": "Channel",
+      "type": "many2one"
+    },
+    "event_ids": {
+      "readonly": false,
+      "relation": "ai.session.event",
+      "required": false,
+      "string": "Event",
+      "type": "one2many"
+    },
+    "state": {
+      "help": "Field that can be used to store data between tool calls",
+      "readonly": false,
+      "required": false,
+      "string": "State",
+      "type": "json"
+    },
+    "res_model": {
+      "readonly": false,
+      "required": false,
+      "string": "Model",
+      "type": "char"
+    },
+    "res_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Res",
+      "type": "many2one_reference"
+    },
+    "pending_tool_call_id": {
+      "readonly": false,
+      "required": false,
+      "string": "call_id of the tool waiting for user interaction",
+      "type": "char"
+    },
+    "pending_tools_results": {
+      "readonly": false,
+      "required": false,
+      "string": "pending tool calls results waiting for user interaction",
+      "type": "json"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

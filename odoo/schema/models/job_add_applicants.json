@@ -1,0 +1,59 @@
+{
+  "model": "job.add.applicants",
+  "name": "Add applicants to a job",
+  "field_count": 8,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "applicant_ids": {
+      "readonly": false,
+      "relation": "hr.applicant",
+      "required": true,
+      "string": "Applications",
+      "type": "many2many"
+    },
+    "job_ids": {
+      "readonly": false,
+      "relation": "hr.job",
+      "required": true,
+      "string": "Job Positions",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

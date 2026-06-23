@@ -1,0 +1,47 @@
+{
+  "model": "stock.replenish.mixin",
+  "name": "Product Replenish Mixin",
+  "field_count": 6,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "route_id": {
+      "help": "Apply specific route for the replenishment instead of product's default routes.",
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Preferred Route",
+      "type": "many2one"
+    },
+    "allowed_route_ids": {
+      "readonly": true,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Allowed Route",
+      "type": "many2many"
+    },
+    "supplier_id": {
+      "readonly": false,
+      "relation": "product.supplierinfo",
+      "required": false,
+      "string": "Vendor",
+      "type": "many2one"
+    },
+    "show_vendor": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Vendor",
+      "type": "boolean"
+    }
+  }
+}

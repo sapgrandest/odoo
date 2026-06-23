@@ -1,0 +1,92 @@
+{
+  "model": "onboarding.progress",
+  "name": "Onboarding Progress Tracker",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "onboarding_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_done",
+          "Not done"
+        ],
+        [
+          "just_done",
+          "Just done"
+        ],
+        [
+          "done",
+          "Done"
+        ]
+      ],
+      "string": "Onboarding progress",
+      "type": "selection"
+    },
+    "is_onboarding_closed": {
+      "readonly": false,
+      "required": false,
+      "string": "Was panel closed?",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "onboarding_id": {
+      "readonly": false,
+      "relation": "onboarding.onboarding",
+      "required": true,
+      "string": "Related onboarding tracked",
+      "type": "many2one"
+    },
+    "progress_step_ids": {
+      "readonly": false,
+      "relation": "onboarding.progress.step",
+      "required": false,
+      "string": "Progress Steps Trackers",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

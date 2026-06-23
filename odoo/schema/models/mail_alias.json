@@ -1,0 +1,168 @@
+{
+  "model": "mail.alias",
+  "name": "Email Alias",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "alias_name": {
+      "help": "The name of the email alias, e.g. 'jobs' if you want to catch emails for <jobs@example.odoo.com>",
+      "readonly": false,
+      "required": false,
+      "string": "Alias Name",
+      "type": "char"
+    },
+    "alias_full_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Alias Email",
+      "type": "char"
+    },
+    "alias_domain_id": {
+      "readonly": false,
+      "relation": "mail.alias.domain",
+      "required": false,
+      "string": "Alias Domain",
+      "type": "many2one"
+    },
+    "alias_domain": {
+      "help": "Email domain e.g. 'example.com' in 'odoo@example.com'",
+      "readonly": true,
+      "required": false,
+      "string": "Alias domain name",
+      "type": "char"
+    },
+    "alias_model_id": {
+      "help": "The model (Odoo Document Kind) to which this alias corresponds. Any incoming email that does not reply to an existing record will cause the creation of a new record of this model (e.g. a Project Task)",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": true,
+      "string": "Aliased Model",
+      "type": "many2one"
+    },
+    "alias_defaults": {
+      "help": "A Python dictionary that will be evaluated to provide default values when creating new records for this alias.",
+      "readonly": false,
+      "required": true,
+      "string": "Default Values",
+      "type": "text"
+    },
+    "alias_force_thread_id": {
+      "help": "Optional ID of a thread (record) to which all incoming messages will be attached, even if they did not reply to it. If set, this will disable the creation of new records completely.",
+      "readonly": false,
+      "required": false,
+      "string": "Record Thread ID",
+      "type": "integer"
+    },
+    "alias_parent_model_id": {
+      "help": "Parent model holding the alias. The model holding the alias reference is not necessarily the model given by alias_model_id (example: project (parent_model) and task (model))",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Parent Model",
+      "type": "many2one"
+    },
+    "alias_parent_thread_id": {
+      "help": "ID of the parent record holding the alias (example: project holding the task creation alias)",
+      "readonly": false,
+      "required": false,
+      "string": "Parent Record Thread ID",
+      "type": "integer"
+    },
+    "alias_contact": {
+      "help": "Policy to post a message on the document using the mailgateway.\n- everyone: everyone can post\n- partners: only authenticated partners\n- followers: only followers of the related document or members of following channels\n",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "everyone",
+          "Everyone"
+        ],
+        [
+          "partners",
+          "Authenticated Partners"
+        ],
+        [
+          "followers",
+          "Followers only"
+        ],
+        [
+          "employees",
+          "Authenticated Employees"
+        ]
+      ],
+      "string": "Alias Contact Security",
+      "type": "selection"
+    },
+    "alias_incoming_local": {
+      "readonly": false,
+      "required": false,
+      "string": "Local-part based incoming detection",
+      "type": "boolean"
+    },
+    "alias_bounced_content": {
+      "help": "If set, this content will automatically be sent out to unauthorized users instead of the default message.",
+      "readonly": false,
+      "required": false,
+      "string": "Custom Bounced Message",
+      "type": "html"
+    },
+    "alias_status": {
+      "help": "Alias status assessed on the last message received.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_tested",
+          "Not Tested"
+        ],
+        [
+          "valid",
+          "Valid"
+        ],
+        [
+          "invalid",
+          "Invalid"
+        ]
+      ],
+      "string": "Alias Status",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

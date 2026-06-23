@@ -1,0 +1,108 @@
+{
+  "model": "planning.planning",
+  "name": "Schedule",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "start_datetime": {
+      "readonly": false,
+      "required": true,
+      "string": "Start Date",
+      "type": "datetime"
+    },
+    "end_datetime": {
+      "readonly": false,
+      "required": true,
+      "string": "Stop Date",
+      "type": "datetime"
+    },
+    "include_unassigned": {
+      "readonly": false,
+      "required": false,
+      "string": "Includes Open Shifts",
+      "type": "boolean"
+    },
+    "access_token": {
+      "readonly": true,
+      "required": true,
+      "string": "Security Token",
+      "type": "char"
+    },
+    "company_id": {
+      "help": "Company linked to the material resource. Leave empty for the resource to be available in every company.",
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "date_start": {
+      "readonly": true,
+      "required": false,
+      "string": "Date Start",
+      "type": "date"
+    },
+    "date_end": {
+      "readonly": true,
+      "required": false,
+      "string": "Date End",
+      "type": "date"
+    },
+    "allow_self_unassign": {
+      "readonly": true,
+      "required": false,
+      "string": "Let Employee Unassign Themselves",
+      "type": "boolean"
+    },
+    "self_unassign_days_before": {
+      "help": "Deadline in days for shift unassignment",
+      "readonly": true,
+      "required": false,
+      "string": "Days before shift for unassignment",
+      "type": "integer"
+    },
+    "is_planning_preview": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Planning Preview",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "model": "survey.question.answer",
+  "name": "Survey Label",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "question_id": {
+      "readonly": false,
+      "relation": "survey.question",
+      "required": false,
+      "string": "Question",
+      "type": "many2one"
+    },
+    "matrix_question_id": {
+      "readonly": false,
+      "relation": "survey.question",
+      "required": false,
+      "string": "Question (as matrix row)",
+      "type": "many2one"
+    },
+    "question_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "simple_choice",
+          "Single-Select"
+        ],
+        [
+          "multiple_choice",
+          "Multi-Select"
+        ],
+        [
+          "text_box",
+          "Long Text"
+        ],
+        [
+          "char_box",
+          "Short Text"
+        ],
+        [
+          "numerical_box",
+          "Number"
+        ],
+        [
+          "scale",
+          "Scale"
+        ],
+        [
+          "date",
+          "Date"
+        ],
+        [
+          "datetime",
+          "Datetime"
+        ],
+        [
+          "matrix",
+          "Matrix"
+        ]
+      ],
+      "string": "Question Type",
+      "type": "selection"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Label Sequence order",
+      "type": "integer"
+    },
+    "scoring_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "no_scoring",
+          "No scoring"
+        ],
+        [
+          "scoring_with_answers_after_page",
+          "Scoring with answers after each page"
+        ],
+        [
+          "scoring_with_answers",
+          "Scoring with answers at the end"
+        ],
+        [
+          "scoring_without_answers",
+          "Scoring without answers"
+        ]
+      ],
+      "string": "Scoring Type",
+      "type": "selection"
+    },
+    "value": {
+      "readonly": false,
+      "required": false,
+      "string": "Suggested value",
+      "type": "char"
+    },
+    "value_image": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "value_image_filename": {
+      "readonly": false,
+      "required": false,
+      "string": "Image Filename",
+      "type": "char"
+    },
+    "value_label": {
+      "help": "Answer label as either the value itself if not empty or a letter representing the index of the answer otherwise.",
+      "readonly": true,
+      "required": false,
+      "string": "Value Label",
+      "type": "char"
+    },
+    "is_correct": {
+      "readonly": false,
+      "required": false,
+      "string": "Correct",
+      "type": "boolean"
+    },
+    "answer_score": {
+      "help": "A positive score indicates a correct choice; a negative or null score indicates a wrong answer",
+      "readonly": false,
+      "required": false,
+      "string": "Score",
+      "type": "float"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "generate_lead": {
+      "help": "Creates a lead when participants choose this answer",
+      "readonly": false,
+      "required": false,
+      "string": "Lead creation",
+      "type": "boolean"
+    }
+  }
+}

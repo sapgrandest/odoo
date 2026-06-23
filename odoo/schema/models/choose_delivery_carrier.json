@@ -1,0 +1,152 @@
+{
+  "model": "choose.delivery.carrier",
+  "name": "Delivery Method Selection Wizard",
+  "field_count": 21,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "order_id": {
+      "readonly": false,
+      "relation": "sale.order",
+      "required": true,
+      "string": "Order",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "carrier_id": {
+      "readonly": false,
+      "relation": "delivery.carrier",
+      "required": true,
+      "string": "Delivery Method",
+      "type": "many2one"
+    },
+    "delivery_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "base_on_rule",
+          "Based on Rules"
+        ],
+        [
+          "fixed",
+          "Fixed Price"
+        ]
+      ],
+      "string": "Provider",
+      "type": "selection"
+    },
+    "delivery_price": {
+      "readonly": false,
+      "required": false,
+      "string": "Delivery Price",
+      "type": "float"
+    },
+    "display_price": {
+      "readonly": true,
+      "required": false,
+      "string": "Cost",
+      "type": "float"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "available_carrier_ids": {
+      "readonly": true,
+      "relation": "delivery.carrier",
+      "required": false,
+      "string": "Available Carriers",
+      "type": "many2many"
+    },
+    "invoicing_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoicing Message",
+      "type": "text"
+    },
+    "delivery_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Delivery Message",
+      "type": "text"
+    },
+    "total_weight": {
+      "readonly": false,
+      "required": false,
+      "string": "Total Order Weight",
+      "type": "float"
+    },
+    "weight_uom_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Weight Uom Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "is_pickup_required": {
+      "readonly": true,
+      "required": false,
+      "string": "Support Pickup Locations",
+      "type": "boolean"
+    },
+    "partner_shipping_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Pickup Point",
+      "type": "many2one"
+    }
+  }
+}

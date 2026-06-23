@@ -1,0 +1,135 @@
+{
+  "model": "project.template.create.wizard",
+  "name": "Project Template create Wizard",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "date_start": {
+      "readonly": false,
+      "required": false,
+      "string": "Start Date",
+      "type": "date"
+    },
+    "date": {
+      "readonly": false,
+      "required": false,
+      "string": "Expiration Date",
+      "type": "date"
+    },
+    "alias_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Alias Name",
+      "type": "char"
+    },
+    "alias_domain_id": {
+      "readonly": false,
+      "relation": "mail.alias.domain",
+      "required": false,
+      "string": "Alias Domain",
+      "type": "many2one"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "project.project",
+      "required": false,
+      "string": "Template",
+      "type": "many2one"
+    },
+    "template_has_dates": {
+      "readonly": true,
+      "required": false,
+      "string": "Template Has Dates",
+      "type": "boolean"
+    },
+    "role_to_users_ids": {
+      "readonly": false,
+      "relation": "project.template.role.to.users.map",
+      "required": false,
+      "string": "Role To Users",
+      "type": "one2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "allow_billable": {
+      "readonly": true,
+      "required": false,
+      "string": "Billable",
+      "type": "boolean"
+    },
+    "customer_action": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "create",
+          "Create a new customer"
+        ],
+        [
+          "exist",
+          "Link to an existing customer"
+        ],
+        [
+          "nothing",
+          "Do not link to a customer"
+        ]
+      ],
+      "string": "Project Customer",
+      "type": "selection"
+    },
+    "is_customer_action_visible": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Customer Action Visible",
+      "type": "boolean"
+    }
+  }
+}

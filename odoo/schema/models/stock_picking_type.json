@@ -1,0 +1,614 @@
+{
+  "model": "stock.picking.type",
+  "name": "Picking Type",
+  "field_count": 69,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Operation Type",
+      "type": "char"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color",
+      "type": "integer"
+    },
+    "sequence": {
+      "help": "Used to order the 'All Operations' kanban view",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "sequence_id": {
+      "readonly": false,
+      "relation": "ir.sequence",
+      "required": false,
+      "string": "Reference Sequence",
+      "type": "many2one"
+    },
+    "sequence_code": {
+      "help": "Prefix value of the record for the sequence",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence Prefix",
+      "type": "char"
+    },
+    "default_location_src_id": {
+      "help": "This is the default source location when this operation is manually created. However, it is possible to change it afterwards or that the routes use another one by default.",
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Source Location",
+      "type": "many2one"
+    },
+    "default_location_dest_id": {
+      "help": "This is the default destination location when this operation is manually created. However, it is possible to change it afterwards or that the routes use another one by default.",
+      "readonly": false,
+      "relation": "stock.location",
+      "required": true,
+      "string": "Destination Location",
+      "type": "many2one"
+    },
+    "code": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "incoming",
+          "Receipt"
+        ],
+        [
+          "outgoing",
+          "Delivery"
+        ],
+        [
+          "internal",
+          "Internal Transfer"
+        ]
+      ],
+      "string": "Operation Category",
+      "type": "selection"
+    },
+    "return_picking_type_id": {
+      "readonly": false,
+      "relation": "stock.picking.type",
+      "required": false,
+      "string": "Operation Type for Returns",
+      "type": "many2one"
+    },
+    "show_entire_packs": {
+      "help": "If ticked, packages to move will be directly displayed in Barcode instead of the products they contain",
+      "readonly": false,
+      "required": false,
+      "string": "Move Entire Packages",
+      "type": "boolean"
+    },
+    "set_package_type": {
+      "help": "If ticked, you will be able to select which package or package type to use in a put in pack",
+      "readonly": false,
+      "required": false,
+      "string": "Set Package Type",
+      "type": "boolean"
+    },
+    "warehouse_id": {
+      "readonly": false,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "use_create_lots": {
+      "help": "If this is checked only, it will suppose you want to create new Lots/Serial Numbers, so you can provide them in a text field. ",
+      "readonly": false,
+      "required": false,
+      "string": "Create New Lots/Serial Numbers",
+      "type": "boolean"
+    },
+    "use_existing_lots": {
+      "help": "If this is checked, you will be able to choose the Lots/Serial Numbers. You can also decide to not put lots in this operation type.  This means it will create stock with no lot or not put a restriction on the lot taken. ",
+      "readonly": false,
+      "required": false,
+      "string": "Use Existing Lots/Serial Numbers",
+      "type": "boolean"
+    },
+    "print_label": {
+      "help": "Check this box if you want to generate shipping label in this operation.",
+      "readonly": false,
+      "required": false,
+      "string": "Generate Shipping Labels",
+      "type": "boolean"
+    },
+    "show_operations": {
+      "help": "If this checkbox is ticked, the pickings lines will represent detailed stock operations. If not, the picking lines will represent an aggregate of detailed stock operations.",
+      "readonly": false,
+      "required": false,
+      "string": "Show Detailed Operations",
+      "type": "boolean"
+    },
+    "reservation_method": {
+      "help": "How products in transfers of this operation type should be reserved.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "at_confirm",
+          "At Confirmation"
+        ],
+        [
+          "manual",
+          "Manually"
+        ],
+        [
+          "by_date",
+          "Before scheduled date"
+        ]
+      ],
+      "string": "Reservation Method",
+      "type": "selection"
+    },
+    "reservation_days_before": {
+      "help": "Maximum number of days before scheduled date that products should be reserved.",
+      "readonly": false,
+      "required": false,
+      "string": "Days",
+      "type": "integer"
+    },
+    "reservation_days_before_priority": {
+      "help": "Maximum number of days before scheduled date that priority picking products should be reserved.",
+      "readonly": false,
+      "required": false,
+      "string": "Days when starred",
+      "type": "integer"
+    },
+    "auto_show_reception_report": {
+      "help": "If this checkbox is ticked, Odoo will automatically show the reception report (if there are moves to allocate to) when validating.",
+      "readonly": false,
+      "required": false,
+      "string": "Show Reception Report at Validation",
+      "type": "boolean"
+    },
+    "auto_print_delivery_slip": {
+      "help": "If this checkbox is ticked, Odoo will automatically print the delivery slip of a picking when it is validated.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto Print Delivery Slip",
+      "type": "boolean"
+    },
+    "auto_print_return_slip": {
+      "help": "If this checkbox is ticked, Odoo will automatically print the return slip of a picking when it is validated.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto Print Return Slip",
+      "type": "boolean"
+    },
+    "auto_print_product_labels": {
+      "help": "If this checkbox is ticked, Odoo will automatically print the product labels of a picking when it is validated.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto Print Product Labels",
+      "type": "boolean"
+    },
+    "product_label_format": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "dymo",
+          "Dymo"
+        ],
+        [
+          "2x7",
+          "2 x 7"
+        ],
+        [
+          "4x7",
+          "4 x 7"
+        ],
+        [
+          "4x12",
+          "4 x 12"
+        ],
+        [
+          "zpl",
+          "ZPL Labels"
+        ]
+      ],
+      "string": "Product Label Format to auto-print",
+      "type": "selection"
+    },
+    "auto_print_lot_labels": {
+      "help": "If this checkbox is ticked, Odoo will automatically print the lot/SN labels of a picking when it is validated.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto Print Lot/SN Labels",
+      "type": "boolean"
+    },
+    "lot_label_format": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "4x12_lots",
+          "4 x 12 - One per lot/SN"
+        ],
+        [
+          "4x12_units",
+          "4 x 12 - One per unit"
+        ],
+        [
+          "zpl_lots",
+          "ZPL Labels - One per lot/SN"
+        ],
+        [
+          "zpl_units",
+          "ZPL Labels - One per unit"
+        ]
+      ],
+      "string": "Lot Label Format to auto-print",
+      "type": "selection"
+    },
+    "auto_print_reception_report": {
+      "help": "If this checkbox is ticked, Odoo will automatically print the reception report of a picking when it is validated and has assigned moves.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto Print Reception Report",
+      "type": "boolean"
+    },
+    "auto_print_reception_report_labels": {
+      "help": "If this checkbox is ticked, Odoo will automatically print the reception report labels of a picking when it is validated.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto Print Reception Report Labels",
+      "type": "boolean"
+    },
+    "auto_print_packages": {
+      "help": "If this checkbox is ticked, Odoo will automatically print the packages and their contents of a picking when it is validated.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto Print Packages",
+      "type": "boolean"
+    },
+    "auto_print_package_label": {
+      "help": "If this checkbox is ticked, Odoo will automatically print the package label when \"Put in Pack\" button is used.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto Print Package Label",
+      "type": "boolean"
+    },
+    "package_label_to_print": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "pdf",
+          "PDF"
+        ],
+        [
+          "zpl",
+          "ZPL"
+        ]
+      ],
+      "string": "Package Label to Print",
+      "type": "selection"
+    },
+    "count_picking_draft": {
+      "readonly": true,
+      "required": false,
+      "string": "Count Picking Draft",
+      "type": "integer"
+    },
+    "count_picking_ready": {
+      "readonly": true,
+      "required": false,
+      "string": "Count Picking Ready",
+      "type": "integer"
+    },
+    "count_picking": {
+      "readonly": true,
+      "required": false,
+      "string": "Count Picking",
+      "type": "integer"
+    },
+    "count_picking_waiting": {
+      "readonly": true,
+      "required": false,
+      "string": "Count Picking Waiting",
+      "type": "integer"
+    },
+    "count_picking_late": {
+      "readonly": true,
+      "required": false,
+      "string": "Count Picking Late",
+      "type": "integer"
+    },
+    "count_picking_backorders": {
+      "readonly": true,
+      "required": false,
+      "string": "Count Picking Backorders",
+      "type": "integer"
+    },
+    "hide_reservation_method": {
+      "readonly": true,
+      "required": false,
+      "string": "Hide Reservation Method",
+      "type": "boolean"
+    },
+    "barcode": {
+      "readonly": false,
+      "required": false,
+      "string": "Barcode",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "create_backorder": {
+      "help": "When validating a transfer:\n * Ask: users are asked to choose if they want to make a backorder for remaining products\n * Always: a backorder is automatically created for the remaining products\n * Never: remaining products are cancelled",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "ask",
+          "Ask"
+        ],
+        [
+          "always",
+          "Always"
+        ],
+        [
+          "never",
+          "Never"
+        ]
+      ],
+      "string": "Create Backorder",
+      "type": "selection"
+    },
+    "show_picking_type": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Picking Type",
+      "type": "boolean"
+    },
+    "show_return_picking_type": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Return Picking Type",
+      "type": "boolean"
+    },
+    "picking_properties_definition": {
+      "readonly": false,
+      "required": false,
+      "string": "Picking Properties",
+      "type": "properties_definition"
+    },
+    "favorite_user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Favorite User",
+      "type": "many2many"
+    },
+    "is_favorite": {
+      "readonly": false,
+      "required": false,
+      "string": "Show Operation in Overview",
+      "type": "boolean"
+    },
+    "kanban_dashboard_graph": {
+      "readonly": true,
+      "required": false,
+      "string": "Kanban Dashboard Graph",
+      "type": "text"
+    },
+    "move_type": {
+      "help": "It specifies goods to be transferred partially or all at once",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "direct",
+          "As soon as possible, with back orders"
+        ],
+        [
+          "one",
+          "When all products are ready"
+        ]
+      ],
+      "string": "Shipping Policy",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "barcode_allow_extra_product": {
+      "help": "For planned transfers, allow adding non-reserved products",
+      "readonly": false,
+      "required": false,
+      "string": "Allow extra products",
+      "type": "boolean"
+    },
+    "barcode_validation_after_dest_location": {
+      "readonly": false,
+      "required": false,
+      "string": "Force a destination for all products",
+      "type": "boolean"
+    },
+    "barcode_validation_all_product_packed": {
+      "readonly": false,
+      "required": false,
+      "string": "Force all products to be packed",
+      "type": "boolean"
+    },
+    "barcode_validation_full": {
+      "help": "Allow validating a picking even if nothing has been scanned yet, i.e. do an immediate transfer",
+      "readonly": false,
+      "required": false,
+      "string": "Allow full picking validation",
+      "type": "boolean"
+    },
+    "restrict_scan_product": {
+      "help": "A line's product must be scanned before the line can be edited",
+      "readonly": false,
+      "required": false,
+      "string": "Force Product scan?",
+      "type": "boolean"
+    },
+    "restrict_put_in_pack": {
+      "help": "Does the picker have to put the scanned products in a package? If yes, when?",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "mandatory",
+          "After each product"
+        ],
+        [
+          "optional",
+          "After group of products"
+        ],
+        [
+          "no",
+          "No"
+        ]
+      ],
+      "string": "Force put in pack?",
+      "type": "selection"
+    },
+    "restrict_scan_tracking_number": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "mandatory",
+          "Mandatory Scan"
+        ],
+        [
+          "optional",
+          "Optional Scan"
+        ]
+      ],
+      "string": "Force Lot/Serial scan?",
+      "type": "selection"
+    },
+    "restrict_scan_source_location": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "no",
+          "No Scan"
+        ],
+        [
+          "mandatory",
+          "Mandatory Scan"
+        ]
+      ],
+      "string": "Force Source Location scan?",
+      "type": "selection"
+    },
+    "restrict_scan_dest_location": {
+      "help": "Does the picker have to scan the destination? If yes, when?",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "mandatory",
+          "After each product"
+        ],
+        [
+          "optional",
+          "After group of products"
+        ],
+        [
+          "no",
+          "No"
+        ]
+      ],
+      "string": "Force Destination Location scan?",
+      "type": "selection"
+    },
+    "show_barcode_validation": {
+      "help": "Technical field used to compute whether the \"Final Validation\" group should be displayed, to support combined groups/invisible complexity.",
+      "readonly": true,
+      "required": false,
+      "string": "Show Barcode Validation",
+      "type": "boolean"
+    },
+    "show_reserved_sns": {
+      "help": "Display reserved lots/serial numbers. When not active, the picker can pick lots/serials as they want.",
+      "readonly": false,
+      "required": false,
+      "string": "Show reserved lots/SN",
+      "type": "boolean"
+    },
+    "is_barcode_picking_type": {
+      "help": "Technical field indicating if type should be used in barcode app and used to control visibility in the related UI.",
+      "readonly": true,
+      "required": false,
+      "string": "Is Barcode Picking Type",
+      "type": "boolean"
+    },
+    "analytic_costs": {
+      "help": "Validating stock pickings will generate analytic entries for the selected project. Products set for re-invoicing will also be billed to the customer.",
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Costs",
+      "type": "boolean"
+    }
+  }
+}

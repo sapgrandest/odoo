@@ -1,0 +1,796 @@
+{
+  "model": "sign.request",
+  "name": "Signature Request",
+  "field_count": 71,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_plans_ids": {
+      "readonly": true,
+      "relation": "mail.activity.plan",
+      "required": false,
+      "string": "Activity Plans",
+      "type": "many2many"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "sign.template",
+      "required": true,
+      "string": "Template",
+      "type": "many2one"
+    },
+    "subject": {
+      "readonly": false,
+      "required": false,
+      "string": "Email Subject",
+      "type": "char"
+    },
+    "reference": {
+      "help": "This is how the document will be named in the mail",
+      "readonly": false,
+      "required": true,
+      "string": "Document Name",
+      "type": "char"
+    },
+    "reference_doc": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "account.account",
+          "Account"
+        ],
+        [
+          "account.return",
+          "Accounting Return"
+        ],
+        [
+          "account.return.type",
+          "Accounting Return Type"
+        ],
+        [
+          "account.analytic.account",
+          "Analytic Account"
+        ],
+        [
+          "hr.applicant",
+          "Applicant"
+        ],
+        [
+          "appointment.type",
+          "Appointment Type"
+        ],
+        [
+          "knowledge.article.thread",
+          "Article Discussion Thread"
+        ],
+        [
+          "res.partner.bank",
+          "Bank Account"
+        ],
+        [
+          "account.online.link",
+          "Bank Connection"
+        ],
+        [
+          "account.bank.statement",
+          "Bank Statement"
+        ],
+        [
+          "account.bank.statement.line",
+          "Bank Statement Line"
+        ],
+        [
+          "extract.mixin",
+          "Base class to extract data from documents"
+        ],
+        [
+          "extract.mixin.with.words",
+          "Base class to extract data from documents with OCRed words saved"
+        ],
+        [
+          "account.batch.payment",
+          "Batch Payment"
+        ],
+        [
+          "blog.blog",
+          "Blog"
+        ],
+        [
+          "blog.post",
+          "Blog Post"
+        ],
+        [
+          "calendar.event",
+          "Calendar Event"
+        ],
+        [
+          "res.company",
+          "Company"
+        ],
+        [
+          "res.partner",
+          "Contact"
+        ],
+        [
+          "hr.department",
+          "Department"
+        ],
+        [
+          "discuss.channel",
+          "Discussion Channel"
+        ],
+        [
+          "mail.thread",
+          "Email Thread"
+        ],
+        [
+          "hr.employee",
+          "Employee"
+        ],
+        [
+          "hr.version",
+          "Employee Record"
+        ],
+        [
+          "gamification.badge",
+          "Gamification Badge"
+        ],
+        [
+          "gamification.challenge",
+          "Gamification Challenge"
+        ],
+        [
+          "gamification.badge.user",
+          "Gamification User Badge"
+        ],
+        [
+          "helpdesk.team",
+          "Helpdesk Team"
+        ],
+        [
+          "helpdesk.ticket",
+          "Helpdesk Ticket"
+        ],
+        [
+          "iap.account",
+          "IAP Account"
+        ],
+        [
+          "hr.job",
+          "Job Position"
+        ],
+        [
+          "account.journal",
+          "Journal"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "knowledge.article",
+          "Knowledge Article"
+        ],
+        [
+          "crm.lead",
+          "Lead"
+        ],
+        [
+          "stock.lot",
+          "Lot/Serial"
+        ],
+        [
+          "mail.blacklist",
+          "Mail Blacklist"
+        ],
+        [
+          "mail.thread.blacklist",
+          "Mail Blacklist mixin"
+        ],
+        [
+          "mail.thread.main.attachment",
+          "Mail Main Attachment management"
+        ],
+        [
+          "mail.tracking.duration.mixin",
+          "Mixin to compute the time a record has spent in each value a many2one field can take"
+        ],
+        [
+          "account.payment",
+          "Payment"
+        ],
+        [
+          "phone.blacklist",
+          "Phone Blacklist"
+        ],
+        [
+          "mail.thread.phone",
+          "Phone Blacklist Mixin"
+        ],
+        [
+          "account.reconcile.model",
+          "Preset to create journal entries during a invoices and payments matching"
+        ],
+        [
+          "product.pricelist",
+          "Pricelist"
+        ],
+        [
+          "product.template",
+          "Product"
+        ],
+        [
+          "product.category",
+          "Product Category"
+        ],
+        [
+          "product.feed",
+          "Product Feed"
+        ],
+        [
+          "product.product",
+          "Product Variant"
+        ],
+        [
+          "project.project",
+          "Project"
+        ],
+        [
+          "project.milestone",
+          "Project Milestone"
+        ],
+        [
+          "project.update",
+          "Project Update"
+        ],
+        [
+          "purchase.order",
+          "Purchase Order"
+        ],
+        [
+          "rating.mixin",
+          "Rating Mixin"
+        ],
+        [
+          "sale.order",
+          "Sales Order"
+        ],
+        [
+          "crm.team",
+          "Sales Team"
+        ],
+        [
+          "crm.team.member",
+          "Sales Team Member"
+        ],
+        [
+          "ir.cron",
+          "Scheduled Action"
+        ],
+        [
+          "ir.actions.server",
+          "Server Action"
+        ],
+        [
+          "spreadsheet.cell.thread",
+          "Spreadsheet discussion thread"
+        ],
+        [
+          "survey.survey",
+          "Survey"
+        ],
+        [
+          "survey.user_input",
+          "Survey User Input"
+        ],
+        [
+          "hr.talent.pool",
+          "Talent Pool"
+        ],
+        [
+          "project.task",
+          "Task"
+        ],
+        [
+          "account.tax",
+          "Tax"
+        ],
+        [
+          "mail.thread.subject.suggested",
+          "Thread with suggested subject"
+        ],
+        [
+          "stock.picking",
+          "Transfer"
+        ]
+      ],
+      "string": "Linked To",
+      "type": "reference"
+    },
+    "access_token": {
+      "readonly": true,
+      "required": true,
+      "string": "Security Token",
+      "type": "char"
+    },
+    "share_link": {
+      "readonly": false,
+      "required": false,
+      "string": "Share Link",
+      "type": "char"
+    },
+    "is_shared": {
+      "readonly": false,
+      "required": false,
+      "string": "Share Request Button",
+      "type": "boolean"
+    },
+    "request_item_ids": {
+      "readonly": false,
+      "relation": "sign.request.item",
+      "required": false,
+      "string": "Signers",
+      "type": "one2many"
+    },
+    "state": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "shared",
+          "Shared"
+        ],
+        [
+          "scheduled",
+          "Scheduled"
+        ],
+        [
+          "sent",
+          "To Sign"
+        ],
+        [
+          "signed",
+          "Signed"
+        ],
+        [
+          "canceled",
+          "Cancelled"
+        ],
+        [
+          "expired",
+          "Expired"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "template_document_ids": {
+      "readonly": true,
+      "relation": "sign.document",
+      "required": false,
+      "string": "Documents",
+      "type": "many2many"
+    },
+    "completed_document_ids": {
+      "readonly": false,
+      "relation": "sign.completed.document",
+      "required": false,
+      "string": "Completed Documents Binaries",
+      "type": "one2many"
+    },
+    "nb_wait": {
+      "readonly": true,
+      "required": false,
+      "string": "Sent Requests",
+      "type": "integer"
+    },
+    "nb_closed": {
+      "readonly": true,
+      "required": false,
+      "string": "Completed Signatures",
+      "type": "integer"
+    },
+    "nb_total": {
+      "readonly": true,
+      "required": false,
+      "string": "Requested Signatures",
+      "type": "integer"
+    },
+    "progress": {
+      "readonly": true,
+      "required": false,
+      "string": "Progress",
+      "type": "char"
+    },
+    "start_sign": {
+      "help": "At least one signer has signed the document.",
+      "readonly": true,
+      "required": false,
+      "string": "Signature Started",
+      "type": "boolean"
+    },
+    "integrity": {
+      "readonly": true,
+      "required": false,
+      "string": "Integrity of the Sign request",
+      "type": "boolean"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "favorited_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Favorite of",
+      "type": "many2many"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color",
+      "type": "integer"
+    },
+    "request_item_infos": {
+      "readonly": true,
+      "required": false,
+      "string": "Request Item Infos",
+      "type": "json"
+    },
+    "last_action_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Action Date",
+      "type": "datetime"
+    },
+    "completion_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Completion Date",
+      "type": "date"
+    },
+    "communication_company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company used for communication",
+      "type": "many2one"
+    },
+    "sign_log_ids": {
+      "help": "Activity logs linked to this request",
+      "readonly": false,
+      "relation": "sign.log",
+      "required": false,
+      "string": "Logs",
+      "type": "one2many"
+    },
+    "template_tags": {
+      "readonly": false,
+      "relation": "sign.template.tag",
+      "required": false,
+      "string": "Tags",
+      "type": "many2many"
+    },
+    "cc_partner_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Copy to",
+      "type": "many2many"
+    },
+    "message": {
+      "readonly": false,
+      "required": false,
+      "string": "sign.message",
+      "type": "html"
+    },
+    "message_cc": {
+      "readonly": false,
+      "required": false,
+      "string": "sign.message_cc",
+      "type": "html"
+    },
+    "attachment_ids": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachments",
+      "type": "many2many"
+    },
+    "completed_document_attachment_ids": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Completed Documents",
+      "type": "many2many"
+    },
+    "need_my_signature": {
+      "readonly": true,
+      "required": false,
+      "string": "Need My Signature",
+      "type": "boolean"
+    },
+    "validity": {
+      "readonly": false,
+      "required": false,
+      "string": "Valid Until",
+      "type": "date"
+    },
+    "reminder_enabled": {
+      "readonly": false,
+      "required": false,
+      "string": "Reminder Enabled",
+      "type": "boolean"
+    },
+    "reminder": {
+      "readonly": false,
+      "required": false,
+      "string": "Reminder",
+      "type": "integer"
+    },
+    "last_reminder": {
+      "readonly": false,
+      "required": false,
+      "string": "Last reminder",
+      "type": "date"
+    },
+    "certificate_reference": {
+      "readonly": false,
+      "required": false,
+      "string": "Certificate Reference",
+      "type": "boolean"
+    },
+    "send_channel": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "email",
+          "Email"
+        ]
+      ],
+      "string": "Delivery Method",
+      "type": "selection"
+    },
+    "scheduled_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Scheduled Date",
+      "type": "datetime"
+    },
+    "sign_activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Linked Activities",
+      "type": "one2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

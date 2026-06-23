@@ -1,0 +1,138 @@
+{
+  "model": "account.analytic.applicability",
+  "name": "Analytic Plan's Applicabilities",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "analytic_plan_id": {
+      "readonly": false,
+      "relation": "account.analytic.plan",
+      "required": false,
+      "string": "Analytic Plan",
+      "type": "many2one"
+    },
+    "business_domain": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "general",
+          "Miscellaneous"
+        ],
+        [
+          "invoice",
+          "Invoice"
+        ],
+        [
+          "bill",
+          "Vendor Bill"
+        ],
+        [
+          "purchase_order",
+          "Purchase Order"
+        ],
+        [
+          "stock_picking",
+          "Stock Picking"
+        ],
+        [
+          "sale_order",
+          "Sale Order"
+        ]
+      ],
+      "string": "Domain",
+      "type": "selection"
+    },
+    "applicability": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "optional",
+          "Optional"
+        ],
+        [
+          "mandatory",
+          "Mandatory"
+        ],
+        [
+          "unavailable",
+          "Unavailable"
+        ]
+      ],
+      "string": "Applicability",
+      "type": "selection"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "account_prefix": {
+      "help": "Prefix that defines which accounts from the financial accounting this applicability should apply on.",
+      "readonly": false,
+      "required": false,
+      "string": "Financial Accounts Prefixes",
+      "type": "char"
+    },
+    "product_categ_id": {
+      "readonly": false,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "display_account_prefix": {
+      "help": "Defines if the field account prefix should be displayed",
+      "readonly": true,
+      "required": false,
+      "string": "Display Account Prefix",
+      "type": "boolean"
+    },
+    "account_prefix_placeholder": {
+      "readonly": true,
+      "required": false,
+      "string": "Account Prefix Placeholder",
+      "type": "char"
+    }
+  }
+}

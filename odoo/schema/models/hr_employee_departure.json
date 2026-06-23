@@ -1,0 +1,111 @@
+{
+  "model": "hr.employee.departure",
+  "name": "Employee Departure",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "employee_id": {
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": true,
+      "string": "Employee",
+      "type": "many2one"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "departure_reason_id": {
+      "readonly": false,
+      "relation": "hr.departure.reason",
+      "required": true,
+      "string": "End Reason",
+      "type": "many2one"
+    },
+    "departure_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Additional Information",
+      "type": "html"
+    },
+    "dismissal_date": {
+      "help": "Date at which the departure process starts. Differs from the actual departure date in case of a notice period.",
+      "readonly": false,
+      "required": true,
+      "string": "Dismissal Date",
+      "type": "date"
+    },
+    "departure_date": {
+      "help": "Date at which the departure actually takes place.",
+      "readonly": false,
+      "required": false,
+      "string": "Departure Date",
+      "type": "date"
+    },
+    "action_date": {
+      "help": "Date at which the departure actually takes place.",
+      "readonly": true,
+      "required": false,
+      "string": "Archive Employee On",
+      "type": "date"
+    },
+    "is_user_employee": {
+      "readonly": true,
+      "required": false,
+      "string": "Is User Employee",
+      "type": "boolean"
+    },
+    "apply_immediately": {
+      "readonly": true,
+      "required": false,
+      "string": "Apply Immediately",
+      "type": "boolean"
+    },
+    "apply_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Apply Date",
+      "type": "date"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

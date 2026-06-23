@@ -1,0 +1,100 @@
+{
+  "model": "res.device.log",
+  "name": "Device Log",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "session_identifier": {
+      "readonly": false,
+      "required": true,
+      "string": "Session Identifier",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": false,
+      "required": true,
+      "string": "User",
+      "type": "integer"
+    },
+    "ip_address": {
+      "readonly": false,
+      "required": true,
+      "string": "IP Address",
+      "type": "char"
+    },
+    "user_agent": {
+      "readonly": false,
+      "required": true,
+      "string": "User Agent",
+      "type": "char"
+    },
+    "country": {
+      "readonly": false,
+      "required": false,
+      "string": "Country",
+      "type": "char"
+    },
+    "city": {
+      "readonly": false,
+      "required": false,
+      "string": "City",
+      "type": "char"
+    },
+    "first_activity": {
+      "readonly": false,
+      "required": true,
+      "string": "First Activity",
+      "type": "datetime"
+    },
+    "last_activity": {
+      "readonly": false,
+      "required": true,
+      "string": "Last Activity",
+      "type": "datetime"
+    },
+    "revoked": {
+      "help": "If True, the session file corresponding to this device\n                                    no longer exists on the filesystem.",
+      "readonly": false,
+      "required": false,
+      "string": "Revoked",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

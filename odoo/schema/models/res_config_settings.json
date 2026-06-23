@@ -1,0 +1,6896 @@
+{
+  "model": "res.config.settings",
+  "name": "Config Settings",
+  "field_count": 439,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "web_app_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Web App Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "is_root_company": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Root Company",
+      "type": "boolean"
+    },
+    "module_base_import": {
+      "readonly": false,
+      "required": false,
+      "string": "Allow users to import data from CSV/XLS/XLSX/ODS files",
+      "type": "boolean"
+    },
+    "module_google_calendar": {
+      "readonly": false,
+      "required": false,
+      "string": "Allow the users to synchronize their calendar  with Google Calendar",
+      "type": "boolean"
+    },
+    "module_microsoft_calendar": {
+      "readonly": false,
+      "required": false,
+      "string": "Allow the users to synchronize their calendar with Outlook Calendar",
+      "type": "boolean"
+    },
+    "module_auth_oauth": {
+      "readonly": false,
+      "required": false,
+      "string": "Use external authentication providers (OAuth)",
+      "type": "boolean"
+    },
+    "module_auth_ldap": {
+      "readonly": false,
+      "required": false,
+      "string": "LDAP Authentication",
+      "type": "boolean"
+    },
+    "module_account_inter_company_rules": {
+      "readonly": false,
+      "required": false,
+      "string": "Manage Inter Company",
+      "type": "boolean"
+    },
+    "module_voip": {
+      "readonly": false,
+      "required": false,
+      "string": "Phone",
+      "type": "boolean"
+    },
+    "module_web_unsplash": {
+      "readonly": false,
+      "required": false,
+      "string": "Unsplash Image Library",
+      "type": "boolean"
+    },
+    "module_sms": {
+      "readonly": false,
+      "required": false,
+      "string": "SMS",
+      "type": "boolean"
+    },
+    "module_partner_autocomplete": {
+      "readonly": false,
+      "required": false,
+      "string": "Partner Autocomplete",
+      "type": "boolean"
+    },
+    "module_base_geolocalize": {
+      "readonly": false,
+      "required": false,
+      "string": "GeoLocalize",
+      "type": "boolean"
+    },
+    "module_google_recaptcha": {
+      "readonly": false,
+      "required": false,
+      "string": "reCAPTCHA",
+      "type": "boolean"
+    },
+    "module_website_cf_turnstile": {
+      "readonly": false,
+      "required": false,
+      "string": "Cloudflare Turnstile",
+      "type": "boolean"
+    },
+    "module_google_address_autocomplete": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Address Autocomplete",
+      "type": "boolean"
+    },
+    "report_footer": {
+      "help": "Footer text displayed at the bottom of all reports.",
+      "readonly": false,
+      "required": false,
+      "string": "Custom Report Footer",
+      "type": "html"
+    },
+    "group_multi_currency": {
+      "help": "Allows to work in a multi currency environment",
+      "readonly": false,
+      "required": false,
+      "string": "Multi-Currencies",
+      "type": "boolean"
+    },
+    "external_report_layout_id": {
+      "readonly": true,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Document Template",
+      "type": "many2one"
+    },
+    "show_effect": {
+      "readonly": false,
+      "required": false,
+      "string": "Show Effect",
+      "type": "boolean"
+    },
+    "company_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of Companies",
+      "type": "integer"
+    },
+    "active_user_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of Active Users",
+      "type": "integer"
+    },
+    "language_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of Languages",
+      "type": "integer"
+    },
+    "company_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Company Name",
+      "type": "char"
+    },
+    "company_informations": {
+      "readonly": true,
+      "required": false,
+      "string": "Company Informations",
+      "type": "text"
+    },
+    "company_country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Company Country Code",
+      "type": "char"
+    },
+    "company_country_group_codes": {
+      "readonly": true,
+      "required": false,
+      "string": "Country Group Codes",
+      "type": "json"
+    },
+    "profiling_enabled_until": {
+      "readonly": false,
+      "required": false,
+      "string": "Profiling enabled until",
+      "type": "datetime"
+    },
+    "enable_recaptcha": {
+      "readonly": false,
+      "required": false,
+      "string": "Enable reCAPTCHA",
+      "type": "boolean"
+    },
+    "recaptcha_public_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Site Key",
+      "type": "char"
+    },
+    "recaptcha_private_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Secret Key",
+      "type": "char"
+    },
+    "recaptcha_min_score": {
+      "help": "By default, should be one of 0.1, 0.3, 0.7, 0.9.\n1.0 is very likely a good interaction, 0.0 is very likely a bot",
+      "readonly": false,
+      "required": false,
+      "string": "Minimum score",
+      "type": "float"
+    },
+    "map_box_token": {
+      "help": "Necessary for some functionalities in the map view",
+      "readonly": false,
+      "required": false,
+      "string": "Token Map Box",
+      "type": "char"
+    },
+    "external_email_server_default": {
+      "readonly": false,
+      "required": false,
+      "string": "Use Custom Email Servers",
+      "type": "boolean"
+    },
+    "fail_counter": {
+      "readonly": true,
+      "required": false,
+      "string": "Fail Mail",
+      "type": "integer"
+    },
+    "alias_domain_id": {
+      "help": "If you have setup a catch-all email domain redirected to the Odoo server, enter the domain name here.",
+      "readonly": false,
+      "relation": "mail.alias.domain",
+      "required": false,
+      "string": "Alias Domain",
+      "type": "many2one"
+    },
+    "module_google_gmail": {
+      "readonly": false,
+      "required": false,
+      "string": "Support Gmail Authentication",
+      "type": "boolean"
+    },
+    "module_microsoft_outlook": {
+      "readonly": false,
+      "required": false,
+      "string": "Support Outlook Authentication",
+      "type": "boolean"
+    },
+    "restrict_template_rendering": {
+      "help": "Users will still be able to render templates.\nHowever only Mail Template Editors will be able to create new dynamic templates or modify existing ones.",
+      "readonly": false,
+      "required": false,
+      "string": "Restrict Template Rendering",
+      "type": "boolean"
+    },
+    "use_call_server": {
+      "help": "If you want to use your own SFU or ICE servers for video calls.",
+      "readonly": false,
+      "required": false,
+      "string": "Use Call Server",
+      "type": "boolean"
+    },
+    "use_twilio_rtc_servers": {
+      "help": "If you want to use twilio as TURN/STUN server provider",
+      "readonly": false,
+      "required": false,
+      "string": "Use Twilio ICE servers",
+      "type": "boolean"
+    },
+    "twilio_account_sid": {
+      "readonly": false,
+      "required": false,
+      "string": "Account SID",
+      "type": "char"
+    },
+    "twilio_account_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Account Auth Token",
+      "type": "char"
+    },
+    "use_sfu_server": {
+      "help": "If you want to setup SFU server for large group calls.",
+      "readonly": false,
+      "required": false,
+      "string": "Use SFU server",
+      "type": "boolean"
+    },
+    "sfu_server_url": {
+      "readonly": false,
+      "required": false,
+      "string": "SFU Server URL",
+      "type": "char"
+    },
+    "sfu_server_key": {
+      "help": "Base64 encoded key",
+      "readonly": false,
+      "required": false,
+      "string": "SFU Server key",
+      "type": "char"
+    },
+    "email_primary_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Email Button Text",
+      "type": "char"
+    },
+    "email_secondary_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Email Button Color",
+      "type": "char"
+    },
+    "use_tenor_api": {
+      "help": "If you want to use Tenor API to share GIFs in conversations.",
+      "readonly": false,
+      "required": false,
+      "string": "Use Tenor API",
+      "type": "boolean"
+    },
+    "tenor_api_key": {
+      "help": "Add a Tenor GIF API key to enable GIFs support. https://developers.google.com/tenor/guides/quickstart#setup",
+      "readonly": false,
+      "required": false,
+      "string": "Tenor API key",
+      "type": "char"
+    },
+    "use_google_translate_api": {
+      "help": "If you want to use Google Translate API to enable message translation.",
+      "readonly": false,
+      "required": false,
+      "string": "Use Google Translate API",
+      "type": "boolean"
+    },
+    "google_translate_api_key": {
+      "help": "A valid Google API key is required to enable message translation. https://cloud.google.com/translate/docs/setup",
+      "readonly": false,
+      "required": false,
+      "string": "Message Translation API Key",
+      "type": "char"
+    },
+    "unsplash_access_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Access Key",
+      "type": "char"
+    },
+    "unsplash_app_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Application ID",
+      "type": "char"
+    },
+    "openai_key_enabled": {
+      "readonly": false,
+      "required": false,
+      "string": "Enable custom OpenAI API key",
+      "type": "boolean"
+    },
+    "openai_key": {
+      "readonly": false,
+      "required": false,
+      "string": "OpenAI API key",
+      "type": "char"
+    },
+    "google_key_enabled": {
+      "readonly": false,
+      "required": false,
+      "string": "Enable custom Google API key",
+      "type": "boolean"
+    },
+    "google_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Google AI API key",
+      "type": "char"
+    },
+    "group_analytic_accounting": {
+      "readonly": false,
+      "required": false,
+      "string": "Analytic Accounting",
+      "type": "boolean"
+    },
+    "auth_signup_reset_password": {
+      "readonly": false,
+      "required": false,
+      "string": "Enable password reset from Login page",
+      "type": "boolean"
+    },
+    "auth_signup_uninvited": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "b2b",
+          "On invitation"
+        ],
+        [
+          "b2c",
+          "Free sign up"
+        ]
+      ],
+      "string": "Customer Account",
+      "type": "selection"
+    },
+    "auth_signup_template_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Template user for new users created through signup",
+      "type": "many2one"
+    },
+    "auth_totp_enforce": {
+      "readonly": false,
+      "required": false,
+      "string": "Enforce two-factor authentication",
+      "type": "boolean"
+    },
+    "auth_totp_policy": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "employee_required",
+          "Employees only"
+        ],
+        [
+          "all_required",
+          "All users"
+        ]
+      ],
+      "string": "Two-factor authentication enforcing policy",
+      "type": "selection"
+    },
+    "google_gmail_client_identifier": {
+      "readonly": false,
+      "required": false,
+      "string": "Gmail Client Id",
+      "type": "char"
+    },
+    "google_gmail_client_secret": {
+      "readonly": false,
+      "required": false,
+      "string": "Gmail Client Secret",
+      "type": "char"
+    },
+    "microsoft_outlook_client_identifier": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Client Id",
+      "type": "char"
+    },
+    "microsoft_outlook_client_secret": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Client Secret",
+      "type": "char"
+    },
+    "group_uom": {
+      "readonly": false,
+      "required": false,
+      "string": "Units of Measure & Packagings",
+      "type": "boolean"
+    },
+    "group_show_uom_price": {
+      "readonly": false,
+      "required": false,
+      "string": "Base Unit Price",
+      "type": "boolean"
+    },
+    "group_product_variant": {
+      "readonly": false,
+      "required": false,
+      "string": "Variants",
+      "type": "boolean"
+    },
+    "module_loyalty": {
+      "readonly": false,
+      "required": false,
+      "string": "Promotions, Coupons, Gift Card & Loyalty Program",
+      "type": "boolean"
+    },
+    "module_product_barcodelookup": {
+      "readonly": false,
+      "required": false,
+      "string": "Barcode Database",
+      "type": "boolean"
+    },
+    "group_product_pricelist": {
+      "readonly": false,
+      "required": false,
+      "string": "Pricelists",
+      "type": "boolean"
+    },
+    "product_weight_in_lbs": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Kilograms (kg)"
+        ],
+        [
+          "1",
+          "Pounds (lb)"
+        ]
+      ],
+      "string": "Weight unit of measure",
+      "type": "selection"
+    },
+    "product_volume_volume_in_cubic_feet": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Cubic Meters (m³)"
+        ],
+        [
+          "1",
+          "Cubic Feet (ft³)"
+        ]
+      ],
+      "string": "Volume unit of measure",
+      "type": "selection"
+    },
+    "cal_client_id": {
+      "readonly": false,
+      "required": false,
+      "string": "Client_id",
+      "type": "char"
+    },
+    "cal_client_secret": {
+      "readonly": false,
+      "required": false,
+      "string": "Client_key",
+      "type": "char"
+    },
+    "cal_sync_paused": {
+      "help": "Indicates if synchronization with Google Calendar is paused or not.",
+      "readonly": false,
+      "required": false,
+      "string": "Google Synchronization Paused",
+      "type": "boolean"
+    },
+    "cal_google_disable_auto_videocall_link": {
+      "readonly": false,
+      "required": false,
+      "string": "Disable videocall generation",
+      "type": "boolean"
+    },
+    "disable_redirect_firebase_dynamic_link": {
+      "help": "Check this if dynamic mobile-app detection links cause problems for your installation. This will stop the automatic wrapping of links inside outbound emails. The links will always open in a normal browser, even for users who have the Android/iOS app installed.",
+      "readonly": false,
+      "required": false,
+      "string": "Disable link redirection to mobile app",
+      "type": "boolean"
+    },
+    "enable_ocn": {
+      "readonly": false,
+      "required": false,
+      "string": "Push Notifications",
+      "type": "boolean"
+    },
+    "partner_autocomplete_insufficient_credit": {
+      "readonly": true,
+      "required": false,
+      "string": "Insufficient credit",
+      "type": "boolean"
+    },
+    "portal_allow_api_keys": {
+      "readonly": false,
+      "required": false,
+      "string": "Customer API Keys",
+      "type": "boolean"
+    },
+    "barcodelookup_api_key": {
+      "help": "Barcode Lookup API Key for create product from barcode.",
+      "readonly": false,
+      "required": false,
+      "string": "API key",
+      "type": "char"
+    },
+    "snailmail_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Print In Color",
+      "type": "boolean"
+    },
+    "snailmail_cover": {
+      "readonly": false,
+      "required": false,
+      "string": "Add a Cover Page",
+      "type": "boolean"
+    },
+    "snailmail_duplex": {
+      "readonly": false,
+      "required": false,
+      "string": "Print Both sides",
+      "type": "boolean"
+    },
+    "digest_emails": {
+      "readonly": false,
+      "required": false,
+      "string": "Digest Emails",
+      "type": "boolean"
+    },
+    "digest_id": {
+      "readonly": false,
+      "relation": "digest.digest",
+      "required": false,
+      "string": "Digest Email",
+      "type": "many2one"
+    },
+    "active_provider_id": {
+      "readonly": true,
+      "relation": "payment.provider",
+      "required": false,
+      "string": "Active Provider",
+      "type": "many2one"
+    },
+    "has_enabled_provider": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Enabled Provider",
+      "type": "boolean"
+    },
+    "onboarding_payment_module": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "mercado_pago",
+          "Mercado Pago"
+        ],
+        [
+          "razorpay",
+          "Razorpay"
+        ],
+        [
+          "stripe",
+          "Stripe"
+        ]
+      ],
+      "string": "Onboarding Payment Module",
+      "type": "selection"
+    },
+    "sign_terms": {
+      "readonly": false,
+      "required": false,
+      "string": "Sign Terms & Conditions",
+      "type": "html"
+    },
+    "sign_terms_html": {
+      "readonly": false,
+      "required": false,
+      "string": "Sign Terms & Conditions as a Web page",
+      "type": "html"
+    },
+    "sign_terms_type": {
+      "help": "Terms in Email - The text will be displayed at the bottom of every signature request email.\n\n        Terms as Web Page - A link will be pasted at the bottom of every signature request email, leading to your content.\n        ",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "plain",
+          "Terms in Email"
+        ],
+        [
+          "html",
+          "Terms as Web Page"
+        ]
+      ],
+      "string": "Sign Terms & Conditions format",
+      "type": "selection"
+    },
+    "sign_preview_ready": {
+      "readonly": true,
+      "required": false,
+      "string": "Display sign preview button",
+      "type": "boolean"
+    },
+    "use_sign_terms": {
+      "readonly": false,
+      "required": false,
+      "string": "Sign Default Terms & Conditions",
+      "type": "boolean"
+    },
+    "group_manage_template_access": {
+      "readonly": false,
+      "required": false,
+      "string": "Manage template access",
+      "type": "boolean"
+    },
+    "module_sign_itsme": {
+      "readonly": false,
+      "required": false,
+      "string": "Identify with itsme®",
+      "type": "boolean"
+    },
+    "module_sign_emsigner": {
+      "readonly": false,
+      "required": false,
+      "string": "Sign with Aadhaar eSign",
+      "type": "boolean"
+    },
+    "signing_certificate_id": {
+      "readonly": false,
+      "relation": "certificate.certificate",
+      "required": false,
+      "string": "Signing certificate",
+      "type": "many2one"
+    },
+    "has_accounting_entries": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Accounting Entries",
+      "type": "boolean"
+    },
+    "currency_id": {
+      "help": "Main currency of the company.",
+      "readonly": false,
+      "relation": "res.currency",
+      "required": true,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "currency_exchange_journal_id": {
+      "help": "The accounting journal where automatic exchange differences will be registered",
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Currency Exchange Journal",
+      "type": "many2one"
+    },
+    "income_currency_exchange_account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Gain Exchange Rate Account",
+      "type": "many2one"
+    },
+    "income_currency_exchange_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Gain Exchange Rate Account Active",
+      "type": "boolean"
+    },
+    "expense_currency_exchange_account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Loss Exchange Rate Account",
+      "type": "many2one"
+    },
+    "expense_currency_exchange_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Loss Exchange Rate Account Active",
+      "type": "boolean"
+    },
+    "has_chart_of_accounts": {
+      "readonly": true,
+      "required": false,
+      "string": "Company has a chart of accounts",
+      "type": "boolean"
+    },
+    "chart_template": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "fr_comp",
+          "🇫🇷 France - Companies accounting plan"
+        ],
+        [
+          "fr_asso",
+          "🇫🇷 France - Associations accounting plan"
+        ],
+        [
+          "generic_coa",
+          "Generic (Minimal) Chart of Accounts"
+        ],
+        [
+          "ae",
+          "🇦🇪 United Arab Emirates"
+        ],
+        [
+          "ar_ri",
+          "🇦🇷 Argentina - Argentine Generic Chart of Accounts for Registered Accountants"
+        ],
+        [
+          "ar_base",
+          "🇦🇷 Argentina - Generic Chart of Accounts Argentina Single Taxpayer / Basis"
+        ],
+        [
+          "ar_ex",
+          "🇦🇷 Argentina - Argentine Generic Chart of Accounts for Exempt Individuals"
+        ],
+        [
+          "at",
+          "🇦🇹 Austria"
+        ],
+        [
+          "au",
+          "🇦🇺 Australia"
+        ],
+        [
+          "bd",
+          "🇧🇩 Bangladesh"
+        ],
+        [
+          "be_comp",
+          "🇧🇪 Belgium - Companies"
+        ],
+        [
+          "be_asso",
+          "🇧🇪 Belgium - Associations and Foundations"
+        ],
+        [
+          "bf",
+          "🇧🇫 Burkina Faso - SYSCOHADA for Companies"
+        ],
+        [
+          "bf_syscebnl",
+          "🇧🇫 Burkina Faso - SYSCEBNL for Associations"
+        ],
+        [
+          "bg",
+          "🇧🇬 Bulgaria"
+        ],
+        [
+          "bh",
+          "🇧🇭 Bahrain"
+        ],
+        [
+          "bj",
+          "🇧🇯 Benin - SYSCOHADA for Companies"
+        ],
+        [
+          "bj_syscebnl",
+          "🇧🇯 Benin - SYSCEBNL for Associations"
+        ],
+        [
+          "bo",
+          "🇧🇴 Bolivia"
+        ],
+        [
+          "br",
+          "🇧🇷 Brazil"
+        ],
+        [
+          "ca_2023",
+          "🇨🇦 Canada"
+        ],
+        [
+          "cd",
+          "🇨🇩 Congo (DRC) - SYSCOHADA for Companies"
+        ],
+        [
+          "cd_syscebnl",
+          "🇨🇩 Congo (DRC) - SYSCEBNL for Associations"
+        ],
+        [
+          "cf",
+          "🇨🇫 Central African Republic - SYSCOHADA for Companies"
+        ],
+        [
+          "cf_syscebnl",
+          "🇨🇫 Central African Republic - SYSCEBNL for Associations"
+        ],
+        [
+          "cg",
+          "🇨🇬 Congo (Republic) - SYSCOHADA for Companies"
+        ],
+        [
+          "cg_syscebnl",
+          "🇨🇬 Congo (Republic) - SYSCEBNL for Associations"
+        ],
+        [
+          "ch",
+          "🇨🇭 Switzerland"
+        ],
+        [
+          "ci",
+          "🇨🇮 Côte d'Ivoire - SYSCOHADA for Companies"
+        ],
+        [
+          "ci_syscebnl",
+          "🇨🇮 Côte d'Ivoire - SYSCEBNL for Associations"
+        ],
+        [
+          "cl",
+          "🇨🇱 Chile"
+        ],
+        [
+          "cm",
+          "🇨🇲 Cameroon - SYSCOHADA for Companies"
+        ],
+        [
+          "cm_syscebnl",
+          "🇨🇲 Cameroon - SYSCEBNL for Associations"
+        ],
+        [
+          "cn",
+          "🇨🇳 China - Accounting Standards for Small Business Enterprises"
+        ],
+        [
+          "cn_large_bis",
+          "🇨🇳 China - Accounting Standards for Business Enterprises"
+        ],
+        [
+          "co",
+          "🇨🇴 Colombia"
+        ],
+        [
+          "cr",
+          "🇨🇷 Costa Rica"
+        ],
+        [
+          "cy",
+          "🇨🇾 Cyprus"
+        ],
+        [
+          "cz",
+          "🇨🇿 Czech Republic"
+        ],
+        [
+          "de_skr03",
+          "🇩🇪 Germany - German Chart of Accounts SKR03"
+        ],
+        [
+          "de_skr04",
+          "🇩🇪 Germany - German chart of accounts SKR04"
+        ],
+        [
+          "dk",
+          "🇩🇰 Denmark"
+        ],
+        [
+          "do",
+          "🇩🇴 Dominican Republic"
+        ],
+        [
+          "dz",
+          "🇩🇿 Algeria"
+        ],
+        [
+          "ec",
+          "🇪🇨 Ecuador"
+        ],
+        [
+          "ee",
+          "🇪🇪 Estonia"
+        ],
+        [
+          "eg",
+          "🇪🇬 Egypt"
+        ],
+        [
+          "es_pymes",
+          "🇪🇸 Spain - SMEs (2008)"
+        ],
+        [
+          "es_assec",
+          "🇪🇸 Spain - Non-profit entities (2008)"
+        ],
+        [
+          "es_canary_assoc",
+          "🇪🇸 Spain - Canary Islands - PGCE non-profit entities (2008)"
+        ],
+        [
+          "es_canary_full",
+          "🇪🇸 Spain - Canary Islands - Complete (2008)"
+        ],
+        [
+          "es_canary_pymes",
+          "🇪🇸 Spain - Canary Islands - SMEs (2008)"
+        ],
+        [
+          "es_coop_full",
+          "🇪🇸 Spain - Cooperatives - Complete (2008)"
+        ],
+        [
+          "es_coop_pymes",
+          "🇪🇸 Spain - Cooperatives - SMEs (2008)"
+        ],
+        [
+          "es_full",
+          "🇪🇸 Spain - Complete (2008)"
+        ],
+        [
+          "et",
+          "🇪🇹 Ethiopia"
+        ],
+        [
+          "fi",
+          "🇫🇮 Finland"
+        ],
+        [
+          "mc",
+          "🇲🇨 Monaco"
+        ],
+        [
+          "ga",
+          "🇬🇦 Gabon - SYSCOHADA for Companies"
+        ],
+        [
+          "ga_syscebnl",
+          "🇬🇦 Gabon - SYSCEBNL for Associations"
+        ],
+        [
+          "gn",
+          "🇬🇳 Guinea - SYSCOHADA for Companies"
+        ],
+        [
+          "gn_syscebnl",
+          "🇬🇳 Guinea - SYSCEBNL for Associations"
+        ],
+        [
+          "gq",
+          "🇬🇶 Equatorial Guinea - SYSCOHADA for Companies"
+        ],
+        [
+          "gq_syscebnl",
+          "🇬🇶 Equatorial Guinea - SYSCEBNL for Associations"
+        ],
+        [
+          "gr",
+          "🇬🇷 Greece"
+        ],
+        [
+          "gt",
+          "🇬🇹 Guatemala"
+        ],
+        [
+          "gw",
+          "🇬🇼 Guinea-Bissau - SYSCOHADA for Companies"
+        ],
+        [
+          "gw_syscebnl",
+          "🇬🇼 Guinea-Bissau - SYSCEBNL for Associations"
+        ],
+        [
+          "hk",
+          "🇭🇰 Hong Kong"
+        ],
+        [
+          "hn",
+          "🇭🇳 Honduras"
+        ],
+        [
+          "hr",
+          "🇭🇷 Croatia"
+        ],
+        [
+          "hr_kuna",
+          "🇭🇷 Croatia - RRIF-ov računski plan za poduzetnike"
+        ],
+        [
+          "hu",
+          "🇭🇺 Hungary"
+        ],
+        [
+          "id",
+          "🇮🇩 Indonesia"
+        ],
+        [
+          "ie",
+          "🇮🇪 Ireland"
+        ],
+        [
+          "il",
+          "🇮🇱 Israel"
+        ],
+        [
+          "in",
+          "🇮🇳 India"
+        ],
+        [
+          "iq",
+          "🇮🇶 Iraq"
+        ],
+        [
+          "it",
+          "🇮🇹 Italy"
+        ],
+        [
+          "jo_standard",
+          "🇯🇴 Jordan"
+        ],
+        [
+          "jp",
+          "🇯🇵 Japan"
+        ],
+        [
+          "ke",
+          "🇰🇪 Kenya"
+        ],
+        [
+          "kh",
+          "🇰🇭 Cambodia"
+        ],
+        [
+          "km",
+          "🇰🇲 Comoros - SYSCOHADA for Companies"
+        ],
+        [
+          "km_syscebnl",
+          "🇰🇲 Comoros - SYSCEBNL for Associations"
+        ],
+        [
+          "kr",
+          "🇰🇷 South Korea"
+        ],
+        [
+          "kw",
+          "🇰🇼 Kuwait"
+        ],
+        [
+          "kz",
+          "🇰🇿 Kazakhstan"
+        ],
+        [
+          "lb",
+          "🇱🇧 Lebanon"
+        ],
+        [
+          "lk",
+          "🇱🇰 Sri Lanka"
+        ],
+        [
+          "lt",
+          "🇱🇹 Lithuania"
+        ],
+        [
+          "lu",
+          "🇱🇺 Luxembourg"
+        ],
+        [
+          "lv",
+          "🇱🇻 Latvia"
+        ],
+        [
+          "ma",
+          "🇲🇦 Morocco"
+        ],
+        [
+          "ml",
+          "🇲🇱 Mali - SYSCOHADA for Companies"
+        ],
+        [
+          "ml_syscebnl",
+          "🇲🇱 Mali - SYSCEBNL for Associations"
+        ],
+        [
+          "mn",
+          "🇲🇳 Mongolia"
+        ],
+        [
+          "mr",
+          "🇲🇷 Mauritania"
+        ],
+        [
+          "mt",
+          "🇲🇹 Malta"
+        ],
+        [
+          "mu",
+          "🇲🇺 Mauritius"
+        ],
+        [
+          "mx",
+          "🇲🇽 Mexico"
+        ],
+        [
+          "my",
+          "🇲🇾 Malaysia"
+        ],
+        [
+          "mz",
+          "🇲🇿 Mozambique"
+        ],
+        [
+          "ne",
+          "🇳🇪 Niger - SYSCOHADA for Companies"
+        ],
+        [
+          "ne_syscebnl",
+          "🇳🇪 Niger - SYSCEBNL for Associations"
+        ],
+        [
+          "ng",
+          "🇳🇬 Nigeria"
+        ],
+        [
+          "nl",
+          "🇳🇱 Netherlands"
+        ],
+        [
+          "no",
+          "🇳🇴 Norway"
+        ],
+        [
+          "nz",
+          "🇳🇿 New Zealand"
+        ],
+        [
+          "om",
+          "🇴🇲 Oman"
+        ],
+        [
+          "pa",
+          "🇵🇦 Panama"
+        ],
+        [
+          "pe",
+          "🇵🇪 Peru"
+        ],
+        [
+          "ph",
+          "🇵🇭 Philippines"
+        ],
+        [
+          "pk",
+          "🇵🇰 Pakistan"
+        ],
+        [
+          "pl",
+          "🇵🇱 Poland"
+        ],
+        [
+          "pt",
+          "🇵🇹 Portugal"
+        ],
+        [
+          "qa",
+          "🇶🇦 Qatar"
+        ],
+        [
+          "ro",
+          "🇷🇴 Romania"
+        ],
+        [
+          "rs",
+          "🇷🇸 Serbia"
+        ],
+        [
+          "rw",
+          "🇷🇼 Rwanda"
+        ],
+        [
+          "sa",
+          "🇸🇦 Saudi Arabia"
+        ],
+        [
+          "se",
+          "🇸🇪 Sweden"
+        ],
+        [
+          "se_K2",
+          "🇸🇪 Sweden - Swedish BAS Chart of Account complete K2"
+        ],
+        [
+          "se_K3",
+          "🇸🇪 Sweden - Swedish BAS Chart of Account complete K3"
+        ],
+        [
+          "sg",
+          "🇸🇬 Singapore"
+        ],
+        [
+          "si",
+          "🇸🇮 Slovenia"
+        ],
+        [
+          "sk",
+          "🇸🇰 Slovakia"
+        ],
+        [
+          "sn",
+          "🇸🇳 Senegal - SYSCOHADA for Companies"
+        ],
+        [
+          "sn_syscebnl",
+          "🇸🇳 Senegal - SYSCEBNL for Associations"
+        ],
+        [
+          "syscebnl",
+          "SYSCEBNL"
+        ],
+        [
+          "syscohada",
+          "SYSCOHADA - Revised"
+        ],
+        [
+          "td",
+          "🇹🇩 Chad - SYSCOHADA for Companies"
+        ],
+        [
+          "td_syscebnl",
+          "🇹🇩 Chad - SYSCEBNL for Associations"
+        ],
+        [
+          "tg",
+          "🇹🇬 Togo - SYSCOHADA for Companies"
+        ],
+        [
+          "tg_syscebnl",
+          "🇹🇬 Togo - SYSCEBNL for Associations"
+        ],
+        [
+          "th",
+          "🇹🇭 Thailand"
+        ],
+        [
+          "tn",
+          "🇹🇳 Tunisia"
+        ],
+        [
+          "tr",
+          "🇹🇷 Türkiye"
+        ],
+        [
+          "tw",
+          "🇹🇼 Taiwan"
+        ],
+        [
+          "tz",
+          "🇹🇿 Tanzania"
+        ],
+        [
+          "ua_psbo",
+          "🇺🇦 Ukraine - IFRS Chart of Accounts"
+        ],
+        [
+          "ug",
+          "🇺🇬 Uganda"
+        ],
+        [
+          "uk",
+          "🇬🇧 United Kingdom"
+        ],
+        [
+          "xi",
+          "🇽🇮 Northern Ireland"
+        ],
+        [
+          "us",
+          "🇺🇸 United States"
+        ],
+        [
+          "uy",
+          "🇺🇾 Uruguay"
+        ],
+        [
+          "uz",
+          "🇺🇿 Uzbekistan"
+        ],
+        [
+          "ve",
+          "🇻🇪 Venezuela"
+        ],
+        [
+          "vn",
+          "🇻🇳 Vietnam"
+        ],
+        [
+          "za",
+          "🇿🇦 South Africa"
+        ],
+        [
+          "zm",
+          "🇿🇲 Zambia"
+        ]
+      ],
+      "string": "Chart Template",
+      "type": "selection"
+    },
+    "sale_tax_id": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Default Sale Tax",
+      "type": "many2one"
+    },
+    "purchase_tax_id": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Default Purchase Tax",
+      "type": "many2one"
+    },
+    "account_price_include": {
+      "help": "Default on whether the sales price used on the product and invoices with this Company includes its taxes.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "tax_included",
+          "Tax Included"
+        ],
+        [
+          "tax_excluded",
+          "Tax Excluded"
+        ]
+      ],
+      "string": "Default Sales Price Include",
+      "type": "selection"
+    },
+    "tax_calculation_rounding_method": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "round_globally",
+          "Round per Tax"
+        ],
+        [
+          "round_per_line",
+          "Round per Line"
+        ]
+      ],
+      "string": "Tax calculation rounding method",
+      "type": "selection"
+    },
+    "account_journal_suspense_account_id": {
+      "help": "Bank Transactions are posted immediately after import or synchronization. Their counterparty is the bank suspense account.\nReconciliation replaces the latter by the definitive account(s).",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Bank Suspense",
+      "type": "many2one"
+    },
+    "account_journal_suspense_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Bank Suspense Account Active",
+      "type": "boolean"
+    },
+    "transfer_account_id": {
+      "help": "Intermediary account used when moving from a liquidity account to another.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Internal Transfer",
+      "type": "many2one"
+    },
+    "transfer_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Internal Transfer Account Active",
+      "type": "boolean"
+    },
+    "module_account_accountant": {
+      "readonly": false,
+      "required": false,
+      "string": "Accounting",
+      "type": "boolean"
+    },
+    "group_cash_rounding": {
+      "readonly": false,
+      "required": false,
+      "string": "Cash Rounding",
+      "type": "boolean"
+    },
+    "show_sale_receipts": {
+      "readonly": false,
+      "required": false,
+      "string": "Sale Receipt",
+      "type": "boolean"
+    },
+    "module_account_budget": {
+      "readonly": false,
+      "required": false,
+      "string": "Budget Management",
+      "type": "boolean"
+    },
+    "module_account_payment": {
+      "readonly": false,
+      "required": false,
+      "string": "Invoice Online Payment",
+      "type": "boolean"
+    },
+    "module_account_check_printing": {
+      "readonly": false,
+      "required": false,
+      "string": "Allow check printing and deposits",
+      "type": "boolean"
+    },
+    "module_account_batch_payment": {
+      "help": "This allows you grouping payments into a single batch and eases the reconciliation process.\n-This installs the account_batch_payment module.",
+      "readonly": false,
+      "required": false,
+      "string": "Use batch payments",
+      "type": "boolean"
+    },
+    "module_account_iso20022": {
+      "readonly": false,
+      "required": false,
+      "string": "SEPA Credit Transfer / ISO20022",
+      "type": "boolean"
+    },
+    "module_account_sepa_direct_debit": {
+      "readonly": false,
+      "required": false,
+      "string": "Use SEPA Direct Debit",
+      "type": "boolean"
+    },
+    "module_account_bank_statement_import_qif": {
+      "readonly": false,
+      "required": false,
+      "string": "Import .qif files",
+      "type": "boolean"
+    },
+    "module_currency_rate_live": {
+      "readonly": false,
+      "required": false,
+      "string": "Automatic Currency Rates",
+      "type": "boolean"
+    },
+    "module_account_intrastat": {
+      "readonly": false,
+      "required": false,
+      "string": "Intrastat",
+      "type": "boolean"
+    },
+    "module_product_margin": {
+      "readonly": false,
+      "required": false,
+      "string": "Allow Product Margin",
+      "type": "boolean"
+    },
+    "module_account_extract": {
+      "readonly": false,
+      "required": false,
+      "string": "Document Digitization",
+      "type": "boolean"
+    },
+    "module_account_invoice_extract": {
+      "readonly": false,
+      "required": false,
+      "string": "Invoice Digitization",
+      "type": "boolean"
+    },
+    "module_account_bank_statement_extract": {
+      "readonly": false,
+      "required": false,
+      "string": "Bank Statement Digitization",
+      "type": "boolean"
+    },
+    "module_account_loan_extract": {
+      "readonly": false,
+      "required": false,
+      "string": "Loans Digitization",
+      "type": "boolean"
+    },
+    "module_snailmail_account": {
+      "readonly": false,
+      "required": false,
+      "string": "Snailmail",
+      "type": "boolean"
+    },
+    "module_account_peppol": {
+      "readonly": false,
+      "required": false,
+      "string": "PEPPOL Invoicing",
+      "type": "boolean"
+    },
+    "tax_exigibility": {
+      "readonly": false,
+      "required": false,
+      "string": "Cash Basis",
+      "type": "boolean"
+    },
+    "tax_cash_basis_journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Tax Cash Basis Journal",
+      "type": "many2one"
+    },
+    "account_cash_basis_base_account_id": {
+      "help": "Account that will be set on lines created in cash basis journal entry and used to keep track of the tax base amount.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Base Tax Received Account",
+      "type": "many2one"
+    },
+    "account_cash_basis_base_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Base Tax Received Account Active",
+      "type": "boolean"
+    },
+    "account_fiscal_country_id": {
+      "help": "The country to use the tax reports from for this company",
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Fiscal Country Code",
+      "type": "many2one"
+    },
+    "qr_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Display SEPA QR-code",
+      "type": "boolean"
+    },
+    "link_qr_code": {
+      "readonly": false,
+      "required": false,
+      "string": "Display Link QR-code",
+      "type": "boolean"
+    },
+    "incoterm_id": {
+      "help": "International Commercial Terms are a series of predefined commercial terms used in international transactions.",
+      "readonly": false,
+      "relation": "account.incoterms",
+      "required": false,
+      "string": "Default incoterm",
+      "type": "many2one"
+    },
+    "invoice_terms": {
+      "readonly": false,
+      "required": false,
+      "string": "Terms & Conditions",
+      "type": "html"
+    },
+    "invoice_terms_html": {
+      "readonly": false,
+      "required": false,
+      "string": "Terms & Conditions as a Web page",
+      "type": "html"
+    },
+    "terms_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "plain",
+          "Add a Note"
+        ],
+        [
+          "html",
+          "Add a link to a Web Page"
+        ]
+      ],
+      "string": "Terms & Conditions format",
+      "type": "selection"
+    },
+    "display_invoice_amount_total_words": {
+      "readonly": false,
+      "required": false,
+      "string": "Total amount of invoice in letters",
+      "type": "boolean"
+    },
+    "display_invoice_tax_company_currency": {
+      "readonly": false,
+      "required": false,
+      "string": "Taxes in company currency",
+      "type": "boolean"
+    },
+    "preview_ready": {
+      "readonly": true,
+      "required": false,
+      "string": "Display preview button",
+      "type": "boolean"
+    },
+    "use_invoice_terms": {
+      "readonly": false,
+      "required": false,
+      "string": "Default Terms & Conditions",
+      "type": "boolean"
+    },
+    "account_use_credit_limit": {
+      "help": "Enable the use of credit limit on partners.",
+      "readonly": false,
+      "required": false,
+      "string": "Sales Credit Limit",
+      "type": "boolean"
+    },
+    "account_default_credit_limit": {
+      "help": "This is the default credit limit that will be used on partners that do not have a specific limit on them.",
+      "readonly": false,
+      "required": false,
+      "string": "Default Credit Limit",
+      "type": "float"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "account_storno": {
+      "readonly": false,
+      "required": false,
+      "string": "Storno accounting",
+      "type": "boolean"
+    },
+    "display_account_storno": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Account Storno",
+      "type": "boolean"
+    },
+    "group_sale_delivery_address": {
+      "readonly": false,
+      "required": false,
+      "string": "Customer Addresses",
+      "type": "boolean"
+    },
+    "quick_edit_mode_enabled": {
+      "readonly": false,
+      "required": false,
+      "string": "Quick encoding",
+      "type": "boolean"
+    },
+    "quick_edit_mode": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "out_invoices",
+          "Customer Invoices"
+        ],
+        [
+          "in_invoices",
+          "Vendor Bills"
+        ],
+        [
+          "out_and_in_invoices",
+          "Customer Invoices and Vendor Bills"
+        ]
+      ],
+      "string": "Quick Edit Mode",
+      "type": "selection"
+    },
+    "document_sequence_editable": {
+      "readonly": false,
+      "required": false,
+      "string": "Document's sequence editable",
+      "type": "boolean"
+    },
+    "set_to_review_documents": {
+      "readonly": false,
+      "required": false,
+      "string": "Review data",
+      "type": "boolean"
+    },
+    "account_journal_early_pay_discount_loss_account_id": {
+      "help": "Account for the difference amount after the expense discount has been granted",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Early Discount Loss",
+      "type": "many2one"
+    },
+    "account_journal_early_pay_discount_loss_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Early Discount Loss Account Active",
+      "type": "boolean"
+    },
+    "account_journal_early_pay_discount_gain_account_id": {
+      "help": "Account for the difference amount after the income discount has been granted",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Early Discount Gain",
+      "type": "many2one"
+    },
+    "account_journal_early_pay_discount_gain_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Early Discount Gain Account Active",
+      "type": "boolean"
+    },
+    "account_discount_income_allocation_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Vendor Bills Discounts Account",
+      "type": "many2one"
+    },
+    "account_discount_income_allocation_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Vendor Bills Discounts Account Active",
+      "type": "boolean"
+    },
+    "account_discount_expense_allocation_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Customer Invoices Discounts Account",
+      "type": "many2one"
+    },
+    "account_discount_expense_allocation_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Customer Invoices Discounts Account Active",
+      "type": "boolean"
+    },
+    "is_account_peppol_eligible": {
+      "readonly": true,
+      "required": false,
+      "string": "PEPPOL eligible",
+      "type": "boolean"
+    },
+    "restrictive_audit_trail": {
+      "help": "Enable this option to prevent deletion of journal item related logs",
+      "readonly": false,
+      "required": false,
+      "string": "Restricted Audit Trail",
+      "type": "boolean"
+    },
+    "force_restrictive_audit_trail": {
+      "readonly": false,
+      "required": false,
+      "string": "Forced Audit Trail",
+      "type": "boolean"
+    },
+    "autopost_bills": {
+      "readonly": false,
+      "required": false,
+      "string": "Auto-validate bills",
+      "type": "boolean"
+    },
+    "income_account_id": {
+      "help": "This account will be used when validating a customer invoice.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Income Account",
+      "type": "many2one"
+    },
+    "income_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Income Account Active",
+      "type": "boolean"
+    },
+    "expense_account_id": {
+      "help": "The expense is accounted for when a vendor bill is validated, except in anglo-saxon accounting with perpetual inventory valuation in which case the expense (Cost of Goods Sold account) is recognized at the customer invoice validation.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Expense Account",
+      "type": "many2one"
+    },
+    "expense_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Expense Account Active",
+      "type": "boolean"
+    },
+    "group_use_lead": {
+      "readonly": false,
+      "required": false,
+      "string": "Leads",
+      "type": "boolean"
+    },
+    "group_use_recurring_revenues": {
+      "readonly": false,
+      "required": false,
+      "string": "Recurring Revenues",
+      "type": "boolean"
+    },
+    "is_membership_multi": {
+      "readonly": false,
+      "required": false,
+      "string": "Multi Teams",
+      "type": "boolean"
+    },
+    "module_partnership": {
+      "readonly": false,
+      "required": false,
+      "string": "Membership / Partnership",
+      "type": "boolean"
+    },
+    "module_website_partnership": {
+      "readonly": false,
+      "required": false,
+      "string": "Partners Website Page",
+      "type": "boolean"
+    },
+    "crm_use_auto_assignment": {
+      "readonly": false,
+      "required": false,
+      "string": "Rule-Based Assignment",
+      "type": "boolean"
+    },
+    "crm_auto_assignment_action": {
+      "help": "Manual assign allow to trigger assignment from team form view using an action button. Automatic configures a cron running repeatedly assignment in all teams.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "manual",
+          "Manually"
+        ],
+        [
+          "auto",
+          "Repeatedly"
+        ]
+      ],
+      "string": "Auto Assignment Action",
+      "type": "selection"
+    },
+    "crm_auto_assignment_interval_type": {
+      "help": "Interval type between each cron run (e.g. each 2 days or each 2 hours)",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "minutes",
+          "Minutes"
+        ],
+        [
+          "hours",
+          "Hours"
+        ],
+        [
+          "days",
+          "Days"
+        ],
+        [
+          "weeks",
+          "Weeks"
+        ]
+      ],
+      "string": "Auto Assignment Interval Unit",
+      "type": "selection"
+    },
+    "crm_auto_assignment_interval_number": {
+      "help": "Number of interval type between each cron run (e.g. each 2 days or each 4 days)",
+      "readonly": false,
+      "required": false,
+      "string": "Repeat every",
+      "type": "integer"
+    },
+    "crm_auto_assignment_run_datetime": {
+      "readonly": false,
+      "required": false,
+      "string": "Auto Assignment Next Execution Date",
+      "type": "datetime"
+    },
+    "module_crm_iap_mine": {
+      "readonly": false,
+      "required": false,
+      "string": "Generate new leads based on their country, industries, size, etc.",
+      "type": "boolean"
+    },
+    "module_crm_iap_enrich": {
+      "readonly": false,
+      "required": false,
+      "string": "Enrich your leads automatically with company data based on their email address.",
+      "type": "boolean"
+    },
+    "module_website_crm_iap_reveal": {
+      "readonly": false,
+      "required": false,
+      "string": "Create Leads/Opportunities from your website's traffic",
+      "type": "boolean"
+    },
+    "lead_enrich_auto": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "manual",
+          "Enrich leads on demand only"
+        ],
+        [
+          "auto",
+          "Enrich all leads automatically"
+        ]
+      ],
+      "string": "Enrich lead automatically",
+      "type": "selection"
+    },
+    "lead_mining_in_pipeline": {
+      "readonly": false,
+      "required": false,
+      "string": "Create a lead mining request directly from the opportunity pipeline.",
+      "type": "boolean"
+    },
+    "predictive_lead_scoring_start_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Lead Scoring Starting Date",
+      "type": "date"
+    },
+    "predictive_lead_scoring_start_date_str": {
+      "readonly": false,
+      "required": false,
+      "string": "Lead Scoring Starting Date in String",
+      "type": "char"
+    },
+    "predictive_lead_scoring_fields": {
+      "readonly": false,
+      "relation": "crm.lead.scoring.frequency.field",
+      "required": false,
+      "string": "Lead Scoring Frequency Fields",
+      "type": "many2many"
+    },
+    "predictive_lead_scoring_fields_str": {
+      "readonly": false,
+      "required": false,
+      "string": "Lead Scoring Frequency Fields in String",
+      "type": "char"
+    },
+    "predictive_lead_scoring_field_labels": {
+      "readonly": true,
+      "required": false,
+      "string": "Predictive Lead Scoring Field Labels",
+      "type": "char"
+    },
+    "resource_calendar_id": {
+      "readonly": false,
+      "relation": "resource.calendar",
+      "required": false,
+      "string": "Company Working Hours",
+      "type": "many2one"
+    },
+    "company_tz": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "Africa/Abidjan",
+          "Africa/Abidjan"
+        ],
+        [
+          "Africa/Accra",
+          "Africa/Accra"
+        ],
+        [
+          "Africa/Addis_Ababa",
+          "Africa/Addis_Ababa"
+        ],
+        [
+          "Africa/Algiers",
+          "Africa/Algiers"
+        ],
+        [
+          "Africa/Asmara",
+          "Africa/Asmara"
+        ],
+        [
+          "Africa/Asmera",
+          "Africa/Asmera"
+        ],
+        [
+          "Africa/Bamako",
+          "Africa/Bamako"
+        ],
+        [
+          "Africa/Bangui",
+          "Africa/Bangui"
+        ],
+        [
+          "Africa/Banjul",
+          "Africa/Banjul"
+        ],
+        [
+          "Africa/Bissau",
+          "Africa/Bissau"
+        ],
+        [
+          "Africa/Blantyre",
+          "Africa/Blantyre"
+        ],
+        [
+          "Africa/Brazzaville",
+          "Africa/Brazzaville"
+        ],
+        [
+          "Africa/Bujumbura",
+          "Africa/Bujumbura"
+        ],
+        [
+          "Africa/Cairo",
+          "Africa/Cairo"
+        ],
+        [
+          "Africa/Casablanca",
+          "Africa/Casablanca"
+        ],
+        [
+          "Africa/Ceuta",
+          "Africa/Ceuta"
+        ],
+        [
+          "Africa/Conakry",
+          "Africa/Conakry"
+        ],
+        [
+          "Africa/Dakar",
+          "Africa/Dakar"
+        ],
+        [
+          "Africa/Dar_es_Salaam",
+          "Africa/Dar_es_Salaam"
+        ],
+        [
+          "Africa/Djibouti",
+          "Africa/Djibouti"
+        ],
+        [
+          "Africa/Douala",
+          "Africa/Douala"
+        ],
+        [
+          "Africa/El_Aaiun",
+          "Africa/El_Aaiun"
+        ],
+        [
+          "Africa/Freetown",
+          "Africa/Freetown"
+        ],
+        [
+          "Africa/Gaborone",
+          "Africa/Gaborone"
+        ],
+        [
+          "Africa/Harare",
+          "Africa/Harare"
+        ],
+        [
+          "Africa/Johannesburg",
+          "Africa/Johannesburg"
+        ],
+        [
+          "Africa/Juba",
+          "Africa/Juba"
+        ],
+        [
+          "Africa/Kampala",
+          "Africa/Kampala"
+        ],
+        [
+          "Africa/Khartoum",
+          "Africa/Khartoum"
+        ],
+        [
+          "Africa/Kigali",
+          "Africa/Kigali"
+        ],
+        [
+          "Africa/Kinshasa",
+          "Africa/Kinshasa"
+        ],
+        [
+          "Africa/Lagos",
+          "Africa/Lagos"
+        ],
+        [
+          "Africa/Libreville",
+          "Africa/Libreville"
+        ],
+        [
+          "Africa/Lome",
+          "Africa/Lome"
+        ],
+        [
+          "Africa/Luanda",
+          "Africa/Luanda"
+        ],
+        [
+          "Africa/Lubumbashi",
+          "Africa/Lubumbashi"
+        ],
+        [
+          "Africa/Lusaka",
+          "Africa/Lusaka"
+        ],
+        [
+          "Africa/Malabo",
+          "Africa/Malabo"
+        ],
+        [
+          "Africa/Maputo",
+          "Africa/Maputo"
+        ],
+        [
+          "Africa/Maseru",
+          "Africa/Maseru"
+        ],
+        [
+          "Africa/Mbabane",
+          "Africa/Mbabane"
+        ],
+        [
+          "Africa/Mogadishu",
+          "Africa/Mogadishu"
+        ],
+        [
+          "Africa/Monrovia",
+          "Africa/Monrovia"
+        ],
+        [
+          "Africa/Nairobi",
+          "Africa/Nairobi"
+        ],
+        [
+          "Africa/Ndjamena",
+          "Africa/Ndjamena"
+        ],
+        [
+          "Africa/Niamey",
+          "Africa/Niamey"
+        ],
+        [
+          "Africa/Nouakchott",
+          "Africa/Nouakchott"
+        ],
+        [
+          "Africa/Ouagadougou",
+          "Africa/Ouagadougou"
+        ],
+        [
+          "Africa/Porto-Novo",
+          "Africa/Porto-Novo"
+        ],
+        [
+          "Africa/Sao_Tome",
+          "Africa/Sao_Tome"
+        ],
+        [
+          "Africa/Timbuktu",
+          "Africa/Timbuktu"
+        ],
+        [
+          "Africa/Tripoli",
+          "Africa/Tripoli"
+        ],
+        [
+          "Africa/Tunis",
+          "Africa/Tunis"
+        ],
+        [
+          "Africa/Windhoek",
+          "Africa/Windhoek"
+        ],
+        [
+          "America/Adak",
+          "America/Adak"
+        ],
+        [
+          "America/Anchorage",
+          "America/Anchorage"
+        ],
+        [
+          "America/Anguilla",
+          "America/Anguilla"
+        ],
+        [
+          "America/Antigua",
+          "America/Antigua"
+        ],
+        [
+          "America/Araguaina",
+          "America/Araguaina"
+        ],
+        [
+          "America/Argentina/Buenos_Aires",
+          "America/Argentina/Buenos_Aires"
+        ],
+        [
+          "America/Argentina/Catamarca",
+          "America/Argentina/Catamarca"
+        ],
+        [
+          "America/Argentina/ComodRivadavia",
+          "America/Argentina/ComodRivadavia"
+        ],
+        [
+          "America/Argentina/Cordoba",
+          "America/Argentina/Cordoba"
+        ],
+        [
+          "America/Argentina/Jujuy",
+          "America/Argentina/Jujuy"
+        ],
+        [
+          "America/Argentina/La_Rioja",
+          "America/Argentina/La_Rioja"
+        ],
+        [
+          "America/Argentina/Mendoza",
+          "America/Argentina/Mendoza"
+        ],
+        [
+          "America/Argentina/Rio_Gallegos",
+          "America/Argentina/Rio_Gallegos"
+        ],
+        [
+          "America/Argentina/Salta",
+          "America/Argentina/Salta"
+        ],
+        [
+          "America/Argentina/San_Juan",
+          "America/Argentina/San_Juan"
+        ],
+        [
+          "America/Argentina/San_Luis",
+          "America/Argentina/San_Luis"
+        ],
+        [
+          "America/Argentina/Tucuman",
+          "America/Argentina/Tucuman"
+        ],
+        [
+          "America/Argentina/Ushuaia",
+          "America/Argentina/Ushuaia"
+        ],
+        [
+          "America/Aruba",
+          "America/Aruba"
+        ],
+        [
+          "America/Asuncion",
+          "America/Asuncion"
+        ],
+        [
+          "America/Atikokan",
+          "America/Atikokan"
+        ],
+        [
+          "America/Atka",
+          "America/Atka"
+        ],
+        [
+          "America/Bahia",
+          "America/Bahia"
+        ],
+        [
+          "America/Bahia_Banderas",
+          "America/Bahia_Banderas"
+        ],
+        [
+          "America/Barbados",
+          "America/Barbados"
+        ],
+        [
+          "America/Belem",
+          "America/Belem"
+        ],
+        [
+          "America/Belize",
+          "America/Belize"
+        ],
+        [
+          "America/Blanc-Sablon",
+          "America/Blanc-Sablon"
+        ],
+        [
+          "America/Boa_Vista",
+          "America/Boa_Vista"
+        ],
+        [
+          "America/Bogota",
+          "America/Bogota"
+        ],
+        [
+          "America/Boise",
+          "America/Boise"
+        ],
+        [
+          "America/Buenos_Aires",
+          "America/Buenos_Aires"
+        ],
+        [
+          "America/Cambridge_Bay",
+          "America/Cambridge_Bay"
+        ],
+        [
+          "America/Campo_Grande",
+          "America/Campo_Grande"
+        ],
+        [
+          "America/Cancun",
+          "America/Cancun"
+        ],
+        [
+          "America/Caracas",
+          "America/Caracas"
+        ],
+        [
+          "America/Catamarca",
+          "America/Catamarca"
+        ],
+        [
+          "America/Cayenne",
+          "America/Cayenne"
+        ],
+        [
+          "America/Cayman",
+          "America/Cayman"
+        ],
+        [
+          "America/Chicago",
+          "America/Chicago"
+        ],
+        [
+          "America/Chihuahua",
+          "America/Chihuahua"
+        ],
+        [
+          "America/Ciudad_Juarez",
+          "America/Ciudad_Juarez"
+        ],
+        [
+          "America/Coral_Harbour",
+          "America/Coral_Harbour"
+        ],
+        [
+          "America/Cordoba",
+          "America/Cordoba"
+        ],
+        [
+          "America/Costa_Rica",
+          "America/Costa_Rica"
+        ],
+        [
+          "America/Coyhaique",
+          "America/Coyhaique"
+        ],
+        [
+          "America/Creston",
+          "America/Creston"
+        ],
+        [
+          "America/Cuiaba",
+          "America/Cuiaba"
+        ],
+        [
+          "America/Curacao",
+          "America/Curacao"
+        ],
+        [
+          "America/Danmarkshavn",
+          "America/Danmarkshavn"
+        ],
+        [
+          "America/Dawson",
+          "America/Dawson"
+        ],
+        [
+          "America/Dawson_Creek",
+          "America/Dawson_Creek"
+        ],
+        [
+          "America/Denver",
+          "America/Denver"
+        ],
+        [
+          "America/Detroit",
+          "America/Detroit"
+        ],
+        [
+          "America/Dominica",
+          "America/Dominica"
+        ],
+        [
+          "America/Edmonton",
+          "America/Edmonton"
+        ],
+        [
+          "America/Eirunepe",
+          "America/Eirunepe"
+        ],
+        [
+          "America/El_Salvador",
+          "America/El_Salvador"
+        ],
+        [
+          "America/Ensenada",
+          "America/Ensenada"
+        ],
+        [
+          "America/Fort_Nelson",
+          "America/Fort_Nelson"
+        ],
+        [
+          "America/Fort_Wayne",
+          "America/Fort_Wayne"
+        ],
+        [
+          "America/Fortaleza",
+          "America/Fortaleza"
+        ],
+        [
+          "America/Glace_Bay",
+          "America/Glace_Bay"
+        ],
+        [
+          "America/Godthab",
+          "America/Godthab"
+        ],
+        [
+          "America/Goose_Bay",
+          "America/Goose_Bay"
+        ],
+        [
+          "America/Grand_Turk",
+          "America/Grand_Turk"
+        ],
+        [
+          "America/Grenada",
+          "America/Grenada"
+        ],
+        [
+          "America/Guadeloupe",
+          "America/Guadeloupe"
+        ],
+        [
+          "America/Guatemala",
+          "America/Guatemala"
+        ],
+        [
+          "America/Guayaquil",
+          "America/Guayaquil"
+        ],
+        [
+          "America/Guyana",
+          "America/Guyana"
+        ],
+        [
+          "America/Halifax",
+          "America/Halifax"
+        ],
+        [
+          "America/Havana",
+          "America/Havana"
+        ],
+        [
+          "America/Hermosillo",
+          "America/Hermosillo"
+        ],
+        [
+          "America/Indiana/Indianapolis",
+          "America/Indiana/Indianapolis"
+        ],
+        [
+          "America/Indiana/Knox",
+          "America/Indiana/Knox"
+        ],
+        [
+          "America/Indiana/Marengo",
+          "America/Indiana/Marengo"
+        ],
+        [
+          "America/Indiana/Petersburg",
+          "America/Indiana/Petersburg"
+        ],
+        [
+          "America/Indiana/Tell_City",
+          "America/Indiana/Tell_City"
+        ],
+        [
+          "America/Indiana/Vevay",
+          "America/Indiana/Vevay"
+        ],
+        [
+          "America/Indiana/Vincennes",
+          "America/Indiana/Vincennes"
+        ],
+        [
+          "America/Indiana/Winamac",
+          "America/Indiana/Winamac"
+        ],
+        [
+          "America/Indianapolis",
+          "America/Indianapolis"
+        ],
+        [
+          "America/Inuvik",
+          "America/Inuvik"
+        ],
+        [
+          "America/Iqaluit",
+          "America/Iqaluit"
+        ],
+        [
+          "America/Jamaica",
+          "America/Jamaica"
+        ],
+        [
+          "America/Jujuy",
+          "America/Jujuy"
+        ],
+        [
+          "America/Juneau",
+          "America/Juneau"
+        ],
+        [
+          "America/Kentucky/Louisville",
+          "America/Kentucky/Louisville"
+        ],
+        [
+          "America/Kentucky/Monticello",
+          "America/Kentucky/Monticello"
+        ],
+        [
+          "America/Knox_IN",
+          "America/Knox_IN"
+        ],
+        [
+          "America/Kralendijk",
+          "America/Kralendijk"
+        ],
+        [
+          "America/La_Paz",
+          "America/La_Paz"
+        ],
+        [
+          "America/Lima",
+          "America/Lima"
+        ],
+        [
+          "America/Los_Angeles",
+          "America/Los_Angeles"
+        ],
+        [
+          "America/Louisville",
+          "America/Louisville"
+        ],
+        [
+          "America/Lower_Princes",
+          "America/Lower_Princes"
+        ],
+        [
+          "America/Maceio",
+          "America/Maceio"
+        ],
+        [
+          "America/Managua",
+          "America/Managua"
+        ],
+        [
+          "America/Manaus",
+          "America/Manaus"
+        ],
+        [
+          "America/Marigot",
+          "America/Marigot"
+        ],
+        [
+          "America/Martinique",
+          "America/Martinique"
+        ],
+        [
+          "America/Matamoros",
+          "America/Matamoros"
+        ],
+        [
+          "America/Mazatlan",
+          "America/Mazatlan"
+        ],
+        [
+          "America/Mendoza",
+          "America/Mendoza"
+        ],
+        [
+          "America/Menominee",
+          "America/Menominee"
+        ],
+        [
+          "America/Merida",
+          "America/Merida"
+        ],
+        [
+          "America/Metlakatla",
+          "America/Metlakatla"
+        ],
+        [
+          "America/Mexico_City",
+          "America/Mexico_City"
+        ],
+        [
+          "America/Miquelon",
+          "America/Miquelon"
+        ],
+        [
+          "America/Moncton",
+          "America/Moncton"
+        ],
+        [
+          "America/Monterrey",
+          "America/Monterrey"
+        ],
+        [
+          "America/Montevideo",
+          "America/Montevideo"
+        ],
+        [
+          "America/Montreal",
+          "America/Montreal"
+        ],
+        [
+          "America/Montserrat",
+          "America/Montserrat"
+        ],
+        [
+          "America/Nassau",
+          "America/Nassau"
+        ],
+        [
+          "America/New_York",
+          "America/New_York"
+        ],
+        [
+          "America/Nipigon",
+          "America/Nipigon"
+        ],
+        [
+          "America/Nome",
+          "America/Nome"
+        ],
+        [
+          "America/Noronha",
+          "America/Noronha"
+        ],
+        [
+          "America/North_Dakota/Beulah",
+          "America/North_Dakota/Beulah"
+        ],
+        [
+          "America/North_Dakota/Center",
+          "America/North_Dakota/Center"
+        ],
+        [
+          "America/North_Dakota/New_Salem",
+          "America/North_Dakota/New_Salem"
+        ],
+        [
+          "America/Nuuk",
+          "America/Nuuk"
+        ],
+        [
+          "America/Ojinaga",
+          "America/Ojinaga"
+        ],
+        [
+          "America/Panama",
+          "America/Panama"
+        ],
+        [
+          "America/Pangnirtung",
+          "America/Pangnirtung"
+        ],
+        [
+          "America/Paramaribo",
+          "America/Paramaribo"
+        ],
+        [
+          "America/Phoenix",
+          "America/Phoenix"
+        ],
+        [
+          "America/Port-au-Prince",
+          "America/Port-au-Prince"
+        ],
+        [
+          "America/Port_of_Spain",
+          "America/Port_of_Spain"
+        ],
+        [
+          "America/Porto_Acre",
+          "America/Porto_Acre"
+        ],
+        [
+          "America/Porto_Velho",
+          "America/Porto_Velho"
+        ],
+        [
+          "America/Puerto_Rico",
+          "America/Puerto_Rico"
+        ],
+        [
+          "America/Punta_Arenas",
+          "America/Punta_Arenas"
+        ],
+        [
+          "America/Rainy_River",
+          "America/Rainy_River"
+        ],
+        [
+          "America/Rankin_Inlet",
+          "America/Rankin_Inlet"
+        ],
+        [
+          "America/Recife",
+          "America/Recife"
+        ],
+        [
+          "America/Regina",
+          "America/Regina"
+        ],
+        [
+          "America/Resolute",
+          "America/Resolute"
+        ],
+        [
+          "America/Rio_Branco",
+          "America/Rio_Branco"
+        ],
+        [
+          "America/Rosario",
+          "America/Rosario"
+        ],
+        [
+          "America/Santa_Isabel",
+          "America/Santa_Isabel"
+        ],
+        [
+          "America/Santarem",
+          "America/Santarem"
+        ],
+        [
+          "America/Santiago",
+          "America/Santiago"
+        ],
+        [
+          "America/Santo_Domingo",
+          "America/Santo_Domingo"
+        ],
+        [
+          "America/Sao_Paulo",
+          "America/Sao_Paulo"
+        ],
+        [
+          "America/Scoresbysund",
+          "America/Scoresbysund"
+        ],
+        [
+          "America/Shiprock",
+          "America/Shiprock"
+        ],
+        [
+          "America/Sitka",
+          "America/Sitka"
+        ],
+        [
+          "America/St_Barthelemy",
+          "America/St_Barthelemy"
+        ],
+        [
+          "America/St_Johns",
+          "America/St_Johns"
+        ],
+        [
+          "America/St_Kitts",
+          "America/St_Kitts"
+        ],
+        [
+          "America/St_Lucia",
+          "America/St_Lucia"
+        ],
+        [
+          "America/St_Thomas",
+          "America/St_Thomas"
+        ],
+        [
+          "America/St_Vincent",
+          "America/St_Vincent"
+        ],
+        [
+          "America/Swift_Current",
+          "America/Swift_Current"
+        ],
+        [
+          "America/Tegucigalpa",
+          "America/Tegucigalpa"
+        ],
+        [
+          "America/Thule",
+          "America/Thule"
+        ],
+        [
+          "America/Thunder_Bay",
+          "America/Thunder_Bay"
+        ],
+        [
+          "America/Tijuana",
+          "America/Tijuana"
+        ],
+        [
+          "America/Toronto",
+          "America/Toronto"
+        ],
+        [
+          "America/Tortola",
+          "America/Tortola"
+        ],
+        [
+          "America/Vancouver",
+          "America/Vancouver"
+        ],
+        [
+          "America/Virgin",
+          "America/Virgin"
+        ],
+        [
+          "America/Whitehorse",
+          "America/Whitehorse"
+        ],
+        [
+          "America/Winnipeg",
+          "America/Winnipeg"
+        ],
+        [
+          "America/Yakutat",
+          "America/Yakutat"
+        ],
+        [
+          "America/Yellowknife",
+          "America/Yellowknife"
+        ],
+        [
+          "Antarctica/Casey",
+          "Antarctica/Casey"
+        ],
+        [
+          "Antarctica/Davis",
+          "Antarctica/Davis"
+        ],
+        [
+          "Antarctica/DumontDUrville",
+          "Antarctica/DumontDUrville"
+        ],
+        [
+          "Antarctica/Macquarie",
+          "Antarctica/Macquarie"
+        ],
+        [
+          "Antarctica/Mawson",
+          "Antarctica/Mawson"
+        ],
+        [
+          "Antarctica/McMurdo",
+          "Antarctica/McMurdo"
+        ],
+        [
+          "Antarctica/Palmer",
+          "Antarctica/Palmer"
+        ],
+        [
+          "Antarctica/Rothera",
+          "Antarctica/Rothera"
+        ],
+        [
+          "Antarctica/South_Pole",
+          "Antarctica/South_Pole"
+        ],
+        [
+          "Antarctica/Syowa",
+          "Antarctica/Syowa"
+        ],
+        [
+          "Antarctica/Troll",
+          "Antarctica/Troll"
+        ],
+        [
+          "Antarctica/Vostok",
+          "Antarctica/Vostok"
+        ],
+        [
+          "Arctic/Longyearbyen",
+          "Arctic/Longyearbyen"
+        ],
+        [
+          "Asia/Aden",
+          "Asia/Aden"
+        ],
+        [
+          "Asia/Almaty",
+          "Asia/Almaty"
+        ],
+        [
+          "Asia/Amman",
+          "Asia/Amman"
+        ],
+        [
+          "Asia/Anadyr",
+          "Asia/Anadyr"
+        ],
+        [
+          "Asia/Aqtau",
+          "Asia/Aqtau"
+        ],
+        [
+          "Asia/Aqtobe",
+          "Asia/Aqtobe"
+        ],
+        [
+          "Asia/Ashgabat",
+          "Asia/Ashgabat"
+        ],
+        [
+          "Asia/Ashkhabad",
+          "Asia/Ashkhabad"
+        ],
+        [
+          "Asia/Atyrau",
+          "Asia/Atyrau"
+        ],
+        [
+          "Asia/Baghdad",
+          "Asia/Baghdad"
+        ],
+        [
+          "Asia/Bahrain",
+          "Asia/Bahrain"
+        ],
+        [
+          "Asia/Baku",
+          "Asia/Baku"
+        ],
+        [
+          "Asia/Bangkok",
+          "Asia/Bangkok"
+        ],
+        [
+          "Asia/Barnaul",
+          "Asia/Barnaul"
+        ],
+        [
+          "Asia/Beirut",
+          "Asia/Beirut"
+        ],
+        [
+          "Asia/Bishkek",
+          "Asia/Bishkek"
+        ],
+        [
+          "Asia/Brunei",
+          "Asia/Brunei"
+        ],
+        [
+          "Asia/Calcutta",
+          "Asia/Calcutta"
+        ],
+        [
+          "Asia/Chita",
+          "Asia/Chita"
+        ],
+        [
+          "Asia/Choibalsan",
+          "Asia/Choibalsan"
+        ],
+        [
+          "Asia/Chongqing",
+          "Asia/Chongqing"
+        ],
+        [
+          "Asia/Chungking",
+          "Asia/Chungking"
+        ],
+        [
+          "Asia/Colombo",
+          "Asia/Colombo"
+        ],
+        [
+          "Asia/Dacca",
+          "Asia/Dacca"
+        ],
+        [
+          "Asia/Damascus",
+          "Asia/Damascus"
+        ],
+        [
+          "Asia/Dhaka",
+          "Asia/Dhaka"
+        ],
+        [
+          "Asia/Dili",
+          "Asia/Dili"
+        ],
+        [
+          "Asia/Dubai",
+          "Asia/Dubai"
+        ],
+        [
+          "Asia/Dushanbe",
+          "Asia/Dushanbe"
+        ],
+        [
+          "Asia/Famagusta",
+          "Asia/Famagusta"
+        ],
+        [
+          "Asia/Gaza",
+          "Asia/Gaza"
+        ],
+        [
+          "Asia/Harbin",
+          "Asia/Harbin"
+        ],
+        [
+          "Asia/Hebron",
+          "Asia/Hebron"
+        ],
+        [
+          "Asia/Ho_Chi_Minh",
+          "Asia/Ho_Chi_Minh"
+        ],
+        [
+          "Asia/Hong_Kong",
+          "Asia/Hong_Kong"
+        ],
+        [
+          "Asia/Hovd",
+          "Asia/Hovd"
+        ],
+        [
+          "Asia/Irkutsk",
+          "Asia/Irkutsk"
+        ],
+        [
+          "Asia/Istanbul",
+          "Asia/Istanbul"
+        ],
+        [
+          "Asia/Jakarta",
+          "Asia/Jakarta"
+        ],
+        [
+          "Asia/Jayapura",
+          "Asia/Jayapura"
+        ],
+        [
+          "Asia/Jerusalem",
+          "Asia/Jerusalem"
+        ],
+        [
+          "Asia/Kabul",
+          "Asia/Kabul"
+        ],
+        [
+          "Asia/Kamchatka",
+          "Asia/Kamchatka"
+        ],
+        [
+          "Asia/Karachi",
+          "Asia/Karachi"
+        ],
+        [
+          "Asia/Kashgar",
+          "Asia/Kashgar"
+        ],
+        [
+          "Asia/Kathmandu",
+          "Asia/Kathmandu"
+        ],
+        [
+          "Asia/Katmandu",
+          "Asia/Katmandu"
+        ],
+        [
+          "Asia/Khandyga",
+          "Asia/Khandyga"
+        ],
+        [
+          "Asia/Kolkata",
+          "Asia/Kolkata"
+        ],
+        [
+          "Asia/Krasnoyarsk",
+          "Asia/Krasnoyarsk"
+        ],
+        [
+          "Asia/Kuala_Lumpur",
+          "Asia/Kuala_Lumpur"
+        ],
+        [
+          "Asia/Kuching",
+          "Asia/Kuching"
+        ],
+        [
+          "Asia/Kuwait",
+          "Asia/Kuwait"
+        ],
+        [
+          "Asia/Macao",
+          "Asia/Macao"
+        ],
+        [
+          "Asia/Macau",
+          "Asia/Macau"
+        ],
+        [
+          "Asia/Magadan",
+          "Asia/Magadan"
+        ],
+        [
+          "Asia/Makassar",
+          "Asia/Makassar"
+        ],
+        [
+          "Asia/Manila",
+          "Asia/Manila"
+        ],
+        [
+          "Asia/Muscat",
+          "Asia/Muscat"
+        ],
+        [
+          "Asia/Nicosia",
+          "Asia/Nicosia"
+        ],
+        [
+          "Asia/Novokuznetsk",
+          "Asia/Novokuznetsk"
+        ],
+        [
+          "Asia/Novosibirsk",
+          "Asia/Novosibirsk"
+        ],
+        [
+          "Asia/Omsk",
+          "Asia/Omsk"
+        ],
+        [
+          "Asia/Oral",
+          "Asia/Oral"
+        ],
+        [
+          "Asia/Phnom_Penh",
+          "Asia/Phnom_Penh"
+        ],
+        [
+          "Asia/Pontianak",
+          "Asia/Pontianak"
+        ],
+        [
+          "Asia/Pyongyang",
+          "Asia/Pyongyang"
+        ],
+        [
+          "Asia/Qatar",
+          "Asia/Qatar"
+        ],
+        [
+          "Asia/Qostanay",
+          "Asia/Qostanay"
+        ],
+        [
+          "Asia/Qyzylorda",
+          "Asia/Qyzylorda"
+        ],
+        [
+          "Asia/Rangoon",
+          "Asia/Rangoon"
+        ],
+        [
+          "Asia/Riyadh",
+          "Asia/Riyadh"
+        ],
+        [
+          "Asia/Saigon",
+          "Asia/Saigon"
+        ],
+        [
+          "Asia/Sakhalin",
+          "Asia/Sakhalin"
+        ],
+        [
+          "Asia/Samarkand",
+          "Asia/Samarkand"
+        ],
+        [
+          "Asia/Seoul",
+          "Asia/Seoul"
+        ],
+        [
+          "Asia/Shanghai",
+          "Asia/Shanghai"
+        ],
+        [
+          "Asia/Singapore",
+          "Asia/Singapore"
+        ],
+        [
+          "Asia/Srednekolymsk",
+          "Asia/Srednekolymsk"
+        ],
+        [
+          "Asia/Taipei",
+          "Asia/Taipei"
+        ],
+        [
+          "Asia/Tashkent",
+          "Asia/Tashkent"
+        ],
+        [
+          "Asia/Tbilisi",
+          "Asia/Tbilisi"
+        ],
+        [
+          "Asia/Tehran",
+          "Asia/Tehran"
+        ],
+        [
+          "Asia/Tel_Aviv",
+          "Asia/Tel_Aviv"
+        ],
+        [
+          "Asia/Thimbu",
+          "Asia/Thimbu"
+        ],
+        [
+          "Asia/Thimphu",
+          "Asia/Thimphu"
+        ],
+        [
+          "Asia/Tokyo",
+          "Asia/Tokyo"
+        ],
+        [
+          "Asia/Tomsk",
+          "Asia/Tomsk"
+        ],
+        [
+          "Asia/Ujung_Pandang",
+          "Asia/Ujung_Pandang"
+        ],
+        [
+          "Asia/Ulaanbaatar",
+          "Asia/Ulaanbaatar"
+        ],
+        [
+          "Asia/Ulan_Bator",
+          "Asia/Ulan_Bator"
+        ],
+        [
+          "Asia/Urumqi",
+          "Asia/Urumqi"
+        ],
+        [
+          "Asia/Ust-Nera",
+          "Asia/Ust-Nera"
+        ],
+        [
+          "Asia/Vientiane",
+          "Asia/Vientiane"
+        ],
+        [
+          "Asia/Vladivostok",
+          "Asia/Vladivostok"
+        ],
+        [
+          "Asia/Yakutsk",
+          "Asia/Yakutsk"
+        ],
+        [
+          "Asia/Yangon",
+          "Asia/Yangon"
+        ],
+        [
+          "Asia/Yekaterinburg",
+          "Asia/Yekaterinburg"
+        ],
+        [
+          "Asia/Yerevan",
+          "Asia/Yerevan"
+        ],
+        [
+          "Atlantic/Azores",
+          "Atlantic/Azores"
+        ],
+        [
+          "Atlantic/Bermuda",
+          "Atlantic/Bermuda"
+        ],
+        [
+          "Atlantic/Canary",
+          "Atlantic/Canary"
+        ],
+        [
+          "Atlantic/Cape_Verde",
+          "Atlantic/Cape_Verde"
+        ],
+        [
+          "Atlantic/Faeroe",
+          "Atlantic/Faeroe"
+        ],
+        [
+          "Atlantic/Faroe",
+          "Atlantic/Faroe"
+        ],
+        [
+          "Atlantic/Jan_Mayen",
+          "Atlantic/Jan_Mayen"
+        ],
+        [
+          "Atlantic/Madeira",
+          "Atlantic/Madeira"
+        ],
+        [
+          "Atlantic/Reykjavik",
+          "Atlantic/Reykjavik"
+        ],
+        [
+          "Atlantic/South_Georgia",
+          "Atlantic/South_Georgia"
+        ],
+        [
+          "Atlantic/St_Helena",
+          "Atlantic/St_Helena"
+        ],
+        [
+          "Atlantic/Stanley",
+          "Atlantic/Stanley"
+        ],
+        [
+          "Australia/ACT",
+          "Australia/ACT"
+        ],
+        [
+          "Australia/Adelaide",
+          "Australia/Adelaide"
+        ],
+        [
+          "Australia/Brisbane",
+          "Australia/Brisbane"
+        ],
+        [
+          "Australia/Broken_Hill",
+          "Australia/Broken_Hill"
+        ],
+        [
+          "Australia/Canberra",
+          "Australia/Canberra"
+        ],
+        [
+          "Australia/Currie",
+          "Australia/Currie"
+        ],
+        [
+          "Australia/Darwin",
+          "Australia/Darwin"
+        ],
+        [
+          "Australia/Eucla",
+          "Australia/Eucla"
+        ],
+        [
+          "Australia/Hobart",
+          "Australia/Hobart"
+        ],
+        [
+          "Australia/LHI",
+          "Australia/LHI"
+        ],
+        [
+          "Australia/Lindeman",
+          "Australia/Lindeman"
+        ],
+        [
+          "Australia/Lord_Howe",
+          "Australia/Lord_Howe"
+        ],
+        [
+          "Australia/Melbourne",
+          "Australia/Melbourne"
+        ],
+        [
+          "Australia/NSW",
+          "Australia/NSW"
+        ],
+        [
+          "Australia/North",
+          "Australia/North"
+        ],
+        [
+          "Australia/Perth",
+          "Australia/Perth"
+        ],
+        [
+          "Australia/Queensland",
+          "Australia/Queensland"
+        ],
+        [
+          "Australia/South",
+          "Australia/South"
+        ],
+        [
+          "Australia/Sydney",
+          "Australia/Sydney"
+        ],
+        [
+          "Australia/Tasmania",
+          "Australia/Tasmania"
+        ],
+        [
+          "Australia/Victoria",
+          "Australia/Victoria"
+        ],
+        [
+          "Australia/West",
+          "Australia/West"
+        ],
+        [
+          "Australia/Yancowinna",
+          "Australia/Yancowinna"
+        ],
+        [
+          "Brazil/Acre",
+          "Brazil/Acre"
+        ],
+        [
+          "Brazil/DeNoronha",
+          "Brazil/DeNoronha"
+        ],
+        [
+          "Brazil/East",
+          "Brazil/East"
+        ],
+        [
+          "Brazil/West",
+          "Brazil/West"
+        ],
+        [
+          "CET",
+          "CET"
+        ],
+        [
+          "CST6CDT",
+          "CST6CDT"
+        ],
+        [
+          "Canada/Atlantic",
+          "Canada/Atlantic"
+        ],
+        [
+          "Canada/Central",
+          "Canada/Central"
+        ],
+        [
+          "Canada/Eastern",
+          "Canada/Eastern"
+        ],
+        [
+          "Canada/Mountain",
+          "Canada/Mountain"
+        ],
+        [
+          "Canada/Newfoundland",
+          "Canada/Newfoundland"
+        ],
+        [
+          "Canada/Pacific",
+          "Canada/Pacific"
+        ],
+        [
+          "Canada/Saskatchewan",
+          "Canada/Saskatchewan"
+        ],
+        [
+          "Canada/Yukon",
+          "Canada/Yukon"
+        ],
+        [
+          "Chile/Continental",
+          "Chile/Continental"
+        ],
+        [
+          "Chile/EasterIsland",
+          "Chile/EasterIsland"
+        ],
+        [
+          "Cuba",
+          "Cuba"
+        ],
+        [
+          "EET",
+          "EET"
+        ],
+        [
+          "EST",
+          "EST"
+        ],
+        [
+          "EST5EDT",
+          "EST5EDT"
+        ],
+        [
+          "Egypt",
+          "Egypt"
+        ],
+        [
+          "Eire",
+          "Eire"
+        ],
+        [
+          "Europe/Amsterdam",
+          "Europe/Amsterdam"
+        ],
+        [
+          "Europe/Andorra",
+          "Europe/Andorra"
+        ],
+        [
+          "Europe/Astrakhan",
+          "Europe/Astrakhan"
+        ],
+        [
+          "Europe/Athens",
+          "Europe/Athens"
+        ],
+        [
+          "Europe/Belfast",
+          "Europe/Belfast"
+        ],
+        [
+          "Europe/Belgrade",
+          "Europe/Belgrade"
+        ],
+        [
+          "Europe/Berlin",
+          "Europe/Berlin"
+        ],
+        [
+          "Europe/Bratislava",
+          "Europe/Bratislava"
+        ],
+        [
+          "Europe/Brussels",
+          "Europe/Brussels"
+        ],
+        [
+          "Europe/Bucharest",
+          "Europe/Bucharest"
+        ],
+        [
+          "Europe/Budapest",
+          "Europe/Budapest"
+        ],
+        [
+          "Europe/Busingen",
+          "Europe/Busingen"
+        ],
+        [
+          "Europe/Chisinau",
+          "Europe/Chisinau"
+        ],
+        [
+          "Europe/Copenhagen",
+          "Europe/Copenhagen"
+        ],
+        [
+          "Europe/Dublin",
+          "Europe/Dublin"
+        ],
+        [
+          "Europe/Gibraltar",
+          "Europe/Gibraltar"
+        ],
+        [
+          "Europe/Guernsey",
+          "Europe/Guernsey"
+        ],
+        [
+          "Europe/Helsinki",
+          "Europe/Helsinki"
+        ],
+        [
+          "Europe/Isle_of_Man",
+          "Europe/Isle_of_Man"
+        ],
+        [
+          "Europe/Istanbul",
+          "Europe/Istanbul"
+        ],
+        [
+          "Europe/Jersey",
+          "Europe/Jersey"
+        ],
+        [
+          "Europe/Kaliningrad",
+          "Europe/Kaliningrad"
+        ],
+        [
+          "Europe/Kiev",
+          "Europe/Kiev"
+        ],
+        [
+          "Europe/Kirov",
+          "Europe/Kirov"
+        ],
+        [
+          "Europe/Kyiv",
+          "Europe/Kyiv"
+        ],
+        [
+          "Europe/Lisbon",
+          "Europe/Lisbon"
+        ],
+        [
+          "Europe/Ljubljana",
+          "Europe/Ljubljana"
+        ],
+        [
+          "Europe/London",
+          "Europe/London"
+        ],
+        [
+          "Europe/Luxembourg",
+          "Europe/Luxembourg"
+        ],
+        [
+          "Europe/Madrid",
+          "Europe/Madrid"
+        ],
+        [
+          "Europe/Malta",
+          "Europe/Malta"
+        ],
+        [
+          "Europe/Mariehamn",
+          "Europe/Mariehamn"
+        ],
+        [
+          "Europe/Minsk",
+          "Europe/Minsk"
+        ],
+        [
+          "Europe/Monaco",
+          "Europe/Monaco"
+        ],
+        [
+          "Europe/Moscow",
+          "Europe/Moscow"
+        ],
+        [
+          "Europe/Nicosia",
+          "Europe/Nicosia"
+        ],
+        [
+          "Europe/Oslo",
+          "Europe/Oslo"
+        ],
+        [
+          "Europe/Paris",
+          "Europe/Paris"
+        ],
+        [
+          "Europe/Podgorica",
+          "Europe/Podgorica"
+        ],
+        [
+          "Europe/Prague",
+          "Europe/Prague"
+        ],
+        [
+          "Europe/Riga",
+          "Europe/Riga"
+        ],
+        [
+          "Europe/Rome",
+          "Europe/Rome"
+        ],
+        [
+          "Europe/Samara",
+          "Europe/Samara"
+        ],
+        [
+          "Europe/San_Marino",
+          "Europe/San_Marino"
+        ],
+        [
+          "Europe/Sarajevo",
+          "Europe/Sarajevo"
+        ],
+        [
+          "Europe/Saratov",
+          "Europe/Saratov"
+        ],
+        [
+          "Europe/Simferopol",
+          "Europe/Simferopol"
+        ],
+        [
+          "Europe/Skopje",
+          "Europe/Skopje"
+        ],
+        [
+          "Europe/Sofia",
+          "Europe/Sofia"
+        ],
+        [
+          "Europe/Stockholm",
+          "Europe/Stockholm"
+        ],
+        [
+          "Europe/Tallinn",
+          "Europe/Tallinn"
+        ],
+        [
+          "Europe/Tirane",
+          "Europe/Tirane"
+        ],
+        [
+          "Europe/Tiraspol",
+          "Europe/Tiraspol"
+        ],
+        [
+          "Europe/Ulyanovsk",
+          "Europe/Ulyanovsk"
+        ],
+        [
+          "Europe/Uzhgorod",
+          "Europe/Uzhgorod"
+        ],
+        [
+          "Europe/Vaduz",
+          "Europe/Vaduz"
+        ],
+        [
+          "Europe/Vatican",
+          "Europe/Vatican"
+        ],
+        [
+          "Europe/Vienna",
+          "Europe/Vienna"
+        ],
+        [
+          "Europe/Vilnius",
+          "Europe/Vilnius"
+        ],
+        [
+          "Europe/Volgograd",
+          "Europe/Volgograd"
+        ],
+        [
+          "Europe/Warsaw",
+          "Europe/Warsaw"
+        ],
+        [
+          "Europe/Zagreb",
+          "Europe/Zagreb"
+        ],
+        [
+          "Europe/Zaporozhye",
+          "Europe/Zaporozhye"
+        ],
+        [
+          "Europe/Zurich",
+          "Europe/Zurich"
+        ],
+        [
+          "GB",
+          "GB"
+        ],
+        [
+          "GB-Eire",
+          "GB-Eire"
+        ],
+        [
+          "GMT",
+          "GMT"
+        ],
+        [
+          "GMT+0",
+          "GMT+0"
+        ],
+        [
+          "GMT-0",
+          "GMT-0"
+        ],
+        [
+          "GMT0",
+          "GMT0"
+        ],
+        [
+          "Greenwich",
+          "Greenwich"
+        ],
+        [
+          "HST",
+          "HST"
+        ],
+        [
+          "Hongkong",
+          "Hongkong"
+        ],
+        [
+          "Iceland",
+          "Iceland"
+        ],
+        [
+          "Indian/Antananarivo",
+          "Indian/Antananarivo"
+        ],
+        [
+          "Indian/Chagos",
+          "Indian/Chagos"
+        ],
+        [
+          "Indian/Christmas",
+          "Indian/Christmas"
+        ],
+        [
+          "Indian/Cocos",
+          "Indian/Cocos"
+        ],
+        [
+          "Indian/Comoro",
+          "Indian/Comoro"
+        ],
+        [
+          "Indian/Kerguelen",
+          "Indian/Kerguelen"
+        ],
+        [
+          "Indian/Mahe",
+          "Indian/Mahe"
+        ],
+        [
+          "Indian/Maldives",
+          "Indian/Maldives"
+        ],
+        [
+          "Indian/Mauritius",
+          "Indian/Mauritius"
+        ],
+        [
+          "Indian/Mayotte",
+          "Indian/Mayotte"
+        ],
+        [
+          "Indian/Reunion",
+          "Indian/Reunion"
+        ],
+        [
+          "Iran",
+          "Iran"
+        ],
+        [
+          "Israel",
+          "Israel"
+        ],
+        [
+          "Jamaica",
+          "Jamaica"
+        ],
+        [
+          "Japan",
+          "Japan"
+        ],
+        [
+          "Kwajalein",
+          "Kwajalein"
+        ],
+        [
+          "Libya",
+          "Libya"
+        ],
+        [
+          "MET",
+          "MET"
+        ],
+        [
+          "MST",
+          "MST"
+        ],
+        [
+          "MST7MDT",
+          "MST7MDT"
+        ],
+        [
+          "Mexico/BajaNorte",
+          "Mexico/BajaNorte"
+        ],
+        [
+          "Mexico/BajaSur",
+          "Mexico/BajaSur"
+        ],
+        [
+          "Mexico/General",
+          "Mexico/General"
+        ],
+        [
+          "NZ",
+          "NZ"
+        ],
+        [
+          "NZ-CHAT",
+          "NZ-CHAT"
+        ],
+        [
+          "Navajo",
+          "Navajo"
+        ],
+        [
+          "PRC",
+          "PRC"
+        ],
+        [
+          "PST8PDT",
+          "PST8PDT"
+        ],
+        [
+          "Pacific/Apia",
+          "Pacific/Apia"
+        ],
+        [
+          "Pacific/Auckland",
+          "Pacific/Auckland"
+        ],
+        [
+          "Pacific/Bougainville",
+          "Pacific/Bougainville"
+        ],
+        [
+          "Pacific/Chatham",
+          "Pacific/Chatham"
+        ],
+        [
+          "Pacific/Chuuk",
+          "Pacific/Chuuk"
+        ],
+        [
+          "Pacific/Easter",
+          "Pacific/Easter"
+        ],
+        [
+          "Pacific/Efate",
+          "Pacific/Efate"
+        ],
+        [
+          "Pacific/Enderbury",
+          "Pacific/Enderbury"
+        ],
+        [
+          "Pacific/Fakaofo",
+          "Pacific/Fakaofo"
+        ],
+        [
+          "Pacific/Fiji",
+          "Pacific/Fiji"
+        ],
+        [
+          "Pacific/Funafuti",
+          "Pacific/Funafuti"
+        ],
+        [
+          "Pacific/Galapagos",
+          "Pacific/Galapagos"
+        ],
+        [
+          "Pacific/Gambier",
+          "Pacific/Gambier"
+        ],
+        [
+          "Pacific/Guadalcanal",
+          "Pacific/Guadalcanal"
+        ],
+        [
+          "Pacific/Guam",
+          "Pacific/Guam"
+        ],
+        [
+          "Pacific/Honolulu",
+          "Pacific/Honolulu"
+        ],
+        [
+          "Pacific/Johnston",
+          "Pacific/Johnston"
+        ],
+        [
+          "Pacific/Kanton",
+          "Pacific/Kanton"
+        ],
+        [
+          "Pacific/Kiritimati",
+          "Pacific/Kiritimati"
+        ],
+        [
+          "Pacific/Kosrae",
+          "Pacific/Kosrae"
+        ],
+        [
+          "Pacific/Kwajalein",
+          "Pacific/Kwajalein"
+        ],
+        [
+          "Pacific/Majuro",
+          "Pacific/Majuro"
+        ],
+        [
+          "Pacific/Marquesas",
+          "Pacific/Marquesas"
+        ],
+        [
+          "Pacific/Midway",
+          "Pacific/Midway"
+        ],
+        [
+          "Pacific/Nauru",
+          "Pacific/Nauru"
+        ],
+        [
+          "Pacific/Niue",
+          "Pacific/Niue"
+        ],
+        [
+          "Pacific/Norfolk",
+          "Pacific/Norfolk"
+        ],
+        [
+          "Pacific/Noumea",
+          "Pacific/Noumea"
+        ],
+        [
+          "Pacific/Pago_Pago",
+          "Pacific/Pago_Pago"
+        ],
+        [
+          "Pacific/Palau",
+          "Pacific/Palau"
+        ],
+        [
+          "Pacific/Pitcairn",
+          "Pacific/Pitcairn"
+        ],
+        [
+          "Pacific/Pohnpei",
+          "Pacific/Pohnpei"
+        ],
+        [
+          "Pacific/Ponape",
+          "Pacific/Ponape"
+        ],
+        [
+          "Pacific/Port_Moresby",
+          "Pacific/Port_Moresby"
+        ],
+        [
+          "Pacific/Rarotonga",
+          "Pacific/Rarotonga"
+        ],
+        [
+          "Pacific/Saipan",
+          "Pacific/Saipan"
+        ],
+        [
+          "Pacific/Samoa",
+          "Pacific/Samoa"
+        ],
+        [
+          "Pacific/Tahiti",
+          "Pacific/Tahiti"
+        ],
+        [
+          "Pacific/Tarawa",
+          "Pacific/Tarawa"
+        ],
+        [
+          "Pacific/Tongatapu",
+          "Pacific/Tongatapu"
+        ],
+        [
+          "Pacific/Truk",
+          "Pacific/Truk"
+        ],
+        [
+          "Pacific/Wake",
+          "Pacific/Wake"
+        ],
+        [
+          "Pacific/Wallis",
+          "Pacific/Wallis"
+        ],
+        [
+          "Pacific/Yap",
+          "Pacific/Yap"
+        ],
+        [
+          "Poland",
+          "Poland"
+        ],
+        [
+          "Portugal",
+          "Portugal"
+        ],
+        [
+          "ROC",
+          "ROC"
+        ],
+        [
+          "ROK",
+          "ROK"
+        ],
+        [
+          "Singapore",
+          "Singapore"
+        ],
+        [
+          "Turkey",
+          "Turkey"
+        ],
+        [
+          "UCT",
+          "UCT"
+        ],
+        [
+          "US/Alaska",
+          "US/Alaska"
+        ],
+        [
+          "US/Aleutian",
+          "US/Aleutian"
+        ],
+        [
+          "US/Arizona",
+          "US/Arizona"
+        ],
+        [
+          "US/Central",
+          "US/Central"
+        ],
+        [
+          "US/East-Indiana",
+          "US/East-Indiana"
+        ],
+        [
+          "US/Eastern",
+          "US/Eastern"
+        ],
+        [
+          "US/Hawaii",
+          "US/Hawaii"
+        ],
+        [
+          "US/Indiana-Starke",
+          "US/Indiana-Starke"
+        ],
+        [
+          "US/Michigan",
+          "US/Michigan"
+        ],
+        [
+          "US/Mountain",
+          "US/Mountain"
+        ],
+        [
+          "US/Pacific",
+          "US/Pacific"
+        ],
+        [
+          "US/Samoa",
+          "US/Samoa"
+        ],
+        [
+          "UTC",
+          "UTC"
+        ],
+        [
+          "Universal",
+          "Universal"
+        ],
+        [
+          "W-SU",
+          "W-SU"
+        ],
+        [
+          "WET",
+          "WET"
+        ],
+        [
+          "Zulu",
+          "Zulu"
+        ],
+        [
+          "Etc/GMT",
+          "Etc/GMT"
+        ],
+        [
+          "Etc/UTC",
+          "Etc/UTC"
+        ],
+        [
+          "Etc/GMT+8",
+          "Etc/GMT+8"
+        ],
+        [
+          "Etc/Zulu",
+          "Etc/Zulu"
+        ],
+        [
+          "Etc/GMT+7",
+          "Etc/GMT+7"
+        ],
+        [
+          "Etc/Universal",
+          "Etc/Universal"
+        ],
+        [
+          "Etc/GMT-0",
+          "Etc/GMT-0"
+        ],
+        [
+          "Etc/GMT0",
+          "Etc/GMT0"
+        ],
+        [
+          "Etc/GMT-8",
+          "Etc/GMT-8"
+        ],
+        [
+          "Etc/GMT+11",
+          "Etc/GMT+11"
+        ],
+        [
+          "Etc/GMT-9",
+          "Etc/GMT-9"
+        ],
+        [
+          "Etc/GMT-2",
+          "Etc/GMT-2"
+        ],
+        [
+          "Etc/GMT-7",
+          "Etc/GMT-7"
+        ],
+        [
+          "Etc/GMT-5",
+          "Etc/GMT-5"
+        ],
+        [
+          "Etc/GMT-4",
+          "Etc/GMT-4"
+        ],
+        [
+          "Etc/GMT-12",
+          "Etc/GMT-12"
+        ],
+        [
+          "Etc/GMT-3",
+          "Etc/GMT-3"
+        ],
+        [
+          "Etc/GMT-11",
+          "Etc/GMT-11"
+        ],
+        [
+          "Etc/GMT+12",
+          "Etc/GMT+12"
+        ],
+        [
+          "Etc/GMT-6",
+          "Etc/GMT-6"
+        ],
+        [
+          "Etc/GMT+3",
+          "Etc/GMT+3"
+        ],
+        [
+          "Etc/GMT+2",
+          "Etc/GMT+2"
+        ],
+        [
+          "Etc/GMT+10",
+          "Etc/GMT+10"
+        ],
+        [
+          "Etc/UCT",
+          "Etc/UCT"
+        ],
+        [
+          "Etc/GMT-14",
+          "Etc/GMT-14"
+        ],
+        [
+          "Etc/GMT+9",
+          "Etc/GMT+9"
+        ],
+        [
+          "Etc/GMT+4",
+          "Etc/GMT+4"
+        ],
+        [
+          "Etc/GMT+1",
+          "Etc/GMT+1"
+        ],
+        [
+          "Etc/GMT+0",
+          "Etc/GMT+0"
+        ],
+        [
+          "Etc/GMT-1",
+          "Etc/GMT-1"
+        ],
+        [
+          "Etc/GMT-10",
+          "Etc/GMT-10"
+        ],
+        [
+          "Etc/GMT+5",
+          "Etc/GMT+5"
+        ],
+        [
+          "Etc/GMT-13",
+          "Etc/GMT-13"
+        ],
+        [
+          "Etc/GMT+6",
+          "Etc/GMT+6"
+        ],
+        [
+          "Etc/Greenwich",
+          "Etc/Greenwich"
+        ]
+      ],
+      "string": "Company Timezone",
+      "type": "selection"
+    },
+    "module_hr_presence": {
+      "readonly": false,
+      "required": false,
+      "string": "Advanced Presence Control",
+      "type": "boolean"
+    },
+    "module_hr_skills": {
+      "readonly": false,
+      "required": false,
+      "string": "Skills Management",
+      "type": "boolean"
+    },
+    "hr_presence_control_login": {
+      "readonly": false,
+      "required": false,
+      "string": "Based on user status in system",
+      "type": "boolean"
+    },
+    "hr_presence_control_email": {
+      "readonly": false,
+      "required": false,
+      "string": "Based on number of emails sent",
+      "type": "boolean"
+    },
+    "hr_presence_control_ip": {
+      "readonly": false,
+      "required": false,
+      "string": "Based on IP Address",
+      "type": "boolean"
+    },
+    "hr_presence_control_attendance": {
+      "readonly": false,
+      "required": false,
+      "string": "Based on attendances",
+      "type": "boolean"
+    },
+    "hr_presence_control_email_amount": {
+      "readonly": false,
+      "required": false,
+      "string": "# emails to send",
+      "type": "integer"
+    },
+    "hr_presence_control_ip_list": {
+      "readonly": false,
+      "required": false,
+      "string": "Valid IP addresses",
+      "type": "char"
+    },
+    "contract_expiration_notice_period": {
+      "readonly": false,
+      "required": false,
+      "string": "Contract Expiry Notice Period",
+      "type": "integer"
+    },
+    "work_permit_expiration_notice_period": {
+      "readonly": false,
+      "required": false,
+      "string": "Work Permit Expiry Notice Period",
+      "type": "integer"
+    },
+    "module_hr_timesheet": {
+      "readonly": false,
+      "required": false,
+      "string": "Task Logs",
+      "type": "boolean"
+    },
+    "group_project_stages": {
+      "readonly": false,
+      "required": false,
+      "string": "Project Stages",
+      "type": "boolean"
+    },
+    "module_product_expiry": {
+      "help": "Track following dates on lots & serial numbers: best before, removal, end of life, alert. \n Such dates are set automatically at lot/serial number creation based on values set on the product (in days).",
+      "readonly": false,
+      "required": false,
+      "string": "Expiration Dates",
+      "type": "boolean"
+    },
+    "group_stock_production_lot": {
+      "readonly": false,
+      "required": false,
+      "string": "Lots & Serial Numbers",
+      "type": "boolean"
+    },
+    "group_stock_lot_print_gs1": {
+      "readonly": false,
+      "required": false,
+      "string": "Print GS1 Barcodes for Lots & Serial Numbers",
+      "type": "boolean"
+    },
+    "group_lot_on_delivery_slip": {
+      "readonly": false,
+      "required": false,
+      "string": "Display Lots & Serial Numbers on Delivery Slips",
+      "type": "boolean"
+    },
+    "group_stock_tracking_lot": {
+      "readonly": false,
+      "required": false,
+      "string": "Packages",
+      "type": "boolean"
+    },
+    "group_stock_tracking_owner": {
+      "readonly": false,
+      "required": false,
+      "string": "Consignment",
+      "type": "boolean"
+    },
+    "group_stock_adv_location": {
+      "help": "Add and customize route operations to process product moves in your warehouse(s): e.g. unload > quality control > stock for incoming products, pick > pack > ship for outgoing products. \n You can also set putaway strategies on warehouse locations in order to send incoming products into specific child locations straight away (e.g. specific bins, racks).",
+      "readonly": false,
+      "required": false,
+      "string": "Multi-Step Routes",
+      "type": "boolean"
+    },
+    "group_warning_stock": {
+      "readonly": false,
+      "required": false,
+      "string": "Warnings for Stock",
+      "type": "boolean"
+    },
+    "group_stock_sign_delivery": {
+      "readonly": false,
+      "required": false,
+      "string": "Signature",
+      "type": "boolean"
+    },
+    "module_stock_picking_batch": {
+      "readonly": false,
+      "required": false,
+      "string": "Batch, Wave & Cluster Transfers",
+      "type": "boolean"
+    },
+    "module_stock_barcode": {
+      "readonly": false,
+      "required": false,
+      "string": "Barcode Scanner",
+      "type": "boolean"
+    },
+    "module_stock_barcode_barcodelookup": {
+      "readonly": false,
+      "required": false,
+      "string": "Stock Barcode Database",
+      "type": "boolean"
+    },
+    "stock_move_email_validation": {
+      "readonly": false,
+      "required": false,
+      "string": "Email Confirmation picking",
+      "type": "boolean"
+    },
+    "module_stock_sms": {
+      "readonly": false,
+      "required": false,
+      "string": "SMS Confirmation",
+      "type": "boolean"
+    },
+    "module_delivery": {
+      "readonly": false,
+      "required": false,
+      "string": "Delivery Methods",
+      "type": "boolean"
+    },
+    "module_delivery_dhl": {
+      "readonly": false,
+      "required": false,
+      "string": "DHL Express Connector",
+      "type": "boolean"
+    },
+    "module_delivery_fedex_rest": {
+      "readonly": false,
+      "required": false,
+      "string": "FedEx Connector",
+      "type": "boolean"
+    },
+    "module_delivery_ups_rest": {
+      "readonly": false,
+      "required": false,
+      "string": "UPS Connector",
+      "type": "boolean"
+    },
+    "module_delivery_usps_rest": {
+      "readonly": false,
+      "required": false,
+      "string": "USPS Connector",
+      "type": "boolean"
+    },
+    "module_delivery_bpost": {
+      "readonly": false,
+      "required": false,
+      "string": "bpost Connector",
+      "type": "boolean"
+    },
+    "module_delivery_easypost": {
+      "readonly": false,
+      "required": false,
+      "string": "Easypost Connector",
+      "type": "boolean"
+    },
+    "module_delivery_sendcloud": {
+      "readonly": false,
+      "required": false,
+      "string": "Sendcloud Connector",
+      "type": "boolean"
+    },
+    "module_delivery_shiprocket": {
+      "readonly": false,
+      "required": false,
+      "string": "Shiprocket Connector",
+      "type": "boolean"
+    },
+    "module_delivery_starshipit": {
+      "readonly": false,
+      "required": false,
+      "string": "Starshipit Connector",
+      "type": "boolean"
+    },
+    "module_delivery_envia": {
+      "readonly": false,
+      "required": false,
+      "string": "Envia.com Connector",
+      "type": "boolean"
+    },
+    "module_quality_control": {
+      "readonly": false,
+      "required": false,
+      "string": "Quality",
+      "type": "boolean"
+    },
+    "module_quality_control_worksheet": {
+      "readonly": false,
+      "required": false,
+      "string": "Quality Worksheet",
+      "type": "boolean"
+    },
+    "group_stock_multi_locations": {
+      "help": "Store products in specific locations of your warehouse (e.g. bins, racks) and to track inventory accordingly.",
+      "readonly": false,
+      "required": false,
+      "string": "Storage Locations",
+      "type": "boolean"
+    },
+    "annual_inventory_month": {
+      "help": "Annual inventory month for products not in a location with a cyclic inventory date. Set to no month if no automatic annual inventory.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "1",
+          "January"
+        ],
+        [
+          "2",
+          "February"
+        ],
+        [
+          "3",
+          "March"
+        ],
+        [
+          "4",
+          "April"
+        ],
+        [
+          "5",
+          "May"
+        ],
+        [
+          "6",
+          "June"
+        ],
+        [
+          "7",
+          "July"
+        ],
+        [
+          "8",
+          "August"
+        ],
+        [
+          "9",
+          "September"
+        ],
+        [
+          "10",
+          "October"
+        ],
+        [
+          "11",
+          "November"
+        ],
+        [
+          "12",
+          "December"
+        ]
+      ],
+      "string": "Annual Inventory Month",
+      "type": "selection"
+    },
+    "annual_inventory_day": {
+      "help": "Day of the month when the annual inventory should occur. If zero or negative, then the first day of the month will be selected instead.\n        If greater than the last day of a month, then the last day of the month will be selected instead.",
+      "readonly": false,
+      "required": false,
+      "string": "Day of the month",
+      "type": "integer"
+    },
+    "group_stock_reception_report": {
+      "readonly": false,
+      "required": false,
+      "string": "Reception Report",
+      "type": "boolean"
+    },
+    "module_stock_dropshipping": {
+      "readonly": false,
+      "required": false,
+      "string": "Dropshipping",
+      "type": "boolean"
+    },
+    "barcode_separator": {
+      "help": "Character(s) used to separate data contained within an aggregate barcode (i.e. a barcode containing multiple barcode encodings)",
+      "readonly": false,
+      "required": false,
+      "string": "Separator",
+      "type": "char"
+    },
+    "module_stock_fleet": {
+      "readonly": false,
+      "required": false,
+      "string": "Dispatch Management System",
+      "type": "boolean"
+    },
+    "replenish_on_order": {
+      "readonly": false,
+      "required": false,
+      "string": "Replenish on Order (MTO)",
+      "type": "boolean"
+    },
+    "stock_text_confirmation": {
+      "readonly": false,
+      "required": false,
+      "string": "Stock Text Validation with stock move",
+      "type": "boolean"
+    },
+    "stock_confirmation_type": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "sms",
+          "SMS"
+        ],
+        [
+          "whatsapp",
+          "Whatsapp"
+        ]
+      ],
+      "string": "Stock Text Validation type",
+      "type": "selection"
+    },
+    "horizon_days": {
+      "help": "Configure your horizon to trigger reordering rules earlier to get\n                                a head start on replenishment and avoid delays, or trigger it just-in-time\n                                ('0 days') to avoid overstocking.",
+      "readonly": false,
+      "required": false,
+      "string": "Replenishment Horizon",
+      "type": "integer"
+    },
+    "picking_policy": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "direct",
+          "As soon as possible, with back orders"
+        ],
+        [
+          "one",
+          "When all products are ready"
+        ]
+      ],
+      "string": "Picking Policy",
+      "type": "selection"
+    },
+    "website_id": {
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "website",
+      "type": "many2one"
+    },
+    "website_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Website Name",
+      "type": "char"
+    },
+    "website_domain": {
+      "help": "E.g. https://www.mydomain.com",
+      "readonly": false,
+      "required": false,
+      "string": "Website Domain",
+      "type": "char"
+    },
+    "website_homepage_url": {
+      "help": "E.g. /contactus or /shop",
+      "readonly": false,
+      "required": false,
+      "string": "Homepage Url",
+      "type": "char"
+    },
+    "website_company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Website Company",
+      "type": "many2one"
+    },
+    "website_logo": {
+      "help": "Display this logo on the website.",
+      "readonly": false,
+      "required": false,
+      "string": "Website Logo",
+      "type": "binary"
+    },
+    "language_ids": {
+      "readonly": false,
+      "relation": "res.lang",
+      "required": false,
+      "string": "Languages",
+      "type": "many2many"
+    },
+    "website_language_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of languages",
+      "type": "integer"
+    },
+    "website_default_lang_id": {
+      "readonly": false,
+      "relation": "res.lang",
+      "required": false,
+      "string": "Default language",
+      "type": "many2one"
+    },
+    "website_default_lang_code": {
+      "help": "This field is used to set/get locales for user",
+      "readonly": false,
+      "required": false,
+      "string": "Default language code",
+      "type": "char"
+    },
+    "shared_user_account": {
+      "readonly": false,
+      "required": false,
+      "string": "Shared Customer Accounts",
+      "type": "boolean"
+    },
+    "website_cookies_bar": {
+      "help": "Display a customizable cookies bar on your website.",
+      "readonly": false,
+      "required": false,
+      "string": "Cookies Bar",
+      "type": "boolean"
+    },
+    "website_block_third_party_domains": {
+      "help": "Block 3rd-party domains that may track users (YouTube, Google Maps, etc.).",
+      "readonly": false,
+      "required": false,
+      "string": "Block 3rd-party domains",
+      "type": "boolean"
+    },
+    "google_analytics_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Analytics Key",
+      "type": "char"
+    },
+    "google_search_console": {
+      "help": "Google key, or Enable to access first reply",
+      "readonly": false,
+      "required": false,
+      "string": "Google Search Console Key",
+      "type": "char"
+    },
+    "plausible_shared_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Plausible auth Key",
+      "type": "char"
+    },
+    "plausible_site": {
+      "readonly": false,
+      "required": false,
+      "string": "Plausible Site (e.g. domain.com)",
+      "type": "char"
+    },
+    "cdn_activated": {
+      "readonly": false,
+      "required": false,
+      "string": "Content Delivery Network (CDN)",
+      "type": "boolean"
+    },
+    "cdn_url": {
+      "readonly": false,
+      "required": false,
+      "string": "CDN Base URL",
+      "type": "char"
+    },
+    "cdn_filters": {
+      "help": "URL matching those filters will be rewritten using the CDN Base URL",
+      "readonly": false,
+      "required": false,
+      "string": "CDN Filters",
+      "type": "text"
+    },
+    "favicon": {
+      "help": "This field holds the image used to display a favicon on the website.",
+      "readonly": false,
+      "required": false,
+      "string": "Favicon",
+      "type": "binary"
+    },
+    "social_default_image": {
+      "help": "If set, replaces the website logo as the default social share image.",
+      "readonly": false,
+      "required": false,
+      "string": "Default Social Share Image",
+      "type": "binary"
+    },
+    "group_multi_website": {
+      "readonly": false,
+      "required": false,
+      "string": "Multi-website",
+      "type": "boolean"
+    },
+    "has_google_analytics": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Analytics",
+      "type": "boolean"
+    },
+    "has_google_search_console": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Search Console",
+      "type": "boolean"
+    },
+    "has_default_share_image": {
+      "readonly": false,
+      "required": false,
+      "string": "Use a image by default for sharing",
+      "type": "boolean"
+    },
+    "has_plausible_shared_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Plausible Analytics",
+      "type": "boolean"
+    },
+    "module_website_livechat": {
+      "readonly": false,
+      "required": false,
+      "string": "Module Website Livechat",
+      "type": "boolean"
+    },
+    "fiscalyear_last_day": {
+      "readonly": false,
+      "required": true,
+      "string": "Fiscalyear Last Day",
+      "type": "integer"
+    },
+    "fiscalyear_last_month": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "1",
+          "January"
+        ],
+        [
+          "2",
+          "February"
+        ],
+        [
+          "3",
+          "March"
+        ],
+        [
+          "4",
+          "April"
+        ],
+        [
+          "5",
+          "May"
+        ],
+        [
+          "6",
+          "June"
+        ],
+        [
+          "7",
+          "July"
+        ],
+        [
+          "8",
+          "August"
+        ],
+        [
+          "9",
+          "September"
+        ],
+        [
+          "10",
+          "October"
+        ],
+        [
+          "11",
+          "November"
+        ],
+        [
+          "12",
+          "December"
+        ]
+      ],
+      "string": "Fiscalyear Last Month",
+      "type": "selection"
+    },
+    "use_anglo_saxon": {
+      "readonly": false,
+      "required": false,
+      "string": "Anglo-Saxon Accounting",
+      "type": "boolean"
+    },
+    "invoicing_switch_threshold": {
+      "help": "Every payment and invoice before this date will receive the 'From Invoicing' status, hiding all the accounting entries related to it. Use this option after installing Accounting if you were using only Invoicing before, before importing all your actual accounting data in to Odoo.",
+      "readonly": false,
+      "required": false,
+      "string": "Invoicing Switch Threshold",
+      "type": "date"
+    },
+    "group_fiscal_year": {
+      "readonly": false,
+      "required": false,
+      "string": "Fiscal Years",
+      "type": "boolean"
+    },
+    "predict_bill_product": {
+      "readonly": false,
+      "required": false,
+      "string": "Predict Bill Product",
+      "type": "boolean"
+    },
+    "sign_invoice": {
+      "readonly": false,
+      "required": false,
+      "string": "Authorized Signatory on invoice",
+      "type": "boolean"
+    },
+    "signing_user": {
+      "help": "Select a user here to override every signature on invoice by this user's signature",
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Signature used to sign all the invoice",
+      "type": "many2one"
+    },
+    "module_sign": {
+      "readonly": true,
+      "required": false,
+      "string": "Sign",
+      "type": "boolean"
+    },
+    "deferred_expense_journal_id": {
+      "help": "Journal used for deferred entries",
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Deferred Expense Journal",
+      "type": "many2one"
+    },
+    "deferred_expense_account_id": {
+      "help": "Account used for deferred expenses",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Deferred Expense Account",
+      "type": "many2one"
+    },
+    "deferred_expense_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Deferred Expense Account Active",
+      "type": "boolean"
+    },
+    "generate_deferred_expense_entries_method": {
+      "help": "Method used to generate deferred entries",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "on_validation",
+          "On bill validation"
+        ],
+        [
+          "manual",
+          "Manually & Grouped"
+        ]
+      ],
+      "string": "Generate Deferred Expense Entries",
+      "type": "selection"
+    },
+    "deferred_expense_amount_computation_method": {
+      "help": "Method used to compute the amount of deferred entries",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "day",
+          "By Days"
+        ],
+        [
+          "month",
+          "By Months"
+        ],
+        [
+          "full_months",
+          "By Full Months"
+        ]
+      ],
+      "string": "Deferred Expense Based on",
+      "type": "selection"
+    },
+    "deferred_expense_periodicity": {
+      "help": "Periodicity to post deferred entries",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "month",
+          "Monthly"
+        ],
+        [
+          "year",
+          "Yearly"
+        ]
+      ],
+      "string": "Deferred Expense Periodicity",
+      "type": "selection"
+    },
+    "deferred_revenue_journal_id": {
+      "help": "Journal used for deferred entries",
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Deferred Revenue Journal",
+      "type": "many2one"
+    },
+    "deferred_revenue_account_id": {
+      "help": "Account used for deferred revenues",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Deferred Revenue Account",
+      "type": "many2one"
+    },
+    "deferred_revenue_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Deferred Revenue Account Active",
+      "type": "boolean"
+    },
+    "generate_deferred_revenue_entries_method": {
+      "help": "Method used to generate deferred entries",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "on_validation",
+          "On bill validation"
+        ],
+        [
+          "manual",
+          "Manually & Grouped"
+        ]
+      ],
+      "string": "Generate Deferred Revenue Entries",
+      "type": "selection"
+    },
+    "deferred_revenue_amount_computation_method": {
+      "help": "Method used to compute the amount of deferred entries",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "day",
+          "By Days"
+        ],
+        [
+          "month",
+          "By Months"
+        ],
+        [
+          "full_months",
+          "By Full Months"
+        ]
+      ],
+      "string": "Deferred Revenue Based on",
+      "type": "selection"
+    },
+    "deferred_revenue_periodicity": {
+      "help": "Periodicity to post deferred entries",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "month",
+          "Monthly"
+        ],
+        [
+          "year",
+          "Yearly"
+        ]
+      ],
+      "string": "Deferred Revenue Periodicity",
+      "type": "selection"
+    },
+    "module_account_transfer": {
+      "readonly": false,
+      "required": false,
+      "string": "Enable Auto Transfer",
+      "type": "boolean"
+    },
+    "pay_invoices_online": {
+      "readonly": false,
+      "required": false,
+      "string": "Pay Invoices Online",
+      "type": "boolean"
+    },
+    "vat_check_vies": {
+      "readonly": false,
+      "required": false,
+      "string": "Verify VAT Numbers",
+      "type": "boolean"
+    },
+    "currency_interval_unit": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "manually",
+          "Manually"
+        ],
+        [
+          "daily",
+          "Daily"
+        ],
+        [
+          "weekly",
+          "Weekly"
+        ],
+        [
+          "monthly",
+          "Monthly"
+        ]
+      ],
+      "string": "Interval Unit",
+      "type": "selection"
+    },
+    "currency_provider": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "ecb",
+          "European Central Bank"
+        ],
+        [
+          "xe_com",
+          "xe.com"
+        ],
+        [
+          "cbuae",
+          "[AE] Central Bank of the UAE"
+        ],
+        [
+          "bnb",
+          "[BG] Bulgaria National Bank"
+        ],
+        [
+          "bbr",
+          "[BR] Central Bank of Brazil"
+        ],
+        [
+          "boc",
+          "[CA] Bank of Canada"
+        ],
+        [
+          "fta",
+          "[CH] Federal Tax Administration of Switzerland"
+        ],
+        [
+          "mindicador",
+          "[CL] Central Bank of Chile via mindicador.cl"
+        ],
+        [
+          "banrepco",
+          "[CO] Bank of the Republic"
+        ],
+        [
+          "cu",
+          "[CU] Central Bank of Cuba"
+        ],
+        [
+          "cnb",
+          "[CZ] Czech National Bank"
+        ],
+        [
+          "cbegy",
+          "[EG] Central Bank of Egypt"
+        ],
+        [
+          "nbg",
+          "[GE] National Bank of Georgia"
+        ],
+        [
+          "banguat",
+          "[GT] Bank of Guatemala"
+        ],
+        [
+          "mnb",
+          "[HU] Magyar Nemzeti Bank"
+        ],
+        [
+          "bi",
+          "[ID] Bank Indonesia"
+        ],
+        [
+          "boi",
+          "[IT] Bank of Italy"
+        ],
+        [
+          "nbkz",
+          "[KZ] National Bank of Kazakhstan"
+        ],
+        [
+          "banxico",
+          "[MX] Bank of Mexico"
+        ],
+        [
+          "bnm",
+          "[MY] Bank Negara Malaysia"
+        ],
+        [
+          "bcrp",
+          "[PE] SUNAT (replaces Bank of Peru)"
+        ],
+        [
+          "nbp",
+          "[PL] National Bank of Poland"
+        ],
+        [
+          "bnr",
+          "[RO] National Bank of Romania"
+        ],
+        [
+          "srb",
+          "[SE] Sveriges Riksbank"
+        ],
+        [
+          "bsi",
+          "[SI] Bank of Slovenia"
+        ],
+        [
+          "bot",
+          "[TH] Bank of Thailand"
+        ],
+        [
+          "tcmb",
+          "[TR] Central Bank of the Republic of Türkiye"
+        ],
+        [
+          "hmrc",
+          "[UK] HM Revenue & Customs"
+        ],
+        [
+          "bcu",
+          "[UY] Uruguayan Central Bank"
+        ],
+        [
+          "cbu",
+          "[UZ] Central Bank of Uzbekistan"
+        ]
+      ],
+      "string": "Service Provider",
+      "type": "selection"
+    },
+    "currency_next_execution_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Execution Date",
+      "type": "date"
+    },
+    "module_website_hr_recruitment": {
+      "readonly": false,
+      "required": false,
+      "string": "Online Posting",
+      "type": "boolean"
+    },
+    "module_hr_recruitment_survey": {
+      "readonly": false,
+      "required": false,
+      "string": "Interview Forms",
+      "type": "boolean"
+    },
+    "module_hr_recruitment_extract": {
+      "readonly": false,
+      "required": false,
+      "string": "Send CV to OCR to fill applications",
+      "type": "boolean"
+    },
+    "module_project_forecast": {
+      "readonly": false,
+      "required": false,
+      "string": "Project Planning",
+      "type": "boolean"
+    },
+    "module_planning_field_service": {
+      "readonly": false,
+      "required": false,
+      "string": "Field Service",
+      "type": "boolean"
+    },
+    "planning_generation_interval": {
+      "readonly": false,
+      "required": true,
+      "string": "Rate Of Shift Generation",
+      "type": "integer"
+    },
+    "planning_employee_unavailabilities": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "switch",
+          "Switch shifts with other employees"
+        ],
+        [
+          "unassign",
+          "Unassign themselves from shifts"
+        ]
+      ],
+      "string": "Employee Unavailabilities",
+      "type": "selection"
+    },
+    "planning_self_unassign_days_before": {
+      "help": "Deadline in days for shift unassignment",
+      "readonly": false,
+      "required": false,
+      "string": "Days before shift for unassignment",
+      "type": "integer"
+    },
+    "lock_confirmed_po": {
+      "readonly": false,
+      "required": false,
+      "string": "Lock Confirmed Orders",
+      "type": "boolean"
+    },
+    "po_lock": {
+      "help": "Purchase Order Modification used when you want to purchase order editable after confirm",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "edit",
+          "Allow to edit purchase orders"
+        ],
+        [
+          "lock",
+          "Confirmed purchase orders are not editable"
+        ]
+      ],
+      "string": "Purchase Order Modification *",
+      "type": "selection"
+    },
+    "po_order_approval": {
+      "readonly": false,
+      "required": false,
+      "string": "Purchase Order Approval",
+      "type": "boolean"
+    },
+    "po_double_validation": {
+      "help": "Provide a double validation mechanism for purchases",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "one_step",
+          "Confirm purchase orders in one step"
+        ],
+        [
+          "two_step",
+          "Get 2 levels of approvals to confirm a purchase order"
+        ]
+      ],
+      "string": "Levels of Approvals *",
+      "type": "selection"
+    },
+    "po_double_validation_amount": {
+      "help": "Minimum amount for which a double validation is required",
+      "readonly": false,
+      "required": false,
+      "string": "Minimum Amount",
+      "type": "monetary"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "group_warning_purchase": {
+      "readonly": false,
+      "required": false,
+      "string": "Purchase Warnings",
+      "type": "boolean"
+    },
+    "module_account_3way_match": {
+      "readonly": false,
+      "required": false,
+      "string": "3-way matching: purchases, receptions and bills",
+      "type": "boolean"
+    },
+    "module_purchase_requisition": {
+      "readonly": false,
+      "required": false,
+      "string": "Purchase Agreements",
+      "type": "boolean"
+    },
+    "module_purchase_alternative": {
+      "readonly": false,
+      "required": false,
+      "string": "Purchase Alternative",
+      "type": "boolean"
+    },
+    "module_purchase_product_matrix": {
+      "readonly": false,
+      "required": false,
+      "string": "Purchase Grid Entry",
+      "type": "boolean"
+    },
+    "group_send_reminder": {
+      "help": "Allow automatically send email to remind your vendor the receipt date",
+      "readonly": false,
+      "required": false,
+      "string": "Receipt Reminder",
+      "type": "boolean"
+    },
+    "module_stock_landed_costs": {
+      "help": "Affect landed costs on reception operations and split them among products to update their cost price.",
+      "readonly": false,
+      "required": false,
+      "string": "Landed Costs",
+      "type": "boolean"
+    },
+    "group_lot_on_invoice": {
+      "readonly": false,
+      "required": false,
+      "string": "Display Lots & Serial Numbers on Invoices",
+      "type": "boolean"
+    },
+    "barcode_nomenclature_id": {
+      "readonly": false,
+      "relation": "barcode.nomenclature",
+      "required": false,
+      "string": "Nomenclature",
+      "type": "many2one"
+    },
+    "stock_barcode_demo_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Demo Data Active",
+      "type": "boolean"
+    },
+    "show_barcode_nomenclature": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Barcode Nomenclature",
+      "type": "boolean"
+    },
+    "stock_barcode_mute_sound_notifications": {
+      "readonly": false,
+      "required": false,
+      "string": "Mute Barcode application sounds",
+      "type": "boolean"
+    },
+    "barcode_max_time_between_keys_in_ms": {
+      "help": "Maximum delay between each key in ms (100 ms by default)",
+      "readonly": false,
+      "required": false,
+      "string": "Max time between each key",
+      "type": "integer"
+    },
+    "barcode_rfid_batch_time": {
+      "readonly": false,
+      "required": false,
+      "string": "RFID Timer",
+      "type": "integer"
+    },
+    "barcode_separator_regex": {
+      "help": "This regex is used in the Barcode application to separate individual barcodes when an aggregate barcode (i.e. single barcode consisting of multiple barcode encodings) is scanned.",
+      "readonly": false,
+      "required": false,
+      "string": "Multiscan Separator",
+      "type": "char"
+    },
+    "module_whatsapp_stock": {
+      "readonly": false,
+      "required": false,
+      "string": "WhatsApp Confirmation",
+      "type": "boolean"
+    },
+    "stock_sms_confirmation_template_id": {
+      "help": "SMS sent to the customer once the order is delivered.",
+      "readonly": false,
+      "relation": "sms.template",
+      "required": false,
+      "string": "SMS Template",
+      "type": "many2one"
+    },
+    "channel_id": {
+      "readonly": false,
+      "relation": "im_livechat.channel",
+      "required": false,
+      "string": "Website Live Channel",
+      "type": "many2one"
+    },
+    "account_peppol_edi_user": {
+      "readonly": true,
+      "relation": "account_edi_proxy_client.user",
+      "required": false,
+      "string": "Account Peppol Edi User",
+      "type": "many2one"
+    },
+    "account_peppol_edi_mode": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "prod",
+          "Production mode"
+        ],
+        [
+          "test",
+          "Test mode"
+        ],
+        [
+          "demo",
+          "Demo mode"
+        ]
+      ],
+      "string": "EDI operating mode",
+      "type": "selection"
+    },
+    "account_peppol_contact_email": {
+      "readonly": false,
+      "required": false,
+      "string": "Account Peppol Contact Email",
+      "type": "char"
+    },
+    "account_peppol_eas": {
+      "help": "Code used to identify the Endpoint for BIS Billing 3.0 and its derivatives.\n             List available at https://docs.peppol.eu/poacc/billing/3.0/codelist/eas/",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "9923",
+          "Albania VAT"
+        ],
+        [
+          "9922",
+          "Andorra VAT"
+        ],
+        [
+          "0151",
+          "Australia ABN"
+        ],
+        [
+          "9914",
+          "Austria UID"
+        ],
+        [
+          "9915",
+          "Austria VOKZ"
+        ],
+        [
+          "0208",
+          "Belgian Company Registry"
+        ],
+        [
+          "9925",
+          "Belgian VAT"
+        ],
+        [
+          "9924",
+          "Bosnia and Herzegovina VAT"
+        ],
+        [
+          "9926",
+          "Bulgaria VAT"
+        ],
+        [
+          "9934",
+          "Croatia VAT"
+        ],
+        [
+          "9928",
+          "Cyprus VAT"
+        ],
+        [
+          "9929",
+          "Czech Republic VAT"
+        ],
+        [
+          "0096",
+          "Denmark P"
+        ],
+        [
+          "0184",
+          "Denmark CVR"
+        ],
+        [
+          "0198",
+          "Denmark SE"
+        ],
+        [
+          "0191",
+          "Estonia Company code"
+        ],
+        [
+          "9931",
+          "Estonia VAT"
+        ],
+        [
+          "0037",
+          "Finland LY-tunnus"
+        ],
+        [
+          "0216",
+          "Finland OVT code"
+        ],
+        [
+          "0213",
+          "Finland VAT"
+        ],
+        [
+          "0002",
+          "France SIRENE"
+        ],
+        [
+          "0009",
+          "France SIRET"
+        ],
+        [
+          "9957",
+          "France VAT"
+        ],
+        [
+          "0225",
+          "France FRCTC Electronic Address"
+        ],
+        [
+          "0240",
+          "France Register of legal persons"
+        ],
+        [
+          "0246",
+          "German Electronic Business Address"
+        ],
+        [
+          "0204",
+          "Germany Leitweg-ID"
+        ],
+        [
+          "9930",
+          "Germany VAT"
+        ],
+        [
+          "9933",
+          "Greece VAT"
+        ],
+        [
+          "9910",
+          "Hungary VAT"
+        ],
+        [
+          "0196",
+          "Iceland Kennitala"
+        ],
+        [
+          "9935",
+          "Ireland VAT"
+        ],
+        [
+          "0211",
+          "Italia Partita IVA"
+        ],
+        [
+          "0097",
+          "Italia FTI"
+        ],
+        [
+          "0188",
+          "Japan SST"
+        ],
+        [
+          "0221",
+          "Japan IIN"
+        ],
+        [
+          "0218",
+          "Latvia Unified registration number"
+        ],
+        [
+          "9939",
+          "Latvia VAT"
+        ],
+        [
+          "9936",
+          "Liechtenstein VAT"
+        ],
+        [
+          "0200",
+          "Lithuania JAK"
+        ],
+        [
+          "9937",
+          "Lithuania VAT"
+        ],
+        [
+          "9938",
+          "Luxembourg VAT"
+        ],
+        [
+          "9942",
+          "Macedonia VAT"
+        ],
+        [
+          "0230",
+          "Malaysia"
+        ],
+        [
+          "9943",
+          "Malta VAT"
+        ],
+        [
+          "9940",
+          "Monaco VAT"
+        ],
+        [
+          "9941",
+          "Montenegro VAT"
+        ],
+        [
+          "0106",
+          "Netherlands KvK"
+        ],
+        [
+          "0190",
+          "Netherlands OIN"
+        ],
+        [
+          "9944",
+          "Netherlands VAT"
+        ],
+        [
+          "0244",
+          "Nigeria Tax Identification"
+        ],
+        [
+          "0192",
+          "Norway Org.nr."
+        ],
+        [
+          "9945",
+          "Poland VAT"
+        ],
+        [
+          "9946",
+          "Portugal VAT"
+        ],
+        [
+          "9947",
+          "Romania VAT"
+        ],
+        [
+          "9948",
+          "Serbia VAT"
+        ],
+        [
+          "0195",
+          "Singapore UEN"
+        ],
+        [
+          "0245",
+          "SK Tax identification number (DIČ)"
+        ],
+        [
+          "9949",
+          "Slovenia VAT"
+        ],
+        [
+          "9950",
+          "Slovakia VAT"
+        ],
+        [
+          "9920",
+          "Spain VAT"
+        ],
+        [
+          "0007",
+          "Sweden Org.nr."
+        ],
+        [
+          "9955",
+          "Sweden VAT"
+        ],
+        [
+          "9927",
+          "Swiss VAT"
+        ],
+        [
+          "0183",
+          "Swiss UIDB"
+        ],
+        [
+          "9952",
+          "Turkey VAT"
+        ],
+        [
+          "0235",
+          "UAE Tax Identification Number (TIN)"
+        ],
+        [
+          "9932",
+          "United Kingdom VAT"
+        ],
+        [
+          "9959",
+          "USA EIN"
+        ],
+        [
+          "0060",
+          "DUNS Number"
+        ],
+        [
+          "0088",
+          "EAN Location Code"
+        ],
+        [
+          "0130",
+          "Directorates of the European Commission"
+        ],
+        [
+          "0135",
+          "SIA Object Identifiers"
+        ],
+        [
+          "0142",
+          "SECETI Object Identifiers"
+        ],
+        [
+          "0193",
+          "UBL.BE party identifier"
+        ],
+        [
+          "0199",
+          "Legal Entity Identifier (LEI)"
+        ],
+        [
+          "0201",
+          "Codice Univoco Unità Organizzativa iPA"
+        ],
+        [
+          "0202",
+          "Indirizzo di Posta Elettronica Certificata"
+        ],
+        [
+          "0209",
+          "GS1 identification keys"
+        ],
+        [
+          "0210",
+          "Codice Fiscale"
+        ],
+        [
+          "9913",
+          "Business Registers Network"
+        ],
+        [
+          "9918",
+          "S.W.I.F.T"
+        ],
+        [
+          "9919",
+          "Kennziffer des Unternehmensregisters"
+        ],
+        [
+          "9951",
+          "San Marino VAT"
+        ],
+        [
+          "9953",
+          "Vatican VAT"
+        ],
+        [
+          "AN",
+          "O.F.T.P. (ODETTE File Transfer Protocol)"
+        ],
+        [
+          "AQ",
+          "X.400 address for mail text"
+        ],
+        [
+          "AS",
+          "AS2 exchange"
+        ],
+        [
+          "AU",
+          "File Transfer Protocol"
+        ],
+        [
+          "EM",
+          "Electronic mail"
+        ],
+        [
+          "odemo",
+          "Odoo Demo ID"
+        ]
+      ],
+      "string": "Peppol ID",
+      "type": "selection"
+    },
+    "account_peppol_edi_identification": {
+      "help": "The unique id that identifies this user, typically the vat",
+      "readonly": true,
+      "required": false,
+      "string": "Edi Identification",
+      "type": "char"
+    },
+    "account_peppol_endpoint": {
+      "help": "Unique identifier used by the BIS Billing 3.0 and its derivatives, also known as 'Endpoint ID'.",
+      "readonly": false,
+      "required": false,
+      "string": "Peppol Endpoint",
+      "type": "char"
+    },
+    "account_peppol_migration_key": {
+      "readonly": false,
+      "required": false,
+      "string": "Migration Key",
+      "type": "char"
+    },
+    "account_peppol_phone_number": {
+      "help": "This number is used for identification purposes only.",
+      "readonly": false,
+      "required": false,
+      "string": "Mobile number",
+      "type": "char"
+    },
+    "account_peppol_proxy_state": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "not_registered",
+          "Not registered"
+        ],
+        [
+          "sender",
+          "Can send but not receive"
+        ],
+        [
+          "smp_registration",
+          "Can send, pending registration to receive"
+        ],
+        [
+          "receiver",
+          "Can send and receive"
+        ],
+        [
+          "rejected",
+          "Rejected"
+        ]
+      ],
+      "string": "PEPPOL status",
+      "type": "selection"
+    },
+    "account_peppol_purchase_journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Peppol Purchase Journal",
+      "type": "many2one"
+    },
+    "peppol_external_provider": {
+      "readonly": false,
+      "required": false,
+      "string": "Peppol External Provider",
+      "type": "char"
+    },
+    "peppol_use_parent_company": {
+      "readonly": true,
+      "required": false,
+      "string": "Peppol Use Parent Company",
+      "type": "boolean"
+    },
+    "peppol_parent_company_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Peppol Parent Company Name",
+      "type": "char"
+    },
+    "account_is_token_out_of_sync": {
+      "help": "This field is used to indicate that the edi user token is out of sync with the proxy server. It is set to True when the token needs to be refreshed or updated.",
+      "readonly": false,
+      "required": false,
+      "string": "Token Out of Sync",
+      "type": "boolean"
+    },
+    "peppol_participation_role": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "sending_and_receiving",
+          "Sending & Receiving"
+        ],
+        [
+          "sending_only",
+          "Sending Only"
+        ]
+      ],
+      "string": "Peppol Participation Role",
+      "type": "selection"
+    },
+    "totals_below_sections": {
+      "help": "When ticked, totals and subtotals appear below the sections of the report.",
+      "readonly": false,
+      "required": false,
+      "string": "Add totals below sections",
+      "type": "boolean"
+    },
+    "account_reports_negative_format": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "parentheses",
+          "(100)"
+        ],
+        [
+          "minus_before",
+          "-100"
+        ]
+      ],
+      "string": "Negative amount display",
+      "type": "selection"
+    },
+    "account_return_periodicity": {
+      "help": "Periodicity",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "monthly",
+          "Monthly"
+        ],
+        [
+          "2_months",
+          "Every 2 months"
+        ],
+        [
+          "trimester",
+          "Quarterly"
+        ],
+        [
+          "4_months",
+          "Every 4 months"
+        ],
+        [
+          "semester",
+          "Semi-annually"
+        ],
+        [
+          "year",
+          "Annually"
+        ],
+        [
+          "fiscalyear",
+          "Fiscal Year"
+        ]
+      ],
+      "string": "Periodicity",
+      "type": "selection"
+    },
+    "account_return_reminder_day": {
+      "readonly": false,
+      "required": true,
+      "string": "Deadline",
+      "type": "integer"
+    },
+    "account_tax_return_journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "recruitment_extract_show_ocr_option_selection": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "no_send",
+          "Do not digitize"
+        ],
+        [
+          "manual_send",
+          "Digitize on demand only"
+        ],
+        [
+          "auto_send",
+          "Digitize automatically"
+        ]
+      ],
+      "string": "Recruitment processing option",
+      "type": "selection"
+    },
+    "days_to_purchase": {
+      "help": "Days needed to confirm a PO, define when a PO should be validated",
+      "readonly": false,
+      "required": false,
+      "string": "Days to Purchase",
+      "type": "integer"
+    },
+    "is_installed_sale": {
+      "readonly": false,
+      "required": false,
+      "string": "Is the Sale Module Installed",
+      "type": "boolean"
+    },
+    "default_invoice_policy": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "order",
+          "Invoice what is ordered"
+        ],
+        [
+          "delivery",
+          "Invoice what is delivered"
+        ]
+      ],
+      "string": "Invoicing Policy",
+      "type": "selection"
+    },
+    "group_auto_done_setting": {
+      "readonly": false,
+      "required": false,
+      "string": "Lock Confirmed Sales",
+      "type": "boolean"
+    },
+    "group_discount_per_so_line": {
+      "readonly": false,
+      "required": false,
+      "string": "Discounts",
+      "type": "boolean"
+    },
+    "group_proforma_sales": {
+      "help": "Allows you to send pro forma invoice.",
+      "readonly": false,
+      "required": false,
+      "string": "Pro Forma Invoice",
+      "type": "boolean"
+    },
+    "group_warning_sale": {
+      "readonly": false,
+      "required": false,
+      "string": "Sale Order Warnings",
+      "type": "boolean"
+    },
+    "group_services_and_material": {
+      "readonly": false,
+      "required": false,
+      "string": "Services & Materials",
+      "type": "boolean"
+    },
+    "automatic_invoice": {
+      "help": "The invoice is generated automatically and available in the customer portal when the transaction is confirmed by the payment provider.\nThe invoice is marked as paid and the payment is registered in the payment journal defined in the configuration of the payment provider.\nThis mode is advised if you issue the final invoice at the order and not after the delivery.",
+      "readonly": false,
+      "required": false,
+      "string": "Automatic Invoice",
+      "type": "boolean"
+    },
+    "invoice_mail_template_id": {
+      "help": "Email sent to the customer once the invoice is available.",
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Email Template",
+      "type": "many2one"
+    },
+    "quotation_validity_days": {
+      "help": "Days between quotation proposal and expiration. 0 days means automatic expiration is disabled",
+      "readonly": false,
+      "required": false,
+      "string": "Default Quotation Validity",
+      "type": "integer"
+    },
+    "portal_confirmation_sign": {
+      "readonly": false,
+      "required": false,
+      "string": "Online Signature",
+      "type": "boolean"
+    },
+    "portal_confirmation_pay": {
+      "readonly": false,
+      "required": false,
+      "string": "Online Payment",
+      "type": "boolean"
+    },
+    "prepayment_percent": {
+      "help": "The percentage of the amount needed to be paid to confirm quotations.",
+      "readonly": false,
+      "required": false,
+      "string": "Prepayment percentage",
+      "type": "float"
+    },
+    "display_product_images_on_so": {
+      "readonly": false,
+      "required": false,
+      "string": "Display Product Images",
+      "type": "boolean"
+    },
+    "downpayment_account_id": {
+      "help": "This account will be used on Downpayment invoices.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Downpayment Account",
+      "type": "many2one"
+    },
+    "downpayment_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Down payment Account Active",
+      "type": "boolean"
+    },
+    "module_product_email_template": {
+      "readonly": false,
+      "required": false,
+      "string": "Specific Email",
+      "type": "boolean"
+    },
+    "module_sale_amazon": {
+      "readonly": false,
+      "required": false,
+      "string": "Amazon Sync",
+      "type": "boolean"
+    },
+    "module_sale_commission": {
+      "readonly": false,
+      "required": false,
+      "string": "Commissions",
+      "type": "boolean"
+    },
+    "module_sale_gelato": {
+      "readonly": false,
+      "required": false,
+      "string": "Gelato",
+      "type": "boolean"
+    },
+    "module_sale_loyalty": {
+      "readonly": false,
+      "required": false,
+      "string": "Coupons & Loyalty",
+      "type": "boolean"
+    },
+    "module_sale_margin": {
+      "readonly": false,
+      "required": false,
+      "string": "Margins",
+      "type": "boolean"
+    },
+    "module_sale_pdf_quote_builder": {
+      "readonly": false,
+      "required": false,
+      "string": "PDF Quote builder",
+      "type": "boolean"
+    },
+    "module_sale_product_matrix": {
+      "readonly": false,
+      "required": false,
+      "string": "Sales Grid Entry",
+      "type": "boolean"
+    },
+    "module_sale_shopee": {
+      "readonly": false,
+      "required": false,
+      "string": "Shopee Sync",
+      "type": "boolean"
+    },
+    "automatic_invoice_reminder": {
+      "readonly": false,
+      "required": false,
+      "string": "Automatic Invoice Reminders",
+      "type": "boolean"
+    },
+    "iso20022_orgid_id": {
+      "help": "Identification assigned by an institution (eg. VAT number).",
+      "readonly": false,
+      "required": false,
+      "string": "Identification",
+      "type": "char"
+    },
+    "iso20022_orgid_issr": {
+      "help": "Will appear in SEPA payments as the name of the party initiating the payment. Limited to 70 characters.",
+      "readonly": false,
+      "required": false,
+      "string": "Issuer",
+      "type": "char"
+    },
+    "iso20022_initiating_party_name": {
+      "help": "Name of the Creditor Reference Party. Usage Rule: Limited to 70 characters in length.",
+      "readonly": false,
+      "required": false,
+      "string": "Your Company Name",
+      "type": "char"
+    },
+    "l10n_fr_rounding_difference_loss_account_id": {
+      "help": "Account used for losses from rounding the lines of French tax reports",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Tax Rounding Loss Account",
+      "type": "many2one"
+    },
+    "l10n_fr_rounding_difference_profit_account_id": {
+      "help": "Account used for profits from rounding the lines of French tax reports",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Tax Rounding Profit Account",
+      "type": "many2one"
+    },
+    "group_sale_order_template": {
+      "readonly": false,
+      "required": false,
+      "string": "Quotation Templates",
+      "type": "boolean"
+    },
+    "company_so_template_id": {
+      "readonly": false,
+      "relation": "sale.order.template",
+      "required": false,
+      "string": "Default Template",
+      "type": "many2one"
+    },
+    "security_lead": {
+      "help": "Margin of error for dates promised to customers. Products will be scheduled for procurement and delivery that many days earlier than the actual promised date, to cope with unexpected delays in the supply chain.",
+      "readonly": false,
+      "required": false,
+      "string": "Security Lead Time",
+      "type": "integer"
+    },
+    "use_security_lead": {
+      "help": "Margin of error for dates promised to customers. Products will be scheduled for delivery that many days earlier than the actual promised date, to cope with unexpected delays in the supply chain.",
+      "readonly": false,
+      "required": false,
+      "string": "Security Lead Time for Sales",
+      "type": "boolean"
+    },
+    "valuation_method": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "periodic",
+          "Periodic (at closing)"
+        ],
+        [
+          "real_time",
+          "Perpetual (at invoicing)"
+        ]
+      ],
+      "string": "Inventory Valuation",
+      "type": "selection"
+    },
+    "cost_method": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "standard",
+          "Standard Price"
+        ],
+        [
+          "fifo",
+          "First In First Out (FIFO)"
+        ],
+        [
+          "average",
+          "Average Cost (AVCO)"
+        ]
+      ],
+      "string": "Inventory Cost Method",
+      "type": "selection"
+    },
+    "inventory_period": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "manual",
+          "Manual"
+        ],
+        [
+          "daily",
+          "Daily"
+        ],
+        [
+          "monthly",
+          "Monthly"
+        ]
+      ],
+      "string": "Inventory Period",
+      "type": "selection"
+    },
+    "stock_journal": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Stock Journal",
+      "type": "many2one"
+    },
+    "stock_valuation_account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Stock Valuation Account",
+      "type": "many2one"
+    },
+    "stock_valuation_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Stock Valuation Account Active",
+      "type": "boolean"
+    },
+    "extract_in_invoice_digitalization_mode": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "no_send",
+          "Do not digitize"
+        ],
+        [
+          "manual_send",
+          "Digitize on demand only"
+        ],
+        [
+          "auto_send",
+          "Digitize automatically"
+        ]
+      ],
+      "string": "Vendor Bills",
+      "type": "selection"
+    },
+    "extract_out_invoice_digitalization_mode": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "no_send",
+          "Do not digitize"
+        ],
+        [
+          "manual_send",
+          "Digitize on demand only"
+        ],
+        [
+          "auto_send",
+          "Digitize automatically"
+        ]
+      ],
+      "string": "Customer Invoices",
+      "type": "selection"
+    },
+    "extract_single_line_per_tax": {
+      "readonly": false,
+      "required": false,
+      "string": "Single Invoice Line Per Tax",
+      "type": "boolean"
+    },
+    "group_product_price_comparison": {
+      "help": "Add a strikethrough price to your /shop and product pages for comparison purposes.It will not be displayed if pricelists apply.",
+      "readonly": false,
+      "required": false,
+      "string": "Comparison Price",
+      "type": "boolean"
+    },
+    "group_gmc_feed": {
+      "readonly": false,
+      "required": false,
+      "string": "Google Merchant Center",
+      "type": "boolean"
+    },
+    "group_automate_suggested_products": {
+      "readonly": false,
+      "required": false,
+      "string": "Automate suggested products",
+      "type": "boolean"
+    },
+    "module_website_sale_autocomplete": {
+      "readonly": false,
+      "required": false,
+      "string": "Address Autocomplete",
+      "type": "boolean"
+    },
+    "module_website_sale_collect": {
+      "readonly": false,
+      "required": false,
+      "string": "Click & Collect",
+      "type": "boolean"
+    },
+    "add_to_cart_action": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "stay",
+          "Stay on Product Page"
+        ],
+        [
+          "go_to_cart",
+          "Go to cart"
+        ]
+      ],
+      "string": "Add To Cart Action",
+      "type": "selection"
+    },
+    "cart_recovery_mail_template": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Cart Recovery Email",
+      "type": "many2one"
+    },
+    "cart_abandoned_delay": {
+      "readonly": false,
+      "required": false,
+      "string": "Abandoned Delay",
+      "type": "float"
+    },
+    "send_abandoned_cart_email": {
+      "readonly": false,
+      "required": false,
+      "string": "Abandoned Email",
+      "type": "boolean"
+    },
+    "salesperson_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesperson",
+      "type": "many2one"
+    },
+    "salesteam_id": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Team",
+      "type": "many2one"
+    },
+    "prevent_sale": {
+      "readonly": false,
+      "required": false,
+      "string": "Hide Add To Cart",
+      "type": "boolean"
+    },
+    "prevent_sale_for": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "zero_price",
+          "0 price products"
+        ],
+        [
+          "specific_categories",
+          "Specific categories"
+        ]
+      ],
+      "string": "Prevent Sale For",
+      "type": "selection"
+    },
+    "prevent_sale_for_categories": {
+      "readonly": false,
+      "relation": "product.public.category",
+      "required": false,
+      "string": "Categories",
+      "type": "many2many"
+    },
+    "contact_us_link_url": {
+      "readonly": false,
+      "required": false,
+      "string": "Link URL",
+      "type": "char"
+    },
+    "show_line_subtotals_tax_selection": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "tax_excluded",
+          "Tax Excluded"
+        ],
+        [
+          "tax_included",
+          "Tax Included"
+        ]
+      ],
+      "string": "Line Subtotals Tax Display",
+      "type": "selection"
+    },
+    "confirmation_email_template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Confirmation Email Template",
+      "type": "many2one"
+    },
+    "send_order_rating_emails": {
+      "readonly": false,
+      "required": false,
+      "string": "Request ratings",
+      "type": "boolean"
+    },
+    "rating_email_delay": {
+      "readonly": false,
+      "required": false,
+      "string": "Days After Order to Send Rating Email",
+      "type": "integer"
+    },
+    "rating_email_template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Rating Email Template",
+      "type": "many2one"
+    },
+    "restricted_uom_ids": {
+      "readonly": false,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Restrict Packagings",
+      "type": "many2many"
+    },
+    "account_on_checkout": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "optional",
+          "Optional"
+        ],
+        [
+          "disabled",
+          "Disabled"
+        ],
+        [
+          "mandatory",
+          "Mandatory"
+        ]
+      ],
+      "string": "Customer Accounts",
+      "type": "selection"
+    },
+    "ecommerce_access": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "everyone",
+          "All users"
+        ],
+        [
+          "logged_in",
+          "Logged in users"
+        ]
+      ],
+      "string": "Ecommerce Access",
+      "type": "selection"
+    },
+    "default_allow_out_of_stock_order": {
+      "readonly": false,
+      "required": false,
+      "string": "Continue selling when out-of-stock",
+      "type": "boolean"
+    },
+    "default_available_threshold": {
+      "readonly": false,
+      "required": false,
+      "string": "Show Threshold",
+      "type": "float"
+    },
+    "default_show_availability": {
+      "readonly": false,
+      "required": false,
+      "string": "Show availability Qty",
+      "type": "boolean"
+    },
+    "website_warehouse_id": {
+      "readonly": false,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    }
+  }
+}

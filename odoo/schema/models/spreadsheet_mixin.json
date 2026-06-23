@@ -1,0 +1,75 @@
+{
+  "model": "spreadsheet.mixin",
+  "name": "Spreadsheet mixin",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "spreadsheet_binary_data": {
+      "readonly": false,
+      "required": false,
+      "string": "Spreadsheet file",
+      "type": "binary"
+    },
+    "spreadsheet_data": {
+      "readonly": false,
+      "required": false,
+      "string": "Spreadsheet Data",
+      "type": "text"
+    },
+    "spreadsheet_file_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Spreadsheet File Name",
+      "type": "char"
+    },
+    "thumbnail": {
+      "readonly": false,
+      "required": false,
+      "string": "Thumbnail",
+      "type": "binary"
+    },
+    "spreadsheet_snapshot": {
+      "readonly": false,
+      "required": false,
+      "string": "Spreadsheet Snapshot",
+      "type": "binary"
+    },
+    "display_thumbnail": {
+      "readonly": false,
+      "required": false,
+      "string": "Display Thumbnail",
+      "type": "binary"
+    },
+    "spreadsheet_revision_ids": {
+      "readonly": false,
+      "relation": "spreadsheet.revision",
+      "required": false,
+      "string": "Spreadsheet Revision",
+      "type": "one2many"
+    },
+    "spreadsheet_image_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Spreadsheet Image",
+      "type": "many2many"
+    },
+    "current_revision_uuid": {
+      "readonly": true,
+      "required": false,
+      "string": "Current Revision Uuid",
+      "type": "char"
+    }
+  }
+}

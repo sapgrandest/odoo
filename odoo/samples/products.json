@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Produit Test 1",
+    "list_price": 100.0,
+    "standard_price": 50.0,
+    "type": "consu",
+    "categ_id": "All",
+    "description": "Description du produit test 1",
+    "default_code": "REF-001"
+  },
+  {
+    "name": "Produit Test 2",
+    "list_price": 200.0,
+    "standard_price": 80.0,
+    "type": "service",
+    "categ_id": "All",
+    "description": "Description du produit test 2",
+    "default_code": "REF-002"
+  },
+  {
+    "name": "Produit Test 3",
+    "list_price": 350.0,
+    "standard_price": 150.0,
+    "type": "consu",
+    "is_storable": true,
+    "categ_id": "All",
+    "description": "Description du produit test 3",
+    "default_code": "REF-003"
+  }
+]

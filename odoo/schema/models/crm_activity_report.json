@@ -1,0 +1,176 @@
+{
+  "model": "crm.activity.report",
+  "name": "CRM Activity Analysis",
+  "field_count": 22,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "date": {
+      "readonly": true,
+      "required": false,
+      "string": "Completion Date",
+      "type": "datetime"
+    },
+    "lead_create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Creation Date",
+      "type": "datetime"
+    },
+    "date_conversion": {
+      "readonly": true,
+      "required": false,
+      "string": "Conversion Date",
+      "type": "datetime"
+    },
+    "date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Expected Closing",
+      "type": "date"
+    },
+    "date_closed": {
+      "readonly": true,
+      "required": false,
+      "string": "Closed Date",
+      "type": "datetime"
+    },
+    "author_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Assigned To",
+      "type": "many2one"
+    },
+    "user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesperson",
+      "type": "many2one"
+    },
+    "team_id": {
+      "readonly": true,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Team",
+      "type": "many2one"
+    },
+    "lead_id": {
+      "readonly": true,
+      "relation": "crm.lead",
+      "required": false,
+      "string": "Opportunity",
+      "type": "many2one"
+    },
+    "body": {
+      "readonly": true,
+      "required": false,
+      "string": "Activity Description",
+      "type": "html"
+    },
+    "subtype_id": {
+      "readonly": true,
+      "relation": "mail.message.subtype",
+      "required": false,
+      "string": "Subtype",
+      "type": "many2one"
+    },
+    "mail_activity_type_id": {
+      "readonly": true,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Activity Type",
+      "type": "many2one"
+    },
+    "country_id": {
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "stage_id": {
+      "readonly": true,
+      "relation": "crm.stage",
+      "required": false,
+      "string": "Stage",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "lead_type": {
+      "help": "Type is used to separate Leads and Opportunities",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "lead",
+          "Lead"
+        ],
+        [
+          "opportunity",
+          "Opportunity"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "active": {
+      "readonly": true,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "tag_ids": {
+      "help": "Classify and analyze your lead/opportunity categories like: Training, Service",
+      "readonly": true,
+      "relation": "crm.tag",
+      "required": false,
+      "string": "Tags",
+      "type": "many2many"
+    },
+    "won_status": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "won",
+          "Won"
+        ],
+        [
+          "lost",
+          "Lost"
+        ],
+        [
+          "pending",
+          "Pending"
+        ]
+      ],
+      "string": "Is Won",
+      "type": "selection"
+    }
+  }
+}

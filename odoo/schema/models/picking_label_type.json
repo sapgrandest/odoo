@@ -1,0 +1,68 @@
+{
+  "model": "picking.label.type",
+  "name": "Choose whether to print product or lot/sn labels",
+  "field_count": 8,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "picking_ids": {
+      "readonly": false,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Picking",
+      "type": "many2many"
+    },
+    "label_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "products",
+          "Product Labels"
+        ],
+        [
+          "lots",
+          "Lot/SN Labels"
+        ]
+      ],
+      "string": "Labels to print",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

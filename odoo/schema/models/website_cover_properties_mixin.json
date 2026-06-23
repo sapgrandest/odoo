@@ -1,0 +1,25 @@
+{
+  "model": "website.cover_properties.mixin",
+  "name": "Cover Properties Website Mixin",
+  "field_count": 3,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "cover_properties": {
+      "readonly": false,
+      "required": false,
+      "string": "Cover Properties",
+      "type": "text"
+    }
+  }
+}

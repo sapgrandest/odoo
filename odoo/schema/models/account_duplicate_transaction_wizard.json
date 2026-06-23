@@ -1,0 +1,78 @@
+{
+  "model": "account.duplicate.transaction.wizard",
+  "name": "Wizard for duplicate transactions",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "date": {
+      "readonly": false,
+      "required": false,
+      "string": "Starting Date",
+      "type": "date"
+    },
+    "journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "transaction_ids": {
+      "readonly": true,
+      "relation": "account.bank.statement.line",
+      "required": false,
+      "string": "Transaction",
+      "type": "one2many"
+    },
+    "first_ids_in_group": {
+      "readonly": true,
+      "required": false,
+      "string": "First Ids In Group",
+      "type": "json"
+    },
+    "provider_duplicate_ids": {
+      "readonly": true,
+      "relation": "account.bank.statement.line",
+      "required": false,
+      "string": "Provider Duplicate",
+      "type": "one2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "model": "discuss.channel.rtc.session",
+  "name": "Mail RTC session",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "channel_member_id": {
+      "readonly": false,
+      "relation": "discuss.channel.member",
+      "required": true,
+      "string": "Channel Member",
+      "type": "many2one"
+    },
+    "channel_id": {
+      "readonly": true,
+      "relation": "discuss.channel",
+      "required": false,
+      "string": "Channel",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "guest_id": {
+      "readonly": true,
+      "relation": "mail.guest",
+      "required": false,
+      "string": "Guest",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Last Updated On",
+      "type": "datetime"
+    },
+    "is_screen_sharing_on": {
+      "readonly": false,
+      "required": false,
+      "string": "Is sharing the screen",
+      "type": "boolean"
+    },
+    "is_camera_on": {
+      "readonly": false,
+      "required": false,
+      "string": "Is sending user video",
+      "type": "boolean"
+    },
+    "is_muted": {
+      "readonly": false,
+      "required": false,
+      "string": "Is microphone muted",
+      "type": "boolean"
+    },
+    "is_deaf": {
+      "readonly": false,
+      "required": false,
+      "string": "Has disabled incoming sound",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    }
+  }
+}

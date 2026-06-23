@@ -1,0 +1,65 @@
+{
+  "model": "mail.message.schedule",
+  "name": "Scheduled Message",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "mail_message_id": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": true,
+      "string": "Message",
+      "type": "many2one"
+    },
+    "notification_parameters": {
+      "readonly": false,
+      "required": false,
+      "string": "Notification Parameter",
+      "type": "text"
+    },
+    "scheduled_datetime": {
+      "help": "Datetime at which notification should be sent.",
+      "readonly": false,
+      "required": true,
+      "string": "Scheduled Send Date",
+      "type": "datetime"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

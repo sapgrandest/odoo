@@ -1,0 +1,180 @@
+{
+  "model": "l10n_fr_reports.send.vat.report",
+  "name": "Send VAT Report Wizard",
+  "field_count": 25,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "recipient": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "DGI_EDI_TVA",
+          "DGFiP"
+        ],
+        [
+          "CEC_EDI_TVA",
+          "Expert Accountant"
+        ],
+        [
+          "OGA_EDI_TVA",
+          "OGA"
+        ]
+      ],
+      "string": "Recipient",
+      "type": "selection"
+    },
+    "bank_account_line_ids": {
+      "readonly": false,
+      "relation": "l10n_fr_reports.send.vat.report.bank.account.line",
+      "required": false,
+      "string": "Bank Account Line",
+      "type": "one2many"
+    },
+    "bank_account_line_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Bank Account Line Count",
+      "type": "integer"
+    },
+    "has_wrongly_configured_account": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Wrongly Configured Account",
+      "type": "boolean"
+    },
+    "date_from": {
+      "readonly": false,
+      "required": true,
+      "string": "Date From",
+      "type": "date"
+    },
+    "date_to": {
+      "readonly": false,
+      "required": true,
+      "string": "Date To",
+      "type": "date"
+    },
+    "report_id": {
+      "readonly": false,
+      "relation": "account.report",
+      "required": true,
+      "string": "Report",
+      "type": "many2one"
+    },
+    "return_id": {
+      "readonly": false,
+      "relation": "account.return",
+      "required": false,
+      "string": "Return",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "l10n_fr_rof_type": {
+      "help": "Tax obligation reference",
+      "readonly": false,
+      "required": false,
+      "string": "ROF",
+      "type": "integer"
+    },
+    "is_vat_due": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Vat Due",
+      "type": "boolean"
+    },
+    "currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "vat_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Vat Amount",
+      "type": "monetary"
+    },
+    "computed_vat_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Computed Vat Amount",
+      "type": "monetary"
+    },
+    "is_reimbursement_comment": {
+      "readonly": false,
+      "required": false,
+      "string": "Add reimbursement comment",
+      "type": "boolean"
+    },
+    "reimbursement_comment": {
+      "readonly": false,
+      "required": false,
+      "string": "Reimbursement Comment",
+      "type": "text"
+    },
+    "show_express_mention": {
+      "readonly": false,
+      "required": false,
+      "string": "Show Express Mention",
+      "type": "boolean"
+    },
+    "express_mention_reason": {
+      "readonly": false,
+      "required": false,
+      "string": "Express Mention Reason",
+      "type": "text"
+    },
+    "report_async_document_ids": {
+      "readonly": false,
+      "relation": "account.report.async.document",
+      "required": false,
+      "string": "Report Async Document",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

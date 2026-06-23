@@ -1,0 +1,203 @@
+{
+  "model": "account.fiscal.position",
+  "name": "Fiscal Position",
+  "field_count": 28,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Fiscal Position",
+      "type": "char"
+    },
+    "active": {
+      "help": "By unchecking the active field, you may hide a fiscal position without deleting it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "account_ids": {
+      "readonly": false,
+      "relation": "account.fiscal.position.account",
+      "required": false,
+      "string": "Account Mapping",
+      "type": "one2many"
+    },
+    "account_map": {
+      "readonly": true,
+      "required": false,
+      "string": "Account Map",
+      "type": "json"
+    },
+    "tax_ids": {
+      "readonly": false,
+      "relation": "account.tax",
+      "required": false,
+      "string": "Taxes",
+      "type": "many2many"
+    },
+    "tax_map": {
+      "readonly": true,
+      "required": false,
+      "string": "Tax Map",
+      "type": "json"
+    },
+    "note": {
+      "help": "Legal mentions that have to be printed on the invoices.",
+      "readonly": false,
+      "required": false,
+      "string": "Notes",
+      "type": "html"
+    },
+    "auto_apply": {
+      "help": "Apply tax & account mappings on invoices automatically if the matching criterias (VAT/Country) are met.",
+      "readonly": false,
+      "required": false,
+      "string": "Detect Automatically",
+      "type": "boolean"
+    },
+    "vat_required": {
+      "help": "Apply only if partner has a VAT number.",
+      "readonly": false,
+      "required": false,
+      "string": "VAT required",
+      "type": "boolean"
+    },
+    "company_country_id": {
+      "help": "The country to use the tax reports from for this company",
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Company Country",
+      "type": "many2one"
+    },
+    "fiscal_country_codes": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Company Fiscal Country Code",
+      "type": "char"
+    },
+    "country_id": {
+      "help": "Apply only if delivery country matches.",
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "is_domestic": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Domestic",
+      "type": "boolean"
+    },
+    "country_group_id": {
+      "help": "Apply only if delivery country matches the group.",
+      "readonly": false,
+      "relation": "res.country.group",
+      "required": false,
+      "string": "Country Group",
+      "type": "many2one"
+    },
+    "state_ids": {
+      "readonly": false,
+      "relation": "res.country.state",
+      "required": false,
+      "string": "Federal States",
+      "type": "many2many"
+    },
+    "zip_from": {
+      "readonly": false,
+      "required": false,
+      "string": "Zip Range From",
+      "type": "char"
+    },
+    "zip_to": {
+      "readonly": false,
+      "required": false,
+      "string": "Zip Range To",
+      "type": "char"
+    },
+    "states_count": {
+      "readonly": true,
+      "required": false,
+      "string": "States Count",
+      "type": "integer"
+    },
+    "foreign_vat": {
+      "help": "The tax ID of your company in the region mapped by this fiscal position.",
+      "readonly": false,
+      "required": false,
+      "string": "Foreign Tax ID",
+      "type": "char"
+    },
+    "foreign_vat_header_mode": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "templates_found",
+          "Templates Found"
+        ],
+        [
+          "no_template",
+          "No Template"
+        ]
+      ],
+      "string": "Foreign Vat Header Mode",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

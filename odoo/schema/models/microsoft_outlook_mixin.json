@@ -1,0 +1,50 @@
+{
+  "model": "microsoft.outlook.mixin",
+  "name": "Microsoft Outlook Mixin",
+  "field_count": 7,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "microsoft_outlook_refresh_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Refresh Token",
+      "type": "char"
+    },
+    "microsoft_outlook_access_token": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Access Token",
+      "type": "char"
+    },
+    "microsoft_outlook_access_token_expiration": {
+      "readonly": false,
+      "required": false,
+      "string": "Outlook Access Token Expiration Timestamp",
+      "type": "integer"
+    },
+    "microsoft_outlook_uri": {
+      "help": "The URL to generate the authorization code from Outlook",
+      "readonly": true,
+      "required": false,
+      "string": "Authentication URI",
+      "type": "char"
+    }
+  }
+}

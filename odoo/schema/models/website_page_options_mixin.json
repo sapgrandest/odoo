@@ -1,0 +1,73 @@
+{
+  "model": "website.page_options.mixin",
+  "name": "Website page/record specific options",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "header_visible": {
+      "readonly": false,
+      "required": false,
+      "string": "Header Visible",
+      "type": "boolean"
+    },
+    "footer_visible": {
+      "readonly": false,
+      "required": false,
+      "string": "Footer Visible",
+      "type": "boolean"
+    },
+    "breadcrumb_visible": {
+      "readonly": false,
+      "required": false,
+      "string": "Breadcrumb Visible",
+      "type": "boolean"
+    },
+    "header_overlay": {
+      "readonly": false,
+      "required": false,
+      "string": "Header Overlay",
+      "type": "boolean"
+    },
+    "header_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Header Color",
+      "type": "char"
+    },
+    "header_text_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Header Text Color",
+      "type": "char"
+    },
+    "breadcrumb_overlay": {
+      "readonly": false,
+      "required": false,
+      "string": "Breadcrumb Overlay",
+      "type": "boolean"
+    },
+    "breadcrumb_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Breadcrumb Color",
+      "type": "char"
+    },
+    "breadcrumb_text_color": {
+      "readonly": false,
+      "required": false,
+      "string": "Breadcrumb Text Color",
+      "type": "char"
+    }
+  }
+}

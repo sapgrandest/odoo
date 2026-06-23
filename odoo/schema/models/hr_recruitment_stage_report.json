@@ -1,0 +1,95 @@
+{
+  "model": "hr.recruitment.stage.report",
+  "name": "Recruitment Stage Analysis",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "applicant_id": {
+      "readonly": true,
+      "relation": "hr.applicant",
+      "required": false,
+      "string": "Applicant",
+      "type": "many2one"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Applicant Name",
+      "type": "char"
+    },
+    "stage_id": {
+      "readonly": true,
+      "relation": "hr.recruitment.stage",
+      "required": false,
+      "string": "Stage",
+      "type": "many2one"
+    },
+    "job_id": {
+      "readonly": true,
+      "relation": "hr.job",
+      "required": false,
+      "string": "Job",
+      "type": "many2one"
+    },
+    "days_in_stage": {
+      "readonly": true,
+      "required": false,
+      "string": "Average Days in Stage",
+      "type": "float"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "is_hired",
+          "Hired"
+        ],
+        [
+          "in_progress",
+          "In Progress"
+        ],
+        [
+          "refused",
+          "Refused"
+        ],
+        [
+          "archived",
+          "Archived"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "date_begin": {
+      "readonly": true,
+      "required": false,
+      "string": "Start Date",
+      "type": "date"
+    },
+    "date_end": {
+      "readonly": true,
+      "required": false,
+      "string": "End Date",
+      "type": "date"
+    }
+  }
+}

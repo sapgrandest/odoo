@@ -1,0 +1,123 @@
+{
+  "model": "stock.avco.report",
+  "name": "Stock AVCO Justifier",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "User",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": true,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "reference": {
+      "readonly": false,
+      "required": true,
+      "string": "Reference",
+      "type": "char"
+    },
+    "description": {
+      "readonly": false,
+      "required": true,
+      "string": "Description",
+      "type": "text"
+    },
+    "res_model_name": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "stock.move",
+          "Stock Move"
+        ],
+        [
+          "product.value",
+          "Product Value"
+        ]
+      ],
+      "string": "Resource Model Name",
+      "type": "selection"
+    },
+    "quantity": {
+      "readonly": false,
+      "required": true,
+      "string": "Added Quantity",
+      "type": "float"
+    },
+    "value": {
+      "readonly": false,
+      "required": true,
+      "string": "Value",
+      "type": "float"
+    },
+    "added_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Added Value",
+      "type": "float"
+    },
+    "total_quantity": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Quantity",
+      "type": "float"
+    },
+    "total_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Value",
+      "type": "float"
+    },
+    "avco_value": {
+      "readonly": true,
+      "required": false,
+      "string": "AVCO Value",
+      "type": "float"
+    },
+    "justification": {
+      "readonly": true,
+      "required": false,
+      "string": "Justification",
+      "type": "text"
+    }
+  }
+}

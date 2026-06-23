@@ -1,0 +1,349 @@
+{
+  "model": "product.category",
+  "name": "Product Category",
+  "field_count": 45,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "complete_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Complete Name",
+      "type": "char"
+    },
+    "parent_id": {
+      "readonly": false,
+      "relation": "product.category",
+      "required": false,
+      "string": "Parent Category",
+      "type": "many2one"
+    },
+    "parent_path": {
+      "readonly": false,
+      "required": false,
+      "string": "Parent Path",
+      "type": "char"
+    },
+    "child_id": {
+      "readonly": false,
+      "relation": "product.category",
+      "required": false,
+      "string": "Child Categories",
+      "type": "one2many"
+    },
+    "product_count": {
+      "help": "The number of products under this category (Does not consider the children categories)",
+      "readonly": true,
+      "required": false,
+      "string": "# Products",
+      "type": "integer"
+    },
+    "product_properties_definition": {
+      "readonly": false,
+      "required": false,
+      "string": "Product Properties",
+      "type": "properties_definition"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "property_account_income_categ_id": {
+      "help": "This account will be used when validating a customer invoice.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Income Account",
+      "type": "many2one"
+    },
+    "property_account_expense_categ_id": {
+      "help": "The expense is accounted for when a vendor bill is validated, except in anglo-saxon accounting with perpetual inventory valuation in which case the expense (Cost of Goods Sold account) is recognized at the customer invoice validation.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Expense Account",
+      "type": "many2one"
+    },
+    "route_ids": {
+      "readonly": false,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Routes",
+      "type": "many2many"
+    },
+    "removal_strategy_id": {
+      "help": "Set a specific removal strategy that will be used regardless of the source location for this product category.\n\nFIFO: products/lots that were stocked first will be moved out first.\nLIFO: products/lots that were stocked last will be moved out first.\nClosest location: products/lots closest to the target location will be moved out first.\nFEFO: products/lots with the closest removal date will be moved out first (the availability of this method depends on the \"Expiration Dates\" setting).\nLeast Packages: FIFO but with the least number of packages possible when there are several packages containing the same product.",
+      "readonly": false,
+      "relation": "product.removal",
+      "required": false,
+      "string": "Force Removal Strategy",
+      "type": "many2one"
+    },
+    "parent_route_ids": {
+      "readonly": true,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Parent Routes",
+      "type": "many2many"
+    },
+    "total_route_ids": {
+      "readonly": true,
+      "relation": "stock.route",
+      "required": false,
+      "string": "Total routes",
+      "type": "many2many"
+    },
+    "putaway_rule_ids": {
+      "readonly": false,
+      "relation": "stock.putaway.rule",
+      "required": false,
+      "string": "Putaway Rules",
+      "type": "one2many"
+    },
+    "packaging_reserve_method": {
+      "help": "Reserve Only Full Packagings: will not reserve partial packagings. If customer orders 2 pallets of 1000 units each and you only have 1600 in stock, then only 1000 will be reserved\nReserve Partial Packagings: allow reserving partial packagings. If customer orders 2 pallets of 1000 units each and you only have 1600 in stock, then 1600 will be reserved",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "full",
+          "Reserve Only Full Packagings"
+        ],
+        [
+          "partial",
+          "Reserve Partial Packagings"
+        ]
+      ],
+      "string": "Reserve Packagings",
+      "type": "selection"
+    },
+    "filter_for_stock_putaway_rule": {
+      "readonly": false,
+      "required": false,
+      "string": "stock.putaway.rule",
+      "type": "boolean"
+    },
+    "anglo_saxon_accounting": {
+      "help": "If checked, the product will be valued using the Anglo-Saxon accounting method.",
+      "readonly": true,
+      "required": false,
+      "string": "Use Anglo-Saxon Accounting",
+      "type": "boolean"
+    },
+    "property_valuation": {
+      "help": "Periodic: The accounting entries are suggested manually in the inventory valuation report.\n        Perpetual: An accounting entry is automatically created to value the inventory when a product is billed or invoiced.\n        ",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "periodic",
+          "Periodic (at closing)"
+        ],
+        [
+          "real_time",
+          "Perpetual (at invoicing)"
+        ]
+      ],
+      "string": "Inventory Valuation",
+      "type": "selection"
+    },
+    "property_cost_method": {
+      "help": "Standard Price: The products are valued at their standard cost defined on the product.\n        Average Cost (AVCO): The products are valued at weighted average cost.\n        First In First Out (FIFO): The products are valued supposing those that enter the company first will also leave it first.\n        ",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "standard",
+          "Standard Price"
+        ],
+        [
+          "fifo",
+          "First In First Out (FIFO)"
+        ],
+        [
+          "average",
+          "Average Cost (AVCO)"
+        ]
+      ],
+      "string": "Costing Method",
+      "type": "selection"
+    },
+    "property_stock_journal": {
+      "help": "When doing automated inventory valuation, this is the Accounting Journal in which entries will be automatically posted when stock moves are processed.",
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Stock Journal",
+      "type": "many2one"
+    },
+    "property_stock_valuation_account_id": {
+      "help": "When automated inventory valuation is enabled on a product, this account will hold the current value of the products.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Stock Valuation Account",
+      "type": "many2one"
+    },
+    "property_stock_valuation_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Stock Valuation Account Active",
+      "type": "boolean"
+    },
+    "property_price_difference_account_id": {
+      "help": "With perpetual valuation, this account will hold the price difference between the standard price and the bill price.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Price Difference Account",
+      "type": "many2one"
+    },
+    "property_price_difference_account_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Price Difference Account Active",
+      "type": "boolean"
+    },
+    "account_stock_variation_id": {
+      "help": "At closing, register the inventory variation of the period into a specific account",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Stock Variation Account",
+      "type": "many2one"
+    },
+    "account_stock_variation_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Stock Variation Account Active",
+      "type": "boolean"
+    }
+  }
+}

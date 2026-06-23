@@ -1,0 +1,135 @@
+{
+  "model": "chatbot.script",
+  "name": "Chatbot Script",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "image_1920": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "image_1024": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 1024",
+      "type": "binary"
+    },
+    "image_512": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 512",
+      "type": "binary"
+    },
+    "image_256": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 256",
+      "type": "binary"
+    },
+    "image_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 128",
+      "type": "binary"
+    },
+    "title": {
+      "readonly": false,
+      "required": true,
+      "string": "Title",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "script_step_ids": {
+      "readonly": false,
+      "relation": "chatbot.script.step",
+      "required": false,
+      "string": "Script Steps",
+      "type": "one2many"
+    },
+    "operator_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Bot Operator",
+      "type": "many2one"
+    },
+    "livechat_channel_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Livechat Channel Count",
+      "type": "integer"
+    },
+    "first_step_warning": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "first_step_operator",
+          "First Step Operator"
+        ],
+        [
+          "first_step_invalid",
+          "First Step Invalid"
+        ]
+      ],
+      "string": "First Step Warning",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "lead_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Generated Lead Count",
+      "type": "integer"
+    },
+    "ticket_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Generated Ticket Count",
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "model": "account.multicurrency.revaluation.wizard",
+  "name": "Multicurrency Revaluation Wizard",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": true,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "reversal_date": {
+      "readonly": false,
+      "required": true,
+      "string": "Reversal Date",
+      "type": "date"
+    },
+    "expense_provision_account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": true,
+      "string": "Expense Account",
+      "type": "many2one"
+    },
+    "income_provision_account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": true,
+      "string": "Income Account",
+      "type": "many2one"
+    },
+    "preview_data": {
+      "readonly": true,
+      "required": false,
+      "string": "Preview Data",
+      "type": "text"
+    },
+    "show_warning_move_id": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Show Warning Move",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

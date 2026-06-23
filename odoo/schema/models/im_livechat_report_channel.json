@@ -1,0 +1,299 @@
+{
+  "model": "im_livechat.report.channel",
+  "name": "Livechat Support Channel Report",
+  "field_count": 36,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "uuid": {
+      "readonly": true,
+      "required": false,
+      "string": "UUID",
+      "type": "char"
+    },
+    "channel_id": {
+      "readonly": true,
+      "relation": "discuss.channel",
+      "required": false,
+      "string": "Conversation",
+      "type": "many2one"
+    },
+    "channel_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Channel Name",
+      "type": "char"
+    },
+    "livechat_channel_id": {
+      "readonly": true,
+      "relation": "im_livechat.channel",
+      "required": false,
+      "string": "Channel",
+      "type": "many2one"
+    },
+    "start_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Start Date of session",
+      "type": "datetime"
+    },
+    "start_hour": {
+      "readonly": true,
+      "required": false,
+      "string": "Start Hour of session",
+      "type": "char"
+    },
+    "start_date_minutes": {
+      "readonly": true,
+      "required": false,
+      "string": "Start Date of session, truncated to minutes",
+      "type": "char"
+    },
+    "day_number": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "0",
+          "Sunday"
+        ],
+        [
+          "1",
+          "Monday"
+        ],
+        [
+          "2",
+          "Tuesday"
+        ],
+        [
+          "3",
+          "Wednesday"
+        ],
+        [
+          "4",
+          "Thursday"
+        ],
+        [
+          "5",
+          "Friday"
+        ],
+        [
+          "6",
+          "Saturday"
+        ]
+      ],
+      "string": "Day of the Week",
+      "type": "selection"
+    },
+    "time_to_answer": {
+      "help": "Average time in hours to give the first answer to the visitor",
+      "readonly": true,
+      "required": false,
+      "string": "Response Time",
+      "type": "float"
+    },
+    "start_date_hour": {
+      "readonly": true,
+      "required": false,
+      "string": "Hour of start Date of session",
+      "type": "char"
+    },
+    "duration": {
+      "help": "Duration of the conversation (in minutes)",
+      "readonly": true,
+      "required": false,
+      "string": "Duration (min)",
+      "type": "float"
+    },
+    "nbr_message": {
+      "help": "Number of message in the conversation",
+      "readonly": true,
+      "required": false,
+      "string": "Messages per Session",
+      "type": "integer"
+    },
+    "country_id": {
+      "readonly": true,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country of the visitor",
+      "type": "many2one"
+    },
+    "lang_id": {
+      "help": "Lang of the visitor of the channel.",
+      "readonly": true,
+      "relation": "res.lang",
+      "required": false,
+      "string": "Language",
+      "type": "many2one"
+    },
+    "rating": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "1",
+          "Unhappy"
+        ],
+        [
+          "3",
+          "Neutral"
+        ],
+        [
+          "5",
+          "Happy"
+        ]
+      ],
+      "string": "Satisfaction Rate",
+      "type": "selection"
+    },
+    "rating_percentage": {
+      "readonly": true,
+      "required": false,
+      "string": "Rating (%)",
+      "type": "float"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Agent",
+      "type": "many2one"
+    },
+    "handled_by_bot": {
+      "readonly": true,
+      "required": false,
+      "string": "Handled by Bot",
+      "type": "integer"
+    },
+    "handled_by_agent": {
+      "readonly": true,
+      "required": false,
+      "string": "Handled by Agent",
+      "type": "integer"
+    },
+    "visitor_partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "call_duration_hour": {
+      "readonly": true,
+      "required": false,
+      "string": "Call Duration",
+      "type": "float"
+    },
+    "has_call": {
+      "readonly": true,
+      "required": false,
+      "string": "Whether the session had a call",
+      "type": "float"
+    },
+    "number_of_calls": {
+      "readonly": true,
+      "required": false,
+      "string": "# of Sessions with calls",
+      "type": "float"
+    },
+    "percentage_of_calls": {
+      "readonly": true,
+      "required": false,
+      "string": "Session with Calls (%)",
+      "type": "float"
+    },
+    "session_outcome": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "no_answer",
+          "Never Answered"
+        ],
+        [
+          "no_agent",
+          "No one Available"
+        ],
+        [
+          "no_failure",
+          "Success"
+        ],
+        [
+          "escalated",
+          "Escalated"
+        ]
+      ],
+      "string": "Session Outcome",
+      "type": "selection"
+    },
+    "chatbot_script_id": {
+      "readonly": true,
+      "relation": "chatbot.script",
+      "required": false,
+      "string": "Chatbot",
+      "type": "many2one"
+    },
+    "chatbot_answers_path": {
+      "readonly": true,
+      "required": false,
+      "string": "Chatbot Answers",
+      "type": "char"
+    },
+    "chatbot_answers_path_str": {
+      "readonly": true,
+      "required": false,
+      "string": "Chatbot Answers (String)",
+      "type": "char"
+    },
+    "session_expertises": {
+      "readonly": true,
+      "required": false,
+      "string": "Expertises used in this session (String)",
+      "type": "char"
+    },
+    "session_expertise_ids": {
+      "readonly": true,
+      "relation": "im_livechat.expertise",
+      "required": false,
+      "string": "Expertises used in this session",
+      "type": "many2many"
+    },
+    "agent_requesting_help_history": {
+      "readonly": true,
+      "relation": "im_livechat.channel.member.history",
+      "required": false,
+      "string": "Help Requested (Agent)",
+      "type": "many2one"
+    },
+    "agent_providing_help_history": {
+      "readonly": true,
+      "relation": "im_livechat.channel.member.history",
+      "required": false,
+      "string": "Help Provided (Agent)",
+      "type": "many2one"
+    },
+    "leads_created": {
+      "readonly": true,
+      "required": false,
+      "string": "Leads created",
+      "type": "integer"
+    },
+    "tickets_created": {
+      "readonly": true,
+      "required": false,
+      "string": "Tickets created",
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "model": "certificate.certificate",
+  "name": "Certificate",
+  "field_count": 23,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "content": {
+      "readonly": false,
+      "required": true,
+      "string": "Certificate",
+      "type": "binary"
+    },
+    "pkcs12_password": {
+      "help": "Password to decrypt the PKS file.",
+      "readonly": false,
+      "required": false,
+      "string": "Certificate Password",
+      "type": "char"
+    },
+    "private_key_id": {
+      "readonly": false,
+      "relation": "certificate.key",
+      "required": false,
+      "string": "Private Key",
+      "type": "many2one"
+    },
+    "public_key_id": {
+      "help": "Used to set a public key in case the one self-contained in the certificate is erroneus.\n                When a public key is set this way, it will be used instead of the one in the certificate.\n             ",
+      "readonly": false,
+      "relation": "certificate.key",
+      "required": false,
+      "string": "Public Key",
+      "type": "many2one"
+    },
+    "scope": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "general",
+          "General"
+        ]
+      ],
+      "string": "Certificate scope",
+      "type": "selection"
+    },
+    "content_format": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "der",
+          "DER"
+        ],
+        [
+          "pem",
+          "PEM"
+        ],
+        [
+          "pkcs12",
+          "PKCS12"
+        ]
+      ],
+      "string": "Original certificate format",
+      "type": "selection"
+    },
+    "pem_certificate": {
+      "readonly": true,
+      "required": false,
+      "string": "Certificate in PEM format",
+      "type": "binary"
+    },
+    "subject_common_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Subject Name",
+      "type": "char"
+    },
+    "serial_number": {
+      "help": "The serial number to add to electronic documents",
+      "readonly": true,
+      "required": false,
+      "string": "Serial number",
+      "type": "char"
+    },
+    "date_start": {
+      "help": "The date on which the certificate starts to be valid",
+      "readonly": true,
+      "required": false,
+      "string": "Available date",
+      "type": "datetime"
+    },
+    "date_end": {
+      "help": "The date on which the certificate expires",
+      "readonly": true,
+      "required": false,
+      "string": "Expiration date",
+      "type": "datetime"
+    },
+    "loading_error": {
+      "readonly": true,
+      "required": false,
+      "string": "Loading error",
+      "type": "text"
+    },
+    "is_valid": {
+      "readonly": true,
+      "required": false,
+      "string": "Valid",
+      "type": "boolean"
+    },
+    "active": {
+      "help": "Set active to false to archive the certificate",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

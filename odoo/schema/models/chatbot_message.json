@@ -1,0 +1,86 @@
+{
+  "model": "chatbot.message",
+  "name": "Chatbot Message",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "mail_message_id": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Related Mail Message",
+      "type": "many2one"
+    },
+    "discuss_channel_id": {
+      "readonly": false,
+      "relation": "discuss.channel",
+      "required": true,
+      "string": "Discussion Channel",
+      "type": "many2one"
+    },
+    "script_step_id": {
+      "readonly": false,
+      "relation": "chatbot.script.step",
+      "required": false,
+      "string": "Chatbot Step",
+      "type": "many2one"
+    },
+    "user_script_answer_id": {
+      "readonly": false,
+      "relation": "chatbot.script.answer",
+      "required": false,
+      "string": "User's answer",
+      "type": "many2one"
+    },
+    "user_raw_script_answer_id": {
+      "help": "Id of the script answer. Useful for statistics when answer is deleted.",
+      "readonly": false,
+      "required": false,
+      "string": "User Raw Script Answer",
+      "type": "integer"
+    },
+    "user_raw_answer": {
+      "readonly": false,
+      "required": false,
+      "string": "User's raw answer",
+      "type": "html"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

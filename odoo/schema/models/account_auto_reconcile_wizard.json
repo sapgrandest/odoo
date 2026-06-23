@@ -1,0 +1,102 @@
+{
+  "model": "account.auto.reconcile.wizard",
+  "name": "Account automatic reconciliation wizard",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "line_ids": {
+      "readonly": false,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Line",
+      "type": "many2many"
+    },
+    "from_date": {
+      "readonly": false,
+      "required": false,
+      "string": "From",
+      "type": "date"
+    },
+    "to_date": {
+      "readonly": false,
+      "required": true,
+      "string": "To",
+      "type": "date"
+    },
+    "account_ids": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Accounts",
+      "type": "many2many"
+    },
+    "partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partners",
+      "type": "many2many"
+    },
+    "search_mode": {
+      "help": "Reconcile journal items with opposite balance or clear accounts with a zero balance",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "one_to_one",
+          "Perfect Match"
+        ],
+        [
+          "zero_balance",
+          "Clear Account"
+        ]
+      ],
+      "string": "Reconcile",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

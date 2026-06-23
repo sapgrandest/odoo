@@ -1,0 +1,19 @@
+{
+  "model": "report.account.report_hash_integrity",
+  "name": "Get hash integrity result as PDF.",
+  "field_count": 2,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    }
+  }
+}

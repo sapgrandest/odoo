@@ -1,0 +1,3371 @@
+{
+  "model": "mail.template.preview",
+  "name": "Email Template Preview",
+  "field_count": 24,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "mail_template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": true,
+      "string": "Related Mail Template",
+      "type": "many2one"
+    },
+    "model_id": {
+      "readonly": true,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Targeted model",
+      "type": "many2one"
+    },
+    "resource_ref": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "account.account",
+          "Account"
+        ],
+        [
+          "account.return",
+          "Accounting Return"
+        ],
+        [
+          "account.return.type",
+          "Accounting Return Type"
+        ],
+        [
+          "account.analytic.account",
+          "Analytic Account"
+        ],
+        [
+          "hr.applicant",
+          "Applicant"
+        ],
+        [
+          "appointment.type",
+          "Appointment Type"
+        ],
+        [
+          "knowledge.article.thread",
+          "Article Discussion Thread"
+        ],
+        [
+          "res.partner.bank",
+          "Bank Account"
+        ],
+        [
+          "account.online.link",
+          "Bank Connection"
+        ],
+        [
+          "account.bank.statement",
+          "Bank Statement"
+        ],
+        [
+          "account.bank.statement.line",
+          "Bank Statement Line"
+        ],
+        [
+          "extract.mixin",
+          "Base class to extract data from documents"
+        ],
+        [
+          "extract.mixin.with.words",
+          "Base class to extract data from documents with OCRed words saved"
+        ],
+        [
+          "account.batch.payment",
+          "Batch Payment"
+        ],
+        [
+          "blog.blog",
+          "Blog"
+        ],
+        [
+          "blog.post",
+          "Blog Post"
+        ],
+        [
+          "calendar.event",
+          "Calendar Event"
+        ],
+        [
+          "res.company",
+          "Company"
+        ],
+        [
+          "res.partner",
+          "Contact"
+        ],
+        [
+          "hr.department",
+          "Department"
+        ],
+        [
+          "discuss.channel",
+          "Discussion Channel"
+        ],
+        [
+          "mail.thread",
+          "Email Thread"
+        ],
+        [
+          "hr.employee",
+          "Employee"
+        ],
+        [
+          "hr.version",
+          "Employee Record"
+        ],
+        [
+          "gamification.badge",
+          "Gamification Badge"
+        ],
+        [
+          "gamification.challenge",
+          "Gamification Challenge"
+        ],
+        [
+          "gamification.badge.user",
+          "Gamification User Badge"
+        ],
+        [
+          "helpdesk.team",
+          "Helpdesk Team"
+        ],
+        [
+          "helpdesk.ticket",
+          "Helpdesk Ticket"
+        ],
+        [
+          "iap.account",
+          "IAP Account"
+        ],
+        [
+          "hr.job",
+          "Job Position"
+        ],
+        [
+          "account.journal",
+          "Journal"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "knowledge.article",
+          "Knowledge Article"
+        ],
+        [
+          "crm.lead",
+          "Lead"
+        ],
+        [
+          "stock.lot",
+          "Lot/Serial"
+        ],
+        [
+          "mail.blacklist",
+          "Mail Blacklist"
+        ],
+        [
+          "mail.thread.blacklist",
+          "Mail Blacklist mixin"
+        ],
+        [
+          "mail.thread.main.attachment",
+          "Mail Main Attachment management"
+        ],
+        [
+          "mail.tracking.duration.mixin",
+          "Mixin to compute the time a record has spent in each value a many2one field can take"
+        ],
+        [
+          "account.payment",
+          "Payment"
+        ],
+        [
+          "phone.blacklist",
+          "Phone Blacklist"
+        ],
+        [
+          "mail.thread.phone",
+          "Phone Blacklist Mixin"
+        ],
+        [
+          "account.reconcile.model",
+          "Preset to create journal entries during a invoices and payments matching"
+        ],
+        [
+          "product.pricelist",
+          "Pricelist"
+        ],
+        [
+          "product.template",
+          "Product"
+        ],
+        [
+          "product.category",
+          "Product Category"
+        ],
+        [
+          "product.feed",
+          "Product Feed"
+        ],
+        [
+          "product.product",
+          "Product Variant"
+        ],
+        [
+          "project.project",
+          "Project"
+        ],
+        [
+          "project.milestone",
+          "Project Milestone"
+        ],
+        [
+          "project.update",
+          "Project Update"
+        ],
+        [
+          "purchase.order",
+          "Purchase Order"
+        ],
+        [
+          "rating.mixin",
+          "Rating Mixin"
+        ],
+        [
+          "sale.order",
+          "Sales Order"
+        ],
+        [
+          "crm.team",
+          "Sales Team"
+        ],
+        [
+          "crm.team.member",
+          "Sales Team Member"
+        ],
+        [
+          "ir.cron",
+          "Scheduled Action"
+        ],
+        [
+          "ir.actions.server",
+          "Server Action"
+        ],
+        [
+          "sign.request",
+          "Signature Request"
+        ],
+        [
+          "spreadsheet.cell.thread",
+          "Spreadsheet discussion thread"
+        ],
+        [
+          "survey.survey",
+          "Survey"
+        ],
+        [
+          "survey.user_input",
+          "Survey User Input"
+        ],
+        [
+          "hr.talent.pool",
+          "Talent Pool"
+        ],
+        [
+          "project.task",
+          "Task"
+        ],
+        [
+          "account.tax",
+          "Tax"
+        ],
+        [
+          "mail.thread.subject.suggested",
+          "Thread with suggested subject"
+        ],
+        [
+          "stock.picking",
+          "Transfer"
+        ],
+        [
+          "auth_totp.wizard",
+          "2-Factor Setup Wizard"
+        ],
+        [
+          "l10n_fr_reports.2031.annexes.report.handler",
+          "2031 Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2031.report.handler",
+          "2031 Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2033.a.report.handler",
+          "2033 A Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2033.b.report.handler",
+          "2033 B Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2033.e.report.handler",
+          "2033 E Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2033.f.report.handler",
+          "2033 F Report Handler"
+        ],
+        [
+          "l10n_fr_reports.2033.c.report.handler",
+          "2033-C Fixed Assets – Depreciation – Capital Gains – Capital Losses"
+        ],
+        [
+          "l10n_fr_reports.2033.g.report.handler",
+          "2033G Subsidiaries and Investments Report Custom Handler"
+        ],
+        [
+          "l10n_fr_reports.2069.rci.report.handler",
+          "2069 Rci Report Handler"
+        ],
+        [
+          "account.edi.xml.ubl_a_nz",
+          "A-NZ BIS Billing 3.0"
+        ],
+        [
+          "ai.agent",
+          "AI Agent"
+        ],
+        [
+          "ai.agent.source",
+          "AI Agent Source"
+        ],
+        [
+          "ai.attachment.vacuum",
+          "AI Generated Attachments that aren't used and should be autovacuumed"
+        ],
+        [
+          "ai.session",
+          "AI Session"
+        ],
+        [
+          "ai.session.event",
+          "AI Session Event"
+        ],
+        [
+          "ai.composer",
+          "AI model configurations (system prompts) for text drafting."
+        ],
+        [
+          "res.users.apikeys.description",
+          "API Key Description"
+        ],
+        [
+          "res.groups",
+          "Access Groups"
+        ],
+        [
+          "account.audit.account.status",
+          "Account Audit Account Status"
+        ],
+        [
+          "account.cash.rounding",
+          "Account Cash Rounding"
+        ],
+        [
+          "account.chart.template",
+          "Account Chart Template"
+        ],
+        [
+          "account_edi_proxy_client.user",
+          "Account EDI proxy user"
+        ],
+        [
+          "account.fiscal.category",
+          "Account Fiscal Category"
+        ],
+        [
+          "account.journal.group",
+          "Account Journal Group"
+        ],
+        [
+          "account.lock_exception",
+          "Account Lock Exception"
+        ],
+        [
+          "account.report.annotation",
+          "Account Report Annotation"
+        ],
+        [
+          "account.report.async.document",
+          "Account Report Async Document"
+        ],
+        [
+          "account.report.async.export",
+          "Account Report Async Export"
+        ],
+        [
+          "account.report.custom.handler",
+          "Account Report Custom Handler"
+        ],
+        [
+          "account.tax.report.handler",
+          "Account Report Handler for Tax Reports"
+        ],
+        [
+          "account.report.send",
+          "Account Report Send"
+        ],
+        [
+          "account.return.audit.cycle",
+          "Account Return Audit Cycle"
+        ],
+        [
+          "account.return.check.template",
+          "Account Return Check Template"
+        ],
+        [
+          "account.account.tag",
+          "Account Tag"
+        ],
+        [
+          "account.auto.reconcile.wizard",
+          "Account automatic reconciliation wizard"
+        ],
+        [
+          "account.root",
+          "Account codes first 2 digits"
+        ],
+        [
+          "account.merge.wizard",
+          "Account merge wizard"
+        ],
+        [
+          "account.merge.wizard.line",
+          "Account merge wizard line"
+        ],
+        [
+          "account.reconcile.wizard",
+          "Account reconciliation wizard"
+        ],
+        [
+          "report.account.report_invoice_with_payments",
+          "Account report with payment lines"
+        ],
+        [
+          "report.account.report_invoice",
+          "Account report without payment lines"
+        ],
+        [
+          "account.report",
+          "Accounting Report"
+        ],
+        [
+          "account.report.budget",
+          "Accounting Report Budget"
+        ],
+        [
+          "account.report.budget.item",
+          "Accounting Report Budget Item"
+        ],
+        [
+          "account.report.column",
+          "Accounting Report Column"
+        ],
+        [
+          "account.report.expression",
+          "Accounting Report Expression"
+        ],
+        [
+          "account.report.external.value",
+          "Accounting Report External Value"
+        ],
+        [
+          "account.report.line",
+          "Accounting Report Line"
+        ],
+        [
+          "account.report.snapshot",
+          "Accounting Report Snapshot"
+        ],
+        [
+          "account.return.check",
+          "Accounting Return Check"
+        ],
+        [
+          "account.fiscal.position.account",
+          "Accounts Mapping of Fiscal Position"
+        ],
+        [
+          "account.accrued.orders.wizard",
+          "Accrued Orders Wizard"
+        ],
+        [
+          "ir.actions.actions",
+          "Action"
+        ],
+        [
+          "ir.actions.act_url",
+          "Action URL"
+        ],
+        [
+          "ir.actions.act_window",
+          "Action Window"
+        ],
+        [
+          "ir.actions.act_window_close",
+          "Action Window Close"
+        ],
+        [
+          "ir.actions.act_window.view",
+          "Action Window View"
+        ],
+        [
+          "mail.activity",
+          "Activity"
+        ],
+        [
+          "mail.activity.mixin",
+          "Activity Mixin"
+        ],
+        [
+          "mail.activity.plan",
+          "Activity Plan"
+        ],
+        [
+          "mail.activity.type",
+          "Activity Type"
+        ],
+        [
+          "mail.activity.plan.template",
+          "Activity plan template"
+        ],
+        [
+          "mail.activity.schedule",
+          "Activity schedule plan Wizard"
+        ],
+        [
+          "job.add.applicants",
+          "Add applicants to a job"
+        ],
+        [
+          "talent.pool.add.applicants",
+          "Add applicants to talent pool"
+        ],
+        [
+          "appointment.manage.leaves",
+          "Add or remove leaves from appointments"
+        ],
+        [
+          "format.address.mixin",
+          "Address Format"
+        ],
+        [
+          "account.aged.partner.balance.report.handler",
+          "Aged Partner Balance Custom Handler"
+        ],
+        [
+          "account.aged.payable.report.handler",
+          "Aged Payable Custom Handler"
+        ],
+        [
+          "account.aged.receivable.report.handler",
+          "Aged Receivable Custom Handler"
+        ],
+        [
+          "website.route",
+          "All Website Route"
+        ],
+        [
+          "ir.profile",
+          "Allow profiling only to Tech Support level"
+        ],
+        [
+          "account.analytic.distribution.model",
+          "Analytic Distribution Model"
+        ],
+        [
+          "account.analytic.line",
+          "Analytic Line"
+        ],
+        [
+          "analytic.mixin",
+          "Analytic Mixin"
+        ],
+        [
+          "account.analytic.plan",
+          "Analytic Plan"
+        ],
+        [
+          "analytic.plan.fields.mixin",
+          "Analytic Plan Fields"
+        ],
+        [
+          "account.analytic.applicability",
+          "Analytic Plan's Applicabilities"
+        ],
+        [
+          "hr.recruitment.degree",
+          "Applicant Degree"
+        ],
+        [
+          "ir.module.category",
+          "Application"
+        ],
+        [
+          "appointment.answer.input",
+          "Appointment Answer Inputs"
+        ],
+        [
+          "appointment.booking.line",
+          "Appointment Booking Line"
+        ],
+        [
+          "appointment.invite",
+          "Appointment Invite"
+        ],
+        [
+          "appointment.answer",
+          "Appointment Question Answers"
+        ],
+        [
+          "appointment.question",
+          "Appointment Questions"
+        ],
+        [
+          "appointment.resource",
+          "Appointment Resource"
+        ],
+        [
+          "appointment.slot",
+          "Appointment: Time Slot"
+        ],
+        [
+          "knowledge.article.member",
+          "Article Member"
+        ],
+        [
+          "knowledge.article.template.category",
+          "Article Template Category"
+        ],
+        [
+          "ir.asset",
+          "Asset"
+        ],
+        [
+          "website.assets",
+          "Assets Utils"
+        ],
+        [
+          "ir.attachment",
+          "Attachment"
+        ],
+        [
+          "ai.embedding",
+          "Attachment Chunks Embedding"
+        ],
+        [
+          "product.attribute.value",
+          "Attribute Value"
+        ],
+        [
+          "auth_totp.device",
+          "Authentication Device"
+        ],
+        [
+          "ir.autovacuum",
+          "Automatic Vacuum"
+        ],
+        [
+          "sequence.mixin",
+          "Automatic sequence"
+        ],
+        [
+          "account.autopost.bills.wizard",
+          "Autopost Bills Wizard"
+        ],
+        [
+          "avatar.mixin",
+          "Avatar Mixin"
+        ],
+        [
+          "account.edi.xml.ubl_de",
+          "BIS3 DE (XRechnung)"
+        ],
+        [
+          "stock.backorder.confirmation",
+          "Backorder Confirmation"
+        ],
+        [
+          "stock.backorder.confirmation.line",
+          "Backorder Confirmation Line"
+        ],
+        [
+          "account.balance.sheet.report.handler",
+          "Balance Sheet Custom Handler"
+        ],
+        [
+          "hr.bank.account.allocation.wizard.line",
+          "Bank Account Allocation Line (Wizard)"
+        ],
+        [
+          "hr.bank.account.allocation.wizard",
+          "Bank Account Allocation Wizard"
+        ],
+        [
+          "clearing.label",
+          "Bank Account Clearing Number Label"
+        ],
+        [
+          "l10n_fr_reports.send.vat.report.bank.account.line",
+          "Bank Account Line for French Vat Report"
+        ],
+        [
+          "account.bank.reconciliation.report.handler",
+          "Bank Reconciliation Report Custom Handler"
+        ],
+        [
+          "account.setup.bank.manual.config",
+          "Bank setup manual config"
+        ],
+        [
+          "barcode.nomenclature",
+          "Barcode Nomenclature"
+        ],
+        [
+          "barcode.rule",
+          "Barcode Rule"
+        ],
+        [
+          "base",
+          "Base"
+        ],
+        [
+          "base_import.import",
+          "Base Import"
+        ],
+        [
+          "base_import.mapping",
+          "Base Import Mapping"
+        ],
+        [
+          "account.edi.ubl",
+          "Base helpers for UBL"
+        ],
+        [
+          "report.account_batch_payment.print_batch_payment",
+          "Batch Deposit Report"
+        ],
+        [
+          "account.batch.error.wizard",
+          "Batch payments error reporting wizard"
+        ],
+        [
+          "account.batch.error.wizard.line",
+          "Batch payments error reporting wizard line"
+        ],
+        [
+          "bill.to.po.wizard",
+          "Bill to Purchase Order"
+        ],
+        [
+          "blog.tag",
+          "Blog Tag"
+        ],
+        [
+          "blog.tag.category",
+          "Blog Tag Category"
+        ],
+        [
+          "project.task.burndown.chart.report",
+          "Burndown Chart"
+        ],
+        [
+          "account.peppol.response",
+          "Business Level Responses for Peppol"
+        ],
+        [
+          "account.document.import.mixin",
+          "Business document import mixin"
+        ],
+        [
+          "crm.activity.report",
+          "CRM Activity Analysis"
+        ],
+        [
+          "crm.iap.lead.industry",
+          "CRM IAP Lead Industry"
+        ],
+        [
+          "crm.iap.lead.mining.request",
+          "CRM Lead Mining Request"
+        ],
+        [
+          "crm.recurring.plan",
+          "CRM Recurring Revenue Plan"
+        ],
+        [
+          "crm.stage",
+          "CRM Stage"
+        ],
+        [
+          "crm.tag",
+          "CRM Tag"
+        ],
+        [
+          "calendar.attendee",
+          "Calendar Attendee Information"
+        ],
+        [
+          "calendar.filters",
+          "Calendar Filter"
+        ],
+        [
+          "calendar.popover.delete.wizard",
+          "Calendar Popover Delete Wizard"
+        ],
+        [
+          "calendar.provider.config",
+          "Calendar Provider Configuration Wizard"
+        ],
+        [
+          "utm.stage",
+          "Campaign Stage"
+        ],
+        [
+          "bus.listener.mixin",
+          "Can send messages via bus.bus"
+        ],
+        [
+          "stock_barcode.cancel.operation",
+          "Cancel Operation"
+        ],
+        [
+          "sale.mass.cancel.orders",
+          "Cancel multiple quotations"
+        ],
+        [
+          "mail.canned.response",
+          "Canned Response"
+        ],
+        [
+          "account.cash.flow.report.handler",
+          "Cash Flow Report Custom Handler"
+        ],
+        [
+          "hr.applicant.category",
+          "Category of applicant"
+        ],
+        [
+          "certificate.certificate",
+          "Certificate"
+        ],
+        [
+          "certificate.wizard",
+          "Certificate Creation Wizard"
+        ],
+        [
+          "account.change.lock.date",
+          "Change Lock Date"
+        ],
+        [
+          "change.password.wizard",
+          "Change Password Wizard"
+        ],
+        [
+          "discuss.channel.member",
+          "Channel Member"
+        ],
+        [
+          "chatbot.message",
+          "Chatbot Message"
+        ],
+        [
+          "chatbot.script",
+          "Chatbot Script"
+        ],
+        [
+          "chatbot.script.answer",
+          "Chatbot Script Answer"
+        ],
+        [
+          "chatbot.script.step",
+          "Chatbot Script Step"
+        ],
+        [
+          "lot.label.layout",
+          "Choose the sheet layout to print lot labels"
+        ],
+        [
+          "product.label.layout",
+          "Choose the sheet layout to print the labels"
+        ],
+        [
+          "picking.label.type",
+          "Choose whether to print product or lot/sn labels"
+        ],
+        [
+          "res.city",
+          "City"
+        ],
+        [
+          "ir.actions.client",
+          "Client Action"
+        ],
+        [
+          "spreadsheet.revision",
+          "Collaborative spreadsheet revision"
+        ],
+        [
+          "project.collaborator",
+          "Collaborators in project shared"
+        ],
+        [
+          "account.ec.sales.report.handler.common",
+          "Common EC Sales Report Handler"
+        ],
+        [
+          "account.edi.common",
+          "Common functions for EDI documents: generate the data, the constraints, etc"
+        ],
+        [
+          "bus.bus",
+          "Communication Bus"
+        ],
+        [
+          "base.document.layout",
+          "Company Document Layout"
+        ],
+        [
+          "sign.completed.document",
+          "Completed Document"
+        ],
+        [
+          "res.config",
+          "Config"
+        ],
+        [
+          "res.config.settings",
+          "Config Settings"
+        ],
+        [
+          "ir.actions.todo",
+          "Configuration Wizard"
+        ],
+        [
+          "confirm.stock.sms",
+          "Confirm Stock SMS"
+        ],
+        [
+          "stock.inventory.conflict",
+          "Conflict in Inventory"
+        ],
+        [
+          "helpdesk.ticket.convert.wizard",
+          "Convert Helpdesk Tickets to Tasks"
+        ],
+        [
+          "crm.lead2opportunity.partner.mass",
+          "Convert Lead to Opportunity (in mass)"
+        ],
+        [
+          "project.task.convert.wizard",
+          "Convert Project Tasks to Tickets"
+        ],
+        [
+          "helpdesk.ticket.to.lead",
+          "Convert Ticket to Lead"
+        ],
+        [
+          "spreadsheet.dashboard.share",
+          "Copy of a shared dashboard"
+        ],
+        [
+          "res.country",
+          "Country"
+        ],
+        [
+          "res.country.group",
+          "Country Group"
+        ],
+        [
+          "format.vat.label.mixin",
+          "Country Specific VAT Label"
+        ],
+        [
+          "res.country.state",
+          "Country state"
+        ],
+        [
+          "website.cover_properties.mixin",
+          "Cover Properties Website Mixin"
+        ],
+        [
+          "account.automatic.entry.wizard",
+          "Create Automatic Entries"
+        ],
+        [
+          "account.create.batch.error.wizard",
+          "Create Batch Payment Error Wizard"
+        ],
+        [
+          "wizard.ir.model.menu.create",
+          "Create Menu Wizard"
+        ],
+        [
+          "calendar.event.sale.order.create",
+          "Create SO from Meeting"
+        ],
+        [
+          "auth.passkey.key.create",
+          "Create a Passkey"
+        ],
+        [
+          "ai.topic",
+          "Create a topic that leverages instructions and tools to direct Odoo AI in assisting the user with their tasks."
+        ],
+        [
+          "mail.activity.todo.create",
+          "Create activity and todo at the same time"
+        ],
+        [
+          "crm.quotation.partner",
+          "Create new or use existing Customer on new Quotation"
+        ],
+        [
+          "certificate.key",
+          "Cryptographic Key"
+        ],
+        [
+          "res.currency",
+          "Currency"
+        ],
+        [
+          "res.currency.rate",
+          "Currency Rate"
+        ],
+        [
+          "ir.ui.view.custom",
+          "Custom View"
+        ],
+        [
+          "customer.product.reference",
+          "Customer Product Reference"
+        ],
+        [
+          "account.customer.statement.report.handler",
+          "Customer Statement Custom Handler"
+        ],
+        [
+          "l10n_fr.das2.report.handler",
+          "DAS2 Report Custom Handler"
+        ],
+        [
+          "decimal.precision",
+          "Decimal Precision"
+        ],
+        [
+          "ir.default",
+          "Default Value"
+        ],
+        [
+          "account.deferred.expense.report.handler",
+          "Deferred Expense Custom Handler"
+        ],
+        [
+          "account.deferred.report.handler",
+          "Deferred Expense Report Custom Handler"
+        ],
+        [
+          "account.deferred.revenue.report.handler",
+          "Deferred Revenue Custom Handler"
+        ],
+        [
+          "delivery.carrier",
+          "Delivery Method"
+        ],
+        [
+          "choose.delivery.carrier",
+          "Delivery Method Selection Wizard"
+        ],
+        [
+          "delivery.price.rule",
+          "Delivery Price Rules"
+        ],
+        [
+          "delivery.zip.prefix",
+          "Delivery Zip Prefix"
+        ],
+        [
+          "ir.demo",
+          "Demo"
+        ],
+        [
+          "ir.demo_failure.wizard",
+          "Demo Failure wizard"
+        ],
+        [
+          "ir.demo_failure",
+          "Demo failure"
+        ],
+        [
+          "hr.departure.reason",
+          "Departure Reason"
+        ],
+        [
+          "res.device",
+          "Device"
+        ],
+        [
+          "res.device.log",
+          "Device Log"
+        ],
+        [
+          "digest.digest",
+          "Digest"
+        ],
+        [
+          "digest.tip",
+          "Digest Tip"
+        ],
+        [
+          "sale.order.discount",
+          "Discount Wizard"
+        ],
+        [
+          "discuss.category",
+          "Discussion Category"
+        ],
+        [
+          "mail.followers",
+          "Document Follower"
+        ],
+        [
+          "website.sale.extra.field",
+          "E-Commerce Extra Info Shown on product page"
+        ],
+        [
+          "account.edi.xml.ubl_efff",
+          "E-FFF (BE)"
+        ],
+        [
+          "account.ec.sales.with.tags.report.handler",
+          "EC Sales Report (with tags) Custom Handler"
+        ],
+        [
+          "account.ec.sales.with.taxes.report.handler",
+          "EC Sales Report (with taxes) Custom Handler"
+        ],
+        [
+          "mail.alias",
+          "Email Alias"
+        ],
+        [
+          "mail.alias.mixin",
+          "Email Aliases Mixin"
+        ],
+        [
+          "mail.alias.mixin.optional",
+          "Email Aliases Mixin (light)"
+        ],
+        [
+          "mail.alias.domain",
+          "Email Domain"
+        ],
+        [
+          "mail.template",
+          "Email Template"
+        ],
+        [
+          "mail.template.preview",
+          "Email Template Preview"
+        ],
+        [
+          "mail.compose.message",
+          "Email composition wizard"
+        ],
+        [
+          "ir.embedded.actions",
+          "Embedded Action"
+        ],
+        [
+          "hr.employee.category",
+          "Employee Category"
+        ],
+        [
+          "hr.employee.departure",
+          "Employee Departure"
+        ],
+        [
+          "hr.employee.location",
+          "Employee Location"
+        ],
+        [
+          "report.hr_skills.report_employee_cv",
+          "Employee Resume"
+        ],
+        [
+          "hr.employee.skill.report",
+          "Employee Skills Report"
+        ],
+        [
+          "hr.employee.skill.history.report",
+          "Employee Skills Report"
+        ],
+        [
+          "hr.employee.type",
+          "Employee Type"
+        ],
+        [
+          "base.enable.profiling.wizard",
+          "Enable profiling for some time"
+        ],
+        [
+          "calendar.alarm",
+          "Event Alarm"
+        ],
+        [
+          "calendar.alarm_manager",
+          "Event Alarm Manager"
+        ],
+        [
+          "calendar.event.type",
+          "Event Meeting Type"
+        ],
+        [
+          "calendar.recurrence",
+          "Event Recurrence Rule"
+        ],
+        [
+          "account.executive.summary.report.handler",
+          "Executive Summary Custom Handler"
+        ],
+        [
+          "account_reports.export.wizard.format",
+          "Export format for accounting's reports"
+        ],
+        [
+          "account_reports.export.wizard",
+          "Export wizard for accounting's reports"
+        ],
+        [
+          "ir.exports",
+          "Exports"
+        ],
+        [
+          "ir.exports.line",
+          "Exports Line"
+        ],
+        [
+          "account.general.ledger.report.handler",
+          "FEC Report Custom Handler"
+        ],
+        [
+          "account.edi.xml.cii",
+          "Factur-x/XRechnung CII 2.2.0"
+        ],
+        [
+          "knowledge.article.favorite",
+          "Favorite Article"
+        ],
+        [
+          "product.fetch.image.wizard",
+          "Fetch product images from Barcode Lookup based on the product's barcode."
+        ],
+        [
+          "l10n_fr.fec.export.wizard",
+          "Fichier Echange Informatise"
+        ],
+        [
+          "ir.model.fields",
+          "Field"
+        ],
+        [
+          "html.field.history.mixin",
+          "Field html History"
+        ],
+        [
+          "ir.fields.converter",
+          "Fields Converter"
+        ],
+        [
+          "ir.model.fields.selection",
+          "Fields Selection"
+        ],
+        [
+          "crm.lead.scoring.frequency.field",
+          "Fields that can be used for predictive lead scoring computation"
+        ],
+        [
+          "sign.item",
+          "Fields to be sign on Document"
+        ],
+        [
+          "ir.binary",
+          "File streaming helper model for controllers"
+        ],
+        [
+          "ir.filters",
+          "Filter"
+        ],
+        [
+          "l10n_fr_reports.fiscal_declaration_handler",
+          "Fiscal Declaration Report Handler"
+        ],
+        [
+          "account.fiscal.position",
+          "Fiscal Position"
+        ],
+        [
+          "account.account.fiscal.rate",
+          "Fiscal Rate"
+        ],
+        [
+          "account.fiscal.report.handler",
+          "Fiscal Report Custom Handler"
+        ],
+        [
+          "account.fiscal.year",
+          "Fiscal Year"
+        ],
+        [
+          "account.followup.report.handler",
+          "Follow-Up Report Custom Handler"
+        ],
+        [
+          "account_followup.followup.line",
+          "Follow-up Criteria"
+        ],
+        [
+          "account.followup.report",
+          "Follow-up Report"
+        ],
+        [
+          "mail.followers.edit",
+          "Followers edit wizard"
+        ],
+        [
+          "account_followup.missing.information.wizard",
+          "Followup missing information wizard"
+        ],
+        [
+          "sale.pdf.form.field",
+          "Form fields of inside quotation documents."
+        ],
+        [
+          "l10n_fr.report.handler",
+          "French Report Custom Handler"
+        ],
+        [
+          "account.full.reconcile",
+          "Full Reconcile"
+        ],
+        [
+          "gamification.goal",
+          "Gamification Goal"
+        ],
+        [
+          "gamification.goal.definition",
+          "Gamification Goal Definition"
+        ],
+        [
+          "gamification.goal.wizard",
+          "Gamification Goal Wizard"
+        ],
+        [
+          "gamification.badge.user.wizard",
+          "Gamification User Badge Wizard"
+        ],
+        [
+          "gamification.challenge.line",
+          "Gamification generic goal for challenge"
+        ],
+        [
+          "payment.link.wizard",
+          "Generate Sales Payment Link"
+        ],
+        [
+          "qr.code.payment.wizard",
+          "Generic Payment Wizard with QR Code"
+        ],
+        [
+          "account.generic.tax.report.handler",
+          "Generic Tax Report Custom Handler"
+        ],
+        [
+          "account.generic.tax.report.handler.account.tax",
+          "Generic Tax Report Custom Handler (Account -> Tax)"
+        ],
+        [
+          "account.generic.tax.report.handler.tax.account",
+          "Generic Tax Report Custom Handler (Tax -> Account)"
+        ],
+        [
+          "crm.lead.lost",
+          "Get Lost Reason"
+        ],
+        [
+          "applicant.get.refuse.reason",
+          "Get Refuse Reason"
+        ],
+        [
+          "report.account.report_hash_integrity",
+          "Get hash integrity result as PDF."
+        ],
+        [
+          "google.calendar.account.reset",
+          "Google Calendar Account Reset"
+        ],
+        [
+          "google.gmail.mixin",
+          "Google Gmail Mixin"
+        ],
+        [
+          "google.service",
+          "Google Service"
+        ],
+        [
+          "portal.wizard",
+          "Grant Portal Access"
+        ],
+        [
+          "report.sign.green_savings_report",
+          "Green Savings Report model"
+        ],
+        [
+          "res.group.functional",
+          "Group Functional"
+        ],
+        [
+          "spreadsheet.dashboard.group",
+          "Group of dashboards"
+        ],
+        [
+          "mail.guest",
+          "Guest"
+        ],
+        [
+          "hr.export.employee.mixin",
+          "HR Export Employee"
+        ],
+        [
+          "hr.export.mixin",
+          "HR Export Mixin"
+        ],
+        [
+          "website.html.text.processor",
+          "HTML Text Processor Abstract Model"
+        ],
+        [
+          "ir.http",
+          "HTTP Routing"
+        ],
+        [
+          "l10n_fr_reports.2033.d.report.handler",
+          "Handler of the 2033 D report"
+        ],
+        [
+          "l10n_fr_reports.2065_sd.report.handler",
+          "Handler of the 2065-SD report"
+        ],
+        [
+          "l10n_fr_reports.2065_sd.bis.report.handler",
+          "Handler of the 2065-bis-SD report"
+        ],
+        [
+          "helpdesk.sla",
+          "Helpdesk SLA Policy"
+        ],
+        [
+          "helpdesk.stage",
+          "Helpdesk Stage"
+        ],
+        [
+          "helpdesk.stage.delete.wizard",
+          "Helpdesk Stage Delete Wizard"
+        ],
+        [
+          "helpdesk.tag",
+          "Helpdesk Tag"
+        ],
+        [
+          "helpdesk.tag.assignment",
+          "Helpdesk Tag Assignment"
+        ],
+        [
+          "crm.iap.lead.helpers",
+          "Helper methods for crm_iap_mine modules"
+        ],
+        [
+          "account.report.horizontal.group",
+          "Horizontal group for reports"
+        ],
+        [
+          "account.report.horizontal.group.rule",
+          "Horizontal group rule for reports"
+        ],
+        [
+          "hr.manager.department.report",
+          "Hr Manager Department Report"
+        ],
+        [
+          "html_editor.converter.test.sub",
+          "Html Editor Converter Subtest"
+        ],
+        [
+          "html_editor.converter.test",
+          "Html Editor Converter Test"
+        ],
+        [
+          "iap.enrich.api",
+          "IAP Lead Enrichment API"
+        ],
+        [
+          "iap.autocomplete.api",
+          "IAP Partner Autocomplete API"
+        ],
+        [
+          "iap.service",
+          "IAP Service"
+        ],
+        [
+          "iap.service.pack",
+          "IAP Service Pack"
+        ],
+        [
+          "mail.ice.server",
+          "ICE Server"
+        ],
+        [
+          "image.mixin",
+          "Image Mixin"
+        ],
+        [
+          "base.import.module",
+          "Import Module"
+        ],
+        [
+          "fetchmail.server",
+          "Incoming Mail Server"
+        ],
+        [
+          "account.incoterms",
+          "Incoterms"
+        ],
+        [
+          "res.partner.industry",
+          "Industry"
+        ],
+        [
+          "account.payment.initiate.payment",
+          "Initiate Payment Wizard"
+        ],
+        [
+          "base.language.install",
+          "Install Language"
+        ],
+        [
+          "stock.inventory.adjustment.name",
+          "Inventory Adjustment Reference / Reason"
+        ],
+        [
+          "stock.inventory.warning",
+          "Inventory Adjustment Warning"
+        ],
+        [
+          "stock.location",
+          "Inventory Location"
+        ],
+        [
+          "stock.route",
+          "Inventory Route"
+        ],
+        [
+          "account.invoice.report",
+          "Invoices Statistics"
+        ],
+        [
+          "hr.job.platform",
+          "Job Platform"
+        ],
+        [
+          "account.move.reversal",
+          "Journal Entry Reversal"
+        ],
+        [
+          "account.move.line",
+          "Journal Item"
+        ],
+        [
+          "account.journal.report.handler",
+          "Journal Report Custom Handler"
+        ],
+        [
+          "kpi.provider",
+          "KPI Provider"
+        ],
+        [
+          "discuss.call.history",
+          "Keep the call history"
+        ],
+        [
+          "im_livechat.channel.member.history",
+          "Keep the channel member history"
+        ],
+        [
+          "knowledge.cover",
+          "Knowledge Cover"
+        ],
+        [
+          "knowledge.invite",
+          "Knowledge Invite Wizard"
+        ],
+        [
+          "knowledge.article.stage",
+          "Knowledge Stage"
+        ],
+        [
+          "res.lang",
+          "Language"
+        ],
+        [
+          "base.language.export",
+          "Language Export"
+        ],
+        [
+          "base.language.import",
+          "Language Import"
+        ],
+        [
+          "crm.lead.scoring.frequency",
+          "Lead Scoring Frequency"
+        ],
+        [
+          "crm.lead.convert2ticket",
+          "Lead convert to Ticket"
+        ],
+        [
+          "sms.tracker",
+          "Link SMS to mailing/sms tracking models"
+        ],
+        [
+          "account.bank.selection",
+          "Link a bank account to the selected journal"
+        ],
+        [
+          "mail.message.link.preview",
+          "Link between link previews and messages"
+        ],
+        [
+          "product.uom",
+          "Link between products and their UoMs"
+        ],
+        [
+          "im_livechat.expertise",
+          "Live Chat Expertise"
+        ],
+        [
+          "im_livechat.channel",
+          "Livechat Channel"
+        ],
+        [
+          "im_livechat.channel.rule",
+          "Livechat Channel Rule"
+        ],
+        [
+          "im_livechat.report.channel",
+          "Livechat Support Channel Report"
+        ],
+        [
+          "ir.logging",
+          "Logging"
+        ],
+        [
+          "report.stock.label_lot_template_view",
+          "Lot Label Report"
+        ],
+        [
+          "mail.activity.schedule.line",
+          "Mail Activity Schedule Line"
+        ],
+        [
+          "mail.bot",
+          "Mail Bot"
+        ],
+        [
+          "mail.composer.mixin",
+          "Mail Composer Mixin"
+        ],
+        [
+          "mail.gateway.allowed",
+          "Mail Gateway Allowed"
+        ],
+        [
+          "discuss.channel.rtc.session",
+          "Mail RTC session"
+        ],
+        [
+          "mail.render.mixin",
+          "Mail Render Mixin"
+        ],
+        [
+          "ir.mail_server",
+          "Mail Server"
+        ],
+        [
+          "mail.template.reset",
+          "Mail Template Reset"
+        ],
+        [
+          "mail.track.mixin",
+          "Mail Track Mixin"
+        ],
+        [
+          "account.report.file.download.error.wizard",
+          "Manage the file generation errors from report exports."
+        ],
+        [
+          "account.code.mapping",
+          "Mapping of account codes per company"
+        ],
+        [
+          "calendar.booking",
+          "Meeting Booking"
+        ],
+        [
+          "calendar.booking.line",
+          "Meeting User/Resource Booking"
+        ],
+        [
+          "ir.ui.menu",
+          "Menu"
+        ],
+        [
+          "crm.merge.opportunity",
+          "Merge Opportunities"
+        ],
+        [
+          "base.partner.merge.line",
+          "Merge Partner Line"
+        ],
+        [
+          "base.partner.merge.automatic.wizard",
+          "Merge Partner Wizard"
+        ],
+        [
+          "mail.message",
+          "Message"
+        ],
+        [
+          "mail.notification",
+          "Message Notification"
+        ],
+        [
+          "mail.message.reaction",
+          "Message Reaction"
+        ],
+        [
+          "mail.message.subtype",
+          "Message Subtype"
+        ],
+        [
+          "mail.message.translation",
+          "Message Translation"
+        ],
+        [
+          "discuss.voice.metadata",
+          "Metadata for voice attachments"
+        ],
+        [
+          "microsoft.outlook.mixin",
+          "Microsoft Outlook Mixin"
+        ],
+        [
+          "stock.warehouse.orderpoint",
+          "Minimum Inventory Rule"
+        ],
+        [
+          "bus.sync.mixin",
+          "Mixin for Bus Sync"
+        ],
+        [
+          "ir.model",
+          "Model"
+        ],
+        [
+          "ir.model.access",
+          "Model Access"
+        ],
+        [
+          "ir.model.constraint",
+          "Model Constraint"
+        ],
+        [
+          "ir.model.data",
+          "Model Data"
+        ],
+        [
+          "ir.model.inherit",
+          "Model Inheritance Tree"
+        ],
+        [
+          "website.controller.page",
+          "Model Page"
+        ],
+        [
+          "ir.module.module",
+          "Module"
+        ],
+        [
+          "base.module.install.request",
+          "Module Activation Request"
+        ],
+        [
+          "base.module.install.review",
+          "Module Activation Review"
+        ],
+        [
+          "report.base.report_irmodulereference",
+          "Module Reference Report (base)"
+        ],
+        [
+          "base.module.uninstall",
+          "Module Uninstall"
+        ],
+        [
+          "ir.module.module.dependency",
+          "Module dependency"
+        ],
+        [
+          "ir.module.module.exclusion",
+          "Module exclusion"
+        ],
+        [
+          "website.multi.mixin",
+          "Multi Website Mixin"
+        ],
+        [
+          "website.published.multi.mixin",
+          "Multi Website Published Mixin"
+        ],
+        [
+          "account.multicurrency.revaluation.report.handler",
+          "Multicurrency Revaluation Report Custom Handler"
+        ],
+        [
+          "account.multicurrency.revaluation.wizard",
+          "Multicurrency Revaluation Wizard"
+        ],
+        [
+          "onboarding.onboarding",
+          "Onboarding"
+        ],
+        [
+          "onboarding.progress.step",
+          "Onboarding Progress Step Tracker"
+        ],
+        [
+          "onboarding.progress",
+          "Onboarding Progress Tracker"
+        ],
+        [
+          "onboarding.onboarding.step",
+          "Onboarding Step"
+        ],
+        [
+          "account.financial.year.op",
+          "Opening Balance of Financial Year"
+        ],
+        [
+          "crm.lost.reason",
+          "Opp. Lost Reason"
+        ],
+        [
+          "sign.item.option",
+          "Option of a selection Field"
+        ],
+        [
+          "sale.order.template",
+          "Order Templates"
+        ],
+        [
+          "mail.mail",
+          "Outgoing Mail"
+        ],
+        [
+          "sms.sms",
+          "Outgoing SMS"
+        ],
+        [
+          "stock.package",
+          "Package"
+        ],
+        [
+          "website.page",
+          "Page"
+        ],
+        [
+          "website.page.properties.base",
+          "Page Properties Base"
+        ],
+        [
+          "website.page.properties",
+          "Page Property"
+        ],
+        [
+          "report.paperformat",
+          "Paper Format Config"
+        ],
+        [
+          "account.partial.reconcile",
+          "Partial Reconcile"
+        ],
+        [
+          "account.partner.ledger.report.handler",
+          "Partner Ledger Custom Handler"
+        ],
+        [
+          "res.partner.category",
+          "Partner Tag"
+        ],
+        [
+          "auth.passkey.key",
+          "Passkey"
+        ],
+        [
+          "res.users.identitycheck",
+          "Password Check Wizard"
+        ],
+        [
+          "account.payment.register",
+          "Pay"
+        ],
+        [
+          "payment.capture.wizard",
+          "Payment Capture Wizard"
+        ],
+        [
+          "account.payment.method",
+          "Payment Method"
+        ],
+        [
+          "payment.method",
+          "Payment Method"
+        ],
+        [
+          "account.payment.method.line",
+          "Payment Method Line"
+        ],
+        [
+          "payment.provider",
+          "Payment Provider"
+        ],
+        [
+          "payment.refund.wizard",
+          "Payment Refund Wizard"
+        ],
+        [
+          "account.payment.term",
+          "Payment Terms"
+        ],
+        [
+          "account.payment.term.line",
+          "Payment Terms Line"
+        ],
+        [
+          "payment.token",
+          "Payment Token"
+        ],
+        [
+          "payment.transaction",
+          "Payment Transaction"
+        ],
+        [
+          "crm.iap.lead.role",
+          "People Role"
+        ],
+        [
+          "crm.iap.lead.seniority",
+          "People Seniority"
+        ],
+        [
+          "peppol.registration",
+          "Peppol Registration"
+        ],
+        [
+          "account.peppol.rejection.wizard",
+          "Peppol Rejection wizard"
+        ],
+        [
+          "account.peppol.clarification",
+          "Peppol clarifications used for rejection"
+        ],
+        [
+          "project.task.stage.personal",
+          "Personal Task Stage"
+        ],
+        [
+          "stock.picking.type",
+          "Picking Type"
+        ],
+        [
+          "planning.analysis.report",
+          "Planning Analysis Report"
+        ],
+        [
+          "planning.preview",
+          "Planning Preview"
+        ],
+        [
+          "planning.recurrency",
+          "Planning Recurrence"
+        ],
+        [
+          "planning.role",
+          "Planning Role"
+        ],
+        [
+          "planning.slot",
+          "Planning Shift"
+        ],
+        [
+          "mail.poll",
+          "Poll"
+        ],
+        [
+          "mail.poll.option",
+          "Poll option"
+        ],
+        [
+          "mail.poll.vote",
+          "Poll vote"
+        ],
+        [
+          "portal.entry",
+          "Portal Entry"
+        ],
+        [
+          "portal.mixin",
+          "Portal Mixin"
+        ],
+        [
+          "portal.share",
+          "Portal Sharing"
+        ],
+        [
+          "portal.wizard.user",
+          "Portal User Config"
+        ],
+        [
+          "report.product.report_pricelist",
+          "Pricelist Report"
+        ],
+        [
+          "product.pricelist.item",
+          "Pricelist Rule"
+        ],
+        [
+          "hr.employee.cv.wizard",
+          "Print Resume"
+        ],
+        [
+          "privacy.log",
+          "Privacy Log"
+        ],
+        [
+          "privacy.lookup.wizard",
+          "Privacy Lookup Wizard"
+        ],
+        [
+          "privacy.lookup.wizard.line",
+          "Privacy Lookup Wizard Line"
+        ],
+        [
+          "res.groups.privilege",
+          "Privilege"
+        ],
+        [
+          "product.attribute",
+          "Product Attribute"
+        ],
+        [
+          "product.attribute.category",
+          "Product Attribute Category"
+        ],
+        [
+          "product.attribute.custom.value",
+          "Product Attribute Custom Value"
+        ],
+        [
+          "product.catalog.mixin",
+          "Product Catalog Mixin"
+        ],
+        [
+          "product.combo",
+          "Product Combo"
+        ],
+        [
+          "product.combo.item",
+          "Product Combo Item"
+        ],
+        [
+          "product.document",
+          "Product Document"
+        ],
+        [
+          "product.image",
+          "Product Image"
+        ],
+        [
+          "report.product.report_producttemplatelabel_dymo",
+          "Product Label Report"
+        ],
+        [
+          "report.product.report_producttemplatelabel2x7",
+          "Product Label Report 2x7"
+        ],
+        [
+          "report.product.report_producttemplatelabel4x12",
+          "Product Label Report 4x12"
+        ],
+        [
+          "report.product.report_producttemplatelabel4x7",
+          "Product Label Report 4x7"
+        ],
+        [
+          "report.product.report_producttemplatelabel_zpl",
+          "Product Label Report ZPL"
+        ],
+        [
+          "stock.move.line",
+          "Product Moves (Stock Move Line)"
+        ],
+        [
+          "product.replenish",
+          "Product Replenish"
+        ],
+        [
+          "stock.replenish.mixin",
+          "Product Replenish Mixin"
+        ],
+        [
+          "product.tag",
+          "Product Tag"
+        ],
+        [
+          "product.template.attribute.line",
+          "Product Template Attribute Line"
+        ],
+        [
+          "product.template.attribute.value",
+          "Product Template Attribute Value"
+        ],
+        [
+          "uom.uom",
+          "Product Unit of Measure"
+        ],
+        [
+          "product.value",
+          "Product Value"
+        ],
+        [
+          "product.wishlist",
+          "Product Wishlist"
+        ],
+        [
+          "product.ribbon",
+          "Product ribbon"
+        ],
+        [
+          "l10n_fr.res.partner.profession",
+          "Profession for French partners"
+        ],
+        [
+          "ir.cron.progress",
+          "Progress of Scheduled Action"
+        ],
+        [
+          "project.role",
+          "Project Role"
+        ],
+        [
+          "project.share.wizard",
+          "Project Sharing"
+        ],
+        [
+          "project.share.collaborator.wizard",
+          "Project Sharing Collaborator Wizard"
+        ],
+        [
+          "project.project.stage",
+          "Project Stage"
+        ],
+        [
+          "project.project.stage.delete.wizard",
+          "Project Stage Delete Wizard"
+        ],
+        [
+          "project.tags",
+          "Project Tag"
+        ],
+        [
+          "project.task.type.delete.wizard",
+          "Project Task Stage Delete Wizard"
+        ],
+        [
+          "project.template.create.wizard",
+          "Project Template create Wizard"
+        ],
+        [
+          "project.template.role.to.users.map",
+          "Project role to users mapping"
+        ],
+        [
+          "ai.prompt.button",
+          "Prompt that can be attached to AI UI rules for quick access by the user."
+        ],
+        [
+          "properties.base.definition",
+          "Properties Base Definition"
+        ],
+        [
+          "properties.base.definition.mixin",
+          "Properties Base Definition Mixin"
+        ],
+        [
+          "hr.employee.public",
+          "Public Employee"
+        ],
+        [
+          "publisher_warranty.contract",
+          "Publisher Warranty Contract"
+        ],
+        [
+          "purchase.bill.line.match",
+          "Purchase Line and Vendor Bill line matching view"
+        ],
+        [
+          "purchase.order.line",
+          "Purchase Order Line"
+        ],
+        [
+          "purchase.report",
+          "Purchase Report"
+        ],
+        [
+          "purchase.edi.xml.ubl_bis3",
+          "Purchase UBL BIS Ordering 3.5"
+        ],
+        [
+          "purchase.bill.union",
+          "Purchases & Bills Union"
+        ],
+        [
+          "mail.push",
+          "Push Notification"
+        ],
+        [
+          "mail.push.device",
+          "Push Notification Device"
+        ],
+        [
+          "stock.put.in.pack",
+          "Put In Pack Wizard"
+        ],
+        [
+          "stock.putaway.rule",
+          "Putaway Rule"
+        ],
+        [
+          "ir.qweb.field.time",
+          "QWeb Field Time"
+        ],
+        [
+          "stock.quant",
+          "Quant"
+        ],
+        [
+          "sale.order.spreadsheet",
+          "Quotation Spreadsheet"
+        ],
+        [
+          "sale.order.template.line",
+          "Quotation Template Line"
+        ],
+        [
+          "quotation.document",
+          "Quotation's Headers & Footers"
+        ],
+        [
+          "ir.qweb",
+          "Qweb"
+        ],
+        [
+          "ir.qweb.field",
+          "Qweb Field"
+        ],
+        [
+          "ir.qweb.field.barcode",
+          "Qweb Field Barcode"
+        ],
+        [
+          "ir.qweb.field.contact",
+          "Qweb Field Contact"
+        ],
+        [
+          "ir.qweb.field.date",
+          "Qweb Field Date"
+        ],
+        [
+          "ir.qweb.field.datetime",
+          "Qweb Field Datetime"
+        ],
+        [
+          "ir.qweb.field.duration",
+          "Qweb Field Duration"
+        ],
+        [
+          "ir.qweb.field.float",
+          "Qweb Field Float"
+        ],
+        [
+          "ir.qweb.field.float_time",
+          "Qweb Field Float Time"
+        ],
+        [
+          "ir.qweb.field.html",
+          "Qweb Field HTML"
+        ],
+        [
+          "ir.qweb.field.image",
+          "Qweb Field Image"
+        ],
+        [
+          "ir.qweb.field.image_url",
+          "Qweb Field Image"
+        ],
+        [
+          "ir.qweb.field.integer",
+          "Qweb Field Integer"
+        ],
+        [
+          "ir.qweb.field.many2one",
+          "Qweb Field Many to One"
+        ],
+        [
+          "ir.qweb.field.monetary",
+          "Qweb Field Monetary"
+        ],
+        [
+          "ir.qweb.field.relative",
+          "Qweb Field Relative"
+        ],
+        [
+          "ir.qweb.field.selection",
+          "Qweb Field Selection"
+        ],
+        [
+          "ir.qweb.field.text",
+          "Qweb Field Text"
+        ],
+        [
+          "ir.qweb.field.qweb",
+          "Qweb Field qweb"
+        ],
+        [
+          "ir.qweb.field.many2many",
+          "Qweb field many2many"
+        ],
+        [
+          "ir.qweb.field.one2many",
+          "Qweb field one2many"
+        ],
+        [
+          "sign.item.radio.set",
+          "Radio button set for keeping radio button items together"
+        ],
+        [
+          "gamification.karma.rank",
+          "Rank based on karma"
+        ],
+        [
+          "rating.rating",
+          "Rating"
+        ],
+        [
+          "rating.parent.mixin",
+          "Rating Parent Mixin"
+        ],
+        [
+          "ir.rule",
+          "Record Rule"
+        ],
+        [
+          "hr.recruitment.report",
+          "Recruitment Analysis Report"
+        ],
+        [
+          "hr.recruitment.stage",
+          "Recruitment Stage"
+        ],
+        [
+          "hr.recruitment.stage.report",
+          "Recruitment Stage Analysis"
+        ],
+        [
+          "stock.reference",
+          "Reference between stock documents"
+        ],
+        [
+          "hr.applicant.refuse.reason",
+          "Refuse Reason of Applicant"
+        ],
+        [
+          "ir.model.relation",
+          "Relation Model"
+        ],
+        [
+          "account.resequence.wizard",
+          "Remake the sequence of Journal Entries."
+        ],
+        [
+          "product.removal",
+          "Removal Strategy"
+        ],
+        [
+          "mail.blacklist.remove",
+          "Remove email from blacklist wizard"
+        ],
+        [
+          "phone.blacklist.remove",
+          "Remove phone from blacklist"
+        ],
+        [
+          "ir.actions.report",
+          "Report Action"
+        ],
+        [
+          "report.layout",
+          "Report Layout"
+        ],
+        [
+          "res.role",
+          "Represents a role in the system used to categorize users. Each role has a unique name and can be associated with multiple users. Roles can be mentioned in messages to notify all associated users."
+        ],
+        [
+          "reset.view.arch.wizard",
+          "Reset View Architecture Wizard"
+        ],
+        [
+          "resource.resource",
+          "Resource"
+        ],
+        [
+          "resource.mixin",
+          "Resource Mixin"
+        ],
+        [
+          "resource.calendar.leaves",
+          "Resource Time Off Detail"
+        ],
+        [
+          "resource.calendar",
+          "Resource Working Time"
+        ],
+        [
+          "hr.resume.line",
+          "Resume line of an employee"
+        ],
+        [
+          "account.return.creation.wizard",
+          "Return creation wizard"
+        ],
+        [
+          "account.return.submission.wizard",
+          "Return submission wizard"
+        ],
+        [
+          "account.return.payment.wizard",
+          "Returns Generic Payment Wizard"
+        ],
+        [
+          "website.robots",
+          "Robots.txt Editor"
+        ],
+        [
+          "account.reconcile.model.line",
+          "Rules for the reconciliation model"
+        ],
+        [
+          "website.seo.metadata",
+          "SEO metadata"
+        ],
+        [
+          "account.edi.xml.ubl_sg",
+          "SG BIS Billing 3.0"
+        ],
+        [
+          "account.edi.xml.ubl_nl",
+          "SI-UBL 2.0 (NLCIUS)"
+        ],
+        [
+          "helpdesk.sla.report.analysis",
+          "SLA Status Analysis"
+        ],
+        [
+          "sms.account.phone",
+          "SMS Account Registration Phone Number Wizard"
+        ],
+        [
+          "sms.account.sender",
+          "SMS Account Sender Name Wizard"
+        ],
+        [
+          "sms.account.code",
+          "SMS Account Verification Code Wizard"
+        ],
+        [
+          "sms.template.preview",
+          "SMS Template Preview"
+        ],
+        [
+          "sms.template.reset",
+          "SMS Template Reset"
+        ],
+        [
+          "sms.template",
+          "SMS Templates"
+        ],
+        [
+          "hr.payroll.structure.type",
+          "Salary Structure Type"
+        ],
+        [
+          "sale.edi.xml.ubl_bis3",
+          "Sale BIS Ordering 3.5"
+        ],
+        [
+          "sale.advance.payment.inv",
+          "Sales Advance Payment Invoice"
+        ],
+        [
+          "sale.report",
+          "Sales Analysis Report"
+        ],
+        [
+          "sale.order.line",
+          "Sales Order Line"
+        ],
+        [
+          "digest.test",
+          "Sample Digest Wizard"
+        ],
+        [
+          "discuss.gif.favorite",
+          "Save favorite GIF from Tenor API"
+        ],
+        [
+          "planning.planning",
+          "Schedule"
+        ],
+        [
+          "mail.message.schedule",
+          "Scheduled Message"
+        ],
+        [
+          "mail.scheduled.message",
+          "Scheduled Message"
+        ],
+        [
+          "stock.scrap.reason.tag",
+          "Scrap Reason Tag"
+        ],
+        [
+          "account.secure.entries.wizard",
+          "Secure Journal Entries"
+        ],
+        [
+          "l10n_fr.send.das2.report",
+          "Send DAS2 Report Wizard"
+        ],
+        [
+          "l10n_fr_reports.send.fiscal.declaration",
+          "Send Fiscal Declaration Wizard"
+        ],
+        [
+          "account.move.send.batch.wizard",
+          "Send Invoice Batch Wizard"
+        ],
+        [
+          "account.move.send.wizard",
+          "Send Invoice Wizard"
+        ],
+        [
+          "planning.send",
+          "Send Planning"
+        ],
+        [
+          "sms.composer",
+          "Send SMS Wizard"
+        ],
+        [
+          "l10n_fr_reports.send.vat.report",
+          "Send VAT Report Wizard"
+        ],
+        [
+          "applicant.send.mail",
+          "Send mails to applicants"
+        ],
+        [
+          "ir.sequence",
+          "Sequence"
+        ],
+        [
+          "ir.sequence.date_range",
+          "Sequence Date Range"
+        ],
+        [
+          "ir.actions.server.history",
+          "Server Action History"
+        ],
+        [
+          "server.action.history.wizard",
+          "Server Action History Wizard"
+        ],
+        [
+          "res.session",
+          "Session"
+        ],
+        [
+          "homework.location.wizard",
+          "Set Homework Location Wizard"
+        ],
+        [
+          "ir.min.cron.mixin",
+          "Set Min Next call on metabase"
+        ],
+        [
+          "account.move.send",
+          "Shared Send Invoice Wizard Functions"
+        ],
+        [
+          "planning.slot.template",
+          "Shift Template"
+        ],
+        [
+          "res.users.apikeys.show",
+          "Show API Key"
+        ],
+        [
+          "sign.template.preview",
+          "Sign Tempate Preview"
+        ],
+        [
+          "sign.template.tag",
+          "Sign Template Tag"
+        ],
+        [
+          "hr.contract.sign.document.wizard",
+          "Sign document in contract"
+        ],
+        [
+          "hr.recruitment.sign.document.wizard",
+          "Sign document in recruitment"
+        ],
+        [
+          "sign.request.share",
+          "Sign request share wizard"
+        ],
+        [
+          "sign.log",
+          "Sign requests access history"
+        ],
+        [
+          "sign.send.request",
+          "Sign send request"
+        ],
+        [
+          "sign.send.request.signer",
+          "Sign send request signer"
+        ],
+        [
+          "sign.document",
+          "Signature Document"
+        ],
+        [
+          "sign.item.role",
+          "Signature Item Role"
+        ],
+        [
+          "sign.item.type",
+          "Signature Item Type"
+        ],
+        [
+          "sign.request.item.value",
+          "Signature Item Value"
+        ],
+        [
+          "sign.request.item",
+          "Signature Request Item"
+        ],
+        [
+          "sign.template",
+          "Signature Template"
+        ],
+        [
+          "hr.skill",
+          "Skill"
+        ],
+        [
+          "hr.skill.level",
+          "Skill Level"
+        ],
+        [
+          "hr.skill.type",
+          "Skill Type"
+        ],
+        [
+          "hr.job.skill",
+          "Skill for job position"
+        ],
+        [
+          "hr.individual.skill.mixin",
+          "Skill level"
+        ],
+        [
+          "hr.applicant.skill",
+          "Skill level for an applicant"
+        ],
+        [
+          "hr.employee.skill",
+          "Skill level for employee"
+        ],
+        [
+          "snailmail.letter",
+          "Snailmail Letter"
+        ],
+        [
+          "stock.orderpoint.snooze",
+          "Snooze Orderpoint"
+        ],
+        [
+          "hr.recruitment.source",
+          "Source of Applicants"
+        ],
+        [
+          "spreadsheet.dashboard",
+          "Spreadsheet Dashboard"
+        ],
+        [
+          "spreadsheet.mixin",
+          "Spreadsheet mixin"
+        ],
+        [
+          "stock.avco.report",
+          "Stock AVCO Justifier"
+        ],
+        [
+          "stock.move",
+          "Stock Move"
+        ],
+        [
+          "stock.package.destination",
+          "Stock Package Destination"
+        ],
+        [
+          "stock.package.history",
+          "Stock Package History"
+        ],
+        [
+          "stock.quantity.history",
+          "Stock Quantity History"
+        ],
+        [
+          "stock.quant.relocate",
+          "Stock Quantity Relocation"
+        ],
+        [
+          "report.stock.quantity",
+          "Stock Quantity Report"
+        ],
+        [
+          "report.stock.report_reception",
+          "Stock Reception Report"
+        ],
+        [
+          "stock.forecasted_product_template",
+          "Stock Replenishment Report"
+        ],
+        [
+          "stock.forecasted_product_product",
+          "Stock Replenishment Report"
+        ],
+        [
+          "stock.report",
+          "Stock Report"
+        ],
+        [
+          "stock.request.count",
+          "Stock Request an Inventory Count"
+        ],
+        [
+          "stock.rule",
+          "Stock Rule"
+        ],
+        [
+          "stock.rules.report",
+          "Stock Rules report"
+        ],
+        [
+          "stock_account.stock.valuation.report",
+          "Stock Valuation"
+        ],
+        [
+          "stock.package.type",
+          "Stock package type"
+        ],
+        [
+          "report.stock.report_stock_rule",
+          "Stock rule report"
+        ],
+        [
+          "stock.replenishment.info",
+          "Stock supplier replenishment information"
+        ],
+        [
+          "stock.replenishment.option",
+          "Stock warehouse replenishment option"
+        ],
+        [
+          "stock.storage.category",
+          "Storage Category"
+        ],
+        [
+          "stock.storage.category.capacity",
+          "Storage Category Capacity"
+        ],
+        [
+          "mail.link.preview",
+          "Store link preview data"
+        ],
+        [
+          "product.supplierinfo",
+          "Supplier Pricelist"
+        ],
+        [
+          "survey.invite",
+          "Survey Invitation Wizard"
+        ],
+        [
+          "survey.question.answer",
+          "Survey Label"
+        ],
+        [
+          "survey.question",
+          "Survey Question"
+        ],
+        [
+          "survey.user_input.line",
+          "Survey User Input Line"
+        ],
+        [
+          "google.calendar.sync",
+          "Synchronize a record with Google Calendar"
+        ],
+        [
+          "ir.config_parameter",
+          "System Parameter"
+        ],
+        [
+          "auth.totp.rate.limit.log",
+          "TOTP rate limit logs"
+        ],
+        [
+          "hr.job.tag",
+          "Tag"
+        ],
+        [
+          "project.task.recurrence",
+          "Task Recurrence"
+        ],
+        [
+          "task.share.wizard",
+          "Task Sharing"
+        ],
+        [
+          "project.task.type",
+          "Task Stage"
+        ],
+        [
+          "report.project.task.user",
+          "Tasks Analysis"
+        ],
+        [
+          "account.tax.group",
+          "Tax Group"
+        ],
+        [
+          "account.tax.repartition.line",
+          "Tax Repartition Line"
+        ],
+        [
+          "account.tax.unit",
+          "Tax Unit"
+        ],
+        [
+          "ir_actions_account_report_download",
+          "Technical model for accounting report downloads"
+        ],
+        [
+          "template.reset.mixin",
+          "Template Reset Mixin"
+        ],
+        [
+          "theme.ir.asset",
+          "Theme Asset"
+        ],
+        [
+          "theme.ir.attachment",
+          "Theme Attachment"
+        ],
+        [
+          "theme.ir.ui.view",
+          "Theme UI View"
+        ],
+        [
+          "theme.utils",
+          "Theme Utils"
+        ],
+        [
+          "helpdesk.ticket.report.analysis",
+          "Ticket Analysis"
+        ],
+        [
+          "helpdesk.sla.status",
+          "Ticket SLA Status"
+        ],
+        [
+          "web_tour.tour",
+          "Tour"
+        ],
+        [
+          "web_tour.tour.step",
+          "Tour's step"
+        ],
+        [
+          "stock.traceability.report",
+          "Traceability Report"
+        ],
+        [
+          "gamification.karma.tracking",
+          "Track Karma Changes"
+        ],
+        [
+          "account.bank.statement.line.transient",
+          "Transient model for bank statement line"
+        ],
+        [
+          "account.trial.balance.report.handler",
+          "Trial Balance Custom Handler"
+        ],
+        [
+          "ir.cron.trigger",
+          "Triggered Action"
+        ],
+        [
+          "hr.resume.line.type",
+          "Type of a resume line"
+        ],
+        [
+          "account.edi.xml.ubl_20",
+          "UBL 2.0"
+        ],
+        [
+          "account.edi.xml.ubl_21",
+          "UBL 2.1"
+        ],
+        [
+          "account.edi.xml.ubl_bis3",
+          "UBL BIS Billing 3.0.12"
+        ],
+        [
+          "utm.campaign",
+          "UTM Campaign"
+        ],
+        [
+          "utm.medium",
+          "UTM Medium"
+        ],
+        [
+          "utm.mixin",
+          "UTM Mixin"
+        ],
+        [
+          "utm.source",
+          "UTM Source"
+        ],
+        [
+          "utm.tag",
+          "UTM Tag"
+        ],
+        [
+          "product.base.unit",
+          "Unit of Measure for price per unit on products."
+        ],
+        [
+          "_unknown",
+          "Unknown"
+        ],
+        [
+          "base.module.update",
+          "Update Module"
+        ],
+        [
+          "update.product.attribute.value",
+          "Update product attribute value"
+        ],
+        [
+          "crm.lead.pls.update",
+          "Update the probabilities"
+        ],
+        [
+          "base.module.upgrade",
+          "Upgrade Module"
+        ],
+        [
+          "res.users",
+          "User"
+        ],
+        [
+          "res.users.apikeys",
+          "User API Key"
+        ],
+        [
+          "res.users.settings",
+          "User Settings"
+        ],
+        [
+          "res.users.settings.volumes",
+          "User Settings Volumes"
+        ],
+        [
+          "res.users.settings.embedded.action",
+          "User Settings for Embedded Actions"
+        ],
+        [
+          "website.custom_blocked_third_party_domains",
+          "User list of blocked 3rd-party domains"
+        ],
+        [
+          "change.password.user",
+          "User, Change Password Wizard"
+        ],
+        [
+          "change.password.own",
+          "User, change own password wizard"
+        ],
+        [
+          "mail.presence",
+          "User/Guest Presence"
+        ],
+        [
+          "res.users.deletion",
+          "Users Deletion Request"
+        ],
+        [
+          "res.users.log",
+          "Users Log"
+        ],
+        [
+          "validate.account.move",
+          "Validate Journal Entry"
+        ],
+        [
+          "vendor.delay.report",
+          "Vendor Delay Report"
+        ],
+        [
+          "ir.ui.view",
+          "View"
+        ],
+        [
+          "website.track",
+          "Visited Page"
+        ],
+        [
+          "stock.warehouse",
+          "Warehouse"
+        ],
+        [
+          "stock.warn.insufficient.qty",
+          "Warn Insufficient Quantity"
+        ],
+        [
+          "stock.warn.insufficient.qty.scrap",
+          "Warn Insufficient Scrap Quantity"
+        ],
+        [
+          "website",
+          "Website"
+        ],
+        [
+          "website.checkout.step",
+          "Website Checkout Step"
+        ],
+        [
+          "website.configurator.feature",
+          "Website Configurator Feature"
+        ],
+        [
+          "website_generator.request",
+          "Website Generator Request"
+        ],
+        [
+          "website.located.mixin",
+          "Website Located Mixin"
+        ],
+        [
+          "website.menu",
+          "Website Menu"
+        ],
+        [
+          "product.public.category",
+          "Website Product Category"
+        ],
+        [
+          "website.published.mixin",
+          "Website Published Mixin"
+        ],
+        [
+          "website.searchable.mixin",
+          "Website Searchable Mixin"
+        ],
+        [
+          "website.snippet.filter",
+          "Website Snippet Filter"
+        ],
+        [
+          "website.technical.page",
+          "Website Technical Page"
+        ],
+        [
+          "theme.website.menu",
+          "Website Theme Menu"
+        ],
+        [
+          "theme.website.page",
+          "Website Theme Page"
+        ],
+        [
+          "website.visitor",
+          "Website Visitor"
+        ],
+        [
+          "website.page_options.mixin",
+          "Website page/record specific options"
+        ],
+        [
+          "website.page_visibility_options.mixin",
+          "Website page/record specific visibility options"
+        ],
+        [
+          "website.rewrite",
+          "Website rewrite"
+        ],
+        [
+          "account.duplicate.transaction.wizard",
+          "Wizard for duplicate transactions"
+        ],
+        [
+          "account.missing.transaction.wizard",
+          "Wizard for missing transactions"
+        ],
+        [
+          "account_followup.manual_reminder",
+          "Wizard for sending manual reminders to clients"
+        ],
+        [
+          "ai.add.knowledge.articles",
+          "Wizard to add knowledge articles to an AI agent"
+        ],
+        [
+          "resource.calendar.attendance",
+          "Work Detail"
+        ],
+        [
+          "hr.work.location",
+          "Work Location"
+        ],
+        [
+          "stock.zero.demand.confirmation",
+          "Zero Demand Confirmation"
+        ],
+        [
+          "hr.mixin",
+          "hr.mixin"
+        ],
+        [
+          "planning.calendar.resource",
+          "planning calendar resource"
+        ],
+        [
+          "account.online.account",
+          "representation of an online bank account"
+        ],
+        [
+          "ir.websocket",
+          "websocket message handling"
+        ]
+      ],
+      "string": "Record",
+      "type": "reference"
+    },
+    "lang": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "en_US",
+          "English (US)"
+        ]
+      ],
+      "string": "Template Preview Language",
+      "type": "selection"
+    },
+    "no_record": {
+      "readonly": true,
+      "required": false,
+      "string": "No Record",
+      "type": "boolean"
+    },
+    "error_msg": {
+      "readonly": true,
+      "required": false,
+      "string": "Error Message",
+      "type": "char"
+    },
+    "subject": {
+      "readonly": true,
+      "required": false,
+      "string": "Subject",
+      "type": "char"
+    },
+    "email_from": {
+      "help": "Sender address",
+      "readonly": true,
+      "required": false,
+      "string": "From",
+      "type": "char"
+    },
+    "email_to": {
+      "help": "Comma-separated recipient addresses",
+      "readonly": true,
+      "required": false,
+      "string": "To",
+      "type": "char"
+    },
+    "email_cc": {
+      "help": "Carbon copy recipients",
+      "readonly": true,
+      "required": false,
+      "string": "Cc",
+      "type": "char"
+    },
+    "reply_to": {
+      "help": "Preferred response address",
+      "readonly": true,
+      "required": false,
+      "string": "Reply-To",
+      "type": "char"
+    },
+    "scheduled_date": {
+      "help": "The queue manager will send the email after the date",
+      "readonly": true,
+      "required": false,
+      "string": "Scheduled Date",
+      "type": "char"
+    },
+    "body_html": {
+      "readonly": true,
+      "required": false,
+      "string": "Body",
+      "type": "html"
+    },
+    "attachment_ids": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachments",
+      "type": "many2many"
+    },
+    "has_attachments": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Attachments",
+      "type": "boolean"
+    },
+    "has_several_languages_installed": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Several Languages Installed",
+      "type": "boolean"
+    },
+    "recipient_names": {
+      "help": "Names of the recipients",
+      "readonly": true,
+      "required": false,
+      "string": "Recipient Names",
+      "type": "char"
+    },
+    "partner_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Recipients",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

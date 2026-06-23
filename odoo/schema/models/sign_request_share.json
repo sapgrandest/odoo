@@ -1,0 +1,77 @@
+{
+  "model": "sign.request.share",
+  "name": "Sign request share wizard",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "sign.template",
+      "required": true,
+      "string": "Template",
+      "type": "many2one"
+    },
+    "sign_request_id": {
+      "readonly": false,
+      "relation": "sign.request",
+      "required": false,
+      "string": "Sign Request",
+      "type": "many2one"
+    },
+    "is_shared": {
+      "readonly": false,
+      "required": true,
+      "string": "Is Shared",
+      "type": "boolean"
+    },
+    "share_link": {
+      "readonly": true,
+      "required": false,
+      "string": "Share Link",
+      "type": "char"
+    },
+    "validity": {
+      "readonly": false,
+      "required": false,
+      "string": "Valid Until",
+      "type": "date"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

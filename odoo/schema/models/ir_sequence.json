@@ -1,0 +1,142 @@
+{
+  "model": "ir.sequence",
+  "name": "Sequence",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "code": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence Code",
+      "type": "char"
+    },
+    "implementation": {
+      "help": "While assigning a sequence number to a record, the 'no gap' sequence implementation ensures that each previous sequence number has been assigned already. While this sequence implementation will not skip any sequence number upon assignment, there can still be gaps in the sequence if records are deleted. The 'no gap' implementation is slower than the standard one.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "standard",
+          "Standard"
+        ],
+        [
+          "no_gap",
+          "No gap"
+        ]
+      ],
+      "string": "Implementation",
+      "type": "selection"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "prefix": {
+      "help": "Prefix value of the record for the sequence",
+      "readonly": false,
+      "required": false,
+      "string": "Prefix",
+      "type": "char"
+    },
+    "suffix": {
+      "help": "Suffix value of the record for the sequence",
+      "readonly": false,
+      "required": false,
+      "string": "Suffix",
+      "type": "char"
+    },
+    "number_next": {
+      "help": "Next number of this sequence",
+      "readonly": false,
+      "required": true,
+      "string": "Next Number",
+      "type": "integer"
+    },
+    "number_next_actual": {
+      "help": "Next number that will be used. This number can be incremented frequently so the displayed value might already be obsolete",
+      "readonly": false,
+      "required": false,
+      "string": "Actual Next Number",
+      "type": "integer"
+    },
+    "number_increment": {
+      "help": "The next number of the sequence will be incremented by this number",
+      "readonly": false,
+      "required": true,
+      "string": "Step",
+      "type": "integer"
+    },
+    "padding": {
+      "help": "Odoo will automatically adds some '0' on the left of the 'Next Number' to get the required padding size.",
+      "readonly": false,
+      "required": true,
+      "string": "Sequence Size",
+      "type": "integer"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "use_date_range": {
+      "readonly": false,
+      "required": false,
+      "string": "Use subsequences per date_range",
+      "type": "boolean"
+    },
+    "date_range_ids": {
+      "readonly": false,
+      "relation": "ir.sequence.date_range",
+      "required": false,
+      "string": "Subsequences",
+      "type": "one2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

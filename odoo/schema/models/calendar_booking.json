@@ -1,0 +1,176 @@
+{
+  "model": "calendar.booking",
+  "name": "Meeting Booking",
+  "field_count": 26,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "appointment_answer_input_ids": {
+      "readonly": false,
+      "relation": "appointment.answer.input",
+      "required": false,
+      "string": "Appointment Answers",
+      "type": "one2many"
+    },
+    "appointment_invite_id": {
+      "readonly": false,
+      "relation": "appointment.invite",
+      "required": false,
+      "string": "Appointment Invite",
+      "type": "many2one"
+    },
+    "appointment_type_id": {
+      "readonly": false,
+      "relation": "appointment.type",
+      "required": true,
+      "string": "Appointment Type",
+      "type": "many2one"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "html"
+    },
+    "duration": {
+      "readonly": true,
+      "required": false,
+      "string": "Duration",
+      "type": "float"
+    },
+    "guest_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Guests",
+      "type": "many2many"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Customer Name",
+      "type": "char"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Contact",
+      "type": "many2one"
+    },
+    "allday": {
+      "readonly": false,
+      "required": false,
+      "string": "Allday",
+      "type": "boolean"
+    },
+    "start": {
+      "readonly": false,
+      "required": true,
+      "string": "Start",
+      "type": "datetime"
+    },
+    "stop": {
+      "readonly": false,
+      "required": true,
+      "string": "Stop",
+      "type": "datetime"
+    },
+    "asked_capacity": {
+      "readonly": false,
+      "required": false,
+      "string": "Asked Capacity",
+      "type": "integer"
+    },
+    "booking_line_ids": {
+      "readonly": false,
+      "relation": "calendar.booking.line",
+      "required": false,
+      "string": "Booking Lines",
+      "type": "one2many"
+    },
+    "staff_user_id": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Operator",
+      "type": "many2one"
+    },
+    "account_move_id": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Appointment Invoice",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": false,
+      "relation": "product.product",
+      "required": true,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "booking_token": {
+      "readonly": true,
+      "required": false,
+      "string": "Access Token",
+      "type": "char"
+    },
+    "not_available": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Not Available",
+      "type": "boolean"
+    },
+    "calendar_event_id": {
+      "readonly": false,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Meeting",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "order_line_id": {
+      "readonly": false,
+      "relation": "sale.order.line",
+      "required": false,
+      "string": "Sale Order Line",
+      "type": "many2one"
+    }
+  }
+}

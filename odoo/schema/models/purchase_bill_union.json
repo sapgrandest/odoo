@@ -1,0 +1,78 @@
+{
+  "model": "purchase.bill.union",
+  "name": "Purchases & Bills Union",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Reference",
+      "type": "char"
+    },
+    "reference": {
+      "readonly": true,
+      "required": false,
+      "string": "Source",
+      "type": "char"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Vendor",
+      "type": "many2one"
+    },
+    "date": {
+      "readonly": true,
+      "required": false,
+      "string": "Date",
+      "type": "date"
+    },
+    "amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount",
+      "type": "float"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "vendor_bill_id": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Vendor Bill",
+      "type": "many2one"
+    },
+    "purchase_order_id": {
+      "readonly": true,
+      "relation": "purchase.order",
+      "required": false,
+      "string": "Purchase Order",
+      "type": "many2one"
+    }
+  }
+}

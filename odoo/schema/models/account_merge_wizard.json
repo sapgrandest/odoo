@@ -1,0 +1,72 @@
+{
+  "model": "account.merge.wizard",
+  "name": "Account merge wizard",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "account_ids": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Account",
+      "type": "many2many"
+    },
+    "is_group_by_name": {
+      "help": "Tick this checkbox if you want accounts to be grouped by name for merging.",
+      "readonly": false,
+      "required": false,
+      "string": "Group by name?",
+      "type": "boolean"
+    },
+    "wizard_line_ids": {
+      "readonly": false,
+      "relation": "account.merge.wizard.line",
+      "required": false,
+      "string": "Wizard Line",
+      "type": "one2many"
+    },
+    "disable_merge_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Disable Merge Button",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

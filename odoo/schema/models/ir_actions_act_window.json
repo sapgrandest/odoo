@@ -1,0 +1,248 @@
+{
+  "model": "ir.actions.act_window",
+  "name": "Action Window",
+  "field_count": 32,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Action Name",
+      "type": "char"
+    },
+    "type": {
+      "readonly": false,
+      "required": true,
+      "string": "Action Type",
+      "type": "char"
+    },
+    "xml_id": {
+      "readonly": true,
+      "required": false,
+      "string": "External ID",
+      "type": "char"
+    },
+    "path": {
+      "readonly": false,
+      "required": false,
+      "string": "Path to show in the URL",
+      "type": "char"
+    },
+    "help": {
+      "help": "Optional help text for the users with a description of the target view, such as its usage and purpose.",
+      "readonly": false,
+      "required": false,
+      "string": "Action Description",
+      "type": "html"
+    },
+    "explanation": {
+      "help": "Verbose description of what this action actually does",
+      "readonly": false,
+      "required": false,
+      "string": "Explanation",
+      "type": "text"
+    },
+    "binding_model_id": {
+      "help": "Setting a value makes this action available in the sidebar for the given model.",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Binding Model",
+      "type": "many2one"
+    },
+    "binding_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "action",
+          "Action"
+        ],
+        [
+          "report",
+          "Report"
+        ]
+      ],
+      "string": "Binding Type",
+      "type": "selection"
+    },
+    "binding_view_types": {
+      "readonly": false,
+      "required": false,
+      "string": "Binding View Types",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "view_id": {
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "View Ref.",
+      "type": "many2one"
+    },
+    "domain": {
+      "help": "Optional domain filtering of the destination data, as a Python expression",
+      "readonly": false,
+      "required": false,
+      "string": "Domain Value",
+      "type": "char"
+    },
+    "context": {
+      "help": "Context dictionary as Python expression, empty by default (Default: {})",
+      "readonly": false,
+      "required": true,
+      "string": "Context Value",
+      "type": "char"
+    },
+    "res_id": {
+      "help": "Database ID of record to open in form view, when ``view_mode`` is set to 'form' only",
+      "readonly": false,
+      "required": false,
+      "string": "Record ID",
+      "type": "integer"
+    },
+    "res_model": {
+      "help": "Model name of the object to open in the view window",
+      "readonly": false,
+      "required": true,
+      "string": "Destination Model",
+      "type": "char"
+    },
+    "target": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "current",
+          "Current Window"
+        ],
+        [
+          "new",
+          "New Window"
+        ],
+        [
+          "fullscreen",
+          "Full Screen"
+        ],
+        [
+          "main",
+          "Main action of Current Window"
+        ]
+      ],
+      "string": "Target Window",
+      "type": "selection"
+    },
+    "view_mode": {
+      "help": "Comma-separated list of allowed view modes, such as 'form', 'list', 'calendar', etc. (Default: list,form)",
+      "readonly": false,
+      "required": true,
+      "string": "View Mode",
+      "type": "char"
+    },
+    "mobile_view_mode": {
+      "help": "First view mode in mobile and small screen environments (default='kanban'). If it can't be found among available view modes, the same mode as for wider screens is used)",
+      "readonly": false,
+      "required": false,
+      "string": "Mobile View Mode",
+      "type": "char"
+    },
+    "usage": {
+      "help": "Used to filter menu and home actions from the user form.",
+      "readonly": false,
+      "required": false,
+      "string": "Action Usage",
+      "type": "char"
+    },
+    "view_ids": {
+      "readonly": false,
+      "relation": "ir.actions.act_window.view",
+      "required": false,
+      "string": "No of Views",
+      "type": "one2many"
+    },
+    "views": {
+      "help": "This function field computes the ordered list of views that should be enabled when displaying the result of an action, federating view mode, views and reference view. The result is returned as an ordered list of pairs (view_id,view_mode).",
+      "readonly": true,
+      "required": false,
+      "string": "Views",
+      "type": "json"
+    },
+    "limit": {
+      "help": "Default limit for the list view",
+      "readonly": false,
+      "required": false,
+      "string": "Limit",
+      "type": "integer"
+    },
+    "group_ids": {
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Groups",
+      "type": "many2many"
+    },
+    "search_view_id": {
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Search View Ref.",
+      "type": "many2one"
+    },
+    "embedded_action_ids": {
+      "readonly": true,
+      "relation": "ir.embedded.actions",
+      "required": false,
+      "string": "Embedded Action",
+      "type": "one2many"
+    },
+    "filter": {
+      "readonly": false,
+      "required": false,
+      "string": "Filter",
+      "type": "boolean"
+    },
+    "cache": {
+      "help": "If enabled, this action will cache the related data used in list, Kanban and form views with the aim to increase the loading speed",
+      "readonly": false,
+      "required": false,
+      "string": "Data Caching",
+      "type": "boolean"
+    }
+  }
+}

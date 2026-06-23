@@ -1,0 +1,79 @@
+{
+  "model": "report.stock.quantity",
+  "name": "Stock Quantity Report",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "date": {
+      "readonly": true,
+      "required": false,
+      "string": "Date",
+      "type": "date"
+    },
+    "product_tmpl_id": {
+      "readonly": true,
+      "relation": "product.template",
+      "required": false,
+      "string": "Product Tmpl",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "forecast",
+          "Forecasted Stock"
+        ],
+        [
+          "in",
+          "Forecasted Receipts"
+        ],
+        [
+          "out",
+          "Forecasted Deliveries"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "product_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "warehouse_id": {
+      "readonly": true,
+      "relation": "stock.warehouse",
+      "required": false,
+      "string": "Warehouse",
+      "type": "many2one"
+    }
+  }
+}

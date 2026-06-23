@@ -1,0 +1,217 @@
+{
+  "model": "gamification.goal.definition",
+  "name": "Gamification Goal Definition",
+  "field_count": 25,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Goal Definition",
+      "type": "char"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Goal Description",
+      "type": "text"
+    },
+    "monetary": {
+      "help": "The target and current value are defined in the company currency.",
+      "readonly": false,
+      "required": false,
+      "string": "Monetary Value",
+      "type": "boolean"
+    },
+    "suffix": {
+      "help": "The unit of the target and current values",
+      "readonly": false,
+      "required": false,
+      "string": "Suffix",
+      "type": "char"
+    },
+    "full_suffix": {
+      "help": "The currency and suffix field",
+      "readonly": true,
+      "required": false,
+      "string": "Full Suffix",
+      "type": "char"
+    },
+    "computation_mode": {
+      "help": "Define how the goals will be computed. The result of the operation will be stored in the field 'Current'.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "manually",
+          "Recorded manually"
+        ],
+        [
+          "count",
+          "Automatic: number of records"
+        ],
+        [
+          "sum",
+          "Automatic: sum on a field"
+        ],
+        [
+          "python",
+          "Automatic: execute a specific Python code"
+        ]
+      ],
+      "string": "Computation Mode",
+      "type": "selection"
+    },
+    "display_mode": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "progress",
+          "Progressive (using numerical values)"
+        ],
+        [
+          "boolean",
+          "Exclusive (done or not-done)"
+        ]
+      ],
+      "string": "Displayed as",
+      "type": "selection"
+    },
+    "model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Model",
+      "type": "many2one"
+    },
+    "model_inherited_ids": {
+      "help": "The list of models that extends the current model.",
+      "readonly": true,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Inherited models",
+      "type": "many2many"
+    },
+    "field_id": {
+      "readonly": false,
+      "relation": "ir.model.fields",
+      "required": false,
+      "string": "Field to Sum",
+      "type": "many2one"
+    },
+    "field_date_id": {
+      "help": "The date to use for the time period evaluated",
+      "readonly": false,
+      "relation": "ir.model.fields",
+      "required": false,
+      "string": "Date Field",
+      "type": "many2one"
+    },
+    "domain": {
+      "help": "Domain for filtering records. General rule, not user depending, e.g. [('state', '=', 'done')]. The expression can contain reference to 'user' which is a browse record of the current user if not in batch mode.",
+      "readonly": false,
+      "required": true,
+      "string": "Filter Domain",
+      "type": "char"
+    },
+    "batch_mode": {
+      "help": "Evaluate the expression in batch instead of once for each user",
+      "readonly": false,
+      "required": false,
+      "string": "Batch Mode",
+      "type": "boolean"
+    },
+    "batch_distinctive_field": {
+      "help": "In batch mode, this indicates which field distinguishes one user from the other, e.g. user_id, partner_id...",
+      "readonly": false,
+      "relation": "ir.model.fields",
+      "required": false,
+      "string": "Distinctive field for batch user",
+      "type": "many2one"
+    },
+    "batch_user_expression": {
+      "help": "The value to compare with the distinctive field. The expression can contain reference to 'user' which is a browse record of the current user, e.g. user.id, user.partner_id.id...",
+      "readonly": false,
+      "required": false,
+      "string": "Evaluated expression for batch mode",
+      "type": "char"
+    },
+    "compute_code": {
+      "help": "Python code to be executed for each user. 'result' should contains the new current value. Evaluated user can be access through object.user_id.",
+      "readonly": false,
+      "required": false,
+      "string": "Python Code",
+      "type": "text"
+    },
+    "condition": {
+      "help": "A goal is considered as completed when the current value is compared to the value to reach",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "higher",
+          "The higher the better"
+        ],
+        [
+          "lower",
+          "The lower the better"
+        ]
+      ],
+      "string": "Goal Performance",
+      "type": "selection"
+    },
+    "action_id": {
+      "help": "The action that will be called to update the goal value.",
+      "readonly": false,
+      "relation": "ir.actions.act_window",
+      "required": false,
+      "string": "Action",
+      "type": "many2one"
+    },
+    "res_id_field": {
+      "help": "The field name on the user profile (res.users) containing the value for res_id for action.",
+      "readonly": false,
+      "required": false,
+      "string": "ID Field of user",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

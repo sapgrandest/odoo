@@ -1,0 +1,94 @@
+{
+  "model": "mail.followers.edit",
+  "name": "Followers edit wizard",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "res_model": {
+      "help": "Model of the followed resource",
+      "readonly": false,
+      "required": true,
+      "string": "Related Document Model",
+      "type": "char"
+    },
+    "res_ids": {
+      "help": "Ids of the followed resources",
+      "readonly": false,
+      "required": false,
+      "string": "Related Document IDs",
+      "type": "char"
+    },
+    "operation": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "add",
+          "Add"
+        ],
+        [
+          "remove",
+          "Remove"
+        ]
+      ],
+      "string": "Operation",
+      "type": "selection"
+    },
+    "partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Followers",
+      "type": "many2many"
+    },
+    "message": {
+      "readonly": false,
+      "required": false,
+      "string": "Message",
+      "type": "html"
+    },
+    "notify": {
+      "readonly": false,
+      "required": false,
+      "string": "Notify Recipients",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

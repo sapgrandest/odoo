@@ -1,0 +1,177 @@
+{
+  "model": "sale.order.template",
+  "name": "Order Templates",
+  "field_count": 24,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "help": "If unchecked, it will allow you to hide the Order template without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Template",
+      "type": "char"
+    },
+    "note": {
+      "readonly": false,
+      "required": false,
+      "string": "Terms and conditions",
+      "type": "html"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "template_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "quotation",
+          "Quotation"
+        ],
+        [
+          "section",
+          "Section"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "mail_template_id": {
+      "help": "This e-mail template will be sent on confirmation. Leave empty to send nothing.",
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Confirmation Mail",
+      "type": "many2one"
+    },
+    "number_of_days": {
+      "help": "Number of days for the validity date computation of the quotation",
+      "readonly": false,
+      "required": false,
+      "string": "Quotation Duration",
+      "type": "integer"
+    },
+    "require_signature": {
+      "help": "Request a online signature to the customer in order to confirm orders automatically.",
+      "readonly": false,
+      "required": false,
+      "string": "Online Signature",
+      "type": "boolean"
+    },
+    "require_payment": {
+      "help": "Request an online payment to the customer in order to confirm orders automatically.",
+      "readonly": false,
+      "required": false,
+      "string": "Online Payment",
+      "type": "boolean"
+    },
+    "prepayment_percent": {
+      "help": "The percentage of the amount needed to be paid to confirm quotations.",
+      "readonly": false,
+      "required": false,
+      "string": "Prepayment percentage",
+      "type": "float"
+    },
+    "sale_order_template_line_ids": {
+      "readonly": false,
+      "relation": "sale.order.template.line",
+      "required": false,
+      "string": "Lines",
+      "type": "one2many"
+    },
+    "journal_id": {
+      "help": "If set, SO with this template will invoice in this journal; otherwise the sales journal with the lowest sequence is used.",
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Invoicing Journal",
+      "type": "many2one"
+    },
+    "share_template": {
+      "readonly": false,
+      "required": false,
+      "string": "Share",
+      "type": "boolean"
+    },
+    "team_ids": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Team",
+      "type": "many2many"
+    },
+    "user_has_access": {
+      "readonly": true,
+      "required": false,
+      "string": "Can User access",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "quotation_document_ids": {
+      "readonly": false,
+      "relation": "quotation.document",
+      "required": false,
+      "string": "Headers and footers",
+      "type": "many2many"
+    },
+    "spreadsheet_template_id": {
+      "readonly": false,
+      "relation": "sale.order.spreadsheet",
+      "required": false,
+      "string": "Quote calculator",
+      "type": "many2one"
+    }
+  }
+}

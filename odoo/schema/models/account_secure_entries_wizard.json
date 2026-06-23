@@ -1,0 +1,109 @@
+{
+  "model": "account.secure.entries.wizard",
+  "name": "Secure Journal Entries",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "hash_date": {
+      "help": "The selected Date",
+      "readonly": false,
+      "required": true,
+      "string": "Hash All Entries",
+      "type": "date"
+    },
+    "chains_to_hash_with_gaps": {
+      "readonly": true,
+      "required": false,
+      "string": "Chains To Hash With Gaps",
+      "type": "json"
+    },
+    "max_hash_date": {
+      "help": "Highest Date such that all posted journal entries prior to (including) the date are secured. Only journal entries after the hard lock date are considered.",
+      "readonly": true,
+      "required": false,
+      "string": "Max Hash Date",
+      "type": "date"
+    },
+    "unreconciled_bank_statement_line_ids": {
+      "help": "All unreconciled bank statement lines before the selected date.",
+      "readonly": true,
+      "relation": "account.bank.statement.line",
+      "required": false,
+      "string": "Unreconciled Bank Statement Line",
+      "type": "many2many"
+    },
+    "not_hashable_unlocked_move_ids": {
+      "help": "All unhashable moves before the selected date that are not protected by the Hard Lock Date",
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Not Hashable Unlocked Move",
+      "type": "many2many"
+    },
+    "move_to_hash_ids": {
+      "help": "All moves that will be hashed",
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Move To Hash",
+      "type": "many2many"
+    },
+    "warnings": {
+      "readonly": true,
+      "required": false,
+      "string": "Warnings",
+      "type": "json"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

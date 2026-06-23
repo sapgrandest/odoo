@@ -1,0 +1,215 @@
+{
+  "model": "ai.agent",
+  "name": "AI Agent",
+  "field_count": 20,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Agent Name",
+      "type": "char"
+    },
+    "subtitle": {
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "char"
+    },
+    "system_prompt": {
+      "help": "Customize to control relevance and formatting.",
+      "readonly": false,
+      "required": false,
+      "string": "System Prompt",
+      "type": "text"
+    },
+    "response_style": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "analytical",
+          "Analytical"
+        ],
+        [
+          "balanced",
+          "Balanced"
+        ],
+        [
+          "creative",
+          "Creative"
+        ]
+      ],
+      "string": "Response Style",
+      "type": "selection"
+    },
+    "llm_model": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "gpt-3.5-turbo",
+          "GPT-3.5 Turbo"
+        ],
+        [
+          "gpt-4",
+          "GPT-4"
+        ],
+        [
+          "gpt-4o",
+          "GPT-4o"
+        ],
+        [
+          "gpt-4.1",
+          "GPT-4.1"
+        ],
+        [
+          "gpt-4.1-mini",
+          "GPT-4.1 Mini"
+        ],
+        [
+          "gpt-5",
+          "GPT-5"
+        ],
+        [
+          "gpt-5-nano",
+          "GPT-5 Nano"
+        ],
+        [
+          "gpt-5-mini",
+          "GPT-5 Mini"
+        ],
+        [
+          "gpt-5.1",
+          "GPT-5.1"
+        ],
+        [
+          "gpt-5.2",
+          "GPT-5.2"
+        ],
+        [
+          "gemini-2.5-pro",
+          "Gemini 2.5 Pro"
+        ],
+        [
+          "gemini-2.5-flash",
+          "Gemini 2.5 Flash"
+        ],
+        [
+          "gemini-2.5-flash-lite",
+          "Gemini 2.5 Flash Lite"
+        ],
+        [
+          "gemini-2.5-flash-image",
+          "Gemini 2.5 Nano Banana"
+        ],
+        [
+          "gemini-3-flash",
+          "Gemini 3 Flash"
+        ],
+        [
+          "gemini-3.1-pro",
+          "Gemini 3.1 Pro"
+        ]
+      ],
+      "string": "LLM Model",
+      "type": "selection"
+    },
+    "restrict_to_sources": {
+      "help": "If checked, the agent will only respond based on the provided sources.",
+      "readonly": false,
+      "required": false,
+      "string": "Restrict to Sources",
+      "type": "boolean"
+    },
+    "image_128": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "avatar_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Avatar",
+      "type": "binary"
+    },
+    "topic_ids": {
+      "help": "A topic includes instructions and tools that guide Odoo AI in helping the user complete their tasks.",
+      "readonly": false,
+      "relation": "ai.topic",
+      "required": false,
+      "string": "Topics",
+      "type": "many2many"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "is_system_agent": {
+      "readonly": false,
+      "required": false,
+      "string": "System Agent",
+      "type": "boolean"
+    },
+    "sources_ids": {
+      "readonly": false,
+      "relation": "ai.agent.source",
+      "required": false,
+      "string": "Sources",
+      "type": "one2many"
+    },
+    "sources_fully_processed": {
+      "readonly": true,
+      "required": false,
+      "string": "Sources Fully Processed",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

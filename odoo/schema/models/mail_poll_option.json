@@ -1,0 +1,83 @@
+{
+  "model": "mail.poll.option",
+  "name": "Poll option",
+  "field_count": 12,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "number_of_votes": {
+      "readonly": true,
+      "required": false,
+      "string": "Number Of Votes",
+      "type": "integer"
+    },
+    "option_label": {
+      "readonly": false,
+      "required": true,
+      "string": "Option Label",
+      "type": "char"
+    },
+    "poll_id": {
+      "readonly": false,
+      "relation": "mail.poll",
+      "required": true,
+      "string": "Poll",
+      "type": "many2one"
+    },
+    "selected_by_self": {
+      "readonly": true,
+      "required": false,
+      "string": "Selected By Self",
+      "type": "boolean"
+    },
+    "vote_ids": {
+      "readonly": false,
+      "relation": "mail.poll.vote",
+      "required": false,
+      "string": "Vote",
+      "type": "one2many"
+    },
+    "vote_percentage": {
+      "readonly": true,
+      "required": false,
+      "string": "Vote Percentage",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

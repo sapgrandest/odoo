@@ -1,0 +1,134 @@
+{
+  "model": "account.report.column",
+  "name": "Accounting Report Column",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Name",
+      "type": "char"
+    },
+    "expression_label": {
+      "readonly": false,
+      "required": true,
+      "string": "Expression Label",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "report_id": {
+      "readonly": false,
+      "relation": "account.report",
+      "required": false,
+      "string": "Report",
+      "type": "many2one"
+    },
+    "sortable": {
+      "readonly": false,
+      "required": false,
+      "string": "Sortable",
+      "type": "boolean"
+    },
+    "figure_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "monetary",
+          "Monetary"
+        ],
+        [
+          "percentage",
+          "Percentage"
+        ],
+        [
+          "integer",
+          "Integer"
+        ],
+        [
+          "float",
+          "Float"
+        ],
+        [
+          "date",
+          "Date"
+        ],
+        [
+          "datetime",
+          "Datetime"
+        ],
+        [
+          "boolean",
+          "Boolean"
+        ],
+        [
+          "string",
+          "String"
+        ],
+        [
+          "many2one",
+          "Many2One"
+        ]
+      ],
+      "string": "Figure Type",
+      "type": "selection"
+    },
+    "blank_if_zero": {
+      "help": "When checked, 0 values will not show in this column.",
+      "readonly": false,
+      "required": false,
+      "string": "Blank if Zero",
+      "type": "boolean"
+    },
+    "custom_audit_action_id": {
+      "readonly": false,
+      "relation": "ir.actions.act_window",
+      "required": false,
+      "string": "Custom Audit Action",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

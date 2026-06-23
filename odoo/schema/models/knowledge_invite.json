@@ -1,0 +1,91 @@
+{
+  "model": "knowledge.invite",
+  "name": "Knowledge Invite Wizard",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "article_id": {
+      "readonly": false,
+      "relation": "knowledge.article",
+      "required": true,
+      "string": "Article",
+      "type": "many2one"
+    },
+    "have_share_partners": {
+      "readonly": true,
+      "required": false,
+      "string": "Have Share Partners",
+      "type": "boolean"
+    },
+    "partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Recipients",
+      "type": "many2many"
+    },
+    "permission": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "write",
+          "Can edit"
+        ],
+        [
+          "read",
+          "Can read"
+        ],
+        [
+          "none",
+          "No access"
+        ]
+      ],
+      "string": "Permission",
+      "type": "selection"
+    },
+    "message": {
+      "readonly": false,
+      "required": false,
+      "string": "Message",
+      "type": "html"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

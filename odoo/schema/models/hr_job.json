@@ -1,0 +1,844 @@
+{
+  "model": "hr.job",
+  "name": "Job Position",
+  "field_count": 113,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "website_id": {
+      "help": "Restrict to a specific website.",
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "website_url": {
+      "help": "The full relative URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website URL",
+      "type": "char"
+    },
+    "website_absolute_url": {
+      "help": "The full absolute URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website Absolute URL",
+      "type": "char"
+    },
+    "website_published": {
+      "help": "Set if the application is published on the website of the company.",
+      "readonly": false,
+      "required": false,
+      "string": "Visible on current website",
+      "type": "boolean"
+    },
+    "is_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Published",
+      "type": "boolean"
+    },
+    "publish_on": {
+      "help": "Automatically publish the page on the chosen date and time.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto publish on",
+      "type": "datetime"
+    },
+    "published_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Published date",
+      "type": "datetime"
+    },
+    "can_publish": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Publish",
+      "type": "boolean"
+    },
+    "is_seo_optimized": {
+      "readonly": true,
+      "required": false,
+      "string": "SEO optimized",
+      "type": "boolean"
+    },
+    "website_meta_title": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta title",
+      "type": "char"
+    },
+    "website_meta_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta description",
+      "type": "text"
+    },
+    "website_meta_keywords": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta keywords",
+      "type": "char"
+    },
+    "website_meta_og_img": {
+      "readonly": false,
+      "required": false,
+      "string": "Website opengraph image",
+      "type": "char"
+    },
+    "seo_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Seo name",
+      "type": "char"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_plans_ids": {
+      "readonly": true,
+      "relation": "mail.activity.plan",
+      "required": false,
+      "string": "Activity Plans",
+      "type": "many2many"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Job Position",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "expected_employees": {
+      "help": "Expected number of employees for this job position after new recruitment.",
+      "readonly": true,
+      "required": false,
+      "string": "Total Forecasted Employees",
+      "type": "integer"
+    },
+    "no_of_employee": {
+      "help": "Number of employees currently occupying this job position.",
+      "readonly": true,
+      "required": false,
+      "string": "Current Number of Employees",
+      "type": "integer"
+    },
+    "no_of_recruitment": {
+      "help": "Number of new employees you expect to recruit.",
+      "readonly": false,
+      "required": false,
+      "string": "Target",
+      "type": "integer"
+    },
+    "employee_ids": {
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Employees",
+      "type": "one2many"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Job Description",
+      "type": "html"
+    },
+    "requirements": {
+      "readonly": false,
+      "required": false,
+      "string": "Requirements",
+      "type": "text"
+    },
+    "recruiter_id": {
+      "help": "The Recruiter will be the default value for all Applicants in this job             position. The Recruiter is automatically added to all meetings with the Applicant.",
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Recruiter",
+      "type": "many2one"
+    },
+    "department_id": {
+      "readonly": false,
+      "relation": "hr.department",
+      "required": false,
+      "string": "Department",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "employee_type_id": {
+      "readonly": false,
+      "relation": "hr.employee.type",
+      "required": false,
+      "string": "Employee Type",
+      "type": "many2one"
+    },
+    "company_country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "alias_id": {
+      "help": "Email alias for this job position. New emails will automatically create new applicants for this job position.",
+      "readonly": false,
+      "relation": "mail.alias",
+      "required": true,
+      "string": "Alias",
+      "type": "many2one"
+    },
+    "alias_name": {
+      "help": "The name of the email alias, e.g. 'jobs' if you want to catch emails for <jobs@example.odoo.com>",
+      "readonly": false,
+      "required": false,
+      "string": "Alias Name",
+      "type": "char"
+    },
+    "alias_domain_id": {
+      "readonly": false,
+      "relation": "mail.alias.domain",
+      "required": false,
+      "string": "Alias Domain",
+      "type": "many2one"
+    },
+    "alias_domain": {
+      "help": "Email domain e.g. 'example.com' in 'odoo@example.com'",
+      "readonly": true,
+      "required": false,
+      "string": "Alias Domain Name",
+      "type": "char"
+    },
+    "alias_defaults": {
+      "help": "A Python dictionary that will be evaluated to provide default values when creating new records for this alias.",
+      "readonly": true,
+      "required": true,
+      "string": "Default Values",
+      "type": "text"
+    },
+    "alias_email": {
+      "readonly": true,
+      "required": false,
+      "string": "Email Alias",
+      "type": "char"
+    },
+    "address_id": {
+      "help": "Select the location where the applicant will work. Addresses listed here are defined on the company's contact information.",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Job Location",
+      "type": "many2one"
+    },
+    "application_ids": {
+      "readonly": false,
+      "relation": "hr.applicant",
+      "required": false,
+      "string": "Job Applications",
+      "type": "one2many"
+    },
+    "application_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Application Count",
+      "type": "integer"
+    },
+    "open_application_count": {
+      "help": "Number of applications that are still ongoing (not hired or refused)",
+      "readonly": true,
+      "required": false,
+      "string": "Open Application Count",
+      "type": "integer"
+    },
+    "all_application_count": {
+      "readonly": true,
+      "required": false,
+      "string": "All Application Count",
+      "type": "integer"
+    },
+    "new_application_count": {
+      "help": "Number of applications that are new in the flow (typically at first step of the flow)",
+      "readonly": true,
+      "required": false,
+      "string": "New Application",
+      "type": "integer"
+    },
+    "old_application_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Old Application",
+      "type": "integer"
+    },
+    "applicant_hired": {
+      "readonly": true,
+      "required": false,
+      "string": "Applicants Hired",
+      "type": "integer"
+    },
+    "manager_id": {
+      "readonly": true,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Department Manager",
+      "type": "many2one"
+    },
+    "document_ids": {
+      "readonly": true,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Documents",
+      "type": "one2many"
+    },
+    "documents_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Document Count",
+      "type": "integer"
+    },
+    "employee_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Employee Count",
+      "type": "integer"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color Index",
+      "type": "integer"
+    },
+    "is_favorite": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Favorite",
+      "type": "boolean"
+    },
+    "favorite_recruiter_ids": {
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Favorite Recruiter",
+      "type": "many2many"
+    },
+    "interviewer_ids": {
+      "help": "The Interviewers set on the job position can see all Applicants in it. They have access to the information, the attachments, the meeting management and they can refuse him. You don't need to have Recruitment rights to be set as an interviewer.",
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Interviewers",
+      "type": "many2many"
+    },
+    "extended_interviewer_ids": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Extended Interviewer",
+      "type": "many2many"
+    },
+    "industry_id": {
+      "readonly": false,
+      "relation": "res.partner.industry",
+      "required": false,
+      "string": "Industry",
+      "type": "many2one"
+    },
+    "expected_degree": {
+      "readonly": false,
+      "relation": "hr.recruitment.degree",
+      "required": false,
+      "string": "Expected Degree",
+      "type": "many2one"
+    },
+    "activity_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Activity Count",
+      "type": "integer"
+    },
+    "job_properties": {
+      "readonly": false,
+      "required": false,
+      "string": "Properties",
+      "type": "properties"
+    },
+    "no_of_hired_employee": {
+      "help": "Number of hired employees for this job position during recruitment phase.",
+      "readonly": true,
+      "required": false,
+      "string": "Hired",
+      "type": "integer"
+    },
+    "job_source_ids": {
+      "readonly": false,
+      "relation": "hr.recruitment.source",
+      "required": false,
+      "string": "Job Source",
+      "type": "one2many"
+    },
+    "tag_ids": {
+      "readonly": false,
+      "relation": "hr.job.tag",
+      "required": false,
+      "string": "Tags",
+      "type": "many2many"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "salary_min": {
+      "readonly": false,
+      "required": false,
+      "string": "Minimum Salary",
+      "type": "monetary"
+    },
+    "salary_max": {
+      "readonly": false,
+      "required": false,
+      "string": "Maximum Salary",
+      "type": "monetary"
+    },
+    "payment_interval": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "hourly",
+          "Hour"
+        ],
+        [
+          "daily",
+          "Day"
+        ],
+        [
+          "weekly",
+          "Week"
+        ],
+        [
+          "biweekly",
+          "Bi-Week"
+        ],
+        [
+          "monthly",
+          "Month"
+        ],
+        [
+          "yearly",
+          "Year"
+        ]
+      ],
+      "string": "Scheduled Pay",
+      "type": "selection"
+    },
+    "company_partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Company Partner",
+      "type": "many2one"
+    },
+    "job_skill_ids": {
+      "readonly": false,
+      "relation": "hr.job.skill",
+      "required": false,
+      "string": "Skills",
+      "type": "one2many"
+    },
+    "current_job_skill_ids": {
+      "readonly": false,
+      "relation": "hr.job.skill",
+      "required": false,
+      "string": "Current Job Skill",
+      "type": "one2many"
+    },
+    "skill_ids": {
+      "readonly": true,
+      "relation": "hr.skill",
+      "required": false,
+      "string": "Skill",
+      "type": "many2many"
+    },
+    "applicant_matching_score": {
+      "readonly": true,
+      "required": false,
+      "string": "Matching Score(%)",
+      "type": "float"
+    },
+    "matching_applicant_skill_ids": {
+      "readonly": true,
+      "relation": "hr.skill",
+      "required": false,
+      "string": "Matching Skills",
+      "type": "many2many"
+    },
+    "missing_applicant_skill_ids": {
+      "readonly": true,
+      "relation": "hr.skill",
+      "required": false,
+      "string": "Missing Skills",
+      "type": "many2many"
+    },
+    "website_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Website description",
+      "type": "html"
+    },
+    "website_rating": {
+      "readonly": false,
+      "required": false,
+      "string": "Website rating",
+      "type": "html"
+    },
+    "job_details": {
+      "help": "Complementary information that will appear on the job submission page",
+      "readonly": false,
+      "required": false,
+      "string": "Process Details",
+      "type": "html"
+    },
+    "full_url": {
+      "readonly": true,
+      "required": false,
+      "string": "job URL",
+      "type": "char"
+    },
+    "alias_full_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Alias Email",
+      "type": "char"
+    },
+    "alias_model_id": {
+      "help": "The model (Odoo Document Kind) to which this alias corresponds. Any incoming email that does not reply to an existing record will cause the creation of a new record of this model (e.g. a Project Task)",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": true,
+      "string": "Aliased Model",
+      "type": "many2one"
+    },
+    "alias_force_thread_id": {
+      "help": "Optional ID of a thread (record) to which all incoming messages will be attached, even if they did not reply to it. If set, this will disable the creation of new records completely.",
+      "readonly": false,
+      "required": false,
+      "string": "Record Thread ID",
+      "type": "integer"
+    },
+    "alias_parent_model_id": {
+      "help": "Parent model holding the alias. The model holding the alias reference is not necessarily the model given by alias_model_id (example: project (parent_model) and task (model))",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Parent Model",
+      "type": "many2one"
+    },
+    "alias_parent_thread_id": {
+      "help": "ID of the parent record holding the alias (example: project holding the task creation alias)",
+      "readonly": false,
+      "required": false,
+      "string": "Parent Record Thread ID",
+      "type": "integer"
+    },
+    "alias_contact": {
+      "help": "Policy to post a message on the document using the mailgateway.\n- everyone: everyone can post\n- partners: only authenticated partners\n- followers: only followers of the related document or members of following channels\n",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "everyone",
+          "Everyone"
+        ],
+        [
+          "partners",
+          "Authenticated Partners"
+        ],
+        [
+          "followers",
+          "Followers only"
+        ],
+        [
+          "employees",
+          "Authenticated Employees"
+        ]
+      ],
+      "string": "Alias Contact Security",
+      "type": "selection"
+    },
+    "alias_incoming_local": {
+      "readonly": false,
+      "required": false,
+      "string": "Local-part based incoming detection",
+      "type": "boolean"
+    },
+    "alias_bounced_content": {
+      "help": "If set, this content will automatically be sent out to unauthorized users instead of the default message.",
+      "readonly": false,
+      "required": false,
+      "string": "Custom Bounced Message",
+      "type": "html"
+    },
+    "alias_status": {
+      "help": "Alias status assessed on the last message received.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_tested",
+          "Not Tested"
+        ],
+        [
+          "valid",
+          "Valid"
+        ],
+        [
+          "invalid",
+          "Invalid"
+        ]
+      ],
+      "string": "Alias Status",
+      "type": "selection"
+    }
+  }
+}

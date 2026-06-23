@@ -1,0 +1,19 @@
+{
+  "model": "l10n_fr_reports.2033.c.report.handler",
+  "name": "2033-C Fixed Assets – Depreciation – Capital Gains – Capital Losses",
+  "field_count": 2,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    }
+  }
+}

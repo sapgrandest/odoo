@@ -1,0 +1,66 @@
+{
+  "model": "account_reports.export.wizard",
+  "name": "Export wizard for accounting's reports",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "export_format_ids": {
+      "readonly": false,
+      "relation": "account_reports.export.wizard.format",
+      "required": false,
+      "string": "Export to",
+      "type": "many2many"
+    },
+    "report_id": {
+      "readonly": false,
+      "relation": "account.report",
+      "required": true,
+      "string": "Parent Report Id",
+      "type": "many2one"
+    },
+    "doc_name": {
+      "help": "Name to give to the generated documents.",
+      "readonly": false,
+      "required": false,
+      "string": "Documents Name",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "model": "portal.entry",
+  "name": "Portal Entry",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Title of Card",
+      "type": "char"
+    },
+    "url": {
+      "readonly": false,
+      "required": false,
+      "string": "Target URL",
+      "type": "char"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "Description of Card",
+      "type": "text"
+    },
+    "image": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "sequence",
+      "type": "integer"
+    },
+    "placeholder_count": {
+      "readonly": false,
+      "required": false,
+      "string": "Placeholder Count",
+      "type": "char"
+    },
+    "category": {
+      "readonly": false,
+      "required": false,
+      "string": "Category",
+      "type": "char"
+    },
+    "show_in_portal": {
+      "readonly": false,
+      "required": false,
+      "string": "Show in Portal",
+      "type": "boolean"
+    },
+    "is_config_card": {
+      "readonly": false,
+      "required": false,
+      "string": "Config Card",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

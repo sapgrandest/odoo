@@ -1,0 +1,89 @@
+{
+  "model": "sale.pdf.form.field",
+  "name": "Form fields of inside quotation documents.",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "help": "The form field name as written in the PDF.",
+      "readonly": true,
+      "required": true,
+      "string": "Form Field Name",
+      "type": "char"
+    },
+    "document_type": {
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "quotation_document",
+          "Header/Footer"
+        ],
+        [
+          "product_document",
+          "Product Document"
+        ]
+      ],
+      "string": "Document Type",
+      "type": "selection"
+    },
+    "path": {
+      "help": "The path to follow to dynamically fill the form field. \nLeave empty to be able to customized it in the quotation form.",
+      "readonly": false,
+      "required": false,
+      "string": "Path",
+      "type": "char"
+    },
+    "product_document_ids": {
+      "readonly": false,
+      "relation": "product.document",
+      "required": false,
+      "string": "Product Documents",
+      "type": "many2many"
+    },
+    "quotation_document_ids": {
+      "readonly": false,
+      "relation": "quotation.document",
+      "required": false,
+      "string": "Quotation Documents",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

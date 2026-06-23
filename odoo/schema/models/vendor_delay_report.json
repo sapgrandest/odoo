@@ -1,0 +1,64 @@
+{
+  "model": "vendor.delay.report",
+  "name": "Vendor Delay Report",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Vendor",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "category_id": {
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "date": {
+      "readonly": true,
+      "required": false,
+      "string": "Effective Date",
+      "type": "datetime"
+    },
+    "qty_total": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Quantity",
+      "type": "float"
+    },
+    "qty_on_time": {
+      "readonly": true,
+      "required": false,
+      "string": "On-Time Quantity",
+      "type": "float"
+    },
+    "on_time_rate": {
+      "readonly": true,
+      "required": false,
+      "string": "On-Time Delivery Rate",
+      "type": "float"
+    }
+  }
+}

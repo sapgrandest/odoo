@@ -1,0 +1,168 @@
+{
+  "model": "payment.link.wizard",
+  "name": "Generate Sales Payment Link",
+  "field_count": 26,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "res_model": {
+      "readonly": false,
+      "required": true,
+      "string": "Related Document Model",
+      "type": "char"
+    },
+    "res_id": {
+      "readonly": false,
+      "required": true,
+      "string": "Related Document ID",
+      "type": "integer"
+    },
+    "amount": {
+      "readonly": false,
+      "required": true,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "amount_max": {
+      "readonly": false,
+      "required": false,
+      "string": "Amount Max",
+      "type": "monetary"
+    },
+    "currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "partner_email": {
+      "readonly": true,
+      "required": false,
+      "string": "Email",
+      "type": "char"
+    },
+    "link": {
+      "readonly": true,
+      "required": false,
+      "string": "Payment Link",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "warning_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Warning Message",
+      "type": "char"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "invoice_amount_due": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount Due",
+      "type": "monetary"
+    },
+    "open_installments": {
+      "readonly": false,
+      "required": false,
+      "string": "Open Installments",
+      "type": "json"
+    },
+    "open_installments_preview": {
+      "readonly": true,
+      "required": false,
+      "string": "Open Installments Preview",
+      "type": "html"
+    },
+    "display_open_installments": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Open Installments",
+      "type": "boolean"
+    },
+    "has_eligible_epd": {
+      "readonly": false,
+      "required": false,
+      "string": "Has Eligible Epd",
+      "type": "boolean"
+    },
+    "discount_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Discount Date",
+      "type": "date"
+    },
+    "epd_info": {
+      "readonly": true,
+      "required": false,
+      "string": "Early Payment Discount Information",
+      "type": "char"
+    },
+    "amount_paid": {
+      "readonly": true,
+      "required": false,
+      "string": "Already Paid",
+      "type": "monetary"
+    },
+    "prepayment_amount": {
+      "readonly": false,
+      "required": false,
+      "string": "Prepayment Amount",
+      "type": "monetary"
+    },
+    "confirmation_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Confirmation Message",
+      "type": "char"
+    }
+  }
+}

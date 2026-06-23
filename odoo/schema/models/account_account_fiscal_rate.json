@@ -1,0 +1,71 @@
+{
+  "model": "account.account.fiscal.rate",
+  "name": "Fiscal Rate",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "rate": {
+      "readonly": false,
+      "required": true,
+      "string": "Fiscal Rate (%)",
+      "type": "float"
+    },
+    "date_from": {
+      "readonly": false,
+      "required": true,
+      "string": "Start Date",
+      "type": "date"
+    },
+    "related_account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": true,
+      "string": "Account",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

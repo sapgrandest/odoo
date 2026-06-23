@@ -1,0 +1,137 @@
+{
+  "model": "ir.ui.menu",
+  "name": "Menu",
+  "field_count": 17,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Menu",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "child_id": {
+      "readonly": false,
+      "relation": "ir.ui.menu",
+      "required": false,
+      "string": "Child IDs",
+      "type": "one2many"
+    },
+    "parent_id": {
+      "readonly": false,
+      "relation": "ir.ui.menu",
+      "required": false,
+      "string": "Parent Menu",
+      "type": "many2one"
+    },
+    "parent_path": {
+      "readonly": false,
+      "required": false,
+      "string": "Parent Path",
+      "type": "char"
+    },
+    "group_ids": {
+      "help": "If you have groups, the visibility of this menu will be based on these groups. If this field is empty, Odoo will compute visibility based on the related object's read access.",
+      "readonly": false,
+      "relation": "res.groups",
+      "required": false,
+      "string": "Groups",
+      "type": "many2many"
+    },
+    "complete_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Full Path",
+      "type": "char"
+    },
+    "web_icon": {
+      "readonly": false,
+      "required": false,
+      "string": "Web Icon File",
+      "type": "char"
+    },
+    "action": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "ir.actions.report",
+          "ir.actions.report"
+        ],
+        [
+          "ir.actions.act_window",
+          "ir.actions.act_window"
+        ],
+        [
+          "ir.actions.act_url",
+          "ir.actions.act_url"
+        ],
+        [
+          "ir.actions.server",
+          "ir.actions.server"
+        ],
+        [
+          "ir.actions.client",
+          "ir.actions.client"
+        ]
+      ],
+      "string": "Action",
+      "type": "reference"
+    },
+    "web_icon_data": {
+      "readonly": false,
+      "required": false,
+      "string": "Web Icon Image",
+      "type": "binary"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

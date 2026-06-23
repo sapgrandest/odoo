@@ -1,0 +1,194 @@
+{
+  "model": "project.task.type",
+  "name": "Task Stage",
+  "field_count": 23,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Stage Name",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "project_ids": {
+      "help": "Projects in which this stage is present. If you follow a similar workflow in several projects, you can share this stage among them and get consolidated information this way.",
+      "readonly": false,
+      "relation": "project.project",
+      "required": false,
+      "string": "Projects",
+      "type": "many2many"
+    },
+    "mail_template_id": {
+      "help": "If set, an email will be automatically sent to the customer when the task reaches this stage.",
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Email Template",
+      "type": "many2one"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color",
+      "type": "integer"
+    },
+    "fold": {
+      "readonly": false,
+      "required": false,
+      "string": "Folded",
+      "type": "boolean"
+    },
+    "rating_template_id": {
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Rating Email Template",
+      "type": "many2one"
+    },
+    "auto_validation_state": {
+      "help": "Automatically modify the state when the customer replies to the feedback for this stage.\n * Good feedback from the customer will update the state to 'Approved' (green bullet).\n * Neutral or bad feedback will set the kanban state to 'Changes Requested' (orange bullet).\n",
+      "readonly": false,
+      "required": false,
+      "string": "Automatic Kanban Status",
+      "type": "boolean"
+    },
+    "rotting_threshold_days": {
+      "help": "Day count before tasks in this stage become stale. Set to 0 to disable         Changing this parameter will not affect the rotting status/date of resources last updated before this change.",
+      "readonly": false,
+      "required": false,
+      "string": "Days to rot",
+      "type": "integer"
+    },
+    "user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Stage Owner",
+      "type": "many2one"
+    },
+    "rating_request_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Rating Request Deadline",
+      "type": "datetime"
+    },
+    "rating_active": {
+      "readonly": false,
+      "required": false,
+      "string": "Ask for Ratings",
+      "type": "boolean"
+    },
+    "rating_status": {
+      "help": "Collect feedback from your customers by sending them a rating request when a task enters a certain stage. To do so, define a rating email template on the stage.\nRating when changing stage: an email will be automatically sent when a task reaches the stage.\nPeriodic rating: an email will be automatically sent at regular intervals as long as the task remains in the stage.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "stage",
+          "When reaching this stage"
+        ],
+        [
+          "periodic",
+          "On a periodic basis"
+        ]
+      ],
+      "string": "Customer Ratings Status",
+      "type": "selection"
+    },
+    "rating_status_period": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "daily",
+          "Daily"
+        ],
+        [
+          "weekly",
+          "Weekly"
+        ],
+        [
+          "bimonthly",
+          "Twice a Month"
+        ],
+        [
+          "monthly",
+          "Once a Month"
+        ],
+        [
+          "quarterly",
+          "Quarterly"
+        ],
+        [
+          "yearly",
+          "Yearly"
+        ]
+      ],
+      "string": "Rating Frequency",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "sms_template_id": {
+      "help": "If set, an SMS Text Message will be automatically sent to the customer when the task reaches this stage.",
+      "readonly": false,
+      "relation": "sms.template",
+      "required": false,
+      "string": "SMS Template",
+      "type": "many2one"
+    },
+    "show_rating_active": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Rating Active",
+      "type": "boolean"
+    }
+  }
+}

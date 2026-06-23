@@ -1,0 +1,585 @@
+{
+  "model": "peppol.registration",
+  "name": "Peppol Registration",
+  "field_count": 26,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "parent_company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Parent Company",
+      "type": "many2one"
+    },
+    "parent_company_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Company Name",
+      "type": "char"
+    },
+    "selected_company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Selected Company",
+      "type": "many2one"
+    },
+    "display_use_parent_connection_selection": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Use Parent Connection Selection",
+      "type": "boolean"
+    },
+    "use_parent_connection_selection": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "use_parent",
+          "Send from parent company"
+        ],
+        [
+          "use_self",
+          "Register this company on peppol"
+        ]
+      ],
+      "string": "Use Parent Connection Selection",
+      "type": "selection"
+    },
+    "use_parent_connection": {
+      "readonly": true,
+      "required": false,
+      "string": "Use Parent Connection",
+      "type": "boolean"
+    },
+    "edi_mode": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "demo",
+          "Demo"
+        ],
+        [
+          "test",
+          "Test"
+        ],
+        [
+          "prod",
+          "Live"
+        ]
+      ],
+      "string": "EDI mode",
+      "type": "selection"
+    },
+    "edi_user_id": {
+      "readonly": true,
+      "relation": "account_edi_proxy_client.user",
+      "required": false,
+      "string": "EDI user",
+      "type": "many2one"
+    },
+    "account_peppol_proxy_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_registered",
+          "Not registered"
+        ],
+        [
+          "sender",
+          "Can send but not receive"
+        ],
+        [
+          "smp_registration",
+          "Can send, pending registration to receive"
+        ],
+        [
+          "receiver",
+          "Can send and receive"
+        ],
+        [
+          "rejected",
+          "Rejected"
+        ]
+      ],
+      "string": "PEPPOL status",
+      "type": "selection"
+    },
+    "peppol_warnings": {
+      "readonly": true,
+      "required": false,
+      "string": "Peppol warnings",
+      "type": "json"
+    },
+    "contact_email": {
+      "help": "Primary contact email for Peppol connection related communications and notifications.\nIn particular, this email is used by Odoo to reconnect your Peppol account in case of database change.",
+      "readonly": false,
+      "required": true,
+      "string": "Primary contact email",
+      "type": "char"
+    },
+    "phone_number": {
+      "help": "This number is used for identification purposes only.",
+      "readonly": false,
+      "required": false,
+      "string": "Mobile number",
+      "type": "char"
+    },
+    "peppol_eas": {
+      "help": "Code used to identify the Endpoint for BIS Billing 3.0 and its derivatives.\n             List available at https://docs.peppol.eu/poacc/billing/3.0/codelist/eas/",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "9923",
+          "Albania VAT"
+        ],
+        [
+          "9922",
+          "Andorra VAT"
+        ],
+        [
+          "0151",
+          "Australia ABN"
+        ],
+        [
+          "9914",
+          "Austria UID"
+        ],
+        [
+          "9915",
+          "Austria VOKZ"
+        ],
+        [
+          "0208",
+          "Belgian Company Registry"
+        ],
+        [
+          "9925",
+          "Belgian VAT"
+        ],
+        [
+          "9924",
+          "Bosnia and Herzegovina VAT"
+        ],
+        [
+          "9926",
+          "Bulgaria VAT"
+        ],
+        [
+          "9934",
+          "Croatia VAT"
+        ],
+        [
+          "9928",
+          "Cyprus VAT"
+        ],
+        [
+          "9929",
+          "Czech Republic VAT"
+        ],
+        [
+          "0096",
+          "Denmark P"
+        ],
+        [
+          "0184",
+          "Denmark CVR"
+        ],
+        [
+          "0198",
+          "Denmark SE"
+        ],
+        [
+          "0191",
+          "Estonia Company code"
+        ],
+        [
+          "9931",
+          "Estonia VAT"
+        ],
+        [
+          "0037",
+          "Finland LY-tunnus"
+        ],
+        [
+          "0216",
+          "Finland OVT code"
+        ],
+        [
+          "0213",
+          "Finland VAT"
+        ],
+        [
+          "0002",
+          "France SIRENE"
+        ],
+        [
+          "0009",
+          "France SIRET"
+        ],
+        [
+          "9957",
+          "France VAT"
+        ],
+        [
+          "0225",
+          "France FRCTC Electronic Address"
+        ],
+        [
+          "0240",
+          "France Register of legal persons"
+        ],
+        [
+          "0246",
+          "German Electronic Business Address"
+        ],
+        [
+          "0204",
+          "Germany Leitweg-ID"
+        ],
+        [
+          "9930",
+          "Germany VAT"
+        ],
+        [
+          "9933",
+          "Greece VAT"
+        ],
+        [
+          "9910",
+          "Hungary VAT"
+        ],
+        [
+          "0196",
+          "Iceland Kennitala"
+        ],
+        [
+          "9935",
+          "Ireland VAT"
+        ],
+        [
+          "0211",
+          "Italia Partita IVA"
+        ],
+        [
+          "0097",
+          "Italia FTI"
+        ],
+        [
+          "0188",
+          "Japan SST"
+        ],
+        [
+          "0221",
+          "Japan IIN"
+        ],
+        [
+          "0218",
+          "Latvia Unified registration number"
+        ],
+        [
+          "9939",
+          "Latvia VAT"
+        ],
+        [
+          "9936",
+          "Liechtenstein VAT"
+        ],
+        [
+          "0200",
+          "Lithuania JAK"
+        ],
+        [
+          "9937",
+          "Lithuania VAT"
+        ],
+        [
+          "9938",
+          "Luxembourg VAT"
+        ],
+        [
+          "9942",
+          "Macedonia VAT"
+        ],
+        [
+          "0230",
+          "Malaysia"
+        ],
+        [
+          "9943",
+          "Malta VAT"
+        ],
+        [
+          "9940",
+          "Monaco VAT"
+        ],
+        [
+          "9941",
+          "Montenegro VAT"
+        ],
+        [
+          "0106",
+          "Netherlands KvK"
+        ],
+        [
+          "0190",
+          "Netherlands OIN"
+        ],
+        [
+          "9944",
+          "Netherlands VAT"
+        ],
+        [
+          "0244",
+          "Nigeria Tax Identification"
+        ],
+        [
+          "0192",
+          "Norway Org.nr."
+        ],
+        [
+          "9945",
+          "Poland VAT"
+        ],
+        [
+          "9946",
+          "Portugal VAT"
+        ],
+        [
+          "9947",
+          "Romania VAT"
+        ],
+        [
+          "9948",
+          "Serbia VAT"
+        ],
+        [
+          "0195",
+          "Singapore UEN"
+        ],
+        [
+          "0245",
+          "SK Tax identification number (DIČ)"
+        ],
+        [
+          "9949",
+          "Slovenia VAT"
+        ],
+        [
+          "9950",
+          "Slovakia VAT"
+        ],
+        [
+          "9920",
+          "Spain VAT"
+        ],
+        [
+          "0007",
+          "Sweden Org.nr."
+        ],
+        [
+          "9955",
+          "Sweden VAT"
+        ],
+        [
+          "9927",
+          "Swiss VAT"
+        ],
+        [
+          "0183",
+          "Swiss UIDB"
+        ],
+        [
+          "9952",
+          "Turkey VAT"
+        ],
+        [
+          "0235",
+          "UAE Tax Identification Number (TIN)"
+        ],
+        [
+          "9932",
+          "United Kingdom VAT"
+        ],
+        [
+          "9959",
+          "USA EIN"
+        ],
+        [
+          "0060",
+          "DUNS Number"
+        ],
+        [
+          "0088",
+          "EAN Location Code"
+        ],
+        [
+          "0130",
+          "Directorates of the European Commission"
+        ],
+        [
+          "0135",
+          "SIA Object Identifiers"
+        ],
+        [
+          "0142",
+          "SECETI Object Identifiers"
+        ],
+        [
+          "0193",
+          "UBL.BE party identifier"
+        ],
+        [
+          "0199",
+          "Legal Entity Identifier (LEI)"
+        ],
+        [
+          "0201",
+          "Codice Univoco Unità Organizzativa iPA"
+        ],
+        [
+          "0202",
+          "Indirizzo di Posta Elettronica Certificata"
+        ],
+        [
+          "0209",
+          "GS1 identification keys"
+        ],
+        [
+          "0210",
+          "Codice Fiscale"
+        ],
+        [
+          "9913",
+          "Business Registers Network"
+        ],
+        [
+          "9918",
+          "S.W.I.F.T"
+        ],
+        [
+          "9919",
+          "Kennziffer des Unternehmensregisters"
+        ],
+        [
+          "9951",
+          "San Marino VAT"
+        ],
+        [
+          "9953",
+          "Vatican VAT"
+        ],
+        [
+          "AN",
+          "O.F.T.P. (ODETTE File Transfer Protocol)"
+        ],
+        [
+          "AQ",
+          "X.400 address for mail text"
+        ],
+        [
+          "AS",
+          "AS2 exchange"
+        ],
+        [
+          "AU",
+          "File Transfer Protocol"
+        ],
+        [
+          "EM",
+          "Electronic mail"
+        ],
+        [
+          "odemo",
+          "Odoo Demo ID"
+        ]
+      ],
+      "string": "Peppol ID",
+      "type": "selection"
+    },
+    "peppol_endpoint": {
+      "help": "Unique identifier used by the BIS Billing 3.0 and its derivatives, also known as 'Endpoint ID'.",
+      "readonly": false,
+      "required": true,
+      "string": "Peppol Endpoint",
+      "type": "char"
+    },
+    "smp_registration": {
+      "readonly": true,
+      "required": false,
+      "string": "Register as a receiver",
+      "type": "boolean"
+    },
+    "peppol_external_provider": {
+      "readonly": true,
+      "required": false,
+      "string": "Peppol External Provider",
+      "type": "char"
+    },
+    "peppol_can_connect_data": {
+      "readonly": true,
+      "required": false,
+      "string": "Peppol Can Connect Data",
+      "type": "json"
+    },
+    "display_itsme_login": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Itsme Login",
+      "type": "boolean"
+    },
+    "display_no_auth_buttons": {
+      "readonly": true,
+      "required": false,
+      "string": "Display No Auth Buttons",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "model": "stock.backorder.confirmation.line",
+  "name": "Backorder Confirmation Line",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "backorder_confirmation_id": {
+      "readonly": false,
+      "relation": "stock.backorder.confirmation",
+      "required": false,
+      "string": "Immediate Transfer",
+      "type": "many2one"
+    },
+    "picking_id": {
+      "readonly": false,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Transfer",
+      "type": "many2one"
+    },
+    "to_backorder": {
+      "readonly": false,
+      "required": false,
+      "string": "To Backorder",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

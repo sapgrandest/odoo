@@ -1,0 +1,73 @@
+{
+  "model": "project.template.role.to.users.map",
+  "name": "Project role to users mapping",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "wizard_id": {
+      "readonly": false,
+      "relation": "project.template.create.wizard",
+      "required": false,
+      "string": "Wizard",
+      "type": "many2one"
+    },
+    "role_id": {
+      "readonly": false,
+      "relation": "project.role",
+      "required": true,
+      "string": "Project Role",
+      "type": "many2one"
+    },
+    "user_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": false,
+      "string": "Assignees",
+      "type": "many2many"
+    },
+    "role_user_ids": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Team Members",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "model": "stock.package.history",
+  "name": "Stock Package History",
+  "field_count": 19,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "location_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Origin Location",
+      "type": "many2one"
+    },
+    "location_dest_id": {
+      "readonly": false,
+      "relation": "stock.location",
+      "required": false,
+      "string": "Destination Location",
+      "type": "many2one"
+    },
+    "move_line_ids": {
+      "readonly": false,
+      "relation": "stock.move.line",
+      "required": true,
+      "string": "Move Lines",
+      "type": "one2many"
+    },
+    "package_id": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": true,
+      "string": "Package",
+      "type": "many2one"
+    },
+    "package_name": {
+      "readonly": false,
+      "required": true,
+      "string": "Package Name",
+      "type": "char"
+    },
+    "package_type_id": {
+      "readonly": true,
+      "relation": "stock.package.type",
+      "required": false,
+      "string": "Package Type",
+      "type": "many2one"
+    },
+    "parent_orig_id": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Origin Container",
+      "type": "many2one"
+    },
+    "parent_orig_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Origin Container Name",
+      "type": "char"
+    },
+    "parent_dest_id": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Destination Container",
+      "type": "many2one"
+    },
+    "parent_dest_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Destination Container Name",
+      "type": "char"
+    },
+    "outermost_dest_id": {
+      "readonly": false,
+      "relation": "stock.package",
+      "required": false,
+      "string": "Outermost Destination Container",
+      "type": "many2one"
+    },
+    "picking_ids": {
+      "readonly": false,
+      "relation": "stock.picking",
+      "required": false,
+      "string": "Transfers",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

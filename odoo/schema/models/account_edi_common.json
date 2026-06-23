@@ -1,0 +1,19 @@
+{
+  "model": "account.edi.common",
+  "name": "Common functions for EDI documents: generate the data, the constraints, etc",
+  "field_count": 2,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    }
+  }
+}

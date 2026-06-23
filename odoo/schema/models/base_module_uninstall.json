@@ -1,0 +1,91 @@
+{
+  "model": "base.module.uninstall",
+  "name": "Module Uninstall",
+  "field_count": 13,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "module_ids": {
+      "readonly": true,
+      "relation": "ir.module.module",
+      "required": true,
+      "string": "Module(s)",
+      "type": "many2many"
+    },
+    "impacted_application_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Impacted Application Count",
+      "type": "integer"
+    },
+    "impacted_application_ids": {
+      "readonly": true,
+      "relation": "ir.module.module",
+      "required": false,
+      "string": "Impacted applications",
+      "type": "many2many"
+    },
+    "impacted_module_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Impacted Module Count",
+      "type": "integer"
+    },
+    "impacted_module_ids": {
+      "readonly": true,
+      "relation": "ir.module.module",
+      "required": false,
+      "string": "Impacted modules",
+      "type": "many2many"
+    },
+    "model_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Model Count",
+      "type": "integer"
+    },
+    "model_ids": {
+      "readonly": true,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Models to be deleted",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

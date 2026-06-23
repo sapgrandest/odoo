@@ -1,0 +1,809 @@
+{
+  "model": "helpdesk.team",
+  "name": "Helpdesk Team",
+  "field_count": 115,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "image_1920": {
+      "readonly": false,
+      "required": false,
+      "string": "Image",
+      "type": "binary"
+    },
+    "image_1024": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 1024",
+      "type": "binary"
+    },
+    "image_512": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 512",
+      "type": "binary"
+    },
+    "image_256": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 256",
+      "type": "binary"
+    },
+    "image_128": {
+      "readonly": true,
+      "required": false,
+      "string": "Image 128",
+      "type": "binary"
+    },
+    "is_seo_optimized": {
+      "readonly": true,
+      "required": false,
+      "string": "SEO optimized",
+      "type": "boolean"
+    },
+    "website_meta_title": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta title",
+      "type": "char"
+    },
+    "website_meta_description": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta description",
+      "type": "text"
+    },
+    "website_meta_keywords": {
+      "readonly": false,
+      "required": false,
+      "string": "Website meta keywords",
+      "type": "char"
+    },
+    "website_meta_og_img": {
+      "readonly": false,
+      "required": false,
+      "string": "Website opengraph image",
+      "type": "char"
+    },
+    "seo_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Seo name",
+      "type": "char"
+    },
+    "website_url": {
+      "help": "The full relative URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website URL",
+      "type": "char"
+    },
+    "website_absolute_url": {
+      "help": "The full absolute URL to access the document through the website.",
+      "readonly": true,
+      "required": false,
+      "string": "Website Absolute URL",
+      "type": "char"
+    },
+    "website_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Visible on current website",
+      "type": "boolean"
+    },
+    "is_published": {
+      "readonly": false,
+      "required": false,
+      "string": "Is Published",
+      "type": "boolean"
+    },
+    "publish_on": {
+      "help": "Automatically publish the page on the chosen date and time.",
+      "readonly": false,
+      "required": false,
+      "string": "Auto publish on",
+      "type": "datetime"
+    },
+    "published_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Published date",
+      "type": "datetime"
+    },
+    "can_publish": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Publish",
+      "type": "boolean"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "rating_percentage_satisfaction": {
+      "help": "Percentage of happy ratings",
+      "readonly": true,
+      "required": false,
+      "string": "Rating Satisfaction",
+      "type": "integer"
+    },
+    "rating_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Ratings",
+      "type": "integer"
+    },
+    "rating_avg": {
+      "readonly": true,
+      "required": false,
+      "string": "Average Rating",
+      "type": "float"
+    },
+    "rating_avg_percentage": {
+      "readonly": true,
+      "required": false,
+      "string": "Average Rating (%)",
+      "type": "float"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "alias_id": {
+      "readonly": false,
+      "relation": "mail.alias",
+      "required": true,
+      "string": "Alias",
+      "type": "many2one"
+    },
+    "alias_name": {
+      "help": "The name of the email alias, e.g. 'jobs' if you want to catch emails for <jobs@example.odoo.com>",
+      "readonly": false,
+      "required": false,
+      "string": "Alias Name",
+      "type": "char"
+    },
+    "alias_domain_id": {
+      "readonly": false,
+      "relation": "mail.alias.domain",
+      "required": false,
+      "string": "Alias Domain",
+      "type": "many2one"
+    },
+    "alias_domain": {
+      "help": "Email domain e.g. 'example.com' in 'odoo@example.com'",
+      "readonly": true,
+      "required": false,
+      "string": "Alias Domain Name",
+      "type": "char"
+    },
+    "alias_defaults": {
+      "help": "A Python dictionary that will be evaluated to provide default values when creating new records for this alias.",
+      "readonly": true,
+      "required": true,
+      "string": "Default Values",
+      "type": "text"
+    },
+    "alias_email": {
+      "readonly": true,
+      "required": false,
+      "string": "Email Alias",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Helpdesk Team",
+      "type": "char"
+    },
+    "description": {
+      "readonly": false,
+      "required": false,
+      "string": "About Team",
+      "type": "html"
+    },
+    "active": {
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "color": {
+      "readonly": false,
+      "required": false,
+      "string": "Color Index",
+      "type": "integer"
+    },
+    "ticket_properties": {
+      "readonly": false,
+      "required": false,
+      "string": "Ticket Properties",
+      "type": "properties_definition"
+    },
+    "stage_ids": {
+      "help": "Stages the team will use. This team's tickets will only be able to be in these stages.",
+      "readonly": false,
+      "relation": "helpdesk.stage",
+      "required": false,
+      "string": "Stages",
+      "type": "many2many"
+    },
+    "auto_assignment": {
+      "readonly": false,
+      "required": false,
+      "string": "Automatic Assignment",
+      "type": "boolean"
+    },
+    "assign_method": {
+      "help": "New tickets will automatically be assigned to the team members that are available, according to their working hours and their time off.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "randomly",
+          "Each user is assigned an equal number of tickets"
+        ],
+        [
+          "balanced",
+          "Each user has an equal number of open tickets"
+        ],
+        [
+          "tags",
+          "Dispatch tickets based on tags"
+        ]
+      ],
+      "string": "Assignment Method",
+      "type": "selection"
+    },
+    "member_ids": {
+      "readonly": false,
+      "relation": "res.users",
+      "required": true,
+      "string": "Team Members",
+      "type": "many2many"
+    },
+    "privacy_visibility": {
+      "help": "People to whom this helpdesk team and its tickets will be visible.\n\n- Invited internal users: internal users can access the team and the tickets they are following. This access can be modified on each ticket individually by adding or removing the user as follower.\nA user with the helpdesk > administrator access right level can still access this team and its tickets, even if they are not explicitely part of the followers.\n\n- All internal users: all internal users can access the team and all of its tickets without distinction.\n\n- Invited portal users and all internal users: all internal users can access the team and all of its tickets without distinction.\nPortal users can only access the tickets they are following. This access can be modified on each ticket individually by adding or removing the portal user as follower.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "invited_internal",
+          "Invited internal users (private)"
+        ],
+        [
+          "internal",
+          "All internal users (company)"
+        ],
+        [
+          "portal",
+          "Invited portal users and all internal users (public)"
+        ]
+      ],
+      "string": "Visibility",
+      "type": "selection"
+    },
+    "privacy_visibility_warning": {
+      "readonly": true,
+      "required": false,
+      "string": "Privacy Visibility Warning",
+      "type": "char"
+    },
+    "access_instruction_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Access Instruction Message",
+      "type": "char"
+    },
+    "ticket_ids": {
+      "readonly": false,
+      "relation": "helpdesk.ticket",
+      "required": false,
+      "string": "Tickets",
+      "type": "one2many"
+    },
+    "use_alias": {
+      "readonly": false,
+      "required": false,
+      "string": "Use Alias",
+      "type": "boolean"
+    },
+    "has_external_mail_server": {
+      "readonly": true,
+      "required": false,
+      "string": "Has External Mail Server",
+      "type": "boolean"
+    },
+    "allow_portal_ticket_closing": {
+      "readonly": false,
+      "required": false,
+      "string": "Closure by Customers",
+      "type": "boolean"
+    },
+    "use_website_helpdesk_form": {
+      "readonly": false,
+      "required": false,
+      "string": "Website Form",
+      "type": "boolean"
+    },
+    "use_website_helpdesk_livechat": {
+      "readonly": false,
+      "required": false,
+      "string": "Live Chat",
+      "type": "boolean"
+    },
+    "use_website_helpdesk_forum": {
+      "readonly": false,
+      "required": false,
+      "string": "Community Forum",
+      "type": "boolean"
+    },
+    "use_website_helpdesk_slides": {
+      "readonly": false,
+      "required": false,
+      "string": "eLearning",
+      "type": "boolean"
+    },
+    "use_website_helpdesk_knowledge": {
+      "readonly": false,
+      "required": false,
+      "string": "Knowledge",
+      "type": "boolean"
+    },
+    "use_helpdesk_timesheet": {
+      "readonly": false,
+      "required": false,
+      "string": "Timesheets",
+      "type": "boolean"
+    },
+    "show_knowledge_base": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Knowledge Base",
+      "type": "boolean"
+    },
+    "use_helpdesk_sale_timesheet": {
+      "readonly": false,
+      "required": false,
+      "string": "Time Billing",
+      "type": "boolean"
+    },
+    "use_credit_notes": {
+      "readonly": false,
+      "required": false,
+      "string": "Refunds",
+      "type": "boolean"
+    },
+    "use_coupons": {
+      "readonly": false,
+      "required": false,
+      "string": "Coupons",
+      "type": "boolean"
+    },
+    "use_giftcards": {
+      "readonly": false,
+      "required": false,
+      "string": "Gift Cards",
+      "type": "boolean"
+    },
+    "use_fsm": {
+      "readonly": false,
+      "required": false,
+      "string": "Field Service",
+      "type": "boolean"
+    },
+    "use_product_returns": {
+      "readonly": false,
+      "required": false,
+      "string": "Returns",
+      "type": "boolean"
+    },
+    "use_product_replacements": {
+      "readonly": false,
+      "required": false,
+      "string": "Replacements",
+      "type": "boolean"
+    },
+    "use_product_repairs": {
+      "readonly": false,
+      "required": false,
+      "string": "Repairs",
+      "type": "boolean"
+    },
+    "use_twitter": {
+      "readonly": false,
+      "required": false,
+      "string": "X",
+      "type": "boolean"
+    },
+    "use_rating": {
+      "readonly": false,
+      "required": false,
+      "string": "Customer Ratings",
+      "type": "boolean"
+    },
+    "use_sla": {
+      "readonly": false,
+      "required": false,
+      "string": "SLA Policies",
+      "type": "boolean"
+    },
+    "unassigned_tickets": {
+      "readonly": true,
+      "required": false,
+      "string": "Unassigned Tickets",
+      "type": "integer"
+    },
+    "resource_calendar_id": {
+      "help": "Working hours used to determine the deadline of SLA Policies.",
+      "readonly": false,
+      "relation": "resource.calendar",
+      "required": false,
+      "string": "Working Hours",
+      "type": "many2one"
+    },
+    "open_ticket_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Open Tickets",
+      "type": "integer"
+    },
+    "sla_policy_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# SLA Policy",
+      "type": "integer"
+    },
+    "ticket_closed": {
+      "readonly": true,
+      "required": false,
+      "string": "Ticket Closed",
+      "type": "integer"
+    },
+    "success_rate": {
+      "readonly": true,
+      "required": false,
+      "string": "Success Rate",
+      "type": "float"
+    },
+    "urgent_ticket": {
+      "readonly": true,
+      "required": false,
+      "string": "# Urgent Ticket",
+      "type": "integer"
+    },
+    "sla_failed": {
+      "readonly": true,
+      "required": false,
+      "string": "Failed SLA Ticket",
+      "type": "integer"
+    },
+    "auto_close_ticket": {
+      "readonly": false,
+      "required": false,
+      "string": "Automatic Closing",
+      "type": "boolean"
+    },
+    "auto_close_day": {
+      "help": "Period of inactivity after which tickets will be automatically closed.",
+      "readonly": false,
+      "required": false,
+      "string": "Inactive Period(days)",
+      "type": "integer"
+    },
+    "from_stage_ids": {
+      "readonly": false,
+      "relation": "helpdesk.stage",
+      "required": false,
+      "string": "In Stages",
+      "type": "many2many"
+    },
+    "to_stage_id": {
+      "readonly": false,
+      "relation": "helpdesk.stage",
+      "required": false,
+      "string": "Move to Stage",
+      "type": "many2one"
+    },
+    "alias_email_from": {
+      "readonly": true,
+      "required": false,
+      "string": "Alias Email From",
+      "type": "char"
+    },
+    "auto_close_ticket_reminder": {
+      "readonly": false,
+      "required": false,
+      "string": "Auto-Close Reminder",
+      "type": "boolean"
+    },
+    "auto_close_reminder_delay": {
+      "help": "Period of inactivity before the reminder is sent.",
+      "readonly": false,
+      "required": false,
+      "string": "Inactive delay period(days)",
+      "type": "integer"
+    },
+    "reminder_email_template_id": {
+      "help": "Email template used for the auto-close reminder.",
+      "readonly": false,
+      "relation": "mail.template",
+      "required": false,
+      "string": "Email Template",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "feature_form_url": {
+      "readonly": true,
+      "required": false,
+      "string": "URL to Submit Issue",
+      "type": "char"
+    },
+    "website_id": {
+      "readonly": false,
+      "relation": "website",
+      "required": false,
+      "string": "Website",
+      "type": "many2one"
+    },
+    "website_menu_id": {
+      "readonly": false,
+      "relation": "website.menu",
+      "required": false,
+      "string": "Website Menu",
+      "type": "many2one"
+    },
+    "website_form_view_id": {
+      "readonly": false,
+      "relation": "ir.ui.view",
+      "required": false,
+      "string": "Website Form View",
+      "type": "many2one"
+    },
+    "show_knowledge_base_article": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Knowledge Base Article",
+      "type": "boolean"
+    },
+    "website_article_id": {
+      "help": "Article on which customers will land by default. The search is limited to this article, unless it is the workspace root, in which case all child articles are included.",
+      "readonly": false,
+      "relation": "knowledge.article",
+      "required": false,
+      "string": "Article",
+      "type": "many2one"
+    },
+    "website_latest_articles": {
+      "readonly": true,
+      "relation": "knowledge.article",
+      "required": false,
+      "string": "Latest Articles",
+      "type": "many2many"
+    },
+    "alias_full_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Alias Email",
+      "type": "char"
+    },
+    "alias_model_id": {
+      "help": "The model (Odoo Document Kind) to which this alias corresponds. Any incoming email that does not reply to an existing record will cause the creation of a new record of this model (e.g. a Project Task)",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": true,
+      "string": "Aliased Model",
+      "type": "many2one"
+    },
+    "alias_force_thread_id": {
+      "help": "Optional ID of a thread (record) to which all incoming messages will be attached, even if they did not reply to it. If set, this will disable the creation of new records completely.",
+      "readonly": false,
+      "required": false,
+      "string": "Record Thread ID",
+      "type": "integer"
+    },
+    "alias_parent_model_id": {
+      "help": "Parent model holding the alias. The model holding the alias reference is not necessarily the model given by alias_model_id (example: project (parent_model) and task (model))",
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Parent Model",
+      "type": "many2one"
+    },
+    "alias_parent_thread_id": {
+      "help": "ID of the parent record holding the alias (example: project holding the task creation alias)",
+      "readonly": false,
+      "required": false,
+      "string": "Parent Record Thread ID",
+      "type": "integer"
+    },
+    "alias_contact": {
+      "help": "Policy to post a message on the document using the mailgateway.\n- everyone: everyone can post\n- partners: only authenticated partners\n- followers: only followers of the related document or members of following channels\n",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "everyone",
+          "Everyone"
+        ],
+        [
+          "partners",
+          "Authenticated Partners"
+        ],
+        [
+          "followers",
+          "Followers only"
+        ],
+        [
+          "employees",
+          "Authenticated Employees"
+        ]
+      ],
+      "string": "Alias Contact Security",
+      "type": "selection"
+    },
+    "alias_incoming_local": {
+      "readonly": false,
+      "required": false,
+      "string": "Local-part based incoming detection",
+      "type": "boolean"
+    },
+    "alias_bounced_content": {
+      "help": "If set, this content will automatically be sent out to unauthorized users instead of the default message.",
+      "readonly": false,
+      "required": false,
+      "string": "Custom Bounced Message",
+      "type": "html"
+    },
+    "alias_status": {
+      "help": "Alias status assessed on the last message received.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_tested",
+          "Not Tested"
+        ],
+        [
+          "valid",
+          "Valid"
+        ],
+        [
+          "invalid",
+          "Invalid"
+        ]
+      ],
+      "string": "Alias Status",
+      "type": "selection"
+    }
+  }
+}

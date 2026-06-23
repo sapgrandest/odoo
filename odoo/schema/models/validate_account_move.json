@@ -1,0 +1,109 @@
+{
+  "model": "validate.account.move",
+  "name": "Validate Journal Entry",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "move_ids": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Move",
+      "type": "many2many"
+    },
+    "force_post": {
+      "help": "Entries in the future are set to be auto-posted by default. Check this checkbox to post them now.",
+      "readonly": false,
+      "required": false,
+      "string": "Force",
+      "type": "boolean"
+    },
+    "display_force_post": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Force Post",
+      "type": "boolean"
+    },
+    "force_hash": {
+      "readonly": false,
+      "required": false,
+      "string": "Force Hash",
+      "type": "boolean"
+    },
+    "display_force_hash": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Force Hash",
+      "type": "boolean"
+    },
+    "is_entries": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Entries",
+      "type": "boolean"
+    },
+    "abnormal_date_partner_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Abnormal Date Partner",
+      "type": "one2many"
+    },
+    "ignore_abnormal_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Ignore Abnormal Date",
+      "type": "boolean"
+    },
+    "abnormal_amount_partner_ids": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Abnormal Amount Partner",
+      "type": "one2many"
+    },
+    "ignore_abnormal_amount": {
+      "readonly": false,
+      "required": false,
+      "string": "Ignore Abnormal Amount",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

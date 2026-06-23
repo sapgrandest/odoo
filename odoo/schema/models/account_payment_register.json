@@ -1,0 +1,454 @@
+{
+  "model": "account.payment.register",
+  "name": "Pay",
+  "field_count": 62,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "payment_date": {
+      "readonly": false,
+      "required": true,
+      "string": "Payment Date",
+      "type": "date"
+    },
+    "amount": {
+      "readonly": false,
+      "required": false,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "hide_writeoff_section": {
+      "readonly": true,
+      "required": false,
+      "string": "Hide Writeoff Section",
+      "type": "boolean"
+    },
+    "communication": {
+      "readonly": false,
+      "required": false,
+      "string": "Memo",
+      "type": "char"
+    },
+    "group_payment": {
+      "help": "Only one payment will be created by partner (bank), instead of one per bill.",
+      "readonly": false,
+      "required": false,
+      "string": "Group Payments",
+      "type": "boolean"
+    },
+    "early_payment_discount_mode": {
+      "readonly": true,
+      "required": false,
+      "string": "Early Payment Discount Mode",
+      "type": "boolean"
+    },
+    "currency_id": {
+      "help": "The payment's currency.",
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "available_journal_ids": {
+      "readonly": true,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Available Journal",
+      "type": "many2many"
+    },
+    "available_partner_bank_ids": {
+      "readonly": true,
+      "relation": "res.partner.bank",
+      "required": false,
+      "string": "Available Partner Bank",
+      "type": "many2many"
+    },
+    "partner_bank_id": {
+      "readonly": false,
+      "relation": "res.partner.bank",
+      "required": false,
+      "string": "Recipient Bank Account",
+      "type": "many2one"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "qr_code": {
+      "readonly": true,
+      "required": false,
+      "string": "QR Code URL",
+      "type": "html"
+    },
+    "batches": {
+      "readonly": true,
+      "required": false,
+      "string": "Batches",
+      "type": "json"
+    },
+    "installments_mode": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "next",
+          "Next Installment"
+        ],
+        [
+          "overdue",
+          "Overdue Amount"
+        ],
+        [
+          "before_date",
+          "Before Next Payment Date"
+        ],
+        [
+          "full",
+          "Full Amount"
+        ]
+      ],
+      "string": "Installments Mode",
+      "type": "selection"
+    },
+    "installments_switch_html": {
+      "readonly": true,
+      "required": false,
+      "string": "Installments Switch Html",
+      "type": "html"
+    },
+    "installments_switch_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Installments Switch Amount",
+      "type": "monetary"
+    },
+    "custom_user_amount": {
+      "readonly": false,
+      "required": false,
+      "string": "Custom User Amount",
+      "type": "monetary"
+    },
+    "custom_user_currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Custom User Currency",
+      "type": "many2one"
+    },
+    "unreconciled_paid_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Unreconciled Paid Amount",
+      "type": "monetary"
+    },
+    "exchange_rate": {
+      "readonly": true,
+      "required": false,
+      "string": "Exchange Rate",
+      "type": "float"
+    },
+    "exchange_rate_currency_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Exchange Rate Currency Code",
+      "type": "char"
+    },
+    "line_ids": {
+      "readonly": true,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Journal items",
+      "type": "many2many"
+    },
+    "payment_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "outbound",
+          "Send Money"
+        ],
+        [
+          "inbound",
+          "Receive Money"
+        ]
+      ],
+      "string": "Payment Type",
+      "type": "selection"
+    },
+    "partner_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "customer",
+          "Customer"
+        ],
+        [
+          "supplier",
+          "Vendor"
+        ]
+      ],
+      "string": "Partner Type",
+      "type": "selection"
+    },
+    "source_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount to Pay (company currency)",
+      "type": "monetary"
+    },
+    "source_amount_currency": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount to Pay (foreign currency)",
+      "type": "monetary"
+    },
+    "source_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Source Currency",
+      "type": "many2one"
+    },
+    "can_edit_wizard": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Edit Wizard",
+      "type": "boolean"
+    },
+    "can_group_payments": {
+      "readonly": true,
+      "required": false,
+      "string": "Can Group Payments",
+      "type": "boolean"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer/Vendor",
+      "type": "many2one"
+    },
+    "payment_method_line_id": {
+      "help": "Manual: Pay or Get paid by any method outside of Odoo.\nPayment Providers: Each payment provider has its own Payment Method. Request a transaction on/to a card thanks to a payment token saved by the partner when buying or subscribing online.\nCheck: Pay bills by check and print it from Odoo.\nBatch Deposit: Collect several customer checks at once generating and submitting a batch deposit to your bank. Module account_batch_payment is necessary.\nSEPA Credit Transfer: Pay in the SEPA zone by submitting a SEPA Credit Transfer file to your bank. Module account_sepa is necessary.\nSEPA Direct Debit: Get paid in the SEPA zone thanks to a mandate your partner will have granted to you. Module account_sepa is necessary.\n",
+      "readonly": false,
+      "relation": "account.payment.method.line",
+      "required": false,
+      "string": "Payment Method",
+      "type": "many2one"
+    },
+    "available_payment_method_line_ids": {
+      "readonly": true,
+      "relation": "account.payment.method.line",
+      "required": false,
+      "string": "Available Payment Method Line",
+      "type": "many2many"
+    },
+    "payment_method_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "payment_difference": {
+      "readonly": true,
+      "required": false,
+      "string": "Payment Difference",
+      "type": "monetary"
+    },
+    "payment_difference_handling": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "open",
+          "Keep open"
+        ],
+        [
+          "reconcile",
+          "Mark as fully paid"
+        ]
+      ],
+      "string": "Payment Difference Handling",
+      "type": "selection"
+    },
+    "writeoff_account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Difference Account",
+      "type": "many2one"
+    },
+    "writeoff_label": {
+      "help": "Change label of the counterpart that will hold the payment difference",
+      "readonly": false,
+      "required": false,
+      "string": "Journal Item Label",
+      "type": "char"
+    },
+    "writeoff_is_exchange_account": {
+      "readonly": true,
+      "required": false,
+      "string": "Writeoff Is Exchange Account",
+      "type": "boolean"
+    },
+    "show_payment_difference": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Payment Difference",
+      "type": "boolean"
+    },
+    "show_partner_bank_account": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Partner Bank Account",
+      "type": "boolean"
+    },
+    "require_partner_bank_account": {
+      "readonly": true,
+      "required": false,
+      "string": "Require Partner Bank Account",
+      "type": "boolean"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "duplicate_payment_ids": {
+      "readonly": true,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Duplicate Payment",
+      "type": "many2many"
+    },
+    "is_register_payment_on_draft": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Register Payment On Draft",
+      "type": "boolean"
+    },
+    "actionable_errors": {
+      "readonly": true,
+      "required": false,
+      "string": "Actionable Errors",
+      "type": "json"
+    },
+    "untrusted_bank_ids": {
+      "readonly": true,
+      "relation": "res.partner.bank",
+      "required": false,
+      "string": "Untrusted Bank",
+      "type": "many2many"
+    },
+    "total_payments_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Total Payments Amount",
+      "type": "integer"
+    },
+    "untrusted_payments_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Untrusted Payments Count",
+      "type": "integer"
+    },
+    "missing_account_partners": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Missing Account Partners",
+      "type": "many2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "payment_token_id": {
+      "help": "Note that tokens from providers set to only authorize transactions (instead of capturing the amount) are not available.",
+      "readonly": false,
+      "relation": "payment.token",
+      "required": false,
+      "string": "Saved payment token",
+      "type": "many2one"
+    },
+    "suitable_payment_token_ids": {
+      "readonly": true,
+      "relation": "payment.token",
+      "required": false,
+      "string": "Suitable Payment Token",
+      "type": "many2many"
+    },
+    "use_electronic_payment_method": {
+      "readonly": true,
+      "required": false,
+      "string": "Use Electronic Payment Method",
+      "type": "boolean"
+    },
+    "hide_payment_method": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Payment Enabled",
+      "type": "boolean"
+    },
+    "could_initiate_payment": {
+      "readonly": true,
+      "required": false,
+      "string": "Could Initiate Payment",
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "model": "l10n_fr_reports.2033.d.report.handler",
+  "name": "Handler of the 2033 D report",
+  "field_count": 2,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    }
+  }
+}

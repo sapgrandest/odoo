@@ -1,0 +1,78 @@
+{
+  "model": "chatbot.script.answer",
+  "name": "Chatbot Script Answer",
+  "field_count": 11,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Answer",
+      "type": "char"
+    },
+    "sequence": {
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "redirect_link": {
+      "help": "The visitor will be redirected to this link upon clicking the option (note that the script will end if the link is external to the livechat website).",
+      "readonly": false,
+      "required": false,
+      "string": "Redirect Link",
+      "type": "char"
+    },
+    "script_step_id": {
+      "readonly": false,
+      "relation": "chatbot.script.step",
+      "required": true,
+      "string": "Script Step",
+      "type": "many2one"
+    },
+    "chatbot_script_id": {
+      "readonly": true,
+      "relation": "chatbot.script",
+      "required": false,
+      "string": "Chatbot",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

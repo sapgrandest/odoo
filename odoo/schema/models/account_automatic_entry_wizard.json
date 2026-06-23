@@ -1,0 +1,172 @@
+{
+  "model": "account.automatic.entry.wizard",
+  "name": "Create Automatic Entries",
+  "field_count": 22,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "action": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "change_period",
+          "Change Period"
+        ],
+        [
+          "change_account",
+          "Change Account"
+        ]
+      ],
+      "string": "Action",
+      "type": "selection"
+    },
+    "move_data": {
+      "readonly": true,
+      "required": false,
+      "string": "Move Data",
+      "type": "text"
+    },
+    "preview_move_data": {
+      "readonly": true,
+      "required": false,
+      "string": "Preview Move Data",
+      "type": "text"
+    },
+    "move_line_ids": {
+      "readonly": false,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Move Line",
+      "type": "many2many"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "percentage": {
+      "help": "Percentage of each line to execute the action on.",
+      "readonly": false,
+      "required": false,
+      "string": "Percentage",
+      "type": "float"
+    },
+    "total_amount": {
+      "help": "Total amount impacted by the automatic entry.",
+      "readonly": false,
+      "required": false,
+      "string": "Total Amount",
+      "type": "monetary"
+    },
+    "journal_id": {
+      "help": "Journal where to create the entry.",
+      "readonly": false,
+      "relation": "account.journal",
+      "required": true,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "account_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "income",
+          "Revenue"
+        ],
+        [
+          "expense",
+          "Expense"
+        ]
+      ],
+      "string": "Account Type",
+      "type": "selection"
+    },
+    "expense_accrual_account": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Expense Accrual Account",
+      "type": "many2one"
+    },
+    "revenue_accrual_account": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Revenue Accrual Account",
+      "type": "many2one"
+    },
+    "lock_date_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Lock Date Message",
+      "type": "char"
+    },
+    "destination_account_id": {
+      "help": "Account to transfer to.",
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "To",
+      "type": "many2one"
+    },
+    "display_currency_helper": {
+      "readonly": true,
+      "required": false,
+      "string": "Currency Conversion Helper",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

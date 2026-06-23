@@ -1,0 +1,176 @@
+{
+  "model": "planning.analysis.report",
+  "name": "Planning Analysis Report",
+  "field_count": 24,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "allocated_hours": {
+      "readonly": true,
+      "required": false,
+      "string": "Allocated Time",
+      "type": "float"
+    },
+    "allocated_percentage": {
+      "readonly": true,
+      "required": false,
+      "string": "Allocated Time (%)",
+      "type": "float"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "department_id": {
+      "readonly": true,
+      "relation": "hr.department",
+      "required": false,
+      "string": "Department",
+      "type": "many2one"
+    },
+    "employee_ids": {
+      "readonly": true,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Employees",
+      "type": "many2many"
+    },
+    "end_datetime": {
+      "readonly": true,
+      "required": false,
+      "string": "End Date",
+      "type": "datetime"
+    },
+    "manager_id": {
+      "readonly": true,
+      "relation": "hr.employee",
+      "required": false,
+      "string": "Manager",
+      "type": "many2one"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Note",
+      "type": "text"
+    },
+    "publication_warning": {
+      "help": "If checked, it means that the shift contains has changed since its last publish.",
+      "readonly": true,
+      "required": false,
+      "string": "Modified Since Last Publication",
+      "type": "boolean"
+    },
+    "recurrency_id": {
+      "readonly": true,
+      "relation": "planning.recurrency",
+      "required": false,
+      "string": "Recurrency",
+      "type": "many2one"
+    },
+    "resource_ids": {
+      "readonly": true,
+      "relation": "resource.resource",
+      "required": false,
+      "string": "Resources",
+      "type": "many2many"
+    },
+    "role_id": {
+      "readonly": true,
+      "relation": "planning.role",
+      "required": false,
+      "string": "Role",
+      "type": "many2one"
+    },
+    "start_datetime": {
+      "readonly": true,
+      "required": false,
+      "string": "Start Date",
+      "type": "datetime"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "published",
+          "Scheduled"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "user_ids": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "User",
+      "type": "many2many"
+    },
+    "slot_id": {
+      "readonly": true,
+      "relation": "planning.slot",
+      "required": false,
+      "string": "Planning Slot",
+      "type": "many2one"
+    },
+    "request_to_switch": {
+      "readonly": true,
+      "required": false,
+      "string": "Has there been a request to switch on this shift slot?",
+      "type": "boolean"
+    },
+    "employee_skill_ids": {
+      "readonly": true,
+      "relation": "hr.employee.skill",
+      "required": false,
+      "string": "Skills",
+      "type": "one2many"
+    },
+    "sale_order_id": {
+      "readonly": true,
+      "relation": "sale.order",
+      "required": false,
+      "string": "Sales Order",
+      "type": "many2one"
+    },
+    "sale_line_id": {
+      "readonly": true,
+      "relation": "sale.order.line",
+      "required": false,
+      "string": "Sales Order Item",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "role_product_ids": {
+      "readonly": true,
+      "relation": "product.template",
+      "required": false,
+      "string": "Role Product",
+      "type": "one2many"
+    }
+  }
+}

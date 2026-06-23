@@ -1,0 +1,491 @@
+{
+  "model": "sign.send.request",
+  "name": "Sign send request",
+  "field_count": 33,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "activity_id": {
+      "readonly": true,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Linked Activity",
+      "type": "many2one"
+    },
+    "reference_doc": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "account.account",
+          "Account"
+        ],
+        [
+          "account.return",
+          "Accounting Return"
+        ],
+        [
+          "account.return.type",
+          "Accounting Return Type"
+        ],
+        [
+          "account.analytic.account",
+          "Analytic Account"
+        ],
+        [
+          "hr.applicant",
+          "Applicant"
+        ],
+        [
+          "appointment.type",
+          "Appointment Type"
+        ],
+        [
+          "knowledge.article.thread",
+          "Article Discussion Thread"
+        ],
+        [
+          "res.partner.bank",
+          "Bank Account"
+        ],
+        [
+          "account.online.link",
+          "Bank Connection"
+        ],
+        [
+          "account.bank.statement",
+          "Bank Statement"
+        ],
+        [
+          "account.bank.statement.line",
+          "Bank Statement Line"
+        ],
+        [
+          "extract.mixin",
+          "Base class to extract data from documents"
+        ],
+        [
+          "extract.mixin.with.words",
+          "Base class to extract data from documents with OCRed words saved"
+        ],
+        [
+          "account.batch.payment",
+          "Batch Payment"
+        ],
+        [
+          "blog.blog",
+          "Blog"
+        ],
+        [
+          "blog.post",
+          "Blog Post"
+        ],
+        [
+          "calendar.event",
+          "Calendar Event"
+        ],
+        [
+          "res.company",
+          "Company"
+        ],
+        [
+          "res.partner",
+          "Contact"
+        ],
+        [
+          "hr.department",
+          "Department"
+        ],
+        [
+          "discuss.channel",
+          "Discussion Channel"
+        ],
+        [
+          "mail.thread",
+          "Email Thread"
+        ],
+        [
+          "hr.employee",
+          "Employee"
+        ],
+        [
+          "hr.version",
+          "Employee Record"
+        ],
+        [
+          "gamification.badge",
+          "Gamification Badge"
+        ],
+        [
+          "gamification.challenge",
+          "Gamification Challenge"
+        ],
+        [
+          "gamification.badge.user",
+          "Gamification User Badge"
+        ],
+        [
+          "helpdesk.team",
+          "Helpdesk Team"
+        ],
+        [
+          "helpdesk.ticket",
+          "Helpdesk Ticket"
+        ],
+        [
+          "iap.account",
+          "IAP Account"
+        ],
+        [
+          "hr.job",
+          "Job Position"
+        ],
+        [
+          "account.journal",
+          "Journal"
+        ],
+        [
+          "account.move",
+          "Journal Entry"
+        ],
+        [
+          "knowledge.article",
+          "Knowledge Article"
+        ],
+        [
+          "crm.lead",
+          "Lead"
+        ],
+        [
+          "stock.lot",
+          "Lot/Serial"
+        ],
+        [
+          "mail.blacklist",
+          "Mail Blacklist"
+        ],
+        [
+          "mail.thread.blacklist",
+          "Mail Blacklist mixin"
+        ],
+        [
+          "mail.thread.main.attachment",
+          "Mail Main Attachment management"
+        ],
+        [
+          "mail.tracking.duration.mixin",
+          "Mixin to compute the time a record has spent in each value a many2one field can take"
+        ],
+        [
+          "account.payment",
+          "Payment"
+        ],
+        [
+          "phone.blacklist",
+          "Phone Blacklist"
+        ],
+        [
+          "mail.thread.phone",
+          "Phone Blacklist Mixin"
+        ],
+        [
+          "account.reconcile.model",
+          "Preset to create journal entries during a invoices and payments matching"
+        ],
+        [
+          "product.pricelist",
+          "Pricelist"
+        ],
+        [
+          "product.template",
+          "Product"
+        ],
+        [
+          "product.category",
+          "Product Category"
+        ],
+        [
+          "product.feed",
+          "Product Feed"
+        ],
+        [
+          "product.product",
+          "Product Variant"
+        ],
+        [
+          "project.project",
+          "Project"
+        ],
+        [
+          "project.milestone",
+          "Project Milestone"
+        ],
+        [
+          "project.update",
+          "Project Update"
+        ],
+        [
+          "purchase.order",
+          "Purchase Order"
+        ],
+        [
+          "rating.mixin",
+          "Rating Mixin"
+        ],
+        [
+          "sale.order",
+          "Sales Order"
+        ],
+        [
+          "crm.team",
+          "Sales Team"
+        ],
+        [
+          "crm.team.member",
+          "Sales Team Member"
+        ],
+        [
+          "ir.cron",
+          "Scheduled Action"
+        ],
+        [
+          "ir.actions.server",
+          "Server Action"
+        ],
+        [
+          "spreadsheet.cell.thread",
+          "Spreadsheet discussion thread"
+        ],
+        [
+          "survey.survey",
+          "Survey"
+        ],
+        [
+          "survey.user_input",
+          "Survey User Input"
+        ],
+        [
+          "hr.talent.pool",
+          "Talent Pool"
+        ],
+        [
+          "project.task",
+          "Task"
+        ],
+        [
+          "account.tax",
+          "Tax"
+        ],
+        [
+          "mail.thread.subject.suggested",
+          "Thread with suggested subject"
+        ],
+        [
+          "stock.picking",
+          "Transfer"
+        ]
+      ],
+      "string": "Linked to",
+      "type": "reference"
+    },
+    "has_default_template": {
+      "readonly": false,
+      "required": false,
+      "string": "Has Default Template",
+      "type": "boolean"
+    },
+    "available_template_ids": {
+      "readonly": true,
+      "relation": "sign.template",
+      "required": false,
+      "string": "Available Template",
+      "type": "many2many"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "sign.template",
+      "required": false,
+      "string": "Sign Template",
+      "type": "many2one"
+    },
+    "signer_ids": {
+      "readonly": true,
+      "relation": "sign.send.request.signer",
+      "required": false,
+      "string": "Signers",
+      "type": "one2many"
+    },
+    "set_sign_order": {
+      "help": "Specify the order for each signer. The signature request only gets sent to                                     the next signers in the sequence when all signers from the previous level have                                     signed the document.\n                                    ",
+      "readonly": false,
+      "required": false,
+      "string": "Signing Order",
+      "type": "boolean"
+    },
+    "signer_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Send To",
+      "type": "many2one"
+    },
+    "signers_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Signers Count",
+      "type": "integer"
+    },
+    "cc_partner_ids": {
+      "help": "Contacts in copy will be notified by email once the document is either fully signed or refused.",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Copy to",
+      "type": "many2many"
+    },
+    "is_user_signer": {
+      "readonly": true,
+      "required": false,
+      "string": "Is User Signer",
+      "type": "boolean"
+    },
+    "subject": {
+      "readonly": false,
+      "required": false,
+      "string": "Subject",
+      "type": "char"
+    },
+    "body": {
+      "help": "Message to be sent to signers of the specified document",
+      "readonly": false,
+      "required": false,
+      "string": "body",
+      "type": "html"
+    },
+    "message_cc": {
+      "help": "Message to be sent to contacts in copy of the signed document",
+      "readonly": false,
+      "required": false,
+      "string": "CC Message",
+      "type": "html"
+    },
+    "attachment_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachments",
+      "type": "many2many"
+    },
+    "filename": {
+      "readonly": true,
+      "required": false,
+      "string": "Filename",
+      "type": "char"
+    },
+    "validity": {
+      "help": "Signature request expiration date.",
+      "readonly": false,
+      "required": false,
+      "string": "Valid Until",
+      "type": "date"
+    },
+    "reminder_enabled": {
+      "readonly": false,
+      "required": false,
+      "string": "Reminder Enabled",
+      "type": "boolean"
+    },
+    "reminder": {
+      "readonly": false,
+      "required": false,
+      "string": "Reminder",
+      "type": "integer"
+    },
+    "certificate_reference": {
+      "help": "If checked, the unique certificate reference will not be added on the final signed document.",
+      "readonly": false,
+      "required": false,
+      "string": "Certificate Reference",
+      "type": "boolean"
+    },
+    "model": {
+      "readonly": false,
+      "required": false,
+      "string": "Related Document Model",
+      "type": "char"
+    },
+    "res_ids": {
+      "readonly": false,
+      "required": false,
+      "string": "Related Document IDs",
+      "type": "text"
+    },
+    "scheduled_date": {
+      "readonly": false,
+      "required": false,
+      "string": "Scheduled Date",
+      "type": "char"
+    },
+    "only_autofill_readonly": {
+      "readonly": true,
+      "required": false,
+      "string": "Only Autofill",
+      "type": "boolean"
+    },
+    "display_download_button": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Download Button",
+      "type": "boolean"
+    },
+    "log_request_activity": {
+      "readonly": false,
+      "required": false,
+      "string": "Log Request Activity",
+      "type": "boolean"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Activity Type",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

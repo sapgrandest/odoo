@@ -1,0 +1,150 @@
+{
+  "model": "purchase.bill.line.match",
+  "name": "Purchase Line and Vendor Bill line matching view",
+  "field_count": 22,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "pol_id": {
+      "readonly": true,
+      "relation": "purchase.order.line",
+      "required": false,
+      "string": "Pol",
+      "type": "many2one"
+    },
+    "aml_id": {
+      "readonly": true,
+      "relation": "account.move.line",
+      "required": false,
+      "string": "Aml",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "product_id": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "line_qty": {
+      "readonly": true,
+      "required": false,
+      "string": "Line Qty",
+      "type": "float"
+    },
+    "line_uom_id": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Line Uom",
+      "type": "many2one"
+    },
+    "qty_invoiced": {
+      "readonly": true,
+      "required": false,
+      "string": "Qty Invoiced",
+      "type": "float"
+    },
+    "qty_to_invoice": {
+      "readonly": true,
+      "required": false,
+      "string": "Qty to invoice",
+      "type": "float"
+    },
+    "purchase_order_id": {
+      "readonly": true,
+      "relation": "purchase.order",
+      "required": false,
+      "string": "Purchase Order",
+      "type": "many2one"
+    },
+    "account_move_id": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Account Move",
+      "type": "many2one"
+    },
+    "line_amount_untaxed": {
+      "readonly": true,
+      "required": false,
+      "string": "Line Amount Untaxed",
+      "type": "monetary"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "string": "State",
+      "type": "char"
+    },
+    "product_uom_id": {
+      "help": "Default unit of measure used for all stock operations.",
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "product_uom_qty": {
+      "readonly": false,
+      "required": false,
+      "string": "Product Uom Qty",
+      "type": "float"
+    },
+    "product_uom_price": {
+      "readonly": false,
+      "required": false,
+      "string": "Product Uom Price",
+      "type": "float"
+    },
+    "billed_amount_untaxed": {
+      "readonly": true,
+      "required": false,
+      "string": "Billed Amount Untaxed",
+      "type": "monetary"
+    },
+    "purchase_amount_untaxed": {
+      "readonly": true,
+      "required": false,
+      "string": "Purchase Amount Untaxed",
+      "type": "monetary"
+    },
+    "reference": {
+      "readonly": true,
+      "required": false,
+      "string": "Reference",
+      "type": "char"
+    }
+  }
+}

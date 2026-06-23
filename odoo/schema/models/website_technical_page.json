@@ -1,0 +1,31 @@
+{
+  "model": "website.technical.page",
+  "name": "Website Technical Page",
+  "field_count": 4,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Page Name",
+      "type": "char"
+    },
+    "website_url": {
+      "readonly": false,
+      "required": false,
+      "string": "Website Page URL",
+      "type": "char"
+    }
+  }
+}

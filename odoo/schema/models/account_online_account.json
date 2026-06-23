@@ -1,0 +1,159 @@
+{
+  "model": "account.online.account",
+  "name": "representation of an online bank account",
+  "field_count": 20,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "help": "Account Name as provided by third party provider",
+      "readonly": false,
+      "required": false,
+      "string": "Account Name",
+      "type": "char"
+    },
+    "online_identifier": {
+      "help": "Id used to identify account by third party provider",
+      "readonly": true,
+      "required": false,
+      "string": "Online Identifier",
+      "type": "char"
+    },
+    "balance": {
+      "help": "Balance of the account sent by the third party provider",
+      "readonly": true,
+      "required": false,
+      "string": "Balance",
+      "type": "float"
+    },
+    "available_balance": {
+      "help": "Available balance of the account sent by the third party provider. This is typically the balance plus/minus pending transactions.",
+      "readonly": true,
+      "required": false,
+      "string": "Available Balance",
+      "type": "float"
+    },
+    "account_number": {
+      "help": "Set if third party provider has the full account number",
+      "readonly": false,
+      "required": false,
+      "string": "Account Number",
+      "type": "char"
+    },
+    "account_data": {
+      "help": "Extra information needed by third party provider",
+      "readonly": true,
+      "required": false,
+      "string": "Account Data",
+      "type": "char"
+    },
+    "account_online_link_id": {
+      "readonly": true,
+      "relation": "account.online.link",
+      "required": false,
+      "string": "Account Online Link",
+      "type": "many2one"
+    },
+    "journal_ids": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Journal",
+      "type": "one2many"
+    },
+    "last_sync": {
+      "readonly": false,
+      "required": false,
+      "string": "Last Transaction Synchronized on",
+      "type": "date"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "currency_id": {
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "fetching_status": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "planned",
+          "Planned"
+        ],
+        [
+          "waiting",
+          "Waiting"
+        ],
+        [
+          "processing",
+          "Processing"
+        ],
+        [
+          "done",
+          "Done"
+        ]
+      ],
+      "string": "Fetching Status",
+      "type": "selection"
+    },
+    "inverse_balance_sign": {
+      "help": "If checked, the balance sign will be inverted",
+      "readonly": false,
+      "required": false,
+      "string": "Inverse Balance Sign",
+      "type": "boolean"
+    },
+    "inverse_transaction_sign": {
+      "help": "If checked, the transaction sign will be inverted",
+      "readonly": false,
+      "required": false,
+      "string": "Inverse Transaction Sign",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

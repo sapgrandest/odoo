@@ -1,0 +1,907 @@
+{
+  "model": "account.payment",
+  "name": "Payment",
+  "field_count": 100,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "activity_ids": {
+      "readonly": false,
+      "relation": "mail.activity",
+      "required": false,
+      "string": "Activities",
+      "type": "one2many"
+    },
+    "activity_state": {
+      "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "overdue",
+          "Overdue"
+        ],
+        [
+          "today",
+          "Today"
+        ],
+        [
+          "planned",
+          "Planned"
+        ]
+      ],
+      "string": "Activity State",
+      "type": "selection"
+    },
+    "activity_user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Responsible User",
+      "type": "many2one"
+    },
+    "activity_type_id": {
+      "readonly": false,
+      "relation": "mail.activity.type",
+      "required": false,
+      "string": "Next Activity Type",
+      "type": "many2one"
+    },
+    "activity_type_icon": {
+      "help": "Font awesome icon e.g. fa-tasks",
+      "readonly": true,
+      "required": false,
+      "string": "Activity Type Icon",
+      "type": "char"
+    },
+    "activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "Next Activity Deadline",
+      "type": "date"
+    },
+    "my_activity_date_deadline": {
+      "readonly": true,
+      "required": false,
+      "string": "My Activity Deadline",
+      "type": "date"
+    },
+    "activity_summary": {
+      "readonly": false,
+      "required": false,
+      "string": "Next Activity Summary",
+      "type": "char"
+    },
+    "activity_exception_decoration": {
+      "help": "Type of the exception activity on record.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "warning",
+          "Alert"
+        ],
+        [
+          "danger",
+          "Error"
+        ]
+      ],
+      "string": "Activity Exception Decoration",
+      "type": "selection"
+    },
+    "activity_exception_icon": {
+      "help": "Icon to indicate an exception activity.",
+      "readonly": true,
+      "required": false,
+      "string": "Icon",
+      "type": "char"
+    },
+    "activity_plans_ids": {
+      "readonly": true,
+      "relation": "mail.activity.plan",
+      "required": false,
+      "string": "Activity Plans",
+      "type": "many2many"
+    },
+    "activity_calendar_event_id": {
+      "readonly": true,
+      "relation": "calendar.event",
+      "required": false,
+      "string": "Next Activity Calendar Event",
+      "type": "many2one"
+    },
+    "message_is_follower": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Follower",
+      "type": "boolean"
+    },
+    "message_follower_ids": {
+      "readonly": false,
+      "relation": "mail.followers",
+      "required": false,
+      "string": "Followers",
+      "type": "one2many"
+    },
+    "message_partner_ids": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Followers (Partners)",
+      "type": "many2many"
+    },
+    "message_ids": {
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Messages",
+      "type": "one2many"
+    },
+    "has_message": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Message",
+      "type": "boolean"
+    },
+    "message_needaction": {
+      "help": "If checked, new messages require your attention.",
+      "readonly": true,
+      "required": false,
+      "string": "Action Needed",
+      "type": "boolean"
+    },
+    "message_needaction_counter": {
+      "help": "Number of messages requiring action",
+      "readonly": true,
+      "required": false,
+      "string": "Number of Actions",
+      "type": "integer"
+    },
+    "message_has_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "Message Delivery error",
+      "type": "boolean"
+    },
+    "message_has_error_counter": {
+      "help": "Number of messages with delivery error",
+      "readonly": true,
+      "required": false,
+      "string": "Number of errors",
+      "type": "integer"
+    },
+    "message_attachment_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Attachment Count",
+      "type": "integer"
+    },
+    "rating_ids": {
+      "readonly": false,
+      "relation": "rating.rating",
+      "required": false,
+      "string": "Ratings",
+      "type": "one2many"
+    },
+    "website_message_ids": {
+      "help": "Website communication history",
+      "readonly": false,
+      "relation": "mail.message",
+      "required": false,
+      "string": "Website Messages",
+      "type": "one2many"
+    },
+    "message_has_sms_error": {
+      "help": "If checked, some messages have a delivery error.",
+      "readonly": true,
+      "required": false,
+      "string": "SMS Delivery error",
+      "type": "boolean"
+    },
+    "message_main_attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Main Attachment",
+      "type": "many2one"
+    },
+    "name": {
+      "readonly": true,
+      "required": false,
+      "string": "Number",
+      "type": "char"
+    },
+    "date": {
+      "readonly": false,
+      "required": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "move_id": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Journal Entry",
+      "type": "many2one"
+    },
+    "journal_id": {
+      "readonly": false,
+      "relation": "account.journal",
+      "required": true,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": false,
+      "relation": "res.company",
+      "required": true,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "state": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "paid",
+          "Paid"
+        ],
+        [
+          "reconciled",
+          "Reconciled"
+        ],
+        [
+          "canceled",
+          "Canceled"
+        ],
+        [
+          "rejected",
+          "Rejected"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "is_reconciled": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Reconciled",
+      "type": "boolean"
+    },
+    "is_matched": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Matched With a Bank Statement",
+      "type": "boolean"
+    },
+    "is_sent": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Sent",
+      "type": "boolean"
+    },
+    "available_partner_bank_ids": {
+      "readonly": true,
+      "relation": "res.partner.bank",
+      "required": false,
+      "string": "Available Partner Bank",
+      "type": "many2many"
+    },
+    "partner_bank_id": {
+      "readonly": false,
+      "relation": "res.partner.bank",
+      "required": false,
+      "string": "Recipient Bank Account",
+      "type": "many2one"
+    },
+    "qr_code": {
+      "readonly": true,
+      "required": false,
+      "string": "QR Code URL",
+      "type": "html"
+    },
+    "paired_internal_transfer_payment_id": {
+      "help": "When an internal transfer is posted, a paired payment is created. They are cross referenced through this field",
+      "readonly": false,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Paired Internal Transfer Payment",
+      "type": "many2one"
+    },
+    "transaction_uuid": {
+      "help": "Unique transaction identifier assigned by the initiating party",
+      "readonly": true,
+      "required": false,
+      "string": "Transaction ID",
+      "type": "char"
+    },
+    "payment_method_line_id": {
+      "help": "Manual: Pay or Get paid by any method outside of Odoo.\nPayment Providers: Each payment provider has its own Payment Method. Request a transaction on/to a card thanks to a payment token saved by the partner when buying or subscribing online.\nCheck: Pay bills by check and print it from Odoo.\nBatch Deposit: Collect several customer checks at once generating and submitting a batch deposit to your bank. Module account_batch_payment is necessary.\nSEPA Credit Transfer: Pay in the SEPA zone by submitting a SEPA Credit Transfer file to your bank. Module account_iso20022 is necessary.\nSEPA Direct Debit: Get paid in the SEPA zone thanks to a mandate your partner will have granted to you. Module account_iso20022 is necessary.\nU.S. ISO20022: Pay in the US by submitting an ISO20022 file to your bank. Module account_iso20022 is necessary.\n",
+      "readonly": false,
+      "relation": "account.payment.method.line",
+      "required": false,
+      "string": "Payment Method",
+      "type": "many2one"
+    },
+    "available_payment_method_line_ids": {
+      "readonly": true,
+      "relation": "account.payment.method.line",
+      "required": false,
+      "string": "Available Payment Method Line",
+      "type": "many2many"
+    },
+    "payment_method_id": {
+      "readonly": true,
+      "relation": "account.payment.method",
+      "required": false,
+      "string": "Method",
+      "type": "many2one"
+    },
+    "available_journal_ids": {
+      "readonly": true,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Available Journal",
+      "type": "many2many"
+    },
+    "amount": {
+      "readonly": false,
+      "required": false,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "payment_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "outbound",
+          "Send"
+        ],
+        [
+          "inbound",
+          "Receive"
+        ]
+      ],
+      "string": "Payment Type",
+      "type": "selection"
+    },
+    "partner_type": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "customer",
+          "Customer"
+        ],
+        [
+          "supplier",
+          "Vendor"
+        ]
+      ],
+      "string": "Partner Type",
+      "type": "selection"
+    },
+    "memo": {
+      "readonly": false,
+      "required": false,
+      "string": "Memo",
+      "type": "char"
+    },
+    "payment_reference": {
+      "help": "Reference of the document used to issue this payment. Eg. check number, file name, etc.",
+      "readonly": false,
+      "required": false,
+      "string": "Payment Reference",
+      "type": "char"
+    },
+    "currency_id": {
+      "help": "The payment's currency.",
+      "readonly": false,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Customer/Vendor",
+      "type": "many2one"
+    },
+    "outstanding_account_id": {
+      "readonly": true,
+      "relation": "account.account",
+      "required": false,
+      "string": "Outstanding Account",
+      "type": "many2one"
+    },
+    "outstanding_account_type": {
+      "help": "Account Type is used for information purpose, to generate country-specific legal reports, and set the rules to close a fiscal year and generate opening entries.",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "asset_receivable",
+          "Receivable"
+        ],
+        [
+          "asset_cash",
+          "Bank and Cash"
+        ],
+        [
+          "asset_current",
+          "Current Assets"
+        ],
+        [
+          "asset_non_current",
+          "Non-current Assets"
+        ],
+        [
+          "asset_prepayments",
+          "Prepayments"
+        ],
+        [
+          "asset_fixed",
+          "Fixed Assets"
+        ],
+        [
+          "liability_payable",
+          "Payable"
+        ],
+        [
+          "liability_credit_card",
+          "Credit Card"
+        ],
+        [
+          "liability_current",
+          "Current Liabilities"
+        ],
+        [
+          "liability_non_current",
+          "Non-current Liabilities"
+        ],
+        [
+          "equity",
+          "Equity"
+        ],
+        [
+          "equity_unaffected",
+          "Current Year Earnings"
+        ],
+        [
+          "income",
+          "Income"
+        ],
+        [
+          "income_other",
+          "Other Income"
+        ],
+        [
+          "expense",
+          "Expenses"
+        ],
+        [
+          "expense_other",
+          "Other Expenses"
+        ],
+        [
+          "expense_depreciation",
+          "Depreciation"
+        ],
+        [
+          "expense_direct_cost",
+          "Cost of Revenue"
+        ],
+        [
+          "off_balance",
+          "Off-Balance Sheet"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "destination_account_id": {
+      "readonly": false,
+      "relation": "account.account",
+      "required": false,
+      "string": "Destination Account",
+      "type": "many2one"
+    },
+    "invoice_ids": {
+      "readonly": false,
+      "relation": "account.move",
+      "required": false,
+      "string": "Invoices",
+      "type": "many2many"
+    },
+    "reconciled_invoice_ids": {
+      "help": "Invoices whose journal items have been reconciled with these payments.",
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Reconciled Invoices",
+      "type": "many2many"
+    },
+    "reconciled_invoices_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Reconciled Invoices",
+      "type": "integer"
+    },
+    "reconciled_invoices_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "credit_note",
+          "Credit Note"
+        ],
+        [
+          "invoice",
+          "Invoice"
+        ]
+      ],
+      "string": "Reconciled Invoices Type",
+      "type": "selection"
+    },
+    "reconciled_bill_ids": {
+      "help": "Invoices whose journal items have been reconciled with these payments.",
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Reconciled Bills",
+      "type": "many2many"
+    },
+    "reconciled_bills_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Reconciled Bills",
+      "type": "integer"
+    },
+    "reconciled_statement_line_ids": {
+      "help": "Statements lines matched to this payment",
+      "readonly": true,
+      "relation": "account.bank.statement.line",
+      "required": false,
+      "string": "Reconciled Statement Lines",
+      "type": "many2many"
+    },
+    "reconciled_statement_lines_count": {
+      "readonly": true,
+      "required": false,
+      "string": "# Reconciled Statement Lines",
+      "type": "integer"
+    },
+    "payment_method_code": {
+      "readonly": true,
+      "required": false,
+      "string": "Code",
+      "type": "char"
+    },
+    "payment_receipt_title": {
+      "readonly": true,
+      "required": false,
+      "string": "Payment Receipt Title",
+      "type": "char"
+    },
+    "need_cancel_request": {
+      "readonly": true,
+      "required": false,
+      "string": "Need Cancel Request",
+      "type": "boolean"
+    },
+    "show_partner_bank_account": {
+      "readonly": true,
+      "required": false,
+      "string": "Show Partner Bank Account",
+      "type": "boolean"
+    },
+    "require_partner_bank_account": {
+      "readonly": true,
+      "required": false,
+      "string": "Require Partner Bank Account",
+      "type": "boolean"
+    },
+    "country_code": {
+      "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+      "readonly": true,
+      "required": false,
+      "string": "Country Code",
+      "type": "char"
+    },
+    "amount_signed": {
+      "help": "Negative value of amount field if payment_type is outbound",
+      "readonly": true,
+      "required": false,
+      "string": "Amount Signed",
+      "type": "monetary"
+    },
+    "amount_company_currency_signed": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount Company Currency Signed",
+      "type": "monetary"
+    },
+    "duplicate_payment_ids": {
+      "readonly": true,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Duplicate Payment",
+      "type": "many2many"
+    },
+    "attachment_ids": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachments",
+      "type": "one2many"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "payment_transaction_id": {
+      "readonly": true,
+      "relation": "payment.transaction",
+      "required": false,
+      "string": "Payment Transaction",
+      "type": "many2one"
+    },
+    "payment_token_id": {
+      "help": "Note that only tokens from providers allowing to capture the amount are available.",
+      "readonly": false,
+      "relation": "payment.token",
+      "required": false,
+      "string": "Saved Payment Token",
+      "type": "many2one"
+    },
+    "amount_available_for_refund": {
+      "readonly": true,
+      "required": false,
+      "string": "Amount Available For Refund",
+      "type": "monetary"
+    },
+    "suitable_payment_token_ids": {
+      "readonly": true,
+      "relation": "payment.token",
+      "required": false,
+      "string": "Suitable Payment Token",
+      "type": "many2many"
+    },
+    "use_electronic_payment_method": {
+      "readonly": true,
+      "required": false,
+      "string": "Use Electronic Payment Method",
+      "type": "boolean"
+    },
+    "source_payment_id": {
+      "help": "The source payment of related refund payments",
+      "readonly": true,
+      "relation": "account.payment",
+      "required": false,
+      "string": "Source Payment",
+      "type": "many2one"
+    },
+    "refunds_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Refunds Count",
+      "type": "integer"
+    },
+    "batch_payment_id": {
+      "readonly": false,
+      "relation": "account.batch.payment",
+      "required": false,
+      "string": "Batch Payment",
+      "type": "many2one"
+    },
+    "payment_method_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "batch_payments_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Batch Payments Count",
+      "type": "char"
+    },
+    "is_donation": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Donation",
+      "type": "boolean"
+    },
+    "sepa_pain_version": {
+      "help": "SEPA version to use to generate Credit Transfer XML files from this journal",
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "pain.001.001.03.austrian.004",
+          "Austrian"
+        ],
+        [
+          "pain.001.001.03.de",
+          "German"
+        ],
+        [
+          "pain.001.001.09",
+          "pain.001.001.09"
+        ],
+        [
+          "pain.001.001.03",
+          "pain.001.001.03"
+        ]
+      ],
+      "string": "SEPA XML Format",
+      "type": "selection"
+    },
+    "iso20022_uetr": {
+      "help": "Unique end-to-end transaction reference",
+      "readonly": true,
+      "required": false,
+      "string": "UETR",
+      "type": "char"
+    },
+    "iso20022_priority": {
+      "help": "• NORM: Standard processing time.\n• HIGH: High priority payment.\n• URGP: Critical, requires immediate processing.\n• SVDA: Payments must settle on same day as submission.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "NORM",
+          "NORM - Normal"
+        ],
+        [
+          "HIGH",
+          "HIGH - High priority"
+        ],
+        [
+          "URGP",
+          "URGP - Critical urgency"
+        ],
+        [
+          "SVDA",
+          "SVDA - Same value date"
+        ]
+      ],
+      "string": "Priority",
+      "type": "selection"
+    },
+    "available_iso20022_priority": {
+      "readonly": true,
+      "required": false,
+      "string": "Available Iso20022 Priority",
+      "type": "json"
+    },
+    "payment_method_is_iso20022": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Iso20022",
+      "type": "boolean"
+    },
+    "iso20022_charge_bearer": {
+      "help": "Specifies which party/parties will bear the charges associated with the processing of the payment transaction.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "CRED",
+          "Creditor"
+        ],
+        [
+          "DEBT",
+          "Debtor"
+        ],
+        [
+          "SHAR",
+          "Shared"
+        ],
+        [
+          "SLEV",
+          "Service Level"
+        ]
+      ],
+      "string": "Charge Bearer",
+      "type": "selection"
+    },
+    "payment_identifier": {
+      "readonly": true,
+      "required": false,
+      "string": "Payment ID",
+      "type": "char"
+    },
+    "payment_online_status": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "uninitiated",
+          "Uninitiated"
+        ],
+        [
+          "unsigned",
+          "Unsigned"
+        ],
+        [
+          "pending",
+          "Pending"
+        ],
+        [
+          "accepted",
+          "Accepted"
+        ],
+        [
+          "canceled",
+          "Canceled"
+        ],
+        [
+          "rejected",
+          "Rejected"
+        ]
+      ],
+      "string": "PIS Status",
+      "type": "selection"
+    },
+    "could_initiate_payment": {
+      "readonly": true,
+      "required": false,
+      "string": "Could Initiate Payment",
+      "type": "boolean"
+    },
+    "payment_method_placeholder": {
+      "readonly": true,
+      "required": false,
+      "string": "Payment Method Placeholder",
+      "type": "char"
+    }
+  }
+}

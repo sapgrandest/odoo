@@ -1,0 +1,65 @@
+{
+  "model": "sign.template.preview",
+  "name": "Sign Tempate Preview",
+  "field_count": 9,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "template_id": {
+      "readonly": false,
+      "relation": "sign.template",
+      "required": false,
+      "string": "Template",
+      "type": "many2one"
+    },
+    "document_id": {
+      "readonly": false,
+      "relation": "sign.document",
+      "required": false,
+      "string": "Document",
+      "type": "many2one"
+    },
+    "pdf_data": {
+      "readonly": true,
+      "required": false,
+      "string": "Pdf Data",
+      "type": "binary"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

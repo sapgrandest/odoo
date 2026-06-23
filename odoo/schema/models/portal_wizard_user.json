@@ -1,0 +1,110 @@
+{
+  "model": "portal.wizard.user",
+  "name": "Portal User Config",
+  "field_count": 14,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "wizard_id": {
+      "readonly": false,
+      "relation": "portal.wizard",
+      "required": true,
+      "string": "Wizard",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": true,
+      "string": "Contact",
+      "type": "many2one"
+    },
+    "email": {
+      "readonly": false,
+      "required": false,
+      "string": "Email",
+      "type": "char"
+    },
+    "user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "User",
+      "type": "many2one"
+    },
+    "login_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Latest Authentication",
+      "type": "datetime"
+    },
+    "is_portal": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Portal",
+      "type": "boolean"
+    },
+    "is_internal": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Internal",
+      "type": "boolean"
+    },
+    "email_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "ok",
+          "Valid"
+        ],
+        [
+          "ko",
+          "Invalid"
+        ],
+        [
+          "exist",
+          "Already Registered"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "model": "payment.capture.wizard",
+  "name": "Payment Capture Wizard",
+  "field_count": 18,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "transaction_ids": {
+      "readonly": true,
+      "relation": "payment.transaction",
+      "required": false,
+      "string": "Transaction",
+      "type": "many2many"
+    },
+    "authorized_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Authorized Amount",
+      "type": "monetary"
+    },
+    "captured_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Already Captured",
+      "type": "monetary"
+    },
+    "voided_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Already Voided",
+      "type": "monetary"
+    },
+    "available_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Maximum Capture Allowed",
+      "type": "monetary"
+    },
+    "amount_to_capture": {
+      "readonly": false,
+      "required": false,
+      "string": "Amount To Capture",
+      "type": "monetary"
+    },
+    "is_amount_to_capture_valid": {
+      "readonly": true,
+      "required": false,
+      "string": "Is Amount To Capture Valid",
+      "type": "boolean"
+    },
+    "void_remaining_amount": {
+      "readonly": false,
+      "required": false,
+      "string": "Void Remaining Amount",
+      "type": "boolean"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "support_partial_capture": {
+      "help": "Whether each of the transactions' provider supports the partial capture.",
+      "readonly": true,
+      "required": false,
+      "string": "Support Partial Capture",
+      "type": "boolean"
+    },
+    "has_draft_children": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Draft Children",
+      "type": "boolean"
+    },
+    "has_remaining_amount": {
+      "readonly": true,
+      "required": false,
+      "string": "Has Remaining Amount",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "model": "ai.agent.source",
+  "name": "AI Agent Source",
+  "field_count": 23,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "agent_id": {
+      "readonly": false,
+      "relation": "ai.agent",
+      "required": true,
+      "string": "Agent",
+      "type": "many2one"
+    },
+    "type": {
+      "readonly": true,
+      "required": true,
+      "selection": [
+        [
+          "url",
+          "URL"
+        ],
+        [
+          "binary",
+          "File"
+        ],
+        [
+          "knowledge_article",
+          "Knowledge Article"
+        ]
+      ],
+      "string": "Type",
+      "type": "selection"
+    },
+    "status": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "processing",
+          "Processing"
+        ],
+        [
+          "indexed",
+          "Indexed"
+        ],
+        [
+          "incomplete",
+          "Incomplete"
+        ],
+        [
+          "failed",
+          "Failed"
+        ]
+      ],
+      "string": "Status",
+      "type": "selection"
+    },
+    "is_active": {
+      "help": "If the source is active, it will be used in the RAG context.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "error_details": {
+      "readonly": false,
+      "required": false,
+      "string": "Error Details",
+      "type": "text"
+    },
+    "attachment_id": {
+      "readonly": false,
+      "relation": "ir.attachment",
+      "required": false,
+      "string": "Attachment",
+      "type": "many2one"
+    },
+    "mimetype": {
+      "readonly": true,
+      "required": false,
+      "string": "Mime Type",
+      "type": "char"
+    },
+    "file_size": {
+      "readonly": true,
+      "required": false,
+      "string": "File Size",
+      "type": "integer"
+    },
+    "url": {
+      "readonly": false,
+      "required": false,
+      "string": "URL",
+      "type": "char"
+    },
+    "user_has_access": {
+      "readonly": true,
+      "required": false,
+      "string": "User Has Access",
+      "type": "boolean"
+    },
+    "parent_id": {
+      "readonly": false,
+      "relation": "ai.agent.source",
+      "required": false,
+      "string": "Parent Source",
+      "type": "many2one"
+    },
+    "child_ids": {
+      "readonly": false,
+      "relation": "ai.agent.source",
+      "required": false,
+      "string": "Child Sources",
+      "type": "one2many"
+    },
+    "parent_path": {
+      "readonly": false,
+      "required": false,
+      "string": "Parent Path",
+      "type": "char"
+    },
+    "is_folder": {
+      "readonly": true,
+      "required": true,
+      "string": "Source is a folder",
+      "type": "boolean"
+    },
+    "file_sources_count": {
+      "readonly": true,
+      "required": false,
+      "string": "Number of file sources",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "article_id": {
+      "readonly": false,
+      "relation": "knowledge.article",
+      "required": false,
+      "string": "Source Article",
+      "type": "many2one"
+    }
+  }
+}

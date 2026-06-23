@@ -1,0 +1,124 @@
+{
+  "model": "account.report.async.document",
+  "name": "Account Report Async Document",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": false,
+      "string": "Name",
+      "type": "char"
+    },
+    "account_report_async_export_id": {
+      "readonly": false,
+      "relation": "account.report.async.export",
+      "required": false,
+      "string": "Account Report Async Export",
+      "type": "many2one"
+    },
+    "attachment": {
+      "readonly": false,
+      "required": false,
+      "string": "Attachment",
+      "type": "binary"
+    },
+    "attachment_name": {
+      "readonly": false,
+      "required": false,
+      "string": "Attachment Name",
+      "type": "char"
+    },
+    "deposit_uid": {
+      "readonly": false,
+      "required": false,
+      "string": "Deposit Uid",
+      "type": "char"
+    },
+    "declaration_uid": {
+      "readonly": false,
+      "required": false,
+      "string": "Declaration Uid",
+      "type": "char"
+    },
+    "state": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "to_send",
+          "To send"
+        ],
+        [
+          "sent",
+          "Sent"
+        ],
+        [
+          "accepted",
+          "Accepted"
+        ],
+        [
+          "rejected",
+          "Rejected"
+        ]
+      ],
+      "string": "State",
+      "type": "selection"
+    },
+    "step_1_logs": {
+      "readonly": false,
+      "required": false,
+      "string": "Step 1 Logs",
+      "type": "char"
+    },
+    "step_2_logs": {
+      "readonly": false,
+      "required": false,
+      "string": "Step 2 Logs",
+      "type": "char"
+    },
+    "message": {
+      "readonly": true,
+      "required": false,
+      "string": "Message",
+      "type": "html"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

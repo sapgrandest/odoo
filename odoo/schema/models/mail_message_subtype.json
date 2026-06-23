@@ -1,0 +1,116 @@
+{
+  "model": "mail.message.subtype",
+  "name": "Message Subtype",
+  "field_count": 16,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "help": "Message subtype gives a more precise type on the message, especially for system notifications. For example, it can be a notification related to a new record (New), or to a stage change in a process (Stage change). Message subtypes allow to precisely tune the notifications the user want to receive on its wall.",
+      "readonly": false,
+      "required": true,
+      "string": "Message Type",
+      "type": "char"
+    },
+    "description": {
+      "help": "Description that will be added in the message posted for this subtype. If void, the name will be added instead.",
+      "readonly": false,
+      "required": false,
+      "string": "Description",
+      "type": "text"
+    },
+    "internal": {
+      "help": "Messages with internal subtypes will be visible only by employees, aka members of base_user group",
+      "readonly": false,
+      "required": false,
+      "string": "Internal Only",
+      "type": "boolean"
+    },
+    "parent_id": {
+      "help": "Parent subtype, used for automatic subscription. This field is not correctly named. For example on a project, the parent_id of project subtypes refers to task-related subtypes.",
+      "readonly": false,
+      "relation": "mail.message.subtype",
+      "required": false,
+      "string": "Parent",
+      "type": "many2one"
+    },
+    "relation_field": {
+      "help": "Field used to link the related model to the subtype model when using automatic subscription on a related document. The field is used to compute getattr(related_document.relation_field).",
+      "readonly": false,
+      "required": false,
+      "string": "Relation field",
+      "type": "char"
+    },
+    "res_model": {
+      "help": "Model the subtype applies to. If False, this subtype applies to all models.",
+      "readonly": false,
+      "required": false,
+      "string": "Model",
+      "type": "char"
+    },
+    "default": {
+      "help": "Activated by default when subscribing.",
+      "readonly": false,
+      "required": false,
+      "string": "Default",
+      "type": "boolean"
+    },
+    "sequence": {
+      "help": "Used to order subtypes.",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "hidden": {
+      "help": "Hide the subtype in the follower options",
+      "readonly": false,
+      "required": false,
+      "string": "Hidden",
+      "type": "boolean"
+    },
+    "track_recipients": {
+      "help": "Whether to display all the recipients or only the important ones.",
+      "readonly": false,
+      "required": false,
+      "string": "Track Recipients",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

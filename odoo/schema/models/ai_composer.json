@@ -1,0 +1,153 @@
+{
+  "model": "ai.composer",
+  "name": "AI model configurations (system prompts) for text drafting.",
+  "field_count": 15,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "help": "The identifier for the interface component to agent rule",
+      "readonly": false,
+      "required": true,
+      "string": "Rule Name",
+      "type": "char"
+    },
+    "interface_key": {
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "html_field_record",
+          "Write in an HTML field"
+        ],
+        [
+          "mail_composer",
+          "Write an email"
+        ],
+        [
+          "html_field_text_select",
+          "Rewrite content"
+        ],
+        [
+          "chatter_ai_button",
+          "Get help on a record"
+        ],
+        [
+          "html_prompt_shortcut",
+          "Convert a prompt in an email"
+        ],
+        [
+          "systray_ai_button",
+          "Ask AI for help"
+        ],
+        [
+          "voice_transcription_component",
+          "Summary Buttons for Voice Transcription Component"
+        ],
+        [
+          "file_viewer_ai_button",
+          "Get help on a file attachment"
+        ],
+        [
+          "media_dialog",
+          "Generate images inside the media manager"
+        ],
+        [
+          "html_field_knowledge",
+          "Write a new Knowledge article"
+        ],
+        [
+          "website_seo_ai",
+          "Optimize the SEO of their website pages"
+        ],
+        [
+          "website_builder_ai",
+          "Edit a website page"
+        ]
+      ],
+      "string": "Action",
+      "type": "selection"
+    },
+    "focused_model_id": {
+      "readonly": false,
+      "relation": "ir.model",
+      "required": false,
+      "string": "Model",
+      "type": "many2one"
+    },
+    "ai_agent_id": {
+      "readonly": false,
+      "relation": "ai.agent",
+      "required": false,
+      "string": "Agent",
+      "type": "many2one"
+    },
+    "default_prompt": {
+      "readonly": false,
+      "required": false,
+      "string": "Context",
+      "type": "text"
+    },
+    "is_system_default": {
+      "readonly": true,
+      "required": false,
+      "string": "Is the rule a system default or user created",
+      "type": "boolean"
+    },
+    "available_prompt_ids": {
+      "readonly": false,
+      "relation": "ai.prompt.button",
+      "required": false,
+      "string": "Available User Prompts",
+      "type": "one2many"
+    },
+    "hide_prompt_button_page": {
+      "readonly": true,
+      "required": false,
+      "string": "Hide Prompt Button Page",
+      "type": "boolean"
+    },
+    "hide_model_selection": {
+      "readonly": true,
+      "required": false,
+      "string": "Hide Model Selection",
+      "type": "boolean"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

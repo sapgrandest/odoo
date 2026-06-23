@@ -1,0 +1,271 @@
+{
+  "model": "account.invoice.report",
+  "name": "Invoices Statistics",
+  "field_count": 31,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "move_id": {
+      "readonly": true,
+      "relation": "account.move",
+      "required": false,
+      "string": "Move",
+      "type": "many2one"
+    },
+    "journal_id": {
+      "readonly": true,
+      "relation": "account.journal",
+      "required": false,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "company_id": {
+      "readonly": true,
+      "relation": "res.company",
+      "required": false,
+      "string": "Company",
+      "type": "many2one"
+    },
+    "company_currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Company Currency",
+      "type": "many2one"
+    },
+    "partner_id": {
+      "readonly": true,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Partner",
+      "type": "many2one"
+    },
+    "commercial_partner_id": {
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "string": "Main Partner",
+      "type": "many2one"
+    },
+    "country_id": {
+      "readonly": false,
+      "relation": "res.country",
+      "required": false,
+      "string": "Country",
+      "type": "many2one"
+    },
+    "invoice_user_id": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Salesperson",
+      "type": "many2one"
+    },
+    "move_type": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "out_invoice",
+          "Customer Invoice"
+        ],
+        [
+          "in_invoice",
+          "Vendor Bill"
+        ],
+        [
+          "out_refund",
+          "Customer Credit Note"
+        ],
+        [
+          "in_refund",
+          "Vendor Credit Note"
+        ]
+      ],
+      "string": "Move Type",
+      "type": "selection"
+    },
+    "state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "posted",
+          "Open"
+        ],
+        [
+          "cancel",
+          "Cancelled"
+        ]
+      ],
+      "string": "Invoice Status",
+      "type": "selection"
+    },
+    "payment_state": {
+      "readonly": true,
+      "required": false,
+      "selection": [
+        [
+          "not_paid",
+          "Not Paid"
+        ],
+        [
+          "in_payment",
+          "In Payment"
+        ],
+        [
+          "paid",
+          "Paid"
+        ],
+        [
+          "partial",
+          "Partially Paid"
+        ],
+        [
+          "reversed",
+          "Reversed"
+        ],
+        [
+          "blocked",
+          "Blocked"
+        ],
+        [
+          "invoicing_legacy",
+          "Invoicing App Legacy"
+        ]
+      ],
+      "string": "Payment Status",
+      "type": "selection"
+    },
+    "fiscal_position_id": {
+      "readonly": true,
+      "relation": "account.fiscal.position",
+      "required": false,
+      "string": "Fiscal Position",
+      "type": "many2one"
+    },
+    "invoice_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Invoice Date",
+      "type": "date"
+    },
+    "quantity": {
+      "readonly": true,
+      "required": false,
+      "string": "Product Quantity",
+      "type": "float"
+    },
+    "product_id": {
+      "readonly": true,
+      "relation": "product.product",
+      "required": false,
+      "string": "Product",
+      "type": "many2one"
+    },
+    "product_uom_id": {
+      "readonly": true,
+      "relation": "uom.uom",
+      "required": false,
+      "string": "Unit",
+      "type": "many2one"
+    },
+    "product_categ_id": {
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "invoice_date_due": {
+      "readonly": true,
+      "required": false,
+      "string": "Due Date",
+      "type": "date"
+    },
+    "account_id": {
+      "readonly": true,
+      "relation": "account.account",
+      "required": false,
+      "string": "Revenue/Expense Account",
+      "type": "many2one"
+    },
+    "price_subtotal_currency": {
+      "readonly": true,
+      "required": false,
+      "string": "Untaxed Amount in Currency",
+      "type": "float"
+    },
+    "price_subtotal": {
+      "readonly": true,
+      "required": false,
+      "string": "Untaxed Amount",
+      "type": "float"
+    },
+    "price_total": {
+      "readonly": true,
+      "required": false,
+      "string": "Total",
+      "type": "float"
+    },
+    "price_total_currency": {
+      "readonly": true,
+      "required": false,
+      "string": "Total in Currency",
+      "type": "float"
+    },
+    "price_average": {
+      "readonly": true,
+      "required": false,
+      "string": "Average Price",
+      "type": "float"
+    },
+    "price_margin": {
+      "readonly": true,
+      "required": false,
+      "string": "Margin",
+      "type": "float"
+    },
+    "inventory_value": {
+      "readonly": true,
+      "required": false,
+      "string": "Inventory Value",
+      "type": "float"
+    },
+    "currency_id": {
+      "readonly": true,
+      "relation": "res.currency",
+      "required": false,
+      "string": "Currency",
+      "type": "many2one"
+    },
+    "team_id": {
+      "readonly": false,
+      "relation": "crm.team",
+      "required": false,
+      "string": "Sales Team",
+      "type": "many2one"
+    },
+    "source_id": {
+      "readonly": true,
+      "relation": "utm.source",
+      "required": false,
+      "string": "Source",
+      "type": "many2one"
+    }
+  }
+}

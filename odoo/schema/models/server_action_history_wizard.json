@@ -1,0 +1,72 @@
+{
+  "model": "server.action.history.wizard",
+  "name": "Server Action History Wizard",
+  "field_count": 10,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "action_id": {
+      "readonly": false,
+      "relation": "ir.actions.server",
+      "required": false,
+      "string": "Action",
+      "type": "many2one"
+    },
+    "code_diff": {
+      "readonly": true,
+      "required": false,
+      "string": "Code Diff",
+      "type": "html"
+    },
+    "current_code": {
+      "help": "Write Python code that the action will execute. Some variables are available for use; help about python expression is given in the help tab.",
+      "readonly": true,
+      "required": false,
+      "string": "Python Code",
+      "type": "text"
+    },
+    "revision": {
+      "readonly": false,
+      "relation": "ir.actions.server.history",
+      "required": true,
+      "string": "Revision",
+      "type": "many2one"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    }
+  }
+}

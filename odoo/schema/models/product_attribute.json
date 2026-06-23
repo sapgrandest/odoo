@@ -1,0 +1,205 @@
+{
+  "model": "product.attribute",
+  "name": "Product Attribute",
+  "field_count": 20,
+  "fields": {
+    "id": {
+      "readonly": true,
+      "required": false,
+      "string": "ID",
+      "type": "integer"
+    },
+    "display_name": {
+      "readonly": true,
+      "required": false,
+      "string": "Display Name",
+      "type": "char"
+    },
+    "name": {
+      "readonly": false,
+      "required": true,
+      "string": "Attribute",
+      "type": "char"
+    },
+    "active": {
+      "help": "If unchecked, it will allow you to hide the attribute without removing it.",
+      "readonly": false,
+      "required": false,
+      "string": "Active",
+      "type": "boolean"
+    },
+    "create_variant": {
+      "help": "- Instantly: All possible variants are created as soon as the attribute and its values are added to a product.\n        - Dynamically: Each variant is created only when its corresponding attributes and values are added to a sales order.\n        - Never: Variants are never created for the attribute.\n        Note: this cannot be changed once the attribute is used on a product.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "always",
+          "Instantly"
+        ],
+        [
+          "dynamic",
+          "Dynamically"
+        ],
+        [
+          "no_variant",
+          "Never"
+        ]
+      ],
+      "string": "Variant Creation",
+      "type": "selection"
+    },
+    "display_type": {
+      "help": "The display type used in the Product Configurator.",
+      "readonly": false,
+      "required": true,
+      "selection": [
+        [
+          "radio",
+          "Radio"
+        ],
+        [
+          "pills",
+          "Pills"
+        ],
+        [
+          "select",
+          "Select"
+        ],
+        [
+          "color",
+          "Color"
+        ],
+        [
+          "multi",
+          "Multi-checkbox"
+        ],
+        [
+          "image",
+          "Image"
+        ]
+      ],
+      "string": "Display Type",
+      "type": "selection"
+    },
+    "sequence": {
+      "help": "Determine the display order",
+      "readonly": false,
+      "required": false,
+      "string": "Sequence",
+      "type": "integer"
+    },
+    "value_ids": {
+      "readonly": false,
+      "relation": "product.attribute.value",
+      "required": false,
+      "string": "Values",
+      "type": "one2many"
+    },
+    "template_value_ids": {
+      "readonly": false,
+      "relation": "product.template.attribute.value",
+      "required": false,
+      "string": "Template Values",
+      "type": "one2many"
+    },
+    "attribute_line_ids": {
+      "readonly": false,
+      "relation": "product.template.attribute.line",
+      "required": false,
+      "string": "Lines",
+      "type": "one2many"
+    },
+    "product_tmpl_ids": {
+      "readonly": true,
+      "relation": "product.template",
+      "required": false,
+      "string": "Related Products",
+      "type": "many2many"
+    },
+    "number_related_products": {
+      "readonly": true,
+      "required": false,
+      "string": "Number Related Products",
+      "type": "integer"
+    },
+    "create_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Created by",
+      "type": "many2one"
+    },
+    "create_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Created on",
+      "type": "datetime"
+    },
+    "write_uid": {
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "string": "Last Updated by",
+      "type": "many2one"
+    },
+    "write_date": {
+      "readonly": true,
+      "required": false,
+      "string": "Last Updated on",
+      "type": "datetime"
+    },
+    "category_id": {
+      "help": "Set a category to regroup similar attributes under the same section in the Comparison page of eCommerce.",
+      "readonly": false,
+      "relation": "product.attribute.category",
+      "required": false,
+      "string": "Category",
+      "type": "many2one"
+    },
+    "visibility": {
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "visible",
+          "Visible"
+        ],
+        [
+          "hidden",
+          "Hidden"
+        ]
+      ],
+      "string": "Visibility",
+      "type": "selection"
+    },
+    "preview_variants": {
+      "help": "Instantly created variants are available for selection from your /shop page.",
+      "readonly": false,
+      "required": false,
+      "selection": [
+        [
+          "visible",
+          "Visible"
+        ],
+        [
+          "hidden",
+          "Hidden"
+        ],
+        [
+          "hover",
+          "Hover"
+        ]
+      ],
+      "string": "On Product Cards",
+      "type": "selection"
+    },
+    "is_thumbnail_visible": {
+      "help": "Use product variant images instead of the attribute values displays.",
+      "readonly": false,
+      "required": false,
+      "string": "Show Thumbnails",
+      "type": "boolean"
+    }
+  }
+}
