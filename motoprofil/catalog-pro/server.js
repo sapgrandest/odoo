@@ -11,6 +11,9 @@ const DIST = path.join(__dirname, 'dist')
 const PORT = parseInt(process.env.PORT || '3000')
 
 // Minimal connect-compatible middleware chain
+process.on('exit', (code) => {
+  console.error('[server] PROCESS EXIT code:', code)
+})
 process.on('uncaughtException', (err) => {
   console.error('[server] Uncaught Exception:', err.message, err.stack)
 })

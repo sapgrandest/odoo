@@ -320,10 +320,13 @@ async function importCsv(csvPath) {
     }
 
     loadingProgress = { status: 'ready', loaded: loadingProgress.loaded, error: '' }
-    console.log(`[catalog] Import terminé — ${loadingProgress.loaded} articles`)
+    const mem = process.memoryUsage()
+    console.log(`[catalog] Import terminé — ${loadingProgress.loaded} articles | RSS ${Math.round(mem.rss/1024/1024)}MB heap ${Math.round(mem.heapUsed/1024/1024)}MB`)
+    // Force WAL checkpoint to flush all data to the main DB file (no-op for :memory:)
+    try { database.pragma('wal_checkpoint(TRUNCATE)') } catch (_) {}
   } catch (err) {
     loadingProgress = { status: 'error', loaded: loadingProgress.loaded, error: err.message }
-    console.error('[catalog] Erreur import CSV:', err.message)
+    console.error('[catalog] Erreur import CSV:', err.message, err.stack)
   } finally {
     markReady()
   }
@@ -444,12 +447,15 @@ export function createCatalogServer(middlewares) {
       }
 
       if (route === '/status') {
-        const database = openDb()
         const ready = loadingProgress.status === 'ready'
-        const total = ready ? database.prepare('SELECT COUNT(*) as n FROM articles').get().n : loadingProgress.loaded
-        const brandsCount = ready ? database.prepare("SELECT COUNT(DISTINCT manufacturer) as n FROM articles WHERE manufacturer != ''").get().n : 0
-        const categoriesCount = ready ? database.prepare("SELECT COUNT(DISTINCT temotCat) as n FROM articles WHERE temotCat != ''").get().n : 0
-        return json(res, { ready, total, brandsCount, categoriesCount, loading: loadingProgress })
+        const mem = process.memoryUsage()
+        return json(res, {
+          ready,
+          total: loadingProgress.loaded,
+          loading: loadingProgress,
+          rss: Math.round(mem.rss / 1024 / 1024),
+          heapUsed: Math.round(mem.heapUsed / 1024 / 1024),
+        })
       }
 
       if (route === '/config') {
