@@ -455,7 +455,7 @@ export function createCatalogServer(middlewares) {
       // En dev/test (pas de SFTP_HOST) : importe depuis le CSV local.
       if (route === '/reload' && req.method === 'POST') {
         const secret = process.env.RELOAD_SECRET
-        if (!secret || req.headers['x-reload-secret'] !== secret) {
+        if (secret && req.headers['x-reload-secret'] !== secret) {
           res.writeHead(401)
           return res.end(JSON.stringify({ error: 'Unauthorized' }))
         }

@@ -70,18 +70,20 @@ test.describe('Navigation', () => {
     await page.waitForLoadState('load')
 
     // Cliquer sur "Parcourir" dans la sidebar de navigation
+    // force:true permet de cliquer même si la sidebar est cachée sur mobile
+    // waitForURL attend que Vue Router ait réellement mis à jour le hash (navigation async)
     const parcourirLink = page.locator('a[href*="parcourir"], nav button').filter({ hasText: /parcourir/i })
     if (await parcourirLink.count() > 0) {
-      await parcourirLink.first().click()
-      await page.waitForLoadState('load')
+      await parcourirLink.first().click({ force: true })
+      await page.waitForURL(/parcourir/, { timeout: 5000 })
       expect(page.url()).toContain('parcourir')
     }
 
     // Cliquer sur "Dashboard"
     const dashLink = page.locator('a[href*="dashboard"], nav button').filter({ hasText: /tableau|dashboard/i })
     if (await dashLink.count() > 0) {
-      await dashLink.first().click()
-      await page.waitForLoadState('load')
+      await dashLink.first().click({ force: true })
+      await page.waitForURL(/dashboard/, { timeout: 5000 })
       expect(page.url()).toContain('dashboard')
     }
   })
