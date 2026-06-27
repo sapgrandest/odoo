@@ -30,7 +30,7 @@ COPY src/server ./src/server
 
 EXPOSE 3000
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s \
+HEALTHCHECK --interval=30s --timeout=10s --start-period=120s \
   CMD wget -qO- http://localhost:3000/api/catalog/status || exit 1
 
 CMD ["node", "--max-old-space-size=4096", "server.js"]
