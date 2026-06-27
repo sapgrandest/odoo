@@ -141,25 +141,24 @@ test.describe('Page /parcourir', () => {
     const listToggle = page.locator('button[title*="liste"], button[aria-label*="liste"]')
     if (await listToggle.count() > 0) await listToggle.click()
 
-    const rows = page.locator('.browse-main div[style*="border:1px solid #27272a"][style*="border-radius:7px"]')
+    const rows = page.locator('.browse-main .list-article-row')
     const rowCount = await rows.count()
     if (rowCount === 0) return // mode liste peut ne pas être sélectionné
 
     for (let i = 0; i < Math.min(3, rowCount); i++) {
       const row = rows.nth(i)
-      const spans = row.locator('span')
-      // Récupérer le motonet (vert monospace)
-      const motonetUI = (await row.locator('span[style*="10b981"][style*="monospace"]').textContent()).trim()
+      // Récupérer le motonet (classe .list-article-motonet)
+      const motonetUI = (await row.locator('.list-article-motonet').textContent()).trim()
 
       // Cross-check avec API
       const article = await apiGet(request, `/api/catalog/article/${motonetUI}`)
-      const priceRetailSpan = row.locator('span[style*="monospace"][style*="font-size:12px"]').last()
-      if (await priceRetailSpan.count() > 0 && article.priceRetail > 0) {
-        const priceUI = parseDisplayedPrice(await priceRetailSpan.textContent())
+      const priceSpan = row.locator('.list-article-price')
+      if (await priceSpan.count() > 0 && article.priceRetail > 0) {
+        const priceUI = parseDisplayedPrice(await priceSpan.textContent())
         const priceAPI = parseFloat(Number(article.priceRetail).toFixed(2))
         expect(
           Math.abs(priceUI - priceAPI),
-          `priceRetail card[${i}] ${motonetUI} UI=${priceUI} vs API=${priceAPI}`
+          `priceRetail row[${i}] ${motonetUI} UI=${priceUI} vs API=${priceAPI}`
         ).toBeLessThan(0.02)
       }
     }
@@ -189,11 +188,11 @@ test.describe('Page /parcourir', () => {
       const apiItem = await apiGet(request, `/api/catalog/article/${motonetUI}`)
       expect(apiItem.manufacturer, `API manufacturer pour ${motonetUI}`).toBe(BRAND)
 
-      // Prix retail (badge haut-droite)
+      // Prix retail (badge haut-droite, classe .article-price-badge)
       if (apiItem.priceRetail > 0) {
-        const priceBadge = card.locator('div[style*="position:absolute"][style*="top:6px"][style*="right:6px"]')
+        const priceBadge = card.locator('.article-price-badge')
         if (await priceBadge.count() > 0) {
-          const priceUI = parseDisplayedPrice(await priceBadge.textContent())
+          const priceUI = parseDisplayedPrice(await priceBadge.first().textContent())
           const priceAPI = parseFloat(Number(apiItem.priceRetail).toFixed(2))
           expect(
             Math.abs(priceUI - priceAPI),

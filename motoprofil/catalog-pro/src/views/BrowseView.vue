@@ -206,6 +206,7 @@
             <div
               v-for="art in articles"
               :key="art.motonet"
+              class="list-article-row"
               @click="dialogRef?.open(art)"
               style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:#111113;border:1px solid #27272a;border-radius:7px;cursor:pointer;transition:border-color 0.1s"
               @mouseenter="e => e.currentTarget.style.borderColor='#10b981'"
@@ -220,10 +221,10 @@
               <div v-else style="width:48px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
                 <span class="pi pi-car" style="font-size:20px;color:#3f3f46" />
               </div>
-              <span style="font-family:monospace;font-size:12px;font-weight:700;color:#10b981;flex-shrink:0;min-width:100px">{{ art.motonet }}</span>
+              <span class="list-article-motonet" style="font-family:monospace;font-size:12px;font-weight:700;color:#10b981;flex-shrink:0;min-width:100px">{{ art.motonet }}</span>
               <span style="font-size:11px;font-weight:700;text-transform:uppercase;color:#71717a;flex-shrink:0;min-width:80px">{{ art.manufacturer }}</span>
               <span class="line-clamp-1" style="font-size:13px;color:#fafafa;flex:1">{{ art.name }}</span>
-              <span v-if="art.priceRetail > 0" style="font-family:monospace;font-size:12px;font-weight:600;color:#fafafa;flex-shrink:0">{{ fmtPrice(art.priceRetail) }} €</span>
+              <span v-if="art.priceRetail > 0" class="list-article-price" style="font-family:monospace;font-size:12px;font-weight:600;color:#fafafa;flex-shrink:0">{{ fmtPrice(art.priceRetail) }} €</span>
               <span
                 :style="{
                   width:'7px', height:'7px', borderRadius:'50%', flexShrink:0,

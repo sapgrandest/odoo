@@ -44,12 +44,14 @@
       <!-- Badge prix haut-droite (si pas badge NOUVEAU) -->
       <div
         v-else-if="article.priceRetail > 0"
+        class="article-price-badge"
         style="position:absolute;top:6px;right:6px;background:rgba(9,9,11,0.88);border:1px solid #27272a;color:#fafafa;font-size:11px;font-weight:600;padding:2px 8px;border-radius:5px"
       >{{ formatPrice(article.priceRetail) }} €</div>
 
       <!-- Badge prix haut-droite (si badge NOUVEAU ET prix) -->
       <div
         v-if="article.isNew && article.priceRetail > 0"
+        class="article-price-badge"
         style="position:absolute;top:26px;right:6px;background:rgba(9,9,11,0.88);border:1px solid #27272a;color:#fafafa;font-size:11px;font-weight:600;padding:2px 8px;border-radius:5px"
       >{{ formatPrice(article.priceRetail) }} €</div>
 
