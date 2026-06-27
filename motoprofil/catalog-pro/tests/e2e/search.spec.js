@@ -21,11 +21,15 @@ test.describe('Page de recherche (/)', () => {
     await page.goto('/#/parcourir')
     await page.waitForLoadState('load')
 
+    // Attendre que le catalogue soit prêt (brands loaded) avant de taper la recherche
+    await expect(page.locator('.browse-sidebar button').nth(2)).toBeVisible({ timeout: 20_000 })
+
     const searchInput = page.locator('input[placeholder*="globale"]').first()
-    await expect(searchInput).toBeVisible({ timeout: 10_000 })
+    await expect(searchInput).toBeVisible({ timeout: 5_000 })
     await searchInput.fill('filtr')
     await searchInput.press('Enter')
-    await page.waitForLoadState('load')
+    // Attendre les résultats
+    await expect(page.locator('.browse-main').getByText(/article/)).toBeVisible({ timeout: 10_000 })
 
     const bodyText = await page.textContent('body')
     const expectedStr = apiResult.total.toLocaleString('fr-FR')
@@ -85,11 +89,15 @@ test.describe('Page de recherche (/)', () => {
     await page.goto('/#/parcourir')
     await page.waitForLoadState('load')
 
+    // Attendre que le catalogue soit prêt (brands loaded) avant de taper la recherche
+    await expect(page.locator('.browse-sidebar button').nth(2)).toBeVisible({ timeout: 20_000 })
+
     const searchInput = page.locator('input[placeholder*="globale"]').first()
-    await expect(searchInput).toBeVisible({ timeout: 10_000 })
+    await expect(searchInput).toBeVisible({ timeout: 5_000 })
     await searchInput.fill('filtr')
     await searchInput.press('Enter')
-    await page.waitForLoadState('load')
+    // Attendre les résultats
+    await expect(page.locator('.browse-main').getByText(/article/)).toBeVisible({ timeout: 10_000 })
 
     for (const item of apiResult.items.slice(0, 3)) {
       await expect(

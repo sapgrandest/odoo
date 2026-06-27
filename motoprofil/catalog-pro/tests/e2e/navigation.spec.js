@@ -19,6 +19,7 @@ test.describe('Navigation', () => {
 
       await page.goto(route.path)
       await page.waitForLoadState('load')
+      await page.waitForFunction(() => document.body.textContent.trim().length > 100, { timeout: 15_000 })
 
       // Pas de page blanche (body a du contenu)
       const bodyText = await page.textContent('body')
@@ -39,6 +40,7 @@ test.describe('Navigation', () => {
   test('Route inconnue → redirige vers /', async ({ page }) => {
     await page.goto('/#/page-qui-nexiste-vraiment-pas')
     await page.waitForLoadState('load')
+    await page.waitForFunction(() => document.body.textContent.trim().length > 100, { timeout: 15_000 })
     expect(page.url()).toContain('#/')
     const bodyText = await page.textContent('body')
     expect(bodyText.trim().length).toBeGreaterThan(100)
@@ -49,6 +51,7 @@ test.describe('Navigation', () => {
     await page.waitForLoadState('load')
     await page.reload()
     await page.waitForLoadState('load')
+    await page.waitForFunction(() => document.body.textContent.trim().length > 100, { timeout: 15_000 })
     const bodyText = await page.textContent('body')
     expect(bodyText.trim().length).toBeGreaterThan(100)
     expect(bodyText).not.toContain('404')
@@ -68,15 +71,28 @@ test.describe('Navigation', () => {
   test('Menu de navigation : liens fonctionnent', async ({ page }) => {
     await page.goto('/#/')
     await page.waitForLoadState('load')
+    await page.waitForFunction(() => document.body.textContent.trim().length > 100, { timeout: 15_000 })
+
+    // Sur mobile, la sidebar est cachée derrière le hamburger — l'ouvrir avant de cliquer
+    const hamburger = page.locator('button.hamburger')
+
+    if (await hamburger.isVisible()) {
+      await hamburger.click()
+      await page.waitForSelector('.app-sidebar.mobile-open', { timeout: 3000 }).catch(() => {})
+    }
 
     // Cliquer sur "Parcourir" dans la sidebar de navigation
-    // force:true permet de cliquer même si la sidebar est cachée sur mobile
-    // waitForURL attend que Vue Router ait réellement mis à jour le hash (navigation async)
     const parcourirLink = page.locator('a[href*="parcourir"], nav button').filter({ hasText: /parcourir/i })
     if (await parcourirLink.count() > 0) {
       await parcourirLink.first().click({ force: true })
       await page.waitForURL(/parcourir/, { timeout: 5000 })
       expect(page.url()).toContain('parcourir')
+    }
+
+    // Sur mobile, la sidebar se ferme après navigation (@close) — la rouvrir avant le 2e clic
+    if (await hamburger.isVisible()) {
+      await hamburger.click()
+      await page.waitForSelector('.app-sidebar.mobile-open', { timeout: 3000 }).catch(() => {})
     }
 
     // Cliquer sur "Dashboard"
@@ -142,6 +158,7 @@ test.describe('Responsive (mobile 375×667)', () => {
     await page.goto('/#/dashboard')
     await page.waitForLoadState('load')
     await page.waitForSelector('.pi-spin', { state: 'hidden', timeout: 15_000 }).catch(() => {})
+    await page.waitForFunction(() => document.body.textContent.trim().length > 100, { timeout: 15_000 })
     const content = await page.textContent('body')
     expect(content.trim().length).toBeGreaterThan(100)
   })
