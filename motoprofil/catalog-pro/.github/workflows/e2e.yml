@@ -1,0 +1,136 @@
+name: E2E Tests
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Tous les jours à 6h00 UTC — surveillance continue du déploiement
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "URL de l'app à tester (défaut: prod)"
+        required: false
+        default: 'https://sapge-catalog.duckdns.org'
+
+jobs:
+  unit-integration:
+    name: Tests unitaires & intégration (Vitest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Vitest tests
+        run: npm test
+
+  deploy:
+    name: Deploy via Coolify
+    runs-on: ubuntu-latest
+    needs: unit-integration
+    # Déployer uniquement sur push (pas sur schedule ni workflow_dispatch)
+    if: github.event_name == 'push'
+    steps:
+      - name: Trigger Coolify deployment
+        run: |
+          HTTP_STATUS=$(curl -s -o /tmp/coolify_response.json -w "%{http_code}" \
+            -X GET "${{ secrets.COOLIFY_URL }}/api/v1/deploy?uuid=${{ secrets.COOLIFY_APP_UUID }}&force=false" \
+            -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}" \
+            -H "Content-Type: application/json")
+          echo "HTTP status: $HTTP_STATUS"
+          cat /tmp/coolify_response.json
+          if [ "$HTTP_STATUS" != "200" ] && [ "$HTTP_STATUS" != "201" ]; then
+            echo "Deployment trigger failed with status $HTTP_STATUS"
+            exit 1
+          fi
+
+      - name: Wait for app to be ready (health check)
+        run: |
+          BASE_URL="https://sapge-catalog.duckdns.org"
+          echo "Attente démarrage conteneur (start-period=120s)..."
+          sleep 30
+          MAX_WAIT=300
+          ELAPSED=30
+          INTERVAL=15
+          until curl -sk "$BASE_URL/api/catalog/status" | grep -q '"ready":true'; do
+            if [ $ELAPSED -ge $MAX_WAIT ]; then
+              echo "App non prête après ${MAX_WAIT}s — abandon"
+              exit 1
+            fi
+            echo "[${ELAPSED}s] Pas encore prête..."
+            sleep $INTERVAL
+            ELAPSED=$((ELAPSED + INTERVAL))
+          done
+          echo "App prête !"
+
+  e2e:
+    name: Tests E2E (Playwright)
+    runs-on: ubuntu-latest
+    needs: [unit-integration, deploy]
+    # Lancer les E2E si : deploy réussi (push) OU deploy skippé (schedule/dispatch)
+    if: >
+      always() &&
+      needs.unit-integration.result == 'success' &&
+      (needs.deploy.result == 'success' || needs.deploy.result == 'skipped')
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Wait for app health check (schedule/dispatch uniquement)
+        # Sur push, le job deploy a déjà attendu que l'app soit prête
+        if: github.event_name != 'push'
+        run: |
+          BASE_URL="${{ github.event.inputs.base_url || 'https://sapge-catalog.duckdns.org' }}"
+          echo "Vérification santé de $BASE_URL/api/catalog/status..."
+          MAX_WAIT=60
+          ELAPSED=0
+          INTERVAL=10
+          until curl -sk "$BASE_URL/api/catalog/status" | grep -q '"ready":true'; do
+            if [ $ELAPSED -ge $MAX_WAIT ]; then
+              echo "App non prête après ${MAX_WAIT}s"
+              exit 1
+            fi
+            echo "[${ELAPSED}s] Pas encore prête..."
+            sleep $INTERVAL
+            ELAPSED=$((ELAPSED + INTERVAL))
+          done
+          echo "App prête !"
+
+      - name: Run E2E tests
+        run: npm run test:e2e
+        env:
+          CI: true
+          E2E_BASE_URL: ${{ github.event.inputs.base_url || 'https://sapge-catalog.duckdns.org' }}
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-${{ github.run_number }}
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Upload screenshots on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-screenshots-${{ github.run_number }}
+          path: test-results/
+          retention-days: 7

@@ -11,6 +11,8 @@ const DEFAULT_CSV_PATH = '/data/catalogue.csv'
 let db = null
 let loadingProgress = { status: 'idle', loaded: 0, error: '' }
 let loadResolvers = []
+let cachedBrandsCount = 0
+let cachedCategoriesCount = 0
 
 // ── Helpers HTTP ───────────────────────────────────────────────────────────
 function json(res, data, status = 200) {
@@ -324,6 +326,10 @@ async function importCsv(csvPath) {
     console.log(`[catalog] Import terminé — ${loadingProgress.loaded} articles | RSS ${Math.round(mem.rss/1024/1024)}MB heap ${Math.round(mem.heapUsed/1024/1024)}MB`)
     // Force WAL checkpoint to flush all data to the main DB file (no-op for :memory:)
     try { database.pragma('wal_checkpoint(TRUNCATE)') } catch (_) {}
+    try {
+      cachedBrandsCount = database.prepare("SELECT COUNT(DISTINCT manufacturer) as n FROM articles WHERE manufacturer != ''").get()?.n ?? 0
+      cachedCategoriesCount = database.prepare("SELECT COUNT(DISTINCT temotCat) as n FROM articles WHERE temotCat != ''").get()?.n ?? 0
+    } catch (_) {}
   } catch (err) {
     loadingProgress = { status: 'error', loaded: loadingProgress.loaded, error: err.message }
     console.error('[catalog] Erreur import CSV:', err.message, err.stack)
@@ -364,6 +370,10 @@ async function startLoad() {
   const count = db.prepare('SELECT COUNT(*) as n FROM articles').get().n
   if (count > 0) {
     loadingProgress = { status: 'ready', loaded: count, error: '' }
+    try {
+      cachedBrandsCount = db.prepare("SELECT COUNT(DISTINCT manufacturer) as n FROM articles WHERE manufacturer != ''").get()?.n ?? 0
+      cachedCategoriesCount = db.prepare("SELECT COUNT(DISTINCT temotCat) as n FROM articles WHERE temotCat != ''").get()?.n ?? 0
+    } catch (_) {}
     markReady()
     console.log(`[catalog] DB existante — ${count} articles`)
     return
@@ -379,6 +389,15 @@ startLoad().catch(err => {
 })
 
 // ── Helpers browse/search ──────────────────────────────────────────────────
+
+function looksLikeBrandName(name) {
+  if (!name) return false
+  if (/^\d/.test(name)) return false
+  if (name.length > 35) return false
+  if (/\bNARZĘDZI\b|\bZESTAW\b|\bWALIZCE\b|\bBITÓW\b|\bSZT\.\b/i.test(name)) return false
+  return true
+}
+
 const SORT_COLS = new Set(['name', 'priceNet', 'priceRetail', 'stockChorzow', 'motonet', 'manufacturer', 'discount'])
 
 function buildWhereClause(p, extra = []) {
@@ -436,7 +455,7 @@ export function createCatalogServer(middlewares) {
       // En dev/test (pas de SFTP_HOST) : importe depuis le CSV local.
       if (route === '/reload' && req.method === 'POST') {
         const secret = process.env.RELOAD_SECRET
-        if (secret && req.headers['x-reload-secret'] !== secret) {
+        if (!secret || req.headers['x-reload-secret'] !== secret) {
           res.writeHead(401)
           return res.end(JSON.stringify({ error: 'Unauthorized' }))
         }
@@ -452,6 +471,8 @@ export function createCatalogServer(middlewares) {
         return json(res, {
           ready,
           total: loadingProgress.loaded,
+          brandsCount: cachedBrandsCount,
+          categoriesCount: cachedCategoriesCount,
           loading: loadingProgress,
           rss: Math.round(mem.rss / 1024 / 1024),
           heapUsed: Math.round(mem.heapUsed / 1024 / 1024),
@@ -499,7 +520,7 @@ export function createCatalogServer(middlewares) {
 
       if (route === '/brands') {
         const rows = database.prepare("SELECT manufacturer as name, COUNT(*) as count FROM articles WHERE manufacturer != '' GROUP BY manufacturer ORDER BY manufacturer").all()
-        return json(res, rows)
+        return json(res, rows.filter(r => looksLikeBrandName(r.name)))
       }
 
       if (route === '/categories') {

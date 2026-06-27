@@ -1,6 +1,14 @@
 import { getCatalog, getDb } from './catalog.js'
 import { URL } from 'url'
 
+function looksLikeBrandName(name) {
+  if (!name) return false
+  if (/^\d/.test(name)) return false
+  if (name.length > 35) return false
+  if (/\bNARZĘDZI\b|\bZESTAW\b|\bWALIZCE\b|\bBITÓW\b|\bSZT\.\b/i.test(name)) return false
+  return true
+}
+
 function json(res, data, status = 200) {
   res.setHeader('Content-Type', 'application/json')
   res.statusCode = status
@@ -75,8 +83,8 @@ export function createStatsServer(middlewares) {
             SUM(CASE WHEN stockHub > 0 THEN 1 ELSE 0 END) as inStockHub
           FROM articles WHERE manufacturer != ''
           GROUP BY manufacturer ORDER BY count DESC LIMIT ?
-        `).all(limit)
-        return json(res, rows.map(r => ({
+        `).all(limit * 3)
+        return json(res, rows.filter(r => looksLikeBrandName(r.name)).slice(0, limit).map(r => ({
           name: r.name, count: r.count,
           avgPriceRetail: r.avgPriceRetail ?? 0,
           avgPriceNet: r.avgPriceNet ?? 0,
