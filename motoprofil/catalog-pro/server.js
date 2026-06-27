@@ -11,6 +11,13 @@ const DIST = path.join(__dirname, 'dist')
 const PORT = parseInt(process.env.PORT || '3000')
 
 // Minimal connect-compatible middleware chain
+process.on('uncaughtException', (err) => {
+  console.error('[server] Uncaught Exception:', err.message, err.stack)
+})
+process.on('unhandledRejection', (reason) => {
+  console.error('[server] Unhandled Rejection:', reason)
+})
+
 function createApp() {
   const stack = []
   function app(req, res) {
@@ -18,7 +25,12 @@ function createApp() {
     function next() {
       const fn = stack[i++]
       if (!fn) return serveStatic(req, res)
-      try { fn(req, res, next) } catch (err) {
+      try {
+        Promise.resolve(fn(req, res, next)).catch(err => {
+          console.error('[server] Async middleware error:', err.message, err.stack)
+          if (!res.headersSent) { res.statusCode = 500; res.end('Internal Server Error') }
+        })
+      } catch (err) {
         console.error('[server] Middleware error:', err.message)
         if (!res.headersSent) { res.statusCode = 500; res.end('Internal Server Error') }
       }
