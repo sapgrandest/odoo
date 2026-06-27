@@ -1,0 +1,16 @@
+ID;MOTONET;MAN;TECDOC;NAME;ORIG;PRICE_NET;PFX;IDX;SUPP;DEP;BAIL;CUST;BARCODE;WEIGHT;MIN_QTY;DESC;STOCK_CZ;DISC;DG;PRICE_RET;UNIT;NON_RET;ATTR;SUP;SUB;FAM;CAT;R_PFX;R_IDX;L_ALT;A1;A2;A3;A4;A5;A6;A7;A8;A9;A10;A11;A12;A13;A14;A15;A16;A17;A18;A19;A20;PGR;PGP;TECDOC_HER;GEN;STOCK_HUB;DG_ID;VAT;TECDOC_GEN;PROD_GRP;SPLIT;COUNTRY;PGR_REQ;TECDOC_MAN
+1;KAMOKA-001;KAMOKA;;Filtre huile;;10,5;;;;;;;8714099341216;0,25;1;Filtre a huile;5;25;A;15;szt;;;;;;TI PR.CAT. 28;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;;23;;;;;;
+2;KAMOKA-002;KAMOKA;;Filtre air;;25;;;;;;;;0,35;1;Filtre a air;0;25;A;37;szt;1;;;;;TI PR.CAT. 28;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;;23;;;;;;
+3;KAMOKA-003;KAMOKA;;Filtre carburant;;5;;;;;;;;0,15;1;Filtre carburant;10;25;A;7,5;szt;;;;;;TI PR.CAT. 68;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;;23;;;;;;
+4;FEBI-001;FEBI;;Courroie distribution;;50;;;;;;;4021652019820;0,45;1;Courroie distribution;3;30;B;75;szt;;;;;;TI PR.CAT. 68;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;;23;;;;;;
+5;FEBI-002;FEBI;;Kit embrayage;;120;;;;;;;4021652019821;1,2;1;Kit embrayage;0;30;B;180;szt;1;;;;;TI PR.CAT. 28;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;;8;;;;;;
+6;FEBI-003;FEBI;;Rotule direction;;8;;;;;;;4021652019822;0,18;1;Rotule direction;15;30;B;12;szt;;;;;;TI PR.CAT. 116;;;;;;;;;;;;;;;;;;;;;;;;;;;;5;;23;;;;;;
+7;BOSCH-001;BOSCH;;Bougie allumage;;45;;;;;;;4047025001122;0,08;1;Bougie allumage;0;20;C;67,5;szt;;;;;;TI PR.CAT. 28;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;;23;;;;;;
+8;BOSCH-002;BOSCH;;Alternateur;;200;;;;;;;4047025001133;3,5;1;Alternateur;1;20;C;300;szt;1;;;;;TI PR.CAT. 116;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;;23;;;;;;
+9;BOSCH-003;BOSCH;;Plaquettes frein;;15;;;;;;;4047025001144;0,65;1;Plaquettes frein avant;7;20;C;22,5;szt;;;;;;TI PR.CAT. 68;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;;8;;;;;;
+10;NGK-001;NGK;;Bougie prechauffage;;8;;;;;;;9012437037038;0,05;1;Bougie de prechauffage;20;15;D;12;szt;;;;;;TI PR.CAT. 28;;;;;;;;;;;;;;;;;;;;;;;;;;;;10;;23;;;;;;
+11;NGK-002;NGK;;Fil allumage;;12;;;;;;;9012437037039;0,12;1;Fil allumage;0;15;D;18;szt;;;;;;TI PR.CAT. 28;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;;23;;;;;;
+12;NGK-003;NGK;;Sonde lambda;;30;;;;;;;9012437037040;0,2;1;Sonde lambda chauffee;5;15;D;45;szt;1;;;;;TI PR.CAT. 68;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;;23;;;;;;
+13;ATE-001;ATE;;Etrier frein;;35;;;;;;;4013131118471;1,8;1;Etrier de frein avant;2;18;A;52,5;szt;;;;;;TI PR.CAT. 116;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;;23;;;;;;
+14;ATE-002;ATE;;Disque frein;;90;;;;;;;;3,2;1;Disque de frein ventile;0;18;A;135;szt;1;;;;;TI PR.CAT. 28;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;;23;;;;;;
+15;ATE-003;ATE;;Maitre cylindre;;22;;;;;;;4013131118472;0,95;1;Maitre cylindre frein;8;18;A;33;szt;;;;;;TI PR.CAT. 68;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;;8;;;;;;

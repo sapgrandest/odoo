@@ -1,0 +1,28 @@
+services:
+  catalog-pro:
+    build:
+      context: .
+      args:
+        VITE_PA_USERNAME: ${VITE_PA_USERNAME}
+        VITE_PA_PASSWORD: ${VITE_PA_PASSWORD}
+    image: catalog-pro:local
+    ports:
+      - "3000:3000"
+    volumes:
+      # Monte le même répertoire que SFTPGo sur le VPS
+      # En local : pointer vers un CSV existant ou laisser le SFTP sync le remplir
+      - catalog-data:/data
+    environment:
+      PORT: 3000
+      CSV_PATH: /data/catalogue.csv
+      # SFTP — décommenter pour activer le sync automatique
+      SFTP_HOST: ${SFTP_HOST:-87.106.13.182}
+      SFTP_PORT: ${SFTP_PORT:-2222}
+      SFTP_USER: ${SFTP_USER:-motoprofil}
+      SFTP_PASSWORD: ${SFTP_PASSWORD}
+      SFTP_REMOTE_PATH: ${SFTP_REMOTE_PATH:-/motoprofil/catalogue.csv}
+      SFTP_SYNC_INTERVAL: ${SFTP_SYNC_INTERVAL:-3600}
+    restart: unless-stopped
+
+volumes:
+  catalog-data:
