@@ -87,12 +87,19 @@ test.describe('Page /parcourir', () => {
     const boschBtn = page.locator('.browse-sidebar button').filter({ hasText: BRAND }).first()
     await expect(boschBtn).toBeVisible({ timeout: 10_000 })
     await boschBtn.click()
-    // Attendre que les articles apparaissent (fetch async, pas une vraie navigation)
-    await expect(page.locator('.browse-main').getByText(/article/)).toBeVisible({ timeout: 15_000 })
+    // Attendre que les VRAIS articles apparaissent (>0, pas juste "0 articles" pendant le chargement)
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('.browse-main')
+        if (!el) return false
+        const match = el.textContent?.replace(/\s/g, '').match(/(\d{3,})article/)
+        return match && parseInt(match[1]) > 0
+      },
+      { timeout: 20_000 }
+    )
 
     // Le breadcrumb affiche le bon total
     const breadcrumb = page.locator('.browse-main').getByText(/article/)
-    await expect(breadcrumb).toBeVisible()
     const breadcrumbText = await breadcrumb.textContent()
     const totalUI = parseInt(breadcrumbText.replace(/\s/g, '').match(/[\d]+/)?.[0] ?? '0')
     expect(
@@ -284,16 +291,25 @@ test.describe('Page /parcourir', () => {
   test('Détail article : tous les champs affichés cohérents avec API article', async ({ page, request }) => {
     const boschBtn = page.locator('.browse-sidebar button').filter({ hasText: BRAND }).first()
     await boschBtn.click()
-    // Attendre que les articles apparaissent (fetch async, pas une vraie navigation)
-    await expect(page.locator('.browse-main').getByText(/article/)).toBeVisible({ timeout: 15_000 })
+    // Attendre que les VRAIS articles apparaissent
+    await page.waitForFunction(
+      () => {
+        const el = document.querySelector('.browse-main')
+        if (!el) return false
+        const match = el.textContent?.replace(/\s/g, '').match(/(\d{3,})article/)
+        return match && parseInt(match[1]) > 0
+      },
+      { timeout: 20_000 }
+    )
 
     // Récupérer le premier article de l'API
     const apiBrowse = await apiGet(request, `/api/catalog/browse?brand=${encodeURIComponent(BRAND)}`)
     const apiItem = apiBrowse.items[0]
     const apiArticle = await apiGet(request, `/api/catalog/article/${apiItem.motonet}`)
 
-    // Cliquer la première card
+    // Cliquer la première card (scroll si hors viewport)
     const firstCard = page.locator('.browse-main').locator('div[style*="border-radius: 10px"]').first()
+    await firstCard.scrollIntoViewIfNeeded()
     await firstCard.click()
 
     // Attendre le Dialog PrimeVue
