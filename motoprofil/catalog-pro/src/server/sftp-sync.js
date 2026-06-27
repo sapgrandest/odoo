@@ -38,9 +38,11 @@ export async function syncNow() {
   }
 }
 
+// Conservé comme fallback si besoin de polling manuel.
+// En prod, utiliser le webhook SFTPGo → POST /api/catalog/reload.
 export function startSftpSync() {
   const intervalMs = parseInt(SFTP_SYNC_INTERVAL) * 1000
-  console.log(`[sftp-sync] Démarrage — sync toutes les ${SFTP_SYNC_INTERVAL}s depuis ${SFTP_HOST}:${SFTP_PORT}${SFTP_REMOTE_PATH}`)
+  console.log(`[sftp-sync] Polling démarré — toutes les ${SFTP_SYNC_INTERVAL}s`)
   syncNow()
   setInterval(syncNow, intervalMs)
 }

@@ -11,10 +11,13 @@ export default defineConfig({
     environment: 'node',
     env: {
       CSV_PATH: FIXTURE_CSV,
+      DB_PATH: ':memory:',
     },
-    // Integration tests get a fresh module registry (catalog has module-level state)
-    pool: 'forks',
-    poolOptions: { forks: { singleFork: false } },
+    // Threads (même process que vitest = node v20 nvm) évite le conflit NMV
+    // avec better-sqlite3 compilé pour v20. Chaque fichier a son propre
+    // contexte vm + DB :memory: → isolation complète.
+    pool: 'threads',
+    poolOptions: { threads: { isolate: true, singleThread: false } },
     globalSetup: './tests/setup/global.js',
     include: ['tests/**/*.test.js'],
     testTimeout: 30000,

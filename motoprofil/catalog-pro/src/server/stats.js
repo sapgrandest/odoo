@@ -1,4 +1,4 @@
-import { getCatalog } from './catalog.js'
+import { getCatalog, getDb } from './catalog.js'
 import { URL } from 'url'
 
 function json(res, data, status = 200) {
@@ -29,296 +29,300 @@ export function createStatsServer(middlewares) {
     const p = Object.fromEntries(url.searchParams)
 
     try {
-      const cat = await getCatalog()
+      await getCatalog()
+      const db = getDb()
 
+      // ── /overview ────────────────────────────────────────────────────────
       if (route === '/overview') {
-        let inStock = 0, inStockHub = 0, nonReturnable = 0
-        let sumRetail = 0, countRetail = 0, sumNet = 0, countNet = 0
-
-        for (const a of cat.articles) {
-          if (a.stockChorzow > 0) inStock++
-          if (a.stockHub > 0) inStockHub++
-          if (a.nonReturnable) nonReturnable++
-          if (a.priceRetail > 0) { sumRetail += a.priceRetail; countRetail++ }
-          if (a.priceNet > 0) { sumNet += a.priceNet; countNet++ }
-        }
+        const r = db.prepare(`
+          SELECT
+            COUNT(*) as total,
+            COUNT(DISTINCT NULLIF(manufacturer,'')) as brands,
+            COUNT(DISTINCT NULLIF(temotCat,'')) as categories,
+            SUM(CASE WHEN stockChorzow > 0 THEN 1 ELSE 0 END) as inStock,
+            SUM(CASE WHEN stockHub > 0 THEN 1 ELSE 0 END) as inStockHub,
+            SUM(CASE WHEN nonReturnable = 1 THEN 1 ELSE 0 END) as nonReturnable,
+            AVG(CASE WHEN priceRetail > 0 THEN priceRetail END) as avgPriceRetail,
+            AVG(CASE WHEN priceNet > 0 THEN priceNet END) as avgPriceNet,
+            MIN(CASE WHEN priceNet > 0 THEN priceNet END) as minPrice,
+            MAX(CASE WHEN priceNet > 0 THEN priceNet END) as maxPrice
+          FROM articles
+        `).get()
 
         return json(res, {
-          total: cat.total,
-          inStock,
-          inStockHub,
+          total: r.total,
+          inStock: r.inStock,
+          inStockHub: r.inStockHub,
           withImage: 0,
-          brands: cat.brandStats.length,
-          categories: cat.categoryStats.length,
-          avgPriceRetail: countRetail > 0 ? sumRetail / countRetail : 0,
-          avgPriceNet: countNet > 0 ? sumNet / countNet : 0,
-          minPrice: cat.priceRange.min,
-          maxPrice: cat.priceRange.max,
-          nonReturnable
+          brands: r.brands,
+          categories: r.categories,
+          avgPriceRetail: r.avgPriceRetail ?? 0,
+          avgPriceNet: r.avgPriceNet ?? 0,
+          minPrice: r.minPrice ?? 0,
+          maxPrice: r.maxPrice ?? 0,
+          nonReturnable: r.nonReturnable
         })
       }
 
+      // ── /brands-top ──────────────────────────────────────────────────────
       if (route === '/brands-top') {
         const limit = Math.max(1, parseInt(p.limit) || 25)
-        const result = Array.from(cat.byBrand.entries())
-          .map(([name, items]) => {
-            let sumRetail = 0, countRetail = 0, sumNet = 0, countNet = 0
-            let inStock = 0, inStockHub = 0
-            for (const a of items) {
-              if (a.priceRetail > 0) { sumRetail += a.priceRetail; countRetail++ }
-              if (a.priceNet > 0) { sumNet += a.priceNet; countNet++ }
-              if (a.stockChorzow > 0) inStock++
-              if (a.stockHub > 0) inStockHub++
-            }
-            return {
-              name,
-              count: items.length,
-              avgPriceRetail: countRetail > 0 ? sumRetail / countRetail : 0,
-              avgPriceNet: countNet > 0 ? sumNet / countNet : 0,
-              inStock,
-              inStockHub
-            }
-          })
-          .sort((a, b) => b.count - a.count)
-          .slice(0, limit)
-
-        return json(res, result)
+        const rows = db.prepare(`
+          SELECT manufacturer as name, COUNT(*) as count,
+            AVG(CASE WHEN priceRetail > 0 THEN priceRetail END) as avgPriceRetail,
+            AVG(CASE WHEN priceNet > 0 THEN priceNet END) as avgPriceNet,
+            SUM(CASE WHEN stockChorzow > 0 THEN 1 ELSE 0 END) as inStock,
+            SUM(CASE WHEN stockHub > 0 THEN 1 ELSE 0 END) as inStockHub
+          FROM articles WHERE manufacturer != ''
+          GROUP BY manufacturer ORDER BY count DESC LIMIT ?
+        `).all(limit)
+        return json(res, rows.map(r => ({
+          name: r.name, count: r.count,
+          avgPriceRetail: r.avgPriceRetail ?? 0,
+          avgPriceNet: r.avgPriceNet ?? 0,
+          inStock: r.inStock,
+          inStockHub: r.inStockHub
+        })))
       }
 
+      // ── /price-distribution ──────────────────────────────────────────────
       if (route === '/price-distribution') {
         const buckets = PRICE_RANGES.map(r => ({ ...r, count: 0 }))
-        for (const a of cat.articles) {
-          if (a.priceNet <= 0) continue
+        const prices = db.prepare('SELECT priceNet FROM articles WHERE priceNet > 0').pluck().all()
+        for (const v of prices) {
           for (const b of buckets) {
-            if (a.priceNet >= b.min && a.priceNet < b.max) { b.count++; break }
+            if (v >= b.min && v < b.max) { b.count++; break }
           }
         }
         return json(res, buckets.map(({ range, label, count }) => ({ range, label, count })))
       }
 
+      // ── /stock-by-brand ──────────────────────────────────────────────────
       if (route === '/stock-by-brand') {
         const limit = Math.max(1, parseInt(p.limit) || 20)
-        const result = Array.from(cat.byBrand.entries())
-          .map(([brand, items]) => {
-            const total = items.length
-            const inStock = items.filter(a => a.stockChorzow > 0).length
-            const inStockHub = items.filter(a => a.stockHub > 0).length
-            return { brand, total, inStock, inStockHub, pctStock: total > 0 ? (inStock / total) * 100 : 0 }
-          })
-          .sort((a, b) => b.total - a.total)
-          .slice(0, limit)
-
-        return json(res, result)
+        const rows = db.prepare(`
+          SELECT manufacturer as brand, COUNT(*) as total,
+            SUM(CASE WHEN stockChorzow > 0 THEN 1 ELSE 0 END) as inStock,
+            SUM(CASE WHEN stockHub > 0 THEN 1 ELSE 0 END) as inStockHub
+          FROM articles WHERE manufacturer != ''
+          GROUP BY manufacturer ORDER BY total DESC LIMIT ?
+        `).all(limit)
+        return json(res, rows.map(r => ({
+          brand: r.brand, total: r.total, inStock: r.inStock, inStockHub: r.inStockHub,
+          pctStock: r.total > 0 ? (r.inStock / r.total) * 100 : 0
+        })))
       }
 
+      // ── /categories ──────────────────────────────────────────────────────
       if (route === '/categories') {
         const limit = Math.max(1, parseInt(p.limit) || 30)
-        const result = Array.from(cat.byCategory.entries())
-          .map(([category, items]) => {
-            const withPrice = items.filter(a => a.priceRetail > 0)
-            const avgPrice = withPrice.length > 0
-              ? withPrice.reduce((s, a) => s + a.priceRetail, 0) / withPrice.length
-              : 0
-            const inStock = items.filter(a => a.stockChorzow > 0).length
-            return { category, count: items.length, avgPrice, inStock }
-          })
-          .sort((a, b) => b.count - a.count)
-          .slice(0, limit)
-
-        return json(res, result)
+        const rows = db.prepare(`
+          SELECT temotCat as category, COUNT(*) as count,
+            AVG(CASE WHEN priceRetail > 0 THEN priceRetail END) as avgPrice,
+            SUM(CASE WHEN stockChorzow > 0 THEN 1 ELSE 0 END) as inStock
+          FROM articles WHERE temotCat != ''
+          GROUP BY temotCat ORDER BY count DESC LIMIT ?
+        `).all(limit)
+        return json(res, rows.map(r => ({
+          category: r.category, count: r.count,
+          avgPrice: r.avgPrice ?? 0,
+          inStock: r.inStock
+        })))
       }
 
+      // ── /vat-distribution ────────────────────────────────────────────────
       if (route === '/vat-distribution') {
-        const vatMap = new Map()
-        for (const a of cat.articles) {
-          vatMap.set(a.vatRate, (vatMap.get(a.vatRate) || 0) + 1)
-        }
-        const total = cat.total
-        const result = Array.from(vatMap.entries())
-          .map(([vatRate, count]) => ({ vatRate, count, pct: total > 0 ? (count / total) * 100 : 0 }))
-          .sort((a, b) => a.vatRate - b.vatRate)
-
-        return json(res, result)
+        const total = db.prepare('SELECT COUNT(*) as n FROM articles').get().n
+        const rows = db.prepare(`
+          SELECT vatRate, COUNT(*) as count FROM articles WHERE vatRate > 0
+          GROUP BY vatRate ORDER BY vatRate
+        `).all()
+        return json(res, rows.map(r => ({
+          vatRate: r.vatRate, count: r.count,
+          pct: total > 0 ? (r.count / total) * 100 : 0
+        })))
       }
 
+      // ── /discount-groups ─────────────────────────────────────────────────
       if (route === '/discount-groups') {
-        const result = Array.from(cat.byDiscountGroup.entries())
-          .map(([name, items]) => {
-            const withDiscount = items.filter(a => a.discount > 0)
-            const avgDiscount = withDiscount.length > 0
-              ? withDiscount.reduce((s, a) => s + a.discount, 0) / withDiscount.length
-              : 0
-            return { name, count: items.length, avgDiscount }
-          })
-          .sort((a, b) => b.count - a.count)
-
-        return json(res, result)
+        const rows = db.prepare(`
+          SELECT discountGroup as name, COUNT(*) as count,
+            AVG(CASE WHEN discount > 0 THEN discount END) as avgDiscount
+          FROM articles WHERE discountGroup != ''
+          GROUP BY discountGroup ORDER BY count DESC
+        `).all()
+        return json(res, rows.map(r => ({
+          name: r.name, count: r.count, avgDiscount: r.avgDiscount ?? 0
+        })))
       }
 
+      // ── /temot-fam ───────────────────────────────────────────────────────
       if (route === '/temot-fam') {
-        const famMap = new Map()
-        for (const a of cat.articles) {
-          if (!a.temotFam) continue
-          famMap.set(a.temotFam, (famMap.get(a.temotFam) || 0) + 1)
-        }
-        const result = Array.from(famMap.entries())
-          .map(([name, count]) => ({ name, count }))
-          .sort((a, b) => b.count - a.count)
-          .slice(0, 30)
-
-        return json(res, result)
+        const rows = db.prepare(`
+          SELECT temotFam as name, COUNT(*) as count FROM articles WHERE temotFam != ''
+          GROUP BY temotFam ORDER BY count DESC LIMIT 30
+        `).all()
+        return json(res, rows)
       }
 
+      // ── /catalogue-health ────────────────────────────────────────────────
       if (route === '/catalogue-health') {
-        let withOem = 0, withBarcode = 0, withDesc = 0, withWeight = 0, withStock = 0, withStockHub = 0
-        let sumMargin = 0, countMargin = 0
-
-        for (const a of cat.articles) {
-          if (a.original) withOem++
-          if (a.barcode) withBarcode++
-          if (a.description) withDesc++
-          if (a.weight > 0) withWeight++
-          if (a.stockChorzow > 0) withStock++
-          if (a.stockHub > 0) withStockHub++
-          if (a.priceRetail > 0 && a.priceNet > 0) {
-            const m = (a.priceRetail - a.priceNet) / a.priceRetail * 100
-            if (m > 0 && m < 100) { sumMargin += m; countMargin++ }
-          }
-        }
-
-        const total = cat.total
+        const r = db.prepare(`
+          SELECT COUNT(*) as total,
+            SUM(CASE WHEN original != '' THEN 1 ELSE 0 END) as withOem,
+            SUM(CASE WHEN barcode != '' THEN 1 ELSE 0 END) as withBarcode,
+            SUM(CASE WHEN description != '' THEN 1 ELSE 0 END) as withDesc,
+            SUM(CASE WHEN weight > 0 THEN 1 ELSE 0 END) as withWeight,
+            SUM(CASE WHEN stockChorzow > 0 THEN 1 ELSE 0 END) as withStock,
+            SUM(CASE WHEN stockHub > 0 THEN 1 ELSE 0 END) as withStockHub,
+            AVG(CASE WHEN priceRetail > priceNet AND priceRetail > 0 AND priceNet > 0
+                THEN (priceRetail - priceNet) * 100.0 / priceRetail END) as avgMargin
+          FROM articles
+        `).get()
+        const total = r.total || 1
+        const pct = n => Math.round((n / total) * 1000) / 10
         return json(res, {
-          total,
-          withOem, pctOem: Math.round(withOem / total * 1000) / 10,
-          withBarcode, pctBarcode: Math.round(withBarcode / total * 1000) / 10,
-          withDesc, pctDesc: Math.round(withDesc / total * 1000) / 10,
-          withWeight, pctWeight: Math.round(withWeight / total * 1000) / 10,
-          withStock, pctStock: Math.round(withStock / total * 1000) / 10,
-          withStockHub, pctStockHub: Math.round(withStockHub / total * 1000) / 10,
-          avgMargin: countMargin > 0 ? Math.round(sumMargin / countMargin * 10) / 10 : 0
+          total: r.total,
+          withOem: r.withOem,       pctOem: pct(r.withOem),
+          withBarcode: r.withBarcode, pctBarcode: pct(r.withBarcode),
+          withDesc: r.withDesc,     pctDesc: pct(r.withDesc),
+          withWeight: r.withWeight, pctWeight: pct(r.withWeight),
+          withStock: r.withStock,   pctStock: pct(r.withStock),
+          withStockHub: r.withStockHub, pctStockHub: pct(r.withStockHub),
+          avgMargin: r.avgMargin != null ? Math.round(r.avgMargin * 10) / 10 : 0
         })
       }
 
+      // ── /quality-by-brand ────────────────────────────────────────────────
       if (route === '/quality-by-brand') {
         const limit = Math.min(500, parseInt(p.limit) || 200)
         const sort = p.sort || 'count'
 
-        const result = Array.from(cat.byBrand.entries())
-          .filter(([name]) => name)
-          .map(([name, items]) => {
-            const count = items.length
-            let withOem = 0, withBarcode = 0, withDesc = 0, withWeight = 0, withStock = 0
-            let sumMargin = 0, countMargin = 0, sumNet = 0, countNet = 0
+        const rows = db.prepare(`
+          SELECT manufacturer,
+            COUNT(*) as count,
+            SUM(CASE WHEN original != '' THEN 1 ELSE 0 END) as withOem,
+            SUM(CASE WHEN barcode != '' THEN 1 ELSE 0 END) as withBarcode,
+            SUM(CASE WHEN description != '' THEN 1 ELSE 0 END) as withDesc,
+            SUM(CASE WHEN weight > 0 THEN 1 ELSE 0 END) as withWeight,
+            SUM(CASE WHEN stockChorzow > 0 OR stockHub > 0 THEN 1 ELSE 0 END) as withStock,
+            AVG(CASE WHEN priceNet > 0 THEN priceNet END) as avgPriceNet,
+            AVG(CASE WHEN priceRetail > priceNet AND priceRetail > 0 AND priceNet > 0
+                THEN (priceRetail - priceNet) * 100.0 / priceRetail END) as avgMargin
+          FROM articles WHERE manufacturer != ''
+          GROUP BY manufacturer
+        `).all()
 
-            for (const a of items) {
-              if (a.original) withOem++
-              if (a.barcode) withBarcode++
-              if (a.description) withDesc++
-              if (a.weight > 0) withWeight++
-              if (a.stockChorzow > 0 || a.stockHub > 0) withStock++
-              if (a.priceNet > 0) { sumNet += a.priceNet; countNet++ }
-              if (a.priceRetail > 0 && a.priceNet > 0) {
-                const m = (a.priceRetail - a.priceNet) / a.priceRetail * 100
-                if (m > 0 && m < 100) { sumMargin += m; countMargin++ }
-              }
-            }
-
-            const pctOem = count > 0 ? withOem / count * 100 : 0
-            const pctBarcode = count > 0 ? withBarcode / count * 100 : 0
-            const pctDesc = count > 0 ? withDesc / count * 100 : 0
-            const pctWeight = count > 0 ? withWeight / count * 100 : 0
-            const pctStock = count > 0 ? withStock / count * 100 : 0
-            const avgMargin = countMargin > 0 ? sumMargin / countMargin : 0
-            const avgPriceNet = countNet > 0 ? sumNet / countNet : 0
-            const qualityScore = pctOem * 0.2 + pctBarcode * 0.2 + pctStock * 0.3 + pctDesc * 0.15 + pctWeight * 0.15
-
-            return {
-              name, count,
-              pctOem: Math.round(pctOem * 10) / 10,
-              pctBarcode: Math.round(pctBarcode * 10) / 10,
-              pctDesc: Math.round(pctDesc * 10) / 10,
-              pctWeight: Math.round(pctWeight * 10) / 10,
-              pctStock: Math.round(pctStock * 10) / 10,
-              avgMargin: Math.round(avgMargin * 10) / 10,
-              avgPriceNet: Math.round(avgPriceNet * 100) / 100,
-              qualityScore: Math.round(qualityScore * 10) / 10
-            }
-          })
-          .sort((a, b) => {
-            if (sort === 'score') return b.qualityScore - a.qualityScore
-            if (sort === 'margin') return b.avgMargin - a.avgMargin
-            if (sort === 'stock') return b.pctStock - a.pctStock
-            return b.count - a.count
-          })
-          .slice(0, limit)
+        const result = rows.map(r => {
+          const pctOem = r.count > 0 ? r.withOem / r.count * 100 : 0
+          const pctBarcode = r.count > 0 ? r.withBarcode / r.count * 100 : 0
+          const pctDesc = r.count > 0 ? r.withDesc / r.count * 100 : 0
+          const pctWeight = r.count > 0 ? r.withWeight / r.count * 100 : 0
+          const pctStock = r.count > 0 ? r.withStock / r.count * 100 : 0
+          const qualityScore = pctOem * 0.2 + pctBarcode * 0.2 + pctStock * 0.3 + pctDesc * 0.15 + pctWeight * 0.15
+          return {
+            name: r.manufacturer, count: r.count,
+            pctOem: Math.round(pctOem * 10) / 10,
+            pctBarcode: Math.round(pctBarcode * 10) / 10,
+            pctDesc: Math.round(pctDesc * 10) / 10,
+            pctWeight: Math.round(pctWeight * 10) / 10,
+            pctStock: Math.round(pctStock * 10) / 10,
+            avgMargin: r.avgMargin != null ? Math.round(r.avgMargin * 10) / 10 : 0,
+            avgPriceNet: r.avgPriceNet != null ? Math.round(r.avgPriceNet * 100) / 100 : 0,
+            qualityScore: Math.round(qualityScore * 10) / 10
+          }
+        }).sort((a, b) => {
+          if (sort === 'score') return b.qualityScore - a.qualityScore
+          if (sort === 'margin') return b.avgMargin - a.avgMargin
+          if (sort === 'stock') return b.pctStock - a.pctStock
+          return b.count - a.count
+        }).slice(0, limit)
 
         return json(res, result)
       }
 
+      // ── /scatter ─────────────────────────────────────────────────────────
       if (route === '/scatter') {
         const VALID = {
-          priceNet: 'Prix net moyen (€)',
-          priceRetail: 'Prix retail moyen (€)',
-          discount: 'Remise moyenne (%)',
-          stockChorzow: 'Stock Chorzów moyen',
-          stockHub: 'Stock HUB moyen',
-          weight: 'Poids moyen (kg)'
+          priceNet: 'Prix net moyen (€)', priceRetail: 'Prix retail moyen (€)',
+          discount: 'Remise moyenne (%)', stockChorzow: 'Stock Chorzów moyen',
+          stockHub: 'Stock HUB moyen', weight: 'Poids moyen (kg)'
         }
         const xField = VALID[p.x] ? p.x : 'priceNet'
         const yField = VALID[p.y] ? p.y : 'discount'
         const limit = Math.min(200, parseInt(p.limit) || 150)
 
-        const result = Array.from(cat.byBrand.entries())
-          .filter(([name]) => name)
-          .map(([name, items]) => {
-            const valid = items.filter(a => a[xField] > 0 && a[yField] > 0)
-            if (valid.length < 3) return null
-            const avgX = valid.reduce((s, a) => s + a[xField], 0) / valid.length
-            const avgY = valid.reduce((s, a) => s + a[yField], 0) / valid.length
-            return { name, x: Math.round(avgX * 100) / 100, y: Math.round(avgY * 100) / 100, count: items.length }
-          })
-          .filter(Boolean)
+        // AVG(NULLIF(field,0)) = average of non-zero values
+        const rows = db.prepare(`
+          SELECT manufacturer as name, COUNT(*) as count,
+            AVG(NULLIF(priceNet,0)) as avgPriceNet,
+            AVG(NULLIF(priceRetail,0)) as avgPriceRetail,
+            AVG(NULLIF(discount,0)) as avgDiscount,
+            AVG(NULLIF(stockChorzow,0)) as avgStockChorzow,
+            AVG(NULLIF(stockHub,0)) as avgStockHub,
+            AVG(NULLIF(weight,0)) as avgWeight
+          FROM articles WHERE manufacturer != ''
+          GROUP BY manufacturer HAVING count >= 3
+        `).all()
+
+        const fieldToAvg = {
+          priceNet: 'avgPriceNet', priceRetail: 'avgPriceRetail', discount: 'avgDiscount',
+          stockChorzow: 'avgStockChorzow', stockHub: 'avgStockHub', weight: 'avgWeight'
+        }
+
+        const result = rows
+          .filter(b => b[fieldToAvg[xField]] != null && b[fieldToAvg[yField]] != null)
+          .map(b => ({
+            name: b.name,
+            x: Math.round(b[fieldToAvg[xField]] * 100) / 100,
+            y: Math.round(b[fieldToAvg[yField]] * 100) / 100,
+            count: b.count
+          }))
           .sort((a, b) => b.count - a.count)
           .slice(0, limit)
 
         return json(res, { data: result, xLabel: VALID[xField], yLabel: VALID[yField] })
       }
 
+      // ── /matrix ──────────────────────────────────────────────────────────
       if (route === '/matrix') {
         const topBrandsN = Math.min(30, Math.max(5, parseInt(p.brands) || 20))
         const topCatsN = Math.min(20, Math.max(3, parseInt(p.cats) || 10))
 
-        const topBrands = Array.from(cat.byBrand.entries())
-          .filter(([name]) => name)
-          .sort((a, b) => b[1].length - a[1].length)
-          .slice(0, topBrandsN)
-          .map(([name]) => name)
+        const topBrands = db.prepare(`
+          SELECT manufacturer FROM articles WHERE manufacturer != ''
+          GROUP BY manufacturer ORDER BY COUNT(*) DESC LIMIT ?
+        `).pluck().all(topBrandsN)
 
-        const topCats = Array.from(cat.byCategory.entries())
-          .filter(([name]) => name)
-          .sort((a, b) => b[1].length - a[1].length)
-          .slice(0, topCatsN)
-          .map(([name]) => name)
+        const topCats = db.prepare(`
+          SELECT temotCat FROM articles WHERE temotCat != ''
+          GROUP BY temotCat ORDER BY COUNT(*) DESC LIMIT ?
+        `).pluck().all(topCatsN)
 
-        const brandSet = new Set(topBrands)
-        const catSet = new Set(topCats)
         const matrix = {}
         for (const b of topBrands) { matrix[b] = {}; for (const c of topCats) matrix[b][c] = 0 }
 
-        for (const a of cat.articles) {
-          if (brandSet.has(a.manufacturer) && catSet.has(a.temotCat)) {
-            matrix[a.manufacturer][a.temotCat]++
-          }
-        }
+        const brandSet = new Set(topBrands)
+        const catSet = new Set(topCats)
+
+        const crossTab = db.prepare(`
+          SELECT manufacturer, temotCat, COUNT(*) as count
+          FROM articles WHERE manufacturer != '' AND temotCat != ''
+          GROUP BY manufacturer, temotCat
+        `).all()
 
         let maxVal = 0
-        for (const b of topBrands)
-          for (const c of topCats)
-            if (matrix[b][c] > maxVal) maxVal = matrix[b][c]
+        for (const r of crossTab) {
+          if (brandSet.has(r.manufacturer) && catSet.has(r.temotCat)) {
+            matrix[r.manufacturer][r.temotCat] = r.count
+            if (r.count > maxVal) maxVal = r.count
+          }
+        }
 
         return json(res, { brands: topBrands, categories: topCats, matrix, maxVal })
       }
 
+      // ── /distribution ────────────────────────────────────────────────────
       if (route === '/distribution') {
         const VALID_FIELDS = ['priceNet', 'priceRetail', 'discount', 'weight']
         const field = VALID_FIELDS.includes(p.field) ? p.field : 'priceNet'
@@ -333,28 +337,26 @@ export function createStatsServer(middlewares) {
 
         const ranges = DIST_RANGES[field]
         const buckets = ranges.map(([min, max]) => ({
-          min, max,
-          label: max === Infinity ? `${min}+` : `${min}–${max}`,
-          count: 0
+          min, max, label: max === Infinity ? `${min}+` : `${min}–${max}`, count: 0
         }))
 
-        const items = brand ? (cat.byBrand.get(brand) ?? []) : cat.articles
+        // Safe: field is whitelisted above
+        const vals = brand
+          ? db.prepare(`SELECT ${field} as val FROM articles WHERE ${field} > 0 AND manufacturer = ?`).pluck().all(brand)
+          : db.prepare(`SELECT ${field} as val FROM articles WHERE ${field} > 0`).pluck().all()
 
-        let sum = 0, count = 0, minV = Infinity, maxV = -Infinity
-        const vals = []
-        for (const a of items) {
-          const v = a[field]
-          if (!v || v <= 0) continue
-          vals.push(v); sum += v; count++
+        const sorted = vals.slice().sort((a, b) => a - b)
+        let sum = 0, minV = Infinity, maxV = -Infinity
+        for (const v of sorted) {
+          sum += v
           if (v < minV) minV = v
           if (v > maxV) maxV = v
           for (const b of buckets) {
             if (v >= b.min && v < b.max) { b.count++; break }
           }
         }
-
-        vals.sort((a, b) => a - b)
-        const median = vals.length > 0 ? vals[Math.floor(vals.length / 2)] : 0
+        const count = sorted.length
+        const median = count > 0 ? sorted[Math.floor(count / 2)] : 0
 
         return json(res, {
           buckets: buckets.map(({ label, count }) => ({ label, count })),
@@ -368,6 +370,7 @@ export function createStatsServer(middlewares) {
         })
       }
 
+      // ── /top-margins ─────────────────────────────────────────────────────
       if (route === '/top-margins') {
         const sortBy = p.sortBy === 'value' ? 'value' : 'pct'
         const limit = Math.min(500, parseInt(p.limit) || 200)
@@ -378,43 +381,44 @@ export function createStatsServer(middlewares) {
         const maxPrice = parseFloat(p.maxPrice) || Infinity
         const minMarginPct = parseFloat(p.minMarginPct) || 0
 
-        let pool = cat.articles
-        if (brand) pool = cat.byBrand.get(brand) ?? []
-        else if (category) pool = cat.byCategory.get(category) ?? []
-
-        const result = []
-        for (const a of pool) {
-          if (a.priceRetail <= 0 || a.priceNet <= 0 || a.priceRetail <= a.priceNet) continue
-          if (brand && a.manufacturer !== brand) continue
-          if (category && a.temotCat !== category) continue
-          if (inStock && a.stockChorzow <= 0 && a.stockHub <= 0) continue
-          if (minPrice > 0 && a.priceNet < minPrice) continue
-          if (maxPrice < Infinity && a.priceNet > maxPrice) continue
-          const marginPct = Math.round((a.priceRetail - a.priceNet) / a.priceRetail * 1000) / 10
-          const marginValue = Math.round((a.priceRetail - a.priceNet) * 100) / 100
-          if (marginPct < minMarginPct) continue
-          result.push({
-            motonet: a.motonet, manufacturer: a.manufacturer, name: a.name,
-            priceNet: a.priceNet, priceRetail: a.priceRetail,
-            stockChorzow: a.stockChorzow, stockHub: a.stockHub,
-            temotCat: a.temotCat, original: a.original, barcode: a.barcode,
-            marginPct, marginValue
-          })
+        const conditions = ['priceRetail > priceNet', 'priceRetail > 0', 'priceNet > 0']
+        const params = {}
+        if (brand) { conditions.push('manufacturer = @brand'); params.brand = brand }
+        else if (category) { conditions.push('temotCat = @category'); params.category = category }
+        if (inStock) conditions.push('(stockChorzow > 0 OR stockHub > 0)')
+        if (minPrice > 0) { conditions.push('priceNet >= @minPrice'); params.minPrice = minPrice }
+        if (maxPrice < Infinity) { conditions.push('priceNet <= @maxPrice'); params.maxPrice = maxPrice }
+        if (minMarginPct > 0) {
+          conditions.push('(priceRetail - priceNet) * 100.0 / priceRetail >= @minMarginPct')
+          params.minMarginPct = minMarginPct
         }
 
-        result.sort((a, b) => sortBy === 'value' ? b.marginValue - a.marginValue : b.marginPct - a.marginPct)
+        const where = 'WHERE ' + conditions.join(' AND ')
+        const orderCol = sortBy === 'value' ? '(priceRetail - priceNet)' : '(priceRetail - priceNet) / priceRetail'
 
-        // Stats globales
-        let sumPct = 0, sumVal = 0, n = result.length
-        for (const r of result) { sumPct += r.marginPct; sumVal += r.marginValue }
+        const total = db.prepare(`SELECT COUNT(*) as n FROM articles ${where}`).get(params).n
+
+        const rows = db.prepare(`
+          SELECT motonet, manufacturer, name, priceNet, priceRetail, stockChorzow, stockHub,
+            temotCat, original, barcode,
+            ROUND((priceRetail - priceNet) * 100.0 / priceRetail, 1) as marginPct,
+            ROUND(priceRetail - priceNet, 2) as marginValue
+          FROM articles ${where}
+          ORDER BY ${orderCol} DESC
+          LIMIT @limit
+        `).all({ ...params, limit })
+
+        let sumPct = 0, sumVal = 0
+        for (const r of rows) { sumPct += r.marginPct; sumVal += r.marginValue }
+        const n = rows.length
 
         return json(res, {
-          total: n,
+          total,
           avgMarginPct: n > 0 ? Math.round(sumPct / n * 10) / 10 : 0,
           avgMarginValue: n > 0 ? Math.round(sumVal / n * 100) / 100 : 0,
-          topPct: result.slice().sort((a, b) => b.marginPct - a.marginPct).slice(0, 1)[0] ?? null,
-          topValue: result.slice().sort((a, b) => b.marginValue - a.marginValue).slice(0, 1)[0] ?? null,
-          items: result.slice(0, limit)
+          topPct: rows.slice().sort((a, b) => b.marginPct - a.marginPct)[0] ?? null,
+          topValue: rows.slice().sort((a, b) => b.marginValue - a.marginValue)[0] ?? null,
+          items: rows
         })
       }
 

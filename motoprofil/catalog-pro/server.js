@@ -90,9 +90,8 @@ http.createServer(app).listen(PORT, '0.0.0.0', () => {
   console.log(`[catalog-pro] http://0.0.0.0:${PORT}`)
 })
 
-// SFTP sync (si configuré)
-if (process.env.SFTP_HOST) {
-  import('./src/server/sftp-sync.js').then(m => m.startSftpSync()).catch(err => {
-    console.error('[sftp-sync] Impossible de démarrer:', err.message)
-  })
-}
+// Le rechargement du catalogue se fait via webhook SFTPGo → POST /api/catalog/reload.
+// Le polling SFTP est supprimé. Décommenter startSftpSync() si fallback polling nécessaire.
+// if (process.env.SFTP_HOST) {
+//   import('./src/server/sftp-sync.js').then(m => m.startSftpSync()).catch(console.error)
+// }
