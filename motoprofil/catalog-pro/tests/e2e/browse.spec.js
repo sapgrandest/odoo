@@ -169,8 +169,8 @@ test.describe('Page /parcourir', () => {
   test('ArticleCard : manufacturer, motonet, name, prix, stock cohérents avec API', async ({ page, request }) => {
     const boschBtn = page.locator('.browse-sidebar button').filter({ hasText: BRAND }).first()
     await boschBtn.click()
-    // Attendre que les articles apparaissent (fetch async, pas une vraie navigation)
-    await expect(page.locator('.browse-main').getByText(/article/)).toBeVisible({ timeout: 15_000 })
+    // Attendre la première card (plus fiable que getByText(/article/) qui résout trop tôt)
+    await expect(page.locator('.browse-main .article-card').first()).toBeVisible({ timeout: 20_000 })
 
     const cards = page.locator('.browse-main .article-card')
     const cardCount = await cards.count()
