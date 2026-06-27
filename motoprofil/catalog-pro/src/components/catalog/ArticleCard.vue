@@ -31,6 +31,7 @@
       <!-- Badge remise haut-gauche -->
       <div
         v-if="article.discount > 0"
+        class="article-discount-badge"
         style="position:absolute;top:6px;left:6px;background:#f59e0b;color:#09090b;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:0.03em"
       >-{{ article.discount }}%</div>
 

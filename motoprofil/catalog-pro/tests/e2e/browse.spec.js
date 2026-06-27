@@ -204,7 +204,7 @@ test.describe('Page /parcourir', () => {
 
       // Badge remise
       if (apiItem.discount > 0) {
-        const discountBadge = card.locator('div[style*="f59e0b"]')
+        const discountBadge = card.locator('.article-discount-badge')
         await expect(discountBadge, `Card[${i}] badge remise attendu (discount=${apiItem.discount})`).toBeVisible()
         const discountText = await discountBadge.textContent()
         expect(discountText.trim(), `Card[${i}] remise affichée`).toContain(`${apiItem.discount}%`)
@@ -299,14 +299,12 @@ test.describe('Page /parcourir', () => {
       { timeout: 20_000 }
     )
 
-    // Récupérer le premier article de l'API
-    const apiBrowse = await apiGet(request, `/api/catalog/browse?brand=${encodeURIComponent(BRAND)}`)
-    const apiItem = apiBrowse.items[0]
-    const apiArticle = await apiGet(request, `/api/catalog/article/${apiItem.motonet}`)
-
-    // Cliquer la première card (scroll si hors viewport)
+    // Cliquer la première card visible (scroll si hors viewport)
     const firstCard = page.locator('.browse-main .article-card').first()
     await firstCard.scrollIntoViewIfNeeded()
+    // Récupérer le motonet de la card AVANT de cliquer (évite écart d'ordre API/UI)
+    const firstCardMotonet = (await firstCard.locator('.article-motonet').textContent()).trim()
+    const apiArticle = await apiGet(request, `/api/catalog/article/${firstCardMotonet}`)
     await firstCard.click()
 
     // Attendre le Dialog PrimeVue
