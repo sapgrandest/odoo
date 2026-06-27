@@ -108,15 +108,15 @@ test.describe('Page /parcourir', () => {
     ).toBeLessThan(2)
 
     // Les articles sont affichés (mode grille par défaut)
-    const cards = page.locator('.browse-main').locator('div[style*="border-radius: 10px"]')
+    const cards = page.locator('.browse-main .article-card')
     const cardCount = await cards.count()
     expect(cardCount, 'Au moins 1 card doit être affichée').toBeGreaterThan(0)
 
     // Vérifier les données des 3 premières cards vs API
     for (let i = 0; i < Math.min(3, cardCount); i++) {
       const card = cards.nth(i)
-      const motonetUI = (await card.locator('span[style*="monospace"]').first().textContent()).trim()
-      const manufacturerUI = (await card.locator('span[style*="10b981"][style*="uppercase"]').textContent()).trim()
+      const motonetUI = (await card.locator('.article-motonet').textContent()).trim()
+      const manufacturerUI = (await card.locator('.article-manufacturer').textContent()).trim()
 
       // manufacturer dans la card = BOSCH
       expect(
@@ -176,7 +176,7 @@ test.describe('Page /parcourir', () => {
     const apiBrowse = await apiGet(request, `/api/catalog/browse?brand=${encodeURIComponent(BRAND)}`)
     const apiItems = apiBrowse.items.slice(0, 3)
 
-    const cards = page.locator('.browse-main').locator('div[style*="border-radius: 10px"]')
+    const cards = page.locator('.browse-main .article-card')
     const cardCount = await cards.count()
     expect(cardCount).toBeGreaterThan(0)
 
@@ -184,12 +184,12 @@ test.describe('Page /parcourir', () => {
       const card = cards.nth(i)
       const apiItem = apiItems[i]
 
-      // Manufacturer (vert, uppercase)
-      const manufacturerUI = (await card.locator('span[style*="10b981"][style*="uppercase"]').textContent()).trim()
+      // Manufacturer (classe article-manufacturer)
+      const manufacturerUI = (await card.locator('.article-manufacturer').textContent()).trim()
       expect(manufacturerUI, `Card[${i}] manufacturer`).toBe(apiItem.manufacturer)
 
-      // Motonet (monospace, couleur #52525b)
-      const motonetUI = (await card.locator('span[style*="monospace"][style*="52525b"]').textContent()).trim()
+      // Motonet (classe article-motonet)
+      const motonetUI = (await card.locator('.article-motonet').textContent()).trim()
       expect(motonetUI, `Card[${i}] motonet`).toBe(apiItem.motonet)
 
       // Prix retail (badge haut-droite)
@@ -214,17 +214,17 @@ test.describe('Page /parcourir', () => {
       }
 
       // Badge stock : vert si en stock, gris sinon
-      const stockDot = card.locator('span[style*="border-radius: 50%"]').first()
-      const stockDotBg = await stockDot.evaluate(el => el.style.background)
+      const stockDot = card.locator('.article-stock-dot').first()
+      const stockDotBg = await stockDot.evaluate(el => getComputedStyle(el).backgroundColor)
       const isInStockAPI = (apiItem.stockChorzow ?? 0) > 0 || (apiItem.stockHub ?? 0) > 0
-      const isInStockUI = stockDotBg.includes('10b981')
+      const isInStockUI = stockDotBg.includes('16, 185, 129') || stockDotBg.includes('10b981')
       expect(
         isInStockUI,
         `Card[${i}] stock UI=${isInStockUI} vs API=${isInStockAPI} (CZ=${apiItem.stockChorzow} HUB=${apiItem.stockHub})`
       ).toBe(isInStockAPI)
 
       // OEM affiché si non vide
-      const oemEl = card.locator('div[style*="OEM"]')
+      const oemEl = card.locator('.article-oem')
       if (apiItem.original) {
         await expect(oemEl, `Card[${i}] OEM doit être visible`).toBeVisible()
         expect(await oemEl.textContent(), `Card[${i}] OEM`).toContain(apiItem.original)
@@ -308,7 +308,7 @@ test.describe('Page /parcourir', () => {
     const apiArticle = await apiGet(request, `/api/catalog/article/${apiItem.motonet}`)
 
     // Cliquer la première card (scroll si hors viewport)
-    const firstCard = page.locator('.browse-main').locator('div[style*="border-radius: 10px"]').first()
+    const firstCard = page.locator('.browse-main .article-card').first()
     await firstCard.scrollIntoViewIfNeeded()
     await firstCard.click()
 

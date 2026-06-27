@@ -1,5 +1,6 @@
 <template>
   <div
+    class="article-card"
     @click="$emit('open', article)"
     @mouseenter="hovered = true"
     @mouseleave="hovered = false"
@@ -54,6 +55,7 @@
       <!-- Badge stock bas-gauche -->
       <div style="position:absolute;bottom:6px;left:6px;display:flex;align-items:center;gap:4px">
         <span
+          class="article-stock-dot"
           :style="{
             width: '7px', height: '7px', borderRadius: '50%',
             background: inStock ? '#10b981' : '#3f3f46',
@@ -67,10 +69,10 @@
     <!-- Zone infos -->
     <div style="padding:10px 12px;display:flex;flex-direction:column;gap:4px;flex:1">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;min-width:0">
-        <span style="font-size:10px;font-weight:700;color:#10b981;text-transform:uppercase;letter-spacing:0.05em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:1">
+        <span class="article-manufacturer" style="font-size:10px;font-weight:700;color:#10b981;text-transform:uppercase;letter-spacing:0.05em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:1">
           {{ article.manufacturer }}
         </span>
-        <span style="font-size:10px;font-family:monospace;color:#52525b;white-space:nowrap;flex-shrink:0">
+        <span class="article-motonet" style="font-size:10px;font-family:monospace;color:#52525b;white-space:nowrap;flex-shrink:0">
           {{ article.motonet }}
         </span>
       </div>
@@ -81,6 +83,7 @@
 
       <div
         v-if="article.original"
+        class="article-oem"
         style="font-size:10px;font-family:monospace;color:#52525b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"
       >OEM {{ article.original }}</div>
 
