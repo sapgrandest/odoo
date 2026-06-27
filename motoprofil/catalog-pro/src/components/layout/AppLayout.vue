@@ -1,29 +1,22 @@
 <template>
   <div class="app-root">
-    <AppHeader @toggle-sidebar="toggleSidebar" :show-hamburger="isMobile" />
+    <AppHeader @toggle-sidebar="toggleSidebar" />
 
     <div class="app-body">
-      <!-- Backdrop mobile -->
-      <Transition name="backdrop">
-        <div
-          v-if="isMobile && mobileOpen"
-          class="sidebar-backdrop"
-          @click="mobileOpen = false"
-        />
-      </Transition>
-
-      <!-- Sidebar -->
+      <!-- Sidebar (desktop uniquement) -->
       <AppSidebar
-        :collapsed="!isMobile && collapsed"
-        :mobile-open="isMobile && mobileOpen"
+        v-if="!isMobile"
+        :collapsed="collapsed"
         @toggle="toggleSidebar"
-        @close="mobileOpen = false"
       />
 
       <main class="app-main">
         <slot />
       </main>
     </div>
+
+    <!-- Navigation mobile (hors app-body pour rester au-dessus du tout) -->
+    <BottomNav />
   </div>
 </template>
 
@@ -32,15 +25,14 @@ import { ref } from 'vue'
 import { useBreakpoint } from '../../composables/useBreakpoint.js'
 import AppHeader from './AppHeader.vue'
 import AppSidebar from './AppSidebar.vue'
+import BottomNav from './BottomNav.vue'
 
 const { isMobile } = useBreakpoint()
 
-const collapsed   = ref(false)
-const mobileOpen  = ref(false)
+const collapsed = ref(false)
 
 function toggleSidebar() {
-  if (isMobile.value) mobileOpen.value = !mobileOpen.value
-  else collapsed.value = !collapsed.value
+  if (!isMobile.value) collapsed.value = !collapsed.value
 }
 </script>
 
@@ -67,15 +59,10 @@ function toggleSidebar() {
   min-width: 0;
 }
 
-.sidebar-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 199;
+/* Espace sous le contenu pour ne pas être masqué par BottomNav */
+@media (max-width: 767px) {
+  .app-main {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+  }
 }
-
-.backdrop-enter-active,
-.backdrop-leave-active { transition: opacity 0.25s; }
-.backdrop-enter-from,
-.backdrop-leave-to { opacity: 0; }
 </style>

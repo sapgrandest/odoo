@@ -68,6 +68,7 @@
         <!-- Barre de stats + contrôles -->
         <div
           v-if="articles.length > 0"
+          class="search-stats-bar"
           style="flex-shrink:0;display:flex;align-items:center;gap:12px;padding:8px 16px;border-bottom:1px solid #27272a;background:#0d0d0f;flex-wrap:wrap"
         >
           <span style="font-size:13px;font-weight:600;color:#fafafa">{{ articles.length.toLocaleString('fr-FR') }} article{{ articles.length !== 1 ? 's' : '' }}</span>
@@ -80,7 +81,7 @@
             <span class="pi pi-check-circle" style="font-size:11px;margin-right:4px;color:#10b981" />
             {{ inStock }} en stock
           </span>
-          <div style="margin-left:auto;display:flex;align-items:center;gap:8px">
+          <div class="search-stats-controls" style="margin-left:auto;display:flex;align-items:center;gap:8px">
             <Select
               :modelValue="filtersStore.sortBy"
               @update:modelValue="val => { filtersStore.setFilter('sortBy', val); sortArticles() }"
@@ -379,3 +380,20 @@ function openAlternative(motonet) {
   handleSearch()
 }
 </script>
+
+<style scoped>
+@media (max-width: 767px) {
+  .search-stats-bar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px;
+  }
+  .search-stats-controls {
+    margin-left: 0 !important;
+    width: 100%;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+}
+</style>

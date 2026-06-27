@@ -3,7 +3,7 @@
     v-model:visible="visible"
     modal
     :dismissableMask="true"
-    :style="{ width: '90vw', maxWidth: '1200px' }"
+    :style="dialogStyle"
     :pt="{
       root:    { style: 'background:#111113;border:1px solid #27272a;border-radius:12px;overflow:hidden;color:#fafafa' },
       header:  { style: 'background:#111113;border-bottom:1px solid #27272a;padding:14px 20px;display:flex;align-items:center;gap:10px' },
@@ -23,10 +23,10 @@
       </div>
     </template>
 
-    <div v-if="currentArticle" style="display:flex;height:70vh;min-height:400px;overflow:hidden">
+    <div v-if="currentArticle" class="dialog-body" style="display:flex;height:70vh;min-height:400px;overflow:hidden">
 
       <!-- Colonne gauche : Images -->
-      <div style="width:50%;border-right:1px solid #27272a;padding:16px;overflow-y:auto;flex-shrink:0">
+      <div class="dialog-col-images" style="width:50%;border-right:1px solid #27272a;padding:16px;overflow-y:auto;flex-shrink:0">
         <ImageGallery :images="images" :loading="loadingImages" />
       </div>
 
@@ -48,7 +48,7 @@
         </div>
 
         <!-- Grille des références -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="dialog-refs-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
           <div style="padding:8px 10px;background:#09090b;border-radius:7px;border:1px solid #27272a">
             <div style="font-size:10px;color:#52525b;margin-bottom:3px">Motonet <FieldInfo field="motonet" /></div>
             <div class="dialog-motonet" style="font-family:monospace;font-size:13px;font-weight:700;color:#10b981">{{ currentArticle.motonet || '—' }}</div>
@@ -182,6 +182,7 @@ import { useToast } from 'primevue/usetoast'
 import ImageGallery from './ImageGallery.vue'
 import { useProfiAutoApi } from '../../composables/useProfiAutoApi.js'
 import { useAuthStore } from '../../stores/auth.js'
+import { useBreakpoint } from '../../composables/useBreakpoint.js'
 
 const props = defineProps({
   modelValue: { type: Boolean, default: false },
@@ -193,6 +194,12 @@ const emit = defineEmits(['update:modelValue', 'open-alternative'])
 const toast                              = useToast()
 const auth                               = useAuthStore()
 const { getGraphics, getArticleDetails } = useProfiAutoApi()
+const { isMobile }                       = useBreakpoint()
+
+const dialogStyle = computed(() => isMobile.value
+  ? { width: '100vw', height: '100dvh', maxHeight: '100dvh', margin: '0', borderRadius: '0', top: '0' }
+  : { width: 'min(900px, 95vw)' }
+)
 
 const internalArticle = ref(null)
 const internalVisible = ref(false)
@@ -423,5 +430,23 @@ function copyToClipboard(text) {
   font-size: 12px;
   color: #71717a;
   flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .dialog-body {
+    flex-direction: column;
+    height: calc(100dvh - 56px);
+    min-height: unset;
+    overflow-y: auto;
+  }
+  .dialog-col-images {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #27272a;
+    flex-shrink: unset;
+  }
+  .dialog-refs-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

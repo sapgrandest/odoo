@@ -96,68 +96,74 @@
       <div class="browse-main">
 
         <!-- Barre d'outils -->
-        <div style="flex-shrink:0;padding:8px 12px;border-bottom:1px solid #27272a;background:#0d0d0f;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-          <!-- Bouton marques/catégories sur mobile -->
-          <button
-            class="browse-filter-toggle"
-            @click="filterSidebarOpen = true"
-          >
-            <span class="pi pi-th-large" style="font-size:13px" />
-          </button>
-          <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:180px">
-            <InputText
-              v-model="globalSearch"
-              placeholder="Recherche globale…"
-              style="flex:1;font-size:12px"
-              @keydown.enter="handleGlobalSearch"
-            />
+        <div class="browse-toolbar" style="flex-shrink:0;padding:8px 12px;border-bottom:1px solid #27272a;background:#0d0d0f;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <!-- Ligne 1 : filtre toggle + recherche globale -->
+          <div class="browse-toolbar-row1">
+            <!-- Bouton marques/catégories sur mobile -->
             <button
-              @click="handleGlobalSearch"
-              style="background:#10b981;border:none;color:#fff;border-radius:6px;padding:7px 14px;cursor:pointer;font-size:12px;display:flex;align-items:center;gap:5px;white-space:nowrap"
+              class="browse-filter-toggle"
+              @click="filterSidebarOpen = true"
             >
-              <span class="pi pi-search" style="font-size:12px" />
+              <span class="pi pi-th-large" style="font-size:13px" />
             </button>
+            <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:180px">
+              <InputText
+                v-model="globalSearch"
+                placeholder="Recherche globale…"
+                style="flex:1;font-size:12px"
+                @keydown.enter="handleGlobalSearch"
+              />
+              <button
+                @click="handleGlobalSearch"
+                style="background:#10b981;border:none;color:#fff;border-radius:6px;padding:7px 14px;cursor:pointer;font-size:12px;display:flex;align-items:center;gap:5px;white-space:nowrap"
+              >
+                <span class="pi pi-search" style="font-size:12px" />
+              </button>
+            </div>
           </div>
 
-          <button
-            @click="showFilters = !showFilters"
-            :style="{
-              background: showFilters ? 'rgba(16,185,129,0.15)' : 'transparent',
-              border: `1px solid ${showFilters ? '#10b981' : '#27272a'}`,
-              color: showFilters ? '#10b981' : '#71717a',
-              borderRadius:'6px', padding:'6px 12px', cursor:'pointer',
-              fontSize:'12px', display:'flex', alignItems:'center', gap:'5px', whiteSpace:'nowrap'
-            }"
-          >
-            <span class="pi pi-sliders-h" style="font-size:12px" />
-            Filtres
-          </button>
+          <!-- Ligne 2 : filtres avancés + vue + taille page + stock -->
+          <div class="browse-toolbar-row2">
+            <button
+              @click="showFilters = !showFilters"
+              :style="{
+                background: showFilters ? 'rgba(16,185,129,0.15)' : 'transparent',
+                border: `1px solid ${showFilters ? '#10b981' : '#27272a'}`,
+                color: showFilters ? '#10b981' : '#71717a',
+                borderRadius:'6px', padding:'6px 12px', cursor:'pointer',
+                fontSize:'12px', display:'flex', alignItems:'center', gap:'5px', whiteSpace:'nowrap'
+              }"
+            >
+              <span class="pi pi-sliders-h" style="font-size:12px" />
+              Filtres
+            </button>
 
-          <ViewToggle :modelValue="filtersStore.viewMode" @update:modelValue="val => filtersStore.setFilter('viewMode', val)" />
+            <ViewToggle :modelValue="filtersStore.viewMode" @update:modelValue="val => filtersStore.setFilter('viewMode', val)" />
 
-          <Select
-            :modelValue="filtersStore.pageSize"
-            @update:modelValue="val => { filtersStore.setFilter('pageSize', val); fetchArticles() }"
-            :options="pageSizeOptions"
-            optionLabel="label"
-            optionValue="value"
-            style="font-size:12px;width:90px"
-          />
-
-          <div style="display:flex;align-items:center;gap:6px">
-            <input
-              type="checkbox"
-              id="br-inStock"
-              :checked="filtersStore.inStockOnly"
-              @change="e => { filtersStore.setFilter('inStockOnly', e.target.checked); fetchArticles() }"
-              style="width:14px;height:14px;cursor:pointer;accent-color:#10b981"
+            <Select
+              :modelValue="filtersStore.pageSize"
+              @update:modelValue="val => { filtersStore.setFilter('pageSize', val); fetchArticles() }"
+              :options="pageSizeOptions"
+              optionLabel="label"
+              optionValue="value"
+              style="font-size:12px;width:90px"
             />
-            <label for="br-inStock" style="font-size:12px;color:#a1a1aa;cursor:pointer;white-space:nowrap">En stock</label>
+
+            <div style="display:flex;align-items:center;gap:6px">
+              <input
+                type="checkbox"
+                id="br-inStock"
+                :checked="filtersStore.inStockOnly"
+                @change="e => { filtersStore.setFilter('inStockOnly', e.target.checked); fetchArticles() }"
+                style="width:14px;height:14px;cursor:pointer;accent-color:#10b981"
+              />
+              <label for="br-inStock" style="font-size:12px;color:#a1a1aa;cursor:pointer;white-space:nowrap">En stock</label>
+            </div>
           </div>
         </div>
 
         <!-- Breadcrumb + stats -->
-        <div v-if="breadcrumbLabel" style="flex-shrink:0;padding:6px 14px;background:#09090b;border-bottom:1px solid #27272a;display:flex;align-items:center;gap:8px">
+        <div v-if="breadcrumbLabel" style="flex-shrink:0;padding:6px 14px;background:#09090b;border-bottom:1px solid #27272a;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
           <span style="font-size:12px;color:#fafafa;font-weight:600">{{ breadcrumbLabel }}</span>
           <span style="color:#27272a">—</span>
           <span style="font-size:12px;color:#71717a">{{ total.toLocaleString('fr-FR') }} article{{ total !== 1 ? 's' : '' }}</span>
@@ -235,7 +241,7 @@
           </div>
 
           <!-- Grille -->
-          <div v-else style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px">
+          <div v-else class="article-grid">
             <ArticleCard
               v-for="art in articles"
               :key="art.motonet"
@@ -544,4 +550,34 @@ onMounted(() => {
 .bkdrop-leave-active { transition: opacity 0.25s; }
 .bkdrop-enter-from,
 .bkdrop-leave-to { opacity: 0; }
+
+/* Toolbar responsive */
+@media (max-width: 767px) {
+  .browse-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px 10px;
+    gap: 6px;
+  }
+  .browse-toolbar-row1 { display: flex; gap: 6px; align-items: center; }
+  .browse-toolbar-row2 { display: flex; gap: 6px; align-items: center; }
+}
+@media (min-width: 768px) {
+  .browse-toolbar-row1,
+  .browse-toolbar-row2 { display: contents; }
+}
+
+/* Grille d'articles responsive */
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 767px) {
+  .article-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <header class="app-header">
-    <!-- Hamburger (mobile uniquement) -->
+    <!-- Hamburger (desktop uniquement — BottomNav gère la nav mobile) -->
     <button v-if="showHamburger" class="hamburger" @click="$emit('toggle-sidebar')" aria-label="Menu">
       <span class="pi pi-bars" style="font-size:18px;color:#a1a1aa" />
     </button>
@@ -156,8 +156,9 @@ const { isAuthenticated, expiresFormatted, username, autoLoginPending } = useAut
   gap: 4px;
 }
 
-/* Mobile : masquer logo-text, user-info, btn-label */
+/* Mobile : masquer hamburger, logo-text, user-info, btn-label */
 @media (max-width: 767px) {
+  .hamburger  { display: none; }
   .logo-text  { display: none; }
   .user-info  { display: none; }
   .btn-label  { display: none; }
