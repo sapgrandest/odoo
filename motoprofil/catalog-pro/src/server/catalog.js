@@ -652,4 +652,3 @@ export function createCatalogServer(middlewares) {
   })
 }
 
-export { parseRow }
