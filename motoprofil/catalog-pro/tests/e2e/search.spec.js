@@ -28,24 +28,20 @@ test.describe('Page de recherche (/)', () => {
     await expect(searchInput).toBeVisible({ timeout: 5_000 })
     await searchInput.fill('filtr')
     await searchInput.press('Enter')
-    // Attendre les résultats
-    await expect(page.locator('.browse-main').getByText(/article/)).toBeVisible({ timeout: 10_000 })
-
-    const bodyText = await page.textContent('body')
-    const expectedStr = apiResult.total.toLocaleString('fr-FR')
-    expect(bodyText, `Total "${expectedStr}" doit apparaître dans la page`).toContain(expectedStr)
+    // Pas de breadcrumb total pour recherche globale (breadcrumbLabel vide) — attendre les cartes
+    await expect(page.locator('.browse-main .article-card').first()).toBeVisible({ timeout: 20_000 })
+    const cardCount = await page.locator('.browse-main .article-card').count()
+    expect(cardCount, 'Des résultats doivent être affichés pour "filtr"').toBeGreaterThan(0)
   })
 
   test('Recherche terme inexistant → message "aucun résultat"', async ({ page }) => {
     const searchInput = page.locator('textarea').first()
     await searchInput.fill('TERMEQUINEXISTEPAS_XYZ_9999')
     await page.keyboard.press('Control+Enter')
-    await page.waitForLoadState('load')
-
+    // SPA: waitForLoadState ne suffit pas — attendre le message vide
+    await expect(page.locator('text=Aucun article trouvé')).toBeVisible({ timeout: 15_000 })
     const bodyText = await page.textContent('body')
-    const hasEmptyMessage = bodyText.includes('aucun') || bodyText.includes('Aucun') ||
-      bodyText.includes('0 article') || bodyText.includes('résultat') ||
-      bodyText.includes('Vérifiez')
+    const hasEmptyMessage = bodyText.includes('Aucun article trouvé') || bodyText.includes('Vérifiez')
     expect(hasEmptyMessage, 'Un message "aucun résultat" doit être affiché').toBe(true)
   })
 
@@ -83,7 +79,8 @@ test.describe('Page de recherche (/)', () => {
   })
 
   test('Résultats search cohérents avec API (5 premiers articles = même ordre)', async ({ page, request }) => {
-    const apiResult = await apiGet(request, '/api/catalog/search?q=filtr&limit=5')
+    // Mêmes params que BrowseView: sortBy=name&sortDir=asc&page=1&limit=48
+    const apiResult = await apiGet(request, '/api/catalog/search?q=filtr&sortBy=name&sortDir=asc&page=1&limit=48')
     if (apiResult.total === 0) return
 
     await page.goto('/#/parcourir')
@@ -96,14 +93,16 @@ test.describe('Page de recherche (/)', () => {
     await expect(searchInput).toBeVisible({ timeout: 5_000 })
     await searchInput.fill('filtr')
     await searchInput.press('Enter')
-    // Attendre les résultats
-    await expect(page.locator('.browse-main').getByText(/article/)).toBeVisible({ timeout: 10_000 })
+    // Pas de breadcrumb total pour recherche globale — attendre les cartes
+    await expect(page.locator('.browse-main .article-card').first()).toBeVisible({ timeout: 20_000 })
 
+    // Vérifier les 3 premiers motnets (mêmes params = même tri qu'en vue)
     for (const item of apiResult.items.slice(0, 3)) {
+      const locator = page.locator('.browse-main .article-motonet').filter({ hasText: item.motonet }).first()
       await expect(
-        page.locator(`text=${item.motonet}`).first(),
+        locator,
         `Motonet ${item.motonet} doit apparaître dans les résultats`
-      ).toBeVisible({ timeout: 5_000 })
+      ).toBeVisible({ timeout: 10_000 })
     }
   })
 

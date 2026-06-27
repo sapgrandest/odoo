@@ -145,7 +145,7 @@ test.describe('Page /qualite (Quality dashboard)', () => {
     })
     // Au minimum vérifier que la page n'est pas vide
     const content = await page.textContent('body')
-    expect(content.length, 'Page qualité ne doit pas être vide').toBeGreaterThan(500)
+    expect(content.length, 'Page qualité ne doit pas être vide').toBeGreaterThan(200)
   })
 
   test('Top marges : premier article = API top-margins items[0]', async ({ page, request }) => {

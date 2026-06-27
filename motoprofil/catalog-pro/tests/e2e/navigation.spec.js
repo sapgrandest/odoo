@@ -73,33 +73,38 @@ test.describe('Navigation', () => {
     await page.waitForLoadState('load')
     await page.waitForFunction(() => document.body.textContent.trim().length > 100, { timeout: 15_000 })
 
-    // Sur mobile, la sidebar est cachée derrière le hamburger — l'ouvrir avant de cliquer
     const hamburger = page.locator('button.hamburger')
+    const mobileSidebar = page.locator('.app-sidebar.mobile-open')
 
-    if (await hamburger.isVisible()) {
-      await hamburger.click()
-      await page.waitForSelector('.app-sidebar.mobile-open', { timeout: 3000 }).catch(() => {})
+    // Helper : ouvre la sidebar mobile si elle est fermée
+    const openSidebar = async () => {
+      if (await hamburger.isVisible()) {
+        if (!await mobileSidebar.isVisible()) {
+          await hamburger.click()
+          await expect(mobileSidebar).toBeVisible({ timeout: 5_000 })
+        }
+      }
     }
 
     // Cliquer sur "Parcourir" dans la sidebar de navigation
-    const parcourirLink = page.locator('a[href*="parcourir"], nav button').filter({ hasText: /parcourir/i })
+    await openSidebar()
+    const parcourirLink = page.locator('.app-sidebar button.nav-item').filter({ hasText: /parcourir/i })
+      .or(page.locator('nav button, a').filter({ hasText: /parcourir/i }))
     if (await parcourirLink.count() > 0) {
-      await parcourirLink.first().click({ force: true })
-      await page.waitForURL(/parcourir/, { timeout: 5000 })
+      await expect(parcourirLink.first()).toBeVisible({ timeout: 5_000 })
+      await parcourirLink.first().click()
+      await page.waitForURL(/parcourir/, { timeout: 5_000 })
       expect(page.url()).toContain('parcourir')
     }
 
-    // Sur mobile, la sidebar se ferme après navigation (@close) — la rouvrir avant le 2e clic
-    if (await hamburger.isVisible()) {
-      await hamburger.click()
-      await page.waitForSelector('.app-sidebar.mobile-open', { timeout: 3000 }).catch(() => {})
-    }
-
-    // Cliquer sur "Dashboard"
-    const dashLink = page.locator('a[href*="dashboard"], nav button').filter({ hasText: /tableau|dashboard/i })
+    // La sidebar se ferme après navigation sur mobile — rouvrir avant le 2e clic
+    await openSidebar()
+    const dashLink = page.locator('.app-sidebar button.nav-item').filter({ hasText: /tableau|dashboard/i })
+      .or(page.locator('nav button, a').filter({ hasText: /tableau|dashboard/i }))
     if (await dashLink.count() > 0) {
-      await dashLink.first().click({ force: true })
-      await page.waitForURL(/dashboard/, { timeout: 5000 })
+      await expect(dashLink.first()).toBeVisible({ timeout: 5_000 })
+      await dashLink.first().click()
+      await page.waitForURL(/dashboard/, { timeout: 5_000 })
       expect(page.url()).toContain('dashboard')
     }
   })
