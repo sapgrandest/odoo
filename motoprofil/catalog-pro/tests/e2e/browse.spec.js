@@ -173,24 +173,21 @@ test.describe('Page /parcourir', () => {
     // Attendre que les articles apparaissent (fetch async, pas une vraie navigation)
     await expect(page.locator('.browse-main').getByText(/article/)).toBeVisible({ timeout: 15_000 })
 
-    const apiBrowse = await apiGet(request, `/api/catalog/browse?brand=${encodeURIComponent(BRAND)}`)
-    const apiItems = apiBrowse.items.slice(0, 3)
-
     const cards = page.locator('.browse-main .article-card')
     const cardCount = await cards.count()
     expect(cardCount).toBeGreaterThan(0)
 
-    for (let i = 0; i < Math.min(3, cardCount, apiItems.length); i++) {
+    for (let i = 0; i < Math.min(3, cardCount); i++) {
       const card = cards.nth(i)
-      const apiItem = apiItems[i]
 
       // Manufacturer (classe article-manufacturer)
       const manufacturerUI = (await card.locator('.article-manufacturer').textContent()).trim()
-      expect(manufacturerUI, `Card[${i}] manufacturer`).toBe(apiItem.manufacturer)
+      expect(manufacturerUI, `Card[${i}] manufacturer`).toBe(BRAND)
 
-      // Motonet (classe article-motonet)
+      // Motonet (classe article-motonet) — cross-check via API article (ordre indépendant)
       const motonetUI = (await card.locator('.article-motonet').textContent()).trim()
-      expect(motonetUI, `Card[${i}] motonet`).toBe(apiItem.motonet)
+      const apiItem = await apiGet(request, `/api/catalog/article/${motonetUI}`)
+      expect(apiItem.manufacturer, `API manufacturer pour ${motonetUI}`).toBe(BRAND)
 
       // Prix retail (badge haut-droite)
       if (apiItem.priceRetail > 0) {
@@ -322,7 +319,7 @@ test.describe('Page /parcourir', () => {
     expect(manufacturerUI.toUpperCase(), 'manufacturer dans header dialog').toBe(apiArticle.manufacturer.toUpperCase())
 
     // Header : name
-    const nameHeader = dialog.locator('span[style*="14px"][style*="font-weight:600"]').first()
+    const nameHeader = dialog.locator('.dialog-article-name').first()
     const nameUI = (await nameHeader.textContent()).trim()
     expect(nameUI, 'name dans header dialog').toBe(apiArticle.name)
 
@@ -332,14 +329,14 @@ test.describe('Page /parcourir', () => {
     expect(infoRowCount, 'Au moins 5 lignes info attendues').toBeGreaterThan(5)
 
     // Motonet
-    const motonetCell = dialog.locator('div[style*="monospace"][style*="13px"][style*="10b981"]')
+    const motonetCell = dialog.locator('.dialog-motonet')
     const motonetUI = (await motonetCell.first().textContent()).trim()
     expect(motonetUI, 'motonet dans dialog').toBe(apiArticle.motonet)
 
     // OEM
-    const oemCells = dialog.locator('div[style*="monospace"][style*="12px"][style*="a1a1aa"]')
     if (apiArticle.original) {
-      const oemFound = await oemCells.first().textContent()
+      const oemCell = dialog.locator('.dialog-oem')
+      const oemFound = await oemCell.first().textContent()
       expect(oemFound.trim(), 'OEM dans dialog').toBe(apiArticle.original)
     }
 

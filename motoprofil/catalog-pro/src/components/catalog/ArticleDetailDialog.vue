@@ -15,7 +15,7 @@
     <template #header>
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-width:0">
         <Tag v-if="currentArticle?.manufacturer" :value="currentArticle.manufacturer" severity="info" style="font-weight:700;text-transform:uppercase;font-size:10px;flex-shrink:0" />
-        <span style="font-size:14px;font-weight:600;color:#fafafa;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+        <span class="dialog-article-name" style="font-size:14px;font-weight:600;color:#fafafa;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
           {{ currentArticle?.name || 'Détail article' }}
         </span>
         <Tag v-if="currentArticle?.isNew"    value="NOUVEAU"  style="font-size:9px;background:#7c3aed;color:#fff;border:none;flex-shrink:0" />
@@ -51,7 +51,7 @@
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
           <div style="padding:8px 10px;background:#09090b;border-radius:7px;border:1px solid #27272a">
             <div style="font-size:10px;color:#52525b;margin-bottom:3px">Motonet <FieldInfo field="motonet" /></div>
-            <div style="font-family:monospace;font-size:13px;font-weight:700;color:#10b981">{{ currentArticle.motonet || '—' }}</div>
+            <div class="dialog-motonet" style="font-family:monospace;font-size:13px;font-weight:700;color:#10b981">{{ currentArticle.motonet || '—' }}</div>
           </div>
           <div style="padding:8px 10px;background:#09090b;border-radius:7px;border:1px solid #27272a">
             <div style="font-size:10px;color:#52525b;margin-bottom:3px">elId ProfiAuto <FieldInfo field="elId" /></div>
@@ -59,7 +59,7 @@
           </div>
           <div style="padding:8px 10px;background:#09090b;border-radius:7px;border:1px solid #27272a">
             <div style="font-size:10px;color:#52525b;margin-bottom:3px">OEM / Original <FieldInfo field="original" /></div>
-            <div style="font-family:monospace;font-size:12px;color:#a1a1aa;word-break:break-all">{{ currentArticle.original || '—' }}</div>
+            <div class="dialog-oem" style="font-family:monospace;font-size:12px;color:#a1a1aa;word-break:break-all">{{ currentArticle.original || '—' }}</div>
           </div>
           <div style="padding:8px 10px;background:#09090b;border-radius:7px;border:1px solid #27272a">
             <div style="font-size:10px;color:#52525b;margin-bottom:3px">EAN / Barcode <FieldInfo field="barcode" /></div>
