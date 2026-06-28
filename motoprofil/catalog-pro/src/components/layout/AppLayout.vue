@@ -1,6 +1,6 @@
 <template>
   <div class="app-root">
-    <AppHeader @toggle-sidebar="toggleSidebar" />
+    <AppHeader @toggle-sidebar="toggleSidebar" :show-hamburger="!isMobile" />
 
     <div class="app-body">
       <!-- Sidebar (desktop uniquement) -->

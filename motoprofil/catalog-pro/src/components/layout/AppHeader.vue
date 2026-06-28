@@ -1,8 +1,8 @@
 <template>
   <header class="app-header">
-    <!-- Hamburger (desktop uniquement — BottomNav gère la nav mobile) -->
-    <button v-if="showHamburger" class="hamburger" @click="$emit('toggle-sidebar')" aria-label="Menu">
-      <span class="pi pi-bars" style="font-size:18px;color:#a1a1aa" />
+    <!-- Toggle sidebar (desktop uniquement — BottomNav gère la nav mobile) -->
+    <button v-if="showHamburger" class="hamburger" @click="$emit('toggle-sidebar')" aria-label="Réduire/développer la nav">
+      <span class="pi pi-bars" style="font-size:16px;color:#a1a1aa" />
     </button>
 
     <!-- Logo -->

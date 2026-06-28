@@ -186,11 +186,13 @@ const navItems = [
 .toggle-btn {
   background: transparent;
   border: none;
-  color: #3f3f46;
+  color: #52525b;
   cursor: pointer;
-  padding: 2px 4px;
+  padding: 4px 6px;
   border-radius: 4px;
   display: flex;
   align-items: center;
+  transition: background 0.15s, color 0.15s;
 }
+.toggle-btn:hover { background: rgba(255,255,255,0.06); color: #a1a1aa; }
 </style>
