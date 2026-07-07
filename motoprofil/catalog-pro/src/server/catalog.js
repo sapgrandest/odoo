@@ -4,6 +4,8 @@ import path from 'path'
 import readline from 'readline'
 import { URL } from 'url'
 import Database from 'better-sqlite3'
+import { handlePlaque } from './plaque.js'
+import { handleVehicule } from './vehicule.js'
 
 const DEFAULT_CSV_PATH = '/data/catalogue.csv'
 
@@ -70,20 +72,20 @@ export function parseRow(cols) {
     replacementPrefix: pc(cols[28]),
     replacementIndex: pc(cols[29]),
     listAlternatives: pc(cols[30]),
-    alternatives: cols.slice(31, 51).filter(v => v && v.trim()).map(v => v.trim()),
-    priceGrossRetail: pf(cols[51]),
-    priceGrossPurchase: pf(cols[52]),
-    tecDocHerNr: pc(cols[53]),
-    genericId: pc(cols[54]),
-    stockHub: pf(cols[55]),
-    discountId: pc(cols[56]),
-    vatRate: pf(cols[57]),
-    tecDocGenArtNr: pc(cols[58]),
-    productGroupCode: pc(cols[59]),
-    splitPayroll: pb(cols[60]),
-    countryCode: pc(cols[61]),
-    productGroupCodeRequired: pb(cols[62]),
-    tecDocManufacturer: pc(cols[63])
+    alternatives: cols.slice(31, 57).filter(v => v && v.trim()).map(v => v.trim()),
+    priceGrossRetail: pf(cols[57]),
+    priceGrossPurchase: pf(cols[58]),
+    tecDocHerNr: pc(cols[59]),
+    genericId: pc(cols[60]),
+    stockHub: pf(cols[61]),
+    discountId: pc(cols[62]),
+    vatRate: pf(cols[63]),
+    tecDocGenArtNr: pc(cols[64]),
+    productGroupCode: pc(cols[65]),
+    splitPayroll: pb(cols[66]),
+    countryCode: pc(cols[67]),
+    productGroupCodeRequired: pb(cols[68]),
+    tecDocManufacturer: pc(cols[69])
   }
 }
 
@@ -439,6 +441,15 @@ export function createCatalogServer(middlewares) {
         res.statusCode = 200; res.end(Buffer.from(buffer))
       } catch (err) { res.statusCode = 502; res.end(err.message) }
       return
+    }
+
+    if (req.url === '/api/plaque' || (req.method === 'OPTIONS' && req.url === '/api/plaque')) {
+      return handlePlaque(req, res)
+    }
+
+    if (req.url.startsWith('/api/vehicule/')) {
+      const ktype = req.url.slice('/api/vehicule/'.length).split('?')[0]
+      return handleVehicule(ktype, res, getDb)
     }
 
     if (!req.url.startsWith('/api/catalog')) return next()
