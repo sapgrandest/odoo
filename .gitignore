@@ -14,3 +14,8 @@ venv/
 Thumbs.db
 .vscode/
 .idea/
+
+# ── Claude Code ───────────────────────────────────────────────────────────────
+# On PARTAGE settings.json (hooks d'équipe) + .claude/hooks/ ; on EXCLUT le perso.
+.claude/settings.local.json
+.claude/worktrees/
