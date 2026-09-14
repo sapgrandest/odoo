@@ -58,10 +58,19 @@ export function computeMovements(db) {
 }
 
 // ── ops.db (deltas de totaux entre runs) ──────────────────────────────────────
-export function openOps(path) { const db = new Database(path); db.exec('CREATE TABLE IF NOT EXISTS runs (id INTEGER PRIMARY KEY, ts TEXT, ok INTEGER, csv_hash TEXT, stats_json TEXT)'); return db }
-const lastStats = ops => { const r = ops.prepare('SELECT stats_json FROM runs WHERE ok=1 ORDER BY id DESC LIMIT 1').get(); return r ? JSON.parse(r.stats_json) : null }
-export const lastRun = ops => ops.prepare('SELECT ts, csv_hash FROM runs WHERE ok=1 ORDER BY id DESC LIMIT 1').get() || null
-const saveRun = (ops, ok, stats, csvHash) => ops.prepare('INSERT INTO runs (ts,ok,csv_hash,stats_json) VALUES (?,?,?,?)').run(new Date().toISOString(), ok ? 1 : 0, csvHash || null, JSON.stringify(stats))
+export function openOps(path) {
+  const db = new Database(path)
+  db.pragma('journal_mode = WAL'); db.pragma('busy_timeout = 5000')
+  db.exec("CREATE TABLE IF NOT EXISTS runs (id INTEGER PRIMARY KEY, ts TEXT, ok INTEGER, kind TEXT DEFAULT 'ingest', csv_hash TEXT, stats_json TEXT)")
+  try { db.exec("ALTER TABLE runs ADD COLUMN kind TEXT DEFAULT 'ingest'") } catch { /* colonne déjà là */ }
+  return db
+}
+const lastStats = ops => { const r = ops.prepare("SELECT stats_json FROM runs WHERE kind='ingest' AND ok=1 ORDER BY id DESC LIMIT 1").get(); return r && r.stats_json ? JSON.parse(r.stats_json) : null }
+// dernier vrai ingest réussi (pour la fraîcheur hash + l'âge des données)
+export const lastRun = ops => ops.prepare("SELECT ts, csv_hash FROM runs WHERE kind='ingest' AND ok=1 ORDER BY id DESC LIMIT 1").get() || null
+// dernier cycle quel qu'il soit (ingest/skip/fail) — pour "dernier contrôle" du /status
+export const lastCheck = ops => ops.prepare('SELECT ts, kind, ok FROM runs ORDER BY id DESC LIMIT 1').get() || null
+export const saveRun = (ops, ok, stats, csvHash, kind = 'ingest') => ops.prepare('INSERT INTO runs (ts,ok,kind,csv_hash,stats_json) VALUES (?,?,?,?,?)').run(new Date().toISOString(), ok ? 1 : 0, kind, csvHash || null, stats ? JSON.stringify(stats) : null)
 
 // ── Messages par salon ────────────────────────────────────────────────────────
 const F = (name, value, inline = true) => ({ name, value: String(value), inline })
@@ -145,8 +154,11 @@ async function post(url, embeds) {
   if (!url) { console.log('(no webhook) ' + embeds.map(e => e.title).join(' · ')); return }
   const test = process.env.MODE === 'test'
   if (test) embeds = embeds.map(e => e.title ? { ...e, title: '🧪 ' + e.title } : e)
-  const r = await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: test ? '🧪 SAPGE TEST' : 'SAPGE', embeds }) })
-  if (!r.ok) console.error('discord', r.status, embeds.map(e => e.title).join(','))
+  try {                                                          // C2 : une notif ratée ne doit JAMAIS faire capoter le run
+    const ctrl = AbortSignal.timeout(10000)                      // + timeout (évite un fetch qui pend indéfiniment)
+    const r = await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: test ? '🧪 SAPGE TEST' : 'SAPGE', embeds }), signal: ctrl })
+    if (!r.ok) console.error('discord', r.status, embeds.map(e => e.title).join(','))
+  } catch (e) { console.error('discord post échoué:', e.message) }
 }
 
 // ── Orchestration ─────────────────────────────────────────────────────────────

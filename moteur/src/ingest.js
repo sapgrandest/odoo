@@ -8,7 +8,7 @@ import crypto from 'crypto'
 import Database from 'better-sqlite3'
 import { parse } from 'csv-parse'
 import { parse as parseSync } from 'csv-parse/sync'
-import { reportRun, openOps, lastRun } from './report.js'
+import { reportRun, openOps, lastRun, saveRun } from './report.js'
 
 // ── Config ────────────────────────────────────────────────────────────────────
 const CSV_PATH = process.argv[2] || process.env.CSV_PATH || './sample.csv'
@@ -47,7 +47,7 @@ const tag = t => MODE === 'test' ? '🧪 ' + t : t
 async function discordEmbed(url, embed) {
   if (!url) { console.log('(no webhook)', embed.title); return }
   embed.title = tag(embed.title)
-  await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: MODE === 'test' ? '🧪 SAPGE TEST' : 'SAPGE', embeds: [embed] }) }).catch(e => console.error('discord', e.message))
+  await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: MODE === 'test' ? '🧪 SAPGE TEST' : 'SAPGE', embeds: [embed] }), signal: AbortSignal.timeout(10000) }).catch(e => console.error('discord', e.message))
 }
 
 // Lit la ligne N (1-indexée) du fichier — pour donner le contenu fautif dans l'alerte
@@ -86,16 +86,18 @@ async function run() {
   step = 'fraîcheur'
   const csvHash = await hashFile(CSV_PATH)
   if (fs.existsSync(OPS)) {
-    const o = openOps(OPS); const prev = lastRun(o); o.close()
+    const o = openOps(OPS); const prev = lastRun(o)
     if (prev && prev.csv_hash === csvHash) {
       const ms = Date.now() - new Date(prev.ts).getTime()
       const age = ms < 3.6e6 ? `${Math.round(ms / 6e4)} min` : `${(ms / 3.6e6).toFixed(1)} h`
       console.log('🔄 CSV inchangé — skip')
+      saveRun(o, true, null, csvHash, 'skip'); o.close()          // trace le contrôle (pour /status)
       await discordEmbed(WH.runs, { title: '🔄 Vérification — CSV inchangé', color: 9807270,
         description: `Le fichier reçu est **identique** au dernier import (il y a ${age}). Rien à faire.`,
         timestamp: new Date().toISOString(), footer: { text: 'cron OK · rien à ingérer ce cycle' } })
       return
     }
+    o.close()
   }
 
   // 1. En-tête (csv-parse → quote-safe, cohérent avec les données)
@@ -180,6 +182,7 @@ run().catch(async e => {
   fields.push({ name: '✅ DB préservée', value: intact + ' — rien d\'impacté', inline: false })
   if (e.hint) fields.push({ name: '→ À vérifier', value: e.hint, inline: false })
   console.error('🔴 ÉCHEC', step, e.message)
+  try { const o = openOps(env.OPS_PATH || './ops.db'); saveRun(o, false, null, null, 'fail'); o.close() } catch { /* best effort */ }
   await discordEmbed(WH.alertes, { title: '🔴 Ingest ÉCHEC', color: 15158332, fields, timestamp: new Date().toISOString(), footer: { text: `étape : ${step}` } })
   process.exit(1)
 })
