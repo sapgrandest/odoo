@@ -34,6 +34,14 @@ function runIngest(reason) {
 setTimeout(() => runIngest('démarrage'), 5000)
 setInterval(() => runIngest('cycle horaire'), INTERVAL)
 
+// ── Dead-man : heartbeat healthchecks (liveness du moteur, découplé de l'ingest) ──
+const HB = process.env.HEALTHCHECK_URL
+if (HB) {
+  const beat = () => fetch(HB).catch(() => {})
+  beat()
+  setInterval(beat, (+(process.env.PING_MIN || 5)) * 60000)   // défaut : 5 min
+}
+
 // ── Crash du planificateur → alerte + exit (Docker redémarre le conteneur) ────
 for (const sig of ['uncaughtException', 'unhandledRejection']) {
   process.on(sig, async e => {

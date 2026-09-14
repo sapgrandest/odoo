@@ -49,8 +49,6 @@ async function discordEmbed(url, embed) {
   embed.title = tag(embed.title)
   await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ username: MODE === 'test' ? '🧪 SAPGE TEST' : 'SAPGE', embeds: [embed] }) }).catch(e => console.error('discord', e.message))
 }
-// Dead-man ping (healthchecks.io) — prouve que le cron tourne ; suffixe '/fail' = échec immédiat
-const ping = async (suffix = '') => { if (env.HEALTHCHECK_URL) await fetch(env.HEALTHCHECK_URL + suffix).catch(() => {}) }
 
 // Lit la ligne N (1-indexée) du fichier — pour donner le contenu fautif dans l'alerte
 function readLineAt(path, n) {
@@ -96,7 +94,6 @@ async function run() {
       await discordEmbed(WH.runs, { title: '🔄 Vérification — CSV inchangé', color: 9807270,
         description: `Le fichier reçu est **identique** au dernier import (il y a ${age}). Rien à faire.`,
         timestamp: new Date().toISOString(), footer: { text: 'cron OK · rien à ingérer ce cycle' } })
-      await ping()
       return
     }
   }
@@ -162,7 +159,6 @@ async function run() {
       csv_age: Math.round((Date.now() - csvSt.mtimeMs) / 60000), db_bytes: dbSt.size, added_cols: added, removed_cols: removed, coercion },
   })
   console.log(`✅ ingest OK — ${count.toLocaleString('fr-FR')} lignes · ${cols.length} colonnes${coercion ? ` · ${coercion} valeurs non conformes→NULL` : ''}`)
-  await ping()
 }
 
 // ── Échec → alerte riche ──────────────────────────────────────────────────────
@@ -185,6 +181,5 @@ run().catch(async e => {
   if (e.hint) fields.push({ name: '→ À vérifier', value: e.hint, inline: false })
   console.error('🔴 ÉCHEC', step, e.message)
   await discordEmbed(WH.alertes, { title: '🔴 Ingest ÉCHEC', color: 15158332, fields, timestamp: new Date().toISOString(), footer: { text: `étape : ${step}` } })
-  await ping('/fail')
   process.exit(1)
 })
