@@ -1,0 +1,27 @@
+# Déploiement Coolify — service moteur (health/status) + volumes.
+# La tâche d'ingestion horaire est configurée dans Coolify → Scheduled Tasks :
+#   commande : node src/ingest.js   ·   fréquence : 0 * * * *
+services:
+  moteur:
+    build: .
+    restart: unless-stopped
+    environment:
+      - MODE=prod
+      - CSV_PATH=/csv/catalogue.csv
+      - DB_PATH=/data/catalog.db
+      - OPS_PATH=/data/ops.db
+      # DISCORD_RUNS / STRUCTURES / MARGES / COUTS / OFFRES / OPPORTUNITES / ALERTES
+      # → injectés par Coolify comme variables d'environnement (secrets, jamais en git)
+    volumes:
+      # CSV déposé par Moto-Profil via SFTP (lecture seule)
+      - /data/sapge/moto-profil/sftp/data/motoprofil:/csv:ro
+      # persistance de catalog.db + ops.db
+      - moteur-data:/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  moteur-data:

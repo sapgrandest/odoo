@@ -1,0 +1,11 @@
+node_modules
+*.db
+*.db-wal
+*.db-shm
+*.csv
+.env*
+CREDENTIALS.md
+test
+test-results
+playwright-report
+.DS_Store
