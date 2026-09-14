@@ -23,37 +23,38 @@ function delta(cur, prev, kind = 'int') {
 // ── Stats catalogue (courant) ─────────────────────────────────────────────────
 export function computeStats(db) {
   const g = s => db.prepare(s).get()
+  // lit `produits` : déjà dédoublonnée par motonet (1 vraie ligne/produit) → chiffres justes
   return {
-    rows: g('SELECT COUNT(*) n FROM articles').n,
-    marques: g("SELECT COUNT(DISTINCT manufacturer) n FROM articles WHERE manufacturer<>''").n,
-    en_stock: g(`SELECT COUNT(*) n FROM articles WHERE ${STK}>0`).n,
-    stock_total: g(`SELECT COALESCE(SUM(${STK}),0) n FROM articles`).n,
-    rentables: g('SELECT COUNT(*) n FROM articles WHERE purchase_nett_price>0 AND nett_retail_price>purchase_nett_price').n,
-    a_perte: g('SELECT COUNT(*) n FROM articles WHERE purchase_nett_price>0 AND nett_retail_price>0 AND nett_retail_price<=purchase_nett_price').n,
-    marge_moy: g('SELECT AVG((nett_retail_price-purchase_nett_price)/nett_retail_price*100) m FROM articles WHERE nett_retail_price>0 AND purchase_nett_price>0').m || 0,
-    marge_pot: g(`SELECT COALESCE(SUM((nett_retail_price-purchase_nett_price)*${STK}),0) n FROM articles WHERE ${STK}>0 AND nett_retail_price>purchase_nett_price AND purchase_nett_price>0`).n,
-    valeur_achat: g(`SELECT COALESCE(SUM(purchase_nett_price*${STK}),0) n FROM articles WHERE ${STK}>0`).n,
-    brands: db.prepare("SELECT DISTINCT manufacturer FROM articles WHERE manufacturer<>'' ORDER BY manufacturer").all().map(r => r.manufacturer),
+    rows: g('SELECT COUNT(*) n FROM produits').n,
+    marques: g("SELECT COUNT(DISTINCT manufacturer) n FROM produits WHERE manufacturer<>''").n,
+    en_stock: g(`SELECT COUNT(*) n FROM produits WHERE ${STK}>0`).n,
+    stock_total: g(`SELECT COALESCE(SUM(${STK}),0) n FROM produits`).n,
+    rentables: g('SELECT COUNT(*) n FROM produits WHERE purchase_nett_price>0 AND nett_retail_price>purchase_nett_price').n,
+    a_perte: g('SELECT COUNT(*) n FROM produits WHERE purchase_nett_price>0 AND nett_retail_price>0 AND nett_retail_price<=purchase_nett_price').n,
+    marge_moy: g('SELECT AVG((nett_retail_price-purchase_nett_price)/nett_retail_price*100) m FROM produits WHERE nett_retail_price>0 AND purchase_nett_price>0').m || 0,
+    marge_pot: g(`SELECT COALESCE(SUM((nett_retail_price-purchase_nett_price)*${STK}),0) n FROM produits WHERE ${STK}>0 AND nett_retail_price>purchase_nett_price AND purchase_nett_price>0`).n,
+    valeur_achat: g(`SELECT COALESCE(SUM(purchase_nett_price*${STK}),0) n FROM produits WHERE ${STK}>0`).n,
+    brands: db.prepare("SELECT DISTINCT manufacturer FROM produits WHERE manufacturer<>'' ORDER BY manufacturer").all().map(r => r.manufacturer),
   }
 }
 
 // ── Mouvements (diff vs snapshot précédent) ───────────────────────────────────
 export function computeMovements(db) {
-  if (!db.prepare("SELECT 1 x FROM sqlite_master WHERE type='table' AND name='articles_prev'").get()) return null
+  if (!db.prepare("SELECT 1 x FROM sqlite_master WHERE type='table' AND name='produits_prev'").get()) return null
   const g = s => db.prepare(s).get()
-  // motonet non unique dans le flux → dédoublonner par motonet AVANT de comparer
-  const dd = t => `(SELECT motonet_number mn, MAX(manufacturer) b, MAX(purchase_nett_price) cost, MAX(nett_retail_price) retail, MAX(${STK}) stk FROM ${t} WHERE motonet_number IS NOT NULL AND motonet_number<>'' GROUP BY motonet_number)`
-  const A = dd('articles'), P = dd('articles_prev')
-  const j = `FROM ${A} a JOIN ${P} p ON a.mn=p.mn`
+  // produits & produits_prev sont déjà dédoublonnées (motonet unique) → join direct sur de VRAIES lignes
+  const j = 'FROM produits a JOIN produits_prev p ON a.motonet_number=p.motonet_number'
+  const AS = '(COALESCE(a.stock_availability_chorzow,0)+COALESCE(a.stock_availability_hub,0))'
+  const PS = '(COALESCE(p.stock_availability_chorzow,0)+COALESCE(p.stock_availability_hub,0))'
   return {
-    cout_h: g(`SELECT COUNT(*) n ${j} WHERE p.cost>0 AND a.cost>p.cost`).n,
-    cout_b: g(`SELECT COUNT(*) n ${j} WHERE p.cost>0 AND a.cost<p.cost`).n,
-    impact: g(`SELECT AVG((a.cost-p.cost)/p.cost*100) m ${j} WHERE p.cost>0 AND a.cost<>p.cost`).m || 0,
-    nouveaux: g(`SELECT COUNT(*) n FROM ${A} a LEFT JOIN ${P} p ON a.mn=p.mn WHERE p.mn IS NULL`).n,
-    conseille_h: g(`SELECT COUNT(*) n ${j} WHERE p.retail>0 AND a.retail>p.retail`).n,
-    ruptures: g(`SELECT COUNT(*) n ${j} WHERE a.stk=0 AND p.stk>0`).n,
-    nouveaux_stock: g(`SELECT COUNT(*) n ${j} WHERE a.stk>0 AND p.stk=0`).n,
-    top: g(`SELECT a.b b, p.cost o, a.cost nn, (a.cost-p.cost)/p.cost*100 pc ${j} WHERE p.cost>0 AND a.cost>p.cost ORDER BY pc DESC LIMIT 1`),
+    cout_h: g(`SELECT COUNT(*) n ${j} WHERE p.purchase_nett_price>0 AND a.purchase_nett_price>p.purchase_nett_price`).n,
+    cout_b: g(`SELECT COUNT(*) n ${j} WHERE p.purchase_nett_price>0 AND a.purchase_nett_price<p.purchase_nett_price`).n,
+    impact: g(`SELECT AVG((a.purchase_nett_price-p.purchase_nett_price)/p.purchase_nett_price*100) m ${j} WHERE p.purchase_nett_price>0 AND a.purchase_nett_price<>p.purchase_nett_price`).m || 0,
+    nouveaux: g('SELECT COUNT(*) n FROM produits a LEFT JOIN produits_prev p ON a.motonet_number=p.motonet_number WHERE p.motonet_number IS NULL').n,
+    conseille_h: g(`SELECT COUNT(*) n ${j} WHERE p.nett_retail_price>0 AND a.nett_retail_price>p.nett_retail_price`).n,
+    ruptures: g(`SELECT COUNT(*) n ${j} WHERE ${AS}=0 AND ${PS}>0`).n,
+    nouveaux_stock: g(`SELECT COUNT(*) n ${j} WHERE ${AS}>0 AND ${PS}=0`).n,
+    top: g(`SELECT a.manufacturer b, p.purchase_nett_price o, a.purchase_nett_price nn, (a.purchase_nett_price-p.purchase_nett_price)/p.purchase_nett_price*100 pc ${j} WHERE p.purchase_nett_price>0 AND a.purchase_nett_price>p.purchase_nett_price ORDER BY pc DESC LIMIT 1`),
   }
 }
 

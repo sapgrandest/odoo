@@ -146,10 +146,42 @@ async function run() {
     db.exec('COMMIT')
   } catch (e) { db.exec('ROLLBACK'); db.close(); throw e }
 
-  // 5. Swap atomique — garde l'ancienne table en articles_prev (pour les mouvements)
+  // 5. Table `produits` (dédoublonnée par motonet) — colonnes réellement présentes. Index créés APRÈS le swap.
+  const has = c => slugs.includes(c)
+  step = 'produits'
+  const wanted = ['motonet_number', 'prefix', 'index', 'manufacturer', 'parts_name', 'article_description',
+    'purchase_nett_price', 'nett_retail_price', 'gross_retail_price', 'percent_discount', 'vat_rate',
+    'stock_availability_chorzow', 'stock_availability_hub', 'sales_quantity', 'unit_of_measure',
+    'barcode', 'weight', 'original_number', 'country_code', 'temot_fam_attribute', 'temot_cat_attribute',
+    'article_generic_id', 'tecdoc_artnr', 'tecdoc_genartnr', 'product_group_code']
+  const pcols = wanted.filter(has)
+  db.exec(`DROP TABLE IF EXISTS produits_new;
+    CREATE TABLE produits_new AS SELECT ${pcols.map(c => `"${c}"`).join(', ')} FROM articles_new
+    WHERE motonet_number IS NOT NULL AND motonet_number <> ''
+      AND rowid IN (SELECT MIN(rowid) FROM articles_new WHERE motonet_number IS NOT NULL AND motonet_number <> '' GROUP BY motonet_number)`)
+
+  // 6. Swap atomique : articles (70 col brut) + produits (dédup) ; produits_prev pour les mouvements ; plus d'articles_prev
   step = 'swap'
-  const hasArticles = db.prepare("SELECT 1 x FROM sqlite_master WHERE type='table' AND name='articles'").get()
-  db.exec(`BEGIN; DROP TABLE IF EXISTS articles_prev; ${hasArticles ? 'ALTER TABLE articles RENAME TO articles_prev;' : ''} ALTER TABLE articles_new RENAME TO articles; COMMIT`)
+  const hasProduits = db.prepare("SELECT 1 x FROM sqlite_master WHERE type='table' AND name='produits'").get()
+  db.exec(`BEGIN;
+    DROP TABLE IF EXISTS articles_prev;
+    DROP TABLE IF EXISTS produits_prev;
+    ${hasProduits ? 'ALTER TABLE produits RENAME TO produits_prev;' : ''}
+    DROP TABLE IF EXISTS articles;
+    ALTER TABLE articles_new RENAME TO articles;
+    ALTER TABLE produits_new RENAME TO produits;
+  COMMIT;`)
+
+  // 7. Index APRÈS le swap (une seule table de chaque → pas de conflit de nom global SQLite)
+  step = 'index'
+  for (const n of ['ix_pn_motonet', 'ix_pn_manuf', 'ix_an_motonet', 'ix_an_manuf', 'ix_an_famcat', 'ix_pp_motonet']) db.exec(`DROP INDEX IF EXISTS ${n}`)
+  db.exec('CREATE UNIQUE INDEX ix_pn_motonet ON produits(motonet_number)')
+  db.exec('CREATE INDEX ix_pn_manuf ON produits(manufacturer)')
+  db.exec('CREATE INDEX ix_an_motonet ON articles(motonet_number)')
+  db.exec('CREATE INDEX ix_an_manuf ON articles(manufacturer)')
+  if (has('temot_fam_attribute') && has('temot_cat_attribute')) db.exec('CREATE INDEX ix_an_famcat ON articles(temot_fam_attribute, temot_cat_attribute)')
+  if (hasProduits) db.exec('CREATE INDEX ix_pp_motonet ON produits_prev(motonet_number)')   // accélère le join des mouvements
+  db.exec('VACUUM')                                              // M2 : récupère l'espace libéré (~450 Mo de bloat)
   db.close()
 
   // 6. Rapport multi-salons (report.js)
