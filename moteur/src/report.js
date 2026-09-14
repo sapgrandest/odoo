@@ -144,10 +144,16 @@ function buildEmbeds(s, p, mv, meta) {
 
 function anomalies(s, p, meta) {
   const l = []
-  if (p?.rows) { const x = (s.rows - p.rows) / p.rows * 100; if (x < -5) l.push(`📉 Articles ${x.toFixed(1)} % (${fmt(p.rows)} → ${fmt(s.rows)}) — chute suspecte`) }
+  if (p?.rows) {
+    const x = (s.rows - p.rows) / p.rows * 100
+    if (x < -5) l.push(`📉 Articles ${x.toFixed(1)} % (${fmt(p.rows)} → ${fmt(s.rows)}) — chute suspecte (CSV tronqué ?)`)
+    if (x > 10) l.push(`📈 Articles +${x.toFixed(1)} % (${fmt(p.rows)} → ${fmt(s.rows)}) — hausse anormale (doublons/ajout source ?)`)   // M6
+  }
   const gone = p ? p.brands.filter(b => !s.brands.includes(b)) : []
   if (gone.length) l.push(`🏭 Marque(s) disparue(s) : ${gone.slice(0, 8).join(', ')}`)
   if (meta.removed_cols?.length) l.push(`🧱 Colonne(s) disparue(s) : ${meta.removed_cols.join(', ')}`)
+  if (p?.coercion != null && meta.coercion > Math.max(100, p.coercion * 3))                                                     // M7
+    l.push(`⚠️ Valeurs illisibles : **${fmt(meta.coercion)}** (avant ${fmt(p.coercion)}) — souci de format/encodage source ?`)
   return l.length ? { title: '🔴 Anomalie ingest', color: C.red, description: l.join('\n') + '\n→ vérifier le CSV source', timestamp: new Date().toISOString() } : null
 }
 
@@ -176,7 +182,7 @@ export async function reportRun({ dbPath, opsPath, meta, wh }) {
     post(wh.offres, [E.offres]), post(wh.couts, [E.couts]), post(wh.opportunites, [E.opportunites]),
   ])
   const a = anomalies(s, p, meta); if (a) await post(wh.alertes, [a])
-  saveRun(ops, true, s, meta.csv_hash); ops.close()
+  saveRun(ops, true, { ...s, coercion: meta.coercion }, meta.csv_hash); ops.close()   // coercion stockée pour le delta M7
 }
 
 // ── Démo : node src/report.js ─────────────────────────────────────────────────

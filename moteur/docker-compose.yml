@@ -1,6 +1,6 @@
-# Déploiement Coolify — service moteur (health/status) + volumes.
-# La tâche d'ingestion horaire est configurée dans Coolify → Scheduled Tasks :
-#   commande : node src/ingest.js   ·   fréquence : 0 * * * *
+# Déploiement Coolify — service moteur + volumes.
+# L'ingestion horaire est AUTO-PLANIFIÉE par le conteneur lui-même (src/server.js : setInterval
+# qui spawn src/ingest.js). Il n'y a PAS de Scheduled Task Coolify. Seule source de vérité = server.js.
 services:
   moteur:
     build: .
