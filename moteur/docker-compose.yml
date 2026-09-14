@@ -10,8 +10,17 @@ services:
       - CSV_PATH=/csv/catalogue.csv
       - DB_PATH=/data/catalog.db
       - OPS_PATH=/data/ops.db
-      # DISCORD_RUNS / STRUCTURES / MARGES / COUTS / OFFRES / OPPORTUNITES / ALERTES
-      # → injectés par Coolify comme variables d'environnement (secrets, jamais en git)
+      - INTERVAL_MIN=${INTERVAL_MIN:-60}
+      - STALE_HOURS=${STALE_HOURS:-3}
+      - HEALTHCHECK_URL=${HEALTHCHECK_URL:-}
+      # secrets → valeurs remplies côté Coolify (jamais en git)
+      - DISCORD_RUNS=${DISCORD_RUNS}
+      - DISCORD_STRUCTURES=${DISCORD_STRUCTURES}
+      - DISCORD_MARGES=${DISCORD_MARGES}
+      - DISCORD_COUTS=${DISCORD_COUTS}
+      - DISCORD_OFFRES=${DISCORD_OFFRES}
+      - DISCORD_OPPORTUNITES=${DISCORD_OPPORTUNITES}
+      - DISCORD_ALERTES=${DISCORD_ALERTES}
     volumes:
       # CSV déposé par Moto-Profil via SFTP (lecture seule)
       - /data/sapge/moto-profil/sftp/data/motoprofil:/csv:ro
