@@ -5,6 +5,7 @@
 //  4) DEAD-MAN : heartbeat healthchecks conditionné à l'activité réelle (pas juste "process vivant").
 
 import http from 'http'
+import fs from 'fs'
 import { spawn } from 'child_process'
 import Database from 'better-sqlite3'
 
@@ -30,23 +31,34 @@ function lastCheckAgeMs() {
 
 // ── Ordonnanceur + watchdog ───────────────────────────────────────────────────
 let running = false
+let currentChild = null
 function runIngest(reason) {
   if (running) { console.log('⏭️  ingest déjà en cours — cycle ignoré'); return }
   running = true
   console.log(`▶️  ingest (${reason})`)
   const p = spawn(process.execPath, ['src/ingest.js'], { stdio: 'inherit', env: process.env })
+  currentChild = p
   let killed = false
   const wd = setTimeout(() => {                                   // WATCHDOG : run figé → on tue + alerte
     killed = true; p.kill('SIGKILL')
     discord(process.env.DISCORD_ALERTES, '🔴 Ingest bloqué — tué par le watchdog', `Un run dépassait **${MAX_RUN / 60000} min** → tué. À investiguer (Discord/disque qui pend ?).`)
   }, MAX_RUN)
   p.on('exit', (code, signal) => {
-    clearTimeout(wd); running = false
+    clearTimeout(wd); running = false; currentChild = null
     console.log(`■ ingest terminé (code ${code}${signal ? ', signal ' + signal : ''})`)
     if (signal && !killed) discord(process.env.DISCORD_ALERTES, '🔴 Ingest tué (signal)', `Le job a été tué par signal \`${signal}\` (OOM ? crash natif ?) — sans alerte propre. À investiguer.`)
   })
-  p.on('error', e => { clearTimeout(wd); running = false; console.error('spawn error:', e.message); discord(process.env.DISCORD_ALERTES, '🔴 Impossible de lancer l\'ingest', `Le planificateur n'a pas pu démarrer le job.\n\`\`\`${e.message}\`\`\`` ) })
+  p.on('error', e => { clearTimeout(wd); running = false; currentChild = null; console.error('spawn error:', e.message); discord(process.env.DISCORD_ALERTES, '🔴 Impossible de lancer l\'ingest', `Le planificateur n'a pas pu démarrer le job.\n\`\`\`${e.message}\`\`\`` ) })
 }
+
+// ── Backup léger d'ops.db (M9) : protège d'une corruption/suppression accidentelle du fichier ──
+const backup = () => { try { if (fs.existsSync(OPS)) fs.copyFileSync(OPS, OPS + '.bak') } catch (e) { console.error('backup ops:', e.message) } }
+setTimeout(backup, 30000); setInterval(backup, 24 * 3600000)
+
+// ── Arrêt propre (redéploiement) : tuer l'enfant, ne pas laisser d'orphelin ──
+for (const sig of ['SIGTERM', 'SIGINT']) process.on(sig, () => {
+  console.log(`${sig} reçu — arrêt propre`); if (currentChild) currentChild.kill('SIGTERM'); setTimeout(() => process.exit(0), 1000)
+})
 setTimeout(() => runIngest('démarrage'), 5000)
 setInterval(() => runIngest('cycle horaire'), INTERVAL)
 

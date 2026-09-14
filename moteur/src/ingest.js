@@ -8,7 +8,7 @@ import crypto from 'crypto'
 import Database from 'better-sqlite3'
 import { parse } from 'csv-parse'
 import { parse as parseSync } from 'csv-parse/sync'
-import { reportRun, openOps, lastRun, saveRun } from './report.js'
+import { reportRun, openOps, lastRun, saveRun, getMeta, setMeta } from './report.js'
 
 // ── Config ────────────────────────────────────────────────────────────────────
 const CSV_PATH = process.argv[2] || process.env.CSV_PATH || './sample.csv'
@@ -75,12 +75,20 @@ async function run() {
   const t0 = Date.now()
   const OPS = env.OPS_PATH || './ops.db'
 
-  // Source figée ? (Moto-Profil a-t-il arrêté de pousser le CSV ? = le bug du 13/07)
+  // Source figée ? (Moto-Profil a-t-il arrêté de pousser ? = le bug du 13/07) — alerte throttlée 1×/6h
   step = 'fraîcheur source'
   const srcAgeH = (Date.now() - fs.statSync(CSV_PATH).mtimeMs) / 3600000
-  if (srcAgeH > +(env.STALE_HOURS || 3))
-    await discordEmbed(WH.alertes, { title: '⚠️ Source figée — CSV non mis à jour', color: 15105570,
-      description: `Le fichier reçu date de **${srcAgeH.toFixed(1)} h**. Moto-Profil a peut-être **arrêté de pousser** le catalogue.\n→ Vérifier le flux SFTP / le portail ProfiAuto.`, timestamp: new Date().toISOString() })
+  {
+    const o = openOps(OPS)
+    if (srcAgeH > +(env.STALE_HOURS || 3)) {
+      if (Date.now() - (+getMeta(o, 'stale_alert') || 0) > 6 * 3.6e6) {
+        await discordEmbed(WH.alertes, { title: '⚠️ Source figée — CSV non mis à jour', color: 15105570,
+          description: `Le fichier reçu date de **${srcAgeH.toFixed(1)} h**. Moto-Profil a peut-être **arrêté de pousser** le catalogue.\n→ Vérifier le flux SFTP / le portail ProfiAuto.`, timestamp: new Date().toISOString() })
+        setMeta(o, 'stale_alert', Date.now())
+      }
+    } else setMeta(o, 'stale_alert', '0')                          // source OK → reset (ré-alerte au prochain incident)
+    o.close()
+  }
 
   // 0. Fraîcheur — hash du CSV vs dernier import → skip si identique (heartbeat cron)
   step = 'fraîcheur'
@@ -193,6 +201,7 @@ async function run() {
       csv_age: Math.round((Date.now() - csvSt.mtimeMs) / 60000), db_bytes: dbSt.size, added_cols: added, removed_cols: removed, coercion },
   })
   console.log(`✅ ingest OK — ${count.toLocaleString('fr-FR')} lignes · ${cols.length} colonnes${coercion ? ` · ${coercion} valeurs non conformes→NULL` : ''}`)
+  { const o = openOps(OPS); setMeta(o, 'fail_alert', '0'); o.close() }   // succès → reset le throttle d'échec
 }
 
 // ── Échec → alerte riche ──────────────────────────────────────────────────────
@@ -214,7 +223,14 @@ run().catch(async e => {
   fields.push({ name: '✅ DB préservée', value: intact + ' — rien d\'impacté', inline: false })
   if (e.hint) fields.push({ name: '→ À vérifier', value: e.hint, inline: false })
   console.error('🔴 ÉCHEC', step, e.message)
-  try { const o = openOps(env.OPS_PATH || './ops.db'); saveRun(o, false, null, null, 'fail'); o.close() } catch { /* best effort */ }
-  await discordEmbed(WH.alertes, { title: '🔴 Ingest ÉCHEC', color: 15158332, fields, timestamp: new Date().toISOString(), footer: { text: `étape : ${step}` } })
+  let alertFail = true
+  try {
+    const o = openOps(env.OPS_PATH || './ops.db')
+    saveRun(o, false, null, null, 'fail')
+    if (Date.now() - (+getMeta(o, 'fail_alert') || 0) < 6 * 3.6e6) alertFail = false   // déjà alerté récemment → throttle
+    else setMeta(o, 'fail_alert', Date.now())
+    o.close()
+  } catch { /* best effort */ }
+  if (alertFail) await discordEmbed(WH.alertes, { title: '🔴 Ingest ÉCHEC', color: 15158332, fields, timestamp: new Date().toISOString(), footer: { text: `étape : ${step}` } })
   process.exit(1)
 })

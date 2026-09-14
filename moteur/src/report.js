@@ -63,9 +63,12 @@ export function openOps(path) {
   const db = new Database(path)
   db.pragma('journal_mode = WAL'); db.pragma('busy_timeout = 5000')
   db.exec("CREATE TABLE IF NOT EXISTS runs (id INTEGER PRIMARY KEY, ts TEXT, ok INTEGER, kind TEXT DEFAULT 'ingest', csv_hash TEXT, stats_json TEXT)")
+  db.exec('CREATE TABLE IF NOT EXISTS meta (k TEXT PRIMARY KEY, v TEXT)')   // throttle d'alertes, etc.
   try { db.exec("ALTER TABLE runs ADD COLUMN kind TEXT DEFAULT 'ingest'") } catch { /* colonne déjà là */ }
   return db
 }
+export const getMeta = (ops, k) => { const r = ops.prepare('SELECT v FROM meta WHERE k=?').get(k); return r ? r.v : null }
+export const setMeta = (ops, k, v) => ops.prepare('INSERT INTO meta (k,v) VALUES (?,?) ON CONFLICT(k) DO UPDATE SET v=excluded.v').run(k, String(v))
 const lastStats = ops => { const r = ops.prepare("SELECT stats_json FROM runs WHERE kind='ingest' AND ok=1 ORDER BY id DESC LIMIT 1").get(); return r && r.stats_json ? JSON.parse(r.stats_json) : null }
 // dernier vrai ingest réussi (pour la fraîcheur hash + l'âge des données)
 export const lastRun = ops => ops.prepare("SELECT ts, csv_hash FROM runs WHERE kind='ingest' AND ok=1 ORDER BY id DESC LIMIT 1").get() || null
