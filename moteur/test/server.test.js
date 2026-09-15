@@ -154,6 +154,7 @@ const BASE_ENV = {
   MODE: 'test',
   HEALTHCHECK_URL: '',
   INTERVAL_MIN: '60', MAX_RUN_MIN: '15', PING_MIN: '5',   // deliberately slow defaults; tests override what they need
+  STARTUP_DELAY_MS: '200', BACKUP_DELAY_MS: '500',        // délais injectables → suite rapide (au lieu de 5s/30s en dur)
 }
 
 // Spawns the REAL src/server.js (cwd-trick stub strategy, see header) with a fresh tmp dir +
@@ -165,7 +166,8 @@ async function withServer({ stub = STUB_NOOP, env = {}, seedOps = null } = {}, f
   if (seedOps) seedOps(opsPath)
   writeStub(dir, stub)
   const port = await getFreePort()
-  const fullEnv = { ...process.env, ...BASE_ENV, ...NO_WEBHOOKS, PORT: String(port), OPS_PATH: opsPath, ...env }
+  // server.js utilise un chemin d'ingest ABSOLU par défaut → on injecte le stub via INGEST_SCRIPT
+  const fullEnv = { ...process.env, ...BASE_ENV, ...NO_WEBHOOKS, PORT: String(port), OPS_PATH: opsPath, INGEST_SCRIPT: path.join(dir, 'src', 'ingest.js'), ...env }
   const proc = spawn(process.execPath, [SERVER_JS], { cwd: dir, env: fullEnv })
   liveChildren.add(proc)
   let out = '', err = ''

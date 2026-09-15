@@ -145,7 +145,7 @@ function buildEmbeds(s, p, mv, meta) {
   return { runs, structures, marges, offres, couts, opportunites }
 }
 
-function anomalies(s, p, meta) {
+export function anomalies(s, p, meta) {
   const l = []
   if (p?.rows) {
     const x = (s.rows - p.rows) / p.rows * 100

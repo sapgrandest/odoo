@@ -13,6 +13,7 @@ const OPS = process.env.OPS_PATH || '/data/ops.db'
 const PORT = process.env.PORT || 3000
 const INTERVAL = (+(process.env.INTERVAL_MIN || 60)) * 60000
 const MAX_RUN = (+(process.env.MAX_RUN_MIN || 15)) * 60000        // ceiling d'un run avant watchdog
+const INGEST = process.env.INGEST_SCRIPT || `${import.meta.dirname}/ingest.js`   // chemin ABSOLU (robuste au cwd) · overridable en test
 const tag = t => process.env.MODE === 'test' ? '🧪 ' + t : t
 
 async function discord(url, title, description, color = 15158332) {
@@ -36,7 +37,7 @@ function runIngest(reason) {
   if (running) { console.log('⏭️  ingest déjà en cours — cycle ignoré'); return }
   running = true
   console.log(`▶️  ingest (${reason})`)
-  const p = spawn(process.execPath, ['src/ingest.js'], { stdio: 'inherit', env: process.env })
+  const p = spawn(process.execPath, [INGEST], { stdio: 'inherit', env: process.env })
   currentChild = p
   let killed = false
   const wd = setTimeout(() => {                                   // WATCHDOG : run figé → on tue + alerte
@@ -53,13 +54,13 @@ function runIngest(reason) {
 
 // ── Backup léger d'ops.db (M9) : protège d'une corruption/suppression accidentelle du fichier ──
 const backup = () => { try { if (fs.existsSync(OPS)) fs.copyFileSync(OPS, OPS + '.bak') } catch (e) { console.error('backup ops:', e.message) } }
-setTimeout(backup, 30000); setInterval(backup, 24 * 3600000)
+setTimeout(backup, +(process.env.BACKUP_DELAY_MS || 30000)); setInterval(backup, 24 * 3600000)
 
 // ── Arrêt propre (redéploiement) : tuer l'enfant, ne pas laisser d'orphelin ──
 for (const sig of ['SIGTERM', 'SIGINT']) process.on(sig, () => {
   console.log(`${sig} reçu — arrêt propre`); if (currentChild) currentChild.kill('SIGTERM'); setTimeout(() => process.exit(0), 1000)
 })
-setTimeout(() => runIngest('démarrage'), 5000)
+setTimeout(() => runIngest('démarrage'), +(process.env.STARTUP_DELAY_MS || 5000))
 setInterval(() => runIngest('cycle horaire'), INTERVAL)
 
 // ── Dead-man : ping healthchecks SEULEMENT si le moteur fait encore des cycles ────

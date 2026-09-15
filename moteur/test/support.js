@@ -64,11 +64,14 @@ export function reorder(header, rows, perm) {
   }
 }
 
-let counter = 0
+const _tmpDirs = []
 export function tmpDir() {
   const d = fs.mkdtempSync(path.join(os.tmpdir(), 'ingest-test-'))
+  _tmpDirs.push(d)
   return d
 }
+// nettoyage à la sortie du process de test (évite l'accumulation de dossiers tmp)
+process.on('exit', () => { for (const d of _tmpDirs) { try { fs.rmSync(d, { recursive: true, force: true }) } catch { /* best effort */ } } })
 
 // Write CSV text to a file inside dir and return its absolute path.
 export function writeCsv(dir, name, text) {
